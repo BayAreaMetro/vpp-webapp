@@ -1,0 +1,10 @@
+<footer class="footer container">
+
+    <section class="action-links">
+        <a href="#" title="Press enter to translate to english" class="action-link" ng-click="changeLanguage('en')" ng-keypress="changeLanguageOnEnter('en', $event)">English</a> |
+        <a href="#" title="Press enter to translate to french" class="action-link" ng-click="changeLanguage('fr')" ng-keypress="changeLanguageOnEnter('fr', $event)">French</a>
+    </section>
+
+    <a class="ada-hidden" href="#" ng-click="adaReturnToStart()">{{'RETURN_TO_START' | translate}}</a>
+
+</footer>

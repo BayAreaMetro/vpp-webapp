@@ -1,0 +1,28 @@
+<div class="paging-count ng-cloak" ng-controller="RequestsCtrl">
+
+        <select
+            class="paging-count-select form-control"
+            ng-model="count"
+            ng-change="updatePageAmount()"
+            ng-options="o as o for o in [5,10,15]"
+            ng-init="count=5">
+        </select>
+
+        <span ng-repeat="page in pages"
+              ng-class="{'disabled': !page.active, 'previous': page.type == 'prev', 'next': page.type == 'next'}"
+              ng-show="page.type == 'prev' || page.type == 'next'" ng-switch="page.type">
+            <span tabindex="0" ng-switch-when="prev" ng-click="params.page(page.number)" class="page-tab glyphicon glyphicon-chevron-left"></span>
+        </span>
+
+        <span class="page-counter">
+            <span>{{params.page() * params.count() - params.count()+1}}</span> -
+            <span>{{params.page() * params.count() - params.count() + params.data.length}}</span> of <span>{{params.total()}}</span>
+        </span>
+
+        <span ng-repeat="page in pages"
+              ng-class="{'disabled': !page.active, 'previous': page.type == 'prev', 'next': page.type == 'next'}"
+              ng-show="page.type == 'prev' || page.type == 'next'" ng-switch="page.type">
+            <span tabindex="0" ng-switch-when="next" ng-click="params.page(page.number)" class="page-tab glyphicon glyphicon-chevron-right"></span>
+        </span>
+
+    </div>
