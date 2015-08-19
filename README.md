@@ -1,7 +1,7 @@
 # vpp-webapp
 VPP Parking Web Application [GIS]
 
-To build Environment
+##To build Environment
 1. sudo npm install
 2. bower install
   a.Make sure to pick at least Angular 1.4 to prevent errors
