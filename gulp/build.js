@@ -49,6 +49,7 @@ gulp.task('compile:js',function () {
 			paths.client + '/app/**/*.js'
 			, paths.client + '/public/utils/**/*.js'
 			, paths.client +  '/public/directives/**/*.js'
+			, paths.client +  '/public/templates/**/*.js'
 			, '!' + paths.client + '/app/**/*.spec.js'
 			, '!' + paths.client + '/components/**/*.spec.js'
 			, '!' + paths.client + '/app/**/*.mock.js'
@@ -83,7 +84,7 @@ gulp.task('compile:templates', function () {
 		.pipe($.htmlmin({collapseWhitespace: true}))
 		.pipe($.ngTemplates({
 			filename: 'templates.js'
-			, module: 'vpp-app'
+			, module: 'vppApp'
 			, standalone: false
 			, path: function (path, base) {
 				return path.slice(base.indexOf('client')).replace('client/', '');
