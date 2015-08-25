@@ -8,6 +8,11 @@ angular.module('vppApp')
                 templateUrl: 'app/main/main.html',
                 controller: 'MainCtrl'
             })
+            .state('home', {
+                url: "/home",
+                templateUrl: 'public/templates/home/home.html',
+                controller: 'HomeCtrl'
+            })
             .state('map', {
                 url: "/map",
                 templateUrl: 'public/templates/mapping/mapping.html',

@@ -1,3 +1,4 @@
+/*
 'use strict';
 
  angular.module('vppApp')
@@ -62,3 +63,4 @@
 	
 	    $scope.map.addLayer(layer);
 });
+*/

@@ -84,6 +84,7 @@ gulp.task('inject:js', function () {
 			, paths.client + '/components/**/*.js'
 			, paths.client + '/public/utils/**/*.js'
 			, paths.client + '/public/directives/**/*.js'
+			, paths.client + '/public/templates/**/*.js'
 			, '!' + paths.client + '/app/**/*.spec.js'
 			, '!' + paths.client + '/components/**/*.spec.js'
 			, '!' + paths.client + '/app/**/*.mock.js'
@@ -139,7 +140,8 @@ gulp.task('templates', function() {
 	var options = { module: appModule }
 		, dst = paths.tmp + '/app'
 		, src = [
-			paths.client + '/public/directives/**/*.html'
+			paths.client + '/public/directives/**/*.html',
+			paths.client + '/public/templates/**/*.html'
 		];
 
 	return gulp.src(src)
@@ -198,10 +200,10 @@ gulp.task('watch', function() {
 	gulp.watch([paths.client + '/public/json/**/*.json'], ['json']);
 
     // Watch templates
-    gulp.watch([paths.client + '/app/**/*.html', paths.client + '/public/directives/**/*.html'], ['templates', 'bs-reload']);
+    gulp.watch([paths.client + '/app/**/*.html', paths.client + '/public/directives/**/*.html',  paths.client + '/public/templates/**/*.html'], ['templates', 'bs-reload']);
 
 	// Watch JS
-	gulp.watch([paths.client + '/app/**/*.js', paths.client + '/public/directives/**/*.js', paths.client + '/public/utils/**/*.js'], ['inject:js', 'bs-reload']);
+	gulp.watch([paths.client + '/app/**/*.js', paths.client + '/public/directives/**/*.js',  paths.client + '/public/templates/**/*.js', paths.client + '/public/utils/**/*.js'], ['inject:js', 'bs-reload']);
 
     /* Note: Use gulp-watch because native watch doesn't watch on add/delete */
     // Watch for add/delete of js files
