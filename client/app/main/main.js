@@ -68,6 +68,21 @@ angular.module('vppApp')
                         return deferred.promise;
                     }
                 }
+            })
+            .state('database', {
+                url: "/database",
+                templateUrl: 'public/templates/database/database.html',
+                controller: 'HomeCtrl'
+            })
+            .state('about', {
+                url: "/about",
+                templateUrl: 'public/templates/about/about.html',
+                controller: 'HomeCtrl'
+            })
+            .state('research', {
+                url: "/research",
+                templateUrl: 'public/templates/research/research.html',
+                controller: 'HomeCtrl'
             });
     })
     .service('wish', function () {
