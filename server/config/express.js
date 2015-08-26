@@ -16,14 +16,8 @@ var cookieParser = require('cookie-parser');
 var errorHandler = require('errorhandler');
 var path = require('path');
 var config = require('./environment');
-var passport = require('passport');
-var session = require('express-session');
-
-var routes = require('./../routes/pages/index');
-var users = require('./../routes/users');
-
-// var mongoStore = require('connect-mongo')(session);
-// var multer = require('multer');
+// var passport = require('passport');
+// var session = require('express-session');
 
 module.exports = function(app) {
     var env = app.get('env');
