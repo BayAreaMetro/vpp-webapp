@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 angular.module('vppApp')
     .controller('MappingCtrl', function ($rootScope, $scope, wish) {
@@ -12,7 +12,7 @@ angular.module('vppApp')
             renderer2,
 
             CROPS_URL = 'http://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/USA_County_Crops_2007/FeatureServer/0';
-
+            
         $scope.map = new w.Map('map', {
             center: [-98.579, 39.828],
             zoom: 4,
@@ -62,3 +62,4 @@ angular.module('vppApp')
 
         $scope.map.addLayer(layer);
     });
+    */
