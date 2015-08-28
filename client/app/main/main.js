@@ -72,17 +72,17 @@ angular.module('vppApp')
             .state('database', {
                 url: "/database",
                 templateUrl: 'public/templates/database/database.html',
-                controller: 'HomeCtrl'
+                controller: 'DatabaseCtrl'
             })
             .state('about', {
                 url: "/about",
                 templateUrl: 'public/templates/about/about.html',
-                controller: 'HomeCtrl'
+                controller: 'AboutCtrl'
             })
             .state('research', {
                 url: "/research",
                 templateUrl: 'public/templates/research/research.html',
-                controller: 'HomeCtrl'
+                controller: 'ResearchCtrl'
             });
     })
     .service('wish', function () {
