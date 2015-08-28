@@ -13,8 +13,95 @@
         </ul>
     </div>
 </nav>-->
-    <div id="wrapper" class="active">
-                <!-- Sidebar -->
+    
+</div>
+<div id="search">
+<div class="input-group">
+      <input type="text" class="form-control" placeholder="eg. Walnut Creek">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Search</button>
+      </span>
+    </div>
+</div>
+<div id="maptoolsBTN">
+    <div class="dropdown">
+  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <span class="fa fa-wrench fa-lg"></span> Map Tools
+    
+  </button>
+  <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+      <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Map Navigation <span class="arrow clickable"></span></a></li>  
+      <li>
+        <a id="mapOptionsCTL">
+            <i class="fa fa-ellipsis-h fa-lg"></i> Map Options <span class="arrow clickable"></span>
+            </a>
+        </li>
+    
+    <li><a id="mapBaseCTL"><i class="fa fa-globe fa-lg"></i> Basemaps <span class="arrow clickable"></span></a></li>
+    <li><a id="mapLayersCTL"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a></li>
+      <li class="divider"></li>
+      <li><a id="mapPrintCTL" ><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a></li>
+  </ul>
+</div>
+
+</div>
+<div id="mt">
+    <div id="mapToolsPNL" class="panel panel-info collapse">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <span id="iconTitle" class='pull-left'></span>
+             <span id="title"></span>   
+            <span class='pull-right clickable'><i class='fa fa-times'></i></span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div id="mapNav" class="tools collapse">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">Zoom Drag</button>
+
+                    <button type="button" class="btn btn-default">Full Extent</button>
+                    <button type="button" class="btn btn-default">Bookmarks</button>
+                </div>
+            </div>
+            <div id="mapOpts" class="tools collapse">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">Option 1</button>
+
+                    <button type="button" class="btn btn-default">Option 2</button>
+                    <button type="button" class="btn btn-default">Option 3</button>
+                </div>
+            </div>
+            <div id="mapBasemaps" class="tools collapse">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">Gray</button>
+
+                    <button type="button" class="btn btn-default">Dark Gray</button>
+                    <button type="button" class="btn btn-default">Imagery</button>
+                </div>
+            </div>
+            <div id="mapLayers" class="tools collapse">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">Places</button>
+
+                    <button type="button" class="btn btn-default">Study Areas</button>
+                    <button type="button" class="btn btn-default">PDAs</button>
+                </div>
+            </div>
+            <div id="mapPrint" class="tools collapse">
+                <span>Map Print Tools will be displayed here as a form.</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Code Snippets
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">Zoom Drag</button>
+  
+  <button type="button" class="btn btn-default">Full Extent</button>
+        <button type="button" class="btn btn-default">Bookmarks</button>
+</div>
+<div id="wrapper" class="active">
+                
                 <div id="sidebar-wrapper">
                     <div class="nav-side-menu">
                         <div class="brand"><span id="main_icon" class="fa fa-align-justify fa-fw"></span>Map Tools
@@ -22,9 +109,6 @@
                         <div class="menu-list">
 
                             <ul id="menu-content" class="menu-content collapse out">
-                                <li>
-                                    <a id="idTAZ"><i class="fa fa-info-circle fa-fw"></i>Inspect</a>
-                                </li>
                                 <li data-toggle="collapse" data-target="#dataOptions" class="collapsed">
                                     <a><i class="fa fa-ellipsis-h fa-lg fa-fw"></i> Data Options <span class="arrow"></span></a>
                                 </li>
@@ -45,7 +129,7 @@
                                 </ul>
 
                                 <li data-toggle="collapse" data-target="#nav" class="collapsed">
-                                    <a><i class="fa fa-map fa-lg"></i> Map Navigation <span class="arrow"></span></a>
+                                    <a><i class="fa fa-map fa-lg fa-fw"></i> Map Navigation <span class="arrow"></span></a>
                                 </li>
                                 <ul class="sub-menu collapse" id="nav">
                                     <li id="pan">
@@ -79,23 +163,28 @@
                                 </li>
                                 <ul class="sub-menu collapse" id="lt">
                                     <li>
+                                        <a data-value="study" tabIndex="-1">
+                                            <span class="toggle_icon"><input type="checkbox" /></span><span class="toggle_icon">Study Areas</span>
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a data-value="places" tabIndex="-1">
-                                            <span class="toggle_icon"><input type="checkbox" /></span><span class="toggle_icon">Places</span>
+                                            <span class="toggle_icon"><input type="checkbox" /></span> <span class="toggle_icon">Places</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a data-value="tazs" tabIndex="-1">
-                                            <span class="toggle_icon"><input type="checkbox" /></span> <span class="toggle_icon">TAZs</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-value="utazs" tabIndex="-1">
-                                            <span class="toggle_icon"><input type="checkbox" /></span><span class="toggle_icon">Urbanzied TAZs</span>
+                                        <a data-value="cocss" tabIndex="-1">
+                                            <span class="toggle_icon"><input type="checkbox" /></span><span class="toggle_icon">Communities of Concern</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a data-value="pdas" tabIndex="-1">
-                                            <span class="toggle_icon"><input type="checkbox" /></span><span class="toggle_icon">PDAs</span>
+                                            <span class="toggle_icon"><input type="checkbox" /></span><span class="toggle_icon">Priority Development Areas</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-value="transit" tabIndex="-1">
+                                            <span class="toggle_icon"><input type="checkbox" /></span> <span class="toggle_icon">Transit System</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -104,22 +193,9 @@
                                     <a id="printMap"><i class="fa fa-print"></i>Print Map</a>
                                 </li>
 
-                                <!--
-                                <li>
-    <a href="#">
-        <i class="fa fa-user fa-lg"></i> Profile
-    </a>
-</li>
-
-<li>
-    <a href="#">
-        <i class="fa fa-users fa-lg"></i> Users
-    </a>
-</li>
--->
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-</div>
+-->

@@ -222,5 +222,80 @@ angular.module('vppApp')
                 console.log('Heat Map Visible!')
             }
         }
+    //Tool Control Listeners
+    //Reset Controls in Tool Panel
+    $('.clickable').on('click',function(){
+        $(this).closest('.panel').fadeOut(300, function(){
+            $("#title").text("");
+            $('.tools').fadeOut();            
+        });        
+	})
+    function clearAllTools(){
+        $("#mapNav").fadeOut(0);
+        $("#mapOpts").fadeOut(0);
+        $("#mapBasemaps").fadeOut(0);
+        $("#mapLayers").fadeOut(0);
+        $("#mapPrint").fadeOut(0);
+    }
+    //Show Nav Tools
+    $('#mapNavCTL').click(function () {
+        clearAllTools();
+        $('#iconTitle').html("<span><i class='fa fa-location-arrow fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+        $("#title").text("Map Navigation");
+        $("#mapToolsPNL").fadeIn(500);
+        $("#mapNav").fadeIn(500);
+        
+        //return false;
+
+    });
+    
+    //Show Map Options
+    $('#mapOptionsCTL').click(function () {
+        clearAllTools();
+        $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+        $("#title").text("Map Options");
+        $("#mapToolsPNL").fadeIn(500);
+        $("#mapOpts").fadeIn(500);
+        
+        //return false;
+
+    });
+    
+     //Show BaseMap Controls
+    $('#mapBaseCTL').click(function () {
+        clearAllTools();
+        $('#iconTitle').html("<span><i class='fa fa-globe fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+        $("#title").text("Choose Basemap");
+        $("#mapToolsPNL").fadeIn(500);
+        $("#mapBasemaps").fadeIn(500);
+        
+        //return false;
+
+    });
+    
+    //Show BaseMap Controls
+    $('#mapLayersCTL').click(function () {
+        clearAllTools();
+        $('#iconTitle').html("<span><i class='fa fa-th-list fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+        $("#title").text("View Layers");
+        $("#mapToolsPNL").fadeIn(500);
+        $("#mapLayers").fadeIn(500);
+        
+        //return false;
+
+    });
+    
+    //Show Map Print Controls
+    $('#mapPrintCTL').click(function () {
+        clearAllTools();
+        $('#iconTitle').html("<span><i class='fa fa-print fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+        $("#title").text("Print Tools");
+        $("#mapToolsPNL").fadeIn(500);
+        $("#mapPrint").fadeIn(500);
+        
+        //return false;
+
+    });
+    
 
     });
