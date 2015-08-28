@@ -5,7 +5,7 @@
 -->
 <nav-template></nav-template>
 <div id="map">
-<!--
+    <!--
     <nav class="navbar navbar-default navbar-inverse">
     <div class="container">
         <ul class="nav navbar-nav navbar-right">
@@ -13,36 +13,40 @@
         </ul>
     </div>
 </nav>-->
-    
+
 </div>
 <div id="search">
-<div class="input-group">
-      <input type="text" class="form-control" placeholder="eg. Walnut Creek">
-      <span class="input-group-btn">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="eg. Walnut Creek">
+        <span class="input-group-btn">
         <button class="btn btn-default" type="button">Search</button>
       </span>
     </div>
 </div>
 <div id="maptoolsBTN">
     <div class="dropdown">
-  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    <span class="fa fa-wrench fa-lg"></span> Map Tools
-    
-  </button>
-  <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
-      <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Map Navigation <span class="arrow clickable"></span></a></li>  
-      <li>
-        <a id="mapOptionsCTL">
-            <i class="fa fa-ellipsis-h fa-lg"></i> Map Options <span class="arrow clickable"></span>
-            </a>
-        </li>
-    
-    <li><a id="mapBaseCTL"><i class="fa fa-globe fa-lg"></i> Basemaps <span class="arrow clickable"></span></a></li>
-    <li><a id="mapLayersCTL"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a></li>
-      <li class="divider"></li>
-      <li><a id="mapPrintCTL" ><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a></li>
-  </ul>
-</div>
+        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span class="fa fa-wrench fa-lg"></span> Map Tools
+
+        </button>
+        <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+            <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Map Navigation <span class="arrow clickable"></span></a>
+            </li>
+            <li>
+                <a id="mapOptionsCTL">
+                    <i class="fa fa-ellipsis-h fa-lg"></i> Map Options <span class="arrow clickable"></span>
+                </a>
+            </li>
+
+            <li><a id="mapBaseCTL"><i class="fa fa-globe fa-lg"></i> Basemaps <span class="arrow clickable"></span></a>
+            </li>
+            <li><a id="mapLayersCTL"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a>
+            </li>
+            <li class="divider"></li>
+            <li><a id="mapPrintCTL"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
+            </li>
+        </ul>
+    </div>
 
 </div>
 <div id="mt">
@@ -50,13 +54,13 @@
         <div class="panel-heading">
             <div class="panel-title">
                 <span id="iconTitle" class='pull-left'></span>
-             <span id="title"></span>   
-            <span class='pull-right clickable'><i class='fa fa-times'></i></span>
+                <span id="title"></span>
+                <span class='pull-right clickable'><i class='fa fa-times'></i></span>
             </div>
         </div>
         <div class="panel-body">
             <div id="mapNav" class="tools collapse">
-                <div class="btn-group" role="group" aria-label="...">
+                <div class="btn-group btn-block" role="group" aria-label="...">
                     <button type="button" class="btn btn-default">Zoom Drag</button>
 
                     <button type="button" class="btn btn-default">Full Extent</button>
