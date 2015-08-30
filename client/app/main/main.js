@@ -28,6 +28,8 @@ angular.module('vppApp')
                                 //Map Layer Tools
                                 FeatureLayer: 'esri/layers/FeatureLayer',
                                 InfoTemplate: 'esri/InfoTemplate',
+                                arcgisUtils: 'esri/arcgis/utils',
+                                LayerList: 'esri/dijit/LayerList',
                                 //Map Popup Tools
                                 Popup: 'esri/dijit/Popup',
                                 PopupTemplate: 'esri/dijit/PopupTemplate',

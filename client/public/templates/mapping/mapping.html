@@ -25,7 +25,7 @@
 </div>
 <div id="maptoolsBTN">
     <div class="dropdown">
-        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <span class="fa fa-wrench fa-lg"></span> Map Tools
 
         </button>
@@ -34,7 +34,7 @@
             </li>
             <li>
                 <a id="mapOptionsCTL">
-                    <i class="fa fa-ellipsis-h fa-lg"></i> Map Options <span class="arrow clickable"></span>
+                    <i class="fa fa-ellipsis-h fa-lg"></i> Map Type <span class="arrow clickable"></span>
                 </a>
             </li>
 
@@ -60,41 +60,148 @@
         </div>
         <div class="panel-body">
             <div id="mapNav" class="tools collapse">
-                <div class="btn-group btn-block" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default">Zoom Drag</button>
-
-                    <button type="button" class="btn btn-default">Full Extent</button>
-                    <button type="button" class="btn btn-default">Bookmarks</button>
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                    <div class="btn-group pad-s" role="group">
+                        <button type="button" class="btn btn-default">Zoom Drag</button>
+                    </div>
+                    <div class="btn-group pad-s" role="group">
+                        <button type="button" class="btn btn-default">Full Extent</button>
+                    </div>
+                    <div class="btn-group pad-s" role="group">
+                        <button type="button" class="btn btn-default">Bookmarks</button>
+                    </div>
                 </div>
             </div>
             <div id="mapOpts" class="tools collapse">
-                <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default">Option 1</button>
+                <div class="row">
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <div class="btn-group pad-s" role="group">
+                            <button type="button" class="btn btn-default">Data Collections</button>
+                        </div>
+                        <div class="btn-group pad-s" role="group">
+                            <button type="button" class="btn btn-default">Time Restrictions</button>
+                        </div>
 
-                    <button type="button" class="btn btn-default">Option 2</button>
-                    <button type="button" class="btn btn-default">Option 3</button>
+                    </div>
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <div class="btn-group pad-s" role="group">
+                            <button type="button" class="btn btn-default">Pricing</button>
+                        </div>
+                    </div>
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <div class="btn-group pad-s" role="group">
+                            <button type="button" class="btn btn-default">Weekday
+                                <br/> Occupancy</button>
+                        </div>
+                        <div class="btn-group pad-s" role="group">
+                            <button type="button" class="btn btn-default">Weekend
+                                <br/> Occupancy</button>
+                        </div>
+
+                    </div>
                 </div>
+                <div class="row pad-top-m">
+                    <div id="maptypeOptionsBTN" class="text-center">
+                        <div class="dropdown">
+                            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span class="fa  fa-clock-o fa-lg fa-fw"></span> Time of Day
+
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Peak </a>
+                                </li>
+                                <li>
+                                    <a id="">
+                                        <i class="fa fa-clock-o fa-lg fa-fw"></i> Early Morning (5AM)
+                                    </a>
+                                </li>
+
+                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Morning (9AM) </a>
+                                </li>
+                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Afternoon (12PM) </a>
+                                </li>
+                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Late Afternoon (4PM) </a>
+                                </li>
+                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Evening (8PM) </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
             <div id="mapBasemaps" class="tools collapse">
-                <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default">Gray</button>
+                <!--
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default">Gray</button>
+    </div>
+    <div class="btn-group" role="group" aria-label="...">
 
-                    <button type="button" class="btn btn-default">Dark Gray</button>
-                    <button type="button" class="btn btn-default">Imagery</button>
+        <button type="button" class="btn btn-default">Dark Gray</button>
+    </div>
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default">Imagery</button>
+    </div>
+</div>
+-->
+                <div class="row pad-top-m">
+                    <div class="col-xs-4 col-md-6">
+                        <a href="#" class="thumbnail">
+                            <img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+
+                        <a href="#" class="thumbnail">
+                            <img src="app/images/light_gray_canvas.jpg" style="height: 100%; width: 100%; display: block;" alt="Light Gray">
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <a href="#" class="thumbnail">
+                            <img src="app/images/DGCanvasBase.png" style="height: 100%; width: 100%; display: block;" alt="Dark Gray">
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <a href="#" class="thumbnail">
+                            <img src="app/images/tempimagery.jpg" style="height: 100%; width: 100%; display: block;" alt="Satelite">
+                        </a>
+                    </div>
+
                 </div>
+
+
             </div>
             <div id="mapLayers" class="tools collapse">
-                <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default">Places</button>
 
-                    <button type="button" class="btn btn-default">Study Areas</button>
-                    <button type="button" class="btn btn-default">PDAs</button>
+                <div class="container">
+
+                    <p>
+                        <input id="StudyLayerSwitch" type="checkbox" data-size="mini" name="studyAreasFL">
+                        <span class="pad-left-m LayerLBLs">Study Areas</span>
+                    </p>
+                    <p>
+                        <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL">
+                        <span class="pad-left-m LayerLBLs">PDAs</span>
+                    </p>
+                    <p>
+                        <input id="PlaceLayerSwitch" type="checkbox" data-size="mini" name="COC_FL">
+                        <span class="pad-left-m LayerLBLs">Communities of Concern</span>
+                    </p>
+
+
                 </div>
             </div>
             <div id="mapPrint" class="tools collapse">
-                <span>Map Print Tools will be displayed here as a form.</span>
+                <div class="container">
+                    <div class="row">
+                        <span>Map Print Tools will be displayed here as a form.</span>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
 <!-- Code Snippets
@@ -163,7 +270,7 @@
                                     </li>
                                 </ul>
                                 <li data-toggle="collapse" data-target="#lt" class="collapsed">
-                                    <a href="#"><i class="fa  fa-th-list fa-lg"></i> Layer Toggle <span class="arrow"></span></a>
+                                    <a href="#"><i class="fa fa-th-list fa-lg"></i> Layer Toggle <span class="arrow"></span></a>
                                 </li>
                                 <ul class="sub-menu collapse" id="lt">
                                     <li>

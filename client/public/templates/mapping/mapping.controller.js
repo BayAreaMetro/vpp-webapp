@@ -165,7 +165,11 @@ angular.module('vppApp')
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             infoTemplate: popupTemplate_COC_FL
+
         });
+
+        COC_FL.setDefinitionExpression("cocflag = 1");
+
 
         //Feature Layer Renderer for COCs
         var COC_Color = new w.Color("#ff9999");
@@ -210,92 +214,128 @@ angular.module('vppApp')
         dojo.connect($scope.map, "onZoomEnd", checkScale);
 
         function checkScale(extent, zoomFactor, anchor, level) {
-            //document.getElementById("myText").value = level;
-            console.clear();
-            console.log(level);
-            if (level > 14) {
-                blockFacesFL.show();
-                heatmapFeatureLayer.hide();
-            } else {
-                blockFacesFL.hide();
-                heatmapFeatureLayer.show();
-                console.log('Heat Map Visible!')
+                //document.getElementById("myText").value = level;
+                console.clear();
+                console.log(level);
+                if (level > 14) {
+                    blockFacesFL.show();
+                    heatmapFeatureLayer.hide();
+                } else {
+                    blockFacesFL.hide();
+                    heatmapFeatureLayer.show();
+                    //console.log('Heat Map Visible!')
+                }
             }
-        }
-    //Tool Control Listeners
-    //Reset Controls in Tool Panel
-    $('.clickable').on('click',function(){
-        $(this).closest('.panel').fadeOut(300, function(){
-            $("#title").text("");
-            $('.tools').fadeOut();            
-        });        
-	})
-    function clearAllTools(){
-        $("#mapNav").fadeOut(0);
-        $("#mapOpts").fadeOut(0);
-        $("#mapBasemaps").fadeOut(0);
-        $("#mapLayers").fadeOut(0);
-        $("#mapPrint").fadeOut(0);
-    }
-    //Show Nav Tools
-    $('#mapNavCTL').click(function () {
-        clearAllTools();
-        $('#iconTitle').html("<span><i class='fa fa-location-arrow fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-        $("#title").text("Map Navigation");
-        $("#mapToolsPNL").fadeIn(500);
-        $("#mapNav").fadeIn(500);
-        
-        //return false;
+            //Tool Control Listeners
+            //Reset Controls in Tool Panel
+        $('.clickable').on('click', function () {
+            $(this).closest('.panel').fadeOut(300, function () {
+                $("#title").text("");
+                $('.tools').fadeOut();
+            });
+        })
 
-    });
-    
-    //Show Map Options
-    $('#mapOptionsCTL').click(function () {
-        clearAllTools();
-        $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-        $("#title").text("Map Options");
-        $("#mapToolsPNL").fadeIn(500);
-        $("#mapOpts").fadeIn(500);
-        
-        //return false;
+        function clearAllTools() {
+                $("#mapNav").fadeOut(0);
+                $("#mapOpts").fadeOut(0);
+                $("#mapBasemaps").fadeOut(0);
+                $("#mapLayers").fadeOut(0);
+                $("#mapPrint").fadeOut(0);
+            }
+            //Show Nav Tools
+        $('#mapNavCTL').click(function () {
+            clearAllTools();
+            $('#iconTitle').html("<span><i class='fa fa-location-arrow fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("Map Navigation");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#mapNav").fadeIn(500);
 
-    });
-    
-     //Show BaseMap Controls
-    $('#mapBaseCTL').click(function () {
-        clearAllTools();
-        $('#iconTitle').html("<span><i class='fa fa-globe fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-        $("#title").text("Choose Basemap");
-        $("#mapToolsPNL").fadeIn(500);
-        $("#mapBasemaps").fadeIn(500);
-        
-        //return false;
+            //return false;
 
-    });
-    
-    //Show BaseMap Controls
-    $('#mapLayersCTL').click(function () {
-        clearAllTools();
-        $('#iconTitle').html("<span><i class='fa fa-th-list fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-        $("#title").text("View Layers");
-        $("#mapToolsPNL").fadeIn(500);
-        $("#mapLayers").fadeIn(500);
-        
-        //return false;
+        });
 
-    });
-    
-    //Show Map Print Controls
-    $('#mapPrintCTL').click(function () {
-        clearAllTools();
-        $('#iconTitle').html("<span><i class='fa fa-print fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-        $("#title").text("Print Tools");
-        $("#mapToolsPNL").fadeIn(500);
-        $("#mapPrint").fadeIn(500);
-        
-        //return false;
+        //Show Map Options
+        $('#mapOptionsCTL').click(function () {
+            clearAllTools();
+            $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("Map Type");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#mapOpts").fadeIn(500);
 
-    });
-    
+            //return false;
 
+        });
+
+        //Show BaseMap Controls
+        $('#mapBaseCTL').click(function () {
+            clearAllTools();
+            $('#iconTitle').html("<span><i class='fa fa-globe fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("Choose Basemap");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#mapBasemaps").fadeIn(500);
+
+            //return false;
+
+        });
+
+        //Show BaseMap Controls
+        $('#mapLayersCTL').click(function () {
+            clearAllTools();
+            $('#iconTitle').html("<span><i class='fa fa-th-list fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("View Layers");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#mapLayers").fadeIn(500);
+
+            //return false;
+
+        });
+
+        //Show Map Print Controls
+        $('#mapPrintCTL').click(function () {
+            clearAllTools();
+            $('#iconTitle').html("<span><i class='fa fa-print fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("Print Tools");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#mapPrint").fadeIn(500);
+
+            //return false;
+
+        });
+        $("input[type=\"checkbox\"], input[type=\"radio\"]").not("[data-switch-no-init]").bootstrapSwitch();
+
+        $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
+            var LayerName = $(this).attr('name');
+
+            //console.log($(this).attr('name')); // DOM element
+            //console.log(event); // jQuery event
+            //console.log(state); // true | false
+
+            if (state) {
+                switch (LayerName) {
+                case "PDA_FL":
+                    PDA_FL.show();
+                    break;
+                case "COC_FL":
+                    COC_FL.show();
+                    break;
+                case "studyAreasFL":
+                    studyAreasFL.show();
+                    break;
+
+                }
+            } else {
+                switch (LayerName) {
+                case "PDA_FL":
+                    PDA_FL.hide();
+                    break;
+                case "COC_FL":
+                    COC_FL.hide();
+                    break;
+                case "studyAreasFL":
+                    studyAreasFL.hide();
+                    break;
+                }
+            }
+
+        });
     });
