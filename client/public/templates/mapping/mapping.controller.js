@@ -303,14 +303,14 @@ angular.module('vppApp')
         });
         $("input[type=\"checkbox\"], input[type=\"radio\"]").not("[data-switch-no-init]").bootstrapSwitch();
 
-        $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
+        $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (a, b) {
             var LayerName = $(this).attr('name');
 
-            //console.log($(this).attr('name')); // DOM element
+            console.log($(this).attr('name')); // DOM element
             //console.log(event); // jQuery event
-            //console.log(state); // true | false
+            console.log(b); // true | false
 
-            if (state) {
+            if (b) {
                 switch (LayerName) {
                 case "PDA_FL":
                     PDA_FL.show();
