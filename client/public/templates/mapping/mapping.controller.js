@@ -306,9 +306,9 @@ angular.module('vppApp')
         $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
             var LayerName = $(this).attr('name');
 
-            //console.log($(this).attr('name')); // DOM element
-            //console.log(event); // jQuery event
-            //console.log(state); // true | false
+            console.log($(this).attr('name')); // DOM element
+            console.log(event); // jQuery event
+            console.log(state); // true | false
 
             if (state) {
                 switch (LayerName) {
