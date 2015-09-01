@@ -123,7 +123,7 @@ gulp.task('copy:fonts', function () {
 	var appFonts = gulp.src(paths.client + '/fonts/**/*')
 		.pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
 		.pipe($.flatten())
-		.pipe(gulp.dest(paths.dist + '/fonts/'));
+		.pipe(gulp.dest(paths.client + '/fonts/'));
 
 	return appFonts;
 });
