@@ -80,6 +80,7 @@ gulp.task('compile:templates', function () {
 	return gulp.src([
 			paths.client + '/app/**/*.html'
 		,   paths.client + '/public/directives/**/*.html'
+		,   paths.client + '/public/templates/**/*.html'
 	])
 		.pipe($.htmlmin({collapseWhitespace: true}))
 		.pipe($.ngTemplates({
@@ -122,7 +123,7 @@ gulp.task('copy:fonts', function () {
 	var appFonts = gulp.src(paths.client + '/fonts/**/*')
 		.pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
 		.pipe($.flatten())
-		.pipe(gulp.dest(paths.tmp + '/fonts/'));
+		.pipe(gulp.dest(paths.dist + '/fonts/'));
 
 	return appFonts;
 });

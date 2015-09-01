@@ -7,7 +7,7 @@ angular.module('vppApp')
 			scope: {
 				snippets: '='
 			},
-			templateUrl: 'footer/footer.directive.html',
+			templateUrl: 'public/directives/footer/footer.directive.html',
 			link: function($scope) {
 
 				$scope.changeLanguage = function (key) {

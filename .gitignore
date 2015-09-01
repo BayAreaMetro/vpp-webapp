@@ -13,3 +13,6 @@ target
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+target/*
+zip/*
+dist/*

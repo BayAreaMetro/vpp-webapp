@@ -7,7 +7,7 @@ angular.module('vppApp')
             scope: {
                 snippets: '='
             },
-            templateUrl: 'navbar/navbar.directive.html',
+            templateUrl: 'public/directives/navbar/navbar.directive.html',
             link: function ($scope) {
 
                 // Placeholder
