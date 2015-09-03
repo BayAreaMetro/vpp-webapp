@@ -19,5 +19,20 @@
 	}
 	.nav-list{
 		padding-left: 0;
+		.nav-list-inner{
+			text-align: right;
+			.vpp-links-inner{
+				color: @anchorColor;
+				font-size: 15px;
+				font-weight: 100;
+				padding-left: 15px;
+				.transition(all 1s ease);
+				&:hover{
+					text-decoration: none;
+					color: #ffffff;
+					cursor: pointer;
+				}
+			}	
+		}
 	}
 }
