@@ -7,7 +7,7 @@
 #main-nav{
 	width: 200px;
 	margin-left: 20px;
-	margin-top: 250px;
+	margin-top: 200px;
 	position: fixed;
 	.logo-wrapper{
 		border-bottom: 2px solid @mainColor;
@@ -19,8 +19,19 @@
 	}
 	.nav-list{
 		padding-left: 0;
+		&.show-inner{
+			.nav-list-inner{
+				opacity: 1;
+				height: 250px;
+			}
+		}
 		.nav-list-inner{
 			text-align: right;
+			width: 200px;
+			height: 0px;
+			overflow: hidden;
+			opacity: 0;
+			.transition(all 1s ease);
 			.vpp-links-inner{
 				color: @anchorColor;
 				font-size: 15px;
