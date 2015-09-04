@@ -27,7 +27,7 @@
     </div>
 </nav>
 -->
-<nav id="main-nav">
+<nav id="main-nav" class="zTop">
 	<!-- Logo -->
 	<div class="logo-wrapper">
 		<h2 class="vpp-logo">
@@ -39,10 +39,10 @@
 		<li>
 			<a href="#/home" class="vpp-links">HOME</a>
 		</li>
-		<li>
-			<a href="#/research" class="vpp-links">RESEARCH</a>
-			<ul class="nav-list-inner hidden">
-				<li>
+		<li ng-mouseenter="showInnerLinks($event)" ng-mouseleave="hideInnerLinks($event)">
+			<a href="#/research" class="vpp-links" >RESEARCH</a>
+			<ul class="nav-list-inner" ng-mouseleave="hideInnerLinks($event)">
+				<li class="pad-top-m">
 					<a href="#/research" class="vpp-links-inner">Employees Programs</a>
 				</li>
 				<li>
@@ -65,7 +65,7 @@
 				</li>
 				<li>
 					<a href="#/research" class="vpp-links-inner">Parking Structure</a>
-				</li>
+				</li class="pad-bottom-m">
 			</ul>
 		</li>
 		<li>
