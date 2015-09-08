@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vppApp')
-    .controller("NavCtrl", [
+    .controller("NavLargeCtrl", [
     	'$scope', 
     	function ($scope) {
 	    	
