@@ -9,36 +9,22 @@ var compression = require('compression');
 
 
 
-//MSQL SERVER
-var mssql = require('mssql');
 
-//MONGODB
-// var mongojs = require('mongojs');
 
-var pages = require('./routes/pages');
+
+var routes = require('./routes/index');
+var data = require('./routes/data');
 
 var app = express();
 
-//MSQL SERVER CONFIGURATION
-// var configSQL = {
-//     user: 'username',
-//     password: 'password',
-//     server: 'ip address', // You can use 'localhost\\instance' to connect to named instance
-//     database: 'database'
 
-// };
-
-// var connection = new mssql.Connection(configSQL, function(err) {
-//     if (err)
-//         console.log(err);
-// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Enables CORS
-var enableCORS = function(req, res, next) {
+var enableCORS = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET');
     res.header('Access-Control-Allow-Methods', 'POST');
@@ -77,12 +63,11 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-//ROUTES
-app.use('/',pages);
+app.use('/', routes);
+app.use('/data', data);
 
 /// catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -93,7 +78,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -104,7 +89,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,

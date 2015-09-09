@@ -27,6 +27,7 @@ angular.module('vppApp')
                                 esriConfig: 'esri/config',
                                 //Map Layer Tools
                                 FeatureLayer: 'esri/layers/FeatureLayer',
+                                DataAdapterFeatureLayer: 'esri/layers/DataAdapterFeatureLayer',
                                 InfoTemplate: 'esri/InfoTemplate',
                                 arcgisUtils: 'esri/arcgis/utils',
                                 LayerList: 'esri/dijit/LayerList',
@@ -56,7 +57,8 @@ angular.module('vppApp')
                                 HeatmapRenderer: 'esri/renderers/HeatmapRenderer',
                                 ClassBreaksRenderer: 'esri/renderers/ClassBreaksRenderer',
                                 SimpleRenderer: 'esri/renderers/SimpleRenderer',
-                                ScaleDependentRenderer: 'esri/renderers/ScaleDependentRenderer'
+                                ScaleDependentRenderer: 'esri/renderers/ScaleDependentRenderer',
+                                jsonUtil: 'esri/renderers/jsonUtils'
                             };
 
 
