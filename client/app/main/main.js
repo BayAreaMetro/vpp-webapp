@@ -86,10 +86,9 @@ angular.module('vppApp')
                 templateUrl: 'public/templates/research/research.html',
                 controller: 'ResearchCtrl'
             })
-            .state('research.employees', {
+            .state('employees', {
                 url: "/employees",
-                templateUrl: 'public/templates/research/employees/research.employees.html',
-                controller: 'ResearchCtrl'
+                templateUrl: 'public/templates/employees/employees.html'
             });
     })
     .service('wish', function () {
