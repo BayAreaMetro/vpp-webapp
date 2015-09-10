@@ -13,6 +13,20 @@
       </span>
     </div>
 </div>
+<div id="mapLegend" class="mapLegend">
+    <div id="mapLegendPNL" class="panel panel-info legendContent">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <span id="iconTitleLegend" class='pull-left'></span>
+                <i class="fa fa-server fa-lg pad-right-m"></i>
+                <span id="LegendTitle">Legend</span>
+                <span class='pull-right clickableLegend'><i class='fa fa-times'></i></span>
+            </div>
+        </div>
+        <div class="panel-body">
+        </div>
+    </div>
+</div>
 <div id="maptoolsBTN">
     <div class="dropdown">
         <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -26,19 +40,53 @@
                     <i class="fa fa-ellipsis-h fa-lg"></i> Map Type <span class="arrow clickable"></span>
                 </a>
             </li>
+            <li>
+                <a id="mapLegendCTL">
+                    <i class="fa fa-server fa-lg"></i> Show Legend <span class="arrow clickable"></span>
+                </a>
+            </li>
 
             <li><a id="mapBaseCTL"><i class="fa fa-globe fa-lg"></i> Basemaps <span class="arrow clickable"></span></a>
             </li>
             <li><a id="mapLayersCTL"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a>
             </li>
             <li class="divider"></li>
-            <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Map Tips <span class="arrow clickable"></span></a>
+            <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Navigation Tips <span class="arrow clickable"></span></a>
             </li>
             <li><a id="mapPrintCTL"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
             </li>
         </ul>
     </div>
 
+</div>
+<div id="TimeOfDayBTN">
+    <div id="maptypeOptionsBTN" class="text-center collapse">
+        <div class="dropdown">
+            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="fa  fa-clock-o fa-lg fa-fw"></span> Time of Day
+
+            </button>
+            <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Peak </a>
+                </li>
+                <li>
+                    <a id="">
+                        <i class="fa fa-clock-o fa-lg fa-fw"></i> Early Morning (5AM)
+                    </a>
+                </li>
+
+                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Morning (9AM) </a>
+                </li>
+                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Afternoon (12PM) </a>
+                </li>
+                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Late Afternoon (4PM) </a>
+                </li>
+                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Evening (8PM) </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
 </div>
 <div id="mt">
     <div id="mapToolsPNL" class="panel panel-info collapse">
@@ -54,15 +102,15 @@
 
                 <p>Users can choose the mouse, keyboard, and sliders for panning and zooming the map. The following keyboard and mouse controls affect the map navigation:</p>
                 <ul class="list-unstyled">
-                    <li>Drag the mouse to pan</li>
+                    <li><i class="fa fa-hand-o-up fa-lg pad-right-m"></i>Drag the mouse to pan</li>
                     <li><i class="fa fa-search-plus fa-lg pad-right-m"></i>Mouse Scroll Forward to zoom in</li>
                     <li><i class="fa fa-search-minus fa-lg pad-right-m"></i>Mouse Scroll Backward to zoom out</li>
-                    <li><i class="fa fa-search-plus fa-lg pad-right-m"></i>SHIFT + Drag the mouse to zoom in</li>
+                    <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + Drag the mouse to zoom in</li>
                     <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + CTRL + Drag the mouse to zoom out</li>
                     <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + Click to recenter</li>
-                    <li>Double Click to Center and Zoom in</li>
+                    <li><i class="fa fa-level-down fa-lg pad-left-s pad-right-m"></i>&nbsp;Double Click to Center and Zoom in</li>
                     <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + Double Click to Center and Zoom in</li>
-                    <li><i class="fa fa-arrows fa-lg pad-right-s"></i> Use arrow keys to pan</li>
+                    <li>Use <i class="fa fa-arrows fa-lg pad-left-s pad-right-s"></i> arrow keys to pan</li>
                     <li>Use <i class="fa fa-plus-square fa-lg pad-left-s pad-right-s"></i> key to zoom in a level</li>
                     <li>Use <i class="fa fa-minus-square fa-lg pad-left-s pad-right-s"></i> key to zoom out a level</li>
                 </ul>
@@ -114,90 +162,60 @@
 -->
                 <div class="row pad-top-m">
                     <div class="col-xs-4 col-md-6">
-                        <div id="topo" href="#" class="thumbnail">
-                            <a id="topo" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                        <div id="inventory" href="#" class="mt">
+                            <a id="inv" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Inventory</p>
                         </div>
 
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <div id="topo" href="#" class="thumbnail">
-                            <a id="topo" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                        <div id="restrictions" href="#" class="mt">
+                            <a id="res" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Restrictions</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
 
-                        <div id="topo" href="#" class="thumbnail">
-                            <a id="topo" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                        <div id="wkdayOCC" href="#" class="occ">
+                            <a id="wkday" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Weekday Occupancy</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <div id="topo" href="#" class="thumbnail">
-                            <a id="topo" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                        <div id="wkndOCC" href="#" class="occ">
+                            <a id="wknd" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Weekend Occupancy</p>
                         </div>
                     </div>
-
-
                 </div>
-                <div class="row pad-top-m">
-                    <div id="maptypeOptionsBTN" class="text-center">
-                        <div class="dropdown">
-                            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <span class="fa  fa-clock-o fa-lg fa-fw"></span> Time of Day
 
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
-                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Peak </a>
-                                </li>
-                                <li>
-                                    <a id="">
-                                        <i class="fa fa-clock-o fa-lg fa-fw"></i> Early Morning (5AM)
-                                    </a>
-                                </li>
-
-                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Morning (9AM) </a>
-                                </li>
-                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Afternoon (12PM) </a>
-                                </li>
-                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Late Afternoon (4PM) </a>
-                                </li>
-                                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Evening (8PM) </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
 
             </div>
             <div id="mapBasemaps" class="tools collapse">
 
                 <div class="row pad-top-m">
                     <div class="col-xs-4 col-md-6">
-                        <a id="topo" href="#" class="thumbnail">
+                        <a id="topo" href="#" class="thumbnail bm">
                             <img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
 
-                        <a id="gray" href="#" class="thumbnail">
+                        <a id="gray" href="#" class="thumbnail bm">
                             <img src="app/images/light_gray_canvas.jpg" style="height: 100%; width: 100%; display: block;" alt="Light Gray">
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <a id="osm" href="#" class="thumbnail">
+                        <a id="osm" href="#" class="thumbnail bm">
                             <img src="app/images/osm.jpg" style="height: 100%; width: 100%; display: block;" alt="OSM">
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <a id="hybrid" href="#" class="thumbnail">
+                        <a id="hybrid" href="#" class="thumbnail bm">
                             <img src="app/images/imagery_labels.jpg" style="height: 100%; width: 100%; display: block;" alt="Satelite">
                         </a>
                     </div>

@@ -35,12 +35,36 @@
     }
 }
 
+.mapLegend {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 49px;
+    right: 0px;
+    width: 275px;
+    bottom: 0px;
+}
+
+.legendContent {
+    height: 100%;
+    opacity: 0.8;
+}
+
 #maptoolsBTN {
     display: block;
     position: absolute;
     z-index: 10;
     top: 70px;
     left: 430px;
+    width: 100px;
+}
+
+#TimeOfDayBTN {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 70px;
+    left: 550px;
     width: 100px;
 }
 
@@ -79,10 +103,10 @@
 }
 
 .clickable {
-    //background: rgba(0, 0, 0, 0.15);
-    //    display: inline-block;
-    //    padding: 6px 12px;
-    //    border-radius: 4px;
+    cursor: pointer;
+}
+
+.clickableLegend {
     cursor: pointer;
 }
 

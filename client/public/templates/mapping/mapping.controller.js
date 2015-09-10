@@ -244,16 +244,35 @@ angular.module('vppApp')
             });
         });
 
-        $('#zoomMap').on('click', function () {
-            $scope.map.enableRubberBandZoom();
+        $('#mapLegendCTL').on('click', function () {
+            $("#mapLegendPNL").fadeIn(500);
+            $("#LegendTitle").text("Legend");
+
+        });
+        $('.clickableLegend').on('click', function () {
+            $("#mapLegendPNL").fadeOut(300, function () {
+                $("#LegendTitle").text("");
+            });
+
 
         });
 
 
-        $('.thumbnail').on('click', function () {
+        $('.bm').on('click', function () {
             //            console.log($(this).attr('id'));
             $scope.map.setBasemap($(this).attr('id'));
         });
+        $('.occ').on('click', function () {
+            //console.log($(this).attr('id'));
+            $("#maptypeOptionsBTN").fadeIn(500);
+        });
+        $('.mt').on('click', function () {
+            $("#maptypeOptionsBTN").fadeOut(500);
+            //console.log($(this).attr('id'));
+
+        });
+
+
 
 
         function clearAllTools() {
@@ -262,12 +281,13 @@ angular.module('vppApp')
                 $("#mapBasemaps").fadeOut(0);
                 $("#mapLayers").fadeOut(0);
                 $("#mapPrint").fadeOut(0);
+                $("#maptypeOptionsBTN").fadeOut(0);
             }
             //Show Nav Tools
         $('#mapNavCTL').click(function () {
             clearAllTools();
             $('#iconTitle').html("<span><i class='fa fa-location-arrow fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-            $("#title").text("Map Navigation");
+            $("#title").text("Map Navigation Tips");
             $("#mapToolsPNL").fadeIn(500);
             $("#mapNav").fadeIn(500);
 
