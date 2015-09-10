@@ -4,7 +4,7 @@ angular.module('vppApp')
     .controller('MapCtrl', function ($rootScope, $scope, wish) {
 
         var w = wish.get(),
-            blockFacesFL,
+            OnStreetInventoryFL,
             markerSym,
             renderer1,
             renderer2,
@@ -12,13 +12,13 @@ angular.module('vppApp')
             sfs,
             popup,
             popupOptions,
-            popupTemplate_blockFacesFL,
+            popupTemplate_OnStreetInventoryFL,
             symbol,
-
-            BlockFaceURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/vpp_V7/FeatureServer/2';
+            OffStreetInventoryURL,
+            OnStreetInventoryURL
 
         w.parser.parse();
-        w.esriConfig.defaults.geometryService = new w.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+        w.esriConfig.defaults.geometryService = new w.GeometryService("http://gis.mtc.ca.gov/mtc/rest/services/Utilities/Geometry/GeometryServer");
 
 
         sls = new w.SimpleLineSymbol("solid", new w.Color("#444444"), 3);
@@ -29,6 +29,9 @@ angular.module('vppApp')
             marginLeft: "20",
             marginTop: "20"
         };
+
+        OffStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/0';
+        OnStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/1';
 
         //create a popup to replace the map's info window
         popup = new w.Popup(popupOptions, w.domConstruct.create("div"));
@@ -43,8 +46,14 @@ angular.module('vppApp')
             basemap: 'topo'
         });
 
+        var home = new w.HomeButton({
+            map: $scope.map
+        }, "HomeButton");
+        home.startup();
+
+
         //Define Feature Layers for Map
-        popupTemplate_blockFacesFL = new w.PopupTemplate({
+        popupTemplate_OnStreetInventoryFL = new w.PopupTemplate({
             "title": "Parking Spaces by Block Face",
             "fieldInfos": [{
                     "fieldName": "Total_Spaces",
@@ -58,13 +67,13 @@ angular.module('vppApp')
             "description": "There are {Total_Spaces} total parking spaces on this block"
         });
 
-        blockFacesFL = new w.FeatureLayer(BlockFaceURL, {
-            id: "blockFaces",
+        OnStreetInventoryFL = new w.FeatureLayer(OnStreetInventoryURL, {
+            id: "OnStreetInventory",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            infoTemplate: popupTemplate_blockFacesFL
+            infoTemplate: popupTemplate_OnStreetInventoryFL
         });
-        //layer.setDefinitionExpression('AREA>0.01 and M086_07>0');
+
 
         //Set Map Renderers
         symbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
@@ -106,12 +115,12 @@ angular.module('vppApp')
         renderer.addBreak(Break3_minValue, Break3_maxValue, Break3LineSymbol);
         renderer.addBreak(Break4_minValue, Break4_maxValue, Break4LineSymbol);
         renderer.addBreak(Break5_minValue, Break5_maxValue, Break5LineSymbol);
-        blockFacesFL.setRenderer(renderer);
+        OnStreetInventoryFL.setRenderer(renderer);
 
 
-        //blockFacesFL.maxScale = 30000;
-        $scope.map.addLayer(blockFacesFL);
-        blockFacesFL.hide();
+        //OnStreetInventoryFL.maxScale = 30000;
+        $scope.map.addLayer(OnStreetInventoryFL);
+        OnStreetInventoryFL.hide();
 
         //Setting up Simple Lines Renderer for Study Areas
         var studyAreasColor = new w.Color("#999");
@@ -119,7 +128,7 @@ angular.module('vppApp')
         var studyAreasSymbol = new w.SimpleFillSymbol("solid", studyAreasLine, null);
         var studyAreasRenderer = new w.SimpleRenderer(studyAreasSymbol);
 
-        var studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/vpp_V7/MapServer/3", {
+        var studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"]
 
@@ -218,10 +227,10 @@ angular.module('vppApp')
                 console.clear();
                 console.log(level);
                 if (level > 14) {
-                    blockFacesFL.show();
+                    OnStreetInventoryFL.show();
                     heatmapFeatureLayer.hide();
                 } else {
-                    blockFacesFL.hide();
+                    OnStreetInventoryFL.hide();
                     heatmapFeatureLayer.show();
                     //console.log('Heat Map Visible!')
                 }
@@ -233,7 +242,19 @@ angular.module('vppApp')
                 $("#title").text("");
                 $('.tools').fadeOut();
             });
-        })
+        });
+
+        $('#zoomMap').on('click', function () {
+            $scope.map.enableRubberBandZoom();
+
+        });
+
+
+        $('.thumbnail').on('click', function () {
+            //            console.log($(this).attr('id'));
+            $scope.map.setBasemap($(this).attr('id'));
+        });
+
 
         function clearAllTools() {
                 $("#mapNav").fadeOut(0);

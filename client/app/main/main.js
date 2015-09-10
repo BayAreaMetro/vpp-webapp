@@ -25,6 +25,7 @@ angular.module('vppApp')
                                 //ESRI Map
                                 Map: 'esri/map',
                                 esriConfig: 'esri/config',
+                                HomeButton: 'esri/dijit/HomeButton',
                                 //Map Layer Tools
                                 FeatureLayer: 'esri/layers/FeatureLayer',
                                 DataAdapterFeatureLayer: 'esri/layers/DataAdapterFeatureLayer',

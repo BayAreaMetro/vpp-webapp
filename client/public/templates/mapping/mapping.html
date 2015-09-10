@@ -1,14 +1,8 @@
+<nav-template-large>
+</nav-template-large>
+<div id="map">
+    <div id="HomeButton"></div>
 
-<nav-template-large></nav-template-large>
-	<div id="map">
-    <!--
-    <nav class="navbar navbar-default navbar-inverse">
-    <div class="container">
-        <ul class="nav navbar-nav navbar-right">
-
-        </ul>
-    </div>
-</nav>-->
 
 </div>
 <div id="search">
@@ -26,8 +20,7 @@
 
         </button>
         <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
-            <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Map Navigation <span class="arrow clickable"></span></a>
-            </li>
+
             <li>
                 <a id="mapOptionsCTL">
                     <i class="fa fa-ellipsis-h fa-lg"></i> Map Type <span class="arrow clickable"></span>
@@ -39,6 +32,8 @@
             <li><a id="mapLayersCTL"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a>
             </li>
             <li class="divider"></li>
+            <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Map Tips <span class="arrow clickable"></span></a>
+            </li>
             <li><a id="mapPrintCTL"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
             </li>
         </ul>
@@ -56,19 +51,39 @@
         </div>
         <div class="panel-body">
             <div id="mapNav" class="tools collapse">
+
+                <p>Users can choose the mouse, keyboard, and sliders for panning and zooming the map. The following keyboard and mouse controls affect the map navigation:</p>
+                <ul class="list-unstyled">
+                    <li>Drag the mouse to pan</li>
+                    <li><i class="fa fa-search-plus fa-lg pad-right-m"></i>Mouse Scroll Forward to zoom in</li>
+                    <li><i class="fa fa-search-minus fa-lg pad-right-m"></i>Mouse Scroll Backward to zoom out</li>
+                    <li><i class="fa fa-search-plus fa-lg pad-right-m"></i>SHIFT + Drag the mouse to zoom in</li>
+                    <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + CTRL + Drag the mouse to zoom out</li>
+                    <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + Click to recenter</li>
+                    <li>Double Click to Center and Zoom in</li>
+                    <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + Double Click to Center and Zoom in</li>
+                    <li><i class="fa fa-arrows fa-lg pad-right-s"></i> Use arrow keys to pan</li>
+                    <li>Use <i class="fa fa-plus-square fa-lg pad-left-s pad-right-s"></i> key to zoom in a level</li>
+                    <li>Use <i class="fa fa-minus-square fa-lg pad-left-s pad-right-s"></i> key to zoom out a level</li>
+                </ul>
+
+
+                <!--
                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
                     <div class="btn-group pad-s" role="group">
-                        <button type="button" class="btn btn-default">Zoom Drag</button>
+                        <button id="zoomMap" type="button" class="btn btn-primary">Zoom Drag</button>
                     </div>
                     <div class="btn-group pad-s" role="group">
-                        <button type="button" class="btn btn-default">Full Extent</button>
+                        <button type="button" class="btn btn-primary">Full Extent</button>
                     </div>
                     <div class="btn-group pad-s" role="group">
-                        <button type="button" class="btn btn-default">Bookmarks</button>
+                        <button type="button" class="btn btn-primary">Bookmarks</button>
                     </div>
                 </div>
+-->
             </div>
             <div id="mapOpts" class="tools collapse">
+                <!--
                 <div class="row">
                     <div class="btn-group btn-group-justified" role="group" aria-label="...">
                         <div class="btn-group pad-s" role="group">
@@ -95,6 +110,41 @@
                         </div>
 
                     </div>
+                </div>
+-->
+                <div class="row pad-top-m">
+                    <div class="col-xs-4 col-md-6">
+                        <div id="topo" href="#" class="thumbnail">
+                            <a id="topo" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            </a>
+                            <p>Inventory</p>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <div id="topo" href="#" class="thumbnail">
+                            <a id="topo" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            </a>
+                            <p>Restrictions</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+
+                        <div id="topo" href="#" class="thumbnail">
+                            <a id="topo" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            </a>
+                            <p>Weekday Occupancy</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <div id="topo" href="#" class="thumbnail">
+                            <a id="topo" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            </a>
+                            <p>Weekend Occupancy</p>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="row pad-top-m">
                     <div id="maptypeOptionsBTN" class="text-center">
@@ -128,40 +178,27 @@
 
             </div>
             <div id="mapBasemaps" class="tools collapse">
-                <!--
-                <div class="btn-group btn-group-justified" role="group" aria-label="...">
-    <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default">Gray</button>
-    </div>
-    <div class="btn-group" role="group" aria-label="...">
 
-        <button type="button" class="btn btn-default">Dark Gray</button>
-    </div>
-    <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default">Imagery</button>
-    </div>
-</div>
--->
                 <div class="row pad-top-m">
                     <div class="col-xs-4 col-md-6">
-                        <a href="#" class="thumbnail">
+                        <a id="topo" href="#" class="thumbnail">
                             <img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
 
-                        <a href="#" class="thumbnail">
+                        <a id="gray" href="#" class="thumbnail">
                             <img src="app/images/light_gray_canvas.jpg" style="height: 100%; width: 100%; display: block;" alt="Light Gray">
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <a href="#" class="thumbnail">
-                            <img src="app/images/DGCanvasBase.png" style="height: 100%; width: 100%; display: block;" alt="Dark Gray">
+                        <a id="osm" href="#" class="thumbnail">
+                            <img src="app/images/osm.jpg" style="height: 100%; width: 100%; display: block;" alt="OSM">
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <a href="#" class="thumbnail">
-                            <img src="app/images/tempimagery.jpg" style="height: 100%; width: 100%; display: block;" alt="Satelite">
+                        <a id="hybrid" href="#" class="thumbnail">
+                            <img src="app/images/imagery_labels.jpg" style="height: 100%; width: 100%; display: block;" alt="Satelite">
                         </a>
                     </div>
 
