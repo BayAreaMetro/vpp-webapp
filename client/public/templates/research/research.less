@@ -7,54 +7,54 @@
     .site-header{
 		margin-top: 150px;
 	}
-    .jumbotron {
-        h1 {
-            //            border-bottom: 1px solid black;
-            color: #E41A2C;
-            font-weight: 800;
-        }
-        p {
-            color: #003869;
-        }
-    }
+	.research-content {
+		height: 400px;
+		overflow: scroll;
+		p{
+			color:#ffffff;
+		}
+		.research-header-h2{
+			color: #ffffff;
+		}
+		.research-header-h3{
+			color: #ffffff;
+		}
+		.research-header-h4{
+			color: #ffffff;
+		}
+		.research-sub-header{
+			color: @mainColor;
+		}
+		.sub-header-4{
+			color: @mainColor;
+		}
+		.page-header{
+			border-bottom: 1px solid @mainColor;
+		}
+	}
 }
 
-//.navbar-brand-submenu {
-//    position: absolute;
-//    width: 100%;
-//    left: 0;
-//    text-align: center;
-//    margin: auto;
-//    color: #fff;
-//    float: left;
-//    padding: 15px;
-//    font-size: 18px;
-//    line-height: 20px;
-//    height: 50px;
-//    text-decoration: none;
-//    white-space: pre-wrap;
-//}
-//
-//.navbar-brand-submenu > a {
-//    color: #fff;
-//    text-decoration: none;
-//}
 .navbar-vpp {
     background-color: #003869;
     color: #ffffff;
     border-radius: 0;
 }
 
-.navbar-vpp .navbar-nav-research > li > a {
-    color: #333;
+.navbar-vpp {
+	&.navbar-nav-research {
+		> li{
+			> a {
+				color: #333;
+    		}
+    	}
+    }
+}
+// Content Sedctions
+#EmployeePrograms{
+	
 }
 
-//a:hover,
-//a:focus {
-//    color: #fff;
-//    text-decoration: none;
-//    background-color: #004869;
-//}
+/*
 .navbar-vpp .dropdown-menu {
     margin-top: 0px;
 }
@@ -106,3 +106,4 @@
     background-color: #004869 !important;
     color: #fff !important;
 }
+*/

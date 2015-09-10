@@ -1,32 +1,3 @@
-<!--
-<nav class="nav navbar-vpp navbar-fixed-top hidden">
-    <div class="container">
-        <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/home">Value Pricing Pilot</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a href="#/research">Research & Policies</a>
-            </li>
-            <li>
-                <a href="#/database">Maps & Data</a>
-            </li>
-            <li>
-                <a href="#/about">About</a>
-            </li>
-
-        </ul>
-    </div>
-</nav>
--->
 <nav id="main-nav" class="zTop">
 	<!-- Logo -->
 	<div class="logo-wrapper">
@@ -40,10 +11,15 @@
 			<a href="#/home" class="vpp-links">HOME</a>
 		</li>
 		<li class="show-inner-list" ng-mouseenter="showInnerLinks($event)" ng-mouseleave="hideInnerLinks($event)">
+		<!--<li class="show-inner-list" ng-mouseenter="showInnerLinks($event)" ng-mouseleave="hideInnerLinks($event)"> -->
+			
+			<!-- Main Anchor -->
 			<a href="#/research" class="vpp-links" >RESEARCH</a>
+			
+			<!-- Inner employee list -->
 			<ul class="nav-list-inner" ng-mouseleave="hideInnerLinks($event)">
 				<li class="pad-top-m">
-					<a href="#/employees" class="vpp-links-inner">Employees Programs</a>
+					<a href="#" id="resEmployeeProgramMI" class="divControl vpp-links-inner employees-nav">Employees Programs</a>
 				</li>
 				<li>
 					<a href="#/research" class="vpp-links-inner">Regional Parking Policies</a>
@@ -54,17 +30,44 @@
 				<li>
 					<a href="#/research" class="vpp-links-inner">Resources</a>
 				</li>
-				<li>
+				<li class="vpp-links-li">
 					<a href="#/research" class="vpp-links-inner">Policy Questions</a>
+					<ul class="nav-inner-nested">
+						<li>
+							<a href="#/employees" class="vpp-links-inner">Overview</a>
+						</li>
+						<li>
+							<a href="#/employees" class="vpp-links-inner">Bay Area UrbanSim</a>
+						</li>
+						<li>
+							<a href="#/employees" class="vpp-links-inner">Travel Model One</a>
+						</li>
+						<li>
+							<a href="#/employees" class="vpp-links-inner">Key Definitions</a>
+						</li>
+					</ul>
 				</li>
-				<li>
+				<li class="vpp-links-li">
 					<a href="#/research" class="vpp-links-inner">Supply & Demand</a>
+					<ul class="nav-inner-nested">
+						<li>
+							<a href="#/employees" class="vpp-links-inner">Overview</a>
+						</li>
+						<li>
+							<a href="#/employees" class="vpp-links-inner">Regional Parking</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<a href="#/research" class="vpp-links-inner">PR & Unbundling</a>
 				</li>
-				<li>
+				<li class="vpp-links-li">
 					<a href="#/research" class="vpp-links-inner">Parking Structure</a>
+					<ul class="nav-inner-nested">
+						<li>
+							<a href="#/employees" class="vpp-links-inner">Travel Model One Analysis</a>
+						</li>
+					</ul>
 				</li class="pad-bottom-m">
 			</ul>
 		</li>

@@ -16,12 +16,13 @@
 		.show-inner{
 			.nav-list-inner{
 				opacity: 1;
-				height: 250px;
+				height: 200px;
+				margin-left: 20px;
 			}
 		}
 		.nav-list-inner{
-			text-align: right;
-			width: 200px;
+			text-align: left;
+			width: 250px;
 			height: 0px;
 			overflow: hidden;
 			opacity: 0;
@@ -37,7 +38,24 @@
 					color: #ffffff;
 					cursor: pointer;
 				}
+				&.show-inner-nested{
+					+.nav-inner-nested{
+						height:130px;
+					}
+				}
+			}
+			.employees-nav{
 			}	
+			.nav-inner-nested{
+				height:0px;
+				overflow:hidden;
+				.transition(all 1s ease);
+			}
+			.show-inner-nested{
+				.nav-inner-nested{
+					height:130px;
+				}
+			}
 		}
 	}
 }
