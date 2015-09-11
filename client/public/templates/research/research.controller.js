@@ -23,6 +23,26 @@ angular.module('vppApp')
 		    $('#resRegPricingPolMI').click(function () {
 		        $("#RegionalPricingPolicies").fadeIn(1000);
 		    });
+		    
+		    $('#resEnactingPricingPolicies').click(function () {
+		        $("#EnactingPricingPolicies").fadeIn(1000);
+		    });
+		    $('#resResources').click(function () {
+		        $("#Resources").fadeIn(1000);
+		    });
+		    $('#resPolicyQuestions').click(function () {
+		        $("#PolicyQuestions").fadeIn(1000);
+		    });
+		    $('#resSupplyDemand').click(function () {
+		        $("#SupplyDemand").fadeIn(1000);
+		    });
+		    $('#resParkingReqmntsUnbundling').click(function () {
+		        $("#ParkingReqmntsUnbundling").fadeIn(1000);
+		    });
+		    $('#resTravelModelOneAnalysis').click(function () {
+		        $("#TravelModelOneAnalysis").fadeIn(1000);
+		    });
+
 		}
 	]
  );

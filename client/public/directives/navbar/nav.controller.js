@@ -7,7 +7,7 @@ angular.module('vppApp')
 	    	
 	    	//Show nav
 	    	$('.show-inner-list').hover(function(){
-		    	$(this).closest('ul').addClass('show-inner');
+		    	$(this).addClass('show-inner');
 	    	}, function(){
 		    	$(this).removeClass('show-inner');
 	    	});
@@ -46,6 +46,35 @@ angular.module('vppApp')
 				//$(".nav-list").removeClass('show-inner');
 				console.log('hide');
 			}
+			
+			//Page Controls
+            $('.divControl').click(function () {
+                $(".divFade").each(function () {
+                    if ($('.divFade').css("visibility") == "hidden") {
+                        // handle non visible state
+                    } else {
+                        // handle visible state
+                        $('.divFade').fadeOut(10);
+                    }
+                });
+            });
+
+            $('#dbSummaryMI').click(function () {
+                $("#DataSummary").fadeIn(1000);
+            });
+
+            $('#dbPoliciesMI').click(function () {
+                $("#Policies").fadeIn(1000);
+            });
+
+            $('#vwDataBTN').click(function () {
+                $("#DataTable").fadeIn(1000);
+            });
+
+            $('#vwOptionsBTN').click(function () {
+                $("#DataSummary").fadeIn(1000);
+            });
+            //End of Page Controls
     	}
     ]	
 );
