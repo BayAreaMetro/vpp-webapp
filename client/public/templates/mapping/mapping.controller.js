@@ -46,7 +46,7 @@ angular.module('vppApp')
 
         //Summary Data URLs
         var devDataUrl = "http://localhost:3003";
-        var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com/";
+        var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
 
         //Inventory Data URLs
         OffStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/0';
