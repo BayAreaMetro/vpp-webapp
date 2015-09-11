@@ -45,7 +45,8 @@ angular.module('vppApp')
         };
 
         //Summary Data URLs
-        var dataurl = "http://localhost:3003";
+        var devDataUrl = "http://localhost:3003";
+        var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com/";
 
         //Inventory Data URLs
         OffStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/0';
@@ -414,7 +415,7 @@ angular.module('vppApp')
         //Load data for Study Area Search Function
         $.ajax({
             dataType: 'json',
-            url: dataurl + '/data/studyareas',
+            url: publicDataURL + '/data/studyareas',
             success: function (data) {
                 //console.clear();
                 //console.log(data);
