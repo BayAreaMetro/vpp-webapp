@@ -5,6 +5,11 @@ angular.module('vppApp')
 
         var w = wish.get(),
             OnStreetInventoryFL,
+            OffStreetInventoryFL,
+            WDOffStreetOccupancyFL,
+            WDOnStreetOccupancyFL,
+            WEOffStreetOccupancyFL,
+            WEOnStreetOccupancyFL,
             markerSym,
             renderer1,
             renderer2,
@@ -130,6 +135,44 @@ angular.module('vppApp')
         });
 
 
+        OffStreetInventoryFL = new w.FeatureLayer(OffStreetInventoryURL, {
+            id: "OffStreetInventory",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"]
+            //infoTemplate: popupTemplate_OnStreetInventoryFL
+        });
+
+        WDOffStreetOccupancyFL = new w.FeatureLayer(WDOffStreetOccupancyURL, {
+            id: "WDOffStreetOccupancy",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"]
+           // infoTemplate: popupTemplate_OnStreetInventoryFL
+        });
+
+        WDOnStreetOccupancyFL = new w.FeatureLayer(WDOnStreetOccupancyURL, {
+            id: "WDOnStreetOccupancy",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"]
+           // infoTemplate: popupTemplate_OnStreetInventoryFL
+        });
+
+        WEOffStreetOccupancyFL = new w.FeatureLayer(WEOffStreetOccupancyURL, {
+            id: "WEOffStreetOccupancy",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"]
+           // infoTemplate: popupTemplate_OnStreetInventoryFL
+        });
+
+        WEOnStreetOccupancyFL = new w.FeatureLayer(WEOnStreetOccupancyURL, {
+            id: "WEOnStreetOccupancy",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"]
+           // infoTemplate: popupTemplate_OnStreetInventoryFL
+        });
+
+
+
+
         //Set Map Renderers
         symbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
             new w.Color([255, 0, 0]));
@@ -170,6 +213,7 @@ angular.module('vppApp')
         renderer.addBreak(Break3_minValue, Break3_maxValue, Break3LineSymbol);
         renderer.addBreak(Break4_minValue, Break4_maxValue, Break4LineSymbol);
         renderer.addBreak(Break5_minValue, Break5_maxValue, Break5LineSymbol);
+
         OnStreetInventoryFL.setRenderer(renderer);
 
 
