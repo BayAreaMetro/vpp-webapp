@@ -27,7 +27,8 @@ angular.module('vppApp')
             saq_Symbol,
             saQuery,
             saInfoTemplate,
-            vppGraphicsLayer
+            vppGraphicsLayer,
+            mapCenter
 
 
         w.parser.parse();
@@ -87,6 +88,11 @@ angular.module('vppApp')
             infoWindow: popup,
             basemap: 'topo'
         });
+        //Set Map Center Variable. Used to reset map when user clicks reset map btn.
+        $scope.map.on("load", function () {
+            mapCenter = getCenterPoint();
+        });
+
 
         var home = new w.HomeButton({
             map: $scope.map
@@ -267,9 +273,6 @@ angular.module('vppApp')
         heatmapFeatureLayer.show();
 
 
-
-
-
         //Map and Featurelayer Utilities
         dojo.connect($scope.map, "onZoomEnd", checkScale);
 
@@ -397,6 +400,15 @@ angular.module('vppApp')
             //return false;
 
         });
+        $('#mapRefreshCTL').click(function () {
+
+            vppGraphicsLayer.clear();
+            $scope.map.centerAndZoom(mapCenter, 11);
+            $("#mapLegendPNL").fadeOut(300, function () {
+                $("#LegendTitle").text("");
+            });
+
+        })
 
         //Data Builder
         //Load data for Study Area Search Function
@@ -429,7 +441,27 @@ angular.module('vppApp')
 
         }
 
+        function CheckLegendVisibility() {
+
+            if ($('#mapLegendPNL:visible').length == 0) {
+                $("#mapLegendPNL").fadeIn(500);
+                $("#LegendTitle").text("Legend");
+
+            } else {
+                $("#mapLegendPNL").fadeOut(30);
+                $("#LegendTitle").text("Legend");
+            }
+
+        }
+
+        function getCenterPoint() {
+            return $scope.map.extent.getCenter();
+        }
+
+
+
         function showSAQResults(saqr) {
+            CheckLegendVisibility();
             vppGraphicsLayer.clear();
             var resultFeatures = saqr.features;
             console.log(saqr);
@@ -445,6 +477,7 @@ angular.module('vppApp')
             $("#StudyAreaNamePNL").fadeIn(100);
             $scope.map.setExtent(searchresult.geometry.getExtent(), true);
             $("#StudyAreaSearch").val("");
+
 
 
         }
@@ -487,4 +520,5 @@ angular.module('vppApp')
             }
 
         });
+
     });

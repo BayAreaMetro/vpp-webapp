@@ -5,31 +5,44 @@ angular.module('vppApp')
   '$scope',
   function ($scope) {
             //Page Controls
-            $('.divControl').click(function () {
-                $(".divFade").each(function () {
-                    if ($('.divFade').css("visibility") == "hidden") {
-                        // handle non visible state
-                    } else {
-                        // handle visible state
-                        $('.divFade').fadeOut(10);
-                    }
-                });
-            });
+            //            $('.divControl').click(function () {
+            //                $(".divFade").each(function () {
+            //                    if ($('.divFade').css("visibility") == "hidden") {
+            //                        // handle non visible state
+            //                    } else {
+            //                        // handle visible state
+            //                        $('.divFade').fadeOut(0);
+            //                    }
+            //                });
+            //            });
 
             $('#dbSummaryMI').click(function () {
-                $("#DataSummary").fadeIn(1000);
+                $("#DataSummary").fadeIn(500);
+                $("#DataTable").fadeOut(0, function () {
+                    $("#Policies").fadeOut(0);
+                });
+
             });
 
             $('#dbPoliciesMI').click(function () {
-                $("#Policies").fadeIn(1000);
+                $("#Policies").fadeIn(500);
+                $("#DataTable").fadeOut(0, function () {
+                    $("#DataSummary").fadeOut(0);
+                });
             });
 
             $('#vwDataBTN').click(function () {
-                $("#DataTable").fadeIn(1000);
+                $("#DataTable").fadeIn(500);
+                $("#Policies").fadeOut(0, function () {
+                    $("#DataSummary").fadeOut(0);
+                });
             });
 
             $('#vwOptionsBTN').click(function () {
-                $("#DataSummary").fadeIn(1000);
+                $("#DataSummary").fadeIn(500);
+                $("#Policies").fadeOut(0, function () {
+                    $("#DataTable").fadeOut(0);
+                });
             });
             //End of Page Controls
 

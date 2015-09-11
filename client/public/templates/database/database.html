@@ -11,152 +11,36 @@
             <h3>and Data.</h3>
 
         </div>
-            <div id="DataSummary" class="container collapse divFade InfoSummaryBG">
-                <h1 class="col-md-4">&nbsp;</h1>
-                <h2 class="col-md-8">Data Summary Options</h2>
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <form class="form-horizontal pad-top-l">
-                            <fieldset>
-
-                                <!-- Form Name -->
-                                <!--                        <legend>Data Summary</legend>-->
-
-                                <!-- Search input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="studyareaInput">Study Area</label>
-                                    <div class="col-md-6">
-                                        <input id="studyareaInput" name="studyArea" placeholder="eg. Walnut Creek" class="form-control input-md" required="" type="search">
-                                        <p class="help-block">Choose a Study Area</p>
-                                    </div>
+        <div class="pad-top-l">nbsp;</div>
+        <div id="DataSummary" class="divFade InfoSummaryBG">
+            <h1 class="col-md-4">&nbsp;</h1>
+            <h2 class="col-md-8">Data Summary Options</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal pad-top-l">
+                        <fieldset>
+                            <!-- Search input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="studyareaInput">Study Area</label>
+                                <div class="col-md-6">
+                                    <input id="studyareaInput" name="studyArea" placeholder="eg. Walnut Creek" class="form-control input-md" required="" type="search">
+                                    <p class="help-block">Choose a Study Area</p>
                                 </div>
+                            </div>
 
-                                <!-- Button Drop Down -->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
-                                    <div class="col-md-6">
-                                        <input id="collectionYearInput" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="search">
-                                        <p class="help-block">Enter Collection Year</p>
-                                    </div>
-
-
-                                    <!-- Multiple Checkboxes (inline) -->
-                                    <div class="form-group">
-                                        <div class="control-group">
-                                            <div class="controls">
-                                                <label class="col-md-4 control-label" for="summaryFieldsCB">Summary Categories</label>
-                                                <div class="col-md-6">
-
-                                                    <label class="checkbox-inline" for="summaryFieldsCB-0">
-                                                        <input name="summaryFieldsCB" id="summaryFieldsCB-0" value="1" type="checkbox" data-size="mini"> Show All
-                                                    </label>
-                                                </div>
-
-                                            </div>
-                                            <div class="controls">
-                                                <label class="col-md-4 control-label" for="summaryFieldsCB">&nbsp;</label>
-                                                <div class="col-md-6">
-                                                    <label class="checkbox-inline" for="summaryFieldsCB-5">
-                                                        <input name="summaryFieldsCB" id="summaryFieldsCB-5" value="6" type="checkbox" data-size="mini"> Enforcement
-                                                    </label>
-
-                                                    <label class="checkbox-inline" for="summaryFieldsCB-2">
-                                                        <input name="summaryFieldsCB" id="summaryFieldsCB-2" value="3" type="checkbox" data-size="mini"> Parking Supply
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="controls">
-                                                <label class="col-md-4 control-label" for="summaryFieldsCB">&nbsp;</label>
-                                                <div class="col-md-6">
-                                                    <label class="checkbox-inline control-label" style="padding-right: 35px" for="summaryFieldsCB-8">
-                                                        <input name="summaryFieldsCB" id="summaryFieldsCB-8" value="9" type="checkbox" data-size="mini"> Policies
-                                                    </label>
-                                                    <label class="checkbox-inline" for="summaryFieldsCB-1">
-                                                        <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> Collection Information
-                                                    </label>
-
-
-                                                </div>
-                                            </div>
-                                            <div class="controls">
-                                                <label class="col-md-4 control-label" for="summaryFieldsCB">&nbsp;</label>
-                                                <div class="col-md-6">
-                                                    <label class="checkbox-inline" style="padding-right: 55px" for="summaryFieldsCB-4">
-                                                        <input name="summaryFieldsCB" id="summaryFieldsCB-4" value="5" type="checkbox" data-size="mini"> Cost
-                                                    </label>
-
-                                                    <label class="checkbox-inline" for="summaryFieldsCB-6">
-                                                        <input name="summaryFieldsCB" id="summaryFieldsCB-6" value="7" type="checkbox" data-size="mini"> Occupancy Statistics
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="controls">
-
-                                                <label class="col-md-4 control-label" for="summaryFieldsCB">&nbsp;</label>
-                                                <div class="col-md-6">
-                                                    <label class="checkbox-inline control-label" style="padding-right: 45px" for="summaryFieldsCB-7">
-                                                        <input name="summaryFieldsCB" id="summaryFieldsCB-7" value="8" type="checkbox" data-size="mini"> Notes
-                                                    </label>
-                                                    <label class="checkbox-inline" for="summaryFieldsCB-3">
-                                                        <input name="summaryFieldsCB" id="summaryFieldsCB-3" value="4" type="checkbox" data-size="mini"> Parking Regulations
-                                                    </label>
-
-                                                </div>
-
-                                            </div>
-
-
-
-
-                                        </div>
-
-
-
-                                    </div>
-                                    <div class="row pad-top-l">
-                                        <label class="col-md-4 control-label">&nbsp;</label>
-                                        <div class="col-md-8 pull-left">
-                                            <button id="vwDataBTN" type="button" class="btn btn-default btn-sm divControl">
-                                                <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
-                                            </button>
-                                            <button id="dlDataBTN" type="button" class="btn btn-default btn-sm divControl">
-                                                <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
-                                            </button>
-                                        </div>
-                                    </div>
-
-                            </fieldset>
-                        </form>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div id="Policies" class="container collapse divFade InfoSummaryBG">
-                <h1 class="col-md-2">&nbsp;</h1>
-                <h2 class="col-md-10">Policy Summary</h2>
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <form class="form-horizontal pad-top-l">
-                            <fieldset>
-                                <!-- Form Name -->
-                                <!-- Search input-->
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="studyareaInput">Study Area</label>
-                                    <div class="col-md-4">
-                                        <input id="studyareaInput" name="studyArea" placeholder="eg. Walnut Creek" class="form-control input-md" required="" type="search">
-                                        <p class="help-block">Choose a Study Area</p>
-                                    </div>
+                            <!-- Button Drop Down -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
+                                <div class="col-md-6">
+                                    <input id="collectionYearInput" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="search">
+                                    <p class="help-block">Enter Collection Year</p>
                                 </div>
-                                <!-- Button Drop Down -->
+                                <!-- Multiple Checkboxes (inline) -->
                                 <div class="form-group">
-                                    <!-- Multiple Checkboxes (inline) -->
                                     <div class="control-group">
                                         <div class="controls">
-                                            <label class="col-md-2 control-label" for="summaryFieldsCB">Policy Categories</label>
-                                            <div class="col-md-10">
+                                            <label class="col-md-4 control-label" for="summaryFieldsCB">Summary Categories</label>
+                                            <div class="col-md-6">
 
                                                 <label class="checkbox-inline" for="summaryFieldsCB-0">
                                                     <input name="summaryFieldsCB" id="summaryFieldsCB-0" value="1" type="checkbox" data-size="mini"> Show All
@@ -165,110 +49,211 @@
 
                                         </div>
                                         <div class="controls">
-                                            <label class="col-md-2 control-label" for="summaryFieldsCB">&nbsp;</label>
-                                            <div class="col-md-10">
-                                                <label class="checkbox-inline" style="padding-right: 16px" for="summaryFieldsCB-5">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-5" value="6" type="checkbox" data-size="mini"> On-street Pricing
+                                            <label class="col-md-4 control-label" for="summaryFieldsCB">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline" for="summaryFieldsCB-5">
+                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-5" value="6" type="checkbox" data-size="mini"> Enforcement
                                                 </label>
 
                                                 <label class="checkbox-inline" for="summaryFieldsCB-2">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-2" value="3" type="checkbox" data-size="mini"> Off-street Pricing
-                                                </label>
-                                                <label class="checkbox-inline" for="summaryFieldsCB-2">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-2" value="3" type="checkbox" data-size="mini"> Progressive Pricing
-                                                </label>
-                                                <label class="checkbox-inline" for="summaryFieldsCB-2">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-2" value="3" type="checkbox" data-size="mini"> Unbundled Parking
+                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-2" value="3" type="checkbox" data-size="mini"> Parking Supply
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="controls">
-                                            <label class="col-md-2 control-label" for="summaryFieldsCB">&nbsp;</label>
-                                            <div class="col-md-10">
-                                                <label class="checkbox-inline control-label" style="padding-right: 12px" for="summaryFieldsCB-8">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-8" value="9" type="checkbox" data-size="mini"> Parking Reqmnts.
+                                            <label class="col-md-4 control-label" for="summaryFieldsCB">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline control-label" style="padding-right: 35px" for="summaryFieldsCB-8">
+                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-8" value="9" type="checkbox" data-size="mini"> Policies
                                                 </label>
                                                 <label class="checkbox-inline" for="summaryFieldsCB-1">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> Shared Parking
-                                                </label>
-                                                <label class="checkbox-inline" for="summaryFieldsCB-1">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> Benefits District
-                                                </label>
-                                                <label class="checkbox-inline" for="summaryFieldsCB-1">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> In Lieu Fees
+                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> Collection Information
                                                 </label>
 
 
                                             </div>
                                         </div>
                                         <div class="controls">
-                                            <label class="col-md-2 control-label" for="summaryFieldsCB">&nbsp;</label>
-                                            <div class="col-md-10">
-                                                <label class="checkbox-inline" for="summaryFieldsCB-1">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> Parking Technology
-                                                </label>
-                                                <label class="checkbox-inline" for="summaryFieldsCB-4">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-4" value="5" type="checkbox" data-size="mini"> Employee Programs
+                                            <label class="col-md-4 control-label" for="summaryFieldsCB">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline" style="padding-right: 55px" for="summaryFieldsCB-4">
+                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-4" value="5" type="checkbox" data-size="mini"> Cost
                                                 </label>
 
                                                 <label class="checkbox-inline" for="summaryFieldsCB-6">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-6" value="7" type="checkbox" data-size="mini"> Permits
+                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-6" value="7" type="checkbox" data-size="mini"> Occupancy Statistics
                                                 </label>
-                                                <label class="checkbox-inline" for="summaryFieldsCB-6">
-                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-6" value="7" type="checkbox" data-size="mini"> Other Policies
-                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="controls">
 
+                                            <label class="col-md-4 control-label" for="summaryFieldsCB">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline control-label" style="padding-right: 45px" for="summaryFieldsCB-7">
+                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-7" value="8" type="checkbox" data-size="mini"> Notes
+                                                </label>
+                                                <label class="checkbox-inline" for="summaryFieldsCB-3">
+                                                    <input name="summaryFieldsCB" id="summaryFieldsCB-3" value="4" type="checkbox" data-size="mini"> Parking Regulations
+                                                </label>
 
                                             </div>
+
                                         </div>
                                     </div>
-                            </fieldset>
-                        </form>
-                        <div class="row pad-top-l pad-bottom-l">
-                            <label class="col-md-2 control-label">&nbsp;</label>
-                            <div class="col-md-10 pull-left">
-                                <button id="vwDataBTN" type="button" class="btn btn-default btn-sm divControl">
-                                    <span class="fa fa-download fa-fw" aria-hidden="true"></span> Show Data
-                                </button>
-                                <button id="vwMapBTN" type="button" class="btn btn-default btn-sm divControl">
-                                    <span class="fa fa-download fa-fw" aria-hidden="true"></span> Show Map
-                                </button>
-                                <button id="dlDataBTN" type="button" class="btn btn-default btn-sm divControl">
-                                    <span class="fa fa-download fa-fw" aria-hidden="true"></span> Download Data
-                                </button>
+                                </div>
+                                <div class="row pad-top-l">
+                                    <label class="col-md-4 control-label">&nbsp;</label>
+                                    <div class="col-md-8 pull-left">
+                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
+                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
+                                        </button>
+                                        <button id="dlDataBTN" type="button" class="btn btn-default btn-sm">
+                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="Policies" class="collapse divFade InfoSummaryBG">
+            <h1 class="col-md-2">&nbsp;</h1>
+            <h2 class="col-md-10">Policy Summary</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal pad-top-l">
+                        <fieldset>
+                            <!-- Form Name -->
+                            <!-- Search input-->
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="studyareaInput">Study Area</label>
+                                <div class="col-md-4">
+                                    <input id="studyareaInput" name="studyArea" placeholder="eg. Walnut Creek" class="form-control input-md" required="" type="search">
+                                    <p class="help-block">Choose a Study Area</p>
+                                </div>
+                            </div>
+                            <!-- Button Drop Down -->
+                            <div class="form-group">
+                                <!-- Multiple Checkboxes (inline) -->
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <label class="col-md-2 control-label" for="summaryFieldsCB">Policy Categories</label>
+                                        <div class="col-md-10">
+
+                                            <label class="checkbox-inline" for="summaryFieldsCB-0">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-0" value="1" type="checkbox" data-size="mini"> Show All
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="controls">
+                                        <label class="col-md-2 control-label" for="summaryFieldsCB">&nbsp;</label>
+                                        <div class="col-md-10">
+                                            <label class="checkbox-inline" style="padding-right: 16px" for="summaryFieldsCB-5">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-5" value="6" type="checkbox" data-size="mini"> On-street Pricing
+                                            </label>
+
+                                            <label class="checkbox-inline" for="summaryFieldsCB-2" style="padding-right: 23px">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-2" value="3" type="checkbox" data-size="mini"> Off-street Pricing
+                                            </label>
+                                            <label class="checkbox-inline" for="summaryFieldsCB-2" style="padding-right: 10px">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-2" value="3" type="checkbox" data-size="mini"> Progressive Pricing
+                                            </label>
+                                            <label class="checkbox-inline" for="summaryFieldsCB-2">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-2" value="3" type="checkbox" data-size="mini"> Unbundled Parking
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="controls">
+                                        <label class="col-md-2 control-label" for="summaryFieldsCB">&nbsp;</label>
+                                        <div class="col-md-10">
+                                            <label class="checkbox-inline control-label" style="padding-right: 12px" for="summaryFieldsCB-8">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-8" value="9" type="checkbox" data-size="mini"> Parking Reqmnts.
+                                            </label>
+                                            <label class="checkbox-inline" for="summaryFieldsCB-1" style="padding-right: 33px">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> Shared Parking
+                                            </label>
+                                            <label class="checkbox-inline" for="summaryFieldsCB-1" style="padding-right: 30px">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> Benefits District
+                                            </label>
+                                            <label class="checkbox-inline" for="summaryFieldsCB-1">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> In Lieu Fees
+                                            </label>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="controls">
+                                        <label class="col-md-2 control-label" for="summaryFieldsCB">&nbsp;</label>
+                                        <div class="col-md-10">
+                                            <label class="checkbox-inline" for="summaryFieldsCB-1">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-1" value="2" type="checkbox" data-size="mini"> Parking Technology
+                                            </label>
+                                            <label class="checkbox-inline" for="summaryFieldsCB-4">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-4" value="5" type="checkbox" data-size="mini"> Employee Programs
+                                            </label>
+
+                                            <label class="checkbox-inline" for="summaryFieldsCB-6" style="padding-right: 83px">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-6" value="7" type="checkbox" data-size="mini"> Permits
+                                            </label>
+                                            <label class="checkbox-inline" for="summaryFieldsCB-6">
+                                                <input name="summaryFieldsCB" id="summaryFieldsCB-6" value="7" type="checkbox" data-size="mini"> Other Policies
+                                            </label>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                        </fieldset>
+                    </form>
+                    <div class="row pad-top-l pad-bottom-l">
+                        <label class="col-md-2 control-label">&nbsp;</label>
+                        <div class="col-md-10 pad-right-l">
+                            <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
+                                <span class="fa fa-download fa-fw" aria-hidden="true"></span> Show Data
+                            </button>
+                            <button id="vwMapBTN" type="button" class="btn btn-default btn-sm">
+                                <span class="fa fa-download fa-fw" aria-hidden="true"></span> Show Map
+                            </button>
+                            <button id="dlDataBTN" type="button" class="btn btn-default btn-sm">
+                                <span class="fa fa-download fa-fw" aria-hidden="true"></span> Download Data
+                            </button>
                         </div>
                     </div>
 
+                    </div>
                 </div>
             </div>
-            <div id="DataTable" class="container collapse pad-top-l divFade InfoSummaryBG">
 
-                <div class="row pad-top-l">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading pad-bottom-l">
-                            <div class="btn-group pull-right">
-                                <button id="vwOptionsBTN" type="button" class="btn btn-primary btn-sm divControl">
-                                    <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
-                                </button>
-                                <button id="dlDataBTN" type="button" class="btn btn-primary btn-sm divControl">
-                                    <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
-                                </button>
+            <div id="DataTable" class="collapse divFade InfoSummaryBG">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="btn-group pull-right">
+                                    <button id="vwOptionsBTN" type="button" class="btn btn-primary btn-sm">
+                                        <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
+                                    </button>
+                                    <button id="dlDataBTN" type="button" class="btn btn-primary btn-sm">
+                                        <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
+                                    </button>
+                                </div>
+                                <h2 class="panel-title pad-bottom-m">Selected Data</h2>
                             </div>
-                            <h2 class="panel-title">Selected Data</h2>
-                        </div>
-                        <div class="panel-body">
-                            Selected Data Content Here. Insert table built from js on the backend using query from data selection.
+                            <div class="panel-body">
+                                Selected Data Content Here. Insert table built from js on the backend using query from data selection.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
 
-    <!-- Content -->
+
+        <!-- Content -->
 </section>
