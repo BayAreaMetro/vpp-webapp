@@ -28,13 +28,14 @@ angular.module('vppApp')
                                 HomeButton: 'esri/dijit/HomeButton',
                                 //Map Layer Tools
                                 FeatureLayer: 'esri/layers/FeatureLayer',
+                                GraphicsLayer: 'esri/layers/GraphicsLayer',
                                 DataAdapterFeatureLayer: 'esri/layers/DataAdapterFeatureLayer',
-                                InfoTemplate: 'esri/InfoTemplate',
                                 arcgisUtils: 'esri/arcgis/utils',
                                 LayerList: 'esri/dijit/LayerList',
                                 //Map Popup Tools
                                 Popup: 'esri/dijit/Popup',
                                 PopupTemplate: 'esri/dijit/PopupTemplate',
+                                InfoTemplate: 'esri/InfoTemplate',
                                 //Symbol Tools
                                 SimpleFillSymbol: 'esri/symbols/SimpleFillSymbol',
                                 SimpleMarkerSymbol: 'esri/symbols/SimpleMarkerSymbol',
@@ -59,7 +60,10 @@ angular.module('vppApp')
                                 ClassBreaksRenderer: 'esri/renderers/ClassBreaksRenderer',
                                 SimpleRenderer: 'esri/renderers/SimpleRenderer',
                                 ScaleDependentRenderer: 'esri/renderers/ScaleDependentRenderer',
-                                jsonUtil: 'esri/renderers/jsonUtils'
+                                jsonUtil: 'esri/renderers/jsonUtils',
+                                //MapQueryTools
+                                QueryTask: 'esri/tasks/QueryTask',
+                                Query: 'esri/tasks/query'
                             };
 
 

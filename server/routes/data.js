@@ -11,7 +11,7 @@ router.use('/', database);
 //Load Study Areas
 router.get('/studyareas', function (req, res, next) {
     sql = new mssql.Request(database.connection);
-    sql.query("select Project_ID, Study_Area, City_Name, Project_Title, Project_Year, Project_Notes, Attachments, Consultant_Name From VPP_Data.CDM_FINAL_PROJECT_TABLE order by Project_ID", function (err, data) {
+    sql.query("select * from VPP_Data.StudyAreas", function (err, data) {
         if (err) {
             res.writeHead(500, {
                 'Content-Type': 'text/plain'

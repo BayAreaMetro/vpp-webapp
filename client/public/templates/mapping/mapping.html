@@ -7,9 +7,10 @@
 </div>
 <div id="search">
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="eg. Walnut Creek">
+        <input id="StudyAreaSearch" type="text" class="form-control" name="City" placeholder="Find Study Area..." list="studyareas-list">
+        <datalist id="studyareas-list"></datalist>
         <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search</button>
+        <button class="btn btn-default find-studyarea" type="button">Search</button>
       </span>
     </div>
 </div>
@@ -24,6 +25,9 @@
             </div>
         </div>
         <div class="panel-body">
+            <div id="StudyAreaNamePNL" class="collapse">
+                Study Area Name
+            </div>
         </div>
     </div>
 </div>
@@ -37,7 +41,7 @@
 
             <li>
                 <a id="mapOptionsCTL">
-                    <i class="fa fa-ellipsis-h fa-lg"></i> Map Type <span class="arrow clickable"></span>
+                    <i class="fa fa-ellipsis-h fa-lg"></i> Parking Theme <span class="arrow clickable"></span>
                 </a>
             </li>
             <li>
@@ -51,6 +55,8 @@
             <li><a id="mapLayersCTL"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a>
             </li>
             <li class="divider"></li>
+            <li><a id="mapRefreshCTL"><i class="fa fa-refresh fa-lg"></i> Reset Map <span class="arrow clickable"></span></a>
+            </li>
             <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Navigation Tips <span class="arrow clickable"></span></a>
             </li>
             <li><a id="mapPrintCTL"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
