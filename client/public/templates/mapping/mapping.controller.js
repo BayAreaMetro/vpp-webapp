@@ -19,6 +19,7 @@ angular.module('vppApp')
             popupOptions,
             popupTemplate_OnStreetInventoryFL,
             symbol,
+            symbol_OnStreetOccupancy,
             OffStreetInventoryURL,
             OnStreetInventoryURL,
             WDOffStreetOccupancyURL,
@@ -171,9 +172,12 @@ angular.module('vppApp')
         });
 
 
+        //end of layer definitions
 
 
-        //Set Map Renderers
+
+
+        //Set Map Renderers for OnStreetInventoryFL
         symbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
             new w.Color([255, 0, 0]));
         var renderer = new w.ClassBreaksRenderer(symbol, "Total_Spaces");
@@ -220,6 +224,71 @@ angular.module('vppApp')
         //OnStreetInventoryFL.maxScale = 30000;
         $scope.map.addLayer(OnStreetInventoryFL);
         OnStreetInventoryFL.hide();
+
+
+
+
+        //Set Map Renderers for WDOnStreetOccupancyFL and WEOnStreetOccupancyFL
+        symbol_OnStreetOccupancy = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
+            new w.Color([255, 0, 0]));
+        var renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol, "Occupancy_5am");
+
+        var Break1Color__OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
+        var Break1LineSymbol__OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color, 3);
+
+        var Break2Color_OnStreetOccupancy = new w.Color([139, 209, 0, 1]);
+        var Break2LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break2Color, 3);
+
+        var Break3Color_OnStreetOccupancy = new w.Color([255, 255, 0, 1]);
+        var Break3LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break3Color, 3);
+
+        var Break4Color_OnStreetOccupancy = new w.Color([255, 128, 0, 1]);
+        var Break4LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break4Color, 3);
+
+        var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
+        var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color, 3);
+
+        var Break1_minValue_OnStreetOccupancy = 0;
+        var Break1_maxValue_OnStreetOccupancy = 0.5;
+
+        var Break2_minValue_OnStreetOccupancy = 0.51;
+        var Break2_maxValue_OnStreetOccupancy = 0.75;
+
+        var Break3_minValue_OnStreetOccupancy = 0.76;
+        var Break3_maxValue_OnStreetOccupancy = 0.85;
+
+        var Break4_minValue_OnStreetOccupancy = 0.86;
+        var Break4_maxValue_OnStreetOccupancy = 0.95;
+
+        var Break5_minValue_OnStreetOccupancy = 0.96;
+        var Break5_maxValue_OnStreetOccupancy = 1;
+
+        renderer_OnStreetOccupancy.addBreak(Break1_minValue_OnStreetOccupancy, Break1_maxValue_OnStreetOccupancy, Break1LineSymbol_OnStreetOccupancy);
+        renderer_OnStreetOccupancy.addBreak(Break2_minValue_OnStreetOccupancy, Break2_maxValue_OnStreetOccupancy, Break2LineSymbol_OnStreetOccupancy);
+        renderer_OnStreetOccupancy.addBreak(Break3_minValue_OnStreetOccupancy, Break3_maxValue_OnStreetOccupancy, Break3LineSymbol_OnStreetOccupancy);
+        renderer_OnStreetOccupancy.addBreak(Break4_minValue_OnStreetOccupancy, Break4_maxValue_OnStreetOccupancy, Break4LineSymbol_OnStreetOccupancy);
+        renderer_OnStreetOccupancy.addBreak(Break5_minValue_OnStreetOccupancy, Break5_maxValue_OnStreetOccupancy, Break5LineSymbol_OnStreetOccupancy);
+
+        WDOnStreetOccupancyFL.setRenderer(renderer_OnStreetOccupancy);
+        WEOnStreetOccupancyFL.setRenderer(renderer_OnStreetOccupancy);
+
+
+        $scope.map.addLayer(WDOnStreetOccupancyFL);
+        WDOnStreetOccupancyFL.hide();
+
+        $scope.map.addLayer(WEOnStreetOccupancyFL);
+        WEOnStreetOccupancyFL.hide();
+
+
+
+
+
+
+
+
+
+
+
 
         //Setting up Simple Lines Renderer for Study Areas
         var studyAreasColor = new w.Color("#999");
