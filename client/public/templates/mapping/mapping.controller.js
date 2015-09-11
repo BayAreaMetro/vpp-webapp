@@ -231,22 +231,22 @@ angular.module('vppApp')
         //Set Map Renderers for WDOnStreetOccupancyFL and WEOnStreetOccupancyFL
         symbol_OnStreetOccupancy = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
             new w.Color([255, 0, 0]));
-        var renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol, "Occupancy_5am");
+        var renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol_OnStreetOccupancy, "Occupancy_5am");
 
-        var Break1Color__OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
-        var Break1LineSymbol__OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color, 3);
+        var Break1Color_OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
+        var Break1LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color_OnStreetOccupancy, 3);
 
         var Break2Color_OnStreetOccupancy = new w.Color([139, 209, 0, 1]);
-        var Break2LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break2Color, 3);
+        var Break2LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break2Color_OnStreetOccupancy, 3);
 
         var Break3Color_OnStreetOccupancy = new w.Color([255, 255, 0, 1]);
-        var Break3LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break3Color, 3);
+        var Break3LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break3Color_OnStreetOccupancy, 3);
 
         var Break4Color_OnStreetOccupancy = new w.Color([255, 128, 0, 1]);
-        var Break4LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break4Color, 3);
+        var Break4LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break4Color_OnStreetOccupancy, 3);
 
         var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
-        var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color, 3);
+        var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 3);
 
         var Break1_minValue_OnStreetOccupancy = 0;
         var Break1_maxValue_OnStreetOccupancy = 0.5;
@@ -277,7 +277,7 @@ angular.module('vppApp')
         WDOnStreetOccupancyFL.hide();
 
         $scope.map.addLayer(WEOnStreetOccupancyFL);
-        WEOnStreetOccupancyFL.hide();
+        //WEOnStreetOccupancyFL.hide();
 
 
 
