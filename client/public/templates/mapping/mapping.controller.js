@@ -15,7 +15,20 @@ angular.module('vppApp')
             popupTemplate_OnStreetInventoryFL,
             symbol,
             OffStreetInventoryURL,
-            OnStreetInventoryURL
+            OnStreetInventoryURL,
+            WDOffStreetOccupancyURL,
+            WDOnStreetOccupancyURL,
+            WEOffStreetOccupancyURL,
+            WEOnStreetOccupancyURL,
+            StudyAreaURL,
+            StudyAreaQueryTask,
+            saq_Color,
+            saq_Line,
+            saq_Symbol,
+            saQuery,
+            saInfoTemplate,
+            vppGraphicsLayer
+
 
         w.parser.parse();
         w.esriConfig.defaults.geometryService = new w.GeometryService("http://gis.mtc.ca.gov/mtc/rest/services/Utilities/Geometry/GeometryServer");
@@ -30,11 +43,40 @@ angular.module('vppApp')
             marginTop: "20"
         };
 
+        //Summary Data URLs
+        var dataurl = "http://localhost:3003";
+
+        //Inventory Data URLs
         OffStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/0';
         OnStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/1';
 
+        //Occupancy Data URLs
+        WDOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/2';
+        WDOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/3';
+        WEOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/4';
+        WEOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/5';
+
+        //Study Area URLs
+        StudyAreaURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6'
+
+        //QueryTasks
+        StudyAreaQueryTask = new w.QueryTask(StudyAreaURL);
+        //Study Area Query Result Renderer
+        saq_Color = new w.Color("#007AC8");
+        saq_Line = new w.SimpleLineSymbol("solid", saq_Color, 5);
+        saq_Symbol = new w.SimpleFillSymbol("solid", saq_Line, "#fff");
+
+        saQuery = new w.Query();
+        saQuery.returnGeometry = true;
+        saQuery.outFields = ["*"];
+
+        saInfoTemplate = new w.InfoTemplate("Selected Study Area", "<p><b>${Name}</b></p><p>City: ${City}</p><p>Project Title: ${Title}</p><p>Collection Year: ${CollectionYear}</p><p>Consultant: ${Consultant}</p>");
+
+
         //create a popup to replace the map's info window
         popup = new w.Popup(popupOptions, w.domConstruct.create("div"));
+
+        //Start of Map Layer Configuration
 
         //Define Primary Basemap
         $scope.map = new w.Map('map', {
@@ -50,6 +92,12 @@ angular.module('vppApp')
             map: $scope.map
         }, "HomeButton");
         home.startup();
+
+        vppGraphicsLayer = new w.GraphicsLayer({
+            opacity: 0.50
+        });
+
+        $scope.map.addLayer(vppGraphicsLayer);
 
 
         //Define Feature Layers for Map
@@ -219,24 +267,41 @@ angular.module('vppApp')
         heatmapFeatureLayer.show();
 
 
+
+
+
         //Map and Featurelayer Utilities
         dojo.connect($scope.map, "onZoomEnd", checkScale);
 
         function checkScale(extent, zoomFactor, anchor, level) {
-                //document.getElementById("myText").value = level;
-                console.clear();
-                console.log(level);
-                if (level > 14) {
-                    OnStreetInventoryFL.show();
-                    heatmapFeatureLayer.hide();
-                } else {
-                    OnStreetInventoryFL.hide();
-                    heatmapFeatureLayer.show();
-                    //console.log('Heat Map Visible!')
-                }
+            //document.getElementById("myText").value = level;
+            //console.clear();
+            //console.log(level);
+            if (level > 14) {
+                OnStreetInventoryFL.show();
+                heatmapFeatureLayer.hide();
+            } else {
+                OnStreetInventoryFL.hide();
+                heatmapFeatureLayer.show();
+                //console.log('Heat Map Visible!')
             }
-            //Tool Control Listeners
-            //Reset Controls in Tool Panel
+        }
+
+        //End of Map Layer Configuration
+
+        function clearAllTools() {
+                $("#mapNav").fadeOut(0);
+                $("#mapOpts").fadeOut(0);
+                $("#mapBasemaps").fadeOut(0);
+                $("#mapLayers").fadeOut(0);
+                $("#mapPrint").fadeOut(0);
+                $("#maptypeOptionsBTN").fadeOut(0);
+            }
+            //UI Listeners
+
+        //Tool Control Listeners
+
+        //Reset Controls in Tool Panel
         $('.clickable').on('click', function () {
             $(this).closest('.panel').fadeOut(300, function () {
                 $("#title").text("");
@@ -273,17 +338,7 @@ angular.module('vppApp')
         });
 
 
-
-
-        function clearAllTools() {
-                $("#mapNav").fadeOut(0);
-                $("#mapOpts").fadeOut(0);
-                $("#mapBasemaps").fadeOut(0);
-                $("#mapLayers").fadeOut(0);
-                $("#mapPrint").fadeOut(0);
-                $("#maptypeOptionsBTN").fadeOut(0);
-            }
-            //Show Nav Tools
+        //Show Nav Tools
         $('#mapNavCTL').click(function () {
             clearAllTools();
             $('#iconTitle').html("<span><i class='fa fa-location-arrow fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
@@ -299,7 +354,7 @@ angular.module('vppApp')
         $('#mapOptionsCTL').click(function () {
             clearAllTools();
             $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-            $("#title").text("Map Type");
+            $("#title").text("Parking Theme");
             $("#mapToolsPNL").fadeIn(500);
             $("#mapOpts").fadeIn(500);
 
@@ -319,7 +374,7 @@ angular.module('vppApp')
 
         });
 
-        //Show BaseMap Controls
+        //SMap Layer Controls
         $('#mapLayersCTL').click(function () {
             clearAllTools();
             $('#iconTitle').html("<span><i class='fa fa-th-list fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
@@ -342,8 +397,61 @@ angular.module('vppApp')
             //return false;
 
         });
-        $("input[type=\"checkbox\"], input[type=\"radio\"]").not("[data-switch-no-init]").bootstrapSwitch();
 
+        //Data Builder
+        //Load data for Study Area Search Function
+        $.ajax({
+            dataType: 'json',
+            url: dataurl + '/data/studyareas',
+            success: function (data) {
+                //console.clear();
+                //console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    $("#studyareas-list").append('<option data-number=' + data[i].Project_ID + '>' + data[i].City + ": " + data[i].Name + '</option>');
+                }
+            }
+        });
+
+
+        $(".find-studyarea").click(function () {
+            var san = $("#StudyAreaSearch").val();
+            var sanValue = $('#studyareas-list option').filter(function () {
+                return this.value == san;
+                //console.log(this);
+            }).data('number');
+
+            ZoomStudyArea(sanValue);
+        });
+        //Zoom To Study Area and Highlight Study Area Name in Legend as Current Study Area.
+        function ZoomStudyArea(sanValue) {
+            saQuery.where = "Project_ID = '" + sanValue + "'";
+            StudyAreaQueryTask.execute(saQuery, showSAQResults);
+
+        }
+
+        function showSAQResults(saqr) {
+            vppGraphicsLayer.clear();
+            var resultFeatures = saqr.features;
+            console.log(saqr);
+            //console.log(resultFeatures);
+            for (var i = 0, il = resultFeatures.length; i < il; i++) {
+                var searchresult = resultFeatures[i];
+                searchresult.setSymbol(saq_Symbol);
+            }
+            searchresult.setInfoTemplate(saInfoTemplate);
+            //$scope.map.graphics.add(searchresult);
+            vppGraphicsLayer.add(searchresult);
+            $('#StudyAreaNamePNL').html("<span><i class='fa fa-map-marker fa-lg fa-fw'></i></span>&nbsp;&nbsp;<b>Selected Study Area:</b><br/>" + searchresult.attributes.Name + "<br /><small><b class='pad-top-m'>Project Notes:</b><br />" + searchresult.attributes.Notes + "</small>");
+            $("#StudyAreaNamePNL").fadeIn(100);
+            $scope.map.setExtent(searchresult.geometry.getExtent(), true);
+            $("#StudyAreaSearch").val("");
+
+
+        }
+
+
+        //Global Switch for all check boxes as toggle switches
+        $("input[type=\"checkbox\"], input[type=\"radio\"]").not("[data-switch-no-init]").bootstrapSwitch();
         $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
             var LayerName = $(this).attr('name');
 
