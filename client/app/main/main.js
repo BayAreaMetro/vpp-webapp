@@ -60,6 +60,7 @@ angular.module('vppApp')
                                 ClassBreaksRenderer: 'esri/renderers/ClassBreaksRenderer',
                                 SimpleRenderer: 'esri/renderers/SimpleRenderer',
                                 ScaleDependentRenderer: 'esri/renderers/ScaleDependentRenderer',
+                                UniqueValueRenderer:  'esri/renderers/UniqueValueRenderer',
                                 jsonUtil: 'esri/renderers/jsonUtils',
                                 //MapQueryTools
                                 QueryTask: 'esri/tasks/QueryTask',

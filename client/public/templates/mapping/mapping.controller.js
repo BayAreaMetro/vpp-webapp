@@ -180,18 +180,18 @@ angular.module('vppApp')
         //Set Map Renderers for OnStreetInventoryFL
         symbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
             new w.Color([255, 0, 0]));
-        var renderer = new w.ClassBreaksRenderer(symbol, "Total_Spaces");
+        var renderer = new w.ClassBreaksRenderer(symbol, "Restrictions");
 
-        var Break1Color = new w.Color([56, 168, 0, 1]);
+        var Break1Color = new w.Color([78, 78, 78, 1]);
         var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 3);
 
-        var Break2Color = new w.Color([139, 209, 0, 1]);
+        var Break2Color = new w.Color([204, 204, 204, 1]);
         var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 3);
 
-        var Break3Color = new w.Color([255, 255, 0, 1]);
+        var Break3Color = new w.Color([0, 92, 230, 1]);
         var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 3);
 
-        var Break4Color = new w.Color([255, 128, 0, 1]);
+        var Break4Color = new w.Color([115, 178, 255, 1]);
         var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 3);
 
         var Break5Color = new w.Color([255, 0, 0, 1]);
@@ -224,6 +224,64 @@ angular.module('vppApp')
         //OnStreetInventoryFL.maxScale = 30000;
         $scope.map.addLayer(OnStreetInventoryFL);
         OnStreetInventoryFL.hide();
+
+
+
+
+//sample begin
+/*var map;
+      require([
+        "esri/map", "esri/layers/FeatureLayer", "esri/InfoTemplate",
+        "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol",
+        "esri/renderers/UniqueValueRenderer", "esri/Color",
+        "dojo/domReady!"
+      ], function(
+        Map, FeatureLayer, InfoTemplate,
+        SimpleLineSymbol, SimpleFillSymbol,
+        UniqueValueRenderer, Color
+      ) {
+        map = new Map("map", {
+          basemap: "streets",
+          center: [-95.625, 39.243],
+          zoom: 4,
+          slider: false
+        });
+        map.on("load", addFeatureLayer);*/
+
+        /*function addFeatureLayer() {
+          var UniqueValueRendererSymbol = new SimpleFillSymbol().setStyle(SimpleFillSymbol.STYLE_NULL);
+          UniqueRendererSymbol.outline.setStyle(SimpleLineSymbol.STYLE_NULL);
+
+          //create renderer
+          var OffStreetInventoryRenderer = new UniqueValueRenderer(defaultSymbol, "SUB_REGION");
+
+          //add symbol for each possible value
+          renderer.addValue("Pacific", new SimpleFillSymbol().setColor(new Color([255, 0, 0, 0.5])));
+          renderer.addValue("Mtn", new SimpleFillSymbol().setColor(new Color([0, 255, 0, 0.5])));
+          renderer.addValue("N Eng", new SimpleFillSymbol().setColor(new Color([0, 0, 255, 0.5])));
+          renderer.addValue("S Atl", new SimpleFillSymbol().setColor(new Color([255, 0, 255, 0.5])));
+          renderer.addValue("Mid Atl", new SimpleFillSymbol().setColor(new Color([255, 255, 255, 0.75])));
+          renderer.addValue("E N Cen", new SimpleFillSymbol().setColor(new Color([0, 255, 255, 0.5])));
+          renderer.addValue("W N Cen", new SimpleFillSymbol().setColor(new Color([255, 255, 0, 0.5])));
+          renderer.addValue("E S Cen", new SimpleFillSymbol().setColor(new Color([127, 127, 127, 0.5])));
+          renderer.addValue("W S Cen", new SimpleFillSymbol().setColor(new Color([0, 0, 0, 0.5])));
+          
+          var featureLayer = new FeatureLayer("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer/1", {
+            infoTemplate: new InfoTemplate(" ", "${SUB_REGION}"),
+            mode: FeatureLayer.MODE_ONDEMAND,
+            outFields: ["SUB_REGION"]
+          });
+          
+          featureLayer.setRenderer(renderer);
+          map.addLayer(featureLayer);
+        }
+      });
+*/
+
+
+
+
+
 
 
 
@@ -290,11 +348,21 @@ angular.module('vppApp')
 
 
 
+
+
+
         //Setting up Simple Lines Renderer for Study Areas
-        var studyAreasColor = new w.Color("#999");
-        var studyAreasLine = new w.SimpleLineSymbol("solid", studyAreasColor, 5);
-        var studyAreasSymbol = new w.SimpleFillSymbol("solid", studyAreasLine, null);
+        var studyAreasColor = new w.Color("#007AC8");
+        var studyAreasLine = new w.SimpleLineSymbol("solid", studyAreasColor, 2);
+        var studyAreasSymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, studyAreasLine, new w.Color([255,255,255,0.7]));
         var studyAreasRenderer = new w.SimpleRenderer(studyAreasSymbol);
+
+
+         /*function(SimpleFillSymbol, SimpleLineSymbol, Color, ... ) {
+  var sfs = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
+    new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT,
+    new Color([255,0,0]), 2),new Color([255,255,0,0.25])
+*/
 
         var studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
             mode: w.FeatureLayer.MODE_SNAPSHOT,
