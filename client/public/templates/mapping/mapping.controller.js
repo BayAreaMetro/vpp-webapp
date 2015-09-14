@@ -5,6 +5,7 @@ angular.module('vppApp')
 
        var w = wish.get(),
             OnStreetInventoryFL,
+            OnStreetRestrictionsFL,
             OffStreetInventoryFL,
             WDOffStreetOccupancyFL,
             WDOnStreetOccupancyFL,
@@ -135,6 +136,15 @@ angular.module('vppApp')
             infoTemplate: popupTemplate_OnStreetInventoryFL
         });
 
+        
+        OnStreetRestrictionsFL = new w.FeatureLayer(OnStreetInventoryURL, {
+            id: "OnStreetRestrictions",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+           // infoTemplate: popupTemplate_OnStreetInventoryFL
+        });
+
+
 
         OffStreetInventoryFL = new w.FeatureLayer(OffStreetInventoryURL, {
             id: "OffStreetInventory",
@@ -228,7 +238,7 @@ angular.module('vppApp')
 
 
 
-//Unique Value Renderer
+//Unique Value Renderer for OffStreetInventoryFL
 
         
           var UniqueValueRendererSymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
@@ -252,11 +262,43 @@ angular.module('vppApp')
         
 
 
+    //Unique Value Renderer for OnStreetInventoryFL
+
+            var UniqueValueRendererLineSymbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
+            new w.Color([255, 0, 0]));
+
+          //var UniqueValueRendererLineSymbol = new w.SimpleLineSymbol.STYLE_NULL;
+          //UniqueValueRendererSymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
+
+          //create renderer
+          var OnStreetInventoryRenderer = new w.UniqueValueRenderer(UniqueValueRendererLineSymbol, "Restrictions");
+
+          //add symbol for each possible value
+          OnStreetInventoryRenderer.addValue("No Parking", new w.SimpleLineSymbol("solid", new w.Color([78, 78, 78,1]), 3));
+          OnStreetInventoryRenderer.addValue("No Restrictions", new w.SimpleLineSymbol("solid", new w.Color([204, 204, 204,1]), 3));
+          OnStreetInventoryRenderer.addValue("Pricing Regulations", new w.SimpleLineSymbol("solid", new w.Color([0, 92, 230, 1]), 3));
+          OnStreetInventoryRenderer.addValue("Time Restricted", new w.SimpleLineSymbol("solid", new w.Color([115, 178, 255, 1]), 3));
+
+
+
+          /*var Break1Color = new w.Color([78, 78, 78, 1]);
+        var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 3);
+
+        var Break2Color = new w.Color([204, 204, 204, 1]);
+        var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 3);
+
+        var Break3Color = new w.Color([0, 92, 230, 1]);
+        var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 3);
+
+        var Break4Color = new w.Color([115, 178, 255, 1]);
+        var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 3);
+*/
 
 
 
 
-
+          OnStreetRestrictionsFL.setRenderer(OnStreetInventoryRenderer);
+           $scope.map.addLayer(OnStreetRestrictionsFL);
 
 
 
@@ -305,10 +347,10 @@ angular.module('vppApp')
         WEOnStreetOccupancyFL.setRenderer(renderer_OnStreetOccupancy);
 
 
-        $scope.map.addLayer(WDOnStreetOccupancyFL);
-        WDOnStreetOccupancyFL.hide();
+        //$scope.map.addLayer(WDOnStreetOccupancyFL);
+       // WDOnStreetOccupancyFL.hide();
 
-        $scope.map.addLayer(WEOnStreetOccupancyFL);
+        //$scope.map.addLayer(WEOnStreetOccupancyFL);
         //WEOnStreetOccupancyFL.hide();
 
 
