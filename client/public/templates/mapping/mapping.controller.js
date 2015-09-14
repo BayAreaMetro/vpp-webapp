@@ -568,6 +568,8 @@ angular.module('vppApp')
 
         }
 
+
+
         function getCenterPoint() {
             return $scope.map.extent.getCenter();
         }
@@ -595,6 +597,7 @@ angular.module('vppApp')
 
 
         }
+
 
 
         //Global Switch for all check boxes as toggle switches
