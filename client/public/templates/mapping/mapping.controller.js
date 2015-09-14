@@ -3,7 +3,7 @@
 angular.module('vppApp')
     .controller('MapCtrl', function ($rootScope, $scope, wish) {
 
-        var w = wish.get(),
+       var w = wish.get(),
             OnStreetInventoryFL,
             OffStreetInventoryFL,
             WDOffStreetOccupancyFL,
@@ -372,7 +372,7 @@ angular.module('vppApp')
 
         studyAreasFL.setRenderer(studyAreasRenderer);
         $scope.map.addLayer(studyAreasFL);
-        studyAreasFL.hide();
+        //studyAreasFL.hide();
 
         //PDA Popup and Feature Layer Definition
         var PDA_Color = new w.Color("#b266ff");
@@ -427,23 +427,23 @@ angular.module('vppApp')
         COC_FL.hide();
 
         //Heatmap Renderer for BlockFaces
-        var infoTemplate = new w.InfoTemplate("Attributes",
+        /*var infoTemplate = new w.InfoTemplate("Attributes",
             "Total Spaces: ${Total_Spaces_1}");
 
         var serviceURL = "http://gis.mtc.ca.gov/mtc/rest/services/VPP/vpp_V7/FeatureServer/0";
         var heatmapFeatureLayerOptions = {
             mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["Total_Spaces_1"] //,
+            outFields: ["Total_Spaces_1"] //,*/
                 //infoTemplate: infoTemplate
-        };
-        var heatmapFeatureLayer = new w.FeatureLayer(serviceURL, heatmapFeatureLayerOptions);
+       // };
+       // var heatmapFeatureLayer = new w.FeatureLayer(serviceURL, heatmapFeatureLayerOptions);
 
         //var blurCtrl = document.getElementById("blurControl");
         //var maxCtrl = document.getElementById("maxControl");
         //var minCtrl = document.getElementById("minControl");
         //var valCtrl = document.getElementById("valueControl");
 
-        var heatmapRenderer = new w.HeatmapRenderer({
+       /* var heatmapRenderer = new w.HeatmapRenderer({
             field: "Total_Spaces_1",
             blurRadius: 7,
             maxPixelIntensity: 850,
@@ -452,7 +452,7 @@ angular.module('vppApp')
 
         heatmapFeatureLayer.setRenderer(heatmapRenderer);
         $scope.map.addLayer(heatmapFeatureLayer);
-        heatmapFeatureLayer.show();
+        heatmapFeatureLayer.show();*/
 
 
         //Map and Featurelayer Utilities
@@ -464,10 +464,12 @@ angular.module('vppApp')
             //console.log(level);
             if (level > 14) {
                 OnStreetInventoryFL.show();
-                heatmapFeatureLayer.hide();
+                studyAreasFL.show();
+                //heatmapFeatureLayer.hide();
             } else {
                 OnStreetInventoryFL.hide();
-                heatmapFeatureLayer.show();
+                studyAreasFL.show();
+                //heatmapFeatureLayer.show();
                 //console.log('Heat Map Visible!')
             }
         }
@@ -636,8 +638,6 @@ angular.module('vppApp')
 
         }
 
-
-
         function getCenterPoint() {
             return $scope.map.extent.getCenter();
         }
@@ -665,7 +665,6 @@ angular.module('vppApp')
 
 
         }
-
 
 
         //Global Switch for all check boxes as toggle switches
