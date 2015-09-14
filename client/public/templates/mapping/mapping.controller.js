@@ -139,7 +139,7 @@ angular.module('vppApp')
         OffStreetInventoryFL = new w.FeatureLayer(OffStreetInventoryURL, {
             id: "OffStreetInventory",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"]
+            outFields: ["Restrictions"]
             //infoTemplate: popupTemplate_OnStreetInventoryFL
         });
 
@@ -228,55 +228,29 @@ angular.module('vppApp')
 
 
 
-//sample begin
-/*var map;
-      require([
-        "esri/map", "esri/layers/FeatureLayer", "esri/InfoTemplate",
-        "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol",
-        "esri/renderers/UniqueValueRenderer", "esri/Color",
-        "dojo/domReady!"
-      ], function(
-        Map, FeatureLayer, InfoTemplate,
-        SimpleLineSymbol, SimpleFillSymbol,
-        UniqueValueRenderer, Color
-      ) {
-        map = new Map("map", {
-          basemap: "streets",
-          center: [-95.625, 39.243],
-          zoom: 4,
-          slider: false
-        });
-        map.on("load", addFeatureLayer);*/
+//Unique Value Renderer
 
-        /*function addFeatureLayer() {
-          var UniqueValueRendererSymbol = new SimpleFillSymbol().setStyle(SimpleFillSymbol.STYLE_NULL);
-          UniqueRendererSymbol.outline.setStyle(SimpleLineSymbol.STYLE_NULL);
+        
+          var UniqueValueRendererSymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
+          UniqueValueRendererSymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
 
           //create renderer
-          var OffStreetInventoryRenderer = new UniqueValueRenderer(defaultSymbol, "SUB_REGION");
+          var OffStreetInventoryRenderer = new w.UniqueValueRenderer(UniqueValueRendererSymbol, "Restrictions");
 
           //add symbol for each possible value
-          renderer.addValue("Pacific", new SimpleFillSymbol().setColor(new Color([255, 0, 0, 0.5])));
-          renderer.addValue("Mtn", new SimpleFillSymbol().setColor(new Color([0, 255, 0, 0.5])));
-          renderer.addValue("N Eng", new SimpleFillSymbol().setColor(new Color([0, 0, 255, 0.5])));
-          renderer.addValue("S Atl", new SimpleFillSymbol().setColor(new Color([255, 0, 255, 0.5])));
-          renderer.addValue("Mid Atl", new SimpleFillSymbol().setColor(new Color([255, 255, 255, 0.75])));
-          renderer.addValue("E N Cen", new SimpleFillSymbol().setColor(new Color([0, 255, 255, 0.5])));
-          renderer.addValue("W N Cen", new SimpleFillSymbol().setColor(new Color([255, 255, 0, 0.5])));
-          renderer.addValue("E S Cen", new SimpleFillSymbol().setColor(new Color([127, 127, 127, 0.5])));
-          renderer.addValue("W S Cen", new SimpleFillSymbol().setColor(new Color([0, 0, 0, 0.5])));
+          OffStreetInventoryRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110,110,110,1]), 3), new w.Color([204,204,204,1])));
+          OffStreetInventoryRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110,110,110,1]), 3), new w.Color([0,77,168,1])));
+          OffStreetInventoryRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110,110,110,1]), 3), new w.Color([115,178,255,1])));
+
+
+
+
+          OffStreetInventoryFL.setRenderer(OffStreetInventoryRenderer);
+           $scope.map.addLayer(OffStreetInventoryFL);
+           
           
-          var featureLayer = new FeatureLayer("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer/1", {
-            infoTemplate: new InfoTemplate(" ", "${SUB_REGION}"),
-            mode: FeatureLayer.MODE_ONDEMAND,
-            outFields: ["SUB_REGION"]
-          });
-          
-          featureLayer.setRenderer(renderer);
-          map.addLayer(featureLayer);
-        }
-      });
-*/
+        
+
 
 
 
