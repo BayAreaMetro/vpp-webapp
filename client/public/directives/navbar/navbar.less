@@ -59,3 +59,35 @@
 		}
 	}
 }
+#nav-2{
+	margin-top: 55px;
+	.icon-bar{
+		background-color: @anchorColor;
+	}
+	.nav-inner-nested{
+		height: 0px;
+		overflow: hidden;
+		.transition(all 1s ease);
+		background-color: #ffffff;
+	}
+	.vpp-links-li{
+		&:hover .nav-inner-nested {
+			height: 130px;
+		}
+	}
+	.vpp-links-inner{
+		color: @anchorColor;
+	}
+	.navbar-brand-centered {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: 160px;
+        text-align: center;
+        background-color: transparent;
+    }
+    .navbar>.container .navbar-brand-centered, 
+    .navbar>.container-fluid .navbar-brand-centered {
+        margin-left: -80px;
+    }
+}
