@@ -8,19 +8,19 @@ ul, li, ol{
 	list-style: none;
 }
 .overlay{
-	background-image: url('images/overlay.png');
+	//background-image: url('images/overlay.png');
 	height: inherit;
 	width: inherit;
 }
 .vpp-logo{
 	font-size: 5.5em;
 	font-weight: 600;
-	color: #ffffff;
+	color: @anchorColor;
 	.logo-block{
-		background-color: #ffffff;
+		background-color: @anchorColor;
 		height: 50px;
 		width: 50px;
-		color: #000000;
+		color: #ffffff;
 		padding-left: 25px;
 		padding-right: 25px;
 		margin-right: 5px;
@@ -35,7 +35,7 @@ ul, li, ol{
 		color: @mainColor;
 	}
 	h3:nth-child(even){
-		color: #ffffff;
+		color: @anchorColor;
 		margin-top: 0;
 	}
 }
@@ -48,7 +48,7 @@ ul, li, ol{
 		color: @mainColor;
 	}
 	h3:nth-child(even){
-		color: #ffffff;
+		color: @anchorColor;
 		margin-top: 0;
 	}
 }
