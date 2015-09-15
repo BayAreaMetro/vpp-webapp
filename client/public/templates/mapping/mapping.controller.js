@@ -15,6 +15,11 @@ angular.module('vppApp')
             studyAreasFL,
             COC_FL,
             PDA_FL,
+            FerryTerminalsFL;
+            ParknRideLotsFL;
+            RailStationsFL;
+            TransitHubsFL;
+            TPAsFL;
             markerSym,
             renderer1,
             renderer2,
@@ -32,6 +37,11 @@ angular.module('vppApp')
             WEOffStreetOccupancyURL,
             WEOnStreetOccupancyURL,
             StudyAreaURL,
+            FerryTerminalsURL;
+            ParknRideLotsURL;
+            RailStationsURL;
+            TransitHubsURL;
+            TPAsURL;
             StudyAreaQueryTask,
             saq_Color,
             saq_Line,
@@ -72,6 +82,12 @@ angular.module('vppApp')
         WDOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/3';
         WEOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/4';
         WEOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/5';
+        FerryTerminalsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/4';
+        ParknRideLotsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/5';
+        RailStationsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/7';
+        TransitHubsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/8';
+        TPAsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/15';
+        
 
         //Study Area URLs
         StudyAreaURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6'
@@ -227,6 +243,47 @@ angular.module('vppApp')
 
         });
 
+        FerryTerminalsFL = new w.FeatureLayer(FerryTerminalsURL, {
+            id: "FerryTerminals",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+
+        });
+
+        ParknRideLotsFL = new w.FeatureLayer(ParknRideLotsURL, {
+            id: "ParknRideLots",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+
+        });
+
+        RailStationsFL = new w.FeatureLayer(RailStationsURL, {
+            id: "RailStations",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+
+        });
+
+        TransitHubsFL = new w.FeatureLayer(TransitHubsURL, {
+            id: "TransitHubs",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+
+        });
+
+        TPAsFL = new w.FeatureLayer(TPAsURL, {
+            id: "TPAsFL",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+
+        });
+
+
         //end of map layer definitions
 
 
@@ -344,7 +401,7 @@ angular.module('vppApp')
 
 
         OnStreetRestrictionsFL.setRenderer(OnStreetRestrictionsRenderer);
-        
+
 
         //Set Map Renderers for WDOnStreetOccupancyFL and WEOnStreetOccupancyFL
         symbol_OnStreetOccupancy = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
@@ -561,6 +618,12 @@ angular.module('vppApp')
             //            console.log($(this).attr('id'));
             $scope.map.setBasemap($(this).attr('id'));
         });
+
+        $('.parkTheme').on('click', function () {
+            //            console.log($(this).attr('id'));
+            $scope.map.setBasemap($(this).attr('id'));
+        });
+
         $('.occ').on('click', function () {
             //console.log($(this).attr('id'));
             $("#maptypeOptionsBTN").fadeIn(500);
