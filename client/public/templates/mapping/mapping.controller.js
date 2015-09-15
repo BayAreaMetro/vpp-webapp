@@ -15,11 +15,11 @@ angular.module('vppApp')
             studyAreasFL,
             COC_FL,
             PDA_FL,
-            FerryTerminalsFL;
-            ParknRideLotsFL;
-            RailStationsFL;
-            TransitHubsFL;
-            TPAsFL;
+            FerryTerminalsFL,
+            ParknRideLotsFL,
+            RailStationsFL,
+            TransitHubsFL,
+            TPAsFL,
             markerSym,
             renderer1,
             renderer2,
@@ -37,11 +37,11 @@ angular.module('vppApp')
             WEOffStreetOccupancyURL,
             WEOnStreetOccupancyURL,
             StudyAreaURL,
-            FerryTerminalsURL;
-            ParknRideLotsURL;
-            RailStationsURL;
-            TransitHubsURL;
-            TPAsURL;
+            FerryTerminalsURL,
+            ParknRideLotsURL,
+            RailStationsURL,
+            TransitHubsURL,
+            TPAsURL,
             StudyAreaQueryTask,
             saq_Color,
             saq_Line,
@@ -309,36 +309,6 @@ angular.module('vppApp')
         var Break5Color = new w.Color([255, 0, 0, 1]);
         var Break5LineSymbol = new w.SimpleLineSymbol("solid", Break5Color, 2);
 
-        //        var Break1Color_OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
-        //        var Break1LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color_OnStreetOccupancy, 2);
-        //
-        //        var Break2Color_OnStreetOccupancy = new w.Color([139, 209, 0, 1]);
-        //        var Break2LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break2Color_OnStreetOccupancy, 2);
-        //
-        //        var Break3Color_OnStreetOccupancy = new w.Color([255, 255, 0, 1]);
-        //        var Break3LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break3Color_OnStreetOccupancy, 2);
-        //
-        //        var Break4Color_OnStreetOccupancy = new w.Color([255, 128, 0, 1]);
-        //        var Break4LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break4Color_OnStreetOccupancy, 2);
-        //
-        //        var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
-        //        var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);
-
-        //Old Code for Restrictions Colors
-        //    var Break1Color = new w.Color([78, 78, 78, 1]);
-        //        var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 2);
-        //
-        //        var Break2Color = new w.Color([204, 204, 204, 1]);
-        //        var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 2);
-        //
-        //        var Break3Color = new w.Color([0, 92, 230, 1]);
-        //        var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 2);
-        //
-        //        var Break4Color = new w.Color([115, 178, 255, 1]);
-        //        var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 2);
-        //
-        //        var Break5Color = new w.Color([255, 0, 0, 1]);
-        //        var Break5LineSymbol = new w.SimpleLineSymbol("solid", Break5Color, 2);
 
         var Break1_minValue = 0;
         var Break1_maxValue = 6;
@@ -513,34 +483,6 @@ angular.module('vppApp')
 
 
 
-        //Heatmap Renderer for BlockFaces
-        /*var infoTemplate = new w.InfoTemplate("Attributes",
-            "Total Spaces: ${Total_Spaces_1}");
-
-        var serviceURL = "http://gis.mtc.ca.gov/mtc/rest/services/VPP/vpp_V7/FeatureServer/0";
-        var heatmapFeatureLayerOptions = {
-            mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["Total_Spaces_1"] //,*/
-        //infoTemplate: infoTemplate
-        // };
-        // var heatmapFeatureLayer = new w.FeatureLayer(serviceURL, heatmapFeatureLayerOptions);
-
-        //var blurCtrl = document.getElementById("blurControl");
-        //var maxCtrl = document.getElementById("maxControl");
-        //var minCtrl = document.getElementById("minControl");
-        //var valCtrl = document.getElementById("valueControl");
-
-        /* var heatmapRenderer = new w.HeatmapRenderer({
-             field: "Total_Spaces_1",
-             blurRadius: 7,
-             maxPixelIntensity: 850,
-             minPixelIntensity: 0
-         });
-
-         heatmapFeatureLayer.setRenderer(heatmapRenderer);
-         $scope.map.addLayer(heatmapFeatureLayer);
-         heatmapFeatureLayer.show();*/
-
         //Add Layers Section All Layers Should be added here
         //$scope.map.addLayer(COC_FL);
         //COC_FL.hide();
@@ -556,8 +498,10 @@ angular.module('vppApp')
 
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
-        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, OnStreetRestrictionsFL, OffStreetRestrictionsFL]);
+        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
+            OnStreetRestrictionsFL, OffStreetRestrictionsFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
 
+    
 
         //Map and Featurelayer Utilities
         dojo.connect($scope.map, "onZoomEnd", checkScale);
@@ -619,10 +563,33 @@ angular.module('vppApp')
             $scope.map.setBasemap($(this).attr('id'));
         });
 
-        $('.parkTheme').on('click', function () {
+
+         $('.parkTheme').on('click', function () {
             //            console.log($(this).attr('id'));
-            $scope.map.setBasemap($(this).attr('id'));
+           var pt = $(this).attr('id');
+             switch (pt) {
+                case "inventory":
+                    PDA_FL.show();
+                    break;
+                case "restrictions":
+                    COC_FL.show();
+                    break;
+                case "wkdayOCC":
+                    studyAreasFL.show();
+                    break;
+                case "wkndOCC":
+                    COC_FL.show();
+                    break;
+                case "peakOCC":
+                    COC_FL.show();
+                    break;
+
+                }
+
         });
+
+        
+
 
         $('.occ').on('click', function () {
             //console.log($(this).attr('id'));
