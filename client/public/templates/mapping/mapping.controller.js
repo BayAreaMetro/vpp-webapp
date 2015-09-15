@@ -418,11 +418,79 @@ angular.module('vppApp')
         WEOnStreetOccupancyFL.setRenderer(renderer_OnStreetOccupancy);
 
 
-        //$scope.map.addLayer(WDOnStreetOccupancyFL);
-        // WDOnStreetOccupancyFL.hide();
 
-        //$scope.map.addLayer(WEOnStreetOccupancyFL);
-        //WEOnStreetOccupancyFL.hide();
+        //Set Map Renderers for WDOffStreetOccupancyFL and WEOffStreetOccupancyFL
+        var OffStreetOccupancySymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
+        OffStreetOccupancySymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
+
+        //create renderer
+        var OffStreetOccupancyRenderer = new w.ClassBreaksRenderer(OffStreetOccupancySymbol, "Occupancy_5am");
+
+        //add symbol for each possible value
+       /* OffStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([204, 204, 204, 1])));
+        OffStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([0, 77, 168, 1])));
+        OffStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([115, 178, 255, 1])));
+*/
+        var Break1Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 1]));
+        var Break2Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 1]));
+        var Break3Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 1]));
+        var Break4Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 1]));
+        var Break5Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 1]));
+        
+
+
+
+
+
+        /*var symbol_OffStreetOccupancy = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
+            new w.Color([255, 0, 0]));
+        var renderer_OffStreetOccupancy = new w.ClassBreaksRenderer(symbol_OffStreetOccupancy, "Occupancy_5am");*/
+
+        /*var Break1Color_OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
+        var Break1LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color_OnStreetOccupancy, 2);
+
+        var Break2Color_OnStreetOccupancy = new w.Color([139, 209, 0, 1]);
+        var Break2LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break2Color_OnStreetOccupancy, 2);
+
+        var Break3Color_OnStreetOccupancy = new w.Color([255, 255, 0, 1]);
+        var Break3LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break3Color_OnStreetOccupancy, 2);
+
+        var Break4Color_OnStreetOccupancy = new w.Color([255, 128, 0, 1]);
+        var Break4LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break4Color_OnStreetOccupancy, 2);
+
+        var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
+        var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);*/
+
+        var Break1_minValue_OffStreetOccupancy = 0;
+        var Break1_maxValue_OffStreetOccupancy = 0.5;
+
+        var Break2_minValue_OffStreetOccupancy = 0.51;
+        var Break2_maxValue_OffStreetOccupancy = 0.75;
+
+        var Break3_minValue_OffStreetOccupancy = 0.76;
+        var Break3_maxValue_OffStreetOccupancy = 0.85;
+
+        var Break4_minValue_OffStreetOccupancy = 0.86;
+        var Break4_maxValue_OffStreetOccupancy = 0.95;
+
+        var Break5_minValue_OffStreetOccupancy = 0.96;
+        var Break5_maxValue_OffStreetOccupancy = 1;
+
+        OffStreetOccupancyRenderer.addBreak(Break1_minValue_OffStreetOccupancy, Break1_maxValue_OffStreetOccupancy, Break1Symbol_OffStreetOccupancy);
+        OffStreetOccupancyRenderer.addBreak(Break2_minValue_OffStreetOccupancy, Break2_maxValue_OffStreetOccupancy, Break2Symbol_OffStreetOccupancy);
+        OffStreetOccupancyRenderer.addBreak(Break3_minValue_OffStreetOccupancy, Break3_maxValue_OffStreetOccupancy, Break3Symbol_OffStreetOccupancy);
+        OffStreetOccupancyRenderer.addBreak(Break4_minValue_OffStreetOccupancy, Break4_maxValue_OffStreetOccupancy, Break4Symbol_OffStreetOccupancy);
+        OffStreetOccupancyRenderer.addBreak(Break5_minValue_OffStreetOccupancy, Break5_maxValue_OffStreetOccupancy, Break5Symbol_OffStreetOccupancy);
+
+        WDOffStreetOccupancyFL.setRenderer(OffStreetOccupancyRenderer);
+        WEOffStreetOccupancyFL.setRenderer(OffStreetOccupancyRenderer);
+
+
+
+
+
+
+
 
 
         //Setting up Simple Lines Renderer for Study Areas
@@ -499,7 +567,7 @@ angular.module('vppApp')
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
         $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
-            OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
+            OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL, WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
 
        
     
@@ -573,6 +641,9 @@ angular.module('vppApp')
                     OffStreetRestrictionsFL.hide();
                     WDOnStreetOccupancyFL.hide();
                     WEOnStreetOccupancyFL.hide();
+                    WDOffStreetOccupancyFL.hide();
+                    WEOffStreetOccupancyFL.hide();
+
            var pt = $(this).attr('id');
              switch (pt) {
                 case "inventory":
@@ -585,9 +656,11 @@ angular.module('vppApp')
                     break;
                 case "wkdayOCC":
                     WDOnStreetOccupancyFL.show();
+                    WDOffStreetOccupancyFL.show();
                     break;
                 case "wkndOCC":
                     WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.hide();
                     break;
                 case "peakOCC":
                     //COC_FL.show();
