@@ -660,7 +660,7 @@ angular.module('vppApp')
                     break;
                 case "wkndOCC":
                     WEOnStreetOccupancyFL.show();
-                    WEOffStreetOccupancyFL.hide();
+                    WEOffStreetOccupancyFL.show();
                     break;
                 case "peakOCC":
                     //COC_FL.show();
