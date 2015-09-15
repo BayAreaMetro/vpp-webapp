@@ -308,7 +308,7 @@ angular.module('vppApp')
         //Need Renderer for Offstreet Inventory here...
 
 
-        //OnStreetInventoryFL.maxScale = 30000;
+        
 
         //Unique Value Renderer for OffStreetRestrictionsFL
         var UniqueValueRendererSymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
@@ -343,21 +343,8 @@ angular.module('vppApp')
         OnStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleLineSymbol("solid", new w.Color([115, 178, 255, 1]), 2));
 
 
-
-        /*var Break1Color = new w.Color([78, 78, 78, 1]);
-        var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 2);
-
-        var Break2Color = new w.Color([204, 204, 204, 1]);
-        var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 2);
-
-        var Break3Color = new w.Color([0, 92, 230, 1]);
-        var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 2);
-
-        var Break4Color = new w.Color([115, 178, 255, 1]);
-        var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 2);
-*/
-
         OnStreetRestrictionsFL.setRenderer(OnStreetRestrictionsRenderer);
+        
 
         //Set Map Renderers for WDOnStreetOccupancyFL and WEOnStreetOccupancyFL
         symbol_OnStreetOccupancy = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
