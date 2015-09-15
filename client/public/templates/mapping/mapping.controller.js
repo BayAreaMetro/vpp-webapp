@@ -469,7 +469,7 @@ angular.module('vppApp')
         });
 
 
-
+ 
 
 
 
@@ -499,8 +499,9 @@ angular.module('vppApp')
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
         $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
-            OnStreetRestrictionsFL, OffStreetRestrictionsFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
+            OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
 
+       
     
 
         //Map and Featurelayer Utilities
@@ -566,22 +567,30 @@ angular.module('vppApp')
 
          $('.parkTheme').on('click', function () {
             //            console.log($(this).attr('id'));
+                    OnStreetInventoryFL.hide();
+                    OffStreetInventoryFL.hide();
+                    OnStreetRestrictionsFL.hide();
+                    OffStreetRestrictionsFL.hide();
+                    WDOnStreetOccupancyFL.hide();
+                    WEOnStreetOccupancyFL.hide();
            var pt = $(this).attr('id');
              switch (pt) {
                 case "inventory":
-                    PDA_FL.show();
+                    OnStreetInventoryFL.show();
+                    OffStreetInventoryFL.show();
                     break;
                 case "restrictions":
-                    COC_FL.show();
+                    OnStreetRestrictionsFL.show();
+                    OffStreetRestrictionsFL.show();
                     break;
                 case "wkdayOCC":
-                    studyAreasFL.show();
+                    WDOnStreetOccupancyFL.show();
                     break;
                 case "wkndOCC":
-                    COC_FL.show();
+                    WEOnStreetOccupancyFL.show();
                     break;
                 case "peakOCC":
-                    COC_FL.show();
+                    //COC_FL.show();
                     break;
 
                 }
@@ -589,6 +598,14 @@ angular.module('vppApp')
         });
 
         
+         /*$scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
+            OnStreetRestrictionsFL, OffStreetRestrictionsFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
+
+          */
+
+
+
+
 
 
         $('.occ').on('click', function () {
