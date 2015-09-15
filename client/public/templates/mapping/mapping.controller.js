@@ -3,14 +3,18 @@
 angular.module('vppApp')
     .controller('MapCtrl', function ($rootScope, $scope, wish) {
 
-       var w = wish.get(),
+        var w = wish.get(),
             OnStreetInventoryFL,
-            OnStreetRestrictionsFL,
             OffStreetInventoryFL,
-            WDOffStreetOccupancyFL,
+            OnStreetRestrictionsFL,
+            OffStreetRestrictionsFL,
             WDOnStreetOccupancyFL,
-            WEOffStreetOccupancyFL,
+            WDOffStreetOccupancyFL,
             WEOnStreetOccupancyFL,
+            WEOffStreetOccupancyFL,
+            studyAreasFL,
+            COC_FL,
+            PDA_FL,
             markerSym,
             renderer1,
             renderer2,
@@ -35,14 +39,18 @@ angular.module('vppApp')
             saQuery,
             saInfoTemplate,
             vppGraphicsLayer,
-            mapCenter
+            mapCenter,
+            studyAreasColor,
+            studyAreasLine,
+            studyAreasSymbol,
+            studyAreasRenderer
 
 
         w.parser.parse();
         w.esriConfig.defaults.geometryService = new w.GeometryService("http://gis.mtc.ca.gov/mtc/rest/services/Utilities/Geometry/GeometryServer");
 
 
-        sls = new w.SimpleLineSymbol("solid", new w.Color("#444444"), 3);
+        sls = new w.SimpleLineSymbol("solid", new w.Color("#444444"), 2);
         sfs = new w.SimpleFillSymbol("solid", sls, new w.Color([68, 68, 68, 0.25]));
 
         popupOptions = {
@@ -111,8 +119,6 @@ angular.module('vppApp')
             opacity: 0.50
         });
 
-        $scope.map.addLayer(vppGraphicsLayer);
-
 
         //Define Feature Layers for Map
         popupTemplate_OnStreetInventoryFL = new w.PopupTemplate({
@@ -129,83 +135,153 @@ angular.module('vppApp')
             "description": "There are {Total_Spaces} total parking spaces on this block"
         });
 
+        //Define all Map Layers in this section
+
         OnStreetInventoryFL = new w.FeatureLayer(OnStreetInventoryURL, {
             id: "OnStreetInventory",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            infoTemplate: popupTemplate_OnStreetInventoryFL
+            infoTemplate: popupTemplate_OnStreetInventoryFL,
+            visible: false
         });
-
-        
-        OnStreetRestrictionsFL = new w.FeatureLayer(OnStreetInventoryURL, {
-            id: "OnStreetRestrictions",
-            mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"],
-           // infoTemplate: popupTemplate_OnStreetInventoryFL
-        });
-
-
 
         OffStreetInventoryFL = new w.FeatureLayer(OffStreetInventoryURL, {
             id: "OffStreetInventory",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["Restrictions"]
-            //infoTemplate: popupTemplate_OnStreetInventoryFL
+            outFields: ["*"],
+            visible: false
+                //infoTemplate: popupTemplate_OnStreetInventoryFL
+        });
+
+
+        OnStreetRestrictionsFL = new w.FeatureLayer(OnStreetInventoryURL, {
+            id: "OnStreetRestrictions",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+                // infoTemplate: popupTemplate_OnStreetInventoryFL
+        });
+
+        OffStreetRestrictionsFL = new w.FeatureLayer(OffStreetInventoryURL, {
+            id: "OffStreetRestrictions",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+                //infoTemplate: popupTemplate_OnStreetInventoryFL
         });
 
         WDOffStreetOccupancyFL = new w.FeatureLayer(WDOffStreetOccupancyURL, {
             id: "WDOffStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"]
-           // infoTemplate: popupTemplate_OnStreetInventoryFL
+            outFields: ["*"],
+            visible: false
+                // infoTemplate: popupTemplate_OnStreetInventoryFL
         });
 
         WDOnStreetOccupancyFL = new w.FeatureLayer(WDOnStreetOccupancyURL, {
             id: "WDOnStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"]
-           // infoTemplate: popupTemplate_OnStreetInventoryFL
+            outFields: ["*"],
+            visible: false
+                // infoTemplate: popupTemplate_OnStreetInventoryFL
         });
 
         WEOffStreetOccupancyFL = new w.FeatureLayer(WEOffStreetOccupancyURL, {
             id: "WEOffStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"]
-           // infoTemplate: popupTemplate_OnStreetInventoryFL
+            outFields: ["*"],
+            visible: false
+                // infoTemplate: popupTemplate_OnStreetInventoryFL
         });
 
         WEOnStreetOccupancyFL = new w.FeatureLayer(WEOnStreetOccupancyURL, {
             id: "WEOnStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"]
-           // infoTemplate: popupTemplate_OnStreetInventoryFL
+            outFields: ["*"],
+            visible: false
+                // infoTemplate: popupTemplate_OnStreetInventoryFL
         });
 
+        studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
+            id: "studyAreas",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: true
 
-        //end of layer definitions
+        });
+
+        PDA_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/OBAG_PDA/OBAG_PDA/MapServer/0", {
+            id: "PDA",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+
+        });
+
+        COC_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/14", {
+            id: "COC",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            infoTemplate: popupTemplate_COC_FL,
+            visible: false
+
+        });
+
+        //end of map layer definitions
 
 
-
+        //Set Map Renderers Section
 
         //Set Map Renderers for OnStreetInventoryFL
         symbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
             new w.Color([255, 0, 0]));
-        var renderer = new w.ClassBreaksRenderer(symbol, "Restrictions");
+        var renderer = new w.ClassBreaksRenderer(symbol, "Total_Spaces");
 
-        var Break1Color = new w.Color([78, 78, 78, 1]);
-        var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 3);
+        var Break1Color = new w.Color([56, 168, 0, 1]);
+        var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 2);
 
-        var Break2Color = new w.Color([204, 204, 204, 1]);
-        var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 3);
+        var Break2Color = new w.Color([139, 209, 0, 1]);
+        var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 2);
 
-        var Break3Color = new w.Color([0, 92, 230, 1]);
-        var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 3);
+        var Break3Color = new w.Color([255, 255, 0, 1]);
+        var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 2);
 
-        var Break4Color = new w.Color([115, 178, 255, 1]);
-        var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 3);
+        var Break4Color = new w.Color([255, 128, 0, 1]);
+        var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 2);
 
         var Break5Color = new w.Color([255, 0, 0, 1]);
-        var Break5LineSymbol = new w.SimpleLineSymbol("solid", Break5Color, 3);
+        var Break5LineSymbol = new w.SimpleLineSymbol("solid", Break5Color, 2);
+
+        //        var Break1Color_OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
+        //        var Break1LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color_OnStreetOccupancy, 2);
+        //
+        //        var Break2Color_OnStreetOccupancy = new w.Color([139, 209, 0, 1]);
+        //        var Break2LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break2Color_OnStreetOccupancy, 2);
+        //
+        //        var Break3Color_OnStreetOccupancy = new w.Color([255, 255, 0, 1]);
+        //        var Break3LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break3Color_OnStreetOccupancy, 2);
+        //
+        //        var Break4Color_OnStreetOccupancy = new w.Color([255, 128, 0, 1]);
+        //        var Break4LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break4Color_OnStreetOccupancy, 2);
+        //
+        //        var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
+        //        var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);
+
+        //Old Code for Restrictions Colors
+        //    var Break1Color = new w.Color([78, 78, 78, 1]);
+        //        var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 2);
+        //
+        //        var Break2Color = new w.Color([204, 204, 204, 1]);
+        //        var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 2);
+        //
+        //        var Break3Color = new w.Color([0, 92, 230, 1]);
+        //        var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 2);
+        //
+        //        var Break4Color = new w.Color([115, 178, 255, 1]);
+        //        var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 2);
+        //
+        //        var Break5Color = new w.Color([255, 0, 0, 1]);
+        //        var Break5LineSymbol = new w.SimpleLineSymbol("solid", Break5Color, 2);
 
         var Break1_minValue = 0;
         var Break1_maxValue = 6;
@@ -229,78 +305,59 @@ angular.module('vppApp')
         renderer.addBreak(Break5_minValue, Break5_maxValue, Break5LineSymbol);
 
         OnStreetInventoryFL.setRenderer(renderer);
+        //Need Renderer for Offstreet Inventory here...
 
 
         //OnStreetInventoryFL.maxScale = 30000;
-        $scope.map.addLayer(OnStreetInventoryFL);
-        OnStreetInventoryFL.hide();
+
+        //Unique Value Renderer for OffStreetRestrictionsFL
+        var UniqueValueRendererSymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
+        UniqueValueRendererSymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
+
+        //create renderer
+        var OffStreetRestrictionsRenderer = new w.UniqueValueRenderer(UniqueValueRendererSymbol, "Restrictions");
+
+        //add symbol for each possible value
+        OffStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([204, 204, 204, 1])));
+        OffStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([0, 77, 168, 1])));
+        OffStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([115, 178, 255, 1])));
 
 
+        OffStreetRestrictionsFL.setRenderer(OffStreetRestrictionsRenderer);
 
+        //Unique Value Renderer for OnStreetRestrictionsFL
 
-//Unique Value Renderer for OffStreetInventoryFL
-
-        
-          var UniqueValueRendererSymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
-          UniqueValueRendererSymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
-
-          //create renderer
-          var OffStreetInventoryRenderer = new w.UniqueValueRenderer(UniqueValueRendererSymbol, "Restrictions");
-
-          //add symbol for each possible value
-          OffStreetInventoryRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110,110,110,1]), 3), new w.Color([204,204,204,1])));
-          OffStreetInventoryRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110,110,110,1]), 3), new w.Color([0,77,168,1])));
-          OffStreetInventoryRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110,110,110,1]), 3), new w.Color([115,178,255,1])));
-
-
-
-
-          OffStreetInventoryFL.setRenderer(OffStreetInventoryRenderer);
-           $scope.map.addLayer(OffStreetInventoryFL);
-           
-          
-        
-
-
-    //Unique Value Renderer for OnStreetInventoryFL
-
-            var UniqueValueRendererLineSymbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
+        var UniqueValueRendererLineSymbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
             new w.Color([255, 0, 0]));
 
-          //var UniqueValueRendererLineSymbol = new w.SimpleLineSymbol.STYLE_NULL;
-          //UniqueValueRendererSymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
+        //var UniqueValueRendererLineSymbol = new w.SimpleLineSymbol.STYLE_NULL;
+        //UniqueValueRendererSymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
 
-          //create renderer
-          var OnStreetInventoryRenderer = new w.UniqueValueRenderer(UniqueValueRendererLineSymbol, "Restrictions");
+        //create renderer
+        var OnStreetRestrictionsRenderer = new w.UniqueValueRenderer(UniqueValueRendererLineSymbol, "Restrictions");
 
-          //add symbol for each possible value
-          OnStreetInventoryRenderer.addValue("No Parking", new w.SimpleLineSymbol("solid", new w.Color([78, 78, 78,1]), 3));
-          OnStreetInventoryRenderer.addValue("No Restrictions", new w.SimpleLineSymbol("solid", new w.Color([204, 204, 204,1]), 3));
-          OnStreetInventoryRenderer.addValue("Pricing Regulations", new w.SimpleLineSymbol("solid", new w.Color([0, 92, 230, 1]), 3));
-          OnStreetInventoryRenderer.addValue("Time Restricted", new w.SimpleLineSymbol("solid", new w.Color([115, 178, 255, 1]), 3));
+        //add symbol for each possible value
+        OnStreetRestrictionsRenderer.addValue("No Parking", new w.SimpleLineSymbol("solid", new w.Color([78, 78, 78, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleLineSymbol("solid", new w.Color([204, 204, 204, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleLineSymbol("solid", new w.Color([0, 92, 230, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleLineSymbol("solid", new w.Color([115, 178, 255, 1]), 2));
 
 
 
-          /*var Break1Color = new w.Color([78, 78, 78, 1]);
-        var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 3);
+        /*var Break1Color = new w.Color([78, 78, 78, 1]);
+        var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 2);
 
         var Break2Color = new w.Color([204, 204, 204, 1]);
-        var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 3);
+        var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 2);
 
         var Break3Color = new w.Color([0, 92, 230, 1]);
-        var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 3);
+        var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 2);
 
         var Break4Color = new w.Color([115, 178, 255, 1]);
-        var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 3);
+        var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 2);
 */
 
-
-
-
-          OnStreetRestrictionsFL.setRenderer(OnStreetInventoryRenderer);
-           $scope.map.addLayer(OnStreetRestrictionsFL);
-
-
+        OnStreetRestrictionsFL.setRenderer(OnStreetRestrictionsRenderer);
 
         //Set Map Renderers for WDOnStreetOccupancyFL and WEOnStreetOccupancyFL
         symbol_OnStreetOccupancy = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
@@ -308,19 +365,19 @@ angular.module('vppApp')
         var renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol_OnStreetOccupancy, "Occupancy_5am");
 
         var Break1Color_OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
-        var Break1LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color_OnStreetOccupancy, 3);
+        var Break1LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color_OnStreetOccupancy, 2);
 
         var Break2Color_OnStreetOccupancy = new w.Color([139, 209, 0, 1]);
-        var Break2LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break2Color_OnStreetOccupancy, 3);
+        var Break2LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break2Color_OnStreetOccupancy, 2);
 
         var Break3Color_OnStreetOccupancy = new w.Color([255, 255, 0, 1]);
-        var Break3LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break3Color_OnStreetOccupancy, 3);
+        var Break3LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break3Color_OnStreetOccupancy, 2);
 
         var Break4Color_OnStreetOccupancy = new w.Color([255, 128, 0, 1]);
-        var Break4LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break4Color_OnStreetOccupancy, 3);
+        var Break4LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break4Color_OnStreetOccupancy, 2);
 
         var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
-        var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 3);
+        var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);
 
         var Break1_minValue_OnStreetOccupancy = 0;
         var Break1_maxValue_OnStreetOccupancy = 0.5;
@@ -348,63 +405,39 @@ angular.module('vppApp')
 
 
         //$scope.map.addLayer(WDOnStreetOccupancyFL);
-       // WDOnStreetOccupancyFL.hide();
+        // WDOnStreetOccupancyFL.hide();
 
         //$scope.map.addLayer(WEOnStreetOccupancyFL);
         //WEOnStreetOccupancyFL.hide();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         //Setting up Simple Lines Renderer for Study Areas
-        var studyAreasColor = new w.Color("#007AC8");
-        var studyAreasLine = new w.SimpleLineSymbol("solid", studyAreasColor, 2);
-        var studyAreasSymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, studyAreasLine, new w.Color([255,255,255,0.7]));
-        var studyAreasRenderer = new w.SimpleRenderer(studyAreasSymbol);
+        studyAreasColor = new w.Color("#007AC8");
+        studyAreasLine = new w.SimpleLineSymbol("solid", studyAreasColor, 2);
+        studyAreasSymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, studyAreasLine, new w.Color([255, 255, 255, 0.7]));
+        studyAreasRenderer = new w.SimpleRenderer(studyAreasSymbol);
+
+        //set up scale dependant renderer for studyAreasLine symbol
+        //Use this example but only for lines:
+        //https://developers.arcgis.com/javascript/jssamples/renderer_proportional_scale_dependent.html
 
 
-         /*function(SimpleFillSymbol, SimpleLineSymbol, Color, ... ) {
+        /*function(SimpleFillSymbol, SimpleLineSymbol, Color, ... ) {
   var sfs = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
     new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT,
     new Color([255,0,0]), 2),new Color([255,255,0,0.25])
 */
-
-        var studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
-            mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"]
-
-        });
-
         studyAreasFL.setRenderer(studyAreasRenderer);
-        $scope.map.addLayer(studyAreasFL);
-        //studyAreasFL.hide();
+
 
         //PDA Popup and Feature Layer Definition
         var PDA_Color = new w.Color("#b266ff");
-        var PDA_Line = new w.SimpleLineSymbol("solid", PDA_Color, 3);
+        var PDA_Line = new w.SimpleLineSymbol("solid", PDA_Color, 2);
         var PDA_Symbol = new w.SimpleFillSymbol("solid", PDA_Line, null);
         var PDA_Renderer = new w.SimpleRenderer(PDA_Symbol);
 
-        var PDA_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/OBAG_PDA/OBAG_PDA/MapServer/0", {
-            mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"]
-
-        });
-
         PDA_FL.setRenderer(PDA_Renderer);
-        $scope.map.addLayer(PDA_FL);
-        PDA_FL.hide();
+
 
         //COC Popup and Feature Layer Definition
         var popupTemplate_COC_FL = new w.PopupTemplate({
@@ -421,26 +454,20 @@ angular.module('vppApp')
             "description": "Total population is {totpop}"
         });
 
-        var COC_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/14", {
-            id: "COC",
-            mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"],
-            infoTemplate: popupTemplate_COC_FL
 
-        });
 
-        COC_FL.setDefinitionExpression("cocflag = 1");
+
 
 
         //Feature Layer Renderer for COCs
         var COC_Color = new w.Color("#ff9999");
-        var COC_Line = new w.SimpleLineSymbol("solid", COC_Color, 3);
+        var COC_Line = new w.SimpleLineSymbol("solid", COC_Color, 2);
         var COC_Symbol = new w.SimpleFillSymbol("solid", COC_Line, null);
         var COC_Renderer = new w.SimpleRenderer(COC_Symbol);
+        COC_FL.setDefinitionExpression("cocflag = 1");
         COC_FL.setRenderer(COC_Renderer);
 
-        $scope.map.addLayer(COC_FL);
-        COC_FL.hide();
+
 
         //Heatmap Renderer for BlockFaces
         /*var infoTemplate = new w.InfoTemplate("Attributes",
@@ -450,25 +477,42 @@ angular.module('vppApp')
         var heatmapFeatureLayerOptions = {
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["Total_Spaces_1"] //,*/
-                //infoTemplate: infoTemplate
-       // };
-       // var heatmapFeatureLayer = new w.FeatureLayer(serviceURL, heatmapFeatureLayerOptions);
+        //infoTemplate: infoTemplate
+        // };
+        // var heatmapFeatureLayer = new w.FeatureLayer(serviceURL, heatmapFeatureLayerOptions);
 
         //var blurCtrl = document.getElementById("blurControl");
         //var maxCtrl = document.getElementById("maxControl");
         //var minCtrl = document.getElementById("minControl");
         //var valCtrl = document.getElementById("valueControl");
 
-       /* var heatmapRenderer = new w.HeatmapRenderer({
-            field: "Total_Spaces_1",
-            blurRadius: 7,
-            maxPixelIntensity: 850,
-            minPixelIntensity: 0
-        });
+        /* var heatmapRenderer = new w.HeatmapRenderer({
+             field: "Total_Spaces_1",
+             blurRadius: 7,
+             maxPixelIntensity: 850,
+             minPixelIntensity: 0
+         });
 
-        heatmapFeatureLayer.setRenderer(heatmapRenderer);
-        $scope.map.addLayer(heatmapFeatureLayer);
-        heatmapFeatureLayer.show();*/
+         heatmapFeatureLayer.setRenderer(heatmapRenderer);
+         $scope.map.addLayer(heatmapFeatureLayer);
+         heatmapFeatureLayer.show();*/
+
+        //Add Layers Section All Layers Should be added here
+        //$scope.map.addLayer(COC_FL);
+        //COC_FL.hide();
+        //$scope.map.addLayer(PDA_FL);
+        //PDA_FL.hide();
+        //$scope.map.addLayer(studyAreasFL);
+        //studyAreasFL.hide();
+        //$scope.map.addLayer(OnStreetRestrictionsFL);
+        //$scope.map.addLayer(OffStreetInventoryFL)
+        //$scope.map.addLayer(OnStreetInventoryFL);
+        //OnStreetInventoryFL.hide();
+        //$scope.map.addLayer(vppGraphicsLayer);
+
+        //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
+
+        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, OnStreetRestrictionsFL, OffStreetRestrictionsFL]);
 
 
         //Map and Featurelayer Utilities
@@ -664,7 +708,7 @@ angular.module('vppApp')
             CheckLegendVisibility();
             vppGraphicsLayer.clear();
             var resultFeatures = saqr.features;
-            console.log(saqr);
+            //console.log(saqr);
             //console.log(resultFeatures);
             for (var i = 0, il = resultFeatures.length; i < il; i++) {
                 var searchresult = resultFeatures[i];
