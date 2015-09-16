@@ -549,6 +549,13 @@ angular.module('vppApp')
         COC_FL.setDefinitionExpression("cocflag = 1");
         COC_FL.setRenderer(COC_Renderer);
 
+         //Feature Layer Renderer for TPAsFL
+        var TPA_Color = new w.Color("#ff9999");
+        var TPA_Line = new w.SimpleLineSymbol("solid", TPA_Color, 2);
+        var TPA_Symbol = new w.SimpleFillSymbol("solid", TPA_Line, null);
+        var TPA_Renderer = new w.SimpleRenderer(TPA_Symbol);
+        //TPAsFL.setDefinitionExpression("cocflag = 1");
+        TPAsFL.setRenderer(TPA_Renderer);
 
 
         //Add Layers Section All Layers Should be added here
@@ -567,7 +574,8 @@ angular.module('vppApp')
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
         $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
-            OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL, WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
+            OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL, 
+            WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
 
        
     
