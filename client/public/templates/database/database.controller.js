@@ -27,6 +27,7 @@ angular.module('vppApp')
                 success: function (data) {
                     //console.clear();
                     //console.log(data);
+                    $scope.sa = data;
                     for (var i = 0; i < data.length; i++) {
                         $("#studyareas-list").append('<option data-number=' + data[i].Project_ID + '>' + data[i].Name + '</option>');
                     }
@@ -50,7 +51,7 @@ angular.module('vppApp')
                     success: function (data) {
                         //console.clear();
                         //console.log(data);
-                        $scope.sa = data;
+                        $scope.cy = data;
                         for (var i = 0; i < data.length; i++) {
                             $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
                         }
