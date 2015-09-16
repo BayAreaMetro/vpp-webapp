@@ -15,6 +15,50 @@ angular.module('vppApp')
             //                    }
             //                });
             //            });
+            //Summary Data URLs
+            var devDataUrl = "http://localhost:3003";
+            var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
+
+            //Data Builder
+            //Load data for Study Area Search Function
+            $.ajax({
+                dataType: 'json',
+                url: devDataUrl + '/data/studyareas',
+                success: function (data) {
+                    //console.clear();
+                    //console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $("#studyareas-list").append('<option data-number=' + data[i].Project_ID + '>' + data[i].Name + '</option>');
+                    }
+                }
+            });
+
+
+
+            //THIS TOOL NEEDS TO BE WIRED UP TO THE SHOW DATA AND DOWNLOAD DATA FUNCTION
+            $(".find - studyarea").change(function () {
+                var param = $("#StudyAreaSearch").val();
+                //                var sanValue = $('#studyareas-list option').filter(function () {
+                //                    return this.value == san;
+                //                    //console.log(this);
+                //                }).data('number');
+
+                //load Data for CollectionYear
+                $.ajax({
+                    dataType: 'json',
+                    url: devDataUrl + '/data/collectionyear?sa=' + param,
+                    success: function (data) {
+                        //console.clear();
+                        //console.log(data);
+                        $scope.sa = data;
+                        for (var i = 0; i < data.length; i++) {
+                            $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
+                        }
+                    }
+                });
+
+
+            });
 
             $('#dbSummaryMI').click(function () {
                 $("#DataSummary").fadeIn(500);

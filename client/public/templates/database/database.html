@@ -1,6 +1,6 @@
 <nav-template class="absol hidden"></nav-template>
 <nav-template-large></nav-template-large>
-	
+
 <section id="database-section">
 
     <!-- Content Area -->
@@ -13,7 +13,7 @@
             <h3>and Data.</h3>
 
         </div>
-        <div class="pad-top-l">nbsp;</div>
+        <div class="pad-top-l">&nbsp;</div>
         <div id="DataSummary" class="divFade InfoSummaryBG">
             <h1 class="col-md-4">&nbsp;</h1>
             <h2 class="col-md-8">Data Summary Options</h2>
@@ -23,9 +23,11 @@
                         <fieldset>
                             <!-- Search input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="studyareaInput">Study Area</label>
+                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
                                 <div class="col-md-6">
-                                    <input id="studyareaInput" name="studyArea" placeholder="eg. Walnut Creek" class="form-control input-md" required="" type="search">
+
+                                    <input id="StudyAreaSearch" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyarea" required="" name="City" list="studyareas-list">
+                                    <datalist id="studyareas-list"></datalist>
                                     <p class="help-block">Choose a Study Area</p>
                                 </div>
                             </div>
@@ -34,7 +36,8 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
                                 <div class="col-md-6">
-                                    <input id="collectionYearInput" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="search">
+                                    <input id="selectCollectionYear" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
+                                    <datalist id="collectionyear-list"></datalist>
                                     <p class="help-block">Enter Collection Year</p>
                                 </div>
                                 <!-- Multiple Checkboxes (inline) -->
