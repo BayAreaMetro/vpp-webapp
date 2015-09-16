@@ -28,7 +28,6 @@ angular.module('vppApp')
                 success: function (data) {
                     //console.clear();
                     //console.log(data);
-                    $scope.sa = data;
                     for (var i = 0; i < data.length; i++) {
                         $("#studyareas-list").append('<option data-number=' + data[i].Project_ID + '>' + data[i].Name + '</option>');
                     }
@@ -38,24 +37,25 @@ angular.module('vppApp')
 
 
             //THIS TOOL NEEDS TO BE WIRED UP TO THE SHOW DATA AND DOWNLOAD DATA FUNCTION
-            $(".find - studyarea").change(function () {
+            $(".find-studyarea").change(function () {
                 var param = $("#StudyAreaSearch").val();
-                //                var sanValue = $('#studyareas-list option').filter(function () {
-                //                    return this.value == san;
-                //                    //console.log(this);
-                //                }).data('number');
+                var sanValue = $('#studyareas-list option').filter(function () {
+                    return this.value == param;
+                    //console.log(this);
+                }).data('number');
 
                 //load Data for CollectionYear
                 $.ajax({
                     dataType: 'json',
-                    url: devDataUrl + '/data/collectionyear?sa=' + param,
+                    url: devDataUrl + '/data/collectionyear?sa=' + sanValue,
                     success: function (data) {
                         //console.clear();
                         //console.log(data);
-                        $scope.cy = data;
+                        $scope.sa = data;
                         for (var i = 0; i < data.length; i++) {
                             $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
                         }
+                        $('#selectCollectionYear').val(data[0].CollectionYear);
                     }
                 });
 
