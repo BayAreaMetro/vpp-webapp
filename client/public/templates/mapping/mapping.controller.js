@@ -843,6 +843,7 @@ angular.module('vppApp')
             //console.log(event); // jQuery event
             //console.log(state); // true | false
 
+
             if (state) {
                 switch (LayerName) {
                 case "PDA_FL":
@@ -853,6 +854,21 @@ angular.module('vppApp')
                     break;
                 case "studyAreasFL":
                     studyAreasFL.show();
+                    break;
+                case "FerryTerminalsFL":
+                    FerryTerminalsFL.show();
+                    break;
+                case "ParknRideLotsFL":
+                    ParknRideLotsFL.show();
+                    break;
+                case "RailStationsFL":
+                    RailStationsFL.show();
+                    break;
+                case "TransitHubsFL":
+                    TransitHubsFL.show();
+                    break;
+                case "TPAsFL":
+                    TPAsFL.show();
                     break;
 
                 }
@@ -867,6 +883,22 @@ angular.module('vppApp')
                 case "studyAreasFL":
                     studyAreasFL.hide();
                     break;
+                case "FerryTerminalsFL":
+                    FerryTerminalsFL.hide();
+                    break;
+                case "ParknRideLotsFL":
+                    ParknRideLotsFL.hide();
+                    break;
+                case "RailStationsFL":
+                    RailStationsFL.hide();
+                    break;
+                case "TransitHubsFL":
+                    TransitHubsFL.hide();
+                    break;
+                case "TPAsFL":
+                    TPAsFL.hide();
+                    break;
+
                 }
             }
 
