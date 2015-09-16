@@ -122,6 +122,7 @@ angular.module('vppApp')
         });
         //Set Map Center Variable. Used to reset map when user clicks reset map btn.
         $scope.map.on("load", function () {
+            
             mapCenter = getCenterPoint();
         });
 
@@ -332,7 +333,7 @@ angular.module('vppApp')
         renderer.addBreak(Break5_minValue, Break5_maxValue, Break5LineSymbol);
 
         OnStreetInventoryFL.setRenderer(renderer);
-        //Need Renderer for Offstreet Inventory here...
+       
 
 
         //Set Map Renderers for OffStreetInventoryFL
@@ -342,11 +343,11 @@ angular.module('vppApp')
         //create renderer
         var OffStreetInventoryRenderer = new w.ClassBreaksRenderer(OffStreetInventorySymbol, "Total_Spaces");
  
-        var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 1]));
-        var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 1]));
-        var Break3Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 1]));
-        var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 1]));
-        var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 1]));
+        var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 0.5]));
+        var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 0.5]));
+        var Break3Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 0.5]));
+        var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 0.5]));
+        var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 0.5]));
  
         var Break1_minValue_OffStreetInventory = 3;
         var Break1_maxValue_OffStreetInventory = 6;
@@ -382,9 +383,9 @@ angular.module('vppApp')
         var OffStreetRestrictionsRenderer = new w.UniqueValueRenderer(UniqueValueRendererSymbol, "Restrictions");
 
         //add symbol for each possible value
-        OffStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([204, 204, 204, 1])));
-        OffStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([0, 77, 168, 1])));
-        OffStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([115, 178, 255, 1])));
+        OffStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([204, 204, 204, 0.5])));
+        OffStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([0, 77, 168, 0.5])));
+        OffStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([115, 178, 255, 0.5])));
 
 
         OffStreetRestrictionsFL.setRenderer(OffStreetRestrictionsRenderer);
@@ -463,11 +464,11 @@ angular.module('vppApp')
         OffStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([0, 77, 168, 1])));
         OffStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([115, 178, 255, 1])));
 */
-        var Break1Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 1]));
-        var Break2Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 1]));
-        var Break3Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 1]));
-        var Break4Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 1]));
-        var Break5Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 1]));
+        var Break1Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 0.5]));
+        var Break2Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 0.5]));
+        var Break3Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 0.5]));
+        var Break4Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 0.5]));
+        var Break5Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 0.5]));
  
         var Break1_minValue_OffStreetOccupancy = 0;
         var Break1_maxValue_OffStreetOccupancy = 0.5;
@@ -769,6 +770,23 @@ angular.module('vppApp')
         });
         $('#mapRefreshCTL').click(function () {
 
+
+            OnStreetInventoryFL.hide();
+            OffStreetInventoryFL.hide();
+            OnStreetRestrictionsFL.hide();
+            OffStreetRestrictionsFL.hide();
+            WDOnStreetOccupancyFL.hide();
+            WDOffStreetOccupancyFL.hide();
+            WEOnStreetOccupancyFL.hide();
+            WEOffStreetOccupancyFL.hide();
+            studyAreasFL.show();
+            COC_FL.hide();
+            PDA_FL.hide();
+            FerryTerminalsFL.hide();
+            ParknRideLotsFL.hide();
+            RailStationsFL.hide();
+            TransitHubsFL.hide();
+            TPAsFL.hide();
             vppGraphicsLayer.clear();
             $scope.map.centerAndZoom(mapCenter, 11);
             $("#mapLegendPNL").fadeOut(300, function () {
