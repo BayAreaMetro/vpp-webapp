@@ -3,7 +3,8 @@
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
   '$scope',
-  function ($scope) {
+  '$http',
+  function ($scope, $http) {
             //Page Controls
             //            $('.divControl').click(function () {
             //                $(".divFade").each(function () {
@@ -129,6 +130,32 @@ angular.module('vppApp')
                 //            }
 
             });
+			
+			//Table Code
+			$scope.init = function(){
+				$scope.test;
+				
+				$http({
+					
+					//url: 'API TBD',
+					url: 'app/json/database.json',
+					method: 'GET'
+				}).success(function(results){
+					
+					//Added results to a var that we can loop through
+					$scope.test = results.data;
+					console.log($scope.test);
+					
+				}).error(function(data, status){
+					
+					//Error code here
+					console.log("There was an error:", status);
+				});
+				
+				console.log('INIT');
+			}
+			
+			$scope.init();
 
   }
  ]);

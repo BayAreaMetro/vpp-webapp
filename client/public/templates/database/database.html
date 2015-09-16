@@ -249,6 +249,45 @@
                             </div>
                             <div class="panel-body">
                                 Selected Data Content Here. Insert table built from js on the backend using query from data selection.
+                                
+                                <!-- Data table -->
+                                <table class="table table-bordered">
+	                                <thead>
+		                                <tr>
+											<th>Study Area</th>
+											<th>Collection Date</th>
+											<th>City Name</th>
+											<th>Block Faces</th>
+											<th>Number Of Spaces</th>
+											<th>Number Of Facilities</th>
+											<th>Number Of Off Spaces</th>
+	                                </thead>
+									<tbody>
+										<tr ng-repeat="database in test">
+								            <td>
+								                {{database.studyArea}}
+								            </td>
+								            <td>
+								                {{database.collectionDate}}
+								            </td>
+								            <td>
+								                {{database.cityName}}
+								            </td>
+								            <td>
+								                {{database.blockFaces}}
+								            </td>
+								            <td>
+								                {{database.numberOfSpaces}}
+								            </td>
+								            <td>
+								                {{database.numberOfFacilities}}
+								            </td>
+								            <td>
+								                {{database.numberOfOffSpaces}}
+								            </td>
+								        </tr>
+									</tbody>
+							    </table>
                             </div>
                         </div>
                     </div>
