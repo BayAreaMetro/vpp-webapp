@@ -335,6 +335,43 @@ angular.module('vppApp')
         //Need Renderer for Offstreet Inventory here...
 
 
+        //Set Map Renderers for OffStreetInventoryFL
+        var OffStreetInventorySymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
+        OffStreetInventorySymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
+
+        //create renderer
+        var OffStreetInventoryRenderer = new w.ClassBreaksRenderer(OffStreetInventorySymbol, "Total_Spaces");
+ 
+        var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 1]));
+        var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 1]));
+        var Break3Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 1]));
+        var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 1]));
+        var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 1]));
+ 
+        var Break1_minValue_OffStreetInventory = 3;
+        var Break1_maxValue_OffStreetInventory = 6;
+
+        var Break2_minValue_OffStreetInventory = 7;
+        var Break2_maxValue_OffStreetInventory = 14;
+
+        var Break3_minValue_OffStreetInventory = 15;
+        var Break3_maxValue_OffStreetInventory = 26;
+
+        var Break4_minValue_OffStreetInventory = 27;
+        var Break4_maxValue_OffStreetInventory = 54;
+
+        var Break5_minValue_OffStreetInventory = 55;
+        var Break5_maxValue_OffStreetInventory = 1964;
+
+        OffStreetInventoryRenderer.addBreak(Break1_minValue_OffStreetInventory, Break1_maxValue_OffStreetInventory, Break1Symbol_OffStreetInventory);
+        OffStreetInventoryRenderer.addBreak(Break2_minValue_OffStreetInventory, Break2_maxValue_OffStreetInventory, Break2Symbol_OffStreetInventory);
+        OffStreetInventoryRenderer.addBreak(Break3_minValue_OffStreetInventory, Break3_maxValue_OffStreetInventory, Break3Symbol_OffStreetInventory);
+        OffStreetInventoryRenderer.addBreak(Break4_minValue_OffStreetInventory, Break4_maxValue_OffStreetInventory, Break4Symbol_OffStreetInventory);
+        OffStreetInventoryRenderer.addBreak(Break5_minValue_OffStreetInventory, Break5_maxValue_OffStreetInventory, Break5Symbol_OffStreetInventory);
+
+        OffStreetInventoryFL.setRenderer(OffStreetInventoryRenderer);
+
+
         
 
         //Unique Value Renderer for OffStreetRestrictionsFL
@@ -353,13 +390,8 @@ angular.module('vppApp')
         OffStreetRestrictionsFL.setRenderer(OffStreetRestrictionsRenderer);
 
         //Unique Value Renderer for OnStreetRestrictionsFL
-
         var UniqueValueRendererLineSymbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
             new w.Color([255, 0, 0]));
-
-        //var UniqueValueRendererLineSymbol = new w.SimpleLineSymbol.STYLE_NULL;
-        //UniqueValueRendererSymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
-
         //create renderer
         var OnStreetRestrictionsRenderer = new w.UniqueValueRenderer(UniqueValueRendererLineSymbol, "Restrictions");
 
@@ -436,31 +468,7 @@ angular.module('vppApp')
         var Break3Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 1]));
         var Break4Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 1]));
         var Break5Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 1]));
-        
-
-
-
-
-
-        /*var symbol_OffStreetOccupancy = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
-            new w.Color([255, 0, 0]));
-        var renderer_OffStreetOccupancy = new w.ClassBreaksRenderer(symbol_OffStreetOccupancy, "Occupancy_5am");*/
-
-        /*var Break1Color_OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
-        var Break1LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color_OnStreetOccupancy, 2);
-
-        var Break2Color_OnStreetOccupancy = new w.Color([139, 209, 0, 1]);
-        var Break2LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break2Color_OnStreetOccupancy, 2);
-
-        var Break3Color_OnStreetOccupancy = new w.Color([255, 255, 0, 1]);
-        var Break3LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break3Color_OnStreetOccupancy, 2);
-
-        var Break4Color_OnStreetOccupancy = new w.Color([255, 128, 0, 1]);
-        var Break4LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break4Color_OnStreetOccupancy, 2);
-
-        var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
-        var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);*/
-
+ 
         var Break1_minValue_OffStreetOccupancy = 0;
         var Break1_maxValue_OffStreetOccupancy = 0.5;
 
@@ -550,7 +558,7 @@ angular.module('vppApp')
         COC_FL.setRenderer(COC_Renderer);
 
          //Feature Layer Renderer for TPAsFL
-        var TPA_Color = new w.Color("#ff9999");
+        var TPA_Color = new w.Color("#427e08");
         var TPA_Line = new w.SimpleLineSymbol("solid", TPA_Color, 2);
         var TPA_Symbol = new w.SimpleFillSymbol("solid", TPA_Line, null);
         var TPA_Renderer = new w.SimpleRenderer(TPA_Symbol);
