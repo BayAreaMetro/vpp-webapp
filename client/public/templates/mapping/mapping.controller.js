@@ -495,13 +495,6 @@ angular.module('vppApp')
         WEOffStreetOccupancyFL.setRenderer(OffStreetOccupancyRenderer);
 
 
-
-
-
-
-
-
-
         //Setting up Simple Lines Renderer for Study Areas
         studyAreasColor = new w.Color("#007AC8");
         studyAreasLine = new w.SimpleLineSymbol("solid", studyAreasColor, 2);
@@ -512,13 +505,46 @@ angular.module('vppApp')
         //Use this example but only for lines:
         //https://developers.arcgis.com/javascript/jssamples/renderer_proportional_scale_dependent.html
 
-
-        /*function(SimpleFillSymbol, SimpleLineSymbol, Color, ... ) {
-  var sfs = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
-    new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT,
-    new Color([255,0,0]), 2),new Color([255,255,0,0.25])
-*/
         studyAreasFL.setRenderer(studyAreasRenderer);
+         //set up scale dependant renderer for studyAreasLine symbol
+        //Use this example but only for lines:
+        //https://developers.arcgis.com/javascript/jssamples/renderer_proportional_scale_dependent.html
+
+
+
+
+
+/* /*FerryTerminalsFL,
+            ParknRideLotsFL,
+            RailStationsFL,
+            TransitHubsFL,
+            TPAsFL,*/
+
+        //Setting up Point Renderer for FerryTerminalsFL
+
+        var FerryTerminals_markerSymbol = new w.SimpleMarkerSymbol();
+        FerryTerminals_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
+        FerryTerminals_markerSymbol.setSize(8);
+        FerryTerminals_markerSymbol.outline.setColor(new w.Color([3,132,251, 1]));
+        FerryTerminals_markerSymbol.outline.setWidth(2);
+        
+        var FerryTerminals_Renderer = new w.SimpleRenderer(FerryTerminals_markerSymbol);
+        FerryTerminalsFL.setRenderer(FerryTerminals_Renderer);
+
+
+
+        //Setting up Point Renderer for ParknRideLotsFL
+        var ParknRideLots_markerSymbol = new w.SimpleMarkerSymbol();
+        ParknRideLots_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
+        ParknRideLots_markerSymbol.setSize(8);
+        ParknRideLots_markerSymbol.outline.setColor(new w.Color([180,50,26, 1]));
+        ParknRideLots_markerSymbol.outline.setWidth(2);
+        
+        var ParknRideLots_Renderer = new w.SimpleRenderer(ParknRideLots_markerSymbol);
+        ParknRideLotsFL.setRenderer(ParknRideLots_Renderer);
+
+       
+       
 
 
         //PDA Popup and Feature Layer Definition
@@ -787,10 +813,11 @@ angular.module('vppApp')
             RailStationsFL.hide();
             TransitHubsFL.hide();
             TPAsFL.hide();
+
             vppGraphicsLayer.clear();
             $scope.map.centerAndZoom(mapCenter, 11);
             $("#mapLegendPNL").fadeOut(300, function () {
-                $("#LegendTitle").text("");
+            $("#LegendTitle").text("");
             });
 
         })
