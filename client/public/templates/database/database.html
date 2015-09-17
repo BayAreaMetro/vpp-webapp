@@ -156,24 +156,44 @@
                         <div class="panel-body">
                             <!-- Data table -->
                             <div id="GeneralInfo">
-                                <table>
-                                    <tr ng-repeat="summary in summarydata">
+                                <h3>General Information</h3>
+                                <table class="table table-hover" ng-repeat="summary in geninfoData">
+                                    <tr>
                                         <td>
-                                            <h3>General Information</h3>
                                             <h4>Study Area Name:</h4>
                                             <span><p>{{summary.Name}}</p></span>
+                                        </td>
+                                        <td>
                                             <h4>City Name:</h4>
                                             <span><p>{{summary.City}}</p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             <h4>Project Title:</h4>
                                             <span><p>{{summary.Title}}</p></span>
-                                            <h4>Consultant Name:</h4>
-                                            <span><p>{{summary.Consultant}}</p></span>
+                                        </td>
+                                        <td>
                                             <h4>Project Year:</h4>
                                             <span><p>{{summary.CollectionYear}}</p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h4>Consultant Name:</h4>
+                                            <span><p>{{summary.Consultant}}</p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
                                             <h4>Project Notes:</h4>
                                             <span><p>{{summary.Notes}}</p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
                                             <h4>Cost Description:</h4>
-                                            <span><p>{{summary.Name}}</p></span>
+                                            <span><p>No Value</p></span>
                                         </td>
                                     </tr>
                                 </table>

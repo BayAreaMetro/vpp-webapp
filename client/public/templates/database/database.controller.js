@@ -26,7 +26,7 @@ angular.module('vppApp')
             //Load data for Study Area Search Function
             $.ajax({
                 dataType: 'json',
-                url: publicDataURL + '/data/studyareas',
+                url: devDataUrl + '/data/studyareas',
                 success: function (data) {
                     //console.clear();
                     //console.log(data);
@@ -49,7 +49,7 @@ angular.module('vppApp')
                 //load Data for CollectionYear
                 $.ajax({
                     dataType: 'json',
-                    url: publicDataURL + '/data/collectionyear?sa=' + $scope.sanValue,
+                    url: devDataUrl + '/data/collectionyear?sa=' + $scope.sanValue,
                     success: function (data) {
                         //console.clear();
                         //console.log(data);
@@ -84,23 +84,19 @@ angular.module('vppApp')
                 $("#DataTable").fadeIn(500);
                 $("#DataSummary").fadeOut(0, function () {
 
-                    $scope.summarydata;
+                    $scope.geninfoData;
+                    //http request for gen info
                     $http({
-
-                        //url: 'API TBD',
-                        url: publicDataURL + '/data/summary?sa=' + $scope.sanValue,
+                        url: devDataUrl + '/data/geninfo?sa=' + $scope.sanValue,
                         method: 'GET'
                     }).success(function (results) {
-
-                        //Added results to a var that we can loop through
-                        $scope.summarydata = results;
-                        //console.log($scope.summarydata);
-
+                        $scope.geninfoData = results;
                     }).error(function (data, status) {
-
-                        //Error code here
                         console.log("There was an error:", status);
                     });
+                    //end of http request for gen info.
+
+
                 });
             });
 
@@ -123,7 +119,48 @@ angular.module('vppApp')
                 if (state) {
                     switch (cat) {
                     case "ShowAll":
-                        $("#ParkingSupply").show();
+                        $("#ParkingSupply").show(function () {
+                            $scope.ptype = $('#ParkingTypeSearch').val();
+                            $scope.supplyBothData;
+                            $scope.supplyOffStreetData
+                            $scope.supplyOnStreetData
+
+                            switch ($scope.ptype) {
+                            case "Both On/Off-Street":
+                                $http({
+                                    url: devDataUrl + '/data/supplyboth?sa=' + $scope.sanValue,
+                                    method: 'GET'
+                                }).success(function (results) {
+                                    $scope.supplyBothData = results;
+                                }).error(function (data, status) {
+                                    console.log("There was an error:", status);
+                                });
+                                break;
+                            case "Off-Street":
+                                $http({
+                                    url: devDataUrl + '/data/supplyoffstreet?sa=' + $scope.sanValue,
+                                    method: 'GET'
+                                }).success(function (results) {
+                                    $scope.supplyOffStreetData = results;
+                                }).error(function (data, status) {
+                                    console.log("There was an error:", status);
+                                });
+                                break;
+                            case "On-Street":
+                                $http({
+                                    url: devDataUrl + '/data/supplyonstreet?sa=' + $scope.sanValue,
+                                    method: 'GET'
+                                }).success(function (results) {
+                                    $scope.supplyOnStreetData = results;
+                                }).error(function (data, status) {
+                                    console.log("There was an error:", status);
+                                });
+                                break;
+                            }
+
+
+
+                        });
                         $("#SpaceType").show();
                         $("#PricingInfo").show();
                         $("#RestrictionInfo").show();
@@ -138,7 +175,45 @@ angular.module('vppApp')
 
                         break;
                     case "Supply":
-                        $("#ParkingSupply").show();
+                        $("#ParkingSupply").fadeIn(0, function () {
+                            $scope.ptype = $('#ParkingTypeSearch').val();
+                            $scope.supplyBothData;
+                            $scope.supplyOffStreetData
+                            $scope.supplyOnStreetData
+
+                            switch ($scope.ptype) {
+                            case "Both On/Off-Street":
+                                $http({
+                                    url: devDataUrl + '/data/supplyboth?sa=' + $scope.sanValue,
+                                    method: 'GET'
+                                }).success(function (results) {
+                                    $scope.supplyBothData = results;
+                                }).error(function (data, status) {
+                                    console.log("There was an error:", status);
+                                });
+                                break;
+                            case "Off-Street":
+                                $http({
+                                    url: devDataUrl + '/data/supplyoffstreet?sa=' + $scope.sanValue,
+                                    method: 'GET'
+                                }).success(function (results) {
+                                    $scope.supplyOffStreetData = results;
+                                }).error(function (data, status) {
+                                    console.log("There was an error:", status);
+                                });
+                                break;
+                            case "On-Street":
+                                $http({
+                                    url: devDataUrl + '/data/supplyonstreet?sa=' + $scope.sanValue,
+                                    method: 'GET'
+                                }).success(function (results) {
+                                    $scope.supplyOnStreetData = results;
+                                }).error(function (data, status) {
+                                    console.log("There was an error:", status);
+                                });
+                                break;
+                            }
+                        });
 
                         break;
                     case "Restrictions":
@@ -209,30 +284,6 @@ angular.module('vppApp')
 
             });
 
-            //Table Code
-            //            			$scope.init = function () {
-            //            				$scope.test;
-            //            				
-            //            				$http({
-            //            					
-            //            					//url: 'API TBD',
-            //            					url: 'app/json/database.json',
-            //            					method: 'GET'
-            //            				}).success(function(results){
-            //            					
-            //            					//Added results to a var that we can loop through
-            //            					$scope.test = results.data;
-            //            					console.log($scope.test);
-            //            					
-            //            				}).error(function(data, status){
-            //            					
-            //            					//Error code here
-            //            					console.log("There was an error:", status);
-            //            				});
-            //            				
-            //            				console.log('INIT');
-            //            			}
-            //            			
-            //            			$scope.init();
+
   }
  ]);

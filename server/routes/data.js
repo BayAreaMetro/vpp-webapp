@@ -49,11 +49,70 @@ router.get('/collectionyear', function (req, res, next) {
     });
 });
 
-//Load Summary Data
-router.get('/summary', function (req, res, next) {
+//Load General Information
+router.get('/geninfo', function (req, res, next) {
     sql = new mssql.Request(database.connection);
     var sa = req.param('sa');
     sql.query("SELECT * FROM VPP_Data.StudyAreas_VW where Project_ID=" + sa, function (err, data) {
+        if (err) {
+            res.writeHead(500, {
+                'Content-Type': 'text/plain'
+            });
+            res.write("Got error :-( " + err);
+            res.end("");
+            return;
+        }
+
+        res.send(JSON.stringify(data));
+        //console.log(data);
+        //res.write(JSON.stringify(results, null, 4));
+        res.end("; Done.");
+    });
+});
+
+//Load Parking Supply Information
+router.get('/supplyboth', function (req, res, next) {
+    sql = new mssql.Request(database.connection);
+    var sa = req.param('sa');
+    sql.query("SELECT * FROM VPP_Data.WEBMAP__InventorySummaryBoth where Project_ID=" + sa, function (err, data) {
+        if (err) {
+            res.writeHead(500, {
+                'Content-Type': 'text/plain'
+            });
+            res.write("Got error :-( " + err);
+            res.end("");
+            return;
+        }
+
+        res.send(JSON.stringify(data));
+        //console.log(data);
+        //res.write(JSON.stringify(results, null, 4));
+        res.end("; Done.");
+    });
+});
+router.get('/supplyoffstreet', function (req, res, next) {
+    sql = new mssql.Request(database.connection);
+    var sa = req.param('sa');
+    sql.query("SELECT * FROM VPP_Data.WEBMAP__InventorySummaryOff where Project_ID=" + sa, function (err, data) {
+        if (err) {
+            res.writeHead(500, {
+                'Content-Type': 'text/plain'
+            });
+            res.write("Got error :-( " + err);
+            res.end("");
+            return;
+        }
+
+        res.send(JSON.stringify(data));
+        //console.log(data);
+        //res.write(JSON.stringify(results, null, 4));
+        res.end("; Done.");
+    });
+});
+router.get('/supplyonstreet', function (req, res, next) {
+    sql = new mssql.Request(database.connection);
+    var sa = req.param('sa');
+    sql.query("SELECT * FROM VPP_Data.WEBMAP__InventorySummaryOn where Project_ID=" + sa, function (err, data) {
         if (err) {
             res.writeHead(500, {
                 'Content-Type': 'text/plain'
