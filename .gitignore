@@ -17,3 +17,9 @@ target/*
 zip/*
 dist/*
 *.less
+
+client/app/app.less
+
+*.less
+
+UnusedCode.html
