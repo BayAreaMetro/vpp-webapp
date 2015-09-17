@@ -21,6 +21,7 @@ angular.module('vppApp')
             var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
             var sanValue;
 
+
             //Data Builder
             //Load data for Study Area Search Function
             $.ajax({
@@ -80,20 +81,25 @@ angular.module('vppApp')
             //            });
 
             $('#vwDataBTN').click(function () {
-                $("#DataTable").fadeIn(1000);
+                $("#DataTable").fadeIn(500);
                 $("#DataSummary").fadeOut(0, function () {
 
-                    //Data Call for Summary
-                    $.ajax({
-                        dataType: 'json',
+                    $scope.summarydata;
+                    $http({
+
+                        //url: 'API TBD',
                         url: publicDataURL + '/data/summary?sa=' + $scope.sanValue,
-                        success: function (data) {
-                            //console.clear();
-                            console.log(data);
-                            $scope.summarydata = data;
+                        method: 'GET'
+                    }).success(function (results) {
 
+                        //Added results to a var that we can loop through
+                        $scope.summarydata = results;
+                        //console.log($scope.summarydata);
 
-                        }
+                    }).error(function (data, status) {
+
+                        //Error code here
+                        console.log("There was an error:", status);
                     });
                 });
             });
@@ -204,29 +210,29 @@ angular.module('vppApp')
             });
 
             //Table Code
-            //			$scope.init = function () {
-            //				$scope.test;
-            //				
-            //				$http({
-            //					
-            //					//url: 'API TBD',
-            //					url: 'app/json/database.json',
-            //					method: 'GET'
-            //				}).success(function(results){
-            //					
-            //					//Added results to a var that we can loop through
-            //					$scope.test = results.data;
-            //					console.log($scope.test);
-            //					
-            //				}).error(function(data, status){
-            //					
-            //					//Error code here
-            //					console.log("There was an error:", status);
-            //				});
-            //				
-            //				console.log('INIT');
-            //			}
-            //			
-            //			$scope.init();
+            //            			$scope.init = function () {
+            //            				$scope.test;
+            //            				
+            //            				$http({
+            //            					
+            //            					//url: 'API TBD',
+            //            					url: 'app/json/database.json',
+            //            					method: 'GET'
+            //            				}).success(function(results){
+            //            					
+            //            					//Added results to a var that we can loop through
+            //            					$scope.test = results.data;
+            //            					console.log($scope.test);
+            //            					
+            //            				}).error(function(data, status){
+            //            					
+            //            					//Error code here
+            //            					console.log("There was an error:", status);
+            //            				});
+            //            				
+            //            				console.log('INIT');
+            //            			}
+            //            			
+            //            			$scope.init();
   }
  ]);

@@ -156,21 +156,28 @@
                         <div class="panel-body">
                             <!-- Data table -->
                             <div id="GeneralInfo">
-                                <h3>General Information</h3>
-                                <h4>Study Area Name:</h4>
-                                <span><p>{{summary.Name}}</p></span>
-                                <h4>City Name:</h4>
-                                <span><p>{{summary.City}}</p></span>
-                                <h4>Project Title:</h4>
-                                <span><p>{{summary.Title}}</p></span>
-                                <h4>Consultant Name:</h4>
-                                <span><p>{{summary.Consultant}}</p></span>
-                                <h4>Project Year:</h4>
-                                <span><p>{{summary.CollectionYear}}</p></span>
-                                <h4>Project Notes:</h4>
-                                <span><p>{{summary.Notes}}</p></span>
-                                <h4>Cost Description:</h4>
-                                <span><p>{{summary.Name}}</p></span>
+                                <table>
+                                    <tr ng-repeat="summary in summarydata">
+                                        <td>
+                                            <h3>General Information</h3>
+                                            <h4>Study Area Name:</h4>
+                                            <span><p>{{summary.Name}}</p></span>
+                                            <h4>City Name:</h4>
+                                            <span><p>{{summary.City}}</p></span>
+                                            <h4>Project Title:</h4>
+                                            <span><p>{{summary.Title}}</p></span>
+                                            <h4>Consultant Name:</h4>
+                                            <span><p>{{summary.Consultant}}</p></span>
+                                            <h4>Project Year:</h4>
+                                            <span><p>{{summary.CollectionYear}}</p></span>
+                                            <h4>Project Notes:</h4>
+                                            <span><p>{{summary.Notes}}</p></span>
+                                            <h4>Cost Description:</h4>
+                                            <span><p>{{summary.Name}}</p></span>
+                                        </td>
+                                    </tr>
+                                </table>
+
                             </div>
                             <div id="ParkingSupply" class="collapse">
                                 <h3>Parking Supply</h3>
