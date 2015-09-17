@@ -506,25 +506,14 @@ angular.module('vppApp')
         //https://developers.arcgis.com/javascript/jssamples/renderer_proportional_scale_dependent.html
 
         studyAreasFL.setRenderer(studyAreasRenderer);
-         //set up scale dependant renderer for studyAreasLine symbol
-        //Use this example but only for lines:
-        //https://developers.arcgis.com/javascript/jssamples/renderer_proportional_scale_dependent.html
+        
 
-
-
-
-
-/* /*FerryTerminalsFL,
-            ParknRideLotsFL,
-            RailStationsFL,
-            TransitHubsFL,
-            TPAsFL,*/
 
         //Setting up Point Renderer for FerryTerminalsFL
 
         var FerryTerminals_markerSymbol = new w.SimpleMarkerSymbol();
         FerryTerminals_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
-        FerryTerminals_markerSymbol.setSize(8);
+        FerryTerminals_markerSymbol.setSize(7);
         FerryTerminals_markerSymbol.outline.setColor(new w.Color([3,132,251, 1]));
         FerryTerminals_markerSymbol.outline.setWidth(2);
         
@@ -536,14 +525,46 @@ angular.module('vppApp')
         //Setting up Point Renderer for ParknRideLotsFL
         var ParknRideLots_markerSymbol = new w.SimpleMarkerSymbol();
         ParknRideLots_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
-        ParknRideLots_markerSymbol.setSize(8);
+        ParknRideLots_markerSymbol.setSize(7);
         ParknRideLots_markerSymbol.outline.setColor(new w.Color([180,50,26, 1]));
         ParknRideLots_markerSymbol.outline.setWidth(2);
         
         var ParknRideLots_Renderer = new w.SimpleRenderer(ParknRideLots_markerSymbol);
         ParknRideLotsFL.setRenderer(ParknRideLots_Renderer);
 
-       
+
+        //Setting up Point Renderer for RailStationsFL
+        var RailStations_markerSymbol = new w.SimpleMarkerSymbol();
+        RailStations_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
+        RailStations_markerSymbol.setSize(5);
+        RailStations_markerSymbol.outline.setColor(new w.Color([244,102,5, 1]));
+        RailStations_markerSymbol.outline.setWidth(1.5);
+        
+        var RailStations_Renderer = new w.SimpleRenderer(RailStations_markerSymbol);
+        RailStationsFL.setRenderer(RailStations_Renderer);
+
+
+
+        //Setting up Point Renderer for TransitHubsFL
+        var TransitHubs_markerSymbol = new w.SimpleMarkerSymbol();
+        TransitHubs_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
+        TransitHubs_markerSymbol.setSize(7);
+        TransitHubs_markerSymbol.outline.setColor(new w.Color([36,135,74, 1]));
+        TransitHubs_markerSymbol.outline.setWidth(2);
+        
+        var TransitHubs_Renderer = new w.SimpleRenderer(TransitHubs_markerSymbol);
+        TransitHubsFL.setRenderer(TransitHubs_Renderer);
+
+
+
+        //Setting up Simple Lines Renderer for TPAsFL
+        var TPAs_Color = new w.Color([242,167,52, 0.7]);
+        var TPAs_Line = new w.SimpleLineSymbol("solid", TPAs_Color, 2);
+        var TPAs_Symbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, TPAs_Line, new w.Color([242,167,52, 0.7]));
+        var TPAs_Renderer = new w.SimpleRenderer(TPAs_Symbol);
+
+        TPAsFL.setRenderer(TPAs_Renderer);
+        
        
 
 
@@ -584,14 +605,14 @@ angular.module('vppApp')
         COC_FL.setDefinitionExpression("cocflag = 1");
         COC_FL.setRenderer(COC_Renderer);
 
-         //Feature Layer Renderer for TPAsFL
+        /* //Feature Layer Renderer for TPAsFL
         var TPA_Color = new w.Color("#427e08");
         var TPA_Line = new w.SimpleLineSymbol("solid", TPA_Color, 2);
         var TPA_Symbol = new w.SimpleFillSymbol("solid", TPA_Line, null);
         var TPA_Renderer = new w.SimpleRenderer(TPA_Symbol);
         //TPAsFL.setDefinitionExpression("cocflag = 1");
         TPAsFL.setRenderer(TPA_Renderer);
-
+*/
 
         //Add Layers Section All Layers Should be added here
         //$scope.map.addLayer(COC_FL);
