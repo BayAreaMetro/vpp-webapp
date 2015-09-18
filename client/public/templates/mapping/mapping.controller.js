@@ -713,10 +713,14 @@ angular.module('vppApp')
                     OnStreetInventoryFL.show();
                     OffStreetInventoryFL.show();
 
+            
+                   
+                    $("#mlegend_TotalSpaces").fadeIn(500);
+                    $("#LegendNamePNL_TotalSpaces").fadeIn(500);
 
-                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#LegendNamePNL_Occ").fadeOut(500);
                     $("#LegendNamePNL_Restr").fadeOut(500);
-                    $("#mlegend_Occ").fadeIn(500);
+                    $("#mlegend_Occ").fadeOut(500);
                     $("#mlegend_Restr").fadeOut(500);
 
 
@@ -725,11 +729,13 @@ angular.module('vppApp')
                     OnStreetRestrictionsFL.show();
                     OffStreetRestrictionsFL.show();
 
-
-                    $("#LegendNamePNL_Restr").fadeIn(500);
-                    $("#LegendNamePNL_Occ").fadeOut(500);
                     $("#mlegend_Restr").fadeIn(500);
+                    $("#LegendNamePNL_Restr").fadeIn(500);
+
+                    $("#LegendNamePNL_Occ").fadeOut(500);   
                     $("#mlegend_Occ").fadeOut(500);
+                    $("#mlegend_TotalSpaces").fadeOut(500);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
 
                     break;
                 case "wkdayOCC":
@@ -737,9 +743,12 @@ angular.module('vppApp')
                     WDOffStreetOccupancyFL.show();
 
                     $("#LegendNamePNL_Occ").fadeIn(500);
-                    $("#LegendNamePNL_Restr").fadeOut(500);
                     $("#mlegend_Occ").fadeIn(500);
+
+                    $("#LegendNamePNL_Restr").fadeOut(500);
                     $("#mlegend_Restr").fadeOut(500);
+                    $("#mlegend_TotalSpaces").fadeOut(500);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
 
                     break;
                 case "wkndOCC":
@@ -747,9 +756,12 @@ angular.module('vppApp')
                     WEOffStreetOccupancyFL.show();
 
                     $("#LegendNamePNL_Occ").fadeIn(500);
-                    $("#LegendNamePNL_Restr").fadeOut(500);
                     $("#mlegend_Occ").fadeIn(500);
+
+                    $("#LegendNamePNL_Restr").fadeOut(500);
                     $("#mlegend_Restr").fadeOut(500);
+                    $("#mlegend_TotalSpaces").fadeOut(500);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
 
                     break;
                 case "peakOCC":
