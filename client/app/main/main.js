@@ -52,6 +52,7 @@ angular.module('vppApp')
                                 domStyle: 'dojo/dom-style',
                                 domConstruct: 'dojo/dom-construct',
                                 domReady: 'dojo/domReady',
+                                arrayUtils: 'dojo/_base/array',
                                 //Services
                                 GeometryService: 'esri/tasks/GeometryService',
                                 Extent: 'esri/geometry/Extent',
@@ -64,8 +65,11 @@ angular.module('vppApp')
                                 jsonUtil: 'esri/renderers/jsonUtils',
                                 //MapQueryTools
                                 QueryTask: 'esri/tasks/QueryTask',
-                                Query: 'esri/tasks/query'
+                                Query: 'esri/tasks/query',
+                                //Legend
+                                Legend: 'esri/dijit/Legend'
                             };
+
 
 
                         wish.loadDependencies(deps, function () {

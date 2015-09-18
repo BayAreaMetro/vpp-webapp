@@ -1,8 +1,6 @@
 <nav-template-large></nav-template-large>
 <div id="map">
     <div id="HomeButton"></div>
-
-
 </div>
 <div id="search">
     <div class="input-group">
@@ -14,7 +12,7 @@
     </div>
 </div>
 <div id="mapLegend" class="mapLegend">
-    <div id="mapLegendPNL" class="panel panel-info legendContent collapse">
+    <div id="mapLegendPNL" class="panel panel-info legendContent ">
         <div class="panel-heading">
             <div class="panel-title">
                 <span id="iconTitleLegend" class='pull-left'></span>
@@ -27,18 +25,141 @@
             <div id="StudyAreaNamePNL" class="collapse">
                 Study Area Name
             </div>
+            <div id="LegendNamePNL" class="pad-bottom-m pad-top-m">
+               <p><b>Occupancy</b><br>Percent of total spaces with vehicles occupying spaces</p>
+            </div>
+            <div id="mlegend">
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(56, 168, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Line_1" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(56, 168, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Less than 50%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(139, 209, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(139, 209, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        50%-75%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 255, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 255, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        75%-85%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        85%-95%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 0, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 0, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        More than 95%
+                    </div>
+                </div>
+            </div>
+
+    <div id="LegendNamePNL" class="pad-bottom-m pad-top-m">
+                 <p><b>Restrictions</b><br>Types of pricing and/or restrictions on space at any time</p>
+            </div>
+            <div id="mlegend">
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(0, 92, 230);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Line_1" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(0, 92, 230);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Pricing Regulations
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(115, 178, 255);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(115, 178, 255);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Time Restricted
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(204, 204, 204);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(204, 204, 204);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        No Restrictions
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        85%-95%
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(78, 78, 78);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(78, 78, 78);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        No Parking
+                    </div>
+                </div>
+            </div>
+
+
 
         </div>
     </div>
+</div>
+</div>
 </div>
 <div id="maptoolsBTN">
     <div class="dropdown">
         <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <span class="fa fa-wrench fa-lg"></span> Map Tools
-
         </button>
         <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
-
             <li>
                 <a id="mapOptionsCTL">
                     <i class="fa fa-ellipsis-h fa-lg"></i> Parking Theme <span class="arrow clickable"></span>
@@ -49,7 +170,6 @@
                     <i class="fa fa-server fa-lg"></i> Show Legend <span class="arrow clickable"></span>
                 </a>
             </li>
-
             <li><a id="mapBaseCTL"><i class="fa fa-globe fa-lg"></i> Basemaps <span class="arrow clickable"></span></a>
             </li>
             <li><a id="mapLayersCTL"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a>
@@ -63,14 +183,12 @@
             </li>
         </ul>
     </div>
-
 </div>
 <div id="TimeOfDayBTN">
     <div id="maptypeOptionsBTN" class="text-center collapse">
         <div class="dropdown">
             <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="fa  fa-clock-o fa-lg fa-fw"></span> Time of Day
-
             </button>
             <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
                 <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Peak </a>
@@ -80,7 +198,6 @@
                         <i class="fa fa-clock-o fa-lg fa-fw"></i> Early Morning (5AM)
                     </a>
                 </li>
-
                 <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Morning (9AM) </a>
                 </li>
                 <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Afternoon (12PM) </a>
@@ -91,7 +208,6 @@
                 </li>
             </ul>
         </div>
-
     </div>
 </div>
 <div id="mt">
@@ -105,7 +221,6 @@
         </div>
         <div class="panel-body">
             <div id="mapNav" class="tools collapse">
-
                 <p>Users can choose the mouse, keyboard, and sliders for panning and zooming the map. The following keyboard and mouse controls affect the map navigation:</p>
                 <ul class="list-unstyled">
                     <li><i class="fa fa-hand-o-up fa-lg pad-right-m"></i>Drag the mouse to pan</li>
@@ -120,52 +235,8 @@
                     <li>Use <i class="fa fa-plus-square fa-lg pad-left-s pad-right-s"></i> key to zoom in a level</li>
                     <li>Use <i class="fa fa-minus-square fa-lg pad-left-s pad-right-s"></i> key to zoom out a level</li>
                 </ul>
-
-
-                <!--
-                <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                    <div class="btn-group pad-s" role="group">
-                        <button id="zoomMap" type="button" class="btn btn-primary">Zoom Drag</button>
-                    </div>
-                    <div class="btn-group pad-s" role="group">
-                        <button type="button" class="btn btn-primary">Full Extent</button>
-                    </div>
-                    <div class="btn-group pad-s" role="group">
-                        <button type="button" class="btn btn-primary">Bookmarks</button>
-                    </div>
-                </div>
--->
             </div>
             <div id="mapOpts" class="tools collapse">
-                <!--
-                <div class="row">
-                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                        <div class="btn-group pad-s" role="group">
-                            <button type="button" class="btn btn-default">Data Collections</button>
-                        </div>
-                        <div class="btn-group pad-s" role="group">
-                            <button type="button" class="btn btn-default">Time Restrictions</button>
-                        </div>
-
-                    </div>
-                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                        <div class="btn-group pad-s" role="group">
-                            <button type="button" class="btn btn-default">Pricing</button>
-                        </div>
-                    </div>
-                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                        <div class="btn-group pad-s" role="group">
-                            <button type="button" class="btn btn-default">Weekday
-                                <br/> Occupancy</button>
-                        </div>
-                        <div class="btn-group pad-s" role="group">
-                            <button type="button" class="btn btn-default">Weekend
-                                <br/> Occupancy</button>
-                        </div>
-
-                    </div>
-                </div>
--->
                 <div class="row pad-top-m">
                     <div class="col-xs-4 col-md-6">
                         <div id="inventory" href="#" class="mt parkTheme">
@@ -173,7 +244,6 @@
                             </a>
                             <p>Inventory</p>
                         </div>
-
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <div id="restrictions" href="#" class="mt parkTheme">
@@ -183,7 +253,6 @@
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
-
                         <div id="wkdayOCC" href="#" class="occ parkTheme">
                             <a id="wkday" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
@@ -205,11 +274,8 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div id="mapBasemaps" class="tools collapse">
-
                 <div class="row pad-top-m">
                     <div class="col-xs-4 col-md-6">
                         <a id="topo" href="#" class="thumbnail bm">
@@ -217,7 +283,6 @@
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
-
                         <a id="gray" href="#" class="thumbnail bm">
                             <img src="app/images/light_gray_canvas.jpg" style="height: 100%; width: 100%; display: block;" alt="Light Gray">
                         </a>
@@ -232,15 +297,10 @@
                             <img src="app/images/imagery_labels.jpg" style="height: 100%; width: 100%; display: block;" alt="Satelite">
                         </a>
                     </div>
-
                 </div>
-
-
             </div>
             <div id="mapLayers" class="tools collapse">
-
                 <div class="container">
-
                     <p>
                         <input id="StudyLayerSwitch" type="checkbox" data-size="mini" name="studyAreasFL" checked="true">
                         <span class="pad-left-m LayerLBLs">Study Areas</span>
@@ -273,7 +333,6 @@
                         <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL">
                         <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
                     </p>
-                    
                 </div>
             </div>
             <div id="mapPrint" class="tools collapse">
@@ -284,112 +343,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-<!-- Code Snippets
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default">Zoom Drag</button>
-  
-  <button type="button" class="btn btn-default">Full Extent</button>
-        <button type="button" class="btn btn-default">Bookmarks</button>
-</div>
-<div id="wrapper" class="active">
-                
-                <div id="sidebar-wrapper">
-                    <div class="nav-side-menu">
-                        <div class="brand"><span id="main_icon" class="fa fa-align-justify fa-fw"></span>Map Tools
-                        </div>
-                        <div class="menu-list">
-
-                            <ul id="menu-content" class="menu-content collapse out">
-                                <li data-toggle="collapse" data-target="#dataOptions" class="collapsed">
-                                    <a><i class="fa fa-ellipsis-h fa-lg fa-fw"></i> Data Options <span class="arrow"></span></a>
-                                </li>
-                                <ul class="sub-menu collapse" id="dataOptions">
-                                    <li id="Opt1">
-                                        <a><i class="sub_icon fa fa-list-ol fa-fw"></i>Data By Jurisdiction</a>
-                                    </li>
-                                    <li id="Opt2">
-                                        <a><i class="sub_icon fa fa-hand-pointer-o fa-fw"></i>Custom Zones</a>
-                                    </li>
-                                    <li id="Opt3">
-                                        <a><i class="sub_icon fa fa-subway fa-fw"></i>Transit Stations</a>
-                                    </li>
-                                    <li id="Opt4">
-                                        <a><i class="sub_icon fa fa-map-marker fa-fw"></i>Marker Location</a>
-                                    </li>
-
-                                </ul>
-
-                                <li data-toggle="collapse" data-target="#nav" class="collapsed">
-                                    <a><i class="fa fa-map fa-lg fa-fw"></i> Map Navigation <span class="arrow"></span></a>
-                                </li>
-                                <ul class="sub-menu collapse" id="nav">
-                                    <li id="pan">
-                                        <a><i class="sub_icon fa fa-hand-paper-o fa-fw"></i>Pan</a>
-                                    </li>
-
-                                    <li id="zw">
-                                        <a><i class="sub_icon fa fa-object-group fa-fw"></i>Zoom Window</a>
-                                    </li>
-
-                                    <li id="zf">
-                                        <a><i class="sub_icon fa fa-object-group fa-fw"></i>Zoom Features</a>
-                                    </li>
-                                </ul>
-                                <li data-toggle="collapse" data-target="#bmaps" class="collapsed">
-                                    <a href="#"><i class="fa fa-globe fa-lg"></i> Basemaps <span class="arrow"></span></a>
-                                </li>
-                                <ul class="sub-menu collapse" id="bmaps">
-                                    <li id="Gray">
-                                        <a><i class="fa fa-th-large"></i>Gray</a>
-                                    </li>
-                                    <li id="DarkGray">
-                                        <a><i class="fa fa-th-large"></i>Dark Gray</a>
-                                    </li>
-                                    <li id="Imagery">
-                                        <a><i class="fa fa-th-large"></i>Imagery</a>
-                                    </li>
-                                </ul>
-                                <li data-toggle="collapse" data-target="#lt" class="collapsed">
-                                    <a href="#"><i class="fa fa-th-list fa-lg"></i> Layer Toggle <span class="arrow"></span></a>
-                                </li>
-                                <ul class="sub-menu collapse" id="lt">
-                                    <li>
-                                        <a data-value="study" tabIndex="-1">
-                                            <span class="toggle_icon"><input type="checkbox" /></span><span class="toggle_icon">Study Areas</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-value="places" tabIndex="-1">
-                                            <span class="toggle_icon"><input type="checkbox" /></span> <span class="toggle_icon">Places</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-value="cocss" tabIndex="-1">
-                                            <span class="toggle_icon"><input type="checkbox" /></span><span class="toggle_icon">Communities of Concern</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-value="pdas" tabIndex="-1">
-                                            <span class="toggle_icon"><input type="checkbox" /></span><span class="toggle_icon">Priority Development Areas</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-value="transit" tabIndex="-1">
-                                            <span class="toggle_icon"><input type="checkbox" /></span> <span class="toggle_icon">Transit System</span>
-                                        </a>
-                                    </li>
-                                </ul>
-
-                                <li>
-                                    <a id="printMap"><i class="fa fa-print"></i>Print Map</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
--->

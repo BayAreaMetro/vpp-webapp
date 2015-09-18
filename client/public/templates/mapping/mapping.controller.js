@@ -54,6 +54,7 @@ angular.module('vppApp')
             studyAreasLine,
             studyAreasSymbol,
             studyAreasRenderer
+            
 
 
         w.parser.parse();
@@ -124,6 +125,8 @@ angular.module('vppApp')
         $scope.map.on("load", function () {
             
             mapCenter = getCenterPoint();
+
+
         });
 
 
@@ -606,14 +609,6 @@ angular.module('vppApp')
         COC_FL.setDefinitionExpression("cocflag = 1");
         COC_FL.setRenderer(COC_Renderer);
 
-        /* //Feature Layer Renderer for TPAsFL
-        var TPA_Color = new w.Color("#427e08");
-        var TPA_Line = new w.SimpleLineSymbol("solid", TPA_Color, 2);
-        var TPA_Symbol = new w.SimpleFillSymbol("solid", TPA_Line, null);
-        var TPA_Renderer = new w.SimpleRenderer(TPA_Symbol);
-        //TPAsFL.setDefinitionExpression("cocflag = 1");
-        TPAsFL.setRenderer(TPA_Renderer);
-*/
 
         //Add Layers Section All Layers Should be added here
         //$scope.map.addLayer(COC_FL);
@@ -630,12 +625,14 @@ angular.module('vppApp')
 
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
+        //add the legend
+         
+
         $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
             OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL, 
             WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
 
        
-    
 
         //Map and Featurelayer Utilities
         dojo.connect($scope.map, "onZoomEnd", checkScale);
@@ -681,6 +678,7 @@ angular.module('vppApp')
         $('#mapLegendCTL').on('click', function () {
             $("#mapLegendPNL").fadeIn(500);
             $("#LegendTitle").text("Legend");
+
 
         });
         $('.clickableLegend').on('click', function () {
@@ -912,9 +910,70 @@ angular.module('vppApp')
             $scope.map.setExtent(searchresult.geometry.getExtent(), true);
             $("#StudyAreaSearch").val("");
 
-
-
         }
+
+        
+
+
+        //Create legend
+
+
+         //$("#mapLegendPNL").fadeIn(500);
+
+
+
+        // $("#mapLegendPNL").fadeIn(500);
+            
+            /*var legend = new w.Legend({
+              map: $scope.map
+            }, "mapLegendPNL");
+            legend.startup();
+
+*/
+
+        //var map = new Map( ... );
+
+        /*var home = new w.HomeButton({
+            map: $scope.map
+        }, "HomeButton");
+        home.startup();*/
+
+
+   // $scope.map.on("load", createLegend);
+/*
+    $scope.map.on("load", function () {
+            
+            $("#mapLegendPNL").fadeIn(500);
+            
+            var legend = new w.Legend({
+              map: $scope.map
+            }, "StudyAreaNamePNL");
+            legend.startup();
+        });
+*/
+
+        /*function createLegend() {
+            $("#mapLegendPNL").fadeIn(500);
+            
+            var legend = new w.Legend({
+              map: $scope.map
+            }, "StudyAreaNamePNL");
+            legend.startup();
+        }
+*/
+        
+
+        //$("#mapLegendPNL").fadeIn(500);
+
+        /*var legendDijit = new w.Legend({
+                        map: $scope.map,
+                        //layerInfos: layerInfo
+                      }, "#mapLegendPNL");
+                      legendDijit.startup();
+                    }*/
+                 // });
+
+                  
 
 
         //Global Switch for all check boxes as toggle switches
@@ -926,11 +985,62 @@ angular.module('vppApp')
             //console.log(event); // jQuery event
             //console.log(state); // true | false
 
+            var visibleLayerIds = [];
 
             if (state) {
                 switch (LayerName) {
                 case "PDA_FL":
                     PDA_FL.show();
+
+
+                    //visibleLayerIds.push("PDA_FL");
+
+
+
+
+
+
+                //function updateLayerVisibility () {
+            /*var inputs = query(".list_item");
+            var inputCount = inputs.length;
+            //in this application layer 2 is always on.
+            visibleLayerIds = [2];
+
+            for (var i = 0; i < inputCount; i++) {
+              if (inputs[i].checked) {
+                visibleLayerIds.push(inputs[i].value);
+              }
+            }
+
+            if (visibleLayerIds.length === 0) {
+              visibleLayerIds.push(-1);
+            }
+
+            layer.setVisibleLayers(visibleLayerIds);
+          }
+        });*/
+
+
+                    // $scope.map.on("layers-add-result", function (evt) {
+                   // console.log("opening legend");
+                    //var layerInfo = w.arrayUtils.map(evt.layers, function (layer, index) {
+                     // return {layer:layer.layer, title:layer.layer.name};
+                    //});
+                   // if (layerInfo.length > 0) {
+                      /*var legendDijit = new w.Legend({
+                        map: $scope.map,
+                        layerInfos: layerInfo
+                      }, "#mapLegendPNL");
+                      legendDijit.startup();
+                    }
+                 // });
+
+                  $("#mapLegendPNL").fadeIn(500);
+*/
+
+
+
+
                     break;
                 case "COC_FL":
                     COC_FL.show();
