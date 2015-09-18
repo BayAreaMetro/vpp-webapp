@@ -70,6 +70,27 @@ router.get('/geninfo', function (req, res, next) {
     });
 });
 
+//Load Master Summary Data
+router.get('/summary', function (req, res, next) {
+    sql = new mssql.Request(database.connection);
+    var sa = req.param('sa');
+    sql.query("select * From VPP_Data.Data_Summary where Project_ID=" + sa, function (err, data) {
+        if (err) {
+            res.writeHead(500, {
+                'Content-Type': 'text/plain'
+            });
+            res.write("Got error :-( " + err);
+            res.end("");
+            return;
+        }
+
+        res.send(JSON.stringify(data));
+        //console.log(data);
+        //res.write(JSON.stringify(results, null, 4));
+        res.end("; Done.");
+    });
+});
+
 //Load Parking Supply Information
 router.get('/supplyboth', function (req, res, next) {
     sql = new mssql.Request(database.connection);

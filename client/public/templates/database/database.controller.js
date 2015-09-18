@@ -99,42 +99,79 @@ angular.module('vppApp')
                         console.log("There was an error:", status);
                     });
                     //end of http request for gen info.
+                    //http request for Master Summary Data
+                    $http({
+                        url: devDataUrl + '/data/summary?sa=' + $scope.sanValue,
+                        method: 'GET'
+                    }).success(function (results) {
+                        $scope.MasterSummaryData = results;
+                    }).error(function (data, status) {
+                        console.log("There was an error:", status);
+                    });
+                    //End of http request
+
                     //http request for supply both data
                     $http({
                         url: publicDataURL + '/data/supplyboth?sa=' + $scope.sanValue,
                         method: 'GET'
                     }).success(function (results) {
                         $scope.supplyBothData = results;
-                        console.log($scope.supplyBothData[0]);
-                        $('#pst').text($scope.supplyBothData[0].Total_Spaces);
-                        $('#urt').text($scope.supplyBothData[0].Unregulated_Spaces);
-                        $('#tmrst').text($scope.supplyBothData[0].Time_and_Meter_Regulated_Spaces);
-                        $('#trst').text($scope.supplyBothData[0].Time_Only_Regulated_Spaces);
-                        $('#mrst').text($scope.supplyBothData[0].Meter_Only_Regulated_Spaces);
-                        $('#ast').text($scope.supplyBothData[0].ADA_Spaces);
-                        $('#mst').text($scope.supplyBothData[0].Motorcycle_Spaces);
-                        $('#ltost').text($scope.supplyBothData[0].Loading_or_Other_Spaces);
-                        $('#rpst').text($scope.supplyBothData[0].Permit_Reserved_Only_Spaces);
-                        $('#sphst').text($scope.supplyBothData[0].Shared_Permit_Spaces);
+                        //                        console.log($scope.supplyBothData[0]);
+                        //$('#Total_Spaces_Tot').text($scope.supplyBothData[0].Total_Spaces);
+                        $('#Unregulated_Spaces_Tot').text($scope.supplyBothData[0].Unregulated_Spaces);
+                        $('#Time_and_Meter_Regulated_Spaces_Tot').text($scope.supplyBothData[0].Time_and_Meter_Regulated_Spaces);
+                        $('#Time_Only_Regulated_Spaces_Tot').text($scope.supplyBothData[0].Time_Only_Regulated_Spaces);
+                        $('#Meter_Only_Regulated_Spaces_Tot').text($scope.supplyBothData[0].Meter_Only_Regulated_Spaces);
+                        $('#ADA_Spaces_Tot').text($scope.supplyBothData[0].ADA_Spaces);
+                        $('#Motorcycle_Spaces_Tot').text($scope.supplyBothData[0].Motorcycle_Spaces);
+                        $('#Loading_or_Other_Spaces_Tot').text($scope.supplyBothData[0].Loading_or_Other_Spaces);
+                        $('#Permit_Reserved_Only_Spaces_Tot').text($scope.supplyBothData[0].Permit_Reserved_Only_Spaces);
+                        $('#Shared_Permit_Spaces_Tot').text($scope.supplyBothData[0].Shared_Permit_Spaces);
+                        //Pricing
+                        $('#Total_Spaces_Priced_Tot').text($scope.supplyBothData[0].Total_Spaces_Priced);
+                        $('#Pricing_Permit_Reserved_Only_Spaces_Tot').text($scope.supplyBothData[0].Permit_Reserved_Only_Spaces);
+                        $('#Pricing_Shared_Permit_Spaces_Tot').text($scope.supplyBothData[0].Shared_Permit_Spaces);
+                        //Time Restriction
+                        $('#Time_Under_One_Hour_Tot').text($scope.supplyBothData[0].Time_Under_One_Hour);
+                        $('#Time_One_Hour_Tot').text($scope.supplyBothData[0].Time_One_Hour);
+                        $('#Time_Ninety_Mins_Tot').text($scope.supplyBothData[0].Time_Ninety_Mins);
+                        $('#Time_Two_Hours_Tot').text($scope.supplyBothData[0].Time_Two_Hours);
+                        $('#Time_3_to_4_Hours_Tot').text($scope.supplyBothData[0].Time_3_to_4_Hours);
+                        $('#Time_More_Than_4_Hours_Tot').text($scope.supplyBothData[0].Time_More_Than_4_Hours);
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
                     });
                     //http request for supply off-street data
+
                     $http({
                         url: publicDataURL + '/data/supplyoffstreet?sa=' + $scope.sanValue,
                         method: 'GET'
                     }).success(function (results) {
                         $scope.supplyOffStreetData = results;
-                        $('#psoff').text($scope.supplyOffStreetData[0].Total_Spaces);
-                        $('#uroff').text($scope.supplyOffStreetData[0].Unregulated_Spaces);
-                        $('#tmrsoff').text($scope.supplyOffStreetData[0].Time_and_Meter_Regulated_Spaces);
-                        $('#trsoff').text($scope.supplyOffStreetData[0].Time_Only_Regulated_Spaces);
-                        $('#mrsoff').text($scope.supplyOffStreetData[0].Meter_Only_Regulated_Spaces);
-                        $('#asoff').text($scope.supplyOffStreetData[0].ADA_Spaces);
-                        $('#msoff').text($scope.supplyOffStreetData[0].Motorcycle_Spaces);
-                        $('#ltosoff').text($scope.supplyOffStreetData[0].Loading_or_Other_Spaces);
-                        $('#rpsoff').text($scope.supplyOffStreetData[0].Permit_Reserved_Only_Spaces);
-                        $('#sphsoff').text($scope.supplyOffStreetData[0].Shared_Permit_Spaces);
+                        //Supply
+                        //$('#Total_Spaces_Off').text($scope.supplyOffStreetData[0].Total_Spaces);
+                        //Type of Spaces
+                        $('#Unregulated_Spaces_Off').text($scope.supplyOffStreetData[0].Unregulated_Spaces);
+                        $('#Time_and_Meter_Regulated_Spaces_Off').text($scope.supplyOffStreetData[0].Time_and_Meter_Regulated_Spaces);
+                        $('#Time_Only_Regulated_Spaces_Off').text($scope.supplyOffStreetData[0].Time_Only_Regulated_Spaces);
+                        $('#Meter_Only_Regulated_Spaces_Off').text($scope.supplyOffStreetData[0].Meter_Only_Regulated_Spaces);
+                        $('#ADA_Spaces_Off').text($scope.supplyOffStreetData[0].ADA_Spaces);
+                        $('#Motorcycle_Spaces_Off').text($scope.supplyOffStreetData[0].Motorcycle_Spaces);
+                        $('#Loading_or_Other_Spaces_Off').text($scope.supplyOffStreetData[0].Loading_or_Other_Spaces);
+                        $('#Permit_Reserved_Only_Spaces_Off').text($scope.supplyOffStreetData[0].Permit_Reserved_Only_Spaces);
+                        $('#Shared_Permit_Spaces_Off').text($scope.supplyOffStreetData[0].Shared_Permit_Spaces);
+                        //Pricing
+                        $('#Total_Spaces_Priced_Off').text($scope.supplyOffStreetData[0].Total_Spaces_Priced);
+                        $('#Pricing_Permit_Reserved_Only_Spaces_Off').text($scope.supplyOnStreetData[0].Permit_Reserved_Only_Spaces);
+                        $('#Pricing_Shared_Permit_Spaces_Off').text($scope.supplyOffStreetData[0].Shared_Permit_Spaces);
+                        //Time Restriction
+                        $('#Time_Under_One_Hour_Off').text($scope.supplyOffStreetData[0].Time_Under_One_Hour);
+                        $('#Time_One_Hour_Off').text($scope.supplyOffStreetData[0].Time_One_Hour);
+                        $('#Time_Ninety_Mins_Off').text($scope.supplyOffStreetData[0].Time_Ninety_Mins);
+                        $('#Time_Two_Hours_Off').text($scope.supplyOffStreetData[0].Time_Two_Hours);
+                        $('#Time_3_to_4_Hours_Off').text($scope.supplyOffStreetData[0].Time_3_to_4_Hours);
+                        $('#Time_More_Than_4_Hours_Off').text($scope.supplyOffStreetData[0].Time_More_Than_4_Hours);
+
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
                     });
@@ -144,30 +181,41 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.supplyOnStreetData = results;
+                        //Supply
+                        //$('#Total_Spaces_On').text($scope.supplyOnStreetData[0].Total_Spaces);
+                        //Type of Spaces
+                        $('#Unregulated_Spaces_On').text($scope.supplyOnStreetData[0].Unregulated_Spaces);
+                        $('#Time_and_Meter_Regulated_Spaces_On').text($scope.supplyOnStreetData[0].Time_and_Meter_Regulated_Spaces);
+                        $('#Time_Only_Regulated_Spaces_On').text($scope.supplyOnStreetData[0].Time_Only_Regulated_Spaces);
+                        $('#Meter_Only_Regulated_Spaces_On').text($scope.supplyOnStreetData[0].Meter_Only_Regulated_Spaces);
+                        $('#ADA_Spaces_On').text($scope.supplyOnStreetData[0].ADA_Spaces);
+                        $('#Motorcycle_Spaces_On').text($scope.supplyOnStreetData[0].Motorcycle_Spaces);
+                        $('#Loading_or_Other_Spaces_On').text($scope.supplyOnStreetData[0].Loading_or_Other_Spaces);
+                        $('#Permit_Reserved_Only_Spaces_On').text($scope.supplyOnStreetData[0].Permit_Reserved_Only_Spaces);
+                        $('#Shared_Permit_Spaces_On').text($scope.supplyOnStreetData[0].Shared_Permit_Spaces);
+                        //Pricing
+                        $('#Total_Spaces_Priced_On').text($scope.supplyOnStreetData[0].Total_Spaces_Priced);
+                        $('#Pricing_Permit_Reserved_Only_Spaces_On').text($scope.supplyOnStreetData[0].Permit_Reserved_Only_Spaces);
+                        $('#Pricing_Shared_Permit_Spaces_On').text($scope.supplyOnStreetData[0].Shared_Permit_Spaces);
+                        //Time Restriction
+                        $('#Time_Under_One_Hour_On').text($scope.supplyOnStreetData[0].Time_Under_One_Hour);
+                        $('#Time_One_Hour_On').text($scope.supplyOnStreetData[0].Time_One_Hour);
+                        $('#Time_Ninety_Mins_On').text($scope.supplyOnStreetData[0].Time_Ninety_Mins);
+                        $('#Time_Two_Hours_On').text($scope.supplyOnStreetData[0].Time_Two_Hours);
+                        $('#Time_3_to_4_Hours_On').text($scope.supplyOnStreetData[0].Time_3_to_4_Hours);
+                        $('#Time_More_Than_4_Hours_On').text($scope.supplyOnStreetData[0].Time_More_Than_4_Hours);
 
-                        $('#pso').text($scope.supplyOnStreetData[0].Total_Spaces);
-                        $('#uro').text($scope.supplyOnStreetData[0].Unregulated_Spaces);
-                        $('#tmrso').text($scope.supplyOnStreetData[0].Time_and_Meter_Regulated_Spaces);
-                        $('#trso').text($scope.supplyOnStreetData[0].Time_Only_Regulated_Spaces);
-                        $('#mrso').text($scope.supplyOnStreetData[0].Meter_Only_Regulated_Spaces);
-                        $('#aso').text($scope.supplyOnStreetData[0].ADA_Spaces);
-                        $('#mso').text($scope.supplyOnStreetData[0].Motorcycle_Spaces);
-                        $('#ltoso').text($scope.supplyOnStreetData[0].Loading_or_Other_Spaces);
-                        $('#rpso').text($scope.supplyOnStreetData[0].Permit_Reserved_Only_Spaces);
-                        $('#sphso').text($scope.supplyOnStreetData[0].Shared_Permit_Spaces);
 
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
                     });
                 });
-                //$('#psoPct').text($('#pso').val() / $('#psoff').val());
+
+
+
             });
 
-            function populateForm() {
-                //                console.log($scope.supplyBothData);
-                //                console.log($scope.supplyOffStreetData);
 
-            }
 
             $('#vwOptionsBTN').click(function () {
                 $("#DataSummary").fadeIn(500);

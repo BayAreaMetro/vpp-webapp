@@ -199,7 +199,7 @@
                                 </table>
 
                             </div>
-                            <div id="ParkingSupply">
+                            <div id="ParkingSupply" ng-repeat="supply in MasterSummaryData">
                                 <h3>Parking Supply</h3>
                                 <table class="table table-hover">
                                     <thead>
@@ -218,15 +218,15 @@
                                             <tr>
                                                 <td style="vertical-align:middle">Total number of spaces
                                                     <br />where data was collected</td>
-                                                <td><span id="pso"></span>
+                                                <td>{{supply.Total_On}}
                                                 </td>
-                                                <td><span id="psoPct"></span>
+                                                <td>{{supply.Total_On_PCT}}
                                                 </td>
-                                                <td><span id="psoff"></span>
+                                                <td>{{supply.Total_Off}}
                                                 </td>
-                                                <td><span id="psoffPct"></span>
+                                                <td>{{supply.Total_Off_PCT}}
                                                 </td>
-                                                <td><span id="pst"></span>
+                                                <td>{{supply.Total_Both}}
                                                 </td>
                                                 <td>100%</td>
 
@@ -251,109 +251,109 @@
                                         <tbody>
                                             <tr>
                                                 <td>Unregulated spaces</td>
-                                                <td><span id="uro"></span>
+                                                <td><span id="Unregulated_Spaces_On"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="uroff"></span>
+                                                <td><span id="Unregulated_Spaces_Off"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="urt"></span>
+                                                <td><span id="Unregulated_Spaces_Tot"></span>
                                                 </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Time and meter regulated spaces</td>
-                                                <td><span id="tmrso"></span>
+                                                <td><span id="Time_and_Meter_Regulated_Spaces_On"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="tmrsoff"></span>
+                                                <td><span id="Time_and_Meter_Regulated_Spaces_Off"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="tmrst"></span>
+                                                <td><span id="Time_and_Meter_Regulated_Spaces_Tot"></span>
                                                 </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Time-only regulated spaces</td>
-                                                <td><span id="trso"></span>
+                                                <td><span id="Time_Only_Regulated_Spaces_On"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="trsoff"></span>
+                                                <td><span id="Time_Only_Regulated_Spaces_Off"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="trst"></span>
+                                                <td><span id="Time_Only_Regulated_Spaces_Tot"></span>
                                                 </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Meter-only regulated spaces</td>
-                                                <td><span id="mrso"></span>
+                                                <td><span id="Meter_Only_Regulated_Spaces_On"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="mrsoff"></span>
+                                                <td><span id="Meter_Only_Regulated_Spaces_Off"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="mrst"></span>
+                                                <td><span id="Meter_Only_Regulated_Spaces_Tot"></span>
                                                 </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Accessible (ADA) spaces</td>
-                                                <td><span id="aso"></span>
+                                                <td><span id="ADA_Spaces_On"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="asoff"></span>
+                                                <td><span id="ADA_Spaces_Off"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="ast"></span>
+                                                <td><span id="ADA_Spaces_Tot"></span>
                                                 </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Motorcycle spaces</td>
-                                                <td><span id="mso"></span>
+                                                <td><span id="Motorcycle_Spaces_On"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="msoff"></span>
+                                                <td><span id="Motorcycle_Spaces_Off"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="mst"></span>
+                                                <td><span id="Motorcycle_Spaces_Tot"></span>
                                                 </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Loading, taxi, or other spaces</td>
-                                                <td><span id="ltoso"></span>
+                                                <td><span id="Loading_or_Other_Spaces_On"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="ltosoff"></span>
+                                                <td><span id="Loading_or_Other_Spaces_Off"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="ltost"></span>
+                                                <td><span id="Loading_or_Other_Spaces_Tot"></span>
                                                 </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Reserved for permits-only spaces</td>
-                                                <td><span id="rpso"></span>
+                                                <td><span id="Permit_Reserved_Only_Spaces_On"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="rpsoff"></span>
+                                                <td><span id="Permit_Reserved_Only_Spaces_Off"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="rpst"></span>
+                                                <td><span id="Permit_Reserved_Only_Spaces_Tot"></span>
                                                 </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Shared with permit holder spaces</td>
-                                                <td><span id="sphso"></span>
+                                                <td><span id="Shared_Permit_Spaces_On"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="sphsoff"></span>
+                                                <td><span id="Shared_Permit_Spaces_Off"></span>
                                                 </td>
                                                 <td>%</td>
-                                                <td><span id="sphst"></span>
+                                                <td><span id="Shared_Permit_Spaces_Tot"></span>
                                                 </td>
                                                 <td>%</td>
                                             </tr>
@@ -377,34 +377,44 @@
                                         <tbody>
                                             <tr>
                                                 <td>Total spaces that are priced</td>
-                                                <td>value</td>
+                                                <td><span id="Total_Spaces_Priced_On"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Total_Spaces_Priced_Off"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Total_Spaces_Priced_Tot"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Reserved for permits-only spaces</td>
-                                                <td>value</td>
+                                                <td><span id="Pricing_Permit_Reserved_Only_Spaces_On"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Pricing_Permit_Reserved_Only_Spaces_Off"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Pricing_Permit_Reserved_Only_Spaces_Tot"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Shared with permit holder spaces</td>
-                                                <td>value</td>
+                                                <td><span id="Pricing_Shared_Permit_Spaces_On"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Pricing_Shared_Permit_Spaces_Off"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Pricing_Shared_Permit_Spaces_Tot"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Cost description</td>
-                                                <td colspan="6">value</td>
+                                                <td colspan="6"><span id="costdescription"></span>
+                                                </td>
 
                                             </tr>
                                         </tbody>
@@ -427,56 +437,74 @@
                                         <tbody>
                                             <tr>
                                                 <td>Time restriction under one hour</td>
-                                                <td>value</td>
+                                                <td><span id="Time_Under_One_Hour_On"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_Under_One_Hour_Off"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_Under_One_Hour_Tot"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Time restriction one hour</td>
-                                                <td>value</td>
+                                                <td><span id="Time_One_Hour_On"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_One_Hour_Off"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_One_Hour_Tot"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Time restriction 90 minutes</td>
-                                                <td>value</td>
+                                                <td><span id="Time_Ninety_Mins_On"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_Ninety_Mins_Off"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_Ninety_Mins_Tot"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Time restriction two hours</td>
-                                                <td>value</td>
+                                                <td><span id="Time_Two_Hours_On"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_Two_Hours_Off"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_Two_Hours_Tot"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Time restriction between three and four hours</td>
-                                                <td>value</td>
+                                                <td><span id="Time_3_to_4_Hours_On"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_3_to_4_Hours_Off"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_3_to_4_Hours_Tot"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Time restrictiond greater than four hours</td>
-                                                <td>value</td>
+                                                <td><span id="Time_More_Than_4_Hours_On"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_More_Than_4_Hours_Off"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="Time_More_Than_4_Hours_Tot"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                         </tbody>
@@ -501,47 +529,62 @@
 
                                             <tr>
                                                 <td>Early morning occupancy (5AM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Morning occupancy (9AM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Afternoon occupancy (12PM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Late afternoon occupancy (4PM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Evening occupancy (8PM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                         </tbody>
@@ -565,47 +608,62 @@
                                         <tbody>
                                             <tr>
                                                 <td>Early morning occupancy (5AM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Morning occupancy (9AM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Afternoon occupancy (12PM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Late afternoon occupancy (4PM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Evening occupancy (8PM)</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="costdescription"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                         </tbody>
