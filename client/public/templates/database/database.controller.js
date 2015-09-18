@@ -20,6 +20,10 @@ angular.module('vppApp')
             var devDataUrl = "http://localhost:3003";
             var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
             var sanValue;
+            $scope.geninfoData;
+            $scope.supplyBothData;
+            $scope.supplyOffStreetData;
+            $scope.supplyOnStreetData;
 
 
             //Data Builder
@@ -84,10 +88,7 @@ angular.module('vppApp')
                 $("#DataTable").fadeIn(500);
                 $("#DataSummary").fadeOut(0, function () {
 
-                    $scope.geninfoData;
-                    $scope.supplyBothData;
-                    $scope.supplyOffStreetData;
-                    $scope.supplyOnStreetData;
+
                     //http request for gen info
                     $http({
                         url: publicDataURL + '/data/geninfo?sa=' + $scope.sanValue,
@@ -104,6 +105,17 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.supplyBothData = results;
+                        console.log($scope.supplyBothData[0]);
+                        $('#pst').text($scope.supplyBothData[0].Total_Spaces);
+                        $('#urt').text($scope.supplyBothData[0].Unregulated_Spaces);
+                        $('#tmrst').text($scope.supplyBothData[0].Time_and_Meter_Regulated_Spaces);
+                        $('#trst').text($scope.supplyBothData[0].Time_Only_Regulated_Spaces);
+                        $('#mrst').text($scope.supplyBothData[0].Meter_Only_Regulated_Spaces);
+                        $('#ast').text($scope.supplyBothData[0].ADA_Spaces);
+                        $('#mst').text($scope.supplyBothData[0].Motorcycle_Spaces);
+                        $('#ltost').text($scope.supplyBothData[0].Loading_or_Other_Spaces);
+                        $('#rpst').text($scope.supplyBothData[0].Permit_Reserved_Only_Spaces);
+                        $('#sphst').text($scope.supplyBothData[0].Shared_Permit_Spaces);
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
                     });
@@ -113,6 +125,16 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.supplyOffStreetData = results;
+                        $('#psoff').text($scope.supplyOffStreetData[0].Total_Spaces);
+                        $('#uroff').text($scope.supplyOffStreetData[0].Unregulated_Spaces);
+                        $('#tmrsoff').text($scope.supplyOffStreetData[0].Time_and_Meter_Regulated_Spaces);
+                        $('#trsoff').text($scope.supplyOffStreetData[0].Time_Only_Regulated_Spaces);
+                        $('#mrsoff').text($scope.supplyOffStreetData[0].Meter_Only_Regulated_Spaces);
+                        $('#asoff').text($scope.supplyOffStreetData[0].ADA_Spaces);
+                        $('#msoff').text($scope.supplyOffStreetData[0].Motorcycle_Spaces);
+                        $('#ltosoff').text($scope.supplyOffStreetData[0].Loading_or_Other_Spaces);
+                        $('#rpsoff').text($scope.supplyOffStreetData[0].Permit_Reserved_Only_Spaces);
+                        $('#sphsoff').text($scope.supplyOffStreetData[0].Shared_Permit_Spaces);
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
                     });
@@ -122,14 +144,30 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.supplyOnStreetData = results;
+
+                        $('#pso').text($scope.supplyOnStreetData[0].Total_Spaces);
+                        $('#uro').text($scope.supplyOnStreetData[0].Unregulated_Spaces);
+                        $('#tmrso').text($scope.supplyOnStreetData[0].Time_and_Meter_Regulated_Spaces);
+                        $('#trso').text($scope.supplyOnStreetData[0].Time_Only_Regulated_Spaces);
+                        $('#mrso').text($scope.supplyOnStreetData[0].Meter_Only_Regulated_Spaces);
+                        $('#aso').text($scope.supplyOnStreetData[0].ADA_Spaces);
+                        $('#mso').text($scope.supplyOnStreetData[0].Motorcycle_Spaces);
+                        $('#ltoso').text($scope.supplyOnStreetData[0].Loading_or_Other_Spaces);
+                        $('#rpso').text($scope.supplyOnStreetData[0].Permit_Reserved_Only_Spaces);
+                        $('#sphso').text($scope.supplyOnStreetData[0].Shared_Permit_Spaces);
+
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
                     });
-
-
-
                 });
+                //$('#psoPct').text($('#pso').val() / $('#psoff').val());
             });
+
+            function populateForm() {
+                //                console.log($scope.supplyBothData);
+                //                console.log($scope.supplyOffStreetData);
+
+            }
 
             $('#vwOptionsBTN').click(function () {
                 $("#DataSummary").fadeIn(500);
@@ -151,45 +189,6 @@ angular.module('vppApp')
                     switch (cat) {
                     case "ShowAll":
                         $("#ParkingSupply").fadeIn(0, function () {
-                            //                            $scope.ptype = $('#ParkingTypeSearch').val();
-                            //                            $scope.supplyBothData;
-                            //                            $scope.supplyOffStreetData;
-                            //                            $scope.supplyOnStreetData;
-                            //
-                            //                            switch ($scope.ptype) {
-                            //                            case "Both On/Off-Street":
-                            //                                $http({
-                            //                                    url: publicDataURL + '/data/supplyboth?sa=' + $scope.sanValue,
-                            //                                    method: 'GET'
-                            //                                }).success(function (results) {
-                            //                                    $scope.supplyBothData = results;
-                            //                                }).error(function (data, status) {
-                            //                                    console.log("There was an error:", status);
-                            //                                });
-                            //                                break;
-                            //                            case "Off-Street":
-                            //                                $http({
-                            //                                    url: publicDataURL + '/data/supplyoffstreet?sa=' + $scope.sanValue,
-                            //                                    method: 'GET'
-                            //                                }).success(function (results) {
-                            //                                    $scope.supplyOffStreetData = results;
-                            //                                }).error(function (data, status) {
-                            //                                    console.log("There was an error:", status);
-                            //                                });
-                            //                                break;
-                            //                            case "On-Street":
-                            //                                $http({
-                            //                                    url: publicDataURL + '/data/supplyonstreet?sa=' + $scope.sanValue,
-                            //                                    method: 'GET'
-                            //                                }).success(function (results) {
-                            //                                    $scope.supplyOnStreetData = results;
-                            //                                }).error(function (data, status) {
-                            //                                    console.log("There was an error:", status);
-                            //                                });
-                            //                                break;
-                            //                            }
-
-
 
                         });
                         $("#SpaceType").fadeIn(0);
@@ -207,43 +206,7 @@ angular.module('vppApp')
                         break;
                     case "Supply":
                         $("#ParkingSupply").fadeIn(0, function () {
-                            //                            $scope.ptype = $('#ParkingTypeSearch').val();
-                            //                            $scope.supplyBothData;
-                            //                            $scope.supplyOffStreetData
-                            //                            $scope.supplyOnStreetData
-                            //
-                            //                            switch ($scope.ptype) {
-                            //                            case "Both On/Off-Street":
-                            //                                $http({
-                            //                                    url: publicDataURL + '/data/supplyboth?sa=' + $scope.sanValue,
-                            //                                    method: 'GET'
-                            //                                }).success(function (results) {
-                            //                                    $scope.supplyBothData = results;
-                            //                                }).error(function (data, status) {
-                            //                                    console.log("There was an error:", status);
-                            //                                });
-                            //                                break;
-                            //                            case "Off-Street":
-                            //                                $http({
-                            //                                    url: publicDataURL + '/data/supplyoffstreet?sa=' + $scope.sanValue,
-                            //                                    method: 'GET'
-                            //                                }).success(function (results) {
-                            //                                    $scope.supplyOffStreetData = results;
-                            //                                }).error(function (data, status) {
-                            //                                    console.log("There was an error:", status);
-                            //                                });
-                            //                                break;
-                            //                            case "On-Street":
-                            //                                $http({
-                            //                                    url: publicDataURL + '/data/supplyonstreet?sa=' + $scope.sanValue,
-                            //                                    method: 'GET'
-                            //                                }).success(function (results) {
-                            //                                    $scope.supplyOnStreetData = results;
-                            //                                }).error(function (data, status) {
-                            //                                    console.log("There was an error:", status);
-                            //                                });
-                            //                                break;
-                            //                            }
+
                         });
 
                         break;

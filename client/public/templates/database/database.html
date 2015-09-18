@@ -199,7 +199,7 @@
                                 </table>
 
                             </div>
-                            <div id="ParkingSupply" ng-repeat="bothsupply in supplyBothData">
+                            <div id="ParkingSupply">
                                 <h3>Parking Supply</h3>
                                 <table class="table table-hover">
                                     <thead>
@@ -218,11 +218,16 @@
                                             <tr>
                                                 <td style="vertical-align:middle">Total number of spaces
                                                     <br />where data was collected</td>
-                                                <td>value</td>
-                                                <td>%</td>
-                                                <td>value</td>
-                                                <td>%</td>
-                                                <td>{{bothsupply.Total_Spaces}}</td>
+                                                <td><span id="pso"></span>
+                                                </td>
+                                                <td><span id="psoPct"></span>
+                                                </td>
+                                                <td><span id="psoff"></span>
+                                                </td>
+                                                <td><span id="psoffPct"></span>
+                                                </td>
+                                                <td><span id="pst"></span>
+                                                </td>
                                                 <td>100%</td>
 
                                             </tr>
@@ -246,83 +251,110 @@
                                         <tbody>
                                             <tr>
                                                 <td>Unregulated spaces</td>
-                                                <td>value</td>
+                                                <td><span id="uro"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="uroff"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="urt"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Time and meter regulated spaces</td>
-                                                <td>value</td>
+                                                <td><span id="tmrso"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="tmrsoff"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="tmrst"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Time-only regulated spaces</td>
-                                                <td>value</td>
+                                                <td><span id="trso"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="trsoff"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="trst"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Meter-only regulated spaces</td>
-                                                <td>value</td>
+                                                <td><span id="mrso"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="mrsoff"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="mrst"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Accessible (ADA) spaces</td>
-                                                <td>value</td>
+                                                <td><span id="aso"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="asoff"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="ast"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Motorcycle spaces</td>
-                                                <td>value</td>
+                                                <td><span id="mso"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="msoff"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="mst"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Loading, taxi, or other spaces</td>
-                                                <td>value</td>
+                                                <td><span id="ltoso"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="ltosoff"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="ltost"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Reserved for permits-only spaces</td>
-                                                <td>value</td>
+                                                <td><span id="rpso"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="rpsoff"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="rpst"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                             <tr>
                                                 <td>Shared with permit holder spaces</td>
-                                                <td>value</td>
+                                                <td><span id="sphso"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="sphsoff"></span>
+                                                </td>
                                                 <td>%</td>
-                                                <td>value</td>
+                                                <td><span id="sphst"></span>
+                                                </td>
                                                 <td>%</td>
                                             </tr>
                                         </tbody>
