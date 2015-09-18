@@ -712,18 +712,45 @@ angular.module('vppApp')
                 case "inventory":
                     OnStreetInventoryFL.show();
                     OffStreetInventoryFL.show();
+
+
+                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#LegendNamePNL_Restr").fadeOut(500);
+                    $("#mlegend_Occ").fadeIn(500);
+                    $("#mlegend_Restr").fadeOut(500);
+
+
                     break;
                 case "restrictions":
                     OnStreetRestrictionsFL.show();
                     OffStreetRestrictionsFL.show();
+
+
+                    $("#LegendNamePNL_Restr").fadeIn(500);
+                    $("#LegendNamePNL_Occ").fadeOut(500);
+                    $("#mlegend_Restr").fadeIn(500);
+                    $("#mlegend_Occ").fadeOut(500);
+
                     break;
                 case "wkdayOCC":
                     WDOnStreetOccupancyFL.show();
                     WDOffStreetOccupancyFL.show();
+
+                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#LegendNamePNL_Restr").fadeOut(500);
+                    $("#mlegend_Occ").fadeIn(500);
+                    $("#mlegend_Restr").fadeOut(500);
+
                     break;
                 case "wkndOCC":
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
+
+                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#LegendNamePNL_Restr").fadeOut(500);
+                    $("#mlegend_Occ").fadeIn(500);
+                    $("#mlegend_Restr").fadeOut(500);
+
                     break;
                 case "peakOCC":
                     //COC_FL.show();
