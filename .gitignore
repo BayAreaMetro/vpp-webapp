@@ -18,7 +18,6 @@ zip/*
 dist/*
 *.less
 
-client/app/app.less
 
 *.less
 
