@@ -974,7 +974,7 @@ angular.module('vppApp')
 
 
         function showSAQResults(saqr) {
-            CheckLegendVisibility();
+           // CheckLegendVisibility();
             vppGraphicsLayer.clear();
             var resultFeatures = saqr.features;
             //console.log(saqr);
