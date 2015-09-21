@@ -712,13 +712,18 @@ angular.module('vppApp')
                 case "inventory":
 
 
-                    ZoomStudyArea(1);
+                    var currentZoomLevel = $scope.map.getZoom();
 
-                    OnStreetInventoryFL.show();
-                    OffStreetInventoryFL.show();
+                    if (currentZoomLevel > 14) {
+                        OnStreetInventoryFL.show();
+                        studyAreasFL.show();
+                    } else {
+                        ZoomStudyArea(1);
+                        OnStreetInventoryFL.show();
+                        studyAreasFL.show();
+                    }
+              
 
-            
-                   
                     $("#mlegend_TotalSpaces").fadeIn(500);
                     $("#LegendNamePNL_TotalSpaces").fadeIn(500);
 
@@ -730,8 +735,19 @@ angular.module('vppApp')
 
                     break;
                 case "restrictions":
-                    OnStreetRestrictionsFL.show();
-                    OffStreetRestrictionsFL.show();
+
+
+                    var currentZoomLevel = $scope.map.getZoom();
+
+                    if (currentZoomLevel > 14) {
+                        OnStreetRestrictionsFL.show();
+                        OffStreetRestrictionsFL.show();
+                    } else {
+                        ZoomStudyArea(1);
+                        OnStreetRestrictionsFL.show();
+                        OffStreetRestrictionsFL.show();
+                    }
+                    
 
                     $("#mlegend_Restr").fadeIn(500);
                     $("#LegendNamePNL_Restr").fadeIn(500);
@@ -743,8 +759,19 @@ angular.module('vppApp')
 
                     break;
                 case "wkdayOCC":
-                    WDOnStreetOccupancyFL.show();
-                    WDOffStreetOccupancyFL.show();
+
+                    var currentZoomLevel = $scope.map.getZoom();
+
+                    if (currentZoomLevel > 14) {
+                        WDOnStreetOccupancyFL.show();
+                        WDOffStreetOccupancyFL.show();
+                    } else {
+                        ZoomStudyArea(1);
+                        WDOnStreetOccupancyFL.show();
+                        WDOffStreetOccupancyFL.show();
+                    }
+
+                    
 
                     $("#LegendNamePNL_Occ").fadeIn(500);
                     $("#mlegend_Occ").fadeIn(500);
@@ -756,8 +783,19 @@ angular.module('vppApp')
 
                     break;
                 case "wkndOCC":
-                    WEOnStreetOccupancyFL.show();
-                    WEOffStreetOccupancyFL.show();
+
+                    var currentZoomLevel = $scope.map.getZoom();
+
+                    if (currentZoomLevel > 14) {
+                        WEOnStreetOccupancyFL.show();
+                        WEOffStreetOccupancyFL.show();
+                    } else {
+                        ZoomStudyArea(1);
+                        WEOnStreetOccupancyFL.show();
+                        WEOffStreetOccupancyFL.show();
+                    }
+
+                    
 
                     $("#LegendNamePNL_Occ").fadeIn(500);
                     $("#mlegend_Occ").fadeIn(500);
