@@ -993,7 +993,7 @@ angular.module('vppApp')
 
         }
 
-        function addRow() {
+        /*function addRow() {
             var div = document.createElement('div');
 
             div.className = 'row';
@@ -1008,7 +1008,7 @@ angular.module('vppApp')
 
         function removeRow(input) {
             document.getElementById('#legendPanelBody').removeChild( input.parentNode );
-        }
+        }*/
                 
 
 
