@@ -19,7 +19,7 @@ angular.module('vppApp')
             //Summary Data URLs
             var devDataUrl = "http://localhost:3003";
             var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
-            $scope.sanValue = 1;
+            $scope.sanV = 1;
             $scope.geninfoData;
             $scope.supplyBothData;
             $scope.supplyOffStreetData;
@@ -46,7 +46,7 @@ angular.module('vppApp')
             $(".find-studyarea").change(function () {
                 var param = $("#StudyAreaSearch").val();
 
-                $scope.sanValue = $('#studyareas-list option').filter(function () {
+                $scope.sanV = $('#studyareas-list option').filter(function () {
                     return this.value == param;
                     //console.log(this);
                 }).data('number');
@@ -54,7 +54,7 @@ angular.module('vppApp')
                 //load Data for CollectionYear
                 $.ajax({
                     dataType: 'json',
-                    url: publicDataURL + '/data/collectionyear?sa=' + $scope.sanValue,
+                    url: publicDataURL + '/data/collectionyear?sa=' + $scope.sanV,
                     success: function (data) {
                         //console.clear();
                         //console.log(data);
@@ -83,7 +83,7 @@ angular.module('vppApp')
 
                     //http request for gen info
                     $http({
-                        url: publicDataURL + '/data/geninfo?sa=' + $scope.sanValue,
+                        url: publicDataURL + '/data/geninfo?sa=' + $scope.sanV,
                         method: 'GET'
                     }).success(function (results) {
                         $scope.geninfoData = results;
@@ -94,7 +94,7 @@ angular.module('vppApp')
 
                     //http request for Master Summary Data
                     $http({
-                        url: devDataUrl + '/data/summary?sa=' + $scope.sanValue,
+                        url: devDataUrl + '/data/summary?sa=' + $scope.sanV,
                         method: 'GET'
                     }).success(function (results) {
                         $scope.MasterSummaryData = results;

@@ -54,7 +54,7 @@ angular.module('vppApp')
             studyAreasLine,
             studyAreasSymbol,
             studyAreasRenderer
-            
+
 
 
         w.parser.parse();
@@ -88,7 +88,7 @@ angular.module('vppApp')
         RailStationsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/7';
         TransitHubsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/8';
         TPAsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/15';
-        
+
 
         //Study Area URLs
         StudyAreaURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6'
@@ -123,7 +123,7 @@ angular.module('vppApp')
         });
         //Set Map Center Variable. Used to reset map when user clicks reset map btn.
         $scope.map.on("load", function () {
-            
+
             mapCenter = getCenterPoint();
 
 
@@ -336,7 +336,7 @@ angular.module('vppApp')
         renderer.addBreak(Break5_minValue, Break5_maxValue, Break5LineSymbol);
 
         OnStreetInventoryFL.setRenderer(renderer);
-       
+
 
 
         //Set Map Renderers for OffStreetInventoryFL
@@ -345,13 +345,13 @@ angular.module('vppApp')
 
         //create renderer
         var OffStreetInventoryRenderer = new w.ClassBreaksRenderer(OffStreetInventorySymbol, "Total_Spaces");
- 
+
         var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 0.5]));
         var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 0.5]));
         var Break3Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 0.5]));
         var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 0.5]));
         var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 0.5]));
- 
+
         var Break1_minValue_OffStreetInventory = 3;
         var Break1_maxValue_OffStreetInventory = 6;
 
@@ -376,7 +376,7 @@ angular.module('vppApp')
         OffStreetInventoryFL.setRenderer(OffStreetInventoryRenderer);
 
 
-        
+
 
         //Unique Value Renderer for OffStreetRestrictionsFL
         var UniqueValueRendererSymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
@@ -463,7 +463,7 @@ angular.module('vppApp')
         var OffStreetOccupancyRenderer = new w.ClassBreaksRenderer(OffStreetOccupancySymbol, "Occupancy_5am");
 
         //add symbol for each possible value
-       /* OffStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([204, 204, 204, 1])));
+        /* OffStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([204, 204, 204, 1])));
         OffStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([0, 77, 168, 1])));
         OffStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([115, 178, 255, 1])));
 */
@@ -472,7 +472,7 @@ angular.module('vppApp')
         var Break3Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 0.5]));
         var Break4Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 0.5]));
         var Break5Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 0.5]));
- 
+
         var Break1_minValue_OffStreetOccupancy = 0;
         var Break1_maxValue_OffStreetOccupancy = 0.5;
 
@@ -509,7 +509,7 @@ angular.module('vppApp')
         //https://developers.arcgis.com/javascript/jssamples/renderer_proportional_scale_dependent.html
 
         studyAreasFL.setRenderer(studyAreasRenderer);
-        
+
 
 
         //Setting up Point Renderer for FerryTerminalsFL
@@ -517,9 +517,9 @@ angular.module('vppApp')
         var FerryTerminals_markerSymbol = new w.SimpleMarkerSymbol();
         FerryTerminals_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         FerryTerminals_markerSymbol.setSize(7);
-        FerryTerminals_markerSymbol.outline.setColor(new w.Color([3,132,251, 1]));
+        FerryTerminals_markerSymbol.outline.setColor(new w.Color([3, 132, 251, 1]));
         FerryTerminals_markerSymbol.outline.setWidth(2);
-        
+
         var FerryTerminals_Renderer = new w.SimpleRenderer(FerryTerminals_markerSymbol);
         FerryTerminalsFL.setRenderer(FerryTerminals_Renderer);
 
@@ -529,9 +529,9 @@ angular.module('vppApp')
         var ParknRideLots_markerSymbol = new w.SimpleMarkerSymbol();
         ParknRideLots_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         ParknRideLots_markerSymbol.setSize(7);
-        ParknRideLots_markerSymbol.outline.setColor(new w.Color([180,50,26, 1]));
+        ParknRideLots_markerSymbol.outline.setColor(new w.Color([180, 50, 26, 1]));
         ParknRideLots_markerSymbol.outline.setWidth(2);
-        
+
         var ParknRideLots_Renderer = new w.SimpleRenderer(ParknRideLots_markerSymbol);
         ParknRideLotsFL.setRenderer(ParknRideLots_Renderer);
 
@@ -540,9 +540,9 @@ angular.module('vppApp')
         var RailStations_markerSymbol = new w.SimpleMarkerSymbol();
         RailStations_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         RailStations_markerSymbol.setSize(5);
-        RailStations_markerSymbol.outline.setColor(new w.Color([244,102,5, 1]));
+        RailStations_markerSymbol.outline.setColor(new w.Color([244, 102, 5, 1]));
         RailStations_markerSymbol.outline.setWidth(1.5);
-        
+
         var RailStations_Renderer = new w.SimpleRenderer(RailStations_markerSymbol);
         RailStationsFL.setRenderer(RailStations_Renderer);
 
@@ -552,9 +552,9 @@ angular.module('vppApp')
         var TransitHubs_markerSymbol = new w.SimpleMarkerSymbol();
         TransitHubs_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         TransitHubs_markerSymbol.setSize(7);
-        TransitHubs_markerSymbol.outline.setColor(new w.Color([36,135,74, 1]));
+        TransitHubs_markerSymbol.outline.setColor(new w.Color([36, 135, 74, 1]));
         TransitHubs_markerSymbol.outline.setWidth(2);
-        
+
         var TransitHubs_Renderer = new w.SimpleRenderer(TransitHubs_markerSymbol);
         TransitHubsFL.setRenderer(TransitHubs_Renderer);
 
@@ -562,14 +562,14 @@ angular.module('vppApp')
 
 
         //Setting up Simple Lines Renderer for TPAsFL
-        var TPAs_Color = new w.Color([242,167,52, 0.7]);
+        var TPAs_Color = new w.Color([242, 167, 52, 0.7]);
         var TPAs_Line = new w.SimpleLineSymbol("solid", TPAs_Color, 2);
-        var TPAs_Symbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, TPAs_Line, new w.Color([242,167,52, 0.7]));
+        var TPAs_Symbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, TPAs_Line, new w.Color([242, 167, 52, 0.7]));
         var TPAs_Renderer = new w.SimpleRenderer(TPAs_Symbol);
 
         TPAsFL.setRenderer(TPAs_Renderer);
-        
-       
+
+
 
 
         //PDA Popup and Feature Layer Definition
@@ -597,7 +597,7 @@ angular.module('vppApp')
         });
 
 
- 
+
 
 
 
@@ -626,13 +626,13 @@ angular.module('vppApp')
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
         //add the legend
-         
 
-        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
-            OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL, 
+
+        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL,
+            OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL,
             WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
 
-       
+
 
         //Map and Featurelayer Utilities
         dojo.connect($scope.map, "onZoomEnd", checkScale);
@@ -696,129 +696,129 @@ angular.module('vppApp')
         });
 
 
-         $('.parkTheme').on('click', function () {
+        $('.parkTheme').on('click', function () {
             //            console.log($(this).attr('id'));
-                    OnStreetInventoryFL.hide();
-                    OffStreetInventoryFL.hide();
-                    OnStreetRestrictionsFL.hide();
-                    OffStreetRestrictionsFL.hide();
-                    WDOnStreetOccupancyFL.hide();
-                    WEOnStreetOccupancyFL.hide();
-                    WDOffStreetOccupancyFL.hide();
-                    WEOffStreetOccupancyFL.hide();
+            OnStreetInventoryFL.hide();
+            OffStreetInventoryFL.hide();
+            OnStreetRestrictionsFL.hide();
+            OffStreetRestrictionsFL.hide();
+            WDOnStreetOccupancyFL.hide();
+            WEOnStreetOccupancyFL.hide();
+            WDOffStreetOccupancyFL.hide();
+            WEOffStreetOccupancyFL.hide();
 
-           var pt = $(this).attr('id');
-             switch (pt) {
-                case "inventory":
-
-
-                    var currentZoomLevel = $scope.map.getZoom();
-
-                    if (currentZoomLevel > 14) {
-                        OnStreetInventoryFL.show();
-                        studyAreasFL.show();
-                    } else {
-                        ZoomStudyArea(1);
-                        OnStreetInventoryFL.show();
-                        studyAreasFL.show();
-                    }
-              
-
-                    $("#mlegend_TotalSpaces").fadeIn(500);
-                    $("#LegendNamePNL_TotalSpaces").fadeIn(500);
-
-                    $("#LegendNamePNL_Occ").fadeOut(500);
-                    $("#LegendNamePNL_Restr").fadeOut(500);
-                    $("#mlegend_Occ").fadeOut(500);
-                    $("#mlegend_Restr").fadeOut(500);
+            var pt = $(this).attr('id');
+            switch (pt) {
+            case "inventory":
 
 
-                    break;
-                case "restrictions":
+                var currentZoomLevel = $scope.map.getZoom();
 
-
-                    var currentZoomLevel = $scope.map.getZoom();
-
-                    if (currentZoomLevel > 14) {
-                        OnStreetRestrictionsFL.show();
-                        OffStreetRestrictionsFL.show();
-                    } else {
-                        ZoomStudyArea(1);
-                        OnStreetRestrictionsFL.show();
-                        OffStreetRestrictionsFL.show();
-                    }
-                    
-
-                    $("#mlegend_Restr").fadeIn(500);
-                    $("#LegendNamePNL_Restr").fadeIn(500);
-
-                    $("#LegendNamePNL_Occ").fadeOut(500);   
-                    $("#mlegend_Occ").fadeOut(500);
-                    $("#mlegend_TotalSpaces").fadeOut(500);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
-
-                    break;
-                case "wkdayOCC":
-
-                    var currentZoomLevel = $scope.map.getZoom();
-
-                    if (currentZoomLevel > 14) {
-                        WDOnStreetOccupancyFL.show();
-                        WDOffStreetOccupancyFL.show();
-                    } else {
-                        ZoomStudyArea(1);
-                        WDOnStreetOccupancyFL.show();
-                        WDOffStreetOccupancyFL.show();
-                    }
-
-                    
-
-                    $("#LegendNamePNL_Occ").fadeIn(500);
-                    $("#mlegend_Occ").fadeIn(500);
-
-                    $("#LegendNamePNL_Restr").fadeOut(500);
-                    $("#mlegend_Restr").fadeOut(500);
-                    $("#mlegend_TotalSpaces").fadeOut(500);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
-
-                    break;
-                case "wkndOCC":
-
-                    var currentZoomLevel = $scope.map.getZoom();
-
-                    if (currentZoomLevel > 14) {
-                        WEOnStreetOccupancyFL.show();
-                        WEOffStreetOccupancyFL.show();
-                    } else {
-                        ZoomStudyArea(1);
-                        WEOnStreetOccupancyFL.show();
-                        WEOffStreetOccupancyFL.show();
-                    }
-
-                    
-
-                    $("#LegendNamePNL_Occ").fadeIn(500);
-                    $("#mlegend_Occ").fadeIn(500);
-
-                    $("#LegendNamePNL_Restr").fadeOut(500);
-                    $("#mlegend_Restr").fadeOut(500);
-                    $("#mlegend_TotalSpaces").fadeOut(500);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
-
-                    break;
-                case "peakOCC":
-                    //COC_FL.show();
-                    break;
-
+                if (currentZoomLevel > 14) {
+                    OnStreetInventoryFL.show();
+                    studyAreasFL.show();
+                } else {
+                    ZoomStudyArea(1);
+                    OnStreetInventoryFL.show();
+                    studyAreasFL.show();
                 }
+
+
+                $("#mlegend_TotalSpaces").fadeIn(500);
+                $("#LegendNamePNL_TotalSpaces").fadeIn(500);
+
+                $("#LegendNamePNL_Occ").fadeOut(500);
+                $("#LegendNamePNL_Restr").fadeOut(500);
+                $("#mlegend_Occ").fadeOut(500);
+                $("#mlegend_Restr").fadeOut(500);
+
+
+                break;
+            case "restrictions":
+
+
+                var currentZoomLevel = $scope.map.getZoom();
+
+                if (currentZoomLevel > 14) {
+                    OnStreetRestrictionsFL.show();
+                    OffStreetRestrictionsFL.show();
+                } else {
+                    ZoomStudyArea(1);
+                    OnStreetRestrictionsFL.show();
+                    OffStreetRestrictionsFL.show();
+                }
+
+
+                $("#mlegend_Restr").fadeIn(500);
+                $("#LegendNamePNL_Restr").fadeIn(500);
+
+                $("#LegendNamePNL_Occ").fadeOut(500);
+                $("#mlegend_Occ").fadeOut(500);
+                $("#mlegend_TotalSpaces").fadeOut(500);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+
+                break;
+            case "wkdayOCC":
+
+                var currentZoomLevel = $scope.map.getZoom();
+
+                if (currentZoomLevel > 14) {
+                    WDOnStreetOccupancyFL.show();
+                    WDOffStreetOccupancyFL.show();
+                } else {
+                    ZoomStudyArea(1);
+                    WDOnStreetOccupancyFL.show();
+                    WDOffStreetOccupancyFL.show();
+                }
+
+
+
+                $("#LegendNamePNL_Occ").fadeIn(500);
+                $("#mlegend_Occ").fadeIn(500);
+
+                $("#LegendNamePNL_Restr").fadeOut(500);
+                $("#mlegend_Restr").fadeOut(500);
+                $("#mlegend_TotalSpaces").fadeOut(500);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+
+                break;
+            case "wkndOCC":
+
+                var currentZoomLevel = $scope.map.getZoom();
+
+                if (currentZoomLevel > 14) {
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                } else {
+                    ZoomStudyArea(1);
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                }
+
+
+
+                $("#LegendNamePNL_Occ").fadeIn(500);
+                $("#mlegend_Occ").fadeIn(500);
+
+                $("#LegendNamePNL_Restr").fadeOut(500);
+                $("#mlegend_Restr").fadeOut(500);
+                $("#mlegend_TotalSpaces").fadeOut(500);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+
+                break;
+            case "peakOCC":
+                //COC_FL.show();
+                break;
+
+            }
 
         });
 
-        
-         /*$scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
-            OnStreetRestrictionsFL, OffStreetRestrictionsFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
 
-          */
+        /*$scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
+           OnStreetRestrictionsFL, OffStreetRestrictionsFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
+
+         */
 
 
 
@@ -918,7 +918,7 @@ angular.module('vppApp')
             vppGraphicsLayer.clear();
             $scope.map.centerAndZoom(mapCenter, 11);
             $("#mapLegendPNL").fadeOut(300, function () {
-            $("#LegendTitle").text("");
+                $("#LegendTitle").text("");
             });
 
         })
@@ -974,7 +974,7 @@ angular.module('vppApp')
 
 
         function showSAQResults(saqr) {
-           // CheckLegendVisibility();
+            // CheckLegendVisibility();
             vppGraphicsLayer.clear();
             var resultFeatures = saqr.features;
             //console.log(saqr);
@@ -986,15 +986,13 @@ angular.module('vppApp')
             searchresult.setInfoTemplate(saInfoTemplate);
             //$scope.map.graphics.add(searchresult);
             vppGraphicsLayer.add(searchresult);
+            //console.log(saqr);
             $('#StudyAreaNamePNL').html("<span><i class='fa fa-map-marker fa-lg fa-fw'></i></span>&nbsp;&nbsp;<b>Selected Study Area:</b><br/>" + searchresult.attributes.Name + "<br /><small><b class='pad-top-m'>Project Notes:</b><br />" + searchresult.attributes.Notes + "</small>");
             $("#StudyAreaNamePNL").fadeIn(100);
             $scope.map.setExtent(searchresult.geometry.getExtent(), true);
             $("#StudyAreaSearch").val("");
 
         }
-
-        
-
 
         //Global Switch for all check boxes as toggle switches
         $("input[type=\"checkbox\"], input[type=\"radio\"]").not("[data-switch-no-init]").bootstrapSwitch();
