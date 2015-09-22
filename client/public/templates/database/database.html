@@ -14,7 +14,7 @@
 
         </div>
         <div class="pad-top-l">&nbsp;</div>
-        <div id="DataSummary" class="divFade InfoSummaryBG">
+        <div id="DataSummary" class="InfoSummaryBG">
             <h1 class="col-md-4">&nbsp;</h1>
             <h2 class="col-md-8">Data Summary Options</h2>
             <div class="row">
@@ -31,7 +31,7 @@
                                     <p class="help-block">Choose a Study Area</p>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group collapse">
                                 <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
                                 <div class="col-md-6">
 
@@ -41,7 +41,7 @@
                                             <option value="Off-Street">
                                                 <option value="Both On/Off-Street">
                                     </datalist>
-                                    <!--                                    <p class="help-block">&nbsp;</p>-->
+
                                 </div>
                             </div>
 
@@ -137,7 +137,7 @@
         </div>
 
 
-        <div id="DataTable" class="collapse divFade InfoSummaryBG">
+        <div id="DataTable" class="collapse InfoSummaryBG">
 
             <div class="row">
                 <div class="col-md-12">
@@ -155,538 +155,538 @@
                         </div>
                         <div class="panel-body">
                             <!-- Data table -->
-                            <div id="GeneralInfo" ng-repeat="summary in geninfoData">
-                                <h3>General Information</h3>
-                                <table class="table table-hover">
-                                    <tr>
-                                        <td>
-                                            <h4>Study Area Name:</h4>
-                                            <span><p>{{summary.Name}}</p></span>
-                                        </td>
-                                        <td>
-                                            <h4>City Name:</h4>
-                                            <span><p>{{summary.City}}</p></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h4>Project Title:</h4>
-                                            <span><p>{{summary.Title}}</p></span>
-                                        </td>
-                                        <td>
-                                            <h4>Project Year:</h4>
-                                            <span><p>{{summary.CollectionYear}}</p></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <h4>Consultant Name:</h4>
-                                            <span><p>{{summary.Consultant}}</p></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <h4>Project Notes:</h4>
-                                            <span><p>{{summary.Notes}}</p></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <h4>Cost Description:</h4>
-                                            <span><p>No Value</p></span>
-                                        </td>
-                                    </tr>
-                                </table>
+<div id="GeneralInfo" ng-repeat="summary in geninfoData">
+    <h3>General Information</h3>
+    <table class="table table-hover">
+        <tr>
+            <td>
+                <h4>Study Area Name:</h4>
+                <span><p>{{summary.Name}}</p></span>
+            </td>
+            <td>
+                <h4>City Name:</h4>
+                <span><p>{{summary.City}}</p></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Project Title:</h4>
+                <span><p>{{summary.Title}}</p></span>
+            </td>
+            <td>
+                <h4>Project Year:</h4>
+                <span><p>{{summary.CollectionYear}}</p></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h4>Consultant Name:</h4>
+                <span><p>{{summary.Consultant}}</p></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h4>Project Notes:</h4>
+                <span><p>{{summary.Notes}}</p></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h4>Cost Description:</h4>
+                <span><p>No Value</p></span>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="ParkingSupply" ng-repeat="summary in MasterSummaryData">
+    <h3>Parking Supply</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>On-Street</th>
+                <th>Percent</th>
+                <th>Off-Street</th>
+                <th>Percent</th>
+                <th>Total</th>
 
-                            </div>
-                            <div id="ParkingSupply" ng-repeat="supply in MasterSummaryData">
-                                <h3>Parking Supply</h3>
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Category</th>
-                                            <th>On-Street</th>
-                                            <th>Percent</th>
-                                            <th>Off-Street</th>
-                                            <th>Percent</th>
-                                            <th>Total</th>
-                                            <th>Percent</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <div>
-                                            <tr>
-                                                <td style="vertical-align:middle">Total number of spaces
-                                                    <br />where data was collected</td>
-                                                <td>{{supply.Total_On}}
-                                                </td>
-                                                <td>{{supply.Total_On_PCT}}
-                                                </td>
-                                                <td>{{supply.Total_Off}}
-                                                </td>
-                                                <td>{{supply.Total_Off_PCT}}
-                                                </td>
-                                                <td>{{supply.Total_Both}}
-                                                </td>
-                                                <td>100%</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="vertical-align:middle">Total number of spaces
+                    <br />where data was collected</td>
+                <td>{{summary.Total_On}}
+                </td>
+                <td>{{summary.Total_On_PCT}}%
+                </td>
+                <td>{{summary.Total_Off}}
+                </td>
+                <td>{{summary.Total_Off_PCT}}%
+                </td>
+                <td>{{summary.Total_Both}}
+                </td>
 
-                                            </tr>
-                                    </tbody>
-                                </table>
-                                </div>
-                                <div id="SpaceType" class="collapse">
-                                    <h3>Type of Parking Spaces</h3>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Category</th>
-                                                <th>On-Street</th>
-                                                <th>Percent</th>
-                                                <th>Off-Street</th>
-                                                <th>Percent</th>
-                                                <th>Total</th>
-                                                <th>Percent</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Unregulated spaces</td>
-                                                <td><span id="Unregulated_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Unregulated_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Unregulated_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Time and meter regulated spaces</td>
-                                                <td><span id="Time_and_Meter_Regulated_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_and_Meter_Regulated_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_and_Meter_Regulated_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Time-only regulated spaces</td>
-                                                <td><span id="Time_Only_Regulated_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_Only_Regulated_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_Only_Regulated_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Meter-only regulated spaces</td>
-                                                <td><span id="Meter_Only_Regulated_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Meter_Only_Regulated_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Meter_Only_Regulated_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Accessible (ADA) spaces</td>
-                                                <td><span id="ADA_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="ADA_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="ADA_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Motorcycle spaces</td>
-                                                <td><span id="Motorcycle_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Motorcycle_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Motorcycle_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Loading, taxi, or other spaces</td>
-                                                <td><span id="Loading_or_Other_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Loading_or_Other_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Loading_or_Other_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Reserved for permits-only spaces</td>
-                                                <td><span id="Permit_Reserved_Only_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Permit_Reserved_Only_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Permit_Reserved_Only_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Shared with permit holder spaces</td>
-                                                <td><span id="Shared_Permit_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Shared_Permit_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Shared_Permit_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div id="PricingInfo" class="collapse">
-                                    <h3>Pricing Information</h3>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Category</th>
-                                                <th>On-Street</th>
-                                                <th>Percent</th>
-                                                <th>Off-Street</th>
-                                                <th>Percent</th>
-                                                <th>Total</th>
-                                                <th>Percent</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Total spaces that are priced</td>
-                                                <td><span id="Total_Spaces_Priced_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Total_Spaces_Priced_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Total_Spaces_Priced_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Reserved for permits-only spaces</td>
-                                                <td><span id="Pricing_Permit_Reserved_Only_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Pricing_Permit_Reserved_Only_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Pricing_Permit_Reserved_Only_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Shared with permit holder spaces</td>
-                                                <td><span id="Pricing_Shared_Permit_Spaces_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Pricing_Shared_Permit_Spaces_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Pricing_Shared_Permit_Spaces_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cost description</td>
-                                                <td colspan="6"><span id="costdescription"></span>
-                                                </td>
 
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div id="RestrictionInfo" class="collapse">
-                                    <h3>Time Restriction Information</h3>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Category</th>
-                                                <th>On-Street</th>
-                                                <th>Percent</th>
-                                                <th>Off-Street</th>
-                                                <th>Percent</th>
-                                                <th>Total</th>
-                                                <th>Percent</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Time restriction under one hour</td>
-                                                <td><span id="Time_Under_One_Hour_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_Under_One_Hour_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_Under_One_Hour_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Time restriction one hour</td>
-                                                <td><span id="Time_One_Hour_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_One_Hour_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_One_Hour_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Time restriction 90 minutes</td>
-                                                <td><span id="Time_Ninety_Mins_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_Ninety_Mins_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_Ninety_Mins_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Time restriction two hours</td>
-                                                <td><span id="Time_Two_Hours_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_Two_Hours_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_Two_Hours_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Time restriction between three and four hours</td>
-                                                <td><span id="Time_3_to_4_Hours_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_3_to_4_Hours_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_3_to_4_Hours_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Time restrictiond greater than four hours</td>
-                                                <td><span id="Time_More_Than_4_Hours_On"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_More_Than_4_Hours_Off"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="Time_More_Than_4_Hours_Tot"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="SpaceType" ng-repeat="type in MasterSummaryData">
+    <h3>Type of Parking Spaces</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>On-Street</th>
+                <th>Percent</th>
+                <th>Off-Street</th>
+                <th>Percent</th>
+                <th>Total</th>
 
-                                </div>
-                                <div id="WDOccInfo" class="collapse">
-                                    <h3>Weekday Occupancy Information</h3>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Category</th>
-                                                <th>On-Street</th>
-                                                <th>Percent</th>
-                                                <th>Off-Street</th>
-                                                <th>Percent</th>
-                                                <th>Total</th>
-                                                <th>Percent</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Unregulated spaces</td>
+                <td><span id="Unregulated_Spaces_On">{{type.Unregulated_Spaces_On}}</span>
+                </td>
+                <td>{{type.Unregulated_Spaces_On_PCT}}%</td>
+                <td><span id="Unregulated_Spaces_Off">{{type.Unregulated_Spaces_Off}}</span>
+                </td>
+                <td>{{type.Unregulated_Spaces_Off_PCT}}%</td>
+                <td><span id="Unregulated_Spaces_Tot">{{type.Unregulated_Spaces_Total}}</span>
+                </td>
 
-                                            <tr>
-                                                <td>Early morning occupancy (5AM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Morning occupancy (9AM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Afternoon occupancy (12PM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Late afternoon occupancy (4PM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Evening occupancy (8PM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+            </tr>
+            <tr>
+                <td>Time and meter regulated spaces</td>
+                <td><span id="Time_and_Meter_Regulated_Spaces_On">{{type.Time_and_Meter_Regulated_Spaces_On}}</span>
+                </td>
+                <td>{{type.Time_and_Meter_Regulated_Spaces_On_PCT}}%</td>
+                <td><span id="Time_and_Meter_Regulated_Spaces_Off">{{type.Time_and_Meter_Regulated_Spaces_Off}}</span>
+                </td>
+                <td>{{type.Time_and_Meter_Regulated_Spaces_Off_PCT}}%</td>
+                <td><span id="Time_and_Meter_Regulated_Spaces_Tot">{{type.Time_and_Meter_Regulated_Spaces_Tot}}</span>
+                </td>
 
-                                </div>
-                                <div id="WEOccInfo" class="collapse">
-                                    <h3>Weekend Occupancy Information</h3>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Category</th>
-                                                <th>On-Street</th>
-                                                <th>Percent</th>
-                                                <th>Off-Street</th>
-                                                <th>Percent</th>
-                                                <th>Total</th>
-                                                <th>Percent</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Early morning occupancy (5AM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Morning occupancy (9AM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Afternoon occupancy (12PM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Late afternoon occupancy (4PM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Evening occupancy (8PM)</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                                <td><span id="costdescription"></span>
-                                                </td>
-                                                <td>%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div id="AddtnlResources" class="collapse">
-                                    <h3>Additional Resources</h3>
-                                    <span><p>Value Here</p></span>
+            </tr>
+            <tr>
+                <td>Time-only regulated spaces</td>
+                <td><span id="Time_Only_Regulated_Spaces_On">{{type.Time_Only_Regulated_Spaces_On}}</span>
+                </td>
+                <td>{{type.Time_Only_Regulated_Spaces_On_PCT}}%</td>
+                <td><span id="Time_Only_Regulated_Spaces_Off">{{type.Time_Only_Regulated_Spaces_Off}}</span>
+                </td>
+                <td>{{type.Time_Only_Regulated_Spaces_Off_PCT}}%</td>
+                <td><span id="Time_Only_Regulated_Spaces_Tot">{{type.Time_Only_Regulated_Spaces_Tot}}</span>
+                </td>
 
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <span><p>Value Here</p></span>
-                            </div>
+            </tr>
+            <tr>
+                <td>Meter-only regulated spaces</td>
+                <td><span id="Meter_Only_Regulated_Spaces_On">{{type.Meter_Only_Regulated_Spaces_On}}</span>
+                </td>
+                <td>{{type.Meter_Only_Regulated_Spaces_On_PCT}}%</td>
+                <td><span id="Meter_Only_Regulated_Spaces_Off">{{type.Meter_Only_Regulated_Spaces_Off}}</span>
+                </td>
+                <td>{{type.Meter_Only_Regulated_Spaces_Off_PCT}}%</td>
+                <td><span id="Meter_Only_Regulated_Spaces_Tot">{{type.Meter_Only_Regulated_Spaces_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Accessible (ADA) spaces</td>
+                <td><span id="ADA_Spaces_On">{{type.ADA_Spaces_On}}</span>
+                </td>
+                <td>{{type.ADA_Spaces_On_PCT}}%</td>
+                <td><span id="ADA_Spaces_Off">{{type.ADA_Spaces_Off}}</span>
+                </td>
+                <td>{{type.ADA_Spaces_Off_PCT}}%</td>
+                <td><span id="ADA_Spaces_Tot">{{type.ADA_Spaces_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Motorcycle spaces</td>
+                <td><span id="Motorcycle_Spaces_On">{{type.Motorcycle_Spaces_On}}</span>
+                </td>
+                <td>{{type.Motorcycle_Spaces_On_PCT}}%</td>
+                <td><span id="Motorcycle_Spaces_Off">{{type.Motorcycle_Spaces_Off}}</span>
+                </td>
+                <td>{{type.Motorcycle_Spaces_Off_PCT}}%</td>
+                <td><span id="Motorcycle_Spaces_Tot">{{type.Motorcycle_Spaces_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Loading, taxi, or other spaces</td>
+                <td><span id="Loading_or_Other_Spaces_On">{{type.Loading_or_Other_Spaces_On}}</span>
+                </td>
+                <td>{{type.Loading_or_Other_Spaces_On_PCT}}%</td>
+                <td><span id="Loading_or_Other_Spaces_Off">{{type.Loading_or_Other_Spaces_Off}}</span>
+                </td>
+                <td>{{type.Loading_or_Other_Spaces_Off_PCT}}%</td>
+                <td><span id="Loading_or_Other_Spaces_Tot">{{type.Loading_or_Other_Spaces_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Reserved for permits-only spaces</td>
+                <td><span id="Permit_Reserved_Only_Spaces_On">{{type.Permit_Reserved_Only_Spaces_On}}</span>
+                </td>
+                <td>{{type.Permit_Reserved_Only_Spaces_On_PCT}}%</td>
+                <td><span id="Permit_Reserved_Only_Spaces_Off">{{type.Permit_Reserved_Only_Spaces_Off}}</span>
+                </td>
+                <td>{{type.Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
+                <td><span id="Permit_Reserved_Only_Spaces_Tot">{{type.Permit_Reserved_Only_Spaces_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Shared with permit holder spaces</td>
+                <td><span id="Shared_Permit_Spaces_On">{{type.Shared_Permit_Spaces_On}}</span>
+                </td>
+                <td>{{type.Shared_Permit_Spaces_On_PCT}}%</td>
+                <td><span id="Shared_Permit_Spaces_Off">{{type.Shared_Permit_Spaces_Off}}</span>
+                </td>
+                <td>{{type.Shared_Permit_Spaces_Off_PCT}}%</td>
+                <td><span id="Shared_Permit_Spaces_Tot">{{type.Shared_Permit_Spaces_Tot}}</span>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="PricingInfo" ng-repeat="pricing in MasterSummaryData">
+    <h3>Pricing Information</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>On-Street</th>
+                <th>Percent</th>
+                <th>Off-Street</th>
+                <th>Percent</th>
+                <th>Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total spaces that are priced</td>
+                <td><span id="Total_Spaces_Priced_On">{{pricing.Total_Spaces_Priced_On}}</span>
+                </td>
+                <td>{{pricing.Total_Spaces_Priced_On_PCT}}%</td>
+                <td><span id="Total_Spaces_Priced_Off">{{pricing.Total_Spaces_Priced_Off}}</span>
+                </td>
+                <td>{{pricing.Total_Spaces_Priced_Off_PCT}}%</td>
+                <td><span id="Total_Spaces_Priced_Tot">{{pricing.Total_Spaces_Priced_Tot}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Reserved for permits-only spaces</td>
+                <td><span id="Pricing_Permit_Reserved_Only_Spaces_On">{{pricing.Pricing_Permit_Reserved_Only_Spaces_On}}</span>
+                </td>
+                <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_On_PCT}}%</td>
+                <td><span id="Pricing_Permit_Reserved_Only_Spaces_Off">{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off}}</span>
+                </td>
+                <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
+                <td><span id="Pricing_Permit_Reserved_Only_Spaces_Tot">{{pricing.Pricing_Permit_Reserved_Only_Spaces_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Shared with permit holder spaces</td>
+                <td><span id="Pricing_Shared_Permit_Spaces_On">{{pricing.Pricing_Shared_Permit_Spaces_On}}</span>
+                </td>
+                <td>{{pricing.Shared_Permit_Spaces_On_PCT}}%</td>
+                <td><span id="Pricing_Shared_Permit_Spaces_Off">{{pricing.Pricing_Shared_Permit_Spaces_Off}}</span>
+                </td>
+                <td>{{pricing.Shared_Permit_Spaces_Off_PCT}}%</td>
+                <td><span id="Pricing_Shared_Permit_Spaces_Tot">{{pricing.Pricing_Shared_Permit_Spaces_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Pricing Summary</td>
+                <td colspan="6"><span id="Pricing_Summary_Both">
+                                                {{pricing.Pricing_Summary_Both}}
+                                                </span>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="RestrictionInfo" ng-repeat="restrict in MasterSummaryData">
+    <h3>Time Restriction Information</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>On-Street</th>
+                <th>Percent</th>
+                <th>Off-Street</th>
+                <th>Percent</th>
+                <th>Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Time restriction under one hour</td>
+                <td><span id="Time_Under_One_Hour_On">{{restrict.Time_Under_One_Hour_On}}</span>
+                </td>
+                <td>{{restrict.Time_Under_One_Hour_On_PCT}}%</td>
+                <td><span id="Time_Under_One_Hour_Off">{{restrict.Time_Under_One_Hour_Off}}</span>
+                </td>
+                <td>{{restrict.Time_Under_One_Hour_Off_PCT}}%</td>
+                <td><span id="Time_Under_One_Hour_Tot">{{restrict.Time_Under_One_Hour_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Time restriction one hour</td>
+                <td><span id="Time_One_Hour_On">{{restrict.Time_One_Hour_On}}</span>
+                </td>
+                <td>{{restrict.Time_One_Hour_On_PCT}}%</td>
+                <td><span id="Time_One_Hour_Off">{{restrict.Time_One_Hour_Off}}</span>
+                </td>
+                <td>{{restrict.Time_One_Hour_Off_PCT}}%</td>
+                <td><span id="Time_One_Hour_Tot">{{restrict.Time_One_Hour_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Time restriction 90 minutes</td>
+                <td><span id="Time_Ninety_Mins_On">{{restrict.Time_Ninety_Mins_On}}</span>
+                </td>
+                <td>{{restrict.Time_Ninety_Mins_On_PCT}}%</td>
+                <td><span id="Time_Ninety_Mins_Off">{{restrict.Time_Ninety_Mins_Off}}</span>
+                </td>
+                <td>{{restrict.Time_Ninety_Mins_Off_PCT}}%</td>
+                <td><span id="Time_Ninety_Mins_Tot">{{restrict.Time_Ninety_Mins_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Time restriction two hours</td>
+                <td><span id="Time_Two_Hours_On">{{restrict.Time_Two_Hours_On_PCT}}</span>
+                </td>
+                <td>{{restrict.Time_Two_Hours_On_PCT}}%</td>
+                <td><span id="Time_Two_Hours_Off">{{restrict.Time_Two_Hours_Off}}</span>
+                </td>
+                <td>{{restrict.Time_Two_Hours_Off_PCT}}%</td>
+                <td><span id="Time_Two_Hours_Tot">{{restrict.Time_Two_Hours_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Time restriction between three and four hours</td>
+                <td><span id="Time_3_to_4_Hours_On">{{restrict.Time_3_to_4_Hours_On}}</span>
+                </td>
+                <td>{{restrict.Time_3_to_4_Hours_On_PCT}}%</td>
+                <td><span id="Time_3_to_4_Hours_Off">{{restrict.Time_3_to_4_Hours_Off}}</span>
+                </td>
+                <td>{{restrict.Time_3_to_4_Hours_Off_PCT}}%</td>
+                <td><span id="Time_3_to_4_Hours_Tot">{{restrict.Time_3_to_4_Hours_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Time restrictiond greater than four hours</td>
+                <td><span id="Time_More_Than_4_Hours_On">{{restrict.Time_More_Than_4_Hours_On}}</span>
+                </td>
+                <td>{{restrict.Time_More_Than_4_Hours_On_PCT}}%</td>
+                <td><span id="Time_More_Than_4_Hours_Off">{{restrict.Time_More_Than_4_Hours_Off}}</span>
+                </td>
+                <td>{{restrict.Time_More_Than_4_Hours_Off_PCT}}%</td>
+                <td><span id="Time_More_Than_4_Hours_Tot">{{restrict.Time_More_Than_4_Hours_Tot}}</span>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<div id="WDOccInfo" ng-repeat="wd in MasterSummaryData">
+    <h3>Weekday Occupancy Information</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>On-Street</th>
+                <th>Percent</th>
+                <th>Off-Street</th>
+                <th>Percent</th>
+                <th>Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>Early morning occupancy (5AM)</td>
+                <td><span id="Total_5_00_WD_On">{{wd.Total_5_00_WD_On}}</span>
+                </td>
+                <td>{{wd.Total_5_00_WD_On_PCT}}%</td>
+                <td><span id="Total_5_00_WD_Off">{{wd.Total_5_00_WD_Off}}</span>
+                </td>
+                <td>{{wd.Total_5_00_WD_Off_PCT}}%</td>
+                <td><span id="Total_5_00_WD_Tot">{{wd.Total_5_00_WD_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Morning occupancy (9AM)</td>
+                <td><span id="Total_9_00_WD_On">{{wd.Total_9_00_WD_On}}</span>
+                </td>
+                <td>{{wd.Total_9_00_WD_On_PCT}}%</td>
+                <td><span id="Total_9_00_WD_Off">{{wd.Total_9_00_WD_Off}}</span>
+                </td>
+                <td>{{wd.Total_9_00_WD_Off_PCT}}%</td>
+                <td><span id="Total_9_00_WD_Tot">{{wd.Total_9_00_WD_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Afternoon occupancy (12PM)</td>
+                <td><span id="Total_12_00_WD_On">{{wd.Total_12_00_WD_On}}</span>
+                </td>
+                <td>{{wd.Total_12_00_WD_On_PCT}}%</td>
+                <td><span id="Total_12_00_WD_Off">{{wd.Total_12_00_WD_Off}}</span>
+                </td>
+                <td>{{wd.Total_12_00_WD_Off_PCT}}%</td>
+                <td><span id="Total_12_00_WD_Tot">{{wd.Total_12_00_WD_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Late afternoon occupancy (4PM)</td>
+                <td><span id="Total_16_00_WD_On">{{wd.Total_16_00_WD_On}}</span>
+                </td>
+                <td>{{wd.Total_16_00_WD_On_PCT}}%</td>
+                <td><span id="Total_16_00_WD_Off">{{wd.Total_16_00_WD_Off}}</span>
+                </td>
+                <td>{{wd.Total_16_00_WD_Off_PCT}}%</td>
+                <td><span id="Total_16_00_WD_Tot">{{wd.Total_16_00_WD_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Evening occupancy (8PM)</td>
+                <td><span id="Total_20_00_WD_On">{{wd.Total_20_00_WD_On}}</span>
+                </td>
+                <td>{{wd.Total_20_00_WD_On_PCT}}%</td>
+                <td><span id="Total_20_00_WD_Off">{{wd.Total_20_00_WD_Off}}</span>
+                </td>
+                <td>{{wd.Total_20_00_WD_Off_PCT}}%</td>
+                <td><span id="Total_20_00_WD_Tot">{{wd.Total_20_00_WD_Tot}}</span>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<div id="WEOccInfo" ng-repeat="we in MasterSummaryData">
+    <h3>Weekend Occupancy Information</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>On-Street</th>
+                <th>Percent</th>
+                <th>Off-Street</th>
+                <th>Percent</th>
+                <th>Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>Early morning occupancy (5AM)</td>
+                <td><span id="Total_5_00_WE_On">{{we.Total_5_00_WE_On}}</span>
+                </td>
+                <td>{{we.Total_5_00_WE_On_PCT}}%</td>
+                <td><span id="Total_5_00_WE_Off">{{we.Total_5_00_WE_Off}}</span>
+                </td>
+                <td>{{we.Total_5_00_WE_Off_PCT}}%</td>
+                <td><span id="Total_5_00_WE_Tot">{{we.Total_5_00_WE_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Morning occupancy (9AM)</td>
+                <td><span id="Total_9_00_WE_On">{{we.Total_9_00_WE_On}}</span>
+                </td>
+                <td>{{we.Total_9_00_WE_On_PCT}}%</td>
+                <td><span id="Total_9_00_WE_Off">{{we.Total_9_00_WE_Off}}</span>
+                </td>
+                <td>{{we.Total_9_00_WE_Off_PCT}}%</td>
+                <td><span id="Total_9_00_WE_Tot">{{we.Total_9_00_WE_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Afternoon occupancy (12PM)</td>
+                <td><span id="Total_12_00_WE_On">{{we.Total_12_00_WE_On}}</span>
+                </td>
+                <td>{{we.Total_12_00_WE_On_PCT}}%</td>
+                <td><span id="Total_12_00_WE_Off">{{we.Total_12_00_WE_Off}}</span>
+                </td>
+                <td>{{we.Total_12_00_WE_Off_PCT}}%</td>
+                <td><span id="Total_12_00_WE_Tot">{{we.Total_12_00_WE_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Late afternoon occupancy (4PM)</td>
+                <td><span id="Total_16_00_WE_On">{{we.Total_16_00_WE_On}}</span>
+                </td>
+                <td>{{we.Total_16_00_WE_On_PCT}}%</td>
+                <td><span id="Total_16_00_WE_Off">{{we.Total_16_00_WE_Off}}</span>
+                </td>
+                <td>{{we.Total_16_00_WE_Off_PCT}}%</td>
+                <td><span id="Total_16_00_WE_Tot">{{we.Total_16_00_WE_Tot}}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Evening occupancy (8PM)</td>
+                <td><span id="Total_20_00_WE_On">{{we.Total_20_00_WE_On}}</span>
+                </td>
+                <td>{{we.Total_20_00_WE_On_PCT}}%</td>
+                <td><span id="Total_20_00_WE_Off">{{we.Total_20_00_WE_Off}}</span>
+                </td>
+                <td>{{we.Total_20_00_WE_Off_PCT}}%</td>
+                <td><span id="Total_20_00_WE_Tot">{{we.Total_20_00_WE_Tot}}</span>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="AddtnlResources">
+    <h3>Additional Resources</h3>
+    <span><p>Can we have something on the main page to download additional resources or see photos instead of this section? This has not been developed yet.</p></span>
+
+</div>
+                        </div>
+                        <div class="panel-footer">
+                            <span><p>Value Here</p></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
 
 
-        <!-- Content -->
+    <!-- Content -->
 </section>

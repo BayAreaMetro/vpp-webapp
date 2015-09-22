@@ -19,7 +19,7 @@ angular.module('vppApp')
             //Summary Data URLs
             var devDataUrl = "http://localhost:3003";
             var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
-            var sanValue;
+            $scope.sanValue = 1;
             $scope.geninfoData;
             $scope.supplyBothData;
             $scope.supplyOffStreetData;
@@ -45,6 +45,7 @@ angular.module('vppApp')
             //THIS TOOL NEEDS TO BE WIRED UP TO THE SHOW DATA AND DOWNLOAD DATA FUNCTION
             $(".find-studyarea").change(function () {
                 var param = $("#StudyAreaSearch").val();
+
                 $scope.sanValue = $('#studyareas-list option').filter(function () {
                     return this.value == param;
                     //console.log(this);
@@ -65,8 +66,6 @@ angular.module('vppApp')
                     }
                 });
 
-
-
             });
 
             $('#dbSummaryMI').click(function () {
@@ -77,17 +76,10 @@ angular.module('vppApp')
 
             });
 
-            //            $('#dbPoliciesMI').click(function () {
-            //                $("#Policies").fadeIn(500);
-            //                $("#DataTable").fadeOut(0, function () {
-            //                    $("#DataSummary").fadeOut(0);
-            //                });
-            //            });
 
             $('#vwDataBTN').click(function () {
                 $("#DataTable").fadeIn(500);
                 $("#DataSummary").fadeOut(0, function () {
-
 
                     //http request for gen info
                     $http({
@@ -98,129 +90,28 @@ angular.module('vppApp')
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
                     });
-                    //end of http request for gen info.
+                    //End of http request for gen info.
+
                     //http request for Master Summary Data
                     $http({
                         url: devDataUrl + '/data/summary?sa=' + $scope.sanValue,
                         method: 'GET'
                     }).success(function (results) {
                         $scope.MasterSummaryData = results;
+
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
+
                     });
                     //End of http request
 
-                    //http request for supply both data
-                    $http({
-                        url: publicDataURL + '/data/supplyboth?sa=' + $scope.sanValue,
-                        method: 'GET'
-                    }).success(function (results) {
-                        $scope.supplyBothData = results;
-                        //                        console.log($scope.supplyBothData[0]);
-                        //$('#Total_Spaces_Tot').text($scope.supplyBothData[0].Total_Spaces);
-                        $('#Unregulated_Spaces_Tot').text($scope.supplyBothData[0].Unregulated_Spaces);
-                        $('#Time_and_Meter_Regulated_Spaces_Tot').text($scope.supplyBothData[0].Time_and_Meter_Regulated_Spaces);
-                        $('#Time_Only_Regulated_Spaces_Tot').text($scope.supplyBothData[0].Time_Only_Regulated_Spaces);
-                        $('#Meter_Only_Regulated_Spaces_Tot').text($scope.supplyBothData[0].Meter_Only_Regulated_Spaces);
-                        $('#ADA_Spaces_Tot').text($scope.supplyBothData[0].ADA_Spaces);
-                        $('#Motorcycle_Spaces_Tot').text($scope.supplyBothData[0].Motorcycle_Spaces);
-                        $('#Loading_or_Other_Spaces_Tot').text($scope.supplyBothData[0].Loading_or_Other_Spaces);
-                        $('#Permit_Reserved_Only_Spaces_Tot').text($scope.supplyBothData[0].Permit_Reserved_Only_Spaces);
-                        $('#Shared_Permit_Spaces_Tot').text($scope.supplyBothData[0].Shared_Permit_Spaces);
-                        //Pricing
-                        $('#Total_Spaces_Priced_Tot').text($scope.supplyBothData[0].Total_Spaces_Priced);
-                        $('#Pricing_Permit_Reserved_Only_Spaces_Tot').text($scope.supplyBothData[0].Permit_Reserved_Only_Spaces);
-                        $('#Pricing_Shared_Permit_Spaces_Tot').text($scope.supplyBothData[0].Shared_Permit_Spaces);
-                        //Time Restriction
-                        $('#Time_Under_One_Hour_Tot').text($scope.supplyBothData[0].Time_Under_One_Hour);
-                        $('#Time_One_Hour_Tot').text($scope.supplyBothData[0].Time_One_Hour);
-                        $('#Time_Ninety_Mins_Tot').text($scope.supplyBothData[0].Time_Ninety_Mins);
-                        $('#Time_Two_Hours_Tot').text($scope.supplyBothData[0].Time_Two_Hours);
-                        $('#Time_3_to_4_Hours_Tot').text($scope.supplyBothData[0].Time_3_to_4_Hours);
-                        $('#Time_More_Than_4_Hours_Tot').text($scope.supplyBothData[0].Time_More_Than_4_Hours);
-                    }).error(function (data, status) {
-                        console.log("There was an error:", status);
-                    });
-                    //http request for supply off-street data
-
-                    $http({
-                        url: publicDataURL + '/data/supplyoffstreet?sa=' + $scope.sanValue,
-                        method: 'GET'
-                    }).success(function (results) {
-                        $scope.supplyOffStreetData = results;
-                        //Supply
-                        //$('#Total_Spaces_Off').text($scope.supplyOffStreetData[0].Total_Spaces);
-                        //Type of Spaces
-                        $('#Unregulated_Spaces_Off').text($scope.supplyOffStreetData[0].Unregulated_Spaces);
-                        $('#Time_and_Meter_Regulated_Spaces_Off').text($scope.supplyOffStreetData[0].Time_and_Meter_Regulated_Spaces);
-                        $('#Time_Only_Regulated_Spaces_Off').text($scope.supplyOffStreetData[0].Time_Only_Regulated_Spaces);
-                        $('#Meter_Only_Regulated_Spaces_Off').text($scope.supplyOffStreetData[0].Meter_Only_Regulated_Spaces);
-                        $('#ADA_Spaces_Off').text($scope.supplyOffStreetData[0].ADA_Spaces);
-                        $('#Motorcycle_Spaces_Off').text($scope.supplyOffStreetData[0].Motorcycle_Spaces);
-                        $('#Loading_or_Other_Spaces_Off').text($scope.supplyOffStreetData[0].Loading_or_Other_Spaces);
-                        $('#Permit_Reserved_Only_Spaces_Off').text($scope.supplyOffStreetData[0].Permit_Reserved_Only_Spaces);
-                        $('#Shared_Permit_Spaces_Off').text($scope.supplyOffStreetData[0].Shared_Permit_Spaces);
-                        //Pricing
-                        $('#Total_Spaces_Priced_Off').text($scope.supplyOffStreetData[0].Total_Spaces_Priced);
-                        $('#Pricing_Permit_Reserved_Only_Spaces_Off').text($scope.supplyOnStreetData[0].Permit_Reserved_Only_Spaces);
-                        $('#Pricing_Shared_Permit_Spaces_Off').text($scope.supplyOffStreetData[0].Shared_Permit_Spaces);
-                        //Time Restriction
-                        $('#Time_Under_One_Hour_Off').text($scope.supplyOffStreetData[0].Time_Under_One_Hour);
-                        $('#Time_One_Hour_Off').text($scope.supplyOffStreetData[0].Time_One_Hour);
-                        $('#Time_Ninety_Mins_Off').text($scope.supplyOffStreetData[0].Time_Ninety_Mins);
-                        $('#Time_Two_Hours_Off').text($scope.supplyOffStreetData[0].Time_Two_Hours);
-                        $('#Time_3_to_4_Hours_Off').text($scope.supplyOffStreetData[0].Time_3_to_4_Hours);
-                        $('#Time_More_Than_4_Hours_Off').text($scope.supplyOffStreetData[0].Time_More_Than_4_Hours);
-
-                    }).error(function (data, status) {
-                        console.log("There was an error:", status);
-                    });
-                    //http request for supply on-street data
-                    $http({
-                        url: publicDataURL + '/data/supplyonstreet?sa=' + $scope.sanValue,
-                        method: 'GET'
-                    }).success(function (results) {
-                        $scope.supplyOnStreetData = results;
-                        //Supply
-                        //$('#Total_Spaces_On').text($scope.supplyOnStreetData[0].Total_Spaces);
-                        //Type of Spaces
-                        $('#Unregulated_Spaces_On').text($scope.supplyOnStreetData[0].Unregulated_Spaces);
-                        $('#Time_and_Meter_Regulated_Spaces_On').text($scope.supplyOnStreetData[0].Time_and_Meter_Regulated_Spaces);
-                        $('#Time_Only_Regulated_Spaces_On').text($scope.supplyOnStreetData[0].Time_Only_Regulated_Spaces);
-                        $('#Meter_Only_Regulated_Spaces_On').text($scope.supplyOnStreetData[0].Meter_Only_Regulated_Spaces);
-                        $('#ADA_Spaces_On').text($scope.supplyOnStreetData[0].ADA_Spaces);
-                        $('#Motorcycle_Spaces_On').text($scope.supplyOnStreetData[0].Motorcycle_Spaces);
-                        $('#Loading_or_Other_Spaces_On').text($scope.supplyOnStreetData[0].Loading_or_Other_Spaces);
-                        $('#Permit_Reserved_Only_Spaces_On').text($scope.supplyOnStreetData[0].Permit_Reserved_Only_Spaces);
-                        $('#Shared_Permit_Spaces_On').text($scope.supplyOnStreetData[0].Shared_Permit_Spaces);
-                        //Pricing
-                        $('#Total_Spaces_Priced_On').text($scope.supplyOnStreetData[0].Total_Spaces_Priced);
-                        $('#Pricing_Permit_Reserved_Only_Spaces_On').text($scope.supplyOnStreetData[0].Permit_Reserved_Only_Spaces);
-                        $('#Pricing_Shared_Permit_Spaces_On').text($scope.supplyOnStreetData[0].Shared_Permit_Spaces);
-                        //Time Restriction
-                        $('#Time_Under_One_Hour_On').text($scope.supplyOnStreetData[0].Time_Under_One_Hour);
-                        $('#Time_One_Hour_On').text($scope.supplyOnStreetData[0].Time_One_Hour);
-                        $('#Time_Ninety_Mins_On').text($scope.supplyOnStreetData[0].Time_Ninety_Mins);
-                        $('#Time_Two_Hours_On').text($scope.supplyOnStreetData[0].Time_Two_Hours);
-                        $('#Time_3_to_4_Hours_On').text($scope.supplyOnStreetData[0].Time_3_to_4_Hours);
-                        $('#Time_More_Than_4_Hours_On').text($scope.supplyOnStreetData[0].Time_More_Than_4_Hours);
-
-
-                    }).error(function (data, status) {
-                        console.log("There was an error:", status);
-                    });
                 });
-
-
-
             });
-
-
 
             $('#vwOptionsBTN').click(function () {
                 $("#DataSummary").fadeIn(500);
                 $("#DataTable").fadeOut(0, function () {
-                    //                    $("#DataTable").fadeOut(0);
+
                 });
             });
             //End of Page Controls
@@ -249,7 +140,7 @@ angular.module('vppApp')
 
                         break;
                     case "Pricing":
-                        $("#PricingInfo").show();
+                        $("#PricingInfo").fadeIn(0);
 
                         break;
                     case "Supply":
@@ -259,23 +150,23 @@ angular.module('vppApp')
 
                         break;
                     case "Restrictions":
-                        $("#RestrictionInfo").show();
+                        $("#RestrictionInfo").fadeIn(0);
 
                         break;
                     case "SpaceTypes":
-                        $("#SpaceType").show();
+                        $("#SpaceType").fadeIn(0);
 
                         break;
                     case "WDOccupancy":
-                        $("#WDOccInfo").show();
+                        $("#WDOccInfo").fadeIn(0);
 
                         break;
                     case "WEOccupancy":
-                        $("#WEOccInfo").show();
+                        $("#WEOccInfo").fadeIn(0);
 
                         break;
                     case "Resources":
-                        $("#AddtnlResources").show();
+                        $("#AddtnlResources").fadeIn(0);
 
                         break;
 
@@ -283,41 +174,41 @@ angular.module('vppApp')
                 } else {
                     switch (cat) {
                     case "ShowAll":
-                        $("#ParkingSupply").hide();
-                        $("#SpaceType").hide();
-                        $("#PricingInfo").hide();
-                        $("#RestrictionInfo").hide();
-                        $("#WDOccInfo").hide();
-                        $("#WEOccInfo").hide();
-                        $("#AddtnlResources").hide();
+                        $("#ParkingSupply").fadeOut(0);
+                        $("#SpaceType").fadeOut(0);
+                        $("#PricingInfo").fadeOut(0);
+                        $("#RestrictionInfo").fadeOut(0);
+                        $("#WDOccInfo").fadeOut(0);
+                        $("#WEOccInfo").fadeOut(0);
+                        $("#AddtnlResources").fadeOut(0);
 
                         break;
                     case "Pricing":
-                        $("#PricingInfo").hide();
+                        $("#PricingInfo").fadeOut(0);
 
                         break;
                     case "Supply":
-                        $("#ParkingSupply").hide();
+                        $("#ParkingSupply").fadeOut(0);
 
                         break;
                     case "Restrictions":
-                        $("#RestrictionInfo").hide();
+                        $("#RestrictionInfo").fadeOut(0);
 
                         break;
                     case "SpaceTypes":
-                        $("#SpaceType").hide();
+                        $("#SpaceType").fadeOut(0);
 
                         break;
                     case "WDOccupancy":
-                        $("#WDOccInfo").hide();
+                        $("#WDOccInfo").fadeOut(0);
 
                         break;
                     case "WEOccupancy":
-                        $("#WEOccInfo").hide();
+                        $("#WEOccInfo").fadeOut(0);
 
                         break;
                     case "Resources":
-                        $("#AddtnlResources").hide();
+                        $("#AddtnlResources").fadeOut(0);
 
                         break;
 
