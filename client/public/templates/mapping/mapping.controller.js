@@ -993,7 +993,23 @@ angular.module('vppApp')
 
         }
 
-        
+        function addRow() {
+            var div = document.createElement('div');
+
+            div.className = 'row';
+
+            div.innerHTML = '<input type="text" name="name" value="" />\
+                <input type="text" name="value" value="" />\
+                <label> <input type="checkbox" name="check" value="1" /> Checked? </label>\
+                <input type="button" value="-" onclick="removeRow(this)">';
+
+             document.getElementById('#legendPanelBody').appendChild(div);
+        }
+
+        function removeRow(input) {
+            document.getElementById('#legendPanelBody').removeChild( input.parentNode );
+        }
+                
 
 
         //Global Switch for all check boxes as toggle switches
@@ -1011,6 +1027,7 @@ angular.module('vppApp')
                 switch (LayerName) {
                 case "PDA_FL":
                     PDA_FL.show();
+                   // addRow();
                     break;
                 case "COC_FL":
                     COC_FL.show();
