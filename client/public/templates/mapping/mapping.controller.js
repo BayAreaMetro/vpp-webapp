@@ -644,6 +644,8 @@ angular.module('vppApp')
             if (level > 14) {
                 OnStreetInventoryFL.show();
                 studyAreasFL.show();
+                $("#mapLegendPNL").fadeIn(500);
+                $("#LegendTitle").text("Legend");
                 $("#LegendNamePNL_TotalSpaces").fadeIn(500);
                 $("#mlegend_TotalSpaces").fadeIn(500);
                 //heatmapFeatureLayer.hide();
