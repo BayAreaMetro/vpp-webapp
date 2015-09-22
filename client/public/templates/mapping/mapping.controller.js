@@ -644,12 +644,26 @@ angular.module('vppApp')
             if (level > 14) {
                 OnStreetInventoryFL.show();
                 studyAreasFL.show();
+                $("#LegendNamePNL_TotalSpaces").fadeIn(500);
+                $("#mlegend_TotalSpaces").fadeIn(500);
                 //heatmapFeatureLayer.hide();
             } else {
-                OnStreetInventoryFL.hide();
                 studyAreasFL.show();
-                //heatmapFeatureLayer.show();
-                //console.log('Heat Map Visible!')
+
+                OnStreetInventoryFL.hide();
+                OffStreetInventoryFL.hide();
+                OnStreetRestrictionsFL.hide();
+                OffStreetRestrictionsFL.hide();
+                WDOnStreetOccupancyFL.hide();
+                WEOnStreetOccupancyFL.hide();
+                WDOffStreetOccupancyFL.hide();
+                WEOffStreetOccupancyFL.hide();
+                $("#mlegend_TotalSpaces").fadeOut(500);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+                $("#LegendNamePNL_Occ").fadeOut(500);
+                $("#LegendNamePNL_Restr").fadeOut(500);
+                $("#mlegend_Occ").fadeOut(500);
+                $("#mlegend_Restr").fadeOut(500);
             }
         }
 
@@ -898,6 +912,7 @@ angular.module('vppApp')
         $('#mapRefreshCTL').click(function () {
 
 
+
             OnStreetInventoryFL.hide();
             OffStreetInventoryFL.hide();
             OnStreetRestrictionsFL.hide();
@@ -906,7 +921,7 @@ angular.module('vppApp')
             WDOffStreetOccupancyFL.hide();
             WEOnStreetOccupancyFL.hide();
             WEOffStreetOccupancyFL.hide();
-            studyAreasFL.show();
+            
             COC_FL.hide();
             PDA_FL.hide();
             FerryTerminalsFL.hide();
@@ -920,6 +935,9 @@ angular.module('vppApp')
             $("#mapLegendPNL").fadeOut(300, function () {
                 $("#LegendTitle").text("");
             });
+
+            $("#StudyAreaNamePNL").fadeIn(100);
+            studyAreasFL.show();
 
         })
 
