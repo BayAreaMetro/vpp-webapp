@@ -948,7 +948,9 @@ angular.module('vppApp')
                 $("#LegendTitle").text("");
             });
 
-            $("#StudyAreaNamePNL").fadeIn(100);
+            $("#StudyAreaNamePNL").fadeIn(100, function(){
+                $("#StudyAreaNamePNL").html("");
+            });
             studyAreasFL.show();
 
         })
