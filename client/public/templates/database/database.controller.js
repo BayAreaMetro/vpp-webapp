@@ -94,7 +94,7 @@ angular.module('vppApp')
 
                     //http request for Master Summary Data
                     $http({
-                        url: devDataUrl + '/data/summary?sa=' + $scope.sanV,
+                        url: publicDataURL + '/data/summary?sa=' + $scope.sanV,
                         method: 'GET'
                     }).success(function (results) {
                         $scope.MasterSummaryData = results;
