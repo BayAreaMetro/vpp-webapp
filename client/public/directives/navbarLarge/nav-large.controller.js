@@ -5,6 +5,8 @@ angular.module('vppApp')
     	'$scope', 
     	function ($scope) {
 	    	
+	    	$scope.isActive = true;
+	    	
 	    	//Show nav
 			$scope.showInnerLinks = function(event){
 				event.target.classList.add('show-inner');
@@ -18,6 +20,11 @@ angular.module('vppApp')
 				//$(".nav-list").removeClass('show-inner');
 				console.log('hide');
 			}
+			
+			$scope.active = function(e){
+				$('.navbar-nav > li > a').removeClass('active');
+				$(e.target).addClass("active");
+			};
     	}
     ]	
 );

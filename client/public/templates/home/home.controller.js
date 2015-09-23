@@ -3,8 +3,11 @@
 angular.module('vppApp')
 	.controller('HomeCtrl', [
 		'$scope', 
-		function(){
-		
+		function($scope){
+			
+			$scope.init = function(){
+			}
+			$scope.init();
 		}
 	]
 );
