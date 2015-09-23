@@ -889,13 +889,13 @@ angular.module('vppApp')
         });
 
         $('#HomeButton').click(function () {
-            //('#StudyAreaNamePNL').html("");
-           // $("#StudyAreaNamePNL").fadeOut(100);
-            $("#mapLegendPNL").fadeOut(300, function () {
-               // $("#LegendTitle").text("");
+            $("#mapLegendPNL").fadeIn(300, function () {
+                $("#LegendTitle").text("");
+            });
 
-
-        });
+            $("#StudyAreaNamePNL").fadeOut(100, function(){
+                $("#StudyAreaNamePNL").html("");
+            });
             });
 
         //SMap Layer Controls
@@ -944,11 +944,11 @@ angular.module('vppApp')
 
             vppGraphicsLayer.clear();
             $scope.map.centerAndZoom(mapCenter, 11);
-            $("#mapLegendPNL").fadeOut(300, function () {
+            $("#mapLegendPNL").fadeIn(300, function () {
                 $("#LegendTitle").text("");
             });
 
-            $("#StudyAreaNamePNL").fadeIn(100, function(){
+            $("#StudyAreaNamePNL").fadeOut(100, function(){
                 $("#StudyAreaNamePNL").html("");
             });
             studyAreasFL.show();
