@@ -28,5 +28,5 @@ Development Instructions/ Notes
 
 5. then cd back to top level folder for app and run gulp serve
 
-Browser should open at or navigate to localhost:3000
+    - Browser should open at or navigate to localhost:3000
 
