@@ -134,7 +134,7 @@ angular.module('vppApp')
             map: $scope.map
         }, "HomeButton");
         home.startup();
-
+        
         vppGraphicsLayer = new w.GraphicsLayer({
             opacity: 0.50
         });
@@ -887,6 +887,16 @@ angular.module('vppApp')
             //return false;
 
         });
+
+        $('#HomeButton').click(function () {
+            //('#StudyAreaNamePNL').html("");
+           // $("#StudyAreaNamePNL").fadeOut(100);
+            $("#mapLegendPNL").fadeOut(300, function () {
+               // $("#LegendTitle").text("");
+
+
+        });
+            });
 
         //SMap Layer Controls
         $('#mapLayersCTL').click(function () {
