@@ -93,6 +93,29 @@ ul, li, ol{
 	&.btn-default{
 		border-radius: 0;		
 	}
+	&.btn-primary{
+		border-radius: 0;
+		background-color: @mainColor;
+	}
 }
+.panel{
+	border-radius: 0;
+	&.panel-primary{
+		border-color: @mainColor;
+		.panel-heading{
+			background-color: @mainColor;
+			border-color: @mainColor;
+			border-radius: 0;
+		}
+	}
+}
+.@{bootstrap-switch-base}-handle-on,
+  .@{bootstrap-switch-base}-handle-off {
+    text-align: center;
+    z-index: 1;
 
-
+    &.@{bootstrap-switch-base}-primary {
+      color: #fff;
+      background: @mainColor !important;
+    }
+}
