@@ -68,6 +68,56 @@ angular.module('vppApp')
 
             });
 
+            $(".find-studyareaINV").change(function () {
+                $scope.StudyAreaName = $("#StudyAreaSearchINV").val();
+
+                $scope.sanV = $('#studyareas-list option').filter(function () {
+                    return this.value == $scope.StudyAreaName;
+
+                }).data('number');
+
+                //load Data for CollectionYear
+                $.ajax({
+                    dataType: 'json',
+                    url: publicDataURL + '/data/collectionyear?sa=' + $scope.sanV,
+                    success: function (data) {
+                        //console.clear();
+                        //console.log(data);
+                        $scope.sa = data;
+                        for (var i = 0; i < data.length; i++) {
+                            $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
+                        }
+                        $('#selectCollectionYearINV').val(data[0].CollectionYear);
+                    }
+                });
+
+            });
+
+            $(".find-studyareaOCC").change(function () {
+                $scope.StudyAreaName = $("#StudyAreaSearchOCC").val();
+
+                $scope.sanV = $('#studyareas-list option').filter(function () {
+                    return this.value == $scope.StudyAreaName;
+
+                }).data('number');
+
+                //load Data for CollectionYear
+                $.ajax({
+                    dataType: 'json',
+                    url: publicDataURL + '/data/collectionyear?sa=' + $scope.sanV,
+                    success: function (data) {
+                        //console.clear();
+                        //console.log(data);
+                        $scope.sa = data;
+                        for (var i = 0; i < data.length; i++) {
+                            $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
+                        }
+                        $('#selectCollectionYearOCC').val(data[0].CollectionYear);
+                    }
+                });
+
+            });
+
             $('#dlSummaryDataBTN').click(function () {
 
                 //http request for Master Summary Data
@@ -76,7 +126,7 @@ angular.module('vppApp')
                     method: 'GET'
                 }).success(function (results) {
                     $scope.MasterSummaryData = results;
-                    exportToCSV(results, $scope.StudyAreaName, true);
+                    exportToCSV(results, $scope.StudyAreaName, 'Parking Data Summary', true);
 
                 }).error(function (data, status) {
                     console.log("There was an error:", status);
@@ -86,41 +136,95 @@ angular.module('vppApp')
 
             });
             $('#dlInventoryDataBTN').click(function () {
-                $scope.ParkingType = $("#").val();
-                //http request for Master Summary Data
-                $http({
-                    url: publicDataURL + '/data/inventoryon?sa=' + $scope.sanV,
-                    method: 'GET'
-                }).success(function (results) {
-                    $scope.InventorySummaryData = results;
-                    exportToCSV(results, $scope.StudyAreaName, true);
+                $scope.ParkingType = $("#ParkingTypeSearchINV").val();
 
-                }).error(function (data, status) {
-                    console.log("There was an error:", status);
+                console.clear();
+                console.log($scope.ParkingType);
 
-                });
-                $http({
-                    url: publicDataURL + '/data/inventoryoff?sa=' + $scope.sanV,
-                    method: 'GET'
-                }).success(function (results) {
-                    $scope.InventorySummaryData = results;
-                    exportToCSV(results, $scope.StudyAreaName, true);
 
-                }).error(function (data, status) {
-                    console.log("There was an error:", status);
+                switch ($scope.ParkingType) {
+                case "Off-Street":
+                    $http({
+                        url: publicDataURL + '/data/inventoryoff?sa=' + $scope.sanV,
+                        method: 'GET'
+                    }).success(function (results) {
+                        $scope.InventorySummaryData = results;
+                        exportToCSV(results, $scope.StudyAreaName, 'Off-Street Inventory', true);
 
-                });
-                //End of http request
+                    }).error(function (data, status) {
+                        console.log("There was an error:", status);
+
+                    });
+                    break;
+                case "On-Street":
+
+
+                    $http({
+                        url: publicDataURL + '/data/inventoryon?sa=' + $scope.sanV,
+                        method: 'GET'
+                    }).success(function (results) {
+                        $scope.InventorySummaryData = results;
+                        exportToCSV(results, $scope.StudyAreaName, 'On-Street Inventory', true);
+
+                    }).error(function (data, status) {
+                        console.log("There was an error:", status);
+
+                    });
+                    break;
+                }
+
+
+
+            });
+            $('#dlOccupancyDataBTN').click(function () {
+                $scope.ParkingType = $("#ParkingTypeSearchOCC").val();
+
+                console.clear();
+                console.log($scope.ParkingType);
+
+
+                switch ($scope.ParkingType) {
+                case "Off-Street":
+                    $http({
+                        url: publicDataURL + '/data/occupancyoff?sa=' + $scope.sanV,
+                        method: 'GET'
+                    }).success(function (results) {
+                        $scope.OccupancySummaryData = results;
+                        exportToCSV(results, $scope.StudyAreaName, 'Off-Street Occupancy', true);
+
+                    }).error(function (data, status) {
+                        console.log("There was an error:", status);
+
+                    });
+                    break;
+                case "On-Street":
+
+
+                    $http({
+                        url: publicDataURL + '/data/occupancyon?sa=' + $scope.sanV,
+                        method: 'GET'
+                    }).success(function (results) {
+                        $scope.OccupancySummaryData = results;
+                        exportToCSV(results, $scope.StudyAreaName, 'On-Street Occupancy', true);
+
+                    }).error(function (data, status) {
+                        console.log("There was an error:", status);
+
+                    });
+                    break;
+                }
+
+
 
             });
 
-            function exportToCSV(data, SAName, ShowLabel) {
+            function exportToCSV(data, SAName, DataType, ShowLabel) {
                 var arrData = typeof data != 'object' ? JSON.parse(data) : data;
 
                 var CSV = '';
                 //Set Report title in first row or line
 
-                CSV += SAName + '\r\n\n';
+                CSV += SAName + ': ' + DataType + '\r\n\n';
 
                 //This condition will generate the Label/Header
                 if (ShowLabel) {

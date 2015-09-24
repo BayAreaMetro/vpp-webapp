@@ -150,7 +150,7 @@ router.get('/supplyonstreet', function (req, res, next) {
     });
 });
 
-//Load Inventory
+//Load Inventory for Download
 router.get('/inventoryon', function (req, res, next) {
     sql = new mssql.Request(database.connection);
     var sa = req.param('sa');
@@ -189,8 +189,46 @@ router.get('/inventoryoff', function (req, res, next) {
         res.end("; Done.");
     });
 });
+//Load Occupancy for Download
+router.get('/occupancyon', function (req, res, next) {
+    sql = new mssql.Request(database.connection);
+    var sa = req.param('sa');
+    sql.query("SELECT * FROM VPP_Data.WEBMAP__OccupancyDownloadON where Project_ID=" + sa, function (err, data) {
+        if (err) {
+            res.writeHead(500, {
+                'Content-Type': 'text/plain'
+            });
+            res.write("Got error :-( " + err);
+            res.end("");
+            return;
+        }
 
+        res.send(JSON.stringify(data));
+        //console.log(data);
+        //res.write(JSON.stringify(results, null, 4));
+        res.end("; Done.");
+    });
+});
+router.get('/occupancyoff', function (req, res, next) {
+    sql = new mssql.Request(database.connection);
+    var sa = req.param('sa');
+    sql.query("SELECT * FROM VPP_Data.WEBMAP__OccupancyDownloadOFF where Project_ID=" + sa, function (err, data) {
+        if (err) {
+            res.writeHead(500, {
+                'Content-Type': 'text/plain'
+            });
+            res.write("Got error :-( " + err);
+            res.end("");
+            return;
+        }
 
+        res.send(JSON.stringify(data));
+        //console.log(data);
+        //res.write(JSON.stringify(results, null, 4));
+        res.end("; Done.");
+    });
+});
+//
 //Load Occupancy Weekday (Needs Study Area Variable, )
 router.get('/ocupancywd', function (req, res, next) {
     sql = new mssql.Request(database.connection);

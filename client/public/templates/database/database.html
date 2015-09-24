@@ -36,19 +36,21 @@
                                     <p class="help-block">Choose a Study Area</p>
                                 </div>
                             </div>
+                            <!--
                             <div class="form-group collapse">
-                                <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
-                                <div class="col-md-6">
+    <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
+    <div class="col-md-6">
 
-                                    <input id="ParkingTypeSearch" type="text" placeholder="eg. On-Street, Off-Street, Both" class="form-control input-md" required="" list="pt-list">
-                                    <datalist id="pt-list">
-                                        <option value="On-Street">
-                                            <option value="Off-Street">
-                                                <option value="Both On/Off-Street">
-                                    </datalist>
+        <input id="ParkingTypeSearch" type="text" placeholder="eg. On-Street, Off-Street, Both" class="form-control input-md" required="" list="pt-list">
+        <datalist id="pt-list">
+            <option value="On-Street">
+                <option value="Off-Street">
+                    <option value="Both On/Off-Street">
+        </datalist>
 
-                                </div>
-                            </div>
+    </div>
+</div>
+-->
 
                             <!-- Collection Year -->
                             <div class="form-group">
@@ -152,7 +154,7 @@
                                 <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
                                 <div class="col-md-6">
 
-                                    <input id="StudyAreaSearch" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyarea" required="" name="City" list="studyareas-list">
+                                    <input id="StudyAreaSearchINV" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyareaINV" required="" name="City" list="studyareas-list">
                                     <datalist id="studyareas-list"></datalist>
                                     <p class="help-block">Choose a Study Area</p>
                                 </div>
@@ -174,7 +176,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
                                 <div class="col-md-6">
-                                    <input id="selectCollectionYear" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
+                                    <input id="selectCollectionYearINV" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
                                     <datalist id="collectionyear-list"></datalist>
                                     <p class="help-block">&nbsp;</p>
                                 </div>
@@ -235,9 +237,11 @@
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
                                     <div class="col-md-8 pull-left">
-                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
-                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
-                                        </button>
+                                        <!--
+                                        <button id="vwMapBTN" type="button" class="btn btn-default btn-sm">
+    <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Map
+</button>
+-->
                                         <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                         </button>
@@ -261,16 +265,16 @@
                                 <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
                                 <div class="col-md-6">
 
-                                    <input id="StudyAreaSearch" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyarea" required="" name="City" list="studyareas-list">
+                                    <input id="StudyAreaSearchOCC" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyareaOCC" required="" name="City" list="studyareas-list">
                                     <datalist id="studyareas-list"></datalist>
                                     <p class="help-block">Choose a Study Area</p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
+                                <label class="col-md-4 control-label" for="ParkingTypeSearchOCC">Select Parking Type</label>
                                 <div class="col-md-6">
 
-                                    <input id="ParkingTypeSearchINV" type="text" placeholder="eg. On-Street, Off-Street, Both" class="form-control input-md" required="" list="pt-list">
+                                    <input id="ParkingTypeSearchOCC" type="text" placeholder="eg. On-Street, Off-Street, Both" class="form-control input-md" required="" list="pt-list">
                                     <datalist id="pt-list">
                                         <option value="On-Street">
                                             <option value="Off-Street">
@@ -282,9 +286,9 @@
 
                             <!-- Collection Year -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
+                                <label class="col-md-4 control-label" for="selectCollectionYearOCC">Collection Year</label>
                                 <div class="col-md-6">
-                                    <input id="selectCollectionYear" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
+                                    <input id="selectCollectionYearOCC" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
                                     <datalist id="collectionyear-list"></datalist>
                                     <p class="help-block">&nbsp;</p>
                                 </div>
@@ -357,10 +361,12 @@
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
                                     <div class="col-md-8 pull-left">
+                                        <!--
                                         <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
                                         </button>
-                                        <button id="dlDataBTN" type="button" class="btn btn-default btn-sm">
+-->
+                                        <button id="dlOccupancyDataBTN" type="button" class="btn btn-default btn-sm">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                         </button>
                                     </div>
