@@ -154,9 +154,7 @@ router.get('/supplyonstreet', function (req, res, next) {
 router.get('/inventoryon', function (req, res, next) {
     sql = new mssql.Request(database.connection);
     var sa = req.param('sa');
-    //var pt = req.param('pt');
-    //var cy = req.param('cy');
-    sql.query("SELECT * FROM WEBMAP__InventoryDownloadON where Project_ID=" + sa, function (err, data) {
+    sql.query("SELECT * FROM VPP_Data.WEBMAP__InventoryDownloadON where Project_ID=" + sa, function (err, data) {
         if (err) {
             res.writeHead(500, {
                 'Content-Type': 'text/plain'
@@ -175,9 +173,7 @@ router.get('/inventoryon', function (req, res, next) {
 router.get('/inventoryoff', function (req, res, next) {
     sql = new mssql.Request(database.connection);
     var sa = req.param('sa');
-    //var pt = req.param('pt');
-    //var cy = req.param('cy');
-    sql.query("SELECT * FROM WEBMAP__InventoryDownloadOFF where Project_ID=" + sa, function (err, data) {
+    sql.query("SELECT * FROM VPP_Data.WEBMAP__InventoryDownloadOFF where Project_ID=" + sa, function (err, data) {
         if (err) {
             res.writeHead(500, {
                 'Content-Type': 'text/plain'

@@ -86,13 +86,24 @@ angular.module('vppApp')
 
             });
             $('#dlInventoryDataBTN').click(function () {
-
+                $scope.ParkingType = $("#").val();
                 //http request for Master Summary Data
                 $http({
-                    url: publicDataURL + '/data/summary?sa=' + $scope.sanV,
+                    url: publicDataURL + '/data/inventoryon?sa=' + $scope.sanV,
                     method: 'GET'
                 }).success(function (results) {
-                    $scope.MasterSummaryData = results;
+                    $scope.InventorySummaryData = results;
+                    exportToCSV(results, $scope.StudyAreaName, true);
+
+                }).error(function (data, status) {
+                    console.log("There was an error:", status);
+
+                });
+                $http({
+                    url: publicDataURL + '/data/inventoryoff?sa=' + $scope.sanV,
+                    method: 'GET'
+                }).success(function (results) {
+                    $scope.InventorySummaryData = results;
                     exportToCSV(results, $scope.StudyAreaName, true);
 
                 }).error(function (data, status) {
