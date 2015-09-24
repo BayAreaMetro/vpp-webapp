@@ -22,7 +22,10 @@ angular.module('vppApp')
 			}
 			
 			$scope.active = function(e){
+				
+				//Get attr of anchor clicked
 				$scope.name = $(e.target).attr("name");
+				
 				if($scope.name === "research"){
 					$('.inner-ul').removeClass("hidden");
 				} else{
@@ -30,6 +33,7 @@ angular.module('vppApp')
 					console.log("false");
 				}
 				
+				//Add and remove active states
 				$('.navbar-nav > li > a').removeClass('active');
 				$(e.target).addClass("active");
 			};

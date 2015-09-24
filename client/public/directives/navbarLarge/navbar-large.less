@@ -40,9 +40,24 @@
 			height: 0px;
 			opacity: 0;
 			.transition(all .5s ease-in-out);
+			padding: 0;
+			text-align: center;
 			&.active{
-				height: 380px;
+				height: 330px;
 				opacity: 1;
+				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
+			}
+			li{
+				width: 100%;
+				padding: 5px 10px 5px 10px;
+				.transition(all .5s ease-in-out);
+				&:hover{
+					background-color: white;
+					a{
+						color: @mainBgColor;
+						text-decoration: none;
+					}
+				}
 			}
 		}
 	}
