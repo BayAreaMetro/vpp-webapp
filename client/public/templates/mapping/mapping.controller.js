@@ -327,7 +327,7 @@ angular.module('vppApp')
         var Break4_maxValue = 54;
 
         var Break5_minValue = 55;
-        var Break5_maxValue = 116;
+        var Break5_maxValue = 1000;
 
         renderer.addBreak(Break1_minValue, Break1_maxValue, Break1LineSymbol);
         renderer.addBreak(Break2_minValue, Break2_maxValue, Break2LineSymbol);
@@ -365,7 +365,7 @@ angular.module('vppApp')
         var Break4_maxValue_OffStreetInventory = 54;
 
         var Break5_minValue_OffStreetInventory = 55;
-        var Break5_maxValue_OffStreetInventory = 1964;
+        var Break5_maxValue_OffStreetInventory = 10000;
 
         OffStreetInventoryRenderer.addBreak(Break1_minValue_OffStreetInventory, Break1_maxValue_OffStreetInventory, Break1Symbol_OffStreetInventory);
         OffStreetInventoryRenderer.addBreak(Break2_minValue_OffStreetInventory, Break2_maxValue_OffStreetInventory, Break2Symbol_OffStreetInventory);
@@ -402,8 +402,12 @@ angular.module('vppApp')
         //add symbol for each possible value
         OnStreetRestrictionsRenderer.addValue("No Parking", new w.SimpleLineSymbol("solid", new w.Color([78, 78, 78, 1]), 2));
         OnStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleLineSymbol("solid", new w.Color([204, 204, 204, 1]), 2));
-        OnStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleLineSymbol("solid", new w.Color([0, 92, 230, 1]), 2));
-        OnStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleLineSymbol("solid", new w.Color([115, 178, 255, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("Pricing Restrictions", new w.SimpleLineSymbol("solid", new w.Color([0, 92, 230, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("Time Restrictions", new w.SimpleLineSymbol("solid", new w.Color([115, 178, 255, 1]), 2));
+
+        OnStreetRestrictionsRenderer.addValue("Time and Pricing Restrictions", new w.SimpleLineSymbol("solid", new w.Color([138,43,226, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("Accessible/Loading/Other", new w.SimpleLineSymbol("solid", new w.Color([0,128,0, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("Unknown/Error", new w.SimpleLineSymbol("solid", new w.Color([139,69,19, 1]), 2));
 
 
         OnStreetRestrictionsFL.setRenderer(OnStreetRestrictionsRenderer);
@@ -443,7 +447,7 @@ angular.module('vppApp')
         var Break4_maxValue_OnStreetOccupancy = 0.95;
 
         var Break5_minValue_OnStreetOccupancy = 0.96;
-        var Break5_maxValue_OnStreetOccupancy = 1;
+        var Break5_maxValue_OnStreetOccupancy = 100;
 
 
 
@@ -482,7 +486,7 @@ angular.module('vppApp')
         var Break4_maxValue_OffStreetOccupancy = 0.95;
 
         var Break5_minValue_OffStreetOccupancy = 0.96;
-        var Break5_maxValue_OffStreetOccupancy = 1;
+        var Break5_maxValue_OffStreetOccupancy = 100;
 
         OffStreetOccupancyRenderer.addBreak(Break1_minValue_OffStreetOccupancy, Break1_maxValue_OffStreetOccupancy, Break1Symbol_OffStreetOccupancy);
         OffStreetOccupancyRenderer.addBreak(Break2_minValue_OffStreetOccupancy, Break2_maxValue_OffStreetOccupancy, Break2Symbol_OffStreetOccupancy);
@@ -700,9 +704,9 @@ angular.module('vppApp')
                     $("#mlegend_Occ").fadeIn(500);
 
                     $("#LegendNamePNL_Restr").fadeOut(500);
-                    $("#mlegend_Restr").fadeOut(500);
-                    $("#mlegend_TotalSpaces").fadeOut(500);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+                    $("#mlegend_Restr").fadeOut(0);
+                    $("#mlegend_TotalSpaces").fadeOut(0);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
 
                     break;
                 case "wkndOCC":
@@ -717,14 +721,26 @@ angular.module('vppApp')
                     $("#LegendNamePNL_Occ").fadeIn(500);
                     $("#mlegend_Occ").fadeIn(500);
 
-                    $("#LegendNamePNL_Restr").fadeOut(500);
-                    $("#mlegend_Restr").fadeOut(500);
-                    $("#mlegend_TotalSpaces").fadeOut(500);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+                    $("#LegendNamePNL_Restr").fadeOut(0);
+                    $("#mlegend_Restr").fadeOut(0);
+                    $("#mlegend_TotalSpaces").fadeOut(0);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
 
                     break;
                 case "peakOCC":
-                    //COC_FL.show();
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+
+
+
+
+                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#mlegend_Occ").fadeIn(500);
+
+                    $("#LegendNamePNL_Restr").fadeOut(0);
+                    $("#mlegend_Restr").fadeOut(0);
+                    $("#mlegend_TotalSpaces").fadeOut(0);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                     break;
 
                 }
@@ -914,13 +930,37 @@ angular.module('vppApp')
 
                 break;
             case "peakOCC":
-                //COC_FL.show();
+                getPeakValue();
                 break;
 
             }
 
         });
+function getPeakValue(a,b){
+                SetOccupancyRenderer("Occupancy_5am");
+                $scope.DayType = a;
+                $scope.TimePeriod = b;
+                var currentZoomLevel = $scope.map.getZoom();
 
+                if (currentZoomLevel > 14) {
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                } else {
+                    ZoomStudyArea(1);
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                }
+
+                $("#LegendNamePNL_Occ").fadeIn(500);
+                $("#mlegend_Occ").fadeIn(500);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                //Write in the title for the legend item.
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
+
+}
 
         /*$scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
            OnStreetRestrictionsFL, OffStreetRestrictionsFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
@@ -929,7 +969,11 @@ angular.module('vppApp')
 
 
 
-
+         $('#peakOCC').on('click', function () {
+            //console.log($(this).attr('id'));
+            $("#maptypeOptionsBTN").fadeOut(0);
+            $("#PeakTypeOptionsBTN").fadeIn(500);
+        });
 
 
         $('.occ').on('click', function () {

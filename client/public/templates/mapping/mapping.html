@@ -113,7 +113,7 @@
                         <img src="app/images/transparent.png" alt="" class="Legend_Line_1" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(0, 92, 230);">
                     </div>
                     <div class="col-xs-7 col-md-7">
-                        Pricing Regulations
+                        Pricing Restrictions
                     </div>
                 </div>
                 <div class="row">
@@ -124,7 +124,7 @@
                         <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(115, 178, 255);">
                     </div>
                     <div class="col-xs-7 col-md-7">
-                        Time Restricted
+                        Time Restrictions
                     </div>
                 </div>
                 <div class="row">
@@ -138,17 +138,45 @@
                         No Restrictions
                     </div>
                 </div>
-                <!-- <div class="row">
+
+
+                 <div class="row">
                     <div class="col-xs-1 col-md-1">
-                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(138,43,226);">
                     </div>
                     <div class="col-xs-1 col-md-1 pad-right-l">
-                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(138,43,226);">
                     </div>
                     <div class="col-xs-7 col-md-7">
-                        85%-95%
+                        Time and Pricing Restrictions
                     </div>
-                </div> -->
+                </div> <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(0,128,0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(0,128,0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Accessible/Loading/Other
+                    </div>
+                </div> <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(139,69,19);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(139,69,19);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Unknown/Error
+                    </div>
+                </div>
+
+
+
+
+
+                
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(78, 78, 78);">
@@ -290,6 +318,36 @@
         </div>
     </div>
 </div>
+
+
+<div id="PeakOccBTN">
+    <div id="PeakTypeOptionsBTN" class="text-center collapse">
+        <div class="dropdown">
+            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="fa  fa-clock-o fa-lg fa-fw"></span> Peak Occupancy
+            </button>
+            <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a id="ON" class="changePeakPeriod">
+                        <i class="fa fa-clock-o fa-lg fa-fw"></i> On Street Peak</a>
+                </li>
+                <li><a id="OFF" class="changePeakPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Off Street Peak </a>
+                </li>
+                <li><a id="BOTH" class="changePeakPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Both </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 <div id="mt">
     <div id="mapToolsPNL" class="panel panel-info collapse">
         <div class="panel-heading">
@@ -347,7 +405,7 @@
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <div id="peakOCC" href="#" class="occ parkTheme">
+                        <div id="peakOCC" href="#" class="peak parkTheme">
                             <a id="peak" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Peak Occupancy</p>
