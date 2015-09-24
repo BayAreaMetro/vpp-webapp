@@ -5,16 +5,21 @@
 
         <!-- Page header -->
         <div class="site-header text-center">
-			
-			<div class="overlay">
-				<h3>Parking</h3>
-				<h3>Data</h3>
-			</div>
+
+            <div class="overlay">
+                <h3>Parking</h3>
+                <h3>Data</h3>
+            </div>
 
         </div>
-        <data></data>
-        <div class="pad-top-l">&nbsp;</div>
-        <div id="DataSummary" class="InfoSummaryBG">
+        <div id="DataNav" class="container">
+            <div class="row">
+                <data></data>
+            </div>
+        </div>
+
+        <div id="DataSummary" class="container InfoSummaryBG divFade">
+
             <h1 class="col-md-4">&nbsp;</h1>
             <h2 class="col-md-8">Data Summary Options</h2>
             <div class="row">
@@ -124,6 +129,237 @@
                                         <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
                                         </button>
+                                        <button id="dlSummaryDataBTN" type="button" class="btn btn-default btn-sm">
+                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="InventorySummary" class="container infoSummaryBG collapse divFade">
+            <h1 class="col-md-4">&nbsp;</h1>
+            <h2 class="col-md-8">Inventory Data Options</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal pad-top-l">
+                        <fieldset>
+                            <!-- Study Area Search-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
+                                <div class="col-md-6">
+
+                                    <input id="StudyAreaSearch" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyarea" required="" name="City" list="studyareas-list">
+                                    <datalist id="studyareas-list"></datalist>
+                                    <p class="help-block">Choose a Study Area</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
+                                <div class="col-md-6">
+
+                                    <input id="ParkingTypeSearchINV" type="text" placeholder="eg. On-Street, Off-Street" class="form-control input-md" required="" list="pt-list">
+                                    <datalist id="pt-list">
+                                        <option value="On-Street">
+                                            <option value="Off-Street">
+                                    </datalist>
+
+                                </div>
+                            </div>
+
+                            <!-- Collection Year -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
+                                <div class="col-md-6">
+                                    <input id="selectCollectionYear" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
+                                    <datalist id="collectionyear-list"></datalist>
+                                    <p class="help-block">&nbsp;</p>
+                                </div>
+
+                                <!-- Multiple Checkboxes (inline) -->
+                                <div class="form-group">
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <label class="col-md-4 control-label">Summary Categories</label>
+                                            <div class="col-md-6">
+
+                                                <label class="checkbox-inline">
+                                                    <input name="ShowAll" type="checkbox" data-size="mini">Show All
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div class="controls">
+                                            <label class="col-md-4 control-label">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline control-label" style="padding-right: 104px">
+                                                    <input name="Pricing" type="checkbox" data-size="mini">Pricing
+                                                </label>
+
+                                                <label class="checkbox-inline">
+                                                    <input name="Supply" type="checkbox" data-size="mini">Parking Supply
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="controls">
+                                            <label class="col-md-4 control-label">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline control-label" style="padding-right: 36px">
+                                                    <input name="Restrictions" type="checkbox" data-size="mini">Time Restrictions
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input name="SpaceTypes" type="checkbox" data-size="mini">Type of Parking Spaces
+                                                </label>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="controls">
+                                            <label class="col-md-4 control-label">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline" style="padding-right: 64px">
+                                                    <input name="Enforcement" type="checkbox" data-size="mini">Enforcement
+                                                </label>
+                                                <label class="checkbox-inline control-label">
+                                                    <input name="Resources" type="checkbox" data-size="mini">General Notes and Information
+                                                </label>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row pad-top-l">
+                                    <label class="col-md-4 control-label">&nbsp;</label>
+                                    <div class="col-md-8 pull-left">
+                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
+                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
+                                        </button>
+                                        <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm">
+                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="OccupancySummary" class="container infoSummaryBG collapse divFade">
+            <h1 class="col-md-4">&nbsp;</h1>
+            <h2 class="col-md-8">Occupancy Data Options</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal pad-top-l">
+                        <fieldset>
+                            <!-- Study Area Search-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
+                                <div class="col-md-6">
+
+                                    <input id="StudyAreaSearch" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyarea" required="" name="City" list="studyareas-list">
+                                    <datalist id="studyareas-list"></datalist>
+                                    <p class="help-block">Choose a Study Area</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
+                                <div class="col-md-6">
+
+                                    <input id="ParkingTypeSearchINV" type="text" placeholder="eg. On-Street, Off-Street, Both" class="form-control input-md" required="" list="pt-list">
+                                    <datalist id="pt-list">
+                                        <option value="On-Street">
+                                            <option value="Off-Street">
+                                                <option value="Both On/Off-Street">
+                                    </datalist>
+
+                                </div>
+                            </div>
+
+                            <!-- Collection Year -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
+                                <div class="col-md-6">
+                                    <input id="selectCollectionYear" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
+                                    <datalist id="collectionyear-list"></datalist>
+                                    <p class="help-block">&nbsp;</p>
+                                </div>
+
+                                <!-- Multiple Checkboxes (inline) -->
+                                <div class="form-group">
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <label class="col-md-4 control-label">Summary Categories</label>
+                                            <div class="col-md-6">
+
+                                                <label class="checkbox-inline">
+                                                    <input name="ShowAll" type="checkbox" data-size="mini">Show All
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div class="controls">
+                                            <label class="col-md-4 control-label">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline control-label" style="padding-right: 104px">
+                                                    <input name="Pricing" type="checkbox" data-size="mini">Pricing
+                                                </label>
+
+                                                <label class="checkbox-inline">
+                                                    <input name="Supply" type="checkbox" data-size="mini">Parking Supply
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="controls">
+                                            <label class="col-md-4 control-label">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline control-label" style="padding-right: 36px">
+                                                    <input name="Restrictions" type="checkbox" data-size="mini">Time Restrictions
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input name="SpaceTypes" type="checkbox" data-size="mini">Type of Parking Spaces
+                                                </label>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="controls">
+                                            <label class="col-md-4 control-label">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline" style="padding-right: 64px">
+                                                    <input name="Enforcement" type="checkbox" data-size="mini">Enforcement
+                                                </label>
+                                                <label class="checkbox-inline control-label">
+                                                    <input name="Resources" type="checkbox" data-size="mini">General Notes and Information
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                        <div class="controls">
+                                            <label class="col-md-4 control-label">&nbsp;</label>
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline" style="padding-right: 13px">
+                                                    <input name="WDOccupancy" type="checkbox" data-size="mini">Weekday Occupancy
+                                                </label>
+
+                                                <label class="checkbox-inline">
+                                                    <input name="WEOccupancy" type="checkbox" data-size="mini">Weekend Occupancy
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row pad-top-l">
+                                    <label class="col-md-4 control-label">&nbsp;</label>
+                                    <div class="col-md-8 pull-left">
+                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
+                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
+                                        </button>
                                         <button id="dlDataBTN" type="button" class="btn btn-default btn-sm">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                         </button>
@@ -136,8 +372,8 @@
             </div>
         </div>
 
-
-        <div id="DataTable" class="collapse InfoSummaryBG">
+        <div class="pad-top-l">&nbsp;</div>
+        <div id="DataTable" class="container InfoSummaryBG divFade">
 
             <div class="row">
                 <div class="container">
@@ -682,6 +918,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 

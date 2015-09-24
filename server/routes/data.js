@@ -151,9 +151,12 @@ router.get('/supplyonstreet', function (req, res, next) {
 });
 
 //Load Inventory
-router.get('/inventory', function (req, res, next) {
+router.get('/inventoryon', function (req, res, next) {
     sql = new mssql.Request(database.connection);
-    sql.query("", function (err, data) {
+    var sa = req.param('sa');
+    //var pt = req.param('pt');
+    //var cy = req.param('cy');
+    sql.query("SELECT * FROM WEBMAP__InventoryDownloadON where Project_ID=" + sa, function (err, data) {
         if (err) {
             res.writeHead(500, {
                 'Content-Type': 'text/plain'
@@ -169,6 +172,28 @@ router.get('/inventory', function (req, res, next) {
         res.end("; Done.");
     });
 });
+router.get('/inventoryoff', function (req, res, next) {
+    sql = new mssql.Request(database.connection);
+    var sa = req.param('sa');
+    //var pt = req.param('pt');
+    //var cy = req.param('cy');
+    sql.query("SELECT * FROM WEBMAP__InventoryDownloadOFF where Project_ID=" + sa, function (err, data) {
+        if (err) {
+            res.writeHead(500, {
+                'Content-Type': 'text/plain'
+            });
+            res.write("Got error :-( " + err);
+            res.end("");
+            return;
+        }
+
+        res.send(JSON.stringify(data));
+        //console.log(data);
+        //res.write(JSON.stringify(results, null, 4));
+        res.end("; Done.");
+    });
+});
+
 
 //Load Occupancy Weekday (Needs Study Area Variable, )
 router.get('/ocupancywd', function (req, res, next) {
