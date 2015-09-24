@@ -27,6 +27,23 @@
 			    color: @anchorColor;
 		    }
 		}
-    }
-	    
+    }    
+}
+#inner-nav{
+	.inner-nested{
+		overflow: hidden;
+		&.active{
+			overflow: visible;
+		}
+		.inner-ul{
+			background-color: @mainBgColor;
+			height: 0px;
+			opacity: 0;
+			.transition(all .5s ease-in-out);
+			&.active{
+				height: 380px;
+				opacity: 1;
+			}
+		}
+	}
 }
