@@ -6,6 +6,7 @@ angular.module('vppApp')
 		function($scope){
 			
 			$scope.init = function(){
+				//$('.inner-ul').addClass("hidden");
 			}
 			$scope.init();
 		}

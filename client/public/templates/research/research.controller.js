@@ -45,6 +45,10 @@ angular.module('vppApp')
 	    });
 		
 		$scope.init = function(){
+			$(".vpp-links")
+			//Remove hiiden class
+			$('.inner-ul').removeClass('hidden');
+			
 			$(".inner-nested").hover(function(){
 				$('.inner-ul').addClass('active');
 				$('.inner-nested').addClass('active');

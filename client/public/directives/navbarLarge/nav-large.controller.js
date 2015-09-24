@@ -22,6 +22,14 @@ angular.module('vppApp')
 			}
 			
 			$scope.active = function(e){
+				$scope.name = $(e.target).attr("name");
+				if($scope.name === "research"){
+					$('.inner-ul').removeClass("hidden");
+				} else{
+					$('.inner-ul').addClass("hidden");
+					console.log("false");
+				}
+				
 				$('.navbar-nav > li > a').removeClass('active');
 				$(e.target).addClass("active");
 			};
