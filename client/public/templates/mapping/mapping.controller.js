@@ -130,11 +130,11 @@ angular.module('vppApp')
         });
 
 
-        var home = new w.HomeButton({
+        $scope.home = new w.HomeButton({
             map: $scope.map
         }, "HomeButton");
-        home.startup();
-        
+        $scope.home.startup();
+
         vppGraphicsLayer = new w.GraphicsLayer({
             opacity: 0.50
         });
@@ -409,10 +409,11 @@ angular.module('vppApp')
         OnStreetRestrictionsFL.setRenderer(OnStreetRestrictionsRenderer);
 
 
+
         //Set Map Renderers for WDOnStreetOccupancyFL and WEOnStreetOccupancyFL
         symbol_OnStreetOccupancy = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
             new w.Color([255, 0, 0]));
-        var renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol_OnStreetOccupancy, "Occupancy_5am");
+
 
         var Break1Color_OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
         var Break1LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color_OnStreetOccupancy, 2);
@@ -444,14 +445,9 @@ angular.module('vppApp')
         var Break5_minValue_OnStreetOccupancy = 0.96;
         var Break5_maxValue_OnStreetOccupancy = 1;
 
-        renderer_OnStreetOccupancy.addBreak(Break1_minValue_OnStreetOccupancy, Break1_maxValue_OnStreetOccupancy, Break1LineSymbol_OnStreetOccupancy);
-        renderer_OnStreetOccupancy.addBreak(Break2_minValue_OnStreetOccupancy, Break2_maxValue_OnStreetOccupancy, Break2LineSymbol_OnStreetOccupancy);
-        renderer_OnStreetOccupancy.addBreak(Break3_minValue_OnStreetOccupancy, Break3_maxValue_OnStreetOccupancy, Break3LineSymbol_OnStreetOccupancy);
-        renderer_OnStreetOccupancy.addBreak(Break4_minValue_OnStreetOccupancy, Break4_maxValue_OnStreetOccupancy, Break4LineSymbol_OnStreetOccupancy);
-        renderer_OnStreetOccupancy.addBreak(Break5_minValue_OnStreetOccupancy, Break5_maxValue_OnStreetOccupancy, Break5LineSymbol_OnStreetOccupancy);
 
-        WDOnStreetOccupancyFL.setRenderer(renderer_OnStreetOccupancy);
-        WEOnStreetOccupancyFL.setRenderer(renderer_OnStreetOccupancy);
+
+
 
 
 
@@ -497,8 +493,26 @@ angular.module('vppApp')
         WDOffStreetOccupancyFL.setRenderer(OffStreetOccupancyRenderer);
         WEOffStreetOccupancyFL.setRenderer(OffStreetOccupancyRenderer);
 
+        //Begin Function Here...
+        function SetOccupancyRenderer(occ) {
+                //console.clear();
+                $scope.OCCtimeperiod = occ;
+                //console.log($scope.OCCtimeperiod);
 
-        //Setting up Simple Lines Renderer for Study Areas
+                $scope.renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol_OnStreetOccupancy, $scope.OCCtimeperiod);
+                $scope.renderer_OnStreetOccupancy.clearBreaks();
+                $scope.renderer_OnStreetOccupancy.addBreak(Break1_minValue_OnStreetOccupancy, Break1_maxValue_OnStreetOccupancy, Break1LineSymbol_OnStreetOccupancy);
+                $scope.renderer_OnStreetOccupancy.addBreak(Break2_minValue_OnStreetOccupancy, Break2_maxValue_OnStreetOccupancy, Break2LineSymbol_OnStreetOccupancy);
+                $scope.renderer_OnStreetOccupancy.addBreak(Break3_minValue_OnStreetOccupancy, Break3_maxValue_OnStreetOccupancy, Break3LineSymbol_OnStreetOccupancy);
+                $scope.renderer_OnStreetOccupancy.addBreak(Break4_minValue_OnStreetOccupancy, Break4_maxValue_OnStreetOccupancy, Break4LineSymbol_OnStreetOccupancy);
+                $scope.renderer_OnStreetOccupancy.addBreak(Break5_minValue_OnStreetOccupancy, Break5_maxValue_OnStreetOccupancy, Break5LineSymbol_OnStreetOccupancy);
+                WDOnStreetOccupancyFL.setRenderer($scope.renderer_OnStreetOccupancy);
+                WEOnStreetOccupancyFL.setRenderer($scope.renderer_OnStreetOccupancy);
+                WDOnStreetOccupancyFL.refresh();
+                WEOnStreetOccupancyFL.refresh();
+
+            }
+            //Setting up Simple Lines Renderer for Study Areas
         studyAreasColor = new w.Color("#007AC8");
         studyAreasLine = new w.SimpleLineSymbol("solid", studyAreasColor, 2);
         studyAreasSymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, studyAreasLine, new w.Color([255, 255, 255, 0.7]));
@@ -632,6 +646,9 @@ angular.module('vppApp')
             OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL,
             WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
 
+        //Set Cuurent Map Theme
+        $scope.pt = "inventory";
+
 
 
         //Map and Featurelayer Utilities
@@ -640,15 +657,78 @@ angular.module('vppApp')
         function checkScale(extent, zoomFactor, anchor, level) {
             //document.getElementById("myText").value = level;
             //console.clear();
-            //console.log(level);
+            //console.log('Zoom Scale: ' + level + ' Current Parking Theme: ' + $scope.pt);
             if (level > 14) {
-                OnStreetInventoryFL.show();
-                studyAreasFL.show();
-                $("#mapLegendPNL").fadeIn(500);
-                $("#LegendTitle").text("Legend");
-                $("#LegendNamePNL_TotalSpaces").fadeIn(500);
-                $("#mlegend_TotalSpaces").fadeIn(500);
-                //heatmapFeatureLayer.hide();
+                switch ($scope.pt) {
+                case "inventory":
+                    OnStreetInventoryFL.show();
+
+                    $("#mapLegendPNL").fadeIn(500);
+                    $("#LegendTitle").text("Legend");
+                    $("#LegendNamePNL_TotalSpaces").fadeIn(500);
+                    $("#mlegend_TotalSpaces").fadeIn(500);
+                    //heatmapFeatureLayer.hide();
+                    $("#mlegend_Occ").fadeOut(0);
+                    $("#LegendNamePNL_Occ").fadeOut(0);
+                    $("#mlegend_Restr").fadeOut(0);
+                    $("#LegendNamePNL_Restr").fadeOut(0);
+                    break;
+                case "restrictions":
+
+                    OnStreetRestrictionsFL.show();
+                    OffStreetRestrictionsFL.show();
+
+
+                    $("#mlegend_Restr").fadeIn(500);
+                    $("#LegendNamePNL_Restr").fadeIn(500);
+
+                    $("#LegendNamePNL_Occ").fadeOut(500);
+                    $("#mlegend_Occ").fadeOut(500);
+                    $("#mlegend_TotalSpaces").fadeOut(500);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+
+                    break;
+                case "wkdayOCC":
+
+
+                    WDOnStreetOccupancyFL.show();
+                    WDOffStreetOccupancyFL.show();
+
+
+
+                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#mlegend_Occ").fadeIn(500);
+
+                    $("#LegendNamePNL_Restr").fadeOut(500);
+                    $("#mlegend_Restr").fadeOut(500);
+                    $("#mlegend_TotalSpaces").fadeOut(500);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+
+                    break;
+                case "wkndOCC":
+
+
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+
+
+
+
+                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#mlegend_Occ").fadeIn(500);
+
+                    $("#LegendNamePNL_Restr").fadeOut(500);
+                    $("#mlegend_Restr").fadeOut(500);
+                    $("#mlegend_TotalSpaces").fadeOut(500);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+
+                    break;
+                case "peakOCC":
+                    //COC_FL.show();
+                    break;
+
+                }
+
             } else {
                 studyAreasFL.show();
 
@@ -711,6 +791,13 @@ angular.module('vppApp')
             $scope.map.setBasemap($(this).attr('id'));
         });
 
+        $('.changeOCCPeriod').on('click', function () {
+            //$scope.OCCtimeperiod = $(this).attr('id');
+            SetOccupancyRenderer($(this).attr('id').toString());
+            $scope.TimePeriod = $(this).text();
+            $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+        });
+
 
         $('.parkTheme').on('click', function () {
             //            console.log($(this).attr('id'));
@@ -723,8 +810,8 @@ angular.module('vppApp')
             WDOffStreetOccupancyFL.hide();
             WEOffStreetOccupancyFL.hide();
 
-            var pt = $(this).attr('id');
-            switch (pt) {
+            $scope.pt = $(this).attr('id');
+            switch ($scope.pt) {
             case "inventory":
 
 
@@ -742,11 +829,10 @@ angular.module('vppApp')
 
                 $("#mlegend_TotalSpaces").fadeIn(500);
                 $("#LegendNamePNL_TotalSpaces").fadeIn(500);
-
-                $("#LegendNamePNL_Occ").fadeOut(500);
-                $("#LegendNamePNL_Restr").fadeOut(500);
-                $("#mlegend_Occ").fadeOut(500);
-                $("#mlegend_Restr").fadeOut(500);
+                $("#LegendNamePNL_Occ").fadeOut(0);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Occ").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
 
 
                 break;
@@ -768,14 +854,17 @@ angular.module('vppApp')
                 $("#mlegend_Restr").fadeIn(500);
                 $("#LegendNamePNL_Restr").fadeIn(500);
 
-                $("#LegendNamePNL_Occ").fadeOut(500);
-                $("#mlegend_Occ").fadeOut(500);
-                $("#mlegend_TotalSpaces").fadeOut(500);
-                $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+                $("#LegendNamePNL_Occ").fadeOut(0);
+                $("#mlegend_Occ").fadeOut(0);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
 
                 break;
             case "wkdayOCC":
 
+                SetOccupancyRenderer("Occupancy_5am");
+                $scope.DayType = "Weekday Occupancy";
+                $scope.TimePeriod = "Early Morning (5AM)";
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
@@ -791,15 +880,18 @@ angular.module('vppApp')
 
                 $("#LegendNamePNL_Occ").fadeIn(500);
                 $("#mlegend_Occ").fadeIn(500);
-
-                $("#LegendNamePNL_Restr").fadeOut(500);
-                $("#mlegend_Restr").fadeOut(500);
-                $("#mlegend_TotalSpaces").fadeOut(500);
-                $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                //Write in the title for the legend item.
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/>Percent of total spaces with vehicles occupying spaces</p>");
 
                 break;
             case "wkndOCC":
-
+                SetOccupancyRenderer("Occupancy_5am");
+                $scope.DayType = "Weekend Occupancy";
+                $scope.TimePeriod = "Early Morning (5AM)";
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
@@ -811,15 +903,14 @@ angular.module('vppApp')
                     WEOffStreetOccupancyFL.show();
                 }
 
-
-
                 $("#LegendNamePNL_Occ").fadeIn(500);
                 $("#mlegend_Occ").fadeIn(500);
-
-                $("#LegendNamePNL_Restr").fadeOut(500);
-                $("#mlegend_Restr").fadeOut(500);
-                $("#mlegend_TotalSpaces").fadeOut(500);
-                $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                //Write in the title for the legend item.
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
 
                 break;
             case "peakOCC":
@@ -893,10 +984,10 @@ angular.module('vppApp')
                 $("#LegendTitle").text("");
             });
 
-            $("#StudyAreaNamePNL").fadeOut(100, function(){
+            $("#StudyAreaNamePNL").fadeOut(100, function () {
                 $("#StudyAreaNamePNL").html("");
             });
-            });
+        });
 
         //SMap Layer Controls
         $('#mapLayersCTL').click(function () {
@@ -933,7 +1024,7 @@ angular.module('vppApp')
             WDOffStreetOccupancyFL.hide();
             WEOnStreetOccupancyFL.hide();
             WEOffStreetOccupancyFL.hide();
-            
+
             COC_FL.hide();
             PDA_FL.hide();
             FerryTerminalsFL.hide();
@@ -948,7 +1039,7 @@ angular.module('vppApp')
                 $("#LegendTitle").text("");
             });
 
-            $("#StudyAreaNamePNL").fadeOut(100, function(){
+            $("#StudyAreaNamePNL").fadeOut(100, function () {
                 $("#StudyAreaNamePNL").html("");
             });
             studyAreasFL.show();
@@ -1026,7 +1117,7 @@ angular.module('vppApp')
 
         }
 
-      
+
         //Global Switch for all check boxes as toggle switches
         $("input[type=\"checkbox\"], input[type=\"radio\"]").not("[data-switch-no-init]").bootstrapSwitch();
         $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
@@ -1042,7 +1133,7 @@ angular.module('vppApp')
                 switch (LayerName) {
                 case "PDA_FL":
                     PDA_FL.show();
-                   
+
                     break;
                 case "COC_FL":
                     COC_FL.show();

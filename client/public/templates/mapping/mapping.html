@@ -11,7 +11,7 @@
     </div>
 </div>
 <div id="mapLegend" class="mapLegend">
-    <div id="mapLegendPNL"  class="panel zTop panel-info legendContent">
+    <div id="mapLegendPNL" class="panel zTop panel-info legendContent">
         <div class="panel-heading">
             <div class="panel-title">
                 <span id="iconTitleLegend" class='pull-left'></span>
@@ -24,25 +24,24 @@
             <div id="StudyAreaNamePNL" class="pad-bottom-m pad-top-m collapse">
                 Study Area Name
             </div>
-            
+
             <div id="mlegend_studyArea" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
-                    <!-- <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 15px; width: 15px; display: block; background-color: rgb(255, 255, 255);"> -->
+                        <!-- <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 15px; width: 15px; display: block; background-color: rgb(255, 255, 255);"> -->
                         <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; border-style:solid ;  border-color: #007ac8;   border-width: 2px; display: block; background-color: rgb(255, 255, 255);">
 
                     </div>
-                    
+
                     <div class="col-xs-7 col-md-7">
                         Study Areas
                     </div>
                 </div>
-                
+
             </div>
 
-            <div id="LegendNamePNL_Occ" class="pad-bottom-sm pad-top-m collapse" >
-                <p><b>Occupancy</b>
-                    <br>Percent of total spaces with vehicles occupying spaces</p>
+            <div id="LegendNamePNL_Occ" class="pad-bottom-sm pad-top-m collapse">
+
             </div>
             <div id="mlegend_Occ" class="collapse">
                 <div class="row">
@@ -101,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div id="LegendNamePNL_Restr" class="pad-bottom-sm pad-top-m collapse" >
+            <div id="LegendNamePNL_Restr" class="pad-bottom-sm pad-top-m collapse">
                 <p><b>Restrictions</b>
                     <br>Types of pricing and/or restrictions on space at any time</p>
             </div>
@@ -163,7 +162,7 @@
                 </div>
             </div>
 
-            <div id="LegendNamePNL_TotalSpaces" class="pad-bottom-sm pad-top-m collapse" >
+            <div id="LegendNamePNL_TotalSpaces" class="pad-bottom-sm pad-top-m collapse">
                 <p><b>Inventory</b>
                     <br>Total Spaces</p>
             </div>
@@ -224,7 +223,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
 
 
@@ -270,20 +269,22 @@
                 <span class="fa  fa-clock-o fa-lg fa-fw"></span> Time of Day
             </button>
             <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+<!--
                 <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Peak </a>
-                </li>
+</li>
+-->
                 <li>
-                    <a id="">
+                    <a id="Occupancy_5am" class="changeOCCPeriod">
                         <i class="fa fa-clock-o fa-lg fa-fw"></i> Early Morning (5AM)
                     </a>
                 </li>
-                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Morning (9AM) </a>
+                <li><a id="Occupancy_9am" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Morning (9AM) </a>
                 </li>
-                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Afternoon (12PM) </a>
+                <li><a id="Occupancy_12pm" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Afternoon (12PM) </a>
                 </li>
-                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Late Afternoon (4PM) </a>
+                <li><a id="Occupancy_4pm" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Late Afternoon (4PM) </a>
                 </li>
-                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Evening (8PM) </a>
+                <li><a id="Occupancy_8pm" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Evening (8PM) </a>
                 </li>
             </ul>
         </div>
