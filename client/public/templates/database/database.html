@@ -13,6 +13,7 @@
 
         </div>
         <div id="DataNav" class="container">
+	        <h1 ng-show="isActive">Hello</h1>
             <div class="row">
                 <data></data>
             </div>
@@ -440,7 +441,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div id="ParkingSupply" ng-repeat="summary in MasterSummaryData">
+                            <div id="ParkingSupply" ng-repeat="summary in MasterSummaryData" ng-show="supply || showAll">
                                 <h3>Parking Supply</h3>
                                 <table class="table table-hover">
                                     <thead>
@@ -474,7 +475,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="SpaceType" ng-repeat="type in MasterSummaryData">
+                            <div id="SpaceType" ng-repeat="type in MasterSummaryData" ng-show="spaceType || showAll">
                                 <h3>Type of Parking Spaces</h3>
                                 <table class="table table-hover">
                                     <thead>
@@ -600,7 +601,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="PricingInfo" ng-repeat="pricing in MasterSummaryData">
+                            <div id="PricingInfo" ng-repeat="pricing in MasterSummaryData" ng-show="isActive || showAll">
                                 <h3>Pricing Information</h3>
                                 <table class="table table-hover">
                                     <thead>
@@ -661,7 +662,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="RestrictionInfo" ng-repeat="restrict in MasterSummaryData">
+                            <div id="RestrictionInfo" ng-repeat="restrict in MasterSummaryData" ng-show="restrictions || showAll">
                                 <h3>Time Restriction Information</h3>
                                 <table class="table table-hover">
                                     <thead>
@@ -752,7 +753,7 @@
                                 </table>
 
                             </div>
-                            <div id="WDOccInfo" ng-repeat="wd in MasterSummaryData">
+                            <div id="WDOccInfo" ng-repeat="wd in MasterSummaryData" ng-show="weekDay || showAll">
                                 <h3>Weekday Occupancy Information</h3>
                                 <table class="table table-hover">
                                     <thead>
@@ -832,7 +833,7 @@
                                 </table>
 
                             </div>
-                            <div id="WEOccInfo" ng-repeat="we in MasterSummaryData">
+                            <div id="WEOccInfo" ng-repeat="we in MasterSummaryData" ng-show="weekEnd || showAll">
                                 <h3>Weekend Occupancy Information</h3>
                                 <table class="table table-hover">
                                     <thead>
@@ -911,7 +912,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="AddtnlResources">
+                            <div id="AddtnlResources" ng-show="resources || showAll">
                                 <h3>Additional Resources</h3>
                                 <span><p>Can we have something on the main page to download additional resources or see photos instead of this section? This has not been developed yet.</p></span>
 
