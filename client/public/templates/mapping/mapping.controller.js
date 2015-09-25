@@ -650,9 +650,8 @@ angular.module('vppApp')
             OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL,
             WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
 
-        //Set Cuurent Map Theme
+        //Set Curent Map Theme
         $scope.pt = "inventory";
-
 
 
         //Map and Featurelayer Utilities
@@ -662,6 +661,8 @@ angular.module('vppApp')
             //document.getElementById("myText").value = level;
             //console.clear();
             //console.log('Zoom Scale: ' + level + ' Current Parking Theme: ' + $scope.pt);
+            console.clear();
+            console.log("Current Theme: " + $scope.pt);
             if (level > 14) {
                 switch ($scope.pt) {
                 case "inventory":
@@ -816,7 +817,7 @@ angular.module('vppApp')
 
 
         $('.parkTheme').on('click', function () {
-            //            console.log($(this).attr('id'));
+
             OnStreetInventoryFL.hide();
             OffStreetInventoryFL.hide();
             OnStreetRestrictionsFL.hide();
@@ -827,6 +828,7 @@ angular.module('vppApp')
             WEOffStreetOccupancyFL.hide();
 
             $scope.pt = $(this).attr('id');
+
             switch ($scope.pt) {
             case "inventory":
 
@@ -837,7 +839,7 @@ angular.module('vppApp')
                     OnStreetInventoryFL.show();
                     studyAreasFL.show();
                 } else {
-                    $scope.sanValue = 1
+                    $scope.sanValue = 1;
                     ZoomStudyArea($scope.sanValue);
                     OnStreetInventoryFL.show();
                     studyAreasFL.show();
@@ -850,7 +852,7 @@ angular.module('vppApp')
                 $("#LegendNamePNL_Restr").fadeOut(0);
                 $("#mlegend_Occ").fadeOut(0);
                 $("#mlegend_Restr").fadeOut(0);
-
+                console.log($scope.pt + " | " + $scope.sanValue);
 
                 break;
             case "restrictions":
@@ -862,7 +864,7 @@ angular.module('vppApp')
                     OnStreetRestrictionsFL.show();
                     OffStreetRestrictionsFL.show();
                 } else {
-                    $scope.sanValue = 1
+                    $scope.sanValue = 1;
                     ZoomStudyArea($scope.sanValue);
                     OnStreetRestrictionsFL.show();
                     OffStreetRestrictionsFL.show();
@@ -876,7 +878,7 @@ angular.module('vppApp')
                 $("#mlegend_Occ").fadeOut(0);
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-
+                console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             case "wkdayOCC":
 
@@ -889,7 +891,7 @@ angular.module('vppApp')
                     WDOnStreetOccupancyFL.show();
                     WDOffStreetOccupancyFL.show();
                 } else {
-                    $scope.sanValue = 1
+                    $scope.sanValue = 1;
                     ZoomStudyArea($scope.sanValue);
                     WDOnStreetOccupancyFL.show();
                     WDOffStreetOccupancyFL.show();
@@ -905,7 +907,7 @@ angular.module('vppApp')
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
                 $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/>Percent of total spaces with vehicles occupying spaces</p>");
-
+                console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             case "wkndOCC":
                 SetOccupancyRenderer("Occupancy_5am");
@@ -931,7 +933,7 @@ angular.module('vppApp')
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
                 $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
-
+                console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             case "peakOCC":
 
@@ -940,11 +942,14 @@ angular.module('vppApp')
                 if (currentZoomLevel > 14) {
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
+                    showPeak("BOTH");
+                    console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
                 } else {
                     $scope.sanValue = 1;
-                    SetOccupancyRenderer("Occupancy_12pm");
-                    $scope.DayType = "Weekday Peak Period";
-                    $scope.TimePeriod = "Afternoon (12PM)";
+                    //SetOccupancyRenderer("Occupancy_12pm");
+                    //$scope.DayType = "Weekday Peak Period";
+                    //showPeak("BOTH");
+                    //$scope.TimePeriod = "Afternoon (12PM)";
                     ZoomStudyArea($scope.sanValue);
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
@@ -955,32 +960,12 @@ angular.module('vppApp')
                 $("#mlegend_Restr").fadeOut(0);
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                //Write in the title for the legend item.
-                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
+                console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
                 break;
 
             }
 
         });
-
-        function getPeakValue(a, b) {
-            SetOccupancyRenderer("Occupancy_5am");
-            $scope.DayType = a;
-            $scope.TimePeriod = b;
-            var currentZoomLevel = $scope.map.getZoom();
-
-            if (currentZoomLevel > 14) {
-                WEOnStreetOccupancyFL.show();
-                WEOffStreetOccupancyFL.show();
-            } else {
-                ZoomStudyArea(1);
-                WEOnStreetOccupancyFL.show();
-                WEOffStreetOccupancyFL.show();
-            }
-
-
-
-        }
 
         $('.pkt').on('click', function () {
             $("#maptypeOptionsBTN").fadeOut(0);
@@ -988,22 +973,52 @@ angular.module('vppApp')
 
         });
 
-        $('.changePeakPeriod').on('click', function () {
-            //            SetOccupancyRenderer($(this).attr('id').toString());
-            $scope.pt = $(this).attr('id').toString();
+        function showPeak(a) {
+            $scope.ptp = a;
             console.clear();
-            console.log($scope.pt);
+
             $.ajax({
                 dataType: 'json',
-                url: publicDataURL + '/data/getPeak?sa=' + $scope.sanValue + '&pt=' + $scope.pt,
+                url: publicDataURL + '/data/getPeak?sa=' + $scope.sanValue + '&pt=' + $scope.ptp,
                 success: function (data) {
                     //console.clear();
-                    console.log(data);
+                    //console.log(data);
+                    console.log("Current Theme: " + $scope.pt + " | Study Area: " + $scope.sanValue + " | Parking Type: " + $scope.ptp + " | Day Type: " + data[0].Day_Type + " | Time Period: " + data[0].Peak);
+                    SetOccupancyRenderer(data[0].Peak);
+                    $scope.DayType = data[0].Day_Type;
+
+                    switch (data[0].Peak) {
+                    case "Occupancy_5am":
+                        $scope.TimePeriod = "Early Morning (5AM)";
+
+                        break;
+                    case "Occupancy_9am":
+                        $scope.TimePeriod = "Morning (9AM)";
+
+                        break;
+                    case "Occupancy_12pm":
+                        $scope.TimePeriod = "Afternoon (12PM)";
+
+                        break;
+                    case "Occupancy_4pm":
+                        $scope.TimePeriod = "Late Afternoon (4PM)";
+
+                        break;
+                    case "Occupancy_8pm":
+                        $scope.TimePeriod = "Evening (8PM)";
+
+                        break;
+                    }
+                    $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
                 }
             });
+        }
 
-            $scope.TimePeriod = $(this).text();
-            $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+        $('.changePeakPeriod').on('click', function () {
+            console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+            $scope.ptp = $(this).attr('id').toString();
+            showPeak($scope.ptp);
+
         });
 
 
@@ -1090,9 +1105,6 @@ angular.module('vppApp')
 
         });
         $('#mapRefreshCTL').click(function () {
-
-
-
             OnStreetInventoryFL.hide();
             OffStreetInventoryFL.hide();
             OnStreetRestrictionsFL.hide();
@@ -1151,6 +1163,26 @@ angular.module('vppApp')
         function ZoomStudyArea(a) {
             saQuery.where = "Project_ID = '" + a + "'";
             StudyAreaQueryTask.execute(saQuery, showSAQResults);
+
+            switch ($scope.pt) {
+            case "peakOCC":
+                $scope.ptp = "BOTH";
+                showPeak($scope.ptp);
+                console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+                break;
+            case "inventory":
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            case "restrictions":
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            case "wkndOCC":
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            case "wkdayOCC":
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            }
 
         }
 
