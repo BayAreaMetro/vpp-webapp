@@ -837,7 +837,8 @@ angular.module('vppApp')
                     OnStreetInventoryFL.show();
                     studyAreasFL.show();
                 } else {
-                    ZoomStudyArea(1);
+                    $scope.sanValue = 1
+                    ZoomStudyArea($scope.sanValue);
                     OnStreetInventoryFL.show();
                     studyAreasFL.show();
                 }
@@ -861,7 +862,8 @@ angular.module('vppApp')
                     OnStreetRestrictionsFL.show();
                     OffStreetRestrictionsFL.show();
                 } else {
-                    ZoomStudyArea(1);
+                    $scope.sanValue = 1
+                    ZoomStudyArea($scope.sanValue);
                     OnStreetRestrictionsFL.show();
                     OffStreetRestrictionsFL.show();
                 }
@@ -887,7 +889,8 @@ angular.module('vppApp')
                     WDOnStreetOccupancyFL.show();
                     WDOffStreetOccupancyFL.show();
                 } else {
-                    ZoomStudyArea(1);
+                    $scope.sanValue = 1
+                    ZoomStudyArea($scope.sanValue);
                     WDOnStreetOccupancyFL.show();
                     WDOffStreetOccupancyFL.show();
                 }
@@ -914,7 +917,8 @@ angular.module('vppApp')
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
                 } else {
-                    ZoomStudyArea(1);
+                    $scope.sanValue = 1;
+                    ZoomStudyArea($scope.sanValue);
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
                 }
@@ -930,7 +934,29 @@ angular.module('vppApp')
 
                 break;
             case "peakOCC":
-                getPeakValue();
+
+                var currentZoomLevel = $scope.map.getZoom();
+
+                if (currentZoomLevel > 14) {
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                } else {
+                    $scope.sanValue = 1;
+                    SetOccupancyRenderer("Occupancy_12pm");
+                    $scope.DayType = "Weekday Peak Period";
+                    $scope.TimePeriod = "Afternoon (12PM)";
+                    ZoomStudyArea($scope.sanValue);
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                }
+                $("#LegendNamePNL_Occ").fadeIn(500);
+                $("#mlegend_Occ").fadeIn(500);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                //Write in the title for the legend item.
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
                 break;
 
             }
@@ -952,14 +978,7 @@ angular.module('vppApp')
                 WEOffStreetOccupancyFL.show();
             }
 
-            $("#LegendNamePNL_Occ").fadeIn(500);
-            $("#mlegend_Occ").fadeIn(500);
-            $("#LegendNamePNL_Restr").fadeOut(0);
-            $("#mlegend_Restr").fadeOut(0);
-            $("#mlegend_TotalSpaces").fadeOut(0);
-            $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-            //Write in the title for the legend item.
-            $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
+
 
         }
 
@@ -969,15 +988,16 @@ angular.module('vppApp')
 
         });
 
-        $('changePeakPeriod').on('click', function () {
+        $('.changePeakPeriod').on('click', function () {
             //            SetOccupancyRenderer($(this).attr('id').toString());
             $scope.pt = $(this).attr('id').toString();
-
+            console.clear();
+            console.log($scope.pt);
             $.ajax({
                 dataType: 'json',
-                url: publicDataURL + '/data/getPeak/?sa=' + $scope.sanValue + 'pt=' + $scope.pt,
+                url: publicDataURL + '/data/getPeak?sa=' + $scope.sanValue + '&pt=' + $scope.pt,
                 success: function (data) {
-                    console.clear();
+                    //console.clear();
                     console.log(data);
                 }
             });
