@@ -49,7 +49,7 @@ angular.module('vppApp')
 			//$(".vpp-links")
 			
 			//Remove hiiden class
-			$('.inner-ul').removeClass('hidden');
+			//$('.inner-ul').removeClass('hidden');
 			
 			$(".inner-nested").hover(function(){
 				$('.inner-ul').addClass('active');

@@ -461,6 +461,15 @@ angular.module('vppApp')
             }
 
         });
-
+		
+		$scope.activeTrigger = function(){
+			$(".inner-nested").hover(function(){
+				$('.data-nav').addClass('active');
+				$('.inner-nested').addClass('active');
+			},function(){
+				$('.data-nav').removeClass('active');
+				$('.inner-nested').removeClass('active');
+			});	
+		};
   }
  ]);

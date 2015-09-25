@@ -27,12 +27,17 @@ angular.module('vppApp')
 				$scope.name = $(e.target).attr("name");
 				
 				if($scope.name === "research"){
-					$('.inner-ul').removeClass("hidden");
+					$('.research-nav').removeClass("hidden");
+					$('.data-nav').addClass("hidden");
+				} else if($scope.name === "data"){
+					$('.data-nav').removeClass("hidden");
+					$('.research-nav').addClass("hidden");
 				} else{
-					$('.inner-ul').addClass("hidden");
+					$('.research-nav').addClass("hidden");
+					$('.data-nav').addClass("hidden");
 					console.log("false");
 				}
-				
+				console.log($scope.name);
 				//Add and remove active states
 				$('.navbar-nav > li > a').removeClass('active');
 				$(e.target).addClass("active");
