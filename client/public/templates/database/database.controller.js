@@ -471,5 +471,7 @@ angular.module('vppApp')
 				$('.inner-nested').removeClass('active');
 			});	
 		};
+		
+		$scope.activeTrigger();		
   }
  ]);

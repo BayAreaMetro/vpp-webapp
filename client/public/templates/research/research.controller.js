@@ -52,10 +52,10 @@ angular.module('vppApp')
 			//$('.inner-ul').removeClass('hidden');
 			
 			$(".inner-nested").hover(function(){
-				$('.inner-ul').addClass('active');
+				$('.research-nav').addClass('active');
 				$('.inner-nested').addClass('active');
 			},function(){
-				$('.inner-ul').removeClass('active');
+				$('.research-nav').removeClass('active');
 				$('.inner-nested').removeClass('active');
 			});
 			console.log('reseach');
