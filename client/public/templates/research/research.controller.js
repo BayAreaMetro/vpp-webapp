@@ -45,7 +45,9 @@ angular.module('vppApp')
 	    });
 		
 		$scope.init = function(){
-			$(".vpp-links")
+			$scope.test = "go";
+			//$(".vpp-links")
+			
 			//Remove hiiden class
 			$('.inner-ul').removeClass('hidden');
 			
