@@ -532,20 +532,18 @@ angular.module('vppApp')
 
         //Setting up Point Renderer for FerryTerminalsFL
 
-        /*var FerryTerminals_markerSymbol = new w.SimpleMarkerSymbol();
+         var FerryTerminals_markerSymbol =  new w.PictureMarkerSymbol({
+            "url":"app/images/ferry.png",
+            "height":20,
+            "width":20
+               });
+
+         /*var FerryTerminals_markerSymbol = new w.SimpleMarkerSymbol();
         FerryTerminals_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         FerryTerminals_markerSymbol.setSize(7);
         FerryTerminals_markerSymbol.outline.setColor(new w.Color([3, 132, 251, 1]));
         FerryTerminals_markerSymbol.outline.setWidth(2);*/
 
-
-        var FerryTerminals_markerSymbol =  new w.PictureMarkerSymbol({
-            "url":"app/images/ferry.png",
-            "height":20,
-            "width":20
-            /*"type":"esriPMS"
-            "angle": -30,*/
-        });
 
         var FerryTerminals_Renderer = new w.SimpleRenderer(FerryTerminals_markerSymbol);
         FerryTerminalsFL.setRenderer(FerryTerminals_Renderer);
@@ -553,43 +551,38 @@ angular.module('vppApp')
 
 
 
-
-    /*                            require([
-  "esri/symbols/PictureMarkerSymbol", ... 
-], function(PictureMarkerSymbol, ... ) {
-  //Height and Width are specified in points
-  var symbol =  new PictureMarkerSymbol({
-    "url":"graphics/redArrow2.png",
-    "height":20,
-    "width":20,
-    "type":"esriPMS"
-    "angle": -30,
-  });
-});*/
-
-
-
-
-
-
-
         //Setting up Point Renderer for ParknRideLotsFL
-        var ParknRideLots_markerSymbol = new w.SimpleMarkerSymbol();
+
+
+        var ParknRideLots_markerSymbol =  new w.PictureMarkerSymbol({
+            "url":"app/images/parkandride.png",
+            "height":20,
+            "width":20
+               });
+
+
+        /*var ParknRideLots_markerSymbol = new w.SimpleMarkerSymbol();
         ParknRideLots_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         ParknRideLots_markerSymbol.setSize(7);
         ParknRideLots_markerSymbol.outline.setColor(new w.Color([180, 50, 26, 1]));
-        ParknRideLots_markerSymbol.outline.setWidth(2);
-
+        ParknRideLots_markerSymbol.outline.setWidth(2);*/
         var ParknRideLots_Renderer = new w.SimpleRenderer(ParknRideLots_markerSymbol);
         ParknRideLotsFL.setRenderer(ParknRideLots_Renderer);
 
 
         //Setting up Point Renderer for RailStationsFL
-        var RailStations_markerSymbol = new w.SimpleMarkerSymbol();
+
+        var RailStations_markerSymbol =  new w.PictureMarkerSymbol({
+            "url":"app/images/train.png",
+            "height":20,
+            "width":20
+               });
+
+        /*var RailStations_markerSymbol = new w.SimpleMarkerSymbol();
         RailStations_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         RailStations_markerSymbol.setSize(5);
         RailStations_markerSymbol.outline.setColor(new w.Color([244, 102, 5, 1]));
-        RailStations_markerSymbol.outline.setWidth(1.5);
+        RailStations_markerSymbol.outline.setWidth(1.5);*/
 
         var RailStations_Renderer = new w.SimpleRenderer(RailStations_markerSymbol);
         RailStationsFL.setRenderer(RailStations_Renderer);
@@ -597,11 +590,17 @@ angular.module('vppApp')
 
 
         //Setting up Point Renderer for TransitHubsFL
-        var TransitHubs_markerSymbol = new w.SimpleMarkerSymbol();
+
+         var TransitHubs_markerSymbol =  new w.PictureMarkerSymbol({
+            "url":"app/images/bus.png",
+            "height":20,
+            "width":20
+               });
+        /*var TransitHubs_markerSymbol = new w.SimpleMarkerSymbol();
         TransitHubs_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         TransitHubs_markerSymbol.setSize(7);
         TransitHubs_markerSymbol.outline.setColor(new w.Color([36, 135, 74, 1]));
-        TransitHubs_markerSymbol.outline.setWidth(2);
+        TransitHubs_markerSymbol.outline.setWidth(2);*/
 
         var TransitHubs_Renderer = new w.SimpleRenderer(TransitHubs_markerSymbol);
         TransitHubsFL.setRenderer(TransitHubs_Renderer);
