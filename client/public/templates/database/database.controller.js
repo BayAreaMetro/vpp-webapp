@@ -384,27 +384,27 @@ angular.module('vppApp')
                 case "Restrictions":
                     $("#RestrictionInfo").fadeIn(0);
 					
-					$scope.restrictions = false;
+					$scope.restrictions = true;
                     break;
                 case "SpaceTypes":
                     $("#SpaceType").fadeIn(0);
 					
-					$scope.spaceTypes = false;
+					$scope.spaceTypes = true;
                     break;
                 case "WDOccupancy":
                     $("#WDOccInfo").fadeIn(0);
 					
-					$scope.weekDay = false;
+					$scope.weekDay = true;
                     break;
                 case "WEOccupancy":
                     $("#WEOccInfo").fadeIn(0);
 					
-					$scope.weekEnd = false;
+					$scope.weekEnd = true;
                     break;
                 case "Resources":
                     $("#AddtnlResources").fadeIn(0);
 						
-					$scope.resources = false;
+					$scope.resources = true;
                     break;
 
                 }
@@ -419,17 +419,17 @@ angular.module('vppApp')
                     $("#WEOccInfo").fadeOut(0);
                     $("#AddtnlResources").fadeOut(0);
 					
-					$scope.showAll = true;
+					$scope.showAll = false;
                     break;
                 case "Pricing":
                     $("#PricingInfo").fadeOut(0);
 					
-					$scope.isActive = true;
+					$scope.isActive = false;
                     break;
                 case "Supply":
                     $("#ParkingSupply").fadeOut(0);
 
-					$scope.supply = true;
+					$scope.supply = false;
                     break;
                 case "Restrictions":
                     $("#RestrictionInfo").fadeOut(0);
