@@ -228,6 +228,27 @@ router.get('/occupancyoff', function (req, res, next) {
         res.end("; Done.");
     });
 });
+//Return PeaK VALUES
+router.get('/getPeak', function (req, res, next) {
+    sql = new mssql.Request(database.connection);
+    var sa = req.param('sa');
+    var pt = req.param('pt');
+    sql.query("SELECT *  FROM VPP_Data.WEBMAP__PeakPeriod where Project_ID=" + sa + "and Peak_Type=" + pt, function (err, data) {
+        if (err) {
+            res.writeHead(500, {
+                'Content-Type': 'text/plain'
+            });
+            res.write("Got error :-( " + err);
+            res.end("");
+            return;
+        }
+
+        res.send(JSON.stringify(data));
+        //console.log(data);
+        //res.write(JSON.stringify(results, null, 4));
+        res.end("; Done.");
+    });
+});
 //
 //Load Occupancy Weekday (Needs Study Area Variable, )
 router.get('/ocupancywd', function (req, res, next) {

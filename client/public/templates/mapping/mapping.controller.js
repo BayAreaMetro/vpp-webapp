@@ -405,9 +405,9 @@ angular.module('vppApp')
         OnStreetRestrictionsRenderer.addValue("Pricing Restrictions", new w.SimpleLineSymbol("solid", new w.Color([0, 92, 230, 1]), 2));
         OnStreetRestrictionsRenderer.addValue("Time Restrictions", new w.SimpleLineSymbol("solid", new w.Color([115, 178, 255, 1]), 2));
 
-        OnStreetRestrictionsRenderer.addValue("Time and Pricing Restrictions", new w.SimpleLineSymbol("solid", new w.Color([138,43,226, 1]), 2));
-        OnStreetRestrictionsRenderer.addValue("Accessible/Loading/Other", new w.SimpleLineSymbol("solid", new w.Color([0,128,0, 1]), 2));
-        OnStreetRestrictionsRenderer.addValue("Unknown/Error", new w.SimpleLineSymbol("solid", new w.Color([139,69,19, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("Time and Pricing Restrictions", new w.SimpleLineSymbol("solid", new w.Color([138, 43, 226, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("Accessible/Loading/Other", new w.SimpleLineSymbol("solid", new w.Color([0, 128, 0, 1]), 2));
+        OnStreetRestrictionsRenderer.addValue("Unknown/Error", new w.SimpleLineSymbol("solid", new w.Color([139, 69, 19, 1]), 2));
 
 
         OnStreetRestrictionsFL.setRenderer(OnStreetRestrictionsRenderer);
@@ -936,53 +936,66 @@ angular.module('vppApp')
             }
 
         });
-function getPeakValue(a,b){
-                SetOccupancyRenderer("Occupancy_5am");
-                $scope.DayType = a;
-                $scope.TimePeriod = b;
-                var currentZoomLevel = $scope.map.getZoom();
 
-                if (currentZoomLevel > 14) {
-                    WEOnStreetOccupancyFL.show();
-                    WEOffStreetOccupancyFL.show();
-                } else {
-                    ZoomStudyArea(1);
-                    WEOnStreetOccupancyFL.show();
-                    WEOffStreetOccupancyFL.show();
-                }
+        function getPeakValue(a, b) {
+            SetOccupancyRenderer("Occupancy_5am");
+            $scope.DayType = a;
+            $scope.TimePeriod = b;
+            var currentZoomLevel = $scope.map.getZoom();
 
-                $("#LegendNamePNL_Occ").fadeIn(500);
-                $("#mlegend_Occ").fadeIn(500);
-                $("#LegendNamePNL_Restr").fadeOut(0);
-                $("#mlegend_Restr").fadeOut(0);
-                $("#mlegend_TotalSpaces").fadeOut(0);
-                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                //Write in the title for the legend item.
-                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
+            if (currentZoomLevel > 14) {
+                WEOnStreetOccupancyFL.show();
+                WEOffStreetOccupancyFL.show();
+            } else {
+                ZoomStudyArea(1);
+                WEOnStreetOccupancyFL.show();
+                WEOffStreetOccupancyFL.show();
+            }
 
-}
+            $("#LegendNamePNL_Occ").fadeIn(500);
+            $("#mlegend_Occ").fadeIn(500);
+            $("#LegendNamePNL_Restr").fadeOut(0);
+            $("#mlegend_Restr").fadeOut(0);
+            $("#mlegend_TotalSpaces").fadeOut(0);
+            $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+            //Write in the title for the legend item.
+            $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
 
-        /*$scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL, 
-           OnStreetRestrictionsFL, OffStreetRestrictionsFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
+        }
 
-         */
-
-
-
-         $('#peakOCC').on('click', function () {
-            //console.log($(this).attr('id'));
+        $('.pkt').on('click', function () {
             $("#maptypeOptionsBTN").fadeOut(0);
             $("#PeakTypeOptionsBTN").fadeIn(500);
+
+        });
+
+        $('changePeakPeriod').on('click', function () {
+            //            SetOccupancyRenderer($(this).attr('id').toString());
+            $scope.pt = $(this).attr('id').toString();
+
+            $.ajax({
+                dataType: 'json',
+                url: publicDataURL + '/data/getPeak/?sa=' + $scope.sanValue + 'pt=' + $scope.pt,
+                success: function (data) {
+                    console.clear();
+                    console.log(data);
+                }
+            });
+
+            $scope.TimePeriod = $(this).text();
+            $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
         });
 
 
         $('.occ').on('click', function () {
-            //console.log($(this).attr('id'));
+
             $("#maptypeOptionsBTN").fadeIn(500);
+            $("#PeakTypeOptionsBTN").fadeOut(0);
         });
         $('.mt').on('click', function () {
-            $("#maptypeOptionsBTN").fadeOut(500);
-            //console.log($(this).attr('id'));
+            $("#maptypeOptionsBTN").fadeOut(0);
+            $("#PeakTypeOptionsBTN").fadeOut(0);
+
 
         });
 
@@ -1107,16 +1120,16 @@ function getPeakValue(a,b){
 
         $(".find-studyarea").click(function () {
             var san = $("#StudyAreaSearch").val();
-            var sanValue = $('#studyareas-list option').filter(function () {
+            $scope.sanValue = $('#studyareas-list option').filter(function () {
                 return this.value == san;
                 //console.log(this);
             }).data('number');
 
-            ZoomStudyArea(sanValue);
+            ZoomStudyArea($scope.sanValue);
         });
         //Zoom To Study Area and Highlight Study Area Name in Legend as Current Study Area.
-        function ZoomStudyArea(sanValue) {
-            saQuery.where = "Project_ID = '" + sanValue + "'";
+        function ZoomStudyArea(a) {
+            saQuery.where = "Project_ID = '" + a + "'";
             StudyAreaQueryTask.execute(saQuery, showSAQResults);
 
         }
