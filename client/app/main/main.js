@@ -41,6 +41,7 @@ angular.module('vppApp')
                                 SimpleMarkerSymbol: 'esri/symbols/SimpleMarkerSymbol',
                                 SimpleLineSymbol: 'esri/symbols/SimpleLineSymbol',
                                 TextSymbol: 'esri/symbols/TextSymbol',
+                                PictureMarkerSymbol: 'esri/symbols/PictureMarkerSymbol',
                                 //dojo Stuff
                                 Color: 'dojo/_base/Color',
                                 parser: 'dojo/parser',

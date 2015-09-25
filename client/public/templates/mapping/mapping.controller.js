@@ -532,14 +532,44 @@ angular.module('vppApp')
 
         //Setting up Point Renderer for FerryTerminalsFL
 
-        var FerryTerminals_markerSymbol = new w.SimpleMarkerSymbol();
+        /*var FerryTerminals_markerSymbol = new w.SimpleMarkerSymbol();
         FerryTerminals_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         FerryTerminals_markerSymbol.setSize(7);
         FerryTerminals_markerSymbol.outline.setColor(new w.Color([3, 132, 251, 1]));
-        FerryTerminals_markerSymbol.outline.setWidth(2);
+        FerryTerminals_markerSymbol.outline.setWidth(2);*/
+
+
+        var FerryTerminals_markerSymbol =  new w.PictureMarkerSymbol({
+            "url":"app/images/ferry.png",
+            "height":20,
+            "width":20
+            /*"type":"esriPMS"
+            "angle": -30,*/
+        });
 
         var FerryTerminals_Renderer = new w.SimpleRenderer(FerryTerminals_markerSymbol);
         FerryTerminalsFL.setRenderer(FerryTerminals_Renderer);
+
+
+
+
+
+    /*                            require([
+  "esri/symbols/PictureMarkerSymbol", ... 
+], function(PictureMarkerSymbol, ... ) {
+  //Height and Width are specified in points
+  var symbol =  new PictureMarkerSymbol({
+    "url":"graphics/redArrow2.png",
+    "height":20,
+    "width":20,
+    "type":"esriPMS"
+    "angle": -30,
+  });
+});*/
+
+
+
+
 
 
 
@@ -593,7 +623,7 @@ angular.module('vppApp')
         //PDA Popup and Feature Layer Definition
         var PDA_Color = new w.Color("#b266ff");
         var PDA_Line = new w.SimpleLineSymbol("solid", PDA_Color, 2);
-        var PDA_Symbol = new w.SimpleFillSymbol("solid", PDA_Line, null);
+        var PDA_Symbol = new w.SimpleFillSymbol("solid", PDA_Line, new w.Color([178, 102, 255, 0.7]));
         var PDA_Renderer = new w.SimpleRenderer(PDA_Symbol);
 
         PDA_FL.setRenderer(PDA_Renderer);
