@@ -53,7 +53,8 @@ angular.module('vppApp')
             studyAreasColor,
             studyAreasLine,
             studyAreasSymbol,
-            studyAreasRenderer
+            studyAreasRenderer,
+            mapLevel
 
 
 
@@ -727,14 +728,17 @@ angular.module('vppApp')
          }
 
 
+
+
         function checkScale(extent, zoomFactor, anchor, level) {
             //document.getElementById("myText").value = level;
             //console.clear();
             //console.log('Zoom Scale: ' + level + ' Current Parking Theme: ' + $scope.pt);
             console.clear();
             console.log("Current Theme: " + $scope.pt);
+            mapLevel=level;
             if (level > 14) {
-                //showPointLayers();
+                showPointLayers();
                 switch ($scope.pt) {
                 case "inventory":
                     OnStreetInventoryFL.show();
@@ -818,7 +822,7 @@ angular.module('vppApp')
                 }
 
             } else {
-                //hidePointLayers();
+                hidePointLayers();
                 studyAreasFL.show();
 
                 OnStreetInventoryFL.hide();
@@ -1323,14 +1327,16 @@ angular.module('vppApp')
                     studyAreasFL.show();
                     break;
                 case "FerryTerminalsFL":
-                   /*if (level > 14) {          
+                   
+                    if (mapLevel>14) {          
                         FerryTerminalsFL.show();
                     }
                     else {
                         FerryTerminalsFL.hide();
-                    }*/
+                    }
+
+                    //FerryTerminalsFL.show();
                     break;
-               // }
                 case "ParknRideLotsFL":
                     ParknRideLotsFL.show();
                     break;
