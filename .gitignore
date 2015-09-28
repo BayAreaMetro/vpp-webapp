@@ -16,5 +16,4 @@ target
 target/*
 zip/*
 dist/*
-*.less
 UnusedCode.html
