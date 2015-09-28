@@ -43,6 +43,9 @@ angular.module('vppApp')
 	    $('#resTravelModelOneAnalysis').click(function () {
 	        $("#TravelModelOneAnalysis").fadeIn(1000);
 	    });
+	    $('#policy-overview').click(function () {
+	        $("#TravelModelOneAnalysis").fadeIn(1000);
+	    });
 		
 		$scope.init = function(){
 			$scope.test = "go";
