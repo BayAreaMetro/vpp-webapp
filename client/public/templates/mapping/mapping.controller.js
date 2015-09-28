@@ -598,7 +598,7 @@ angular.module('vppApp')
         //Setting up Point Renderer for RailStationsFL
 
         var RailStations_markerSymbol =  new w.PictureMarkerSymbol({
-            "url":"app/images/train.png",
+            "url":"app/images/train_beige.png",
             "height":20,
             "width":20
                });
@@ -772,10 +772,10 @@ angular.module('vppApp')
                     $("#mlegend_Restr").fadeIn(500);
                     $("#LegendNamePNL_Restr").fadeIn(500);
 
-                    $("#LegendNamePNL_Occ").fadeOut(500);
-                    $("#mlegend_Occ").fadeOut(500);
-                    $("#mlegend_TotalSpaces").fadeOut(500);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(500);
+                    $("#LegendNamePNL_Occ").fadeOut(0);
+                    $("#mlegend_Occ").fadeOut(0);
+                    $("#mlegend_TotalSpaces").fadeOut(0);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
 
                     break;
                 case "wkdayOCC":
@@ -789,7 +789,7 @@ angular.module('vppApp')
                     $("#LegendNamePNL_Occ").fadeIn(500);
                     $("#mlegend_Occ").fadeIn(500);
 
-                    $("#LegendNamePNL_Restr").fadeOut(500);
+                    $("#LegendNamePNL_Restr").fadeOut(0);
                     $("#mlegend_Restr").fadeOut(0);
                     $("#mlegend_TotalSpaces").fadeOut(0);
                     $("#LegendNamePNL_TotalSpaces").fadeOut(0);
@@ -843,12 +843,12 @@ angular.module('vppApp')
                 WEOnStreetOccupancyFL.hide();
                 WDOffStreetOccupancyFL.hide();
                 WEOffStreetOccupancyFL.hide();
-                $("#mlegend_TotalSpaces").fadeOut(500);
-                $("#LegendNamePNL_TotalSpaces").fadeOut(500);
-                $("#LegendNamePNL_Occ").fadeOut(500);
-                $("#LegendNamePNL_Restr").fadeOut(500);
-                $("#mlegend_Occ").fadeOut(500);
-                $("#mlegend_Restr").fadeOut(500);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_Occ").fadeOut(0);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Occ").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
             }
         }
 
