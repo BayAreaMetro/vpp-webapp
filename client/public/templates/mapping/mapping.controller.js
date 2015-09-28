@@ -538,6 +538,15 @@ angular.module('vppApp')
             "width":20
                });
 
+         /*var Ferry_sizeInfo = {
+          //field:"M086_07",
+          minSize:5,
+          maxSize:15
+          //minDataValue:0,
+          //maxDataValue:100
+        };*/
+
+
          /*var FerryTerminals_markerSymbol = new w.SimpleMarkerSymbol();
         FerryTerminals_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
         FerryTerminals_markerSymbol.setSize(7);
@@ -546,6 +555,21 @@ angular.module('vppApp')
 
 
         var FerryTerminals_Renderer = new w.SimpleRenderer(FerryTerminals_markerSymbol);
+
+        /*FerryTerminals_Renderer.setSizeInfo(Ferry_sizeInfo);
+
+        var Ferry_params = {rendererInfos: {
+          "renderer": FerryTerminals_Renderer,
+          "minScale": 500000,
+          "maxScale": 10000
+        }};*/
+
+
+        //var scaleDependentRenderer = new w.ScaleDependentRenderer(Ferry_params);
+        //FerryTerminalsFL.setRenderer(scaleDependentRenderer);
+        //map.addLayer(layer);
+
+
         FerryTerminalsFL.setRenderer(FerryTerminals_Renderer);
 
 
@@ -686,6 +710,23 @@ angular.module('vppApp')
         //Map and Featurelayer Utilities
         dojo.connect($scope.map, "onZoomEnd", checkScale);
 
+
+        function showPointLayers() {
+          FerryTerminalsFL.show();
+          ParknRideLotsFL.show();
+          RailStationsFL.show();
+          TransitHubsFL.show();
+         }
+
+
+        function hidePointLayers() {
+          FerryTerminalsFL.hide();
+          ParknRideLotsFL.hide();
+          RailStationsFL.hide();
+          TransitHubsFL.hide();
+         }
+
+
         function checkScale(extent, zoomFactor, anchor, level) {
             //document.getElementById("myText").value = level;
             //console.clear();
@@ -693,6 +734,7 @@ angular.module('vppApp')
             console.clear();
             console.log("Current Theme: " + $scope.pt);
             if (level > 14) {
+                //showPointLayers();
                 switch ($scope.pt) {
                 case "inventory":
                     OnStreetInventoryFL.show();
@@ -776,6 +818,7 @@ angular.module('vppApp')
                 }
 
             } else {
+                //hidePointLayers();
                 studyAreasFL.show();
 
                 OnStreetInventoryFL.hide();
@@ -1280,8 +1323,14 @@ angular.module('vppApp')
                     studyAreasFL.show();
                     break;
                 case "FerryTerminalsFL":
-                    FerryTerminalsFL.show();
+                   /*if (level > 14) {          
+                        FerryTerminalsFL.show();
+                    }
+                    else {
+                        FerryTerminalsFL.hide();
+                    }*/
                     break;
+               // }
                 case "ParknRideLotsFL":
                     ParknRideLotsFL.show();
                     break;
