@@ -717,7 +717,12 @@ angular.module('vppApp')
           ParknRideLotsFL.show();
           RailStationsFL.show();
           TransitHubsFL.show();
-         }
+
+          $('input[name="FerryTerminalsFL"]').bootstrapSwitch('state', true, true);
+          $('input[name="RailStationsFL"]').bootstrapSwitch('state', true, true);         
+          $('input[name="TransitHubsFL"]').bootstrapSwitch('state', true, true);
+          $('input[name="ParknRideLotsFL"]').bootstrapSwitch('state', true, true);
+                     }
 
 
         function hidePointLayers() {
@@ -725,6 +730,11 @@ angular.module('vppApp')
           ParknRideLotsFL.hide();
           RailStationsFL.hide();
           TransitHubsFL.hide();
+
+          $('input[name="FerryTerminalsFL"]').bootstrapSwitch('state', false, false);
+          $('input[name="RailStationsFL"]').bootstrapSwitch('state', false, false);         
+          $('input[name="TransitHubsFL"]').bootstrapSwitch('state', false, false);
+          $('input[name="ParknRideLotsFL"]').bootstrapSwitch('state', false, false);
          }
 
 
