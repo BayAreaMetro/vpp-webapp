@@ -472,6 +472,10 @@ angular.module('vppApp')
 			});	
 		};
 		
+		$scope.printer = function(){
+			print();
+		}
+		
 		$scope.activeTrigger();		
   }
  ]);
