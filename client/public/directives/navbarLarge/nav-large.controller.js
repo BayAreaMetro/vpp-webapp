@@ -51,6 +51,8 @@ angular.module('vppApp')
 				$scope.getElement = document.getElementById($scope.location);
 				$scope.makeId = '"#' + $scope.getLocation +'"';
 				
+				console.log('before');
+				
 				//Hide divs
 				$('.divFade').hide();
 				
@@ -78,7 +80,7 @@ angular.module('vppApp')
 					
 					$("#TravelModelOneAnalysis").fadeIn();
 				}
-				console.log($scope.makeId);
+				console.log($scope.getLocation);
 				
 			}
     	}
