@@ -32,6 +32,7 @@ angular.module('vppApp')
                                 DataAdapterFeatureLayer: 'esri/layers/DataAdapterFeatureLayer',
                                 arcgisUtils: 'esri/arcgis/utils',
                                 LayerList: 'esri/dijit/LayerList',
+                                //ClusterLayer: 'extras/ClusterLayer',
                                 //Map Popup Tools
                                 Popup: 'esri/dijit/Popup',
                                 PopupTemplate: 'esri/dijit/PopupTemplate',

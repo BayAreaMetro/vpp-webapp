@@ -54,7 +54,8 @@ angular.module('vppApp')
             studyAreasLine,
             studyAreasSymbol,
             studyAreasRenderer,
-            mapLevel
+            mapLevel,
+            clusterLayer
 
 
 
@@ -353,19 +354,19 @@ angular.module('vppApp')
         var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 0.5]));
         var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 0.5]));
 
-        var Break1_minValue_OffStreetInventory = 3;
-        var Break1_maxValue_OffStreetInventory = 6;
+        var Break1_minValue_OffStreetInventory = 0;
+        var Break1_maxValue_OffStreetInventory = 4;
 
-        var Break2_minValue_OffStreetInventory = 7;
-        var Break2_maxValue_OffStreetInventory = 14;
+        var Break2_minValue_OffStreetInventory = 5;
+        var Break2_maxValue_OffStreetInventory = 15;
 
-        var Break3_minValue_OffStreetInventory = 15;
-        var Break3_maxValue_OffStreetInventory = 26;
+        var Break3_minValue_OffStreetInventory = 16;
+        var Break3_maxValue_OffStreetInventory = 25;
 
-        var Break4_minValue_OffStreetInventory = 27;
-        var Break4_maxValue_OffStreetInventory = 54;
+        var Break4_minValue_OffStreetInventory = 26;
+        var Break4_maxValue_OffStreetInventory = 50;
 
-        var Break5_minValue_OffStreetInventory = 55;
+        var Break5_minValue_OffStreetInventory = 51;
         var Break5_maxValue_OffStreetInventory = 10000;
 
         OffStreetInventoryRenderer.addBreak(Break1_minValue_OffStreetInventory, Break1_maxValue_OffStreetInventory, Break1Symbol_OffStreetInventory);
@@ -603,11 +604,41 @@ angular.module('vppApp')
             "width":20
                });
 
-        /*var RailStations_markerSymbol = new w.SimpleMarkerSymbol();
-        RailStations_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
-        RailStations_markerSymbol.setSize(5);
-        RailStations_markerSymbol.outline.setColor(new w.Color([244, 102, 5, 1]));
-        RailStations_markerSymbol.outline.setWidth(1.5);*/
+
+
+        //clustering piece
+        // cluster layer that uses OpenLayers style clustering
+            /*clusterLayer = new w.ClusterLayer({
+              //"data": photoInfo.data,
+              "url": RailStationsURL,
+              "distance": 100,
+              "id": "clusters",
+              "labelColor": "#fff",
+              "labelOffset": 10,
+              "resolution": $scope.map.extent.getWidth() / $scope.map.width,
+              "singleColor": "#888"
+             // "singleTemplate": popupTemplate
+            });
+            var defaultSym = new w.SimpleMarkerSymbol().setSize(4);
+            var Cluster_renderer = new w.ClassBreaksRenderer(defaultSym, "clusterCount");
+
+            var picBaseUrl = "app/images/";
+            var blue = new PictureMarkerSymbol(picBaseUrl + "train_beige.png", 32, 32).setOffset(0, 15);
+            var green = new PictureMarkerSymbol(picBaseUrl + "train_beige.png", 64, 64).setOffset(0, 15);
+            var red = new PictureMarkerSymbol(picBaseUrl + "train_beige.png", 72, 72).setOffset(0, 15);
+            renderer.addBreak(0, 2, blue);
+            renderer.addBreak(2, 10, green);
+            renderer.addBreak(10, 1001, red);
+
+            clusterLayer.setRenderer(Cluster_renderer);*/
+            //map.addLayer(clusterLayer);
+            //end clustering piece
+          
+
+        
+
+
+
 
         var RailStations_Renderer = new w.SimpleRenderer(RailStations_markerSymbol);
         RailStationsFL.setRenderer(RailStations_Renderer);
@@ -700,9 +731,9 @@ angular.module('vppApp')
         //add the legend
 
 
-        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, OnStreetInventoryFL, OffStreetInventoryFL,
+        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, TPAsFL, OnStreetInventoryFL, OffStreetInventoryFL,
             OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL,
-            WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL, TPAsFL]);
+            WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL]);
 
         //Set Curent Map Theme
         $scope.pt = "inventory";
@@ -1354,14 +1385,14 @@ angular.module('vppApp')
                     break;
                 case "FerryTerminalsFL":
                    
-                    if (mapLevel>14) {          
+                    //if (mapLevel>14) {          
                         FerryTerminalsFL.show();
                         $("#mlegend_ferry").fadeIn(100);
-                    }
-                    else {
-                        FerryTerminalsFL.hide();
+                   // }
+                   // else {
+                      /*  FerryTerminalsFL.hide();
                         $("#mlegend_ferry").fadeOut(0);
-                    }
+                    }*/
                     break;
                 case "ParknRideLotsFL":
                     ParknRideLotsFL.show();
