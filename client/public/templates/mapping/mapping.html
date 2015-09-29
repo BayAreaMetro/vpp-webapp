@@ -254,7 +254,7 @@
 
 
              
-            <div id="mlegend_parknride" pad-bottom-m pad-top-m>
+            <div id="mlegend_parknride" class="collapse" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/parkandride.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
@@ -264,7 +264,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mlegend_ferry" pad-bottom-m pad-top-m>
+            <div id="mlegend_ferry" class="collapse" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/ferry.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
@@ -274,7 +274,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mlegend_rail" pad-bottom-m pad-top-m>
+            <div id="mlegend_rail" class="collapse" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/train_beige.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
@@ -284,7 +284,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mlegend_transitHubs" pad-bottom-m pad-top-m>
+            <div id="mlegend_transitHubs" class="collapse" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/bus.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
@@ -294,7 +294,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mlegend_pdas" pad-bottom-m pad-top-m>
+            <div id="mlegend_pdas" class="collapse" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; border-style:solid ;  border-color: #b266ff;   border-width: 3px; display: block; background-color: rgb(178, 102, 255); opacity: 0.7;">
@@ -304,7 +304,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mlegend_tpas" pad-bottom-m pad-top-m>
+            <div id="mlegend_tpas" class="collapse" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; border-style:solid ;  border-color: rgb(242, 167, 52);   border-width: 3px; display: block; background-color: rgb(242, 167, 52);">
@@ -509,50 +509,62 @@
                         <span>Parking Layers</span>
                     </div>
                     </p>
+                    <div class="adl">
                     <p>
                         <input id="StudyLayerSwitch" type="checkbox" data-size="mini" name="studyAreasFL" checked="true">
                         <span class="pad-left-m LayerLBLs">Study Areas</span>
                     </p>
+                    </div>
+                    <div class="adl">
                     <p>
                         <input id="ParknRideLotsSwitch" type="checkbox" data-size="mini" name="ParknRideLotsFL">
                         <span class="pad-left-m LayerLBLs">Park'n'Ride Lots</span>
                     </p>
+                    </div>
+                    <div class="adl">
                     <p>
                     <div class="LayerCategoryLBLs">
                         <span>Policy Layers</span>
                     </div>
                     </p>
+                    </div>
+                    <div class="adl">
                     <p>
                         <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL">
                         <span class="pad-left-m LayerLBLs">PDAs</span>
                     </p>
+                    </div>
+                    <div class="adl">
                     <p>
                         <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL">
                         <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
                     </p>
-                    <!-- <p>
-                        <input id="PlaceLayerSwitch" type="checkbox" data-size="mini" name="COC_FL">
-                        <span class="pad-left-m LayerLBLs">Communities of Concern</span>
-                    </p> -->
+                    </div>
+                    <div class="adl">
                     <p>
                     <div class="LayerCategoryLBLs">
                         <span>Transit Layers</span>
                     </div>
                     </p>
+                    </div>
+                    <div class="adl">
                     <p>
                         <input id="FerryTerminalsSwitch" type="checkbox" data-size="mini" name="FerryTerminalsFL">
                         <span class="pad-left-m LayerLBLs">Ferry Terminals</span>
                     </p>
-                    
+                    </div>
+                    <div class="adl">
                     <p>
                         <input id="RailStationsSwitch" type="checkbox" data-size="mini" name="RailStationsFL">
                         <span class="pad-left-m LayerLBLs">Rail Stations</span>
                     </p>
+                    </div>
+                    <div class="adl">
                     <p>
                         <input id="TransitHubsSwitch" type="checkbox" data-size="mini" name="TransitHubsFL">
                         <span class="pad-left-m LayerLBLs">Transit Hubs</span>
                     </p>
-                    
+                    </div>
                 </div>
             </div>
             <div id="mapPrint" class="tools collapse">
