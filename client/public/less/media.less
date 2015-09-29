@@ -67,3 +67,27 @@
 @media only screen and (max-width : 320px) {
 
 }
+
+/*========== Printer ==========*/
+@media print{
+	.view-wrapper, footer, nav {
+		display: none;
+	}
+	.panel-heading{
+		display: none;
+	}
+	//Printer Section
+	#print-section{
+		visibility:visible;
+		display: block;
+		#data-print{
+		
+		}
+	}
+	
+	#print-section {
+		position:absolute;
+		left:0;
+		top:0;
+	}
+}
