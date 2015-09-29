@@ -902,6 +902,8 @@ angular.module('vppApp')
         });
 
 
+
+
         $('.parkTheme').on('click', function () {
 
             OnStreetInventoryFL.hide();
@@ -1322,17 +1324,31 @@ angular.module('vppApp')
             //console.log(event); // jQuery event
             //console.log(state); // true | false
 
+
+            /* $('.adl').on('click', function () {
+            $scope.adl_Layer = $(this).attr('id');
+                switch ($scope.adl_Layer) {
+                case "ParknRideLotsSwitch":
+                    $("#mlegend_parknride").fadeIn(500);
+                break;
+                case "PDALayerSwitch":
+                    $("#mlegend_pdas").fadeIn(500);
+                break;
+
+            }
+          });*/
+
             var visibleLayerIds = [];
 
             if (state) {
                 switch (LayerName) {
                 case "PDA_FL":
                     PDA_FL.show();
-
+                    $("#mlegend_pdas").fadeIn(100);
                     break;
-                case "COC_FL":
+                /*case "COC_FL":
                     COC_FL.show();
-                    break;
+                    break;*/
                 case "studyAreasFL":
                     studyAreasFL.show();
                     break;
@@ -1340,24 +1356,28 @@ angular.module('vppApp')
                    
                     if (mapLevel>14) {          
                         FerryTerminalsFL.show();
+                        $("#mlegend_ferry").fadeIn(100);
                     }
                     else {
                         FerryTerminalsFL.hide();
+                        $("#mlegend_ferry").fadeOut(0);
                     }
-
-                    //FerryTerminalsFL.show();
                     break;
                 case "ParknRideLotsFL":
                     ParknRideLotsFL.show();
+                    $("#mlegend_parknride").fadeIn(100);
                     break;
                 case "RailStationsFL":
                     RailStationsFL.show();
+                    $("#mlegend_rail").fadeIn(100);
                     break;
                 case "TransitHubsFL":
                     TransitHubsFL.show();
+                    $("#mlegend_transitHubs").fadeIn(100);
                     break;
                 case "TPAsFL":
                     TPAsFL.show();
+                    $("#mlegend_tpas").fadeIn(100);
                     break;
 
                 }
@@ -1365,27 +1385,33 @@ angular.module('vppApp')
                 switch (LayerName) {
                 case "PDA_FL":
                     PDA_FL.hide();
+                    $("#mlegend_pdas").fadeOut(0);
                     break;
-                case "COC_FL":
+                /*case "COC_FL":
                     COC_FL.hide();
-                    break;
+                    break;*/
                 case "studyAreasFL":
                     studyAreasFL.hide();
                     break;
                 case "FerryTerminalsFL":
                     FerryTerminalsFL.hide();
+                    $("#mlegend_ferry").fadeOut(0);
                     break;
                 case "ParknRideLotsFL":
                     ParknRideLotsFL.hide();
+                    $("#mlegend_parknride").fadeOut(0);
                     break;
                 case "RailStationsFL":
                     RailStationsFL.hide();
+                    $("#mlegend_rail").fadeOut(0);
                     break;
                 case "TransitHubsFL":
                     TransitHubsFL.hide();
+                    $("#mlegend_transitHubs").fadeOut(0);
                     break;
                 case "TPAsFL":
                     TPAsFL.hide();
+                    $("#mlegend_tpas").fadeOut(0);
                     break;
 
                 }
