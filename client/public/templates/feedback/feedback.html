@@ -38,13 +38,13 @@
                                     <label class="col-md-4 control-label" for="StudyAreaSearch">Feedback Category</label>
                                     <div class="col-md-6">
 
-                                        <input id="feedbackCategory" type="text" placeholder="eg. General Feedback" class="form-control input-md find-feedback" required="" name="City" list="feedbackCat-list">
+                                        <input id="feedbackCategory" type="text" ng-model="feedbackCat" placeholder="eg. General Feedback" class="form-control input-md find-feedback" required="" name="City" list="feedbackCat-list">
                                         <datalist id="feedbackCat-list">
                                             <option value="General Feedback">
-                                                <option value="Site Page: Research & Policies">
-                                                    <option value="Site Page: Parking Data">
-                                                        <option value="Site Page: Parking Map">
-                                                            <option value="Site Page: Help">
+                                            <option value="Site Page: Research & Policies">
+											<option value="Site Page: Parking Data">
+                                            <option value="Site Page: Parking Map">
+                                            <option value="Site Page: Help">
                                         </datalist>
                                         <p class="help-block">Select a Category that best describes your Feedback</p>
                                     </div>
@@ -53,7 +53,7 @@
                                     <label class="col-md-4 control-label" for="FeedbackType">Feedback Type</label>
                                     <div class="col-md-6">
 
-                                        <input id="feedbackType" type="text" placeholder="eg. Bug, Enhancement Request" class="form-control input-md" required="" list="ft-list">
+                                        <input id="feedbackType" type="text" ng-model="feedbackType" placeholder="eg. Bug, Enhancement Request" class="form-control input-md" required="" list="ft-list">
                                         <datalist id="ft-list">
                                             <option value="Application Bug">
                                                 <option value="Enhancement Request">
@@ -66,8 +66,11 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="selectCollectionYear">Feedback Comment</label>
                                     <div class="col-md-6">
-                                        <textarea id="feedbackComment" class="form-control" rows="5"></textarea>
+                                        <textarea id="feedbackComment" class="form-control" rows="5" ng-model="feedbackComment"></textarea>
                                         <p class="help-block">&nbsp;</p>
+                                        <p>{{feedbackCat}}</p>
+                                        <p>{{feedbackType}}</p>
+                                        <p>{{feedbackComment}}</p>
                                     </div>
 
                                     <div class="row pad-top-l">
