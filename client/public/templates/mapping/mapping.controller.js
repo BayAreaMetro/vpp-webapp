@@ -779,7 +779,7 @@ angular.module('vppApp')
             console.log("Current Theme: " + $scope.pt);
             mapLevel=level;
             if (level > 14) {
-                showPointLayers();
+                //showPointLayers();
                 switch ($scope.pt) {
                 case "inventory":
                     OnStreetInventoryFL.show();
@@ -863,7 +863,7 @@ angular.module('vppApp')
                 }
 
             } else {
-                hidePointLayers();
+                //hidePointLayers();
                 studyAreasFL.show();
 
                 OnStreetInventoryFL.hide();
