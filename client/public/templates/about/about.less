@@ -5,17 +5,22 @@
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
-    .site-header{
-		margin-top: 150px;
+	.site-header{
+		background-image: url('images/cropped-parking-e1421692177386.jpg');
+		background-size: cover;
+        margin-top: 50px;
+		height: 250px;
+		.overlay{
+			padding-top: 20px;
+			h3:last-child{
+				color:white;
+			}
+		}
 	}
-    .jumbotron {
-        h1 {
-            //            border-bottom: 1px solid black;
-            color: #E41A2C;
-            font-weight: 900;
-        }
-        p {
-            color: #003869;
-        }
+    .about-text{
+	    p{
+		    font-size: 1.5em;
+			color: @anchorColor;
+	    } 
     }
 }
