@@ -7,7 +7,8 @@
 	    background-color: white;
     }
     .navbar-brand{
-	    color: #ffffff;
+	    //color: #ffffff;
+	    color: @mainColorDark;
 	    .nav-logo{
 		    color: #ffffff;
 		    background-color: @anchorColor;
@@ -17,7 +18,8 @@
     }
     .navbar-nav{
 	    a{
-		    color:#ffffff;
+		    //color:#ffffff;
+		    color: @mainColorDark;
 		    .transition(all .5s ease-in-out);
 		    &:hover{
 			    color: @anchorColor;
@@ -59,16 +61,15 @@
 				padding: 5px 10px 5px 10px;
 				.transition(all .5s ease-in-out);
 				&:hover{
-					background-color: white;
+					background-color: @anchorColor;
 					a{
-						color: @mainBgColor;
+						color: #ffffff;
 						text-decoration: none;
 					}
 					.vpp-links-inner-2{
-						color:white;
+						color: @mainColorDark;
 						&:hover{
-							color: @mainBgColor;
-						}
+							color: #ffffff;						}
 					}
 				}
 			}
@@ -135,7 +136,7 @@
 			    padding: 0;
 			    margin-left: 145px;
 			    width: 100%;
-			    color: white;
+			    color: @mainColorDark;
 			    //border-bottom: 1px solid @mainColor;
 				//border-top: 1px solid @mainColor;
 				height:0;

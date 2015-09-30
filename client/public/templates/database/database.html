@@ -13,7 +13,6 @@
 
         </div>
         <div id="DataNav" class="container">
-	        <h1 ng-show="isActive">Hello</h1>
             <div class="row">
                 <data class="hidden"></data>
             </div>
@@ -387,14 +386,17 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="btn-group pull-right">
-                                <button id="vwOptionsBTN" type="button" class="btn btn-primary btn-sm">
+                                <button id="vwOptionsBTN" type="button" class="btn btn-default btn-sm">
                                     <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
                                 </button>
-                                <button id="dlDataBTN" type="button" class="btn btn-primary btn-sm">
+                                <button id="dlDataBTN" type="button" class="btn btn-default btn-sm">
                                     <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                 </button>
+                                <button id="printDataBTN" type="button" class="btn btn-default btn-sm" ng-click="printer()">
+                                    <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
+                                </button>
                             </div>
-                            <h2 class="panel-title pad-bottom-m">Selected Data</h2>
+                            <h2 class="panel-title pad-bottom-m">Value Pricing Pilot Parking Data</h2>
                         </div>
                         <div class="panel-body">
                             <!-- Data table -->
@@ -919,7 +921,7 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <span><p>Value Here</p></span>
+                            <span><p>Metropolitan Transportation Commission</p></span>
                         </div>
                     </div>
                 </div>

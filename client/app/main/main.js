@@ -104,11 +104,18 @@ angular.module('vppApp')
             .state('employees', {
                 url: "/employees",
                 templateUrl: 'public/templates/employees/employees.html'
+            }).state('help', {
+                url: "/help",
+                templateUrl: 'public/templates/help/help.html',
+                controller: 'HelpCtrl'
+            }).state('feedback', {
+                url: "/feedback",
+                templateUrl: 'public/templates/feedback/feedback.html',
+                controller: 'FeedbackCtrl'
             });
     })
     .service('wish', function () {
-
-        // it's not require... it's a wish?
+	    
         var wish = {};
 
         function _loadDependencies(deps, next) {
