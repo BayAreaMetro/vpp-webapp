@@ -475,7 +475,46 @@ angular.module('vppApp')
             $scope.printer = function () {
                 print();
             }
+		
+		$scope.activeTrigger = function(){
+			$(".inner-nested").hover(function(){
+				$('.data-nav').addClass('active');
+				$('.inner-nested').addClass('active');
+			},function(){
+				$('.data-nav').removeClass('active');
+				$('.inner-nested').removeClass('active');
+			});	
+		};
+		
+		$scope.printer = function(){
+			
+			//Get Print Section
+			$scope.createElement(document.getElementById("DataTable"));
+			
+			//Create the element
+			//$scope.modThis = document.querySelector("#print-section .working");
+			//$scope.modThis.appendChild(document.createTextNode(" new"));
+			
+			print();
+		};
+		
+		$scope.createElement = function(element){
+			
+			$scope.node = element.cloneNode(true);
+			$scope.printerElement = document.getElementById("print-section");
+			
+			if (!$scope.printerElement) {
+				$scope.printerElement = document.createElement("div");
+				$scope.printerElement.id = "print-section";
+				document.body.appendChild($scope.printerElement);
+			}
+			
+			$scope.printerElement.innerHTML= "";
+			
+			$scope.printerElement.appendChild($scope.node);
+		};
+		
+		$scope.activeTrigger();		
 
-            $scope.activeTrigger();
   }
  ]);
