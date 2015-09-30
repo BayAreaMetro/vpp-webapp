@@ -5,6 +5,7 @@ angular.module('vppApp')
 	'$scope',
 	'$http',
 	function ($scope, $http) {
+		
 		$scope.feedbackCat;
 		$scope.feedbackType;
 		$scope.feedbackComment;
@@ -25,13 +26,13 @@ angular.module('vppApp')
 		
 		$('#submitFeedbackBTN').click(function () {
 		
-		    $scope.feedbackCategory = $('#feedbackCategory').val();
-		    $scope.feedbackType = $('#feedbackType').val();
-		    $scope.feedbackComment = $('#feedbackComment').val();
+		    //$scope.feedbackCategory = $('#feedbackCategory').val();
+		   // $scope.feedbackType = $('#feedbackType').val();
+		    //$scope.feedbackComment = $('#feedbackComment').val();
 		
 		    //http request for Master Summary Data
 		    $http({
-		        url: publicDataURL + '/data/submitfeedback?fc=' + $scope.feedbackCategory + '&ft=' + $scope.feedbackType + '&fcomment=' + $scope.feedbackComment,
+		        url: publicDataURL + '/data/submitfeedback?fc=' + $scope.feedbackCat + '&ft=' + $scope.feedbackType + '&fcomment=' + $scope.feedbackComment,
 		        method: 'POST'
 		    }).success(function (results) {
 		        //console.log(results);
