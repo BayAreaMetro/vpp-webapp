@@ -8,8 +8,8 @@ angular.module('vppApp', [
     'ui.bootstrap',
     'ui.router',
     'pascalprecht.translate',
-    'cgNotify'
-
+    'cgNotify',
+	'rzModule'
 ]).config(function ($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider, $httpProvider) {
 
         $urlRouterProvider.otherwise("/");

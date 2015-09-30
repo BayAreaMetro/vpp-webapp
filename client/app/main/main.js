@@ -106,7 +106,8 @@ angular.module('vppApp')
             }).state('help', {
                 url: "/help",
                 templateUrl: 'public/templates/help/help.html',
-                controller: 'HelpCtrl'
+                controller: 'HelpCtrl',
+                controllerAs: 'vm'
             }).state('feedback', {
                 url: "/feedback",
                 templateUrl: 'public/templates/feedback/feedback.html',
