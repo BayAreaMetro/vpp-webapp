@@ -6,16 +6,16 @@ angular.module('vppApp')
     '$http',
 	function ($scope) {
 	    //Page Controls
-	    $('.divControl').click(function () {
-	        $(".divFade").each(function () {
-	            if ($('.divFade').css("visibility") == "hidden") {
-	                // handle non visible state
-	            } else {
-	                // handle visible state
-	                $('.divFade').fadeOut(10);
-	            }
-	        });
-	    });
+//	    $('.divControl').click(function () {
+//	        $(".divFade").each(function () {
+//	            if ($('.divFade').css("visibility") == "hidden") {
+//	                // handle non visible state
+//	            } else {
+//	                // handle visible state
+//	                $('.divFade').fadeOut(10);
+//	            }
+//	        });
+//	    });
 	
 	    $('#resEmployeeProgramMI').click(function () {
 	        $("#EmployeePrograms").fadeIn(1000);

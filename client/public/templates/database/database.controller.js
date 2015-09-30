@@ -18,16 +18,16 @@ angular.module('vppApp')
                 $scope.resources = false;
 
             //Page Controls
-            $('.divControl').click(function () {
-                $('.divFade').each(function () {
-                    if ($('.divFade').css("visibility") == "hidden") {
-                        // handle non visible state
-                    } else {
-                        // handle visible state
-                        $('.divFade').fadeOut(0);
-                    }
-                });
-            });
+//            $('.divControl').click(function () {
+//                $('.divFade').each(function () {
+//                    if ($('.divFade').css("visibility") == "hidden") {
+//                        // handle non visible state
+//                    } else {
+//                        // handle visible state
+//                        $('.divFade').fadeOut(0);
+//                    }
+//                });
+//            });
             //Summary Data URLs
             var devDataUrl = "http://localhost:3003";
             var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
