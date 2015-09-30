@@ -1376,12 +1376,9 @@ angular.module('vppApp')
                 case "PDA_FL":
                     PDA_FL.show();
                     $("#mlegend_pdas").fadeIn(100);
-                    //$("#policyLayersCat").fadeIn(100);
+                    $("#policyLayersCat").fadeIn(100);
                     transitLayersCat
                     break;
-                /*case "COC_FL":
-                    COC_FL.show();
-                    break;*/
                 case "studyAreasFL":
                     studyAreasFL.show();
                     break;
@@ -1390,7 +1387,7 @@ angular.module('vppApp')
                     //if (mapLevel>14) {          
                         FerryTerminalsFL.show();
                         $("#mlegend_ferry").fadeIn(100);
-                        //$("#transitLayersCat").fadeIn(100);
+                        $("#transitLayersCat").fadeIn(100);
                    // }
                    // else {
                       /*  FerryTerminalsFL.hide();
@@ -1400,22 +1397,22 @@ angular.module('vppApp')
                 case "ParknRideLotsFL":
                     ParknRideLotsFL.show();
                     $("#mlegend_parknride").fadeIn(100);
-                   // $("#parkingLayersCat").fadeIn(100);
+                    //$("#parkingLayersCat").fadeIn(100);
                     break;
                 case "RailStationsFL":
                     RailStationsFL.show();
                     $("#mlegend_rail").fadeIn(100);
-                   // $("#transitLayersCat").fadeIn(100);
+                   $("#transitLayersCat").fadeIn(100);
                     break;
                 case "TransitHubsFL":
                     TransitHubsFL.show();
                     $("#mlegend_transitHubs").fadeIn(100);
-                   // $("#transitLayersCat").fadeIn(100);
+                   $("#transitLayersCat").fadeIn(100);
                     break;
                 case "TPAsFL":
                     TPAsFL.show();
                     $("#mlegend_tpas").fadeIn(100);
-                    //$("#policyLayersCat").fadeIn(100);
+                    $("#policyLayersCat").fadeIn(100);
                     break;
 
                 }
@@ -1424,16 +1421,25 @@ angular.module('vppApp')
                 case "PDA_FL":
                     PDA_FL.hide();
                     $("#mlegend_pdas").fadeOut(0);
+                    if (TPAsFL.visible){
+                    }
+                    else{
+
+                       $("#policyLayersCat").fadeOut(0);
+                        }
                     break;
-                /*case "COC_FL":
-                    COC_FL.hide();
-                    break;*/
                 case "studyAreasFL":
                     studyAreasFL.hide();
                     break;
                 case "FerryTerminalsFL":
                     FerryTerminalsFL.hide();
                     $("#mlegend_ferry").fadeOut(0);
+                    if (RailStationsFL.visible || TransitHubsFL.visible){
+                    }
+                    else{
+
+                       $("#transitLayersCat").fadeOut(0);
+                        }
                     break;
                 case "ParknRideLotsFL":
                     ParknRideLotsFL.hide();
@@ -1442,22 +1448,33 @@ angular.module('vppApp')
                 case "RailStationsFL":
                     RailStationsFL.hide();
                     $("#mlegend_rail").fadeOut(0);
+                    if (FerryTerminalsFL.visible || TransitHubsFL.visible){
+                    }
+                    else{
+
+                       $("#transitLayersCat").fadeOut(0);
+                   }
                     break;
                 case "TransitHubsFL":
                     TransitHubsFL.hide();
                     $("#mlegend_transitHubs").fadeOut(0);
+                    if (FerryTerminalsFL.visible || RailStationsFL.visible){
+                    }
+                    else{
+
+                       $("#transitLayersCat").fadeOut(0);
+                   }
+
                     break;
                 case "TPAsFL":
                     TPAsFL.hide();
                     $("#mlegend_tpas").fadeOut(0);
-                    /*if (PDA_FL.isVisibleAtScale($scope.map.getScale();)){
-
-
+                    if (PDA_FL.visible){
                     }
-                    else{*/
+                    else{
 
-                       // $("#policyLayersCat").fadeOut(0);
-                        //}
+                       $("#policyLayersCat").fadeOut(0);
+                        }
                     break;
 
                 }
