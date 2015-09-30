@@ -13,9 +13,22 @@
 
         <!-- Content -->
         <div class="pad-top-l ma-top-l home-text container">
+            <div id="feedbackSuccess" class="collapse alert alert-success fade">
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4>Thanks for Your Feedback!</h4>
+            </div>
+            <div id="feedbackFailure" class="collapse alert alert-danger fade">
+                <button type="button" class="closefail" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4>Oops...</h4>
+                <p> There was an error submitting your feedback.</p>
+                <p>Please try again.</p>
+            </div>
             <div id="SubmitFeedback" class="container">
                 <h1 class="col-md-4">&nbsp;</h1>
                 <h2 class="col-md-8">Submit Your Feedback</h2>
+
                 <div class="row">
                     <div class="col-md-12">
                         <form class="form-horizontal pad-top-l">
