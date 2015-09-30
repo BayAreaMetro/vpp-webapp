@@ -5,7 +5,8 @@ angular.module('vppApp')
 	'$scope',
     '$http',
 	function ($scope) {
-	    //Page Controls
+		//Page Controls
+/*
 	    $('.divControl').click(function () {
 	        $(".divFade").each(function () {
 	            if ($('.divFade').css("visibility") == "hidden") {
@@ -16,9 +17,12 @@ angular.module('vppApp')
 	            }
 	        });
 	    });
-	
+*/
+/*
 	    $('#resEmployeeProgramMI').click(function () {
-	        $("#EmployeePrograms").fadeIn(1000);
+		    $('.divFade').addClass('hidden');
+			$("#EmployeePrograms").removeClass('hidden');
+			$("#EmployeePrograms").removeClass('collapse'); 
 	    });
 	
 	    $('#resRegPricingPolMI').click(function () {
@@ -46,6 +50,7 @@ angular.module('vppApp')
 	    $('#policy-overview').click(function () {
 	        $("#TravelModelOneAnalysis").fadeIn(1000);
 	    });
+*/
 		
 		$scope.init = function(){
 			$scope.test = "go";

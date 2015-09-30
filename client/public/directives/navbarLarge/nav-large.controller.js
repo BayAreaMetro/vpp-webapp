@@ -54,30 +54,63 @@ angular.module('vppApp')
 				console.log('before');
 				
 				//Hide divs
-				$('.divFade').hide();
-				
-				if($scope.getLocation === "policy-overview"){
-					
+				//$('.divFade').hide();RegionalPricingPolicies
+				if ( $scope.getLocation === "EmployeePrograms" ){
+					$('.divFade').hide();
 					//Fadein section
-					$("#policy-overview").fadeIn();
-				} else if($scope.getLocation === "policy-urban"){
+					$("#EmployeePrograms").fadeIn();
+				} else if ( $scope.getLocation === "RegionalPricingPolicies" ){
 					
+					$('.divFade').hide();
+					//Fadein section
+					$("#RegionalPricingPolicies").fadeIn();
+				} else if ( $scope.getLocation === "Resources" ){
+					
+					$('.divFade').hide();
+					//Fadein section
+					$("#Resources").fadeIn();
+				} else if ( $scope.getLocation === "EnactingPricingPolicies" ) {
+					
+					$('.divFade').hide();
+					//Fadein section
+					$("#EnactingPricingPolicies").fadeIn();
+				} else if ( $scope.getLocation === "PolicyQuestions" ){
+					
+					$('.divFade').hide();
+					//Fadein section
+					$("#PolicyQuestions").fadeIn();
+				} else if ( $scope.getLocation === "SupplyDemand" ){
+					
+					$('.divFade').hide();
+					//Fadein section
+					$("#SupplyDemand").fadeIn();
+				} else if ( $scope.getLocation === "ParkingReqmntsUnbundling" ){			
+					
+					$('.divFade').hide();
+					//Fadein section
+					$("#ParkingReqmntsUnbundling").fadeIn();
+				} else if( $scope.getLocation === "policy-overview" ){
+					$('.divFade').hide();
+					//Fadein section
+					$("#EnactingPricingPolicies").fadeIn();
+				} else if ( $scope.getLocation === "policy-urban" ){
+					$('.divFade').hide();
 					//Fadein section
 					$("#policy-urban").fadeIn();
-				} else if($scope.getLocation === "policy-travel"){
-					
+				} else if ( $scope.getLocation === "policy-travel" ){
+					$('.divFade').hide();
 					$("#policy-travel").fadeIn();
-				} else if($scope.getLocation === "policy-key"){
-					
+				} else if ( $scope.getLocation === "policy-key" ){
+					$('.divFade').hide();
 					$("#policy-key").fadeIn();
-				} else if($scope.getLocation === "supply-overview"){
-					
+				} else if ( $scope.getLocation === "supply-overview" ){
+					$('.divFade').hide();
 					$("#supply-overview").fadeIn();
-				} else if($scope.getLocation === "supply-parking"){
-					
+				} else if ( $scope.getLocation === "supply-parking" ){
+					$('.divFade').hide();
 					$("#supply-parking").fadeIn();
-				} else if($scope.getLocation === "TravelModelOneAnalysis"){
-					
+				} else if ( $scope.getLocation === "TravelModelOneAnalysis" ){
+					$('.divFade').hide();
 					$("#TravelModelOneAnalysis").fadeIn();
 				}
 				console.log($scope.getLocation);
