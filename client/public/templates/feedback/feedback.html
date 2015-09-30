@@ -1,19 +1,77 @@
 <section id="feedback-section">
-	
-	<!-- Content Area -->
+
+    <!-- Content Area -->
     <div class="">
-    	
-    	<!-- Page header -->
-    	<div class="site-header text-center">
-	    	<div class="overlay">
-		    	<h3>Leave Us</h3>
-		    	<h3>Feedback</h3>
-	    	</div>
-    	</div>
-	    	
-    	<!-- Content -->
-    	<div class="pad-top-l ma-top-l home-text container">
-			
-		</div>
-	</div>
+
+        <!-- Page header -->
+        <div class="site-header text-center">
+            <div class="overlay">
+                <h3>Leave Us</h3>
+                <h3>Feedback</h3>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="pad-top-l ma-top-l home-text container">
+            <div id="SubmitFeedback" class="container">
+                <h1 class="col-md-4">&nbsp;</h1>
+                <h2 class="col-md-8">Submit Your Feedback</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-horizontal pad-top-l">
+                            <fieldset>
+                                <!-- Study Area Search-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="StudyAreaSearch">Feedback Category</label>
+                                    <div class="col-md-6">
+
+                                        <input id="feedbackCategory" type="text" placeholder="eg. General Feedback" class="form-control input-md find-feedback" required="" name="City" list="feedbackCat-list">
+                                        <datalist id="feedbackCat-list">
+                                            <option value="General Feedback">
+                                                <option value="Site Page: Research & Policies">
+                                                    <option value="Site Page: Parking Data">
+                                                        <option value="Site Page: Parking Map">
+                                                            <option value="Site Page: Help">
+                                        </datalist>
+                                        <p class="help-block">Select a Category that best describes your Feedback</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="FeedbackType">Feedback Type</label>
+                                    <div class="col-md-6">
+
+                                        <input id="feedbackType" type="text" placeholder="eg. Bug, Enhancement Request" class="form-control input-md" required="" list="ft-list">
+                                        <datalist id="ft-list">
+                                            <option value="Application Bug">
+                                                <option value="Enhancement Request">
+                                        </datalist>
+
+                                    </div>
+                                </div>
+
+                                <!-- Collection Year -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="selectCollectionYear">Feedback Comment</label>
+                                    <div class="col-md-6">
+                                        <textarea id="feedbackComment" class="form-control" rows="5"></textarea>
+                                        <p class="help-block">&nbsp;</p>
+                                    </div>
+
+                                    <div class="row pad-top-l">
+                                        <label class="col-md-4 control-label">&nbsp;</label>
+                                        <div class="col-md-8 pull-left">
+
+                                            <button id="submitFeedbackBTN" type="button" class="btn btn-default btn-sm">
+                                                <span class="fa fa-envelope fa-fw" aria-hidden="true"></span>Submit Feedback
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
