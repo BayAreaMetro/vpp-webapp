@@ -2,11 +2,66 @@ var express = require('express');
 var router = express.Router();
 var database = require('./database.js')
 var mssql = require('mssql');
+var github = require('octonode');
+
+var client = github.client({
+    username: 'MTCGIS',
+    password: 'GIS@mtc101'
+});
+
+var ghme = client.me();
+var ghuser = client.user('MetropolitanTransportationCommission');
+var ghrepo = client.repo('MetropolitanTransportationCommission/vpp-webapp');
+var ghorg = client.org('MetropolitanTransportationCommission');
+var ghissue = client.issue('MetropolitanTransportationCommission/vpp-webapp', 37);
+var ghmilestone = client.milestone('MetropolitanTransportationCommission/vpp-webapp', 37);
+var ghlabel = client.label('MetropolitanTransportationCommission/vpp-webapp', 'Enhancement Request');
+var ghpr = client.pr('MetropolitanTransportationCommission/vpp-webapp', 37);
+var ghgist = client.gist();
+var ghteam = client.team(37);
+//var ghnotification = client.notification(37);
+
+var ghsearch = client.search();
+
+//Get Issues for Repo
+ghrepo.issues(function (err, data, head) {
+    //    console.log(err);
+    //    console.log(data);
+    //    console.log(head);
+});
 
 var sql;
 
 
 router.use('/', database);
+
+
+
+
+router.post('/submitfeedback', function (req, res, next) {
+    var feedbackCategory = req.param('fc');
+    var feedbackType = req.param('ft');
+    var feedbackComment = req.param('fcomment');
+
+    ghrepo.issue({
+        "title": "Public Comment",
+        "body": feedbackComment,
+        //"assignee": "Keareys",
+        //"milestone": 1,
+        "labels": [feedbackCategory, feedbackType]
+    }, function (err, success) {
+        if (err) {
+            console.log(err);
+        }
+        var response = [{
+            'response': success
+       }];
+
+        res.json(response);
+
+    }); //issue
+
+});
 
 //Load Study Areas
 router.get('/studyareas', function (req, res, next) {
@@ -228,7 +283,7 @@ router.get('/occupancyoff', function (req, res, next) {
         res.end("; Done.");
     });
 });
-//Return PeaK VALUES
+//Return Peak VALUES
 router.get('/getPeak', function (req, res, next) {
     sql = new mssql.Request(database.connection);
     var sa = req.param('sa');
