@@ -21,8 +21,8 @@
             </div>
         </div>
         <div class="panel-body">
-            <div id="StudyAreaNamePNL" class="pad-bottom-m pad-top-m collapse">
-                Study Area Name
+            <div id="parkingLayersCat" class="pad-bottom-m pad-top-m">
+                Parking Layers
             </div>
 
             <div id="mlegend_studyArea" pad-bottom-m pad-top-m>
@@ -264,35 +264,8 @@
                     </div>
                 </div>
             </div>
-            <div id="mlegend_ferry" class="collapse" pad-bottom-m pad-top-m>
-                <div class="row">
-                    <div class="col-xs-1 col-md-1">
-                        <img src="app/images/ferry.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
-                    </div>
-                    <div class="col-xs-7 col-md-7">
-                        Ferry Terminals
-                    </div>
-                </div>
-            </div>
-            <div id="mlegend_rail" class="collapse" pad-bottom-m pad-top-m>
-                <div class="row">
-                    <div class="col-xs-1 col-md-1">
-                        <img src="app/images/train_beige.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
-                    </div>
-                    <div class="col-xs-7 col-md-7">
-                        Rail Stations
-                    </div>
-                </div>
-            </div>
-            <div id="mlegend_transitHubs" class="collapse" pad-bottom-m pad-top-m>
-                <div class="row">
-                    <div class="col-xs-1 col-md-1">
-                        <img src="app/images/bus.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
-                    </div>
-                    <div class="col-xs-7 col-md-7">
-                        Transit Hubs
-                    </div>
-                </div>
+            <div id="policyLayersCat" class="pad-bottom-m pad-top-m collapse">
+                Policy Layers
             </div>
             <div id="mlegend_pdas" class="collapse" pad-bottom-m pad-top-m>
                 <div class="row">
@@ -314,6 +287,41 @@
                     </div>
                 </div>
             </div>
+            <div id="transitLayersCat" class="pad-bottom-m pad-top-m collapse">
+                Transit Layers
+            </div>
+             <div id="mlegend_transitHubs" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/bus.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Transit Hubs
+                    </div>
+                </div>
+            </div>
+            <div id="mlegend_ferry" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/ferry.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Ferry Terminals
+                    </div>
+                </div>
+            </div>
+            <div id="mlegend_rail" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/train_beige.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Rail Stations
+                    </div>
+                </div>
+            </div>
+           
+            
 
 
 
@@ -348,6 +356,8 @@
             <li class="divider"></li>
             <li><a id="mapRefreshCTL"><i class="fa fa-refresh fa-lg"></i> Reset Map <span class="arrow clickable"></span></a>
             </li>
+            <!-- <li><a id="layerOpacityCTL"><i class="fa fa-toggle-on"></i> Layer Opacity <span class="arrow clickable"></span></a>
+            </li> -->
             <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Navigation Tips <span class="arrow clickable"></span></a>
             </li>
             <li><a id="mapPrintCTL"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
@@ -443,35 +453,35 @@
                 <div class="row pad-top-m">
                     <div class="col-xs-4 col-md-6">
                         <div id="inventory" href="#" class="mt parkTheme">
-                            <a id="inv" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            <a id="inv" class="thumbnail"><img src="app/images/inventory_thumbnail.png" style="height: 100%; width: 100%; display: block;" >
                             </a>
                             <p>Inventory</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <div id="restrictions" href="#" class="mt parkTheme">
-                            <a id="res" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            <a id="res" class="thumbnail"><img src="app/images/restrictions_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Restrictions</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <div id="wkdayOCC" href="#" class="occ parkTheme">
-                            <a id="wkday" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            <a id="wkday" class="thumbnail"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Weekday Occupancy</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <div id="wkndOCC" href="#" class="occ parkTheme">
-                            <a id="wknd" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            <a id="wknd" class="thumbnail"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Weekend Occupancy</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <div id="peakOCC" href="#" class="pkt parkTheme">
-                            <a id="peak" class="thumbnail"><img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            <a id="peak" class="thumbnail"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Peak Occupancy</p>
                         </div>
@@ -483,21 +493,25 @@
                     <div class="col-xs-4 col-md-6">
                         <a id="topo" href="#" class="thumbnail bm">
                             <img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            <p style= "color: black;">Topographic</p>
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <a id="gray" href="#" class="thumbnail bm">
                             <img src="app/images/light_gray_canvas.jpg" style="height: 100%; width: 100%; display: block;" alt="Light Gray">
+                            <p style= "color: black;">Grey</p>
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <a id="osm" href="#" class="thumbnail bm">
                             <img src="app/images/osm.jpg" style="height: 100%; width: 100%; display: block;" alt="OSM">
+                            <p style= "color: black;">Open Street</p>
                         </a>
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <a id="hybrid" href="#" class="thumbnail bm">
                             <img src="app/images/imagery_labels.jpg" style="height: 100%; width: 100%; display: block;" alt="Satelite">
+                            <p style= "color: black;">Map Imagery</p>
                         </a>
                     </div>
                 </div>
