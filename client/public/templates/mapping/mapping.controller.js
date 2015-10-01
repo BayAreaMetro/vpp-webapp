@@ -321,19 +321,19 @@ angular.module('vppApp')
 
 
         var Break1_minValue = 0;
-        var Break1_maxValue = 6;
+        var Break1_maxValue = 4;
 
-        var Break2_minValue = 7;
-        var Break2_maxValue = 14;
+        var Break2_minValue = 5;
+        var Break2_maxValue = 15;
 
-        var Break3_minValue = 15;
-        var Break3_maxValue = 26;
+        var Break3_minValue = 16;
+        var Break3_maxValue = 25;
 
-        var Break4_minValue = 27;
-        var Break4_maxValue = 54;
+        var Break4_minValue = 26;
+        var Break4_maxValue = 50;
 
-        var Break5_minValue = 55;
-        var Break5_maxValue = 1000;
+        var Break5_minValue = 51;
+        var Break5_maxValue = 10000;
 
         renderer.addBreak(Break1_minValue, Break1_maxValue, Break1LineSymbol);
         renderer.addBreak(Break2_minValue, Break2_maxValue, Break2LineSymbol);
@@ -901,6 +901,7 @@ angular.module('vppApp')
 
         //Tool Control Listeners
 
+
         //Reset Controls in Tool Panel
         $('.clickable').on('click', function () {
             $(this).closest('.panel').fadeOut(300, function () {
@@ -958,6 +959,19 @@ angular.module('vppApp')
 
                     var currentZoomLevel = $scope.map.getZoom();
 
+
+                if (currentZoomLevel > 14) {
+                    OnStreetInventoryFL.show();
+                    OffStreetInventoryFL.show();
+                    studyAreasFL.show();
+                } else {
+                    $scope.sanValue = 1;
+                    ZoomStudyArea($scope.sanValue);
+                    OnStreetInventoryFL.show();
+                    OffStreetInventoryFL.show();
+                    studyAreasFL.show();
+                }
+
                     if (currentZoomLevel > 14) {
                         OnStreetInventoryFL.show();
                         studyAreasFL.show();
@@ -967,6 +981,7 @@ angular.module('vppApp')
                         OnStreetInventoryFL.show();
                         studyAreasFL.show();
                     }
+
 
 
                     $("#mlegend_TotalSpaces").fadeIn(500);
@@ -1273,6 +1288,33 @@ angular.module('vppApp')
         });
 
 
+
+
+
+
+        studyAreasFL.on("click", function(evt){
+          
+  
+          var SAQ_id = evt.graphic.attributes["Project_ID"];
+
+          console.log(SAQ_id);
+
+          
+          ZoomStudyArea(SAQ_id);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
         $(".find-studyarea").click(function () {
             var san = $("#StudyAreaSearch").val();
             $scope.sanValue = $('#studyareas-list option').filter(function () {
@@ -1480,7 +1522,7 @@ angular.module('vppApp')
             $scope.layerOpacity = "Layer Opacity";
             console.log("working layer");
             $("#mapToolsPNL").fadeIn(500);
-            $("#layer-opcaity").fadeIn();
+            $("#layer-opacity").fadeIn();
         }
 
         //Slider
@@ -1502,3 +1544,6 @@ angular.module('vppApp')
             });
         }
     });
+
+
+
