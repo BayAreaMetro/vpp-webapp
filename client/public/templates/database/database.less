@@ -8,6 +8,9 @@
     .content-wrapper {
         height: 1000px;
     }
+    .btn {
+        white-space: normal;
+    }
     .site-header {
         background-image: url('images/emptyLot.jpg');
         background-position: 50% 41%;
@@ -24,9 +27,9 @@
         display: inline;
         width: 50%;
     }
-    .bootstrap-switch{
-	    margin-right: 15px;
-	    margin-bottom: 5px;
+    .bootstrap-switch {
+        margin-right: 15px;
+        margin-bottom: 5px;
     }
 }
 
@@ -38,8 +41,8 @@
 #DataTable {
     display: none;
     height: 100%;
-    .panel{
-	    margin-bottom: 150px;
+    .panel {
+        margin-bottom: 150px;
     }
 }
 
@@ -75,35 +78,37 @@
 #AddtnlResources {
     //display: none;
 }
-#DataNav, #DataSummary{
-	.dropdown-toggle{
-		width: 100%;
-		.caret{
-			margin-top: 7px;
-		}
-	}
-	.dropdown-menu{
-		height:200px;
-		overflow: scroll;
-		width: 100%;
-		li{
-			cursor: pointer;
-			padding: 10px;
-			.transition(all .5s ease-in-out);
-			&:hover{
-				background-color: @anchorColor;
-				.selected-area{
-					color: #FFFFFF;
-				}
-			}	
-		}
-		.selected-area{
-			margin:0;
-		}
-	}
+
+#DataNav,
+#DataSummary {
+    .dropdown-toggle {
+        width: 100%;
+        .caret {
+            margin-top: 7px;
+        }
+    }
+    .dropdown-menu {
+        height: 200px;
+        overflow: scroll;
+        width: 100%;
+        li {
+            cursor: pointer;
+            padding: 10px;
+            .transition(all .5s ease-in-out);
+            &:hover {
+                background-color: @anchorColor;
+                .selected-area {
+                    color: #FFFFFF;
+                }
+            }
+        }
+        .selected-area {
+            margin: 0;
+        }
+    }
 }
-	
-	//Print box
-#print-section{
-	display: none;
+
+//Print box
+#print-section {
+    display: none;
 }
