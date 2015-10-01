@@ -13,8 +13,9 @@
 
         </div>
         <div id="DataNav" class="container">
+            <!--
             <div class="row">
-                <!-- drop downs -->
+                
 		        <div class="dropdown hidden">
 					<button class="btn btn-default dropdown-toggle text-left" type="button" id="list-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
 						{{selectedStudyArea}}
@@ -28,6 +29,7 @@
 					</ul>
 				</div>
             </div>
+-->
         </div>
 
         <div id="DataSummary" class="container InfoSummaryBG divFade">
@@ -48,27 +50,27 @@
                                     <p class="help-block">Choose a Study Area</p>
                                 </div>
                             </div>
-							
-							<!-- Study Area Search-->
+
+                            <!-- Study Area Search-->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
                                 <div class="col-md-6">
-									<!-- drop downs -->
-							        <div class="dropdown">
-										<button class="btn btn-default dropdown-toggle text-left" type="button" id="list-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
-											{{selectedStudyArea}}
-											<span class="caret pull-right ma-top-s"></span>
-										</button>
-										<ul class="dropdown-menu" aria-labelledby="list-1" ng-click="getStudyArea($event)">
-											<li ng-repeat="data in studyArea" class="study-li">
-												<p class="hidden">{{data.Project_ID}}</p>
-												<p class="selected-area">{{data.Name}}</p>
-											</li>
-										</ul>
-									</div>
+                                    <!-- drop downs -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
+                                            {{selectedStudyArea}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="list-1" ng-click="getStudyArea($event)">
+                                            <li ng-repeat="data in studyArea" class="study-li">
+                                                <p class="hidden">{{data.Project_ID}}</p>
+                                                <p class="selected-area">{{data.Name}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Collection Year -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
@@ -199,7 +201,7 @@
                                 </div>
 
                                 <!-- Multiple Checkboxes (inline) -->
-<!--
+                                <!--
                                 <div class="form-group">
                                     <div class="control-group">
                                         <div class="controls">
@@ -313,7 +315,7 @@
                                 </div>
 
                                 <!-- Multiple Checkboxes (inline) -->
-<!--
+                                <!--
                                 <div class="form-group">
                                     <div class="control-group">
                                         <div class="controls">
@@ -410,9 +412,9 @@
                                 <button id="vwOptionsBTN" type="button" class="btn btn-default btn-sm">
                                     <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
                                 </button>
-								<button id="vwMapOCCBTN" type="button" class="btn btn-default btn-sm disabled occupancyVD">
-									<span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
-								</button>
+                                <button id="vwMapOCCBTN" type="button" class="btn btn-default btn-sm disabled occupancyVD">
+                                    <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
+                                </button>
                                 <button id="dlDataBTN" type="button" class="btn btn-default btn-sm">
                                     <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                 </button>
@@ -953,9 +955,9 @@
         </div>
 
     </div>
-	
-	<div id="data-print">
-		<div class="working"></div>
-	</div>
+
+    <div id="data-print">
+        <div class="working"></div>
+    </div>
     <!-- Content -->
 </section>
