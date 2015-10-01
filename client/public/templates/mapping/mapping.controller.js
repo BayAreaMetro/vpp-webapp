@@ -958,7 +958,7 @@ angular.module('vppApp')
 
                     var currentZoomLevel = $scope.map.getZoom();
 
-<<<<<<< HEAD
+
                 if (currentZoomLevel > 14) {
                     OnStreetInventoryFL.show();
                     OffStreetInventoryFL.show();
@@ -970,7 +970,7 @@ angular.module('vppApp')
                     OffStreetInventoryFL.show();
                     studyAreasFL.show();
                 }
-=======
+
                     if (currentZoomLevel > 14) {
                         OnStreetInventoryFL.show();
                         studyAreasFL.show();
@@ -980,7 +980,7 @@ angular.module('vppApp')
                         OnStreetInventoryFL.show();
                         studyAreasFL.show();
                     }
->>>>>>> origin/development
+
 
 
                     $("#mlegend_TotalSpaces").fadeIn(500);
