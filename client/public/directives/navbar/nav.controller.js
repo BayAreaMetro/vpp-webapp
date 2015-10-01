@@ -59,21 +59,21 @@ angular.module('vppApp')
                 });
             });
 
-            $('#dbSummaryMI').click(function () {
-                $("#DataSummary").fadeIn(1000);
-            });
-
-            $('#dbPoliciesMI').click(function () {
-                $("#Policies").fadeIn(1000);
-            });
-
-            $('#vwDataBTN').click(function () {
-                $("#DataTable").fadeIn(1000);
-            });
-
-            $('#vwOptionsBTN').click(function () {
-                $("#DataSummary").fadeIn(1000);
-            });
+//            $('#dbSummaryMI').click(function () {
+            //                $("#DataSummary").fadeIn(1000);
+            //            });
+            //
+            //            $('#dbPoliciesMI').click(function () {
+            //                $("#Policies").fadeIn(1000);
+            //            });
+            //
+            //            $('#vwDataBTN').click(function () {
+            //                $("#DataTable").fadeIn(1000);
+            //            });
+            //
+            //            $('#vwOptionsBTN').click(function () {
+            //                $("#DataSummary").fadeIn(1000);
+            //            });
             //End of Page Controls
     	}
     ]	
