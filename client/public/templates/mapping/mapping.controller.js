@@ -901,6 +901,7 @@ angular.module('vppApp')
 
         //Tool Control Listeners
 
+
         //Reset Controls in Tool Panel
         $('.clickable').on('click', function () {
             $(this).closest('.panel').fadeOut(300, function () {
@@ -1287,6 +1288,33 @@ angular.module('vppApp')
         });
 
 
+
+
+
+
+        studyAreasFL.on("click", function(evt){
+          
+  
+          var SAQ_id = evt.graphic.attributes["Project_ID"];
+
+          console.log(SAQ_id);
+
+          
+          ZoomStudyArea(SAQ_id);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
         $(".find-studyarea").click(function () {
             var san = $("#StudyAreaSearch").val();
             $scope.sanValue = $('#studyareas-list option').filter(function () {
@@ -1494,7 +1522,7 @@ angular.module('vppApp')
             $scope.layerOpacity = "Layer Opacity";
             console.log("working layer");
             $("#mapToolsPNL").fadeIn(500);
-            $("#layer-opcaity").fadeIn();
+            $("#layer-opacity").fadeIn();
         }
 
         //Slider
@@ -1516,3 +1544,6 @@ angular.module('vppApp')
             });
         }
     });
+
+
+
