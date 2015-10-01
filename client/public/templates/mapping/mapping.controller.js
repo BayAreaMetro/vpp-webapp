@@ -108,7 +108,7 @@ angular.module('vppApp')
         //Study Area Query Result Renderer
         saq_Color = new w.Color("#007AC8");
         saq_Line = new w.SimpleLineSymbol("solid", saq_Color, 5);
-        saq_Symbol = new w.SimpleFillSymbol("solid", saq_Line, "#fff");
+        saq_Symbol = new w.SimpleFillSymbol("solid", saq_Line, "#ffffff");
 
         saQuery = new w.Query();
         saQuery.returnGeometry = true;
@@ -145,9 +145,26 @@ angular.module('vppApp')
             }, "HomeButton");
             $scope.home.startup();
     
+
+        /* var highlightSymbol = new w.SimpleFillSymbol(
+          w.SimpleFillSymbol.STYLE_SOLID, 
+          new w.SimpleLineSymbol(
+            w.SimpleLineSymbol.STYLE_SOLID, 
+            new w.Color([255,0,0]), 3
+          ), 
+          new w.Color([125,125,125,0.35])
+            );*/
+        //var vppGraphicsRenderer = new w.SimpleRenderer(highlightSymbol);
+
         vppGraphicsLayer = new w.GraphicsLayer({
-            opacity: 0.50
+            opacity: 0.50,
+            //renderer: vppGraphicsRenderer,
+            //styling: true,
+            visible: true
         });
+       // vppGraphicsLayer.setRenderer(vppGraphicsRenderer);
+        
+
 
 
         //Define Feature Layers for Map
@@ -646,43 +663,20 @@ angular.module('vppApp')
         });
 
 
+        var LightRail_Renderer = new w.SimpleRenderer(RailStations_markerSymbol);
+        LightRailFL.setRenderer(LightRail_Renderer);
 
-        //clustering piece
-        // cluster layer that uses OpenLayers style clustering
-        /*clusterLayer = new w.ClusterLayer({
-          //"data": photoInfo.data,
-          "url": RailStationsURL,
-          "distance": 100,
-          "id": "clusters",
-          "labelColor": "#fff",
-          "labelOffset": 10,
-          "resolution": $scope.map.extent.getWidth() / $scope.map.width,
-          "singleColor": "#888"
-         // "singleTemplate": popupTemplate
+
+
+        //Setting up Point Renderer for BartFL
+        var Bart_markerSymbol = new w.PictureMarkerSymbol({
+            "url": "app/images/bart.png",
+            "height": 12,
+            "width": 12
         });
-        var defaultSym = new w.SimpleMarkerSymbol().setSize(4);
-        var Cluster_renderer = new w.ClassBreaksRenderer(defaultSym, "clusterCount");
 
-        var picBaseUrl = "app/images/";
-        var blue = new PictureMarkerSymbol(picBaseUrl + "train_beige.png", 32, 32).setOffset(0, 15);
-        var green = new PictureMarkerSymbol(picBaseUrl + "train_beige.png", 64, 64).setOffset(0, 15);
-        var red = new PictureMarkerSymbol(picBaseUrl + "train_beige.png", 72, 72).setOffset(0, 15);
-        renderer.addBreak(0, 2, blue);
-        renderer.addBreak(2, 10, green);
-        renderer.addBreak(10, 1001, red);
-
-        clusterLayer.setRenderer(Cluster_renderer);*/
-        //map.addLayer(clusterLayer);
-        //end clustering piece
-
-
-
-
-
-
-
-        var RailStations_Renderer = new w.SimpleRenderer(RailStations_markerSymbol);
-        //RailStationsFL.setRenderer(RailStations_Renderer);
+        var bart_Renderer = new w.SimpleRenderer(Bart_markerSymbol);
+        BartFL.setRenderer(bart_Renderer);
 
 
 
@@ -774,7 +768,7 @@ angular.module('vppApp')
 
         $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, TPAsFL, OnStreetInventoryFL, OffStreetInventoryFL,
             OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL,
-            WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, TransitHubsFL]);
+            WEOffStreetOccupancyFL, BartFL, FerryTerminalsFL, ParknRideLotsFL, TransitHubsFL]);
 
         //Set Curent Map Theme
         $scope.pt = "inventory";
@@ -1331,6 +1325,10 @@ angular.module('vppApp')
           
   
           var SAQ_id = evt.graphic.attributes["Project_ID"];
+          
+          /*var highlightGraphic = new w.Graphic(evt.graphic.geometry,highlightSymbol);
+          $scope.map.graphics.add(highlightGraphic);*/
+
 
           console.log(SAQ_id);
 
@@ -1422,24 +1420,7 @@ angular.module('vppApp')
         $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
             var LayerName = $(this).attr('name');
 
-            //console.log($(this).attr('name')); // DOM element
-            //console.log(event); // jQuery event
-            //console.log(state); // true | false
-
-
-            /* $('.adl').on('click', function () {
-            $scope.adl_Layer = $(this).attr('id');
-                switch ($scope.adl_Layer) {
-                case "ParknRideLotsSwitch":
-                    $("#mlegend_parknride").fadeIn(500);
-                break;
-                case "PDALayerSwitch":
-                    $("#mlegend_pdas").fadeIn(500);
-                break;
-
-            }
-          });*/
-
+           
             var visibleLayerIds = [];
 
             if (state) {
@@ -1483,6 +1464,11 @@ angular.module('vppApp')
                     case "TPAsFL":
                         TPAsFL.show();
                         $("#mlegend_tpas").fadeIn(100);
+                        $("#policyLayersCat").fadeIn(100);
+                        break;
+                    case "BartFL":
+                        BartFL.show();
+                       // $("#mlegend_tpas").fadeIn(100);
                         $("#policyLayersCat").fadeIn(100);
                         break;
 
