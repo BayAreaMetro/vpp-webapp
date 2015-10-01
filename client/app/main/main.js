@@ -53,6 +53,7 @@ angular.module('vppApp')
                                 query: 'dojo/query',
                                 domStyle: 'dojo/dom-style',
                                 domConstruct: 'dojo/dom-construct',
+                                registry: 'dijit/registry',
                                 domReady: 'dojo/domReady',
                                 arrayUtils: 'dojo/_base/array',
                                 //Services
