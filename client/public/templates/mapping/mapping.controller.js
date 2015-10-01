@@ -134,7 +134,7 @@ angular.module('vppApp')
 
 
         });
-    //Added this code to fix HomeButton Issue
+        //Added this code to fix HomeButton Issue
         w.registry.remove("HomeButton");
         $scope.home = new w.HomeButton({
                 map: $scope.map
