@@ -113,10 +113,13 @@
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
                                     <div class="col-md-8 pull-left">
-                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
+                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm disabled summaryVD">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
                                         </button>
-                                        <button id="dlSummaryDataBTN" type="button" class="btn btn-default btn-sm">
+                                        <button id="vwMapSummaryBTN" type="button" class="btn btn-default btn-sm disabled summaryVD">
+                                            <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
+                                        </button>
+                                        <button id="dlSummaryDataBTN" type="button" class="btn btn-default btn-sm disabled summaryVD">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                         </button>
                                     </div>
@@ -167,7 +170,7 @@
                                 </div>
 
                                 <!-- Multiple Checkboxes (inline) -->
-<!--
+                                <!--
                                 <div class="form-group">
                                     <div class="control-group">
                                         <div class="controls">
@@ -224,12 +227,10 @@
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
                                     <div class="col-md-8 pull-left">
-                                        <!--
-                                        <button id="vwMapBTN" type="button" class="btn btn-default btn-sm">
-    <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Map
-</button>
--->
-                                        <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm">
+                                        <button id="vwMapINVBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
+                                            <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
+                                        </button>
+                                        <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                         </button>
                                     </div>
@@ -261,8 +262,8 @@
                                 <label class="col-md-4 control-label" for="ParkingTypeSearchOCC">Select Parking Type</label>
                                 <div class="col-md-6">
 
-                                    <input id="ParkingTypeSearchOCC" type="text" placeholder="eg. On-Street, Off-Street, Both" class="form-control input-md" required="" list="pt-list">
-                                    <datalist id="pt-list">
+                                    <input id="ParkingTypeSearchOCC" type="text" placeholder="eg. On-Street, Off-Street, Both" class="form-control input-md" required="" list="pt-occ-list">
+                                    <datalist id="pt-occ-list">
                                         <option value="On-Street">
                                             <option value="Off-Street">
                                                 <option value="Both On/Off-Street">
@@ -281,7 +282,7 @@
                                 </div>
 
                                 <!-- Multiple Checkboxes (inline) -->
-<!--
+                                <!--
                                 <div class="form-group">
                                     <div class="control-group">
                                         <div class="controls">
@@ -350,12 +351,12 @@
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
                                     <div class="col-md-8 pull-left">
-                                        <!--
-                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
-                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
+
+                                        <button id="vwMapOCCBTN" type="button" class="btn btn-default btn-sm disabled occupancyVD">
+                                            <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
                                         </button>
--->
-                                        <button id="dlOccupancyDataBTN" type="button" class="btn btn-default btn-sm">
+
+                                        <button id="dlOccupancyDataBTN" type="button" class="btn btn-default btn-sm disabled occupancyVD">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                         </button>
                                     </div>
@@ -378,9 +379,12 @@
                                 <button id="vwOptionsBTN" type="button" class="btn btn-default btn-sm">
                                     <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
                                 </button>
+                                <!--
                                 <button id="dlDataBTN" type="button" class="btn btn-default btn-sm">
-                                    <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
-                                </button>
+    <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
+</button>
+-->
+
                                 <button id="printDataBTN" type="button" class="btn btn-default btn-sm" ng-click="printer()">
                                     <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
                                 </button>
@@ -918,9 +922,9 @@
         </div>
 
     </div>
-	
-	<div id="data-print">
-		<div class="working"></div>
-	</div>
+
+    <div id="data-print">
+        <div class="working"></div>
+    </div>
     <!-- Content -->
 </section>
