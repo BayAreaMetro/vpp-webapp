@@ -21,9 +21,13 @@ angular.module('vppApp')
             PDA_FL,
             FerryTerminalsFL,
             ParknRideLotsFL,
-            RailStationsFL,
+            //RailStationsFL,
             TransitHubsFL,
             TPAsFL,
+            BartFL,
+            CaltrainFL,
+            AmtrakFL,
+            LightRailFL,
             markerSym,
             renderer1,
             renderer2,
@@ -269,13 +273,46 @@ angular.module('vppApp')
 
         });
 
-        RailStationsFL = new w.FeatureLayer(RailStationsURL, {
+        /*RailStationsFL = new w.FeatureLayer(RailStationsURL, {
             id: "RailStations",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false
 
+        });*/
+        BartFL = new w.FeatureLayer(RailStationsURL, {
+            id: "Bart",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
         });
+        BartFL.setDefinitionExpression("agencyname='BART'");
+
+        CaltrainFL = new w.FeatureLayer(RailStationsURL, {
+            id: "Caltrain",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+        });
+        CaltrainFL.setDefinitionExpression("agencyname='CALTRAIN'");
+
+        AmtrakFL = new w.FeatureLayer(RailStationsURL, {
+            id: "Amtrak",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+        });
+        AmtrakFL.setDefinitionExpression("agencyname='Amtrak Capitol Cor. & Reg. Svc'");
+
+        LightRailFL = new w.FeatureLayer(RailStationsURL, {
+            id: "LightRail",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false
+
+        });
+
+        LightRailFL.setDefinitionExpression("agencyname<>'BART' AND agencyname<>'CALTRAIN' AND agencyname<>'Amtrak Capitol Cor. & Reg. Svc'");
 
         TransitHubsFL = new w.FeatureLayer(TransitHubsURL, {
             id: "TransitHubs",
@@ -645,7 +682,7 @@ angular.module('vppApp')
 
 
         var RailStations_Renderer = new w.SimpleRenderer(RailStations_markerSymbol);
-        RailStationsFL.setRenderer(RailStations_Renderer);
+        //RailStationsFL.setRenderer(RailStations_Renderer);
 
 
 
@@ -737,7 +774,7 @@ angular.module('vppApp')
 
         $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, TPAsFL, OnStreetInventoryFL, OffStreetInventoryFL,
             OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL,
-            WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, RailStationsFL, TransitHubsFL]);
+            WEOffStreetOccupancyFL, FerryTerminalsFL, ParknRideLotsFL, TransitHubsFL]);
 
         //Set Curent Map Theme
         $scope.pt = "inventory";
@@ -750,7 +787,7 @@ angular.module('vppApp')
         function showPointLayers() {
             FerryTerminalsFL.show();
             ParknRideLotsFL.show();
-            RailStationsFL.show();
+            //RailStationsFL.show();
             TransitHubsFL.show();
 
             $('input[name="FerryTerminalsFL"]').bootstrapSwitch('state', true, true);
@@ -763,7 +800,7 @@ angular.module('vppApp')
         function hidePointLayers() {
             FerryTerminalsFL.hide();
             ParknRideLotsFL.hide();
-            RailStationsFL.hide();
+           // RailStationsFL.hide();
             TransitHubsFL.hide();
 
             $('input[name="FerryTerminalsFL"]').bootstrapSwitch('state', false, false);
@@ -1256,7 +1293,7 @@ angular.module('vppApp')
             PDA_FL.hide();
             FerryTerminalsFL.hide();
             ParknRideLotsFL.hide();
-            RailStationsFL.hide();
+            //RailStationsFL.hide();
             TransitHubsFL.hide();
             TPAsFL.hide();
 
@@ -1290,8 +1327,6 @@ angular.module('vppApp')
 
 
 
-
-
         studyAreasFL.on("click", function(evt){
           
   
@@ -1302,16 +1337,6 @@ angular.module('vppApp')
           
           ZoomStudyArea(SAQ_id);
         });
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1445,11 +1470,11 @@ angular.module('vppApp')
                         $("#mlegend_parknride").fadeIn(100);
                         //$("#parkingLayersCat").fadeIn(100);
                         break;
-                    case "RailStationsFL":
+                    /*case "RailStationsFL":
                         RailStationsFL.show();
                         $("#mlegend_rail").fadeIn(100);
                         $("#transitLayersCat").fadeIn(100);
-                        break;
+                        break;*/
                     case "TransitHubsFL":
                         TransitHubsFL.show();
                         $("#mlegend_transitHubs").fadeIn(100);
@@ -1478,30 +1503,30 @@ angular.module('vppApp')
                     case "FerryTerminalsFL":
                         FerryTerminalsFL.hide();
                         $("#mlegend_ferry").fadeOut(0);
-                        if (RailStationsFL.visible || TransitHubsFL.visible) {} else {
+                        /*if (RailStationsFL.visible || TransitHubsFL.visible) {} else {
 
                             $("#transitLayersCat").fadeOut(0);
-                        }
+                        }*/
                         break;
                     case "ParknRideLotsFL":
                         ParknRideLotsFL.hide();
                         $("#mlegend_parknride").fadeOut(0);
                         break;
-                    case "RailStationsFL":
+                    /*case "RailStationsFL":
                         RailStationsFL.hide();
                         $("#mlegend_rail").fadeOut(0);
                         if (FerryTerminalsFL.visible || TransitHubsFL.visible) {} else {
 
                             $("#transitLayersCat").fadeOut(0);
-                        }
+                        }*/
                         break;
                     case "TransitHubsFL":
                         TransitHubsFL.hide();
                         $("#mlegend_transitHubs").fadeOut(0);
-                        if (FerryTerminalsFL.visible || RailStationsFL.visible) {} else {
+                        /*if (FerryTerminalsFL.visible || RailStationsFL.visible) {} else {
 
                             $("#transitLayersCat").fadeOut(0);
-                        }
+                        }*/
 
                         break;
                     case "TPAsFL":
