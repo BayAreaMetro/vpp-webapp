@@ -7,15 +7,14 @@ angular.module('vppApp')
 
             //Show and Hide vars
             $scope.isActive = false,
-                $scope.showAll = false,
-                $scope.pricing = false,
-                $scope.supply = false,
-                $scope.restrictions = false,
-                $scope.spaceTypes = false,
-                $scope.weekDay = false,
-                $scope.weekEnd = false,
-                $scope.resources = false;
-
+            $scope.showAll = false,
+            $scope.pricing = false,
+            $scope.supply = false,
+            $scope.restrictions = false,
+            $scope.spaceTypes = false,
+            $scope.weekDay = false,
+            $scope.weekEnd = false,
+            $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Study Area";
 
@@ -284,7 +283,7 @@ angular.module('vppApp')
                 //Generate a file name
                 var fileName = "VPP_";
                 //this will remove the blank-spaces from the title and replace it with an underscore
-                fileName += SAName.replace(/ /g, "_");
+                //fileName += SAName.replace(/ /g, "_");
 
                 //Initialize file format you want csv or xls
                 var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
@@ -299,7 +298,7 @@ angular.module('vppApp')
                 link.href = uri;
 
                 //set the visibility hidden so it will not effect on your web-layout
-                link.style = "visibility:hidden";
+                link.style.visibility = "hidden";
                 link.download = fileName + ".csv";
 
                 //this part will append the anchor tag and remove it after automatic click
