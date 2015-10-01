@@ -2,7 +2,11 @@
 
 angular.module('vppApp')
     .controller('MapCtrl', function ($rootScope, $scope, wish) {
-
+		
+		//Vars always at the top
+		$scope.layerOpacity;
+		$scope.vm = this;
+		
         var w = wish.get(),
             OnStreetInventoryFL,
             OffStreetInventoryFL,
@@ -1479,7 +1483,32 @@ angular.module('vppApp')
 
                 }
             }
-
         });
-
+		
+		//Opacity Layer on click
+		$scope.layerOpacity = function(){
+			$scope.layerOpacity = "Layer Opacity";
+			console.log("working layer");
+			$("#mapToolsPNL").fadeIn(500);
+			$("#layer-opcaity").fadeIn();
+		}
+		
+		//Slider
+		$scope.vm.priceSlider1 = {
+	        floor: 0,
+	        ceil: 500,
+	        value: 100
+	    };
+	
+	   $scope. vm.priceSlider2 = {
+	        floor: 0,
+	        ceil: 500,
+	        value: 200
+	    };
+	
+	    $scope.vm.refreshSlider = function () {
+	        $timeout(function () {
+	            $scope.$broadcast('rzSliderForceRender');
+	        });
+		}
     });

@@ -360,7 +360,7 @@
             <li class="divider"></li>
             <li><a id="mapRefreshCTL"><i class="fa fa-refresh fa-lg"></i> Reset Map <span class="arrow clickable"></span></a>
             </li>
-            <li><a id="layerOpacityCTL"><i class="fa fa-toggle-on"></i> Layer Opacity <span class="arrow clickable"></span></a>
+            <li><a id="layerOpacityCTL" ng-click="layerOpacity()"><i class="fa fa-toggle-on"></i> Layer Opacity <span class="arrow clickable"></span></a>
             </li>
             <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Navigation Tips <span class="arrow clickable"></span></a>
             </li>
@@ -434,6 +434,7 @@
                 <span id="iconTitle" class='pull-left'></span>
                 <span id="title"></span>
                 <span class='pull-right clickable'><i class='fa fa-times'></i></span>
+                {{layerOpacity}}
             </div>
         </div>
         <div class="panel-body">
@@ -589,6 +590,16 @@
                 <div class="container">
                     <div class="row">
                         <span>Map Print Tools will be displayed here as a form.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Layer opacity -->
+            <div id="layer-opcaity" class="tools collapse">
+                <div class="container">
+                    <div class="row">
+                        <h4>Layer</h4>
+                        <rzslider rz-slider-model="vm.priceSlider1.value" rz-slider-floor="vm.priceSlider1.floor" rz-slider-ceil="vm.priceSlider1.ceil"></rzslider>
                     </div>
                 </div>
             </div>
