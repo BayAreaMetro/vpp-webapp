@@ -14,7 +14,19 @@
         </div>
         <div id="DataNav" class="container">
             <div class="row">
-                <data class="hidden"></data>
+                <!-- drop downs -->
+                <div class="dropdown hidden">
+                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
+                        {{selectedStudyArea}}
+                        <span class="caret pull-right ma-top-s"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="list-1" ng-click="getStudyArea($event)">
+                        <li ng-repeat="data in studyArea" class="study-li">
+                            <p class="hidden">{{data.Project_ID}}</p>
+                            <p class="selected-area">{{data.Name}}</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -34,6 +46,26 @@
                                     <input id="StudyAreaSearch" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyarea" required="" name="City" list="studyareas-list">
                                     <datalist id="studyareas-list"></datalist>
                                     <p class="help-block">Choose a Study Area</p>
+                                </div>
+                            </div>
+
+                            <!-- Study Area Search-->
+                            <div class="form-group collapse">
+                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area Angular Test</label>
+                                <div class="col-md-6">
+                                    <!-- drop downs -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
+                                            {{selectedStudyArea}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="list-1" ng-click="getStudyArea($event)">
+                                            <li ng-repeat="data in studyArea" class="study-li">
+                                                <p class="hidden">{{data.Project_ID}}</p>
+                                                <p class="selected-area">{{data.Name}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
 

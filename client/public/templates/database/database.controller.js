@@ -1,5 +1,4 @@
 'use strict';
-
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
  '$scope',
@@ -16,6 +15,9 @@ angular.module('vppApp')
                 $scope.weekDay = false,
                 $scope.weekEnd = false,
                 $scope.resources = false;
+
+            $scope.studyArea;
+            $scope.selectedStudyArea = "Study Area";
 
             //Page Controls
             $('.divControl').click(function () {
@@ -44,6 +46,7 @@ angular.module('vppApp')
                 dataType: 'json',
                 url: publicDataURL + '/data/studyareas',
                 success: function (data) {
+                    $scope.studyArea = data;
                     //console.clear();
                     //console.log(data);
                     for (var i = 0; i < data.length; i++) {
@@ -517,6 +520,17 @@ angular.module('vppApp')
                 $scope.printerElement.appendChild($scope.node);
             };
 
+            $scope.getStudyArea = function (event) {
+                $scope.go = event.target;
+                console.log("working on click");
+            };
+
+            //Drop down fix
+            $(".dropdown-menu").on('click', '.selected-area', function (e) {
+                //var pop = $(this).child('.selected-area');
+                $scope.selectedStudyArea = $(this).text();
+                console.log($scope.selectedStudyArea);
+            });
             $scope.activeTrigger();
 
   }
