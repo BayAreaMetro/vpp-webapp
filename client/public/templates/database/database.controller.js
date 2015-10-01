@@ -297,7 +297,7 @@ angular.module('vppApp')
 	        link.href = uri;
 	
 	        //set the visibility hidden so it will not effect on your web-layout
-	        link.style = "visibility:hidden";
+	        link.style.visibility = "hidden";
 	        link.download = fileName + ".csv";
 	
 	        //this part will append the anchor tag and remove it after automatic click
