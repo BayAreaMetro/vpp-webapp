@@ -75,8 +75,35 @@
 #AddtnlResources {
     //display: none;
 }
-
-//Print box
+#DataNav, #DataSummary{
+	.dropdown-toggle{
+		width: 100%;
+		.caret{
+			margin-top: 7px;
+		}
+	}
+	.dropdown-menu{
+		height:200px;
+		overflow: scroll;
+		width: 100%;
+		li{
+			cursor: pointer;
+			padding: 10px;
+			.transition(all .5s ease-in-out);
+			&:hover{
+				background-color: @anchorColor;
+				.selected-area{
+					color: #FFFFFF;
+				}
+			}	
+		}
+		.selected-area{
+			margin:0;
+		}
+	}
+}
+	
+	//Print box
 #print-section{
 	display: none;
 }
