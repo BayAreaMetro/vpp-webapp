@@ -101,39 +101,13 @@ angular.module('vppApp')
                             $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
                         }
                         $('#selectCollectionYear').val(data[0].CollectionYear);
-                        $('.summaryVD').removeClass('disabled');
-                    }
-                });
-
-
-            });
-
-
-            $(".find-studyareaINV").change(function () {
-                $scope.StudyAreaName = $("#StudyAreaSearchINV").val();
-
-                $scope.sanV = $('#studyareas-list option').filter(function () {
-                    return this.value == $scope.StudyAreaName;
-
-                }).data('number');
-
-                //load Data for CollectionYear
-                $.ajax({
-                    dataType: 'json',
-                    url: publicDataURL + '/data/collectionyear?sa=' + $scope.selectedId,
-                    success: function (data) {
-                        //console.clear();
-                        //console.log(data);
-                        $scope.sa = data;
-                        for (var i = 0; i < data.length; i++) {
-                            $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
-                        }
-                        $('#selectCollectionYearINV').val(data[0].CollectionYear);
                         $('.inventoryVD').removeClass('disabled');
                     }
                 });
 
+
             });
+
 
             $(".find-studyareaOCC").change(function () {
                 $scope.StudyAreaName = $("#StudyAreaSearchOCC").val();

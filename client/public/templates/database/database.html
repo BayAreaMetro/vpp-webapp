@@ -137,14 +137,23 @@
                 <div class="col-md-12">
                     <form class="form-horizontal pad-top-l">
                         <fieldset>
-                            <!-- Study Area Search-->
+
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
                                 <div class="col-md-6">
-
-                                    <input id="StudyAreaSearchINV" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyareaINV" required="" name="City" list="studyareas-list">
-                                    <datalist id="studyareas-list"></datalist>
-                                    <p class="help-block">Choose a Study Area</p>
+                                    <!-- drop downs -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
+                                            {{selectedStudyArea}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu ddStudyAreaInventory" aria-labelledby="list-2" ng-click="getStudyArea($event)">
+                                            <li ng-repeat="data in studyArea" class="study-li-inventory">
+                                                <p class="hidden selected-id">{{data.Project_ID}}</p>
+                                                <p class="selected-area">{{data.Name}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -227,12 +236,12 @@
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
                                     <div class="col-md-8 pull-left">
-                                        <!--
-                                        <button id="vwMapBTN" type="button" class="btn btn-default btn-sm">
-    <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Map
-</button>
--->
-                                        <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm">
+
+                                        <button id="vwMapInventoryBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
+                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Map
+                                        </button>
+
+                                        <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                         </button>
                                     </div>
