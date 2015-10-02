@@ -15,8 +15,10 @@ angular.module('vppApp')
                 $scope.weekDay = false,
                 $scope.weekEnd = false,
                 $scope.resources = false;
-            $scope.studyArea;
-            $scope.selectedStudyArea = "Choose a Study Area...";
+            $scope.studyArea; << << << < HEAD
+            $scope.selectedStudyArea = "Choose a Study Area..."; === === =
+            $scope.selectedStudyArea = "Study Area";
+            $scope.selectedId; >>> >>> > origin / development
 
             //Page Controls
             $('.divControl').click(function () {
@@ -521,18 +523,15 @@ angular.module('vppApp')
 
             $scope.getStudyArea = function (event) {
                 $scope.go = event.target;
-                console.log($scope.go);
+                //console.log($scope.go);
             };
 
             //Drop down fix
-            $(".dropdown-menu").on('click', '.selected-area', function (e) {
-                //var pop = $(this).child('.selected-area');
-                $scope.selectedStudyArea = $(this).text();
-                $scope.selectedStudyAreaID = $('.selected-id').text();
-                console.clear();
-                console.log(e.target.nodeType + " | " + $scope.selectedStudyArea);
-                console.log($scope.selectedId);
-                //For this to work correctly, I need the Project_ID value to query the Database
+            $(".dropdown-menu").on('click', '.study-li', function (e) {
+                $scope.selectedStudyArea = $(this).children('.selected-area').text();
+                $scope.selectedId = $(this).children('.selected-id').text();
+                console.log($scope.selectedStudyArea, $scope.selectedId);
+
             });
             $scope.activeTrigger();
   }
