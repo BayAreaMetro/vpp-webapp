@@ -16,7 +16,6 @@ angular.module('vppApp')
                 $scope.weekEnd = false,
                 $scope.resources = false;
             $scope.studyArea;
-            $scope.geninfoData;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
 
@@ -73,7 +72,6 @@ angular.module('vppApp')
                         //console.clear();
                         //console.log(data);
                         $scope.sa = data;
-
                         for (var i = 0; i < data.length; i++) {
                             $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
                         }
@@ -102,7 +100,7 @@ angular.module('vppApp')
                         for (var i = 0; i < data.length; i++) {
                             $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
                         }
-                        $('#selectCollectionYearINV').val(data[0].CollectionYear);
+                        $('#selectCollectionYear').val(data[0].CollectionYear);
                         $('.inventoryVD').removeClass('disabled');
                     }
                 });
@@ -127,16 +125,13 @@ angular.module('vppApp')
                         for (var i = 0; i < data.length; i++) {
                             $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
                         }
-                        $('#selectCollectionYearOCC').val(data[0].CollectionYear);
+                        $('#selectCollectionYear').val(data[0].CollectionYear);
                         $('.occupancyVD').removeClass('disabled');
                     }
                 });
 
 
             });
-
-
-
 
             $('#dlSummaryDataBTN').click(function () {
 
@@ -146,7 +141,7 @@ angular.module('vppApp')
                     method: 'GET'
                 }).success(function (results) {
                     $scope.MasterSummaryData = results;
-                    exportToCSV(results, $scope.selectedStudyArea, 'Parking Data Summary', true);
+                    exportToCSV(results, $scope.StudyAreaName, 'Parking Data Summary', true);
 
                 }).error(function (data, status) {
                     console.log("There was an error:", status);
@@ -169,7 +164,7 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.InventorySummaryData = results;
-                        exportToCSV(results, $scope.selectedId, 'Off-Street Inventory', true);
+                        exportToCSV(results, $scope.StudyAreaName, 'Off-Street Inventory', true);
 
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
@@ -184,7 +179,7 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.InventorySummaryData = results;
-                        exportToCSV(results, $scope.selectedId, 'On-Street Inventory', true);
+                        exportToCSV(results, $scope.StudyAreaName, 'On-Street Inventory', true);
 
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
@@ -210,7 +205,7 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.OccupancySummaryData = results;
-                        exportToCSV(results, $scope.selectedStudyArea, 'Off-Street Occupancy', true);
+                        exportToCSV(results, $scope.StudyAreaName, 'Off-Street Occupancy', true);
 
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
@@ -225,7 +220,7 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.OccupancySummaryData = results;
-                        exportToCSV(results, $scope.selectedStudyArea, 'On-Street Occupancy', true);
+                        exportToCSV(results, $scope.StudyAreaName, 'On-Street Occupancy', true);
 
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
@@ -284,7 +279,7 @@ angular.module('vppApp')
                 }
 
                 //Generate a file name
-                var fileName = "VPP_Data_" + $scope.selectedId;
+                var fileName = "VPP_Data" + $scope.selectedId;
                 //this will remove the blank-spaces from the title and replace it with an underscore
                 //fileName += SAName.replace(/ /g, "_");
 
@@ -312,17 +307,15 @@ angular.module('vppApp')
             };
 
             $('#vwDataBTN').click(function () {
-                var projectNotes = "";
                 $("#DataTable").fadeIn(500);
                 $("#DataSummary").fadeOut(0, function () {
+
                     //http request for gen info
                     $http({
                         url: publicDataURL + '/data/geninfo?sa=' + $scope.selectedId,
                         method: 'GET'
                     }).success(function (results) {
                         $scope.geninfoData = results;
-
-                        //console.log(results[0].Notes);
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
                     });
@@ -343,8 +336,6 @@ angular.module('vppApp')
 
                 });
                 //console.log($scope.pricing);
-
-
             });
 
             $('#vwOptionsBTN').click(function () {
