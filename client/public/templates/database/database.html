@@ -264,18 +264,9 @@
                                 <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
                                 <div class="col-md-6">
 
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
-                                            {{selectedStudyArea}}
-                                            <span class="caret pull-right ma-top-s"></span>
-                                        </button>
-                                        <ul class="dropdown-menu ddStudyAreaOccupancy" aria-labelledby="list-3" ng-click="getStudyArea($event)">
-                                            <li ng-repeat="data in studyArea" class="study-li-occupancy">
-                                                <p class="hidden selected-id">{{data.Project_ID}}</p>
-                                                <p class="selected-area">{{data.Name}}</p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <input id="StudyAreaSearchOCC" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyareaOCC" required="" name="City" list="studyareas-list">
+                                    <datalist id="studyareas-list"></datalist>
+                                    <p class="help-block">Choose a Study Area</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -441,11 +432,13 @@
                                     <tr>
                                         <td colspan="2">
                                             <h4>Project Notes:</h4>
-                                            <span>
-                                                <p>{{summary.Notes}}</p>
-                                                <p>More Information:</p>
-                                                <p><a href={{summary.Attachments}} target="_blank">{{summary.Attachments}}</a></p>
-                                            </span>
+                                            <span><p>{{summary.Notes}}</p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h4>Web Links:</h4>
+                                            <span><p><a href={{summary.Attachments}} target="_blank">{{summary.Attachments}}</a></p></span>
                                         </td>
                                     </tr>
                                     <tr>
