@@ -14,13 +14,13 @@
         <!-- Content -->
         <div class="pad-top-l ma-top-l home-text container">
 	        
-            <div id="feedbackSuccess" class="collapse alert alert-success fade">
+            <div id="feedbackSuccess" class="collapse alert alert-success fade absol">
                 <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
                 <h4>Thanks for Your Feedback!</h4>
             </div>
-            <div id="feedbackFailure" class="collapse alert alert-danger fade">
-                <button type="button" class="closefail" aria-label="Close"><span aria-hidden="true">&times;</span>
+            <div id="feedbackFailure" class="collapse alert alert-danger fade absol zTop">
+                <button type="button" class="close closefail" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
                 <h4>Oops...</h4>
                 <p> There was an error submitting your feedback.</p>
@@ -75,7 +75,7 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-8 pull-left">
 
-                                            <button id="submitFeedbackBTN" type="button" class="btn btn-default btn-sm">
+                                            <button id="submitFeedbackBTN" type="button" class="btn btn-default btn-sm" ng-click="">
                                                 <span class="fa fa-envelope fa-fw" aria-hidden="true"></span>Submit Feedback
                                             </button>
                                         </div>
