@@ -1577,7 +1577,7 @@ angular.module('vppApp')
         }
 
         //Slider
-        $scope.vm.priceSlider1 = {
+        $scope.vm.opacitySlider = {
             floor: 0,
             ceil: 500,
             value: 100
