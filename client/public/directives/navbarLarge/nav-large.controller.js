@@ -112,6 +112,15 @@ angular.module('vppApp')
 				} else if ( $scope.getLocation === "TravelModelOneAnalysis" ){
 					$('.divFade').hide();
 					$("#TravelModelOneAnalysis").fadeIn();
+				} else if ( $scope.getLocation === "DataSummary" ){
+					$('.divFade').hide();
+					$("#DataSummary").fadeIn();
+				} else if ( $scope.getLocation === "InventorySummary"){
+					$('.divFade').hide();
+					$("#InventorySummary").fadeIn();
+				} else if( $scope.getLocation === "OccupancySummary"){
+					$('.divFade').hide();
+					$("#OccupancySummary").fadeIn();
 				}
 				console.log($scope.getLocation);
 				
