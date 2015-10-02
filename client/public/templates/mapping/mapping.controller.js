@@ -17,7 +17,7 @@ angular.module('vppApp')
             WEOnStreetOccupancyFL,
             WEOffStreetOccupancyFL,
             studyAreasFL,
-            COC_FL,
+           // COC_FL,
             PDA_FL,
             FerryTerminalsFL,
             ParknRideLotsFL,
@@ -265,14 +265,14 @@ angular.module('vppApp')
 
         });
 
-        COC_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/14", {
+        /*COC_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/14", {
             id: "COC",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             infoTemplate: popupTemplate_COC_FL,
             visible: false
 
-        });
+        });*/
 
         FerryTerminalsFL = new w.FeatureLayer(FerryTerminalsURL, {
             id: "FerryTerminals",
@@ -594,42 +594,13 @@ angular.module('vppApp')
 
         var FerryTerminals_markerSymbol = new w.PictureMarkerSymbol({
             "url": "app/images/ferry.png",
-            "height": 20,
-            "width": 20
+            "height": 15,
+            "width": 15
         });
 
-        /*var Ferry_sizeInfo = {
-          //field:"M086_07",
-          minSize:5,
-          maxSize:15
-          //minDataValue:0,
-          //maxDataValue:100
-        };*/
-
-
-        /*var FerryTerminals_markerSymbol = new w.SimpleMarkerSymbol();
-        FerryTerminals_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
-        FerryTerminals_markerSymbol.setSize(7);
-        FerryTerminals_markerSymbol.outline.setColor(new w.Color([3, 132, 251, 1]));
-        FerryTerminals_markerSymbol.outline.setWidth(2);*/
-
-
+        
         var FerryTerminals_Renderer = new w.SimpleRenderer(FerryTerminals_markerSymbol);
-
-        /*FerryTerminals_Renderer.setSizeInfo(Ferry_sizeInfo);
-
-        var Ferry_params = {rendererInfos: {
-          "renderer": FerryTerminals_Renderer,
-          "minScale": 500000,
-          "maxScale": 10000
-        }};*/
-
-
-        //var scaleDependentRenderer = new w.ScaleDependentRenderer(Ferry_params);
-        //FerryTerminalsFL.setRenderer(scaleDependentRenderer);
-        //map.addLayer(layer);
-
-
+        
         FerryTerminalsFL.setRenderer(FerryTerminals_Renderer);
 
 
@@ -640,8 +611,8 @@ angular.module('vppApp')
 
         var ParknRideLots_markerSymbol = new w.PictureMarkerSymbol({
             "url": "app/images/parkandride.png",
-            "height": 20,
-            "width": 20
+            "height": 15,
+            "width": 15
         });
 
 
@@ -658,8 +629,8 @@ angular.module('vppApp')
 
         var RailStations_markerSymbol = new w.PictureMarkerSymbol({
             "url": "app/images/train_beige.png",
-            "height": 20,
-            "width": 20
+            "height": 15,
+            "width": 15
         });
 
 
@@ -671,12 +642,33 @@ angular.module('vppApp')
         //Setting up Point Renderer for BartFL
         var Bart_markerSymbol = new w.PictureMarkerSymbol({
             "url": "app/images/bart.png",
-            "height": 12,
-            "width": 12
+            "height": 15,
+            "width": 15
         });
 
         var bart_Renderer = new w.SimpleRenderer(Bart_markerSymbol);
         BartFL.setRenderer(bart_Renderer);
+
+        //Setting up Point Renderer for CaltrainFL
+        var caltrain_markerSymbol = new w.PictureMarkerSymbol({
+            "url": "app/images/caltrain_logo_web.png",
+            "height": 11,
+            "width": 20
+        });
+
+        var caltrain_Renderer = new w.SimpleRenderer(caltrain_markerSymbol);
+        CaltrainFL.setRenderer(caltrain_Renderer);
+
+        //Setting up Point Renderer for AmtrakFL
+        var amtrak_markerSymbol = new w.PictureMarkerSymbol({
+            "url": "app/images/amtrak.png",
+            "height": 12,
+            "width": 25
+        });
+
+        var amtrak_Renderer = new w.SimpleRenderer(amtrak_markerSymbol);
+        AmtrakFL.setRenderer(amtrak_Renderer);
+
 
 
 
@@ -684,8 +676,8 @@ angular.module('vppApp')
 
         var TransitHubs_markerSymbol = new w.PictureMarkerSymbol({
             "url": "app/images/bus.png",
-            "height": 20,
-            "width": 20
+            "height": 15,
+            "width": 15
         });
         /*var TransitHubs_markerSymbol = new w.SimpleMarkerSymbol();
         TransitHubs_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
@@ -719,7 +711,7 @@ angular.module('vppApp')
         PDA_FL.setRenderer(PDA_Renderer);
 
 
-        //COC Popup and Feature Layer Definition
+       /* //COC Popup and Feature Layer Definition
         var popupTemplate_COC_FL = new w.PopupTemplate({
             "title": "Community of Concern",
             "fieldInfos": [{
@@ -732,12 +724,12 @@ angular.module('vppApp')
          }
         ],
             "description": "Total population is {totpop}"
-        });
+        });*/
 
 
 
 
-
+/*
 
         //Feature Layer Renderer for COCs
         var COC_Color = new w.Color("#ff9999");
@@ -746,7 +738,7 @@ angular.module('vppApp')
         var COC_Renderer = new w.SimpleRenderer(COC_Symbol);
         COC_FL.setDefinitionExpression("cocflag = 1");
         COC_FL.setRenderer(COC_Renderer);
-
+*/
 
         //Add Layers Section All Layers Should be added here
         //$scope.map.addLayer(COC_FL);
@@ -764,11 +756,11 @@ angular.module('vppApp')
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
         //add the legend
+     
 
-
-        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, COC_FL, TPAsFL, OnStreetInventoryFL, OffStreetInventoryFL,
+        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, TPAsFL, OnStreetInventoryFL, OffStreetInventoryFL,
             OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL,
-            WEOffStreetOccupancyFL, BartFL, FerryTerminalsFL, ParknRideLotsFL, TransitHubsFL]);
+            WEOffStreetOccupancyFL, BartFL, CaltrainFL, AmtrakFL, LightRailFL, FerryTerminalsFL, ParknRideLotsFL, TransitHubsFL]);
 
         //Set Curent Map Theme
         $scope.pt = "inventory";
@@ -1283,7 +1275,7 @@ angular.module('vppApp')
             WEOnStreetOccupancyFL.hide();
             WEOffStreetOccupancyFL.hide();
 
-            COC_FL.hide();
+            //COC_FL.hide();
             PDA_FL.hide();
             FerryTerminalsFL.hide();
             ParknRideLotsFL.hide();
@@ -1468,10 +1460,25 @@ angular.module('vppApp')
                         break;
                     case "BartFL":
                         BartFL.show();
-                       // $("#mlegend_tpas").fadeIn(100);
-                        $("#policyLayersCat").fadeIn(100);
+                        $("#mlegend_bart").fadeIn(100);
+                        $("#transitLayersCat").fadeIn(100);
                         break;
-
+        
+                    case "CaltrainFL":
+                        CaltrainFL.show();
+                        $("#mlegend_caltrain").fadeIn(100);
+                        $("#transitLayersCat").fadeIn(100);
+                        break;
+                    case "AmtrakFL":
+                        AmtrakFL.show();
+                        $("#mlegend_amtrak").fadeIn(100);
+                        $("#transitLayersCat").fadeIn(100);
+                        break;
+                    case "LightRailFL":
+                        LightRailFL.show();
+                        $("#mlegend_lightrail").fadeIn(100);
+                        $("#transitLayersCat").fadeIn(100);
+                        break;
                 }
             } else {
                 switch (LayerName) {
@@ -1489,10 +1496,10 @@ angular.module('vppApp')
                     case "FerryTerminalsFL":
                         FerryTerminalsFL.hide();
                         $("#mlegend_ferry").fadeOut(0);
-                        /*if (RailStationsFL.visible || TransitHubsFL.visible) {} else {
+                        if (BartFL.visible || CaltrainFL.visible || AmtrakFL.visible || LightRailFL.visible|| TransitHubsFL.visible) {} else {
 
                             $("#transitLayersCat").fadeOut(0);
-                        }*/
+                        }
                         break;
                     case "ParknRideLotsFL":
                         ParknRideLotsFL.hide();
@@ -1509,10 +1516,11 @@ angular.module('vppApp')
                     case "TransitHubsFL":
                         TransitHubsFL.hide();
                         $("#mlegend_transitHubs").fadeOut(0);
-                        /*if (FerryTerminalsFL.visible || RailStationsFL.visible) {} else {
+                       if (BartFL.visible || CaltrainFL.visible || AmtrakFL.visible || LightRailFL.visible|| FerryTerminalsFL.visible) {} else {
 
                             $("#transitLayersCat").fadeOut(0);
-                        }*/
+                        }
+                        break;
 
                         break;
                     case "TPAsFL":
@@ -1523,7 +1531,39 @@ angular.module('vppApp')
                             $("#policyLayersCat").fadeOut(0);
                         }
                         break;
+                    case "BartFL":
+                        BartFL.hide();
+                        $("#mlegend_bart").fadeOut(100);
+                        if (FerryTerminalsFL.visible || CaltrainFL.visible || AmtrakFL.visible || LightRailFL.visible|| TransitHubsFL.visible) {} else {
 
+                            $("#transitLayersCat").fadeOut(0);
+                        }
+                        break;
+        
+                    case "CaltrainFL":
+                        CaltrainFL.hide();
+                        $("#mlegend_caltrain").fadeOut(100);
+                        if (FerryTerminalsFL.visible || BartFL.visible || AmtrakFL.visible || LightRailFL.visible|| TransitHubsFL.visible) {} else {
+
+                            $("#transitLayersCat").fadeOut(0);
+                        }
+                        break;
+                    case "AmtrakFL":
+                        AmtrakFL.hide();
+                        $("#mlegend_amtrak").fadeOut(100);
+                        if (FerryTerminalsFL.visible || BartFL.visible || CaltrainFL.visible || LightRailFL.visible|| TransitHubsFL.visible) {} else {
+
+                            $("#transitLayersCat").fadeOut(0);
+                        }
+                        break;
+                    case "LightRailFL":
+                        LightRailFL.hide();
+                        $("#mlegend_lightrail").fadeOut(100);
+                        if (FerryTerminalsFL.visible || BartFL.visible || CaltrainFL.visible || AmtrakFL.visible|| TransitHubsFL.visible) {} else {
+
+                            $("#transitLayersCat").fadeOut(0);
+                        }
+                        break;
                 }
             }
         });
