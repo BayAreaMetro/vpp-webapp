@@ -20,7 +20,16 @@
                 <div class="col-md-12">
                     <form class="form-horizontal pad-top-l">
                         <fieldset>
+                            <!-- Study Area Search-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
+                                <div class="col-md-6">
 
+                                    <input id="StudyAreaSearch" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyarea" required="" name="City" list="studyareas-list">
+                                    <datalist id="studyareas-list"></datalist>
+                                    <p class="help-block">Choose a Study Area</p>
+                                </div>
+                            </div>
                             <!-- Study Area Search-->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
@@ -31,8 +40,8 @@
                                             {{selectedStudyArea}}
                                             <span class="caret pull-right ma-top-s"></span>
                                         </button>
-                                        <ul class="dropdown-menu ddmSummary" aria-labelledby="list-1" ng-click="getStudyArea($event)">
-                                            <li ng-repeat="data in studyArea" class="study-li-summary">
+                                        <ul class="dropdown-menu" aria-labelledby="list-1" ng-click="getStudyArea($event)">
+                                            <li ng-repeat="data in studyArea" class="study-li">
                                                 <p class="hidden selected-id">{{data.Project_ID}}</p>
                                                 <p class="selected-area">{{data.Name}}</p>
                                             </li>
@@ -49,7 +58,6 @@
                                     <datalist id="collectionyear-list"></datalist>
                                     <p class="help-block">&nbsp;</p>
                                 </div>
-
                                 <!-- Multiple Checkboxes (inline) -->
                                 <div class="form-group">
                                     <div class="control-group">
@@ -107,8 +115,6 @@
                                                 <label class="checkbox-inline control-label" style="padding-right: 45px">
                                                     <input name="Resources" type="checkbox" data-size="mini">Additional Resources
                                                 </label>
-
-
                                             </div>
 
                                         </div>
@@ -385,6 +391,7 @@
                                 <button id="vwOptionsBTN" type="button" class="btn btn-default btn-sm">
                                     <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
                                 </button>
+
 
                                 <button id="printDataBTN" type="button" class="btn btn-default btn-sm" ng-click="printer()">
                                     <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
