@@ -12,9 +12,6 @@
             </div>
 
         </div>
-        <div id="DataNav" class="container">
-</div>
-
         <div id="DataSummary" class="container InfoSummaryBG divFade">
             <h1 class="col-md-4">&nbsp;</h1>
             <h2 class="col-md-8">Data Summary Options</h2>
@@ -45,7 +42,7 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="list-1" ng-click="getStudyArea($event)">
                                             <li ng-repeat="data in studyArea" class="study-li">
-                                                <p class="hidden">{{data.Project_ID}}</p>
+                                                <p class="hidden selected-id">{{data.Project_ID}}</p>
                                                 <p class="selected-area">{{data.Name}}</p>
                                             </li>
                                         </ul>

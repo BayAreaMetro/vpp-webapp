@@ -17,6 +17,7 @@ angular.module('vppApp')
             $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Study Area";
+            $scope.selectedId;
 
             //Page Controls
             $('.divControl').click(function () {
@@ -525,10 +526,10 @@ angular.module('vppApp')
             };
 
             //Drop down fix
-            $(".dropdown-menu").on('click', '.selected-area', function (e) {
-                //var pop = $(this).child('.selected-area');
-                $scope.selectedStudyArea = $(this).text();
-                console.log($scope.selectedStudyArea);
+            $(".dropdown-menu").on('click', '.study-li', function (e) {
+                $scope.selectedStudyArea = $(this).children('.selected-area').text();
+                $scope.selectedId = $(this).children('.selected-id').text();
+                console.log($scope.selectedStudyArea, $scope.selectedId);
             });
             $scope.activeTrigger();
 		}
