@@ -663,8 +663,17 @@
             <div id="layer-opacity" class="tools collapse">
                 <div class="container">
                     <div class="row">
+                    <div class= "col-md-12">
+                        <label for="sel1">Select list (select one):</label>
+                          <select class="form-control selector290" id="sel1">
+                            <option value="usa">United States</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                          </select>
                         <h4>Layer {{vm.opacitySlider.value}}</h4>
                         <rzslider rz-slider-model="vm.opacitySlider.value" rz-slider-floor="vm.opacitySlider.floor" rz-slider-ceil="vm.opacitySlider.ceil"></rzslider>
+                        </div>
                     </div>
                 </div>
             </div>

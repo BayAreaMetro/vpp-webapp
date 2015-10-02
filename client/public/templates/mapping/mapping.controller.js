@@ -652,8 +652,8 @@ angular.module('vppApp')
         //Setting up Point Renderer for CaltrainFL
         var caltrain_markerSymbol = new w.PictureMarkerSymbol({
             "url": "app/images/caltrain_logo_web.png",
-            "height": 11,
-            "width": 20
+            "height": 22,
+            "width": 40
         });
 
         var caltrain_Renderer = new w.SimpleRenderer(caltrain_markerSymbol);
@@ -662,8 +662,8 @@ angular.module('vppApp')
         //Setting up Point Renderer for AmtrakFL
         var amtrak_markerSymbol = new w.PictureMarkerSymbol({
             "url": "app/images/amtrak.png",
-            "height": 12,
-            "width": 25
+            "height": 13,
+            "width": 35
         });
 
         var amtrak_Renderer = new w.SimpleRenderer(amtrak_markerSymbol);
@@ -1571,7 +1571,7 @@ angular.module('vppApp')
         //Opacity Layer on click
         $scope.layerOpacity = function () {
             $scope.layerOpacity = "Layer Opacity";
-            console.log("working layer");
+            //console.log("working layer");
             $("#mapToolsPNL").fadeIn(500);
             $("#layer-opacity").fadeIn();
         }
@@ -1583,13 +1583,29 @@ angular.module('vppApp')
             value: 50
         };
 
+        $scope.$on("slideEnded", function() {
+     console.log($scope.vm.opacitySlider.value);
+     var sliderValue = $scope.vm.opacitySlider.value;
+                   var newOpacity = (sliderValue / 100);
+                   PDA_FL.setOpacity(newOpacity);
+                   //PDA_FL.refresh();
+});
+
         $scope.vm.refreshSlider = function () {
             $timeout(function () {
                 $scope.$broadcast('rzSliderForceRender');
-                console.log($scope.$broadcast('rzSliderForceRender'));
+                console.log(vm.opacitySlider.value);
             });
         }
     });
 
+    
 
 
+    /*$scope.vm.refreshSlider = function () {
+               $timeout(function () {
+                   var sliderValue = $scope.$broadcast('vm.priceSlider1.value');
+                   var newOpacity = (sliderValue / 100);
+                   $scope.map.getLayer(PDA_FL).setOpacity(newOpacity);
+               });
+           } */
