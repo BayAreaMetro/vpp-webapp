@@ -15,10 +15,9 @@ angular.module('vppApp')
                 $scope.weekDay = false,
                 $scope.weekEnd = false,
                 $scope.resources = false;
-            $scope.studyArea; << << << < HEAD
-            $scope.selectedStudyArea = "Choose a Study Area..."; === === =
-            $scope.selectedStudyArea = "Study Area";
-            $scope.selectedId; >>> >>> > origin / development
+            $scope.studyArea;
+            $scope.selectedStudyArea = "Choose a Study Area...";
+            $scope.selectedId;
 
             //Page Controls
             $('.divControl').click(function () {
