@@ -47,29 +47,24 @@ angular.module('vppApp')
                 url: publicDataURL + '/data/studyareas',
                 success: function (data) {
                     $scope.studyArea = data;
-                    //console.clear();
-                    //console.log(data);
-                    for (var i = 0; i < data.length; i++) {
-                        $("#studyareas-list").append('<option data-number=' + data[i].Project_ID + '>' + data[i].Name + '</option>');
-                    }
+                    console.clear();
                 }
             });
 
+            $scope.getStudyArea = function (event) {
+                $scope.go = event.target;
+            };
 
 
-            //THIS TOOL NEEDS TO BE WIRED UP TO THE SHOW DATA AND DOWNLOAD DATA FUNCTION
-            $(".find-studyarea").change(function () {
-                $scope.StudyAreaName = $("#StudyAreaSearch").val();
-
-                $scope.sanV = $('#studyareas-list option').filter(function () {
-                    return this.value == $scope.StudyAreaName;
-
-                }).data('number');
-
+            $(".ddmSummary").on('click', '.study-li-summary', function (e) {
+                console.clear();
+                $scope.selectedStudyArea = $(this).children('.selected-area').text();
+                $scope.selectedId = $(this).children('.selected-id').text();
+                //console.log($scope.selectedStudyArea + " | " + $scope.selectedId);
                 //load Data for CollectionYear
                 $.ajax({
                     dataType: 'json',
-                    url: publicDataURL + '/data/collectionyear?sa=' + $scope.sanV,
+                    url: publicDataURL + '/data/collectionyear?sa=' + $scope.selectedId,
                     success: function (data) {
                         //console.clear();
                         //console.log(data);
@@ -81,7 +76,6 @@ angular.module('vppApp')
                         $('.summaryVD').removeClass('disabled');
                     }
                 });
-
             });
 
             $(".find-studyareaINV").change(function () {
@@ -354,7 +348,7 @@ angular.module('vppApp')
 
             $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
                 var cat = $(this).attr('name');
-                console.log(cat); // DOM element                
+                //console.log(cat); // DOM element                
                 //console.log(state); // true | false
 
                 if (state) {
@@ -370,13 +364,11 @@ angular.module('vppApp')
                         $("#WDOccInfo").fadeIn(0);
                         $("#WEOccInfo").fadeIn(0);
                         $("#AddtnlResources").fadeIn(0);
-
                         $scope.showAll = true;
                         break;
                     case "Pricing":
 
                         $("#PricingInfo").fadeIn(0);
-
                         $scope.isActive = true;
                         break;
                     case "Supply":
@@ -389,27 +381,22 @@ angular.module('vppApp')
                         break;
                     case "Restrictions":
                         $("#RestrictionInfo").fadeIn(0);
-
                         $scope.restrictions = true;
                         break;
                     case "SpaceTypes":
                         $("#SpaceType").fadeIn(0);
-
                         $scope.spaceTypes = true;
                         break;
                     case "WDOccupancy":
                         $("#WDOccInfo").fadeIn(0);
-
                         $scope.weekDay = true;
                         break;
                     case "WEOccupancy":
                         $("#WEOccInfo").fadeIn(0);
-
                         $scope.weekEnd = true;
                         break;
                     case "Resources":
                         $("#AddtnlResources").fadeIn(0);
-
                         $scope.resources = true;
                         break;
 
@@ -424,42 +411,34 @@ angular.module('vppApp')
                         $("#WDOccInfo").fadeOut(0);
                         $("#WEOccInfo").fadeOut(0);
                         $("#AddtnlResources").fadeOut(0);
-
                         $scope.showAll = false;
                         break;
                     case "Pricing":
                         $("#PricingInfo").fadeOut(0);
-
                         $scope.isActive = false;
                         break;
                     case "Supply":
                         $("#ParkingSupply").fadeOut(0);
-
                         $scope.supply = false;
                         break;
                     case "Restrictions":
                         $("#RestrictionInfo").fadeOut(0);
-
                         $scope.restrictions = false;
                         break;
                     case "SpaceTypes":
                         $("#SpaceType").fadeOut(0);
-
                         $scope.spaceTypes = false;
                         break;
                     case "WDOccupancy":
                         $("#WDOccInfo").fadeOut(0);
-
                         $scope.weekDay = false;
                         break;
                     case "WEOccupancy":
                         $("#WEOccInfo").fadeOut(0);
-
                         $scope.weekEnd = false;
                         break;
                     case "Resources":
                         $("#AddtnlResources").fadeOut(0);
-
                         $scope.resources = false;
                         break;
 
@@ -477,20 +456,8 @@ angular.module('vppApp')
                     $('.inner-nested').removeClass('active');
                 });
             };
+            $scope.activeTrigger();
 
-            $scope.printer = function () {
-                print();
-            }
-
-            $scope.activeTrigger = function () {
-                $(".inner-nested").hover(function () {
-                    $('.data-nav').addClass('active');
-                    $('.inner-nested').addClass('active');
-                }, function () {
-                    $('.data-nav').removeClass('active');
-                    $('.inner-nested').removeClass('active');
-                });
-            };
 
             $scope.printer = function () {
 
@@ -520,18 +487,7 @@ angular.module('vppApp')
                 $scope.printerElement.appendChild($scope.node);
             };
 
-            $scope.getStudyArea = function (event) {
-                $scope.go = event.target;
-                //console.log($scope.go);
-            };
 
-            //Drop down fix
-            $(".dropdown-menu").on('click', '.study-li', function (e) {
-                $scope.selectedStudyArea = $(this).children('.selected-area').text();
-                $scope.selectedId = $(this).children('.selected-id').text();
-                console.log($scope.selectedStudyArea, $scope.selectedId);
 
-            });
-            $scope.activeTrigger();
   }
  ]);

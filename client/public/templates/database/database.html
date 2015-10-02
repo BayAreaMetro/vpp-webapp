@@ -20,16 +20,6 @@
                 <div class="col-md-12">
                     <form class="form-horizontal pad-top-l">
                         <fieldset>
-                            <!-- Study Area Search-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
-                                <div class="col-md-6">
-
-                                    <input id="StudyAreaSearch" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyarea" required="" name="City" list="studyareas-list">
-                                    <datalist id="studyareas-list"></datalist>
-                                    <p class="help-block">Choose a Study Area</p>
-                                </div>
-                            </div>
 
                             <!-- Study Area Search-->
                             <div class="form-group">
@@ -41,8 +31,8 @@
                                             {{selectedStudyArea}}
                                             <span class="caret pull-right ma-top-s"></span>
                                         </button>
-                                        <ul class="dropdown-menu" aria-labelledby="list-1" ng-click="getStudyArea($event)">
-                                            <li ng-repeat="data in studyArea" class="study-li">
+                                        <ul class="dropdown-menu ddmSummary" aria-labelledby="list-1" ng-click="getStudyArea($event)">
+                                            <li ng-repeat="data in studyArea" class="study-li-summary">
                                                 <p class="hidden selected-id">{{data.Project_ID}}</p>
                                                 <p class="selected-area">{{data.Name}}</p>
                                             </li>
@@ -127,10 +117,13 @@
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
                                     <div class="col-md-8 pull-left">
-                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
+                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm disabled summaryVD">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
                                         </button>
-                                        <button id="dlSummaryDataBTN" type="button" class="btn btn-default btn-sm">
+                                        <button id="vwMapSummaryBTN" type="button" class="btn btn-default btn-sm disabled summaryVD">
+                                            <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
+                                        </button>
+                                        <button id="dlSummaryDataBTN" type="button" class="btn btn-default btn-sm disabled summaryVD">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                         </button>
                                     </div>
@@ -392,12 +385,7 @@
                                 <button id="vwOptionsBTN" type="button" class="btn btn-default btn-sm">
                                     <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
                                 </button>
-                                <button id="vwMapOCCBTN" type="button" class="btn btn-default btn-sm disabled occupancyVD">
-                                    <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
-                                </button>
-                                <button id="dlDataBTN" type="button" class="btn btn-default btn-sm">
-                                    <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
-                                </button>
+
                                 <button id="printDataBTN" type="button" class="btn btn-default btn-sm" ng-click="printer()">
                                     <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
                                 </button>
