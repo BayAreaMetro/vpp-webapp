@@ -49,7 +49,6 @@ angular.module('vppApp')
 		
 		    });
 		    //End of http request
-		
 		});
   	}
  ]);
