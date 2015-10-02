@@ -40,8 +40,8 @@
                                             {{selectedStudyArea}}
                                             <span class="caret pull-right ma-top-s"></span>
                                         </button>
-                                        <ul class="dropdown-menu" aria-labelledby="list-1" ng-click="getStudyArea($event)">
-                                            <li ng-repeat="data in studyArea" class="study-li">
+                                        <ul class="dropdown-menu ddStudyAreaSummary" aria-labelledby="list-1" ng-click="getStudyArea($event)">
+                                            <li ng-repeat="data in studyArea" class="study-li-summary">
                                                 <p class="hidden selected-id">{{data.Project_ID}}</p>
                                                 <p class="selected-area">{{data.Name}}</p>
                                             </li>
