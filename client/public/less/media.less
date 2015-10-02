@@ -92,7 +92,7 @@
 	}
 	//Printer Section
 	#print-section{
-		visibility:visible;
+		visibility: visible;
 		display: block;
 		#data-print{
 		
@@ -103,5 +103,19 @@
 		position:absolute;
 		left:0;
 		top:0;
+		.panel{
+			border: none;
+		}
+		.table {
+			> tbody{
+				> tr{
+					> td{
+						padding: 0;
+						//line-height: 1.3px;
+						border: none;
+					}	
+				}	
+			} 
+		}
 	}
 }
