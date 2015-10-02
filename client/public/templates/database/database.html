@@ -173,18 +173,9 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
                                 <div class="col-md-6">
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
-                                            {{selectedStudyArea}}
-                                            <span class="caret pull-right ma-top-s"></span>
-                                        </button>
-                                        <ul class="dropdown-menu ddStudyAreaOccupancy" aria-labelledby="list-3" ng-click="getStudyArea($event)">
-                                            <li ng-repeat="data in studyArea" class="study-li-occupancy">
-                                                <p class="hidden selected-id">{{data.Project_ID}}</p>
-                                                <p class="selected-area">{{data.Name}}</p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <input id="selectCollectionYearINV" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
+                                    <datalist id="collectionyear-list"></datalist>
+                                    <p class="help-block">&nbsp;</p>
                                 </div>
 
                                 <!-- Multiple Checkboxes (inline) -->
@@ -247,7 +238,7 @@
                                     <div class="col-md-8 pull-left">
 
                                         <button id="vwMapInventoryBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
-                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Map
+                                            <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
                                         </button>
 
                                         <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
@@ -272,10 +263,19 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
                                 <div class="col-md-6">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
+                                            {{selectedStudyArea}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu ddStudyAreaOccupancy" aria-labelledby="list-3" ng-click="getStudyArea($event)">
+                                            <li ng-repeat="data in studyArea" class="study-li-occupancy">
+                                                <p class="hidden selected-id">{{data.Project_ID}}</p>
+                                                <p class="selected-area">{{data.Name}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                    <input id="StudyAreaSearchOCC" type="text" placeholder="eg. Walnut Creek" class="form-control input-md find-studyareaOCC" required="" name="City" list="studyareas-list">
-                                    <datalist id="studyareas-list"></datalist>
-                                    <p class="help-block">Choose a Study Area</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -371,11 +371,9 @@
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
                                     <div class="col-md-8 pull-left">
-                                        <!--
-                                        <button id="vwDataBTN" type="button" class="btn btn-default btn-sm">
-                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Show Data
+                                        <button id="vwMapInventoryBTN" type="button" class="btn btn-default btn-sm disabled occupancyVD">
+                                            <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
                                         </button>
--->
                                         <button id="dlOccupancyDataBTN" type="button" class="btn btn-default btn-sm">
                                             <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                         </button>

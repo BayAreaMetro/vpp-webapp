@@ -100,7 +100,7 @@ angular.module('vppApp')
                         for (var i = 0; i < data.length; i++) {
                             $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
                         }
-                        $('#selectCollectionYear').val(data[0].CollectionYear);
+                        $('#selectCollectionYearINV').val(data[0].CollectionYear);
                         $('.inventoryVD').removeClass('disabled');
                     }
                 });
@@ -125,7 +125,7 @@ angular.module('vppApp')
                         for (var i = 0; i < data.length; i++) {
                             $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
                         }
-                        $('#selectCollectionYear').val(data[0].CollectionYear);
+                        $('#selectCollectionYearOCC').val(data[0].CollectionYear);
                         $('.occupancyVD').removeClass('disabled');
                     }
                 });
