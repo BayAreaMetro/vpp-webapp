@@ -1,22 +1,22 @@
 'use strict';
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
-		'$scope',
- 		'$http',
- 		function ($scope, $http) {
+  '$scope',
+   '$http',
+   function ($scope, $http) {
 
             //Show and Hide vars
             $scope.isActive = false,
-            $scope.showAll = false,
-            $scope.pricing = false,
-            $scope.supply = false,
-            $scope.restrictions = false,
-            $scope.spaceTypes = false,
-            $scope.weekDay = false,
-            $scope.weekEnd = false,
-            $scope.resources = false;
+                $scope.showAll = false,
+                $scope.pricing = false,
+                $scope.supply = false,
+                $scope.restrictions = false,
+                $scope.spaceTypes = false,
+                $scope.weekDay = false,
+                $scope.weekEnd = false,
+                $scope.resources = false;
             $scope.studyArea;
-            $scope.selectedStudyArea = "Study Area";
+            $scope.selectedStudyArea = "Choose a Study Area...";
 
             //Page Controls
             $('.divControl').click(function () {
@@ -521,16 +521,19 @@ angular.module('vppApp')
 
             $scope.getStudyArea = function (event) {
                 $scope.go = event.target;
-                console.log("working on click");
+                console.log($scope.go);
             };
 
             //Drop down fix
             $(".dropdown-menu").on('click', '.selected-area', function (e) {
                 //var pop = $(this).child('.selected-area');
                 $scope.selectedStudyArea = $(this).text();
-                console.log($scope.selectedStudyArea);
+                $scope.selectedStudyAreaID = $('.selected-id').text();
+                console.clear();
+                console.log(e.target.nodeType + " | " + $scope.selectedStudyArea);
+                console.log($scope.selectedId);
+                //For this to work correctly, I need the Project_ID value to query the Database
             });
             $scope.activeTrigger();
-		}
-	]
-);
+  }
+ ]);
