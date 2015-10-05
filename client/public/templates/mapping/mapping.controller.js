@@ -63,7 +63,8 @@ angular.module('vppApp')
             studyAreasSymbol,
             studyAreasRenderer,
             mapLevel,
-            clusterLayer
+            clusterLayer,
+            selectedOpLayer
 
 
 
@@ -1251,8 +1252,18 @@ angular.module('vppApp')
             $("#mapLayers").fadeIn(500);
 
             //return false;
+            });
+
+        $('#layerOpacityCTL').click(function () {
+            clearAllTools();
+            $('#iconTitle').html("<span><i class='fa fa-th-list fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("Layer Opacity");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#layerOpacity").fadeIn(500);
 
         });
+
+
 
         //Show Map Print Controls
         $('#mapPrintCTL').click(function () {
@@ -1568,13 +1579,13 @@ angular.module('vppApp')
             }
         });
 
-        //Opacity Layer on click
+        /*//Opacity Layer on click
         $scope.layerOpacity = function () {
             $scope.layerOpacity = "Layer Opacity";
             //console.log("working layer");
             $("#mapToolsPNL").fadeIn(500);
             $("#layer-opacity").fadeIn();
-        }
+        }*/
 
         //Slider
         $scope.vm.opacitySlider = {
@@ -1583,20 +1594,42 @@ angular.module('vppApp')
             value: 50
         };
 
-        $scope.$on("slideEnded", function() {
-     console.log($scope.vm.opacitySlider.value);
-     var sliderValue = $scope.vm.opacitySlider.value;
-                   var newOpacity = (sliderValue / 100);
-                   PDA_FL.setOpacity(newOpacity);
-                   //PDA_FL.refresh();
-});
 
-        $scope.vm.refreshSlider = function () {
+        $("select.selectOpLayer").change(function(){
+        selectedOpLayer = $(".selectOpLayer option:selected").val();
+        console.log("You have selected the layer - " + selectedOpLayer);
+    });
+
+
+
+        $scope.$on("slideEnded", function() {
+         console.log($scope.vm.opacitySlider.value);
+         var sliderValue = $scope.vm.opacitySlider.value;
+                       var newOpacity = (sliderValue / 100);
+                       console.log(newOpacity);
+                       console.log("You have selected the layer - " + selectedOpLayer);
+                      switch (selectedOpLayer) {
+                        case "PDA_FL":
+                            PDA_FL.setOpacity(newOpacity);
+                            PDA_FL.show();
+                            break;
+                        case "TPAsFL":
+                            TPAsFL.setOpacity(newOpacity);
+                            TPAsFL.show();
+                           break;
+                       //PDA_FL.refresh();
+                   };
+        });
+
+
+
+
+        /*$scope.vm.refreshSlider = function () {
             $timeout(function () {
                 $scope.$broadcast('rzSliderForceRender');
                 console.log(vm.opacitySlider.value);
             });
-        }
+        }*/
     });
 
     
