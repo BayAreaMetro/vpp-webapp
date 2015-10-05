@@ -4,12 +4,12 @@ angular.module('vppApp')
     .config(function ($stateProvider) {
         $stateProvider
             .state('main', {
-                url: "/",
+                url: "/main",
                 templateUrl: 'app/main/main.html',
                 controller: 'MainCtrl'
             })
             .state('home', {
-                url: "/home",
+                url: "/",
                 templateUrl: 'public/templates/home/home.html',
                 controller: 'HomeCtrl'
             })
