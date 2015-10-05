@@ -9,7 +9,7 @@ angular.module('vppApp')
 		$scope.feedbackCat;
 		$scope.feedbackType;
 		$scope.feedbackComment;
-		console.log("Feedback");
+		$scope.feedbackMessage;
 		
 		var devDataUrl = "http://localhost:3003";
 		var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
@@ -25,7 +25,8 @@ angular.module('vppApp')
 		});
 		
 		$('#submitFeedbackBTN').click(function () {
-		
+			$scope.feedbackMessage = "";
+			$(".feedback-message").show();
 		    //$scope.feedbackCategory = $('#feedbackCategory').val();
 		   // $scope.feedbackType = $('#feedbackType').val();
 		    //$scope.feedbackComment = $('#feedbackComment').val();
@@ -39,7 +40,9 @@ angular.module('vppApp')
 		        $('#feedbackCategory').val("");
 		        $('#feedbackType').val("");
 		        $('#feedbackComment').val("");
-		        $('#feedbackSuccess').addClass('in');
+		        //$('#feedbackSuccess').addClass('in');
+		        $scope.feedbackMessage = "Thanks for your Feedback.";
+		        $(".feedback-message").delay(5000).fadeOut(100);
 		
 		
 		    }).error(function (data, status) {
