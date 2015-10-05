@@ -324,7 +324,7 @@
                     </div>
                 </div>
             </div> -->
-            <div id="mlegend_bart" class="collapse" pad-bottom-m pad-top-m>
+            <div id="mlegend_bart"  pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/bart.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
@@ -334,7 +334,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mlegend_caltrain" class="collapse" pad-bottom-m pad-top-m>
+            <div id="mlegend_caltrain"  pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/caltrain_logo_web.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; padding-right: 2px; height: 20px; width: 38px; display: block;">
@@ -577,6 +577,12 @@
                         <span class="pad-left-m LayerLBLs">Study Areas</span>
                     </p>
                     </div>
+                    <div id="StudyAreaOpacitySlider">  
+                        <div class="opacitySliderLBLs">
+                        <span>Layer Opacity</span>
+                       </div>
+                        <rzslider rz-slider-model="vm.opacitySlider.value" rz-slider-floor="vm.opacitySlider.floor" rz-slider-ceil="vm.opacitySlider.ceil"></rzslider>
+                    </div>
                     <div class="adl">
                     <p>
                         <input id="ParknRideLotsSwitch" type="checkbox" data-size="mini" name="ParknRideLotsFL">
@@ -593,14 +599,27 @@
                     <div class="adl">
                     <p>
                         <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL">
-                        <span class="pad-left-m LayerLBLs">PDAs</span>
+                        <span class="pad-left-m LayerLBLs">Priority Development Areas</span>
                     </p>
                     </div>
+                    <div id="PDAsOpacitySlider" class="collapse">  
+                        <div class="opacitySliderLBLs">
+                        <span>Layer Opacity</span>
+                       </div>
+                        <rzslider rz-slider-model="vm.opacitySlider1.value" rz-slider-floor="vm.opacitySlider1.floor" rz-slider-ceil="vm.opacitySlider1.ceil"></rzslider>
+                    </div>
+
                     <div class="adl">
                     <p>
                         <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL">
                         <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
                     </p>
+                    </div>
+                    <div id="TPAsOpacitySlider" class="collapse">  
+                        <div class="opacitySliderLBLs">
+                        <span>Layer Opacity</span>
+                       </div>
+                        <rzslider rz-slider-model="vm.opacitySlider2.value" rz-slider-floor="vm.opacitySlider2.floor" rz-slider-ceil="vm.opacitySlider2.ceil"></rzslider>
                     </div>
                     <div class="adl">
                     <p>
@@ -629,13 +648,13 @@
                     </div> -->
                     <div class="adl">
                     <p>
-                        <input id="bartSwitch" type="checkbox" data-size="mini" name="BartFL">
+                        <input id="bartSwitch" type="checkbox" data-size="mini" name="BartFL" checked="true">
                         <span class="pad-left-m LayerLBLs">BART</span>
                     </p>
                     </div>
                     <div class="adl">
                     <p>
-                        <input id="caltrainSwitch" type="checkbox" data-size="mini" name="CaltrainFL">
+                        <input id="caltrainSwitch" type="checkbox" data-size="mini" name="CaltrainFL" checked="true">
                         <span class="pad-left-m LayerLBLs">Caltrain</span>
                     </p>
                     </div>

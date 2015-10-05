@@ -302,7 +302,7 @@ angular.module('vppApp')
             id: "Bart",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
+            visible: true
         });
         BartFL.setDefinitionExpression("agencyname='BART'");
 
@@ -310,7 +310,7 @@ angular.module('vppApp')
             id: "Caltrain",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
+            visible: true
         });
         CaltrainFL.setDefinitionExpression("agencyname='CALTRAIN'");
 
@@ -1171,7 +1171,21 @@ angular.module('vppApp')
 
                             break;
                     }
-                    $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+
+                    switch (a) {
+                        case "ON":
+                            $scope.parkingType = "On-Street Parking";
+                            
+                            break;
+                        case "OFF":
+                           $scope.parkingType = "Off-Street Parking";
+
+                            break;
+                        case "BOTH":
+                           $scope.parkingType = "Both On/Off-Street Parking";
+
+                    }
+                    $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>"+ $scope.parkingType +"</b><br/>"+ $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
                 }
             });
         }
@@ -1432,7 +1446,28 @@ angular.module('vppApp')
                         PDA_FL.show();
                         $("#mlegend_pdas").fadeIn(100);
                         $("#policyLayersCat").fadeIn(100);
-                        transitLayersCat
+                        $("#PDAsOpacitySlider").fadeIn(100);
+
+                        $scope.$on("slideEnded", function() {
+                         //console.log($scope.vm.opacitySlider.value);
+                           var sliderValue = $scope.vm.opacitySlider1.value;
+                           var newOpacity = (sliderValue / 100);
+                           //console.log(newOpacity);
+                           //console.log("You have selected the layer - " + selectedOpLayer);
+                          /*switch (selectedOpLayer) {
+                            case "PDA_FL":*/
+                            PDA_FL.setOpacity(newOpacity);
+                               // PDA_FL.show();
+                                /*break;
+                            case "TPAsFL":
+                                TPAsFL.setOpacity(newOpacity);
+                                TPAsFL.show();
+                               break;
+                            //PDA_FL.refresh();
+                              };*/
+                        });
+
+
                         break;
                     case "studyAreasFL":
                         studyAreasFL.show();
@@ -1468,6 +1503,27 @@ angular.module('vppApp')
                         TPAsFL.show();
                         $("#mlegend_tpas").fadeIn(100);
                         $("#policyLayersCat").fadeIn(100);
+                        $("#TPAsOpacitySlider").fadeIn(100);
+                        $scope.$on("slideEnded", function() {
+                         //console.log($scope.vm.opacitySlider.value);
+                           var sliderValue = $scope.vm.opacitySlider2.value;
+                           var newOpacity = (sliderValue / 100);
+                           //console.log(newOpacity);
+                           //console.log("You have selected the layer - " + selectedOpLayer);
+                          /*switch (selectedOpLayer) {
+                            case "PDA_FL":*/
+                            TPAsFL.setOpacity(newOpacity);
+                               // PDA_FL.show();
+                                /*break;
+                            case "TPAsFL":
+                                TPAsFL.setOpacity(newOpacity);
+                                TPAsFL.show();
+                               break;
+                            //PDA_FL.refresh();
+                              };*/
+                        });
+
+
                         break;
                     case "BartFL":
                         BartFL.show();
@@ -1496,6 +1552,7 @@ angular.module('vppApp')
                     case "PDA_FL":
                         PDA_FL.hide();
                         $("#mlegend_pdas").fadeOut(0);
+                        $("#PDAsOpacitySlider").fadeOut(100);
                         if (TPAsFL.visible) {} else {
 
                             $("#policyLayersCat").fadeOut(0);
@@ -1537,6 +1594,7 @@ angular.module('vppApp')
                     case "TPAsFL":
                         TPAsFL.hide();
                         $("#mlegend_tpas").fadeOut(0);
+                        $("#TPAsOpacitySlider").fadeOut(100);
                         if (PDA_FL.visible) {} else {
 
                             $("#policyLayersCat").fadeOut(0);
@@ -1591,23 +1649,56 @@ angular.module('vppApp')
         $scope.vm.opacitySlider = {
             floor: 0,
             ceil: 100,
-            value: 50
+            value: 70
+        };
+
+        $scope.vm.opacitySlider1 = {
+            floor: 0,
+            ceil: 100,
+            value: 70
+        };
+
+         $scope.vm.opacitySlider2 = {
+            floor: 0,
+            ceil: 100,
+            value: 70
         };
 
 
-        $("select.selectOpLayer").change(function(){
+        $scope.$on("slideEnded", function() {
+                         //console.log($scope.vm.opacitySlider.value);
+                           var sliderValue = $scope.vm.opacitySlider.value;
+                           var newOpacity = (sliderValue / 100);
+                           //console.log(newOpacity);
+                           //console.log("You have selected the layer - " + selectedOpLayer);
+                          /*switch (selectedOpLayer) {
+                            case "PDA_FL":*/
+                            studyAreasFL.setOpacity(newOpacity);
+                               // PDA_FL.show();
+                                /*break;
+                            case "TPAsFL":
+                                TPAsFL.setOpacity(newOpacity);
+                                TPAsFL.show();
+                               break;
+                            //PDA_FL.refresh();
+                              };*/
+                        });
+
+
+
+      /*  $("select.selectOpLayer").change(function(){
         selectedOpLayer = $(".selectOpLayer option:selected").val();
         console.log("You have selected the layer - " + selectedOpLayer);
     });
+*/
 
 
-
-        $scope.$on("slideEnded", function() {
+        /*$scope.$on("slideEnded", function() {
          console.log($scope.vm.opacitySlider.value);
          var sliderValue = $scope.vm.opacitySlider.value;
                        var newOpacity = (sliderValue / 100);
                        console.log(newOpacity);
-                       console.log("You have selected the layer - " + selectedOpLayer);
+                       //console.log("You have selected the layer - " + selectedOpLayer);
                       switch (selectedOpLayer) {
                         case "PDA_FL":
                             PDA_FL.setOpacity(newOpacity);
@@ -1619,7 +1710,7 @@ angular.module('vppApp')
                            break;
                        //PDA_FL.refresh();
                    };
-        });
+        });*/
 
 
 
