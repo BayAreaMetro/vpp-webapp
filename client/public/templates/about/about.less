@@ -5,22 +5,31 @@
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
-	.site-header{
-		background-image: url('images/cropped-parking-e1421692177386.jpg');
-		background-size: cover;
+    .site-header {
+        background-image: url('images/cropped-parking-e1421692177386.jpg');
+        background-size: cover;
         margin-top: 50px;
-		height: 250px;
-		.overlay{
-			padding-top: 20px;
-			h3:last-child{
-				color:white;
-			}
-		}
-	}
-    .about-text{
-	    p{
-		    font-size: 1.5em;
-			color: @anchorColor;
-	    } 
+        height: 250px;
+        .overlay {
+            padding-top: 20px;
+            h3:last-child {
+                color: white;
+            }
+        }
+    }
+    .about-text {
+        p {
+            font-size: 1.5em;
+            color: @anchorColor;
+        }
+    }
+    .contact-wrapper {
+        .help-links {
+            color: @mainColor;
+            text-decoration: none;
+            &:hover {
+                color: lighten(@mainColor, 15%);
+            }
+        }
     }
 }
