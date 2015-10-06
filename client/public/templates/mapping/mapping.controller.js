@@ -387,6 +387,10 @@ angular.module('vppApp')
             new w.Color([255, 0, 0]));
         var renderer = new w.ClassBreaksRenderer(symbol, "Total_Spaces");
 
+
+        var Break0Color = new w.Color([120, 120, 120, 1]);
+        var Break0LineSymbol = new w.SimpleLineSymbol("solid", Break0Color, 2);
+
         var Break1Color = new w.Color([56, 168, 0, 1]);
         var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 2);
 
@@ -403,7 +407,10 @@ angular.module('vppApp')
         var Break5LineSymbol = new w.SimpleLineSymbol("solid", Break5Color, 2);
 
 
-        var Break1_minValue = 0;
+        var Break0_minValue = 0;
+        var Break0_maxValue = 0.5;
+
+        var Break1_minValue = 1;
         var Break1_maxValue = 4;
 
         var Break2_minValue = 5;
@@ -418,6 +425,7 @@ angular.module('vppApp')
         var Break5_minValue = 51;
         var Break5_maxValue = 10000;
 
+        renderer.addBreak(Break0_minValue, Break0_maxValue, Break0LineSymbol);
         renderer.addBreak(Break1_minValue, Break1_maxValue, Break1LineSymbol);
         renderer.addBreak(Break2_minValue, Break2_maxValue, Break2LineSymbol);
         renderer.addBreak(Break3_minValue, Break3_maxValue, Break3LineSymbol);
@@ -434,6 +442,7 @@ angular.module('vppApp')
 
         //create renderer
         var OffStreetInventoryRenderer = new w.ClassBreaksRenderer(OffStreetInventorySymbol, "Total_Spaces");
+
 
         var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 0.5]));
         var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 0.5]));
@@ -524,7 +533,7 @@ angular.module('vppApp')
         var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);
 
         var Break1_minValue_OnStreetOccupancy = 0;
-        var Break1_maxValue_OnStreetOccupancy = 0.5;
+        var Break1_maxValue_OnStreetOccupancy = 0;
 
         var Break2_minValue_OnStreetOccupancy = 0.51;
         var Break2_maxValue_OnStreetOccupancy = 0.75;
@@ -603,7 +612,7 @@ angular.module('vppApp')
             //Setting up Simple Lines Renderer for Study Areas
         studyAreasColor = new w.Color("#007AC8");
         studyAreasLine = new w.SimpleLineSymbol("solid", studyAreasColor, 2);
-        studyAreasSymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, studyAreasLine, new w.Color([255, 255, 255, 0.7]));
+        studyAreasSymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, studyAreasLine, new w.Color([255, 255, 255, 1]));
         studyAreasRenderer = new w.SimpleRenderer(studyAreasSymbol);
 
         //set up scale dependant renderer for studyAreasLine symbol
@@ -715,7 +724,7 @@ angular.module('vppApp')
         //Setting up Simple Lines Renderer for TPAsFL
         var TPAs_Color = new w.Color([242, 167, 52, 0.7]);
         var TPAs_Line = new w.SimpleLineSymbol("solid", TPAs_Color, 2);
-        var TPAs_Symbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, TPAs_Line, new w.Color([242, 167, 52, 0.7]));
+        var TPAs_Symbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, TPAs_Line, new w.Color([242, 167, 52, 1]));
         var TPAs_Renderer = new w.SimpleRenderer(TPAs_Symbol);
 
         TPAsFL.setRenderer(TPAs_Renderer);
@@ -723,7 +732,7 @@ angular.module('vppApp')
         //PDA Popup and Feature Layer Definition
         var PDA_Color = new w.Color("#b266ff");
         var PDA_Line = new w.SimpleLineSymbol("solid", PDA_Color, 2);
-        var PDA_Symbol = new w.SimpleFillSymbol("solid", PDA_Line, new w.Color([178, 102, 255, 0.7]));
+        var PDA_Symbol = new w.SimpleFillSymbol("solid", PDA_Line, new w.Color([178, 102, 255, 1]));
         var PDA_Renderer = new w.SimpleRenderer(PDA_Symbol);
 
         PDA_FL.setRenderer(PDA_Renderer);
@@ -1492,22 +1501,9 @@ angular.module('vppApp')
                     $("#PDAsOpacitySlider").fadeIn(100);
 
                     $scope.$on("slideEnded", function () {
-                        //console.log($scope.vm.opacitySlider.value);
                         var sliderValue = $scope.vm.opacitySlider1.value;
                         var newOpacity = (sliderValue / 100);
-                        //console.log(newOpacity);
-                        //console.log("You have selected the layer - " + selectedOpLayer);
-                        /*switch (selectedOpLayer) {
-                          case "PDA_FL":*/
                         PDA_FL.setOpacity(newOpacity);
-                        // PDA_FL.show();
-                        /*break;
-                            case "TPAsFL":
-                                TPAsFL.setOpacity(newOpacity);
-                                TPAsFL.show();
-                               break;
-                            //PDA_FL.refresh();
-                              };*/
                     });
 
 
@@ -1521,22 +1517,14 @@ angular.module('vppApp')
                     FerryTerminalsFL.show();
                     $("#mlegend_ferry").fadeIn(100);
                     $("#transitLayersCat").fadeIn(100);
-                    // }
-                    // else {
-                    /*  FerryTerminalsFL.hide();
-                        $("#mlegend_ferry").fadeOut(0);
-                    }*/
+
                     break;
                 case "ParknRideLotsFL":
                     ParknRideLotsFL.show();
                     $("#mlegend_parknride").fadeIn(100);
-                    //$("#parkingLayersCat").fadeIn(100);
+
                     break;
-                    /*case "RailStationsFL":
-                        RailStationsFL.show();
-                        $("#mlegend_rail").fadeIn(100);
-                        $("#transitLayersCat").fadeIn(100);
-                        break;*/
+
                 case "TransitHubsFL":
                     TransitHubsFL.show();
                     $("#mlegend_transitHubs").fadeIn(100);
@@ -1548,22 +1536,12 @@ angular.module('vppApp')
                     $("#policyLayersCat").fadeIn(100);
                     $("#TPAsOpacitySlider").fadeIn(100);
                     $scope.$on("slideEnded", function () {
-                        //console.log($scope.vm.opacitySlider.value);
+
                         var sliderValue = $scope.vm.opacitySlider2.value;
                         var newOpacity = (sliderValue / 100);
-                        //console.log(newOpacity);
-                        //console.log("You have selected the layer - " + selectedOpLayer);
-                        /*switch (selectedOpLayer) {
-                          case "PDA_FL":*/
+
                         TPAsFL.setOpacity(newOpacity);
-                        // PDA_FL.show();
-                        /*break;
-                            case "TPAsFL":
-                                TPAsFL.setOpacity(newOpacity);
-                                TPAsFL.show();
-                               break;
-                            //PDA_FL.refresh();
-                              };*/
+
                     });
 
 
@@ -1616,13 +1594,7 @@ angular.module('vppApp')
                     ParknRideLotsFL.hide();
                     $("#mlegend_parknride").fadeOut(0);
                     break;
-                    /*case "RailStationsFL":
-                        RailStationsFL.hide();
-                        $("#mlegend_rail").fadeOut(0);
-                        if (FerryTerminalsFL.visible || TransitHubsFL.visible) {} else {
 
-                            $("#transitLayersCat").fadeOut(0);
-                        }*/
                     break;
                 case "TransitHubsFL":
                     TransitHubsFL.hide();
@@ -1680,13 +1652,6 @@ angular.module('vppApp')
             }
         });
 
-        /*//Opacity Layer on click
-        $scope.layerOpacity = function () {
-            $scope.layerOpacity = "Layer Opacity";
-            //console.log("working layer");
-            $("#mapToolsPNL").fadeIn(500);
-            $("#layer-opacity").fadeIn();
-        }*/
 
         //Slider Controls
         $scope.vm.opacitySlider = {
@@ -1710,62 +1675,9 @@ angular.module('vppApp')
         $scope.vm.opacitySlider;
         console.log($scope.vm.opacitySlider);
         $scope.$on("slideEnded", function () {
-            //console.log($scope.vm.opacitySlider.value);
             var sliderValue = $scope.vm.opacitySlider.value;
             var newOpacity = (sliderValue / 100);
-            //console.log(newOpacity);
-            //console.log("You have selected the layer - " + selectedOpLayer);
-            /*switch (selectedOpLayer) {
-              case "PDA_FL":*/
             studyAreasFL.setOpacity(newOpacity);
-            // PDA_FL.show();
-            /*break;
-                            case "TPAsFL":
-                                TPAsFL.setOpacity(newOpacity);
-                                TPAsFL.show();
-                               break;
-                            //PDA_FL.refresh();
-                              };*/
         });
-
-        /*  $("select.selectOpLayer").change(function(){
-        selectedOpLayer = $(".selectOpLayer option:selected").val();
-        console.log("You have selected the layer - " + selectedOpLayer);
-    });
-*/
-
-        /*$scope.$on("slideEnded", function() {
-         console.log($scope.vm.opacitySlider.value);
-         var sliderValue = $scope.vm.opacitySlider.value;
-                       var newOpacity = (sliderValue / 100);
-                       console.log(newOpacity);
-                       //console.log("You have selected the layer - " + selectedOpLayer);
-                      switch (selectedOpLayer) {
-                        case "PDA_FL":
-                            PDA_FL.setOpacity(newOpacity);
-                            PDA_FL.show();
-                            break;
-                        case "TPAsFL":
-                            TPAsFL.setOpacity(newOpacity);
-                            TPAsFL.show();
-                           break;
-                       //PDA_FL.refresh();
-                   };
-        });*/
-
-        /*$scope.vm.refreshSlider = function () {
-            $timeout(function () {
-                $scope.$broadcast('rzSliderForceRender');
-                console.log(vm.opacitySlider.value);
-            });
-        }*/
-
-        /*$scope.vm.refreshSlider = function () {
-           $timeout(function () {
-               var sliderValue = $scope.$broadcast('vm.priceSlider1.value');
-               var newOpacity = (sliderValue / 100);
-               $scope.map.getLayer(PDA_FL).setOpacity(newOpacity);
-           });
-       } */
     });
 //EOF
