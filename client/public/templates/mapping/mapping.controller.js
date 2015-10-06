@@ -17,7 +17,7 @@ angular.module('vppApp')
             WEOnStreetOccupancyFL,
             WEOffStreetOccupancyFL,
             studyAreasFL,
-           // COC_FL,
+            // COC_FL,
             PDA_FL,
             FerryTerminalsFL,
             ParknRideLotsFL,
@@ -138,14 +138,30 @@ angular.module('vppApp')
             mapCenter = getCenterPoint();
 
 
+
+
         });
+        //Load Study Area from Parking map
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            } else {
+                return results[1] || 0;
+            }
+        }
+        if (decodeURIComponent($.urlParam('sa')).length > 0) {
+            var sa = decodeURIComponent($.urlParam('sa'));
+            ZoomStudyArea(sa);
+        }
+
         //Added this code to fix HomeButton Issue
         w.registry.remove("HomeButton");
         $scope.home = new w.HomeButton({
-                map: $scope.map
-            }, "HomeButton");
-            $scope.home.startup();
-    
+            map: $scope.map
+        }, "HomeButton");
+        $scope.home.startup();
+
 
         /* var highlightSymbol = new w.SimpleFillSymbol(
           w.SimpleFillSymbol.STYLE_SOLID, 
@@ -163,8 +179,8 @@ angular.module('vppApp')
             //styling: true,
             visible: true
         });
-       // vppGraphicsLayer.setRenderer(vppGraphicsRenderer);
-        
+        // vppGraphicsLayer.setRenderer(vppGraphicsRenderer);
+
 
 
 
@@ -353,19 +369,22 @@ angular.module('vppApp')
 
 
         //Set Map Renderers Section
-    //Add labels for Study Areas
-        
+        //Add labels for Study Areas
         var labelColor = new w.Color("#333333");
-    
-        var studyAreaLabel = new w.TextSymbol().setColor($scope.labelColor);
+
+        var studyAreaLabel = new w.TextSymbol().setColor(labelColor).setOffset(100, 100);
         studyAreaLabel.font.setSize("18pt");
         studyAreaLabel.font.setFamily("arial");
+        //studyAreaLabel.font.setWeight(Font.WEIGHT_BOLD);
+
         var studyAreaLabelRenderer = new w.SimpleRenderer($scope.studyAreaLabel);
-        var labels = new w.LabelLayer({ id: "labels" });
+        var labels = new w.LabelLayer({
+            id: "labels"
+        });
         // tell the label layer to label the states feature layer 
         // using the field named "Name"
         labels.addFeatureLayer(studyAreasFL, studyAreaLabelRenderer, "{" + labelField + "}");
-        
+
 
         //Set Map Renderers for OnStreetInventoryFL
         symbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
@@ -524,11 +543,6 @@ angular.module('vppApp')
         var Break5_maxValue_OnStreetOccupancy = 100;
 
 
-
-
-
-
-
         //Set Map Renderers for WDOffStreetOccupancyFL and WEOffStreetOccupancyFL
         var OffStreetOccupancySymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
         OffStreetOccupancySymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
@@ -573,24 +587,24 @@ angular.module('vppApp')
 
         //Begin Function Here...
         function SetOccupancyRenderer(occ) {
-            //console.clear();
-            $scope.OCCtimeperiod = occ;
-            //console.log($scope.OCCtimeperiod);
+                //console.clear();
+                $scope.OCCtimeperiod = occ;
+                //console.log($scope.OCCtimeperiod);
 
-            $scope.renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol_OnStreetOccupancy, $scope.OCCtimeperiod);
-            $scope.renderer_OnStreetOccupancy.clearBreaks();
-            $scope.renderer_OnStreetOccupancy.addBreak(Break1_minValue_OnStreetOccupancy, Break1_maxValue_OnStreetOccupancy, Break1LineSymbol_OnStreetOccupancy);
-            $scope.renderer_OnStreetOccupancy.addBreak(Break2_minValue_OnStreetOccupancy, Break2_maxValue_OnStreetOccupancy, Break2LineSymbol_OnStreetOccupancy);
-            $scope.renderer_OnStreetOccupancy.addBreak(Break3_minValue_OnStreetOccupancy, Break3_maxValue_OnStreetOccupancy, Break3LineSymbol_OnStreetOccupancy);
-            $scope.renderer_OnStreetOccupancy.addBreak(Break4_minValue_OnStreetOccupancy, Break4_maxValue_OnStreetOccupancy, Break4LineSymbol_OnStreetOccupancy);
-            $scope.renderer_OnStreetOccupancy.addBreak(Break5_minValue_OnStreetOccupancy, Break5_maxValue_OnStreetOccupancy, Break5LineSymbol_OnStreetOccupancy);
-            WDOnStreetOccupancyFL.setRenderer($scope.renderer_OnStreetOccupancy);
-            WEOnStreetOccupancyFL.setRenderer($scope.renderer_OnStreetOccupancy);
-            WDOnStreetOccupancyFL.refresh();
-            WEOnStreetOccupancyFL.refresh();
+                $scope.renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol_OnStreetOccupancy, $scope.OCCtimeperiod);
+                $scope.renderer_OnStreetOccupancy.clearBreaks();
+                $scope.renderer_OnStreetOccupancy.addBreak(Break1_minValue_OnStreetOccupancy, Break1_maxValue_OnStreetOccupancy, Break1LineSymbol_OnStreetOccupancy);
+                $scope.renderer_OnStreetOccupancy.addBreak(Break2_minValue_OnStreetOccupancy, Break2_maxValue_OnStreetOccupancy, Break2LineSymbol_OnStreetOccupancy);
+                $scope.renderer_OnStreetOccupancy.addBreak(Break3_minValue_OnStreetOccupancy, Break3_maxValue_OnStreetOccupancy, Break3LineSymbol_OnStreetOccupancy);
+                $scope.renderer_OnStreetOccupancy.addBreak(Break4_minValue_OnStreetOccupancy, Break4_maxValue_OnStreetOccupancy, Break4LineSymbol_OnStreetOccupancy);
+                $scope.renderer_OnStreetOccupancy.addBreak(Break5_minValue_OnStreetOccupancy, Break5_maxValue_OnStreetOccupancy, Break5LineSymbol_OnStreetOccupancy);
+                WDOnStreetOccupancyFL.setRenderer($scope.renderer_OnStreetOccupancy);
+                WEOnStreetOccupancyFL.setRenderer($scope.renderer_OnStreetOccupancy);
+                WDOnStreetOccupancyFL.refresh();
+                WEOnStreetOccupancyFL.refresh();
 
-        }
-        //Setting up Simple Lines Renderer for Study Areas
+            }
+            //Setting up Simple Lines Renderer for Study Areas
         studyAreasColor = new w.Color("#007AC8");
         studyAreasLine = new w.SimpleLineSymbol("solid", studyAreasColor, 2);
         studyAreasSymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, studyAreasLine, new w.Color([255, 255, 255, 0.7]));
@@ -612,9 +626,9 @@ angular.module('vppApp')
             "width": 15
         });
 
-        
+
         var FerryTerminals_Renderer = new w.SimpleRenderer(FerryTerminals_markerSymbol);
-        
+
         FerryTerminalsFL.setRenderer(FerryTerminals_Renderer);
 
 
@@ -702,9 +716,6 @@ angular.module('vppApp')
         var TransitHubs_Renderer = new w.SimpleRenderer(TransitHubs_markerSymbol);
         TransitHubsFL.setRenderer(TransitHubs_Renderer);
 
-
-
-
         //Setting up Simple Lines Renderer for TPAsFL
         var TPAs_Color = new w.Color([242, 167, 52, 0.7]);
         var TPAs_Line = new w.SimpleLineSymbol("solid", TPAs_Color, 2);
@@ -713,9 +724,6 @@ angular.module('vppApp')
 
         TPAsFL.setRenderer(TPAs_Renderer);
 
-
-
-
         //PDA Popup and Feature Layer Definition
         var PDA_Color = new w.Color("#b266ff");
         var PDA_Line = new w.SimpleLineSymbol("solid", PDA_Color, 2);
@@ -723,39 +731,39 @@ angular.module('vppApp')
         var PDA_Renderer = new w.SimpleRenderer(PDA_Symbol);
 
         PDA_FL.setRenderer(PDA_Renderer);
-    
-    
-
-
-
-       /* //COC Popup and Feature Layer Definition
-        var popupTemplate_COC_FL = new w.PopupTemplate({
-            "title": "Community of Concern",
-            "fieldInfos": [{
-                    "fieldName": "totpop",
-                    "label": "Total Population",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-         }
-        ],
-            "description": "Total population is {totpop}"
-        });*/
 
 
 
 
-/*
 
-        //Feature Layer Renderer for COCs
-        var COC_Color = new w.Color("#ff9999");
-        var COC_Line = new w.SimpleLineSymbol("solid", COC_Color, 2);
-        var COC_Symbol = new w.SimpleFillSymbol("solid", COC_Line, null);
-        var COC_Renderer = new w.SimpleRenderer(COC_Symbol);
-        COC_FL.setDefinitionExpression("cocflag = 1");
-        COC_FL.setRenderer(COC_Renderer);
-*/
+        /* //COC Popup and Feature Layer Definition
+         var popupTemplate_COC_FL = new w.PopupTemplate({
+             "title": "Community of Concern",
+             "fieldInfos": [{
+                     "fieldName": "totpop",
+                     "label": "Total Population",
+                     "format": {
+                         "places": 0,
+                         "digitSeparator": true
+                     }
+          }
+         ],
+             "description": "Total population is {totpop}"
+         });*/
+
+
+
+
+        /*
+
+                //Feature Layer Renderer for COCs
+                var COC_Color = new w.Color("#ff9999");
+                var COC_Line = new w.SimpleLineSymbol("solid", COC_Color, 2);
+                var COC_Symbol = new w.SimpleFillSymbol("solid", COC_Line, null);
+                var COC_Renderer = new w.SimpleRenderer(COC_Symbol);
+                COC_FL.setDefinitionExpression("cocflag = 1");
+                COC_FL.setRenderer(COC_Renderer);
+        */
 
         //Add Layers Section All Layers Should be added here
         //$scope.map.addLayer(COC_FL);
@@ -773,12 +781,31 @@ angular.module('vppApp')
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
         //add the legend
-     // add the label layer to the map
+        // add the label layer to the map
         //$scope.map.addLayer($scope.labels);
 
-        $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, TPAsFL, OnStreetInventoryFL, OffStreetInventoryFL,
-            OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL,
-            WEOffStreetOccupancyFL, labels, BartFL, CaltrainFL, AmtrakFL, LightRailFL, FerryTerminalsFL, ParknRideLotsFL, TransitHubsFL]);
+        $scope.map.addLayers([
+            vppGraphicsLayer,
+            studyAreasFL,
+            PDA_FL,
+            TPAsFL,
+            OnStreetInventoryFL,
+            OffStreetInventoryFL,
+            OnStreetRestrictionsFL,
+            OffStreetRestrictionsFL,
+            WDOnStreetOccupancyFL,
+            WEOnStreetOccupancyFL,
+            WDOffStreetOccupancyFL,
+            WEOffStreetOccupancyFL,
+            //labels, 
+            BartFL,
+            CaltrainFL,
+            AmtrakFL,
+            LightRailFL,
+            FerryTerminalsFL,
+            ParknRideLotsFL,
+            TransitHubsFL
+        ]);
 
         //Set Curent Map Theme
         $scope.pt = "inventory";
@@ -804,7 +831,7 @@ angular.module('vppApp')
         function hidePointLayers() {
             FerryTerminalsFL.hide();
             ParknRideLotsFL.hide();
-           // RailStationsFL.hide();
+            // RailStationsFL.hide();
             TransitHubsFL.hide();
 
             $('input[name="FerryTerminalsFL"]').bootstrapSwitch('state', false, false);
@@ -826,84 +853,84 @@ angular.module('vppApp')
             if (level > 14) {
                 //showPointLayers();
                 switch ($scope.pt) {
-                    case "inventory":
-                        OnStreetInventoryFL.show();
+                case "inventory":
+                    OnStreetInventoryFL.show();
 
-                        $("#mapLegendPNL").fadeIn(500);
-                        $("#LegendTitle").text("Legend");
-                        $("#LegendNamePNL_TotalSpaces").fadeIn(500);
-                        $("#mlegend_TotalSpaces").fadeIn(500);
-                        //heatmapFeatureLayer.hide();
-                        $("#mlegend_Occ").fadeOut(0);
-                        $("#LegendNamePNL_Occ").fadeOut(0);
-                        $("#mlegend_Restr").fadeOut(0);
-                        $("#LegendNamePNL_Restr").fadeOut(0);
-                        break;
-                    case "restrictions":
+                    $("#mapLegendPNL").fadeIn(500);
+                    $("#LegendTitle").text("Legend");
+                    $("#LegendNamePNL_TotalSpaces").fadeIn(500);
+                    $("#mlegend_TotalSpaces").fadeIn(500);
+                    //heatmapFeatureLayer.hide();
+                    $("#mlegend_Occ").fadeOut(0);
+                    $("#LegendNamePNL_Occ").fadeOut(0);
+                    $("#mlegend_Restr").fadeOut(0);
+                    $("#LegendNamePNL_Restr").fadeOut(0);
+                    break;
+                case "restrictions":
 
-                        OnStreetRestrictionsFL.show();
-                        OffStreetRestrictionsFL.show();
-
-
-                        $("#mlegend_Restr").fadeIn(500);
-                        $("#LegendNamePNL_Restr").fadeIn(500);
-
-                        $("#LegendNamePNL_Occ").fadeOut(0);
-                        $("#mlegend_Occ").fadeOut(0);
-                        $("#mlegend_TotalSpaces").fadeOut(0);
-                        $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-
-                        break;
-                    case "wkdayOCC":
+                    OnStreetRestrictionsFL.show();
+                    OffStreetRestrictionsFL.show();
 
 
-                        WDOnStreetOccupancyFL.show();
-                        WDOffStreetOccupancyFL.show();
+                    $("#mlegend_Restr").fadeIn(500);
+                    $("#LegendNamePNL_Restr").fadeIn(500);
+
+                    $("#LegendNamePNL_Occ").fadeOut(0);
+                    $("#mlegend_Occ").fadeOut(0);
+                    $("#mlegend_TotalSpaces").fadeOut(0);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+
+                    break;
+                case "wkdayOCC":
 
 
-
-                        $("#LegendNamePNL_Occ").fadeIn(500);
-                        $("#mlegend_Occ").fadeIn(500);
-
-                        $("#LegendNamePNL_Restr").fadeOut(0);
-                        $("#mlegend_Restr").fadeOut(0);
-                        $("#mlegend_TotalSpaces").fadeOut(0);
-                        $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-
-                        break;
-                    case "wkndOCC":
-
-
-                        WEOnStreetOccupancyFL.show();
-                        WEOffStreetOccupancyFL.show();
+                    WDOnStreetOccupancyFL.show();
+                    WDOffStreetOccupancyFL.show();
 
 
 
+                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#mlegend_Occ").fadeIn(500);
 
-                        $("#LegendNamePNL_Occ").fadeIn(500);
-                        $("#mlegend_Occ").fadeIn(500);
+                    $("#LegendNamePNL_Restr").fadeOut(0);
+                    $("#mlegend_Restr").fadeOut(0);
+                    $("#mlegend_TotalSpaces").fadeOut(0);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
 
-                        $("#LegendNamePNL_Restr").fadeOut(0);
-                        $("#mlegend_Restr").fadeOut(0);
-                        $("#mlegend_TotalSpaces").fadeOut(0);
-                        $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                    break;
+                case "wkndOCC":
 
-                        break;
-                    case "peakOCC":
-                        WEOnStreetOccupancyFL.show();
-                        WEOffStreetOccupancyFL.show();
+
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
 
 
 
 
-                        $("#LegendNamePNL_Occ").fadeIn(500);
-                        $("#mlegend_Occ").fadeIn(500);
+                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#mlegend_Occ").fadeIn(500);
 
-                        $("#LegendNamePNL_Restr").fadeOut(0);
-                        $("#mlegend_Restr").fadeOut(0);
-                        $("#mlegend_TotalSpaces").fadeOut(0);
-                        $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                        break;
+                    $("#LegendNamePNL_Restr").fadeOut(0);
+                    $("#mlegend_Restr").fadeOut(0);
+                    $("#mlegend_TotalSpaces").fadeOut(0);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+
+                    break;
+                case "peakOCC":
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+
+
+
+
+                    $("#LegendNamePNL_Occ").fadeIn(500);
+                    $("#mlegend_Occ").fadeIn(500);
+
+                    $("#LegendNamePNL_Restr").fadeOut(0);
+                    $("#mlegend_Restr").fadeOut(0);
+                    $("#mlegend_TotalSpaces").fadeOut(0);
+                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                    break;
 
                 }
 
@@ -931,14 +958,14 @@ angular.module('vppApp')
         //End of Map Layer Configuration
 
         function clearAllTools() {
-            $("#mapNav").fadeOut(0);
-            $("#mapOpts").fadeOut(0);
-            $("#mapBasemaps").fadeOut(0);
-            $("#mapLayers").fadeOut(0);
-            $("#mapPrint").fadeOut(0);
-            $("#maptypeOptionsBTN").fadeOut(0);
-        }
-        //UI Listeners
+                $("#mapNav").fadeOut(0);
+                $("#mapOpts").fadeOut(0);
+                $("#mapBasemaps").fadeOut(0);
+                $("#mapLayers").fadeOut(0);
+                $("#mapPrint").fadeOut(0);
+                $("#maptypeOptionsBTN").fadeOut(0);
+            }
+            //UI Listeners
 
         //Tool Control Listeners
 
@@ -995,10 +1022,10 @@ angular.module('vppApp')
             $scope.pt = $(this).attr('id');
 
             switch ($scope.pt) {
-                case "inventory":
+            case "inventory":
 
 
-                    var currentZoomLevel = $scope.map.getZoom();
+                var currentZoomLevel = $scope.map.getZoom();
 
 
                 if (currentZoomLevel > 14) {
@@ -1013,134 +1040,134 @@ angular.module('vppApp')
                     studyAreasFL.show();
                 }
 
-                    if (currentZoomLevel > 14) {
-                        OnStreetInventoryFL.show();
-                        studyAreasFL.show();
-                    } else {
-                        $scope.sanValue = 1;
-                        ZoomStudyArea($scope.sanValue);
-                        OnStreetInventoryFL.show();
-                        studyAreasFL.show();
-                    }
+                if (currentZoomLevel > 14) {
+                    OnStreetInventoryFL.show();
+                    studyAreasFL.show();
+                } else {
+                    $scope.sanValue = 1;
+                    ZoomStudyArea($scope.sanValue);
+                    OnStreetInventoryFL.show();
+                    studyAreasFL.show();
+                }
 
 
 
-                    $("#mlegend_TotalSpaces").fadeIn(500);
-                    $("#LegendNamePNL_TotalSpaces").fadeIn(500);
-                    $("#LegendNamePNL_Occ").fadeOut(0);
-                    $("#LegendNamePNL_Restr").fadeOut(0);
-                    $("#mlegend_Occ").fadeOut(0);
-                    $("#mlegend_Restr").fadeOut(0);
-                    console.log($scope.pt + " | " + $scope.sanValue);
+                $("#mlegend_TotalSpaces").fadeIn(500);
+                $("#LegendNamePNL_TotalSpaces").fadeIn(500);
+                $("#LegendNamePNL_Occ").fadeOut(0);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Occ").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
+                console.log($scope.pt + " | " + $scope.sanValue);
 
-                    break;
-                case "restrictions":
-
-
-                    var currentZoomLevel = $scope.map.getZoom();
-
-                    if (currentZoomLevel > 14) {
-                        OnStreetRestrictionsFL.show();
-                        OffStreetRestrictionsFL.show();
-                    } else {
-                        $scope.sanValue = 1;
-                        ZoomStudyArea($scope.sanValue);
-                        OnStreetRestrictionsFL.show();
-                        OffStreetRestrictionsFL.show();
-                    }
+                break;
+            case "restrictions":
 
 
-                    $("#mlegend_Restr").fadeIn(500);
-                    $("#LegendNamePNL_Restr").fadeIn(500);
+                var currentZoomLevel = $scope.map.getZoom();
 
-                    $("#LegendNamePNL_Occ").fadeOut(0);
-                    $("#mlegend_Occ").fadeOut(0);
-                    $("#mlegend_TotalSpaces").fadeOut(0);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                    console.log($scope.pt + " | " + $scope.sanValue);
-                    break;
-                case "wkdayOCC":
-
-                    SetOccupancyRenderer("Occupancy_5am");
-                    $scope.DayType = "Weekday Occupancy";
-                    $scope.TimePeriod = "Early Morning (5AM)";
-                    var currentZoomLevel = $scope.map.getZoom();
-
-                    if (currentZoomLevel > 14) {
-                        WDOnStreetOccupancyFL.show();
-                        WDOffStreetOccupancyFL.show();
-                    } else {
-                        $scope.sanValue = 1;
-                        ZoomStudyArea($scope.sanValue);
-                        WDOnStreetOccupancyFL.show();
-                        WDOffStreetOccupancyFL.show();
-                    }
+                if (currentZoomLevel > 14) {
+                    OnStreetRestrictionsFL.show();
+                    OffStreetRestrictionsFL.show();
+                } else {
+                    $scope.sanValue = 1;
+                    ZoomStudyArea($scope.sanValue);
+                    OnStreetRestrictionsFL.show();
+                    OffStreetRestrictionsFL.show();
+                }
 
 
+                $("#mlegend_Restr").fadeIn(500);
+                $("#LegendNamePNL_Restr").fadeIn(500);
 
-                    $("#LegendNamePNL_Occ").fadeIn(500);
-                    $("#mlegend_Occ").fadeIn(500);
-                    $("#LegendNamePNL_Restr").fadeOut(0);
-                    $("#mlegend_Restr").fadeOut(0);
-                    $("#mlegend_TotalSpaces").fadeOut(0);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                    //Write in the title for the legend item.
-                    $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/>Percent of total spaces with vehicles occupying spaces</p>");
-                    console.log($scope.pt + " | " + $scope.sanValue);
-                    break;
-                case "wkndOCC":
-                    SetOccupancyRenderer("Occupancy_5am");
-                    $scope.DayType = "Weekend Occupancy";
-                    $scope.TimePeriod = "Early Morning (5AM)";
-                    var currentZoomLevel = $scope.map.getZoom();
+                $("#LegendNamePNL_Occ").fadeOut(0);
+                $("#mlegend_Occ").fadeOut(0);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            case "wkdayOCC":
 
-                    if (currentZoomLevel > 14) {
-                        WEOnStreetOccupancyFL.show();
-                        WEOffStreetOccupancyFL.show();
-                    } else {
-                        $scope.sanValue = 1;
-                        ZoomStudyArea($scope.sanValue);
-                        WEOnStreetOccupancyFL.show();
-                        WEOffStreetOccupancyFL.show();
-                    }
+                SetOccupancyRenderer("Occupancy_5am");
+                $scope.DayType = "Weekday Occupancy";
+                $scope.TimePeriod = "Early Morning (5AM)";
+                var currentZoomLevel = $scope.map.getZoom();
 
-                    $("#LegendNamePNL_Occ").fadeIn(500);
-                    $("#mlegend_Occ").fadeIn(500);
-                    $("#LegendNamePNL_Restr").fadeOut(0);
-                    $("#mlegend_Restr").fadeOut(0);
-                    $("#mlegend_TotalSpaces").fadeOut(0);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                    //Write in the title for the legend item.
-                    $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
-                    console.log($scope.pt + " | " + $scope.sanValue);
-                    break;
-                case "peakOCC":
+                if (currentZoomLevel > 14) {
+                    WDOnStreetOccupancyFL.show();
+                    WDOffStreetOccupancyFL.show();
+                } else {
+                    $scope.sanValue = 1;
+                    ZoomStudyArea($scope.sanValue);
+                    WDOnStreetOccupancyFL.show();
+                    WDOffStreetOccupancyFL.show();
+                }
 
-                    var currentZoomLevel = $scope.map.getZoom();
 
-                    if (currentZoomLevel > 14) {
-                        WEOnStreetOccupancyFL.show();
-                        WEOffStreetOccupancyFL.show();
-                        showPeak("BOTH");
-                        console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
-                    } else {
-                        $scope.sanValue = 1;
-                        //SetOccupancyRenderer("Occupancy_12pm");
-                        //$scope.DayType = "Weekday Peak Period";
-                        //showPeak("BOTH");
-                        //$scope.TimePeriod = "Afternoon (12PM)";
-                        ZoomStudyArea($scope.sanValue);
-                        WEOnStreetOccupancyFL.show();
-                        WEOffStreetOccupancyFL.show();
-                    }
-                    $("#LegendNamePNL_Occ").fadeIn(500);
-                    $("#mlegend_Occ").fadeIn(500);
-                    $("#LegendNamePNL_Restr").fadeOut(0);
-                    $("#mlegend_Restr").fadeOut(0);
-                    $("#mlegend_TotalSpaces").fadeOut(0);
-                    $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+
+                $("#LegendNamePNL_Occ").fadeIn(500);
+                $("#mlegend_Occ").fadeIn(500);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                //Write in the title for the legend item.
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/>Percent of total spaces with vehicles occupying spaces</p>");
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            case "wkndOCC":
+                SetOccupancyRenderer("Occupancy_5am");
+                $scope.DayType = "Weekend Occupancy";
+                $scope.TimePeriod = "Early Morning (5AM)";
+                var currentZoomLevel = $scope.map.getZoom();
+
+                if (currentZoomLevel > 14) {
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                } else {
+                    $scope.sanValue = 1;
+                    ZoomStudyArea($scope.sanValue);
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                }
+
+                $("#LegendNamePNL_Occ").fadeIn(500);
+                $("#mlegend_Occ").fadeIn(500);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                //Write in the title for the legend item.
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            case "peakOCC":
+
+                var currentZoomLevel = $scope.map.getZoom();
+
+                if (currentZoomLevel > 14) {
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                    showPeak("BOTH");
                     console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
-                    break;
+                } else {
+                    $scope.sanValue = 1;
+                    //SetOccupancyRenderer("Occupancy_12pm");
+                    //$scope.DayType = "Weekday Peak Period";
+                    //showPeak("BOTH");
+                    //$scope.TimePeriod = "Afternoon (12PM)";
+                    ZoomStudyArea($scope.sanValue);
+                    WEOnStreetOccupancyFL.show();
+                    WEOffStreetOccupancyFL.show();
+                }
+                $("#LegendNamePNL_Occ").fadeIn(500);
+                $("#mlegend_Occ").fadeIn(500);
+                $("#LegendNamePNL_Restr").fadeOut(0);
+                $("#mlegend_Restr").fadeOut(0);
+                $("#mlegend_TotalSpaces").fadeOut(0);
+                $("#LegendNamePNL_TotalSpaces").fadeOut(0);
+                console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+                break;
 
             }
 
@@ -1167,42 +1194,42 @@ angular.module('vppApp')
                     $scope.DayType = data[0].Day_Type;
 
                     switch (data[0].Peak) {
-                        case "Occupancy_5am":
-                            $scope.TimePeriod = "Early Morning (5AM)";
+                    case "Occupancy_5am":
+                        $scope.TimePeriod = "Early Morning (5AM)";
 
-                            break;
-                        case "Occupancy_9am":
-                            $scope.TimePeriod = "Morning (9AM)";
+                        break;
+                    case "Occupancy_9am":
+                        $scope.TimePeriod = "Morning (9AM)";
 
-                            break;
-                        case "Occupancy_12pm":
-                            $scope.TimePeriod = "Afternoon (12PM)";
+                        break;
+                    case "Occupancy_12pm":
+                        $scope.TimePeriod = "Afternoon (12PM)";
 
-                            break;
-                        case "Occupancy_4pm":
-                            $scope.TimePeriod = "Late Afternoon (4PM)";
+                        break;
+                    case "Occupancy_4pm":
+                        $scope.TimePeriod = "Late Afternoon (4PM)";
 
-                            break;
-                        case "Occupancy_8pm":
-                            $scope.TimePeriod = "Evening (8PM)";
+                        break;
+                    case "Occupancy_8pm":
+                        $scope.TimePeriod = "Evening (8PM)";
 
-                            break;
+                        break;
                     }
 
                     switch (a) {
-                        case "ON":
-                            $scope.parkingType = "On-Street Parking";
-                            
-                            break;
-                        case "OFF":
-                           $scope.parkingType = "Off-Street Parking";
+                    case "ON":
+                        $scope.parkingType = "On-Street Parking";
 
-                            break;
-                        case "BOTH":
-                           $scope.parkingType = "Both On/Off-Street Parking";
+                        break;
+                    case "OFF":
+                        $scope.parkingType = "Off-Street Parking";
+
+                        break;
+                    case "BOTH":
+                        $scope.parkingType = "Both On/Off-Street Parking";
 
                     }
-                    $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>"+ $scope.parkingType +"</b><br/>"+ $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+                    $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.parkingType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
                 }
             });
         }
@@ -1251,11 +1278,11 @@ angular.module('vppApp')
             //return false;
 
         });
-    //Parking Theme is on by Default
-    $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-            $("#title").text("Parking Theme");
-            $("#mapToolsPNL").fadeIn(500);
-            $("#mapOpts").fadeIn(500);
+        //Parking Theme is on by Default
+        $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+        $("#title").text("Parking Theme");
+        $("#mapToolsPNL").fadeIn(500);
+        $("#mapOpts").fadeIn(500);
 
         //Show BaseMap Controls
         $('#mapBaseCTL').click(function () {
@@ -1288,7 +1315,7 @@ angular.module('vppApp')
             $("#mapLayers").fadeIn(500);
 
             //return false;
-            });
+        });
 
         $('#layerOpacityCTL').click(function () {
             clearAllTools();
@@ -1360,19 +1387,19 @@ angular.module('vppApp')
 
 
 
-        studyAreasFL.on("click", function(evt){
-          
-  
-          var SAQ_id = evt.graphic.attributes["Project_ID"];
-          
-          /*var highlightGraphic = new w.Graphic(evt.graphic.geometry,highlightSymbol);
-          $scope.map.graphics.add(highlightGraphic);*/
+        studyAreasFL.on("click", function (evt) {
 
 
-          console.log(SAQ_id);
+            var SAQ_id = evt.graphic.attributes["Project_ID"];
 
-          
-          ZoomStudyArea(SAQ_id);
+            /*var highlightGraphic = new w.Graphic(evt.graphic.geometry,highlightSymbol);
+            $scope.map.graphics.add(highlightGraphic);*/
+
+
+            console.log(SAQ_id);
+
+
+            ZoomStudyArea(SAQ_id);
         });
 
 
@@ -1392,23 +1419,23 @@ angular.module('vppApp')
             StudyAreaQueryTask.execute(saQuery, showSAQResults);
 
             switch ($scope.pt) {
-                case "peakOCC":
-                    $scope.ptp = "BOTH";
-                    showPeak($scope.ptp);
-                    console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
-                    break;
-                case "inventory":
-                    console.log($scope.pt + " | " + $scope.sanValue);
-                    break;
-                case "restrictions":
-                    console.log($scope.pt + " | " + $scope.sanValue);
-                    break;
-                case "wkndOCC":
-                    console.log($scope.pt + " | " + $scope.sanValue);
-                    break;
-                case "wkdayOCC":
-                    console.log($scope.pt + " | " + $scope.sanValue);
-                    break;
+            case "peakOCC":
+                $scope.ptp = "BOTH";
+                showPeak($scope.ptp);
+                console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+                break;
+            case "inventory":
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            case "restrictions":
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            case "wkndOCC":
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
+            case "wkdayOCC":
+                console.log($scope.pt + " | " + $scope.sanValue);
+                break;
             }
 
         }
@@ -1459,142 +1486,142 @@ angular.module('vppApp')
         $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
             var LayerName = $(this).attr('name');
 
-           
+
             var visibleLayerIds = [];
 
             if (state) {
                 switch (LayerName) {
-                    case "PDA_FL":
-                        PDA_FL.show();
-                        $("#mlegend_pdas").fadeIn(100);
-                        $("#policyLayersCat").fadeIn(100);
-                        $("#PDAsOpacitySlider").fadeIn(100);
+                case "PDA_FL":
+                    PDA_FL.show();
+                    $("#mlegend_pdas").fadeIn(100);
+                    $("#policyLayersCat").fadeIn(100);
+                    $("#PDAsOpacitySlider").fadeIn(100);
 
-                        $scope.$on("slideEnded", function() {
-                         //console.log($scope.vm.opacitySlider.value);
-                           var sliderValue = $scope.vm.opacitySlider1.value;
-                           var newOpacity = (sliderValue / 100);
-                           //console.log(newOpacity);
-                           //console.log("You have selected the layer - " + selectedOpLayer);
-                          /*switch (selectedOpLayer) {
-                            case "PDA_FL":*/
-                            PDA_FL.setOpacity(newOpacity);
-                               // PDA_FL.show();
-                                /*break;
+                    $scope.$on("slideEnded", function () {
+                        //console.log($scope.vm.opacitySlider.value);
+                        var sliderValue = $scope.vm.opacitySlider1.value;
+                        var newOpacity = (sliderValue / 100);
+                        //console.log(newOpacity);
+                        //console.log("You have selected the layer - " + selectedOpLayer);
+                        /*switch (selectedOpLayer) {
+                          case "PDA_FL":*/
+                        PDA_FL.setOpacity(newOpacity);
+                        // PDA_FL.show();
+                        /*break;
                             case "TPAsFL":
                                 TPAsFL.setOpacity(newOpacity);
                                 TPAsFL.show();
                                break;
                             //PDA_FL.refresh();
                               };*/
-                        });
+                    });
 
 
-                        break;
-                    case "studyAreasFL":
-                        studyAreasFL.show();
-                        break;
-                    case "FerryTerminalsFL":
+                    break;
+                case "studyAreasFL":
+                    studyAreasFL.show();
+                    break;
+                case "FerryTerminalsFL":
 
-                        //if (mapLevel>14) {          
-                        FerryTerminalsFL.show();
-                        $("#mlegend_ferry").fadeIn(100);
-                        $("#transitLayersCat").fadeIn(100);
-                        // }
-                        // else {
-                        /*  FerryTerminalsFL.hide();
+                    //if (mapLevel>14) {          
+                    FerryTerminalsFL.show();
+                    $("#mlegend_ferry").fadeIn(100);
+                    $("#transitLayersCat").fadeIn(100);
+                    // }
+                    // else {
+                    /*  FerryTerminalsFL.hide();
                         $("#mlegend_ferry").fadeOut(0);
                     }*/
-                        break;
-                    case "ParknRideLotsFL":
-                        ParknRideLotsFL.show();
-                        $("#mlegend_parknride").fadeIn(100);
-                        //$("#parkingLayersCat").fadeIn(100);
-                        break;
+                    break;
+                case "ParknRideLotsFL":
+                    ParknRideLotsFL.show();
+                    $("#mlegend_parknride").fadeIn(100);
+                    //$("#parkingLayersCat").fadeIn(100);
+                    break;
                     /*case "RailStationsFL":
                         RailStationsFL.show();
                         $("#mlegend_rail").fadeIn(100);
                         $("#transitLayersCat").fadeIn(100);
                         break;*/
-                    case "TransitHubsFL":
-                        TransitHubsFL.show();
-                        $("#mlegend_transitHubs").fadeIn(100);
-                        $("#transitLayersCat").fadeIn(100);
-                        break;
-                    case "TPAsFL":
-                        TPAsFL.show();
-                        $("#mlegend_tpas").fadeIn(100);
-                        $("#policyLayersCat").fadeIn(100);
-                        $("#TPAsOpacitySlider").fadeIn(100);
-                        $scope.$on("slideEnded", function() {
-                         //console.log($scope.vm.opacitySlider.value);
-                           var sliderValue = $scope.vm.opacitySlider2.value;
-                           var newOpacity = (sliderValue / 100);
-                           //console.log(newOpacity);
-                           //console.log("You have selected the layer - " + selectedOpLayer);
-                          /*switch (selectedOpLayer) {
-                            case "PDA_FL":*/
-                            TPAsFL.setOpacity(newOpacity);
-                               // PDA_FL.show();
-                                /*break;
+                case "TransitHubsFL":
+                    TransitHubsFL.show();
+                    $("#mlegend_transitHubs").fadeIn(100);
+                    $("#transitLayersCat").fadeIn(100);
+                    break;
+                case "TPAsFL":
+                    TPAsFL.show();
+                    $("#mlegend_tpas").fadeIn(100);
+                    $("#policyLayersCat").fadeIn(100);
+                    $("#TPAsOpacitySlider").fadeIn(100);
+                    $scope.$on("slideEnded", function () {
+                        //console.log($scope.vm.opacitySlider.value);
+                        var sliderValue = $scope.vm.opacitySlider2.value;
+                        var newOpacity = (sliderValue / 100);
+                        //console.log(newOpacity);
+                        //console.log("You have selected the layer - " + selectedOpLayer);
+                        /*switch (selectedOpLayer) {
+                          case "PDA_FL":*/
+                        TPAsFL.setOpacity(newOpacity);
+                        // PDA_FL.show();
+                        /*break;
                             case "TPAsFL":
                                 TPAsFL.setOpacity(newOpacity);
                                 TPAsFL.show();
                                break;
                             //PDA_FL.refresh();
                               };*/
-                        });
+                    });
 
 
-                        break;
-                    case "BartFL":
-                        BartFL.show();
-                        $("#mlegend_bart").fadeIn(100);
-                        $("#transitLayersCat").fadeIn(100);
-                        break;
-        
-                    case "CaltrainFL":
-                        CaltrainFL.show();
-                        $("#mlegend_caltrain").fadeIn(100);
-                        $("#transitLayersCat").fadeIn(100);
-                        break;
-                    case "AmtrakFL":
-                        AmtrakFL.show();
-                        $("#mlegend_amtrak").fadeIn(100);
-                        $("#transitLayersCat").fadeIn(100);
-                        break;
-                    case "LightRailFL":
-                        LightRailFL.show();
-                        $("#mlegend_lightrail").fadeIn(100);
-                        $("#transitLayersCat").fadeIn(100);
-                        break;
+                    break;
+                case "BartFL":
+                    BartFL.show();
+                    $("#mlegend_bart").fadeIn(100);
+                    $("#transitLayersCat").fadeIn(100);
+                    break;
+
+                case "CaltrainFL":
+                    CaltrainFL.show();
+                    $("#mlegend_caltrain").fadeIn(100);
+                    $("#transitLayersCat").fadeIn(100);
+                    break;
+                case "AmtrakFL":
+                    AmtrakFL.show();
+                    $("#mlegend_amtrak").fadeIn(100);
+                    $("#transitLayersCat").fadeIn(100);
+                    break;
+                case "LightRailFL":
+                    LightRailFL.show();
+                    $("#mlegend_lightrail").fadeIn(100);
+                    $("#transitLayersCat").fadeIn(100);
+                    break;
                 }
             } else {
                 switch (LayerName) {
-                    case "PDA_FL":
-                        PDA_FL.hide();
-                        $("#mlegend_pdas").fadeOut(0);
-                        $("#PDAsOpacitySlider").fadeOut(100);
-                        if (TPAsFL.visible) {} else {
+                case "PDA_FL":
+                    PDA_FL.hide();
+                    $("#mlegend_pdas").fadeOut(0);
+                    $("#PDAsOpacitySlider").fadeOut(100);
+                    if (TPAsFL.visible) {} else {
 
-                            $("#policyLayersCat").fadeOut(0);
-                        }
-                        break;
-                    case "studyAreasFL":
-                        studyAreasFL.hide();
-                        break;
-                    case "FerryTerminalsFL":
-                        FerryTerminalsFL.hide();
-                        $("#mlegend_ferry").fadeOut(0);
-                        if (BartFL.visible || CaltrainFL.visible || AmtrakFL.visible || LightRailFL.visible|| TransitHubsFL.visible) {} else {
+                        $("#policyLayersCat").fadeOut(0);
+                    }
+                    break;
+                case "studyAreasFL":
+                    studyAreasFL.hide();
+                    break;
+                case "FerryTerminalsFL":
+                    FerryTerminalsFL.hide();
+                    $("#mlegend_ferry").fadeOut(0);
+                    if (BartFL.visible || CaltrainFL.visible || AmtrakFL.visible || LightRailFL.visible || TransitHubsFL.visible) {} else {
 
-                            $("#transitLayersCat").fadeOut(0);
-                        }
-                        break;
-                    case "ParknRideLotsFL":
-                        ParknRideLotsFL.hide();
-                        $("#mlegend_parknride").fadeOut(0);
-                        break;
+                        $("#transitLayersCat").fadeOut(0);
+                    }
+                    break;
+                case "ParknRideLotsFL":
+                    ParknRideLotsFL.hide();
+                    $("#mlegend_parknride").fadeOut(0);
+                    break;
                     /*case "RailStationsFL":
                         RailStationsFL.hide();
                         $("#mlegend_rail").fadeOut(0);
@@ -1602,59 +1629,59 @@ angular.module('vppApp')
 
                             $("#transitLayersCat").fadeOut(0);
                         }*/
-                        break;
-                    case "TransitHubsFL":
-                        TransitHubsFL.hide();
-                        $("#mlegend_transitHubs").fadeOut(0);
-                       if (BartFL.visible || CaltrainFL.visible || AmtrakFL.visible || LightRailFL.visible|| FerryTerminalsFL.visible) {} else {
+                    break;
+                case "TransitHubsFL":
+                    TransitHubsFL.hide();
+                    $("#mlegend_transitHubs").fadeOut(0);
+                    if (BartFL.visible || CaltrainFL.visible || AmtrakFL.visible || LightRailFL.visible || FerryTerminalsFL.visible) {} else {
 
-                            $("#transitLayersCat").fadeOut(0);
-                        }
-                        break;
+                        $("#transitLayersCat").fadeOut(0);
+                    }
+                    break;
 
-                        break;
-                    case "TPAsFL":
-                        TPAsFL.hide();
-                        $("#mlegend_tpas").fadeOut(0);
-                        $("#TPAsOpacitySlider").fadeOut(100);
-                        if (PDA_FL.visible) {} else {
+                    break;
+                case "TPAsFL":
+                    TPAsFL.hide();
+                    $("#mlegend_tpas").fadeOut(0);
+                    $("#TPAsOpacitySlider").fadeOut(100);
+                    if (PDA_FL.visible) {} else {
 
-                            $("#policyLayersCat").fadeOut(0);
-                        }
-                        break;
-                    case "BartFL":
-                        BartFL.hide();
-                        $("#mlegend_bart").fadeOut(100);
-                        if (FerryTerminalsFL.visible || CaltrainFL.visible || AmtrakFL.visible || LightRailFL.visible|| TransitHubsFL.visible) {} else {
+                        $("#policyLayersCat").fadeOut(0);
+                    }
+                    break;
+                case "BartFL":
+                    BartFL.hide();
+                    $("#mlegend_bart").fadeOut(100);
+                    if (FerryTerminalsFL.visible || CaltrainFL.visible || AmtrakFL.visible || LightRailFL.visible || TransitHubsFL.visible) {} else {
 
-                            $("#transitLayersCat").fadeOut(0);
-                        }
-                        break;
-        
-                    case "CaltrainFL":
-                        CaltrainFL.hide();
-                        $("#mlegend_caltrain").fadeOut(100);
-                        if (FerryTerminalsFL.visible || BartFL.visible || AmtrakFL.visible || LightRailFL.visible|| TransitHubsFL.visible) {} else {
+                        $("#transitLayersCat").fadeOut(0);
+                    }
+                    break;
 
-                            $("#transitLayersCat").fadeOut(0);
-                        }
-                        break;
-                    case "AmtrakFL":
-                        AmtrakFL.hide();
-                        $("#mlegend_amtrak").fadeOut(100);
-                        if (FerryTerminalsFL.visible || BartFL.visible || CaltrainFL.visible || LightRailFL.visible|| TransitHubsFL.visible) {} else {
+                case "CaltrainFL":
+                    CaltrainFL.hide();
+                    $("#mlegend_caltrain").fadeOut(100);
+                    if (FerryTerminalsFL.visible || BartFL.visible || AmtrakFL.visible || LightRailFL.visible || TransitHubsFL.visible) {} else {
 
-                            $("#transitLayersCat").fadeOut(0);
-                        }
-                        break;
-                    case "LightRailFL":
-                        LightRailFL.hide();
-                        $("#mlegend_lightrail").fadeOut(100);
-                        if (FerryTerminalsFL.visible || BartFL.visible || CaltrainFL.visible || AmtrakFL.visible|| TransitHubsFL.visible) {} else {
+                        $("#transitLayersCat").fadeOut(0);
+                    }
+                    break;
+                case "AmtrakFL":
+                    AmtrakFL.hide();
+                    $("#mlegend_amtrak").fadeOut(100);
+                    if (FerryTerminalsFL.visible || BartFL.visible || CaltrainFL.visible || LightRailFL.visible || TransitHubsFL.visible) {} else {
 
-                            $("#transitLayersCat").fadeOut(0);
-                        }
-                        break;
+                        $("#transitLayersCat").fadeOut(0);
+                    }
+                    break;
+                case "LightRailFL":
+                    LightRailFL.hide();
+                    $("#mlegend_lightrail").fadeOut(100);
+                    if (FerryTerminalsFL.visible || BartFL.visible || CaltrainFL.visible || AmtrakFL.visible || TransitHubsFL.visible) {} else {
+
+                        $("#transitLayersCat").fadeOut(0);
+                    }
+                    break;
                 }
             }
         });
@@ -1680,35 +1707,35 @@ angular.module('vppApp')
             value: 70
         };
 
-         $scope.vm.opacitySlider2 = {
+        $scope.vm.opacitySlider2 = {
             floor: 0,
             ceil: 100,
             value: 70
         };
 
 
-        $scope.$on("slideEnded", function() {
-                         //console.log($scope.vm.opacitySlider.value);
-                           var sliderValue = $scope.vm.opacitySlider.value;
-                           var newOpacity = (sliderValue / 100);
-                           //console.log(newOpacity);
-                           //console.log("You have selected the layer - " + selectedOpLayer);
-                          /*switch (selectedOpLayer) {
-                            case "PDA_FL":*/
-                            studyAreasFL.setOpacity(newOpacity);
-                               // PDA_FL.show();
-                                /*break;
+        $scope.$on("slideEnded", function () {
+            //console.log($scope.vm.opacitySlider.value);
+            var sliderValue = $scope.vm.opacitySlider.value;
+            var newOpacity = (sliderValue / 100);
+            //console.log(newOpacity);
+            //console.log("You have selected the layer - " + selectedOpLayer);
+            /*switch (selectedOpLayer) {
+              case "PDA_FL":*/
+            studyAreasFL.setOpacity(newOpacity);
+            // PDA_FL.show();
+            /*break;
                             case "TPAsFL":
                                 TPAsFL.setOpacity(newOpacity);
                                 TPAsFL.show();
                                break;
                             //PDA_FL.refresh();
                               };*/
-                        });
+        });
 
 
 
-      /*  $("select.selectOpLayer").change(function(){
+        /*  $("select.selectOpLayer").change(function(){
         selectedOpLayer = $(".selectOpLayer option:selected").val();
         console.log("You have selected the layer - " + selectedOpLayer);
     });
@@ -1745,13 +1772,13 @@ angular.module('vppApp')
         }*/
     });
 
-    
 
 
-    /*$scope.vm.refreshSlider = function () {
-               $timeout(function () {
-                   var sliderValue = $scope.$broadcast('vm.priceSlider1.value');
-                   var newOpacity = (sliderValue / 100);
-                   $scope.map.getLayer(PDA_FL).setOpacity(newOpacity);
-               });
-           } */
+
+/*$scope.vm.refreshSlider = function () {
+           $timeout(function () {
+               var sliderValue = $scope.$broadcast('vm.priceSlider1.value');
+               var newOpacity = (sliderValue / 100);
+               $scope.map.getLayer(PDA_FL).setOpacity(newOpacity);
+           });
+       } */

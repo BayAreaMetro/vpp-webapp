@@ -1,20 +1,20 @@
 'use strict';
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
-		'$scope',
-		'$http',
-		function ($scope, $http) {
-	
+  '$scope',
+  '$http',
+  function ($scope, $http) {
+
             //Show and Hide vars
             $scope.isActive = false,
-            $scope.showAll = false,
-            $scope.pricing = false,
-            $scope.supply = false,
-            $scope.restrictions = false,
-            $scope.spaceTypes = false,
-            $scope.weekDay = false,
-            $scope.weekEnd = false,
-            $scope.resources = false;
+                $scope.showAll = false,
+                $scope.pricing = false,
+                $scope.supply = false,
+                $scope.restrictions = false,
+                $scope.spaceTypes = false,
+                $scope.weekDay = false,
+                $scope.weekEnd = false,
+                $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
@@ -56,37 +56,43 @@ angular.module('vppApp')
                 $scope.go = event.target;
                 //console.log($scope.go);
             };
+            $scope.getCollectionYear = function (event) {
+                $scope.go = event.target;
+                //console.log($scope.go1);
+            };
 
             //Drop down fix
             $(".ddStudyAreaSummary").on('click', '.study-li-summary', function (e) {
-                $scope.StudyAreaName = $(this).children('.selected-area').text();
+                //$scope.StudyAreaName = $(this).children('.selected-area').text();
                 $scope.selectedStudyArea = $(this).children('.selected-area').text();
                 $scope.selectedId = $(this).children('.selected-id').text();
-                //console.log($scope.selectedStudyArea, $scope.selectedId);
 
                 //load Data for CollectionYear
                 $.ajax({
                     dataType: 'json',
                     url: publicDataURL + '/data/collectionyear?sa=' + $scope.selectedId,
                     success: function (data) {
-                        //console.clear();
-                        //console.log(data);
-                        $scope.sa = data;
-                        for (var i = 0; i < data.length; i++) {
-                            $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
-                        }
-                        $('#selectCollectionYear').val(data[0].CollectionYear);
-                        $('.summaryVD').removeClass('disabled');
+                        $scope.cy = data;
+                        //$('#selectCollectionYear').text(data[0].CollectionYear);
+                        //$('.summaryVD').removeClass('disabled');
                     }
                 });
 
 
             });
 
+            $(".ddCollectionYearSA").on('click', '.cy-li-studyArea', function (e) {
+                $scope.collectionYearStudyArea = $(this).children('.selected-area').text();
+                $('.summaryVD').removeClass('disabled');
+
+            });
+
+
             $(".ddStudyAreaInventory").on('click', '.study-li-inventory', function (e) {
-                $scope.StudyAreaName = $(this).children('.selected-area').text();
+                //$scope.StudyAreaName = $(this).children('.selected-area').text();
                 $scope.selectedStudyArea = $(this).children('.selected-area').text();
                 $scope.selectedId = $(this).children('.selected-id').text();
+
                 //console.log($scope.selectedStudyArea, $scope.selectedId);
 
                 //load Data for CollectionYear
@@ -109,7 +115,7 @@ angular.module('vppApp')
             });
 
             $(".ddStudyAreaOccupancy").on('click', '.study-li-occupancy', function (e) {
-                $scope.StudyAreaName = $(this).children('.selected-area').text();
+                //$scope.StudyAreaName = $(this).children('.selected-area').text();
                 $scope.selectedStudyArea = $(this).children('.selected-area').text();
                 $scope.selectedId = $(this).children('.selected-id').text();
                 //console.log($scope.selectedStudyArea, $scope.selectedId);
@@ -122,6 +128,7 @@ angular.module('vppApp')
                         //console.clear();
                         //console.log(data);
                         $scope.sa = data;
+
                         for (var i = 0; i < data.length; i++) {
                             $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
                         }
@@ -132,6 +139,10 @@ angular.module('vppApp')
 
 
             });
+            $('#vwMapSummaryBTN').click(function () {
+
+                window.location.replace('#/map?sa=' + $scope.selectedId);
+            });
 
             $('#dlSummaryDataBTN').click(function () {
 
@@ -141,7 +152,7 @@ angular.module('vppApp')
                     method: 'GET'
                 }).success(function (results) {
                     $scope.MasterSummaryData = results;
-                    exportToCSV(results, $scope.StudyAreaName, 'Parking Data Summary', true);
+                    exportToCSV(results, $scope.selectedStudyArea, 'Parking Data Summary', true);
 
                 }).error(function (data, status) {
                     console.log("There was an error:", status);
@@ -164,7 +175,7 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.InventorySummaryData = results;
-                        exportToCSV(results, $scope.StudyAreaName, 'Off-Street Inventory', true);
+                        exportToCSV(results, $scope.selectedStudyArea, 'Off-Street Inventory', true);
 
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
@@ -179,7 +190,7 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.InventorySummaryData = results;
-                        exportToCSV(results, $scope.StudyAreaName, 'On-Street Inventory', true);
+                        exportToCSV(results, $scope.selectedStudyArea, 'On-Street Inventory', true);
 
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
@@ -205,7 +216,7 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.OccupancySummaryData = results;
-                        exportToCSV(results, $scope.StudyAreaName, 'Off-Street Occupancy', true);
+                        exportToCSV(results, $scope.selectedStudyArea, 'Off-Street Occupancy', true);
 
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
@@ -220,7 +231,7 @@ angular.module('vppApp')
                         method: 'GET'
                     }).success(function (results) {
                         $scope.OccupancySummaryData = results;
-                        exportToCSV(results, $scope.StudyAreaName, 'On-Street Occupancy', true);
+                        exportToCSV(results, $scope.selectedStudyArea, 'On-Street Occupancy', true);
 
                     }).error(function (data, status) {
                         console.log("There was an error:", status);
@@ -504,6 +515,5 @@ angular.module('vppApp')
             };
 
             $scope.activeTrigger();
-  		}
-  	]
-);
+    }
+   ]);
