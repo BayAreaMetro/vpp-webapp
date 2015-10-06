@@ -134,14 +134,9 @@ angular.module('vppApp')
         });
         //Set Map Center Variable. Used to reset map when user clicks reset map btn.
         $scope.map.on("load", function () {
-
             mapCenter = getCenterPoint();
-
-
-
-
         });
-        //Load Study Area from Parking map
+        //Load Study Area from Parking Data
         $.urlParam = function (name) {
             var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
             if (results == null) {
@@ -154,6 +149,7 @@ angular.module('vppApp')
             var sa = decodeURIComponent($.urlParam('sa'));
             ZoomStudyArea(sa);
         }
+        //End of Study Area from Parking Data
 
         //Added this code to fix HomeButton Issue
         w.registry.remove("HomeButton");
@@ -988,8 +984,6 @@ angular.module('vppApp')
             $("#mapLegendPNL").fadeOut(300, function () {
                 $("#LegendTitle").text("");
             });
-
-
         });
 
 
@@ -1694,7 +1688,7 @@ angular.module('vppApp')
             $("#layer-opacity").fadeIn();
         }*/
 
-        //Slider
+        //Slider Controls
         $scope.vm.opacitySlider = {
             floor: 0,
             ceil: 100,
@@ -1712,8 +1706,9 @@ angular.module('vppApp')
             ceil: 100,
             value: 70
         };
-
-
+        console.clear();
+        $scope.vm.opacitySlider;
+        console.log($scope.vm.opacitySlider);
         $scope.$on("slideEnded", function () {
             //console.log($scope.vm.opacitySlider.value);
             var sliderValue = $scope.vm.opacitySlider.value;
@@ -1733,14 +1728,11 @@ angular.module('vppApp')
                               };*/
         });
 
-
-
         /*  $("select.selectOpLayer").change(function(){
         selectedOpLayer = $(".selectOpLayer option:selected").val();
         console.log("You have selected the layer - " + selectedOpLayer);
     });
 */
-
 
         /*$scope.$on("slideEnded", function() {
          console.log($scope.vm.opacitySlider.value);
@@ -1761,24 +1753,19 @@ angular.module('vppApp')
                    };
         });*/
 
-
-
-
         /*$scope.vm.refreshSlider = function () {
             $timeout(function () {
                 $scope.$broadcast('rzSliderForceRender');
                 console.log(vm.opacitySlider.value);
             });
         }*/
-    });
 
-
-
-
-/*$scope.vm.refreshSlider = function () {
+        /*$scope.vm.refreshSlider = function () {
            $timeout(function () {
                var sliderValue = $scope.$broadcast('vm.priceSlider1.value');
                var newOpacity = (sliderValue / 100);
                $scope.map.getLayer(PDA_FL).setOpacity(newOpacity);
            });
        } */
+    });
+//EOF
