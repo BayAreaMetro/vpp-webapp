@@ -249,11 +249,11 @@ angular.module('vppApp')
             visible: false
                 // infoTemplate: popupTemplate_OnStreetInventoryFL
         });
-
+        var labelField = "Name";
         studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
             id: "studyAreas",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"],
+            outFields: [labelField],
             visible: true
 
         });
@@ -353,6 +353,19 @@ angular.module('vppApp')
 
 
         //Set Map Renderers Section
+    //Add labels for Study Areas
+        
+        var labelColor = new w.Color("#333333");
+    
+        var studyAreaLabel = new w.TextSymbol().setColor($scope.labelColor);
+        studyAreaLabel.font.setSize("18pt");
+        studyAreaLabel.font.setFamily("arial");
+        var studyAreaLabelRenderer = new w.SimpleRenderer($scope.studyAreaLabel);
+        var labels = new w.LabelLayer({ id: "labels" });
+        // tell the label layer to label the states feature layer 
+        // using the field named "Name"
+        labels.addFeatureLayer(studyAreasFL, studyAreaLabelRenderer, "{" + labelField + "}");
+        
 
         //Set Map Renderers for OnStreetInventoryFL
         symbol = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
@@ -710,6 +723,9 @@ angular.module('vppApp')
         var PDA_Renderer = new w.SimpleRenderer(PDA_Symbol);
 
         PDA_FL.setRenderer(PDA_Renderer);
+    
+    
+
 
 
        /* //COC Popup and Feature Layer Definition
@@ -757,11 +773,12 @@ angular.module('vppApp')
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
         //add the legend
-     
+     // add the label layer to the map
+        //$scope.map.addLayer($scope.labels);
 
         $scope.map.addLayers([vppGraphicsLayer, studyAreasFL, PDA_FL, TPAsFL, OnStreetInventoryFL, OffStreetInventoryFL,
             OnStreetRestrictionsFL, OffStreetRestrictionsFL, WDOnStreetOccupancyFL, WEOnStreetOccupancyFL, WDOffStreetOccupancyFL,
-            WEOffStreetOccupancyFL, BartFL, CaltrainFL, AmtrakFL, LightRailFL, FerryTerminalsFL, ParknRideLotsFL, TransitHubsFL]);
+            WEOffStreetOccupancyFL, labels, BartFL, CaltrainFL, AmtrakFL, LightRailFL, FerryTerminalsFL, ParknRideLotsFL, TransitHubsFL]);
 
         //Set Curent Map Theme
         $scope.pt = "inventory";
@@ -1234,6 +1251,11 @@ angular.module('vppApp')
             //return false;
 
         });
+    //Parking Theme is on by Default
+    $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("Parking Theme");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#mapOpts").fadeIn(500);
 
         //Show BaseMap Controls
         $('#mapBaseCTL').click(function () {
@@ -1257,7 +1279,7 @@ angular.module('vppApp')
             });
         });
 
-        //SMap Layer Controls
+        //Map Layer Controls
         $('#mapLayersCTL').click(function () {
             clearAllTools();
             $('#iconTitle').html("<span><i class='fa fa-th-list fa-lg fa-fw'></i></span>&nbsp;&nbsp;");

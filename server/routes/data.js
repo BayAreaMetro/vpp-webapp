@@ -66,7 +66,7 @@ router.post('/submitfeedback', function (req, res, next) {
 //Load Study Areas
 router.get('/studyareas', function (req, res, next) {
     sql = new mssql.Request(database.connection);
-    sql.query("select * from VPP_Data.StudyAreas_VW", function (err, data) {
+    sql.query("select * from VPP_Data.StudyAreas_VW Order By Name", function (err, data) {
         if (err) {
             res.writeHead(500, {
                 'Content-Type': 'text/plain'

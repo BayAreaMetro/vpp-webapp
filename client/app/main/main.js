@@ -71,7 +71,8 @@ angular.module('vppApp')
                                 QueryTask: 'esri/tasks/QueryTask',
                                 Query: 'esri/tasks/query',
                                 //Legend
-                                Legend: 'esri/dijit/Legend'
+                                Legend: 'esri/dijit/Legend',
+                                LabelLayer: 'esri/layers/LabelLayer'
                             };
 
 
