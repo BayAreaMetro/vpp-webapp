@@ -168,6 +168,18 @@
     cursor: pointer;
 }
 
+#mapOpts{
+	.thumbnail{
+		.transition(all 1s ease-in-out);
+		border: 1px solid #dddddd;
+		&:hover{
+			cursor: pointer;
+		}
+		&.active{
+			border: 2px solid @mainColor;
+		}
+	}
+}
 //.nav-side-menu {
 //    /*    overflow: auto;*/
 //    

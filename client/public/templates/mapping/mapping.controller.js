@@ -6,7 +6,7 @@ angular.module('vppApp')
         //Vars always at the top
         $scope.layerOpacity;
         $scope.vm = this;
-
+        
         var w = wish.get(),
             OnStreetInventoryFL,
             OffStreetInventoryFL,
@@ -1679,5 +1679,10 @@ angular.module('vppApp')
             var newOpacity = (sliderValue / 100);
             studyAreasFL.setOpacity(newOpacity);
         });
+        
+        $scope.activeTheme = function(event){
+	        $('.thumbnail').removeClass('active');
+	        $(event.target).parent(".thumbnail").addClass('active');
+        };
     });
 //EOF
