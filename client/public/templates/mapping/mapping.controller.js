@@ -120,7 +120,7 @@ angular.module('vppApp')
 
         //create a popup to replace the map's info window
         popup = new w.Popup(popupOptions, w.domConstruct.create("div"));
-
+       
         //Start of Map Layer Configuration
 
         //Define Primary Basemap
@@ -195,6 +195,20 @@ angular.module('vppApp')
             "description": "There are {Total_Spaces} total parking spaces on this block"
         });
 
+        popupTemplate_OffStreetInventoryFL = new w.PopupTemplate({
+            "title": "Parking Spaces by Facility",
+            "fieldInfos": [{
+                    "fieldName": "Total_Spaces",
+                    "label": "Total Spaces",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                    }
+            }
+        ],
+            "description": "There are {Total_Spaces} total parking spaces on this block"
+        });
+
         //Define all Map Layers in this section
 
         OnStreetInventoryFL = new w.FeatureLayer(OnStreetInventoryURL, {
@@ -209,8 +223,8 @@ angular.module('vppApp')
             id: "OffStreetInventory",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
-                //infoTemplate: popupTemplate_OnStreetInventoryFL
+            visible: false,
+            infoTemplate: popupTemplate_OffStreetInventoryFL
         });
 
 
@@ -408,7 +422,7 @@ angular.module('vppApp')
 
 
         var Break0_minValue = 0;
-        var Break0_maxValue = 0.5;
+        var Break0_maxValue = 0;
 
         var Break1_minValue = 1;
         var Break1_maxValue = 4;
@@ -533,7 +547,7 @@ angular.module('vppApp')
         var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);
 
         var Break1_minValue_OnStreetOccupancy = 0;
-        var Break1_maxValue_OnStreetOccupancy = 0;
+        var Break1_maxValue_OnStreetOccupancy = 0.50;
 
         var Break2_minValue_OnStreetOccupancy = 0.51;
         var Break2_maxValue_OnStreetOccupancy = 0.75;
