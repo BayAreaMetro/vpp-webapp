@@ -6,7 +6,7 @@ angular.module('vppApp')
         //Vars always at the top
         $scope.layerOpacity;
         $scope.vm = this;
-        
+
         var w = wish.get(),
             OnStreetInventoryFL,
             OffStreetInventoryFL,
@@ -36,6 +36,7 @@ angular.module('vppApp')
             popup,
             popupOptions,
             popupTemplate_OnStreetInventoryFL,
+            popupTemplate_OffStreetInventoryFL,
             symbol,
             symbol_OnStreetOccupancy,
             OffStreetInventoryURL,
@@ -158,31 +159,30 @@ angular.module('vppApp')
         }, "HomeButton");
         $scope.home.startup();
 
-
-        /* var highlightSymbol = new w.SimpleFillSymbol(
-          w.SimpleFillSymbol.STYLE_SOLID, 
-          new w.SimpleLineSymbol(
-            w.SimpleLineSymbol.STYLE_SOLID, 
-            new w.Color([255,0,0]), 3
-          ), 
-          new w.Color([125,125,125,0.35])
-            );*/
-        //var vppGraphicsRenderer = new w.SimpleRenderer(highlightSymbol);
-
         vppGraphicsLayer = new w.GraphicsLayer({
             opacity: 0.50,
             //renderer: vppGraphicsRenderer,
             //styling: true,
             visible: true
         });
-        // vppGraphicsLayer.setRenderer(vppGraphicsRenderer);
-
-
-
 
         //Define Feature Layers for Map
         popupTemplate_OnStreetInventoryFL = new w.PopupTemplate({
             "title": "Parking Spaces by Block Face",
+            "fieldInfos": [{
+                    "fieldName": "Total_Spaces",
+                    "label": "Total Spaces",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                    }
+            }
+        ],
+            "description": "There are {Total_Spaces} total parking spaces on this block"
+        });
+
+        popupTemplate_OffStreetInventoryFL = new w.PopupTemplate({
+            "title": "Parking Spaces by Facility",
             "fieldInfos": [{
                     "fieldName": "Total_Spaces",
                     "label": "Total Spaces",
@@ -201,16 +201,17 @@ angular.module('vppApp')
             id: "OnStreetInventory",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            infoTemplate: popupTemplate_OnStreetInventoryFL,
-            visible: false
+            visible: false,
+            infoTemplate: popupTemplate_OnStreetInventoryFL
+
         });
 
         OffStreetInventoryFL = new w.FeatureLayer(OffStreetInventoryURL, {
             id: "OffStreetInventory",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
-                //infoTemplate: popupTemplate_OnStreetInventoryFL
+            visible: false,
+            infoTemplate: popupTemplate_OffStreetInventoryFL
         });
 
 
@@ -261,11 +262,11 @@ angular.module('vppApp')
             visible: false
                 // infoTemplate: popupTemplate_OnStreetInventoryFL
         });
-        var labelField = "Name";
+
         studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
             id: "studyAreas",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: [labelField],
+            outFields: ["*"],
             visible: true
 
         });
@@ -379,7 +380,7 @@ angular.module('vppApp')
         });
         // tell the label layer to label the states feature layer 
         // using the field named "Name"
-        labels.addFeatureLayer(studyAreasFL, studyAreaLabelRenderer, "{" + labelField + "}");
+        //labels.addFeatureLayer(studyAreasFL, studyAreaLabelRenderer, "{" + labelField + "}");
 
 
         //Set Map Renderers for OnStreetInventoryFL
@@ -408,7 +409,7 @@ angular.module('vppApp')
 
 
         var Break0_minValue = 0;
-        var Break0_maxValue = 0.5;
+        var Break0_maxValue = 0;
 
         var Break1_minValue = 1;
         var Break1_maxValue = 4;
@@ -533,7 +534,7 @@ angular.module('vppApp')
         var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);
 
         var Break1_minValue_OnStreetOccupancy = 0;
-        var Break1_maxValue_OnStreetOccupancy = 0;
+        var Break1_maxValue_OnStreetOccupancy = 0.50;
 
         var Break2_minValue_OnStreetOccupancy = 0.51;
         var Break2_maxValue_OnStreetOccupancy = 0.75;
@@ -1391,17 +1392,10 @@ angular.module('vppApp')
 
 
         studyAreasFL.on("click", function (evt) {
-
-
             var SAQ_id = evt.graphic.attributes["Project_ID"];
-
             /*var highlightGraphic = new w.Graphic(evt.graphic.geometry,highlightSymbol);
             $scope.map.graphics.add(highlightGraphic);*/
-
-
-            console.log(SAQ_id);
-
-
+            //console.log(SAQ_id);
             ZoomStudyArea(SAQ_id);
         });
 
@@ -1472,7 +1466,7 @@ angular.module('vppApp')
                 var searchresult = resultFeatures[i];
                 searchresult.setSymbol(saq_Symbol);
             }
-            searchresult.setInfoTemplate(saInfoTemplate);
+
             //$scope.map.graphics.add(searchresult);
             vppGraphicsLayer.add(searchresult);
             //console.log(saqr);
@@ -1671,18 +1665,18 @@ angular.module('vppApp')
             ceil: 100,
             value: 70
         };
-        console.clear();
-        $scope.vm.opacitySlider;
-        console.log($scope.vm.opacitySlider);
+        //console.clear();
+        //$scope.vm.opacitySlider;
+        //console.log($scope.vm.opacitySlider);
         $scope.$on("slideEnded", function () {
             var sliderValue = $scope.vm.opacitySlider.value;
             var newOpacity = (sliderValue / 100);
             studyAreasFL.setOpacity(newOpacity);
         });
-        
-        $scope.activeTheme = function(event){
-	        $('.thumbnail').removeClass('active');
-	        $(event.target).parent(".thumbnail").addClass('active');
+
+        $scope.activeTheme = function (event) {
+            $('.thumbnail').removeClass('active');
+            $(event.target).parent(".thumbnail").addClass('active');
         };
     });
 //EOF
