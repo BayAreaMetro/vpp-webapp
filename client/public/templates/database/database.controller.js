@@ -18,6 +18,8 @@ angular.module('vppApp')
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
+            $scope.selectedCollectionYear;
+            $scope.collectionYearStudyArea ="Choose a collection Year...";
 
             //Page Controls
             $('.divControl').click(function () {
@@ -82,7 +84,8 @@ angular.module('vppApp')
             });
 
             $(".ddCollectionYearSA").on('click', '.cy-li-studyArea', function (e) {
-                $scope.collectionYearStudyArea = $(this).children('.selected-area').text();
+                $scope.collectionYearStudyArea = $(this).children('.selected-year').text();
+                console.log($scope.collectionYearStudyArea);
                 $('.summaryVD').removeClass('disabled');
 
             });
