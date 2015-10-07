@@ -72,7 +72,7 @@ angular.module('vppApp')
 				$scope.getElement = document.getElementById($scope.location);
 				$scope.makeId = '"#' + $scope.getLocation +'"';
 				
-				console.log('before');
+				//console.log('before');
 				
 				//Hide divs
 				//$('.divFade').hide();RegionalPricingPolicies
@@ -142,6 +142,9 @@ angular.module('vppApp')
 				} else if( $scope.getLocation === "OccupancySummary"){
 					$('.divFade').hide();
 					$("#OccupancySummary").fadeIn();
+				} else if ($scope.getLocation === "faqs"){
+					$('.divFade').hide();
+					$(".faqs-wrapper").fadeIn();
 				} else if( $scope.getLocation === "contact"){
 					$('.divFade').hide();
 					$(".contact-wrapper").fadeIn();

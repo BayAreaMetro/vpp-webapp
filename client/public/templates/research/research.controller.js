@@ -20,7 +20,7 @@ angular.module('vppApp')
 					$('.research-nav').removeClass('active');
 					$('.inner-nested').removeClass('active');
 				});
-				console.log('reseach');
+				//console.log('reseach');
 			};
 			
 			$scope.init();
