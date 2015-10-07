@@ -6,7 +6,7 @@ angular.module('vppApp')
         //Vars always at the top
         $scope.layerOpacity;
         $scope.vm = this;
-        
+
         var w = wish.get(),
             OnStreetInventoryFL,
             OffStreetInventoryFL,
@@ -1486,7 +1486,7 @@ angular.module('vppApp')
                 var searchresult = resultFeatures[i];
                 searchresult.setSymbol(saq_Symbol);
             }
-            searchresult.setInfoTemplate(saInfoTemplate);
+
             //$scope.map.graphics.add(searchresult);
             vppGraphicsLayer.add(searchresult);
             //console.log(saqr);
@@ -1693,10 +1693,10 @@ angular.module('vppApp')
             var newOpacity = (sliderValue / 100);
             studyAreasFL.setOpacity(newOpacity);
         });
-        
-        $scope.activeTheme = function(event){
-	        $('.thumbnail').removeClass('active');
-	        $(event.target).parent(".thumbnail").addClass('active');
+
+        $scope.activeTheme = function (event) {
+            $('.thumbnail').removeClass('active');
+            $(event.target).parent(".thumbnail").addClass('active');
         };
     });
 //EOF
