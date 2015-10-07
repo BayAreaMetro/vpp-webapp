@@ -1,23 +1,26 @@
 'use strict';
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
-		'$scope',
-		'$http',
-		function ($scope, $http) {
+  '$scope',
+  '$http',
+  function ($scope, $http) {
 
             //Show and Hide vars
             $scope.isActive = false,
-            $scope.showAll = false,
-            $scope.pricing = false,
-            $scope.supply = false,
-            $scope.restrictions = false,
-            $scope.spaceTypes = false,
-            $scope.weekDay = false,
-            $scope.weekEnd = false,
-            $scope.resources = false;
+                $scope.showAll = false,
+                $scope.pricing = false,
+                $scope.supply = false,
+                $scope.restrictions = false,
+                $scope.spaceTypes = false,
+                $scope.weekDay = false,
+                $scope.weekEnd = false,
+                $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
+            $scope.selectedCollectionYear = "Choose Collection Year...";
+            $scope.selectedPtypeINV = "eg. On-Street, Off-Street";
+            $scope.selectedPtypeOCC = "eg. On-Street, Off-Street, Both On/Off-Street";
 
             //Page Controls
             $('.divControl').click(function () {
@@ -42,15 +45,17 @@ angular.module('vppApp')
 
             //Data Builder
             //Load data for Study Area Search Function
-            $.ajax({
-                dataType: 'json',
+            $http({
                 url: publicDataURL + '/data/studyareas',
-                success: function (data) {
-                    $scope.studyArea = data;
-                    //console.clear();
-                    //console.log(data);                    
-                }
+                method: 'GET'
+            }).success(function (results) {
+                $scope.studyArea = results;
+
+            }).error(function (data, status) {
+                console.log("There was an error:", status);
+
             });
+
 
             $scope.getStudyArea = function (event) {
                 $scope.go = event.target;
@@ -60,92 +65,106 @@ angular.module('vppApp')
                 $scope.go = event.target;
                 //console.log($scope.go1);
             };
+            $scope.getPtypeINV = function (event) {
+                $scope.go = event.target;
+                //console.log($scope.go1);
+            };
+            $scope.getPtypeOCC = function (event) {
+                $scope.go = event.target;
+                //console.log($scope.go1);
+            };
+            //Create Data Object for Inventory Parking Type
+            $scope.PtypeINV = [
+                {
+                    "Ptype": "ON",
+                    "Description": "On-Street"
+
+                    },
+                {
+                    "Ptype": "OFF",
+                    "Description": "Off-Street"
+                    }];
+            //Create Data Object for Occupancy Parking Type
+            $scope.PtypeOCC = [
+                {
+                    "Ptype": "ON",
+                    "Description": "On-Street"
+
+                    },
+                {
+                    "Ptype": "OFF",
+                    "Description": "Off-Street"
+                    },
+                {
+                    "Ptype": "BOTH",
+                    "Description": "Both On/Off-Street"
+                    }];
 
             //Drop down fix
             $(".ddStudyAreaSummary").on('click', '.study-li-summary', function (e) {
                 //$scope.StudyAreaName = $(this).children('.selected-area').text();
                 $scope.selectedStudyArea = $(this).children('.selected-area').text();
                 $scope.selectedId = $(this).children('.selected-id').text();
-
-                //load Data for CollectionYear
-                $.ajax({
-                    dataType: 'json',
+                $http({
                     url: publicDataURL + '/data/collectionyear?sa=' + $scope.selectedId,
-                    success: function (data) {
-                        $scope.cy = data;
-                        //$('#selectCollectionYear').text(data[0].CollectionYear);
-                        //$('.summaryVD').removeClass('disabled');
-                    }
+                    method: 'GET'
+                }).success(function (results) {
+                    $scope.cy = results;
+                }).error(function (data, status) {
+                    console.log("There was an error:", status);
                 });
-
-
             });
 
             $(".ddCollectionYearSA").on('click', '.cy-li-studyArea', function (e) {
-                $scope.collectionYearStudyArea = $(this).children('.selected-area').text();
+                $scope.selectedCollectionYear = $(this).children('.selected-year').text();
                 $('.summaryVD').removeClass('disabled');
-
             });
-
 
             $(".ddStudyAreaInventory").on('click', '.study-li-inventory', function (e) {
                 //$scope.StudyAreaName = $(this).children('.selected-area').text();
                 $scope.selectedStudyArea = $(this).children('.selected-area').text();
                 $scope.selectedId = $(this).children('.selected-id').text();
-
-                //console.log($scope.selectedStudyArea, $scope.selectedId);
-
-                //load Data for CollectionYear
-                $.ajax({
-                    dataType: 'json',
+                //load Data for CollectionYear                
+                $http({
                     url: publicDataURL + '/data/collectionyear?sa=' + $scope.selectedId,
-                    success: function (data) {
-                        //console.clear();
-                        //console.log(data);
-                        $scope.sa = data;
-                        for (var i = 0; i < data.length; i++) {
-                            $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
-                        }
-                        $('#selectCollectionYearINV').val(data[0].CollectionYear);
-                        $('.inventoryVD').removeClass('disabled');
-                    }
+                    method: 'GET'
+                }).success(function (results) {
+                    $scope.cy = results;
+                }).error(function (data, status) {
+                    console.log("There was an error:", status);
                 });
+            });
 
-
+            $(".ddCollectionYearINV").on('click', '.cy-li-studyArea', function (e) {
+                $scope.selectedCollectionYear = $(this).children('.selected-year').text();
+                $('.inventoryVD').removeClass('disabled');
             });
 
             $(".ddStudyAreaOccupancy").on('click', '.study-li-occupancy', function (e) {
-                //$scope.StudyAreaName = $(this).children('.selected-area').text();
                 $scope.selectedStudyArea = $(this).children('.selected-area').text();
                 $scope.selectedId = $(this).children('.selected-id').text();
-                //console.log($scope.selectedStudyArea, $scope.selectedId);
 
                 //load Data for CollectionYear
-                $.ajax({
-                    dataType: 'json',
+                $http({
                     url: publicDataURL + '/data/collectionyear?sa=' + $scope.selectedId,
-                    success: function (data) {
-                        //console.clear();
-                        //console.log(data);
-                        $scope.sa = data;
-
-                        for (var i = 0; i < data.length; i++) {
-                            $("#collectionyear-list").append('<option data-number=' + data[i].CollectionYear + '>' + data[i].CollectionYear + '</option>');
-                        }
-                        $('#selectCollectionYearOCC').val(data[0].CollectionYear);
-                        $('.occupancyVD').removeClass('disabled');
-                    }
+                    method: 'GET'
+                }).success(function (results) {
+                    $scope.cy = results;
+                }).error(function (data, status) {
+                    console.log("There was an error:", status);
                 });
-
-
             });
-            $('#vwMapSummaryBTN').click(function () {
 
+            $(".ddCollectionYearOCC").on('click', '.cy-li-studyArea', function (e) {
+                $scope.selectedCollectionYear = $(this).children('.selected-year').text();
+                $('.occupancyVD').removeClass('disabled');
+            });
+
+            $('#vwMapSummaryBTN').click(function () {
                 window.location.replace('#/map?sa=' + $scope.selectedId);
             });
 
             $('#dlSummaryDataBTN').click(function () {
-
                 //http request for Master Summary Data
                 $http({
                     url: publicDataURL + '/data/summary?sa=' + $scope.selectedId,
@@ -515,6 +534,4 @@ angular.module('vppApp')
             };
 
             $scope.activeTrigger();
-		}
-   ]
-);
+    }]);

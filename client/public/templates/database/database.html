@@ -51,7 +51,7 @@
                                         </button>
                                         <ul class="dropdown-menu ddCollectionYearSA" aria-labelledby="cysa" ng-click="getCollectionYear($event)">
                                             <li ng-repeat="data in cy" class="cy-li-studyArea">
-                                                <p class="selected-area">{{data.CollectionYear}}</p>
+                                                <p class="selected-year">{{data.CollectionYear}}</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -169,12 +169,18 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
                             <div class="col-md-6">
-
-                                <input id="ParkingTypeSearchINV" type="text" placeholder="eg. On-Street, Off-Street" class="form-control input-md" required="" list="pt-list">
-                                <datalist id="pt-list">
-                                    <option value="On-Street">
-                                        <option value="Off-Street">
-                                </datalist>
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeINV">
+                                        {{selectedPtypeINV}}
+                                        <span class="caret pull-right ma-top-s"></span>
+                                    </button>
+                                    <ul class="dropdown-menu ddPtypeInventory" aria-labelledby="ptypelist" ng-click="getPtypeINV($event)">
+                                        <li ng-repeat="data in PtypeINV" class="ptype-li-inventory">
+                                            <p class="hidden selected-ptype">{{data.Ptype}}</p>
+                                            <p class="selected-area">{{data.Description}}</p>
+                                        </li>
+                                    </ul>
+                                </div>
 
                             </div>
                         </div>
@@ -183,9 +189,17 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
                             <div class="col-md-6">
-                                <input id="selectCollectionYearINV" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
-                                <datalist id="collectionyear-list"></datalist>
-                                <p class="help-block">&nbsp;</p>
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaINV" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
+                                        {{selectedCollectionYear}}
+                                        <span class="caret pull-right ma-top-s"></span>
+                                    </button>
+                                    <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaINV" ng-click="getCollectionYear($event)">
+                                        <li ng-repeat="data in cy" class="cy-li-studyArea">
+                                            <p id="selectCollectionYearINV" class="selected-year">{{data.CollectionYear}}</p>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
 
                             <!-- Multiple Checkboxes (inline) -->
@@ -243,6 +257,7 @@
                                     </div>
                                 </div>
 -->
+                            <div class="row pad-top-l">&nbsp;</div>
                             <div class="row pad-top-l">
                                 <label class="col-md-4 control-label">&nbsp;</label>
                                 <div class="col-md-8 pull-left">
@@ -291,13 +306,18 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="ParkingTypeSearchOCC">Select Parking Type</label>
                             <div class="col-md-6">
-
-                                <input id="ParkingTypeSearchOCC" type="text" placeholder="eg. On-Street, Off-Street, Both" class="form-control input-md" required="" list="pt-list">
-                                <datalist id="pt-list">
-                                    <option value="On-Street">
-                                        <option value="Off-Street">
-                                            <option value="Both On/Off-Street">
-                                </datalist>
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist-occ" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeOCC">
+                                        {{selectedPtypeOCC}}
+                                        <span class="caret pull-right ma-top-s"></span>
+                                    </button>
+                                    <ul class="dropdown-menu ddPtypeOccupancy" aria-labelledby="ptypelist-occ" ng-click="getPtypeOCC($event)">
+                                        <li ng-repeat="data in PtypeOCC" class="ptype-li-occ">
+                                            <p class="hidden selected-ptype">{{data.Ptype}}</p>
+                                            <p class="selected-area">{{data.Description}}</p>
+                                        </li>
+                                    </ul>
+                                </div>
 
                             </div>
                         </div>
@@ -306,9 +326,17 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectCollectionYearOCC">Collection Year</label>
                             <div class="col-md-6">
-                                <input id="selectCollectionYearOCC" name="collectionYear" placeholder="eg. 2015" class="form-control input-md" required="" type="text" list="collectionyear-list">
-                                <datalist id="collectionyear-list"></datalist>
-                                <p class="help-block">&nbsp;</p>
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaOCC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
+                                        {{selectedCollectionYear}}
+                                        <span class="caret pull-right ma-top-s"></span>
+                                    </button>
+                                    <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaOCC" ng-click="getCollectionYear($event)">
+                                        <li ng-repeat="data in cy" class="cy-li-studyArea">
+                                            <p id="selectCollectionYearOCC" class="selected-year">{{data.CollectionYear}}</p>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
 
                             <!-- Multiple Checkboxes (inline) -->
@@ -378,6 +406,7 @@
                                     </div>
                                 </div>
 -->
+                            <div class="row pad-top-l">&nbsp;</div>
                             <div class="row pad-top-l">
                                 <label class="col-md-4 control-label">&nbsp;</label>
                                 <div class="col-md-8 pull-left">
