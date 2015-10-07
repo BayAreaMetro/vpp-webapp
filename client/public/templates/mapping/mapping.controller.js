@@ -514,7 +514,7 @@ angular.module('vppApp')
         });
 
         saLabelsDL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer", {
-          "opacity" : 0.7
+          "opacity" : 1
           //"imageParameters" : imageParameters
         });
         
