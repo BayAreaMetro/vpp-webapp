@@ -7,6 +7,11 @@ angular.module('vppApp')
 	    	
 	    	$scope.isActive = true;
 	    	
+	    	$scope.init = function(){
+				$scope.navShow();
+				$scope.navShowHelp();
+			}
+	    	
 	    	//Show nav
 			$scope.showInnerLinks = function(event){
 				event.target.classList.add('show-inner');
@@ -29,12 +34,28 @@ angular.module('vppApp')
 				if($scope.name === "research"){
 					$('.research-nav').removeClass("hidden");
 					$('.data-nav').addClass("hidden");
+					$('.about-nav').addClass("hidden");
+					$('.help-nav').addClass("hidden");
 				} else if($scope.name === "data"){
 					$('.data-nav').removeClass("hidden");
 					$('.research-nav').addClass("hidden");
+					$('.about-nav').addClass("hidden");
+					$('.help-nav').addClass("hidden");
+				}else if($scope.name === "help"){
+					$('.data-nav').addClass("hidden");
+					$('.research-nav').addClass("hidden");
+					$('.about-nav').addClass("hidden");
+					$('.help-nav').removeClass("hidden");
+				} else if($scope.name === "about"){
+					$('.data-nav').addClass("hidden");
+					$('.research-nav').addClass("hidden");
+					$('.about-nav').removeClass("hidden");
+					$('.help-nav').addClass("hidden");
 				} else{
 					$('.research-nav').addClass("hidden");
 					$('.data-nav').addClass("hidden");
+					$('.about-nav').addClass("hidden");
+					$('.help-nav').addClass("hidden");
 					console.log("false");
 				}
 				console.log($scope.name);
@@ -121,10 +142,35 @@ angular.module('vppApp')
 				} else if( $scope.getLocation === "OccupancySummary"){
 					$('.divFade').hide();
 					$("#OccupancySummary").fadeIn();
+				} else if( $scope.getLocation === "contact"){
+					$('.divFade').hide();
+					$(".contact-wrapper").fadeIn();
 				}
 				console.log($scope.getLocation);
-				
 			}
+			
+			//About
+			$scope.navShow = function(){
+				$(".inner-nested").hover(function(){
+					$('.about-nav').addClass('active');
+					$('.inner-nested').addClass('active');
+				},function(){
+					$('.about-nav').removeClass('active');
+					$('.inner-nested').removeClass('active');
+				});
+			};
+			//Help
+			$scope.navShowHelp = function(){
+				$(".inner-nested").hover(function(){
+					$('.about-nav').addClass('active');
+					$('.inner-nested').addClass('active');
+				},function(){
+					$('.about-nav').removeClass('active');
+					$('.inner-nested').removeClass('active');
+				});
+			};
+			
+			$scope.init();
     	}
     ]	
 );

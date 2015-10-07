@@ -110,11 +110,27 @@
                 <li class="">
                     <a href="#/feedback" ng-click="active($event)" class="vpp-links-inner">Feedback</a>
                 </li>
-                <li class="">
-                    <a href="#/help" ng-click="active($event)" class="vpp-links-inner">Help</a>
+                <li class="inner-nested">
+                    <a href="#/help" ng-click="active($event)" class="vpp-links-inner" name="help">Help</a>
+                    <ul class="absol zTop inner-ul help-nav hidden">
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="">
-                    <a href="#/about">About</a>
+                <li class="inner-nested">
+                    <a href="#/about" ng-click="active($event)" class="vpp-links-inner" name="about">About</a>
+                    <ul class="absol zTop inner-ul about-nav hidden">
+                        <li>
+                            <a href="#" location="contact" ng-click="inner($event)">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
