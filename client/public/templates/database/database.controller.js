@@ -18,7 +18,6 @@ angular.module('vppApp')
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
-
             $scope.selectedCollectionYear = "Choose Collection Year...";
             $scope.selectedPtypeINV = "eg. On-Street, Off-Street";
             $scope.selectedPtypeOCC = "eg. On-Street, Off-Street, Both On/Off-Street";
