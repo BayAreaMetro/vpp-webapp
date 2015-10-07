@@ -34,6 +34,7 @@ angular.module('vppApp')
                                 LayerList: 'esri/dijit/LayerList',
                                 Graphic: 'esri/graphic',
                                 ArcGISDynamicMapServiceLayer: 'esri/layers/ArcGISDynamicMapServiceLayer',
+                                ImageParameters: 'esri/layers/ImageParameters',
                                 //ClusterLayer: 'extras/ClusterLayer',
                                 //Map Popup Tools
                                 Popup: 'esri/dijit/Popup',
