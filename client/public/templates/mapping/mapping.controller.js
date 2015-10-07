@@ -17,6 +17,7 @@ angular.module('vppApp')
             WEOnStreetOccupancyFL,
             WEOffStreetOccupancyFL,
             studyAreasFL,
+            saLabelsDL,
             // COC_FL,
             PDA_FL,
             FerryTerminalsFL,
@@ -37,6 +38,10 @@ angular.module('vppApp')
             popupOptions,
             popupTemplate_OnStreetInventoryFL,
             popupTemplate_OffStreetInventoryFL,
+            popupTemplate_WDOnStreetOccupancyFL,
+            popupTemplate_WDOffStreetOccupancyFL,
+            popupTemplate_WEOnStreetOccupancyFL,
+            popupTemplate_WEOffStreetOccupancyFL,
             symbol,
             symbol_OnStreetOccupancy,
             OffStreetInventoryURL,
@@ -181,6 +186,7 @@ angular.module('vppApp')
             "description": "There are {Total_Spaces} total parking spaces on this block"
         });
 
+
         popupTemplate_OffStreetInventoryFL = new w.PopupTemplate({
             "title": "Parking Spaces by Facility",
             "fieldInfos": [{
@@ -192,8 +198,243 @@ angular.module('vppApp')
                     }
             }
         ],
-            "description": "There are {Total_Spaces} total parking spaces on this block"
+            "description": "There are {Total_Spaces} total parking spaces in this facility"
         });
+
+
+
+        popupTemplate_WDOnStreetOccupancyFL = new w.PopupTemplate({
+            "title": "Parking Spaces by Block Face",
+            "fieldInfos": [{
+                    "fieldName": "Total_Spaces",
+                    "label": "Total Spaces",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                            {
+                    "fieldName": "Total_5_00",
+                    "label": "Occupancy 5 am",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                            {
+                    "fieldName": "Total_9_00",
+                    "label": "Occupancy 9 am",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_12_00",
+                    "label": "Occupancy 12 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_16_00",
+                    "label": "Occupancy 4 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_20_00",
+                    "label": "Occupancy 8 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            }
+
+
+            ],
+            "description": "There are {Total_Spaces} total parking spaces on this block<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
+            //"description": "There are {Total_Spaces} total parking spaces in this facility"
+        });
+
+
+        popupTemplate_WDOffStreetOccupancyFL = new w.PopupTemplate({
+            "title": "Parking Spaces by Facility",
+            "fieldInfos": [{
+                    "fieldName": "Total_Spaces",
+                    "label": "Total Spaces",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                            {
+                    "fieldName": "Total_5_00",
+                    "label": "Occupancy 5 am",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                            {
+                    "fieldName": "Total_9_00",
+                    "label": "Occupancy 9 am",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_12_00",
+                    "label": "Occupancy 12 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_16_00",
+                    "label": "Occupancy 4 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_20_00",
+                    "label": "Occupancy 8 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            }
+
+
+            ],
+            "description": "There are {Total_Spaces} total parking spaces in this facility<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
+            //"description": "There are {Total_Spaces} total parking spaces in this facility"
+        });
+
+
+        popupTemplate_WEOnStreetOccupancyFL = new w.PopupTemplate({
+            "title": "Parking Spaces by Block Face",
+            "fieldInfos": [{
+                    "fieldName": "Total_Spaces",
+                    "label": "Total Spaces",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                            {
+                    "fieldName": "Total_5_00",
+                    "label": "Occupancy 5 am",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                            {
+                    "fieldName": "Total_9_00",
+                    "label": "Occupancy 9 am",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_12_00",
+                    "label": "Occupancy 12 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_16_00",
+                    "label": "Occupancy 4 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_20_00",
+                    "label": "Occupancy 8 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            }
+
+
+            ],
+            "description": "There are {Total_Spaces} total parking spaces on this block<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
+            //"description": "There are {Total_Spaces} total parking spaces in this facility"
+        });
+
+
+        popupTemplate_WEOffStreetOccupancyFL = new w.PopupTemplate({
+            "title": "Parking Spaces by Facility",
+            "fieldInfos": [{
+                    "fieldName": "Total_Spaces",
+                    "label": "Total Spaces",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                            {
+                    "fieldName": "Total_5_00",
+                    "label": "Occupancy 5 am",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                            {
+                    "fieldName": "Total_9_00",
+                    "label": "Occupancy 9 am",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_12_00",
+                    "label": "Occupancy 12 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_16_00",
+                    "label": "Occupancy 4 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            },
+                    {
+                    "fieldName": "Total_20_00",
+                    "label": "Occupancy 8 pm",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                              }
+                            }
+
+
+            ],
+            "description": "There are {Total_Spaces} total parking spaces in this facility<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
+            //"description": "There are {Total_Spaces} total parking spaces in this facility"
+        });
+
+
 
         //Define all Map Layers in this section
 
@@ -235,32 +476,32 @@ angular.module('vppApp')
             id: "WDOffStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
-                // infoTemplate: popupTemplate_OnStreetInventoryFL
+            visible: false,
+            infoTemplate: popupTemplate_WDOffStreetOccupancyFL
         });
 
         WDOnStreetOccupancyFL = new w.FeatureLayer(WDOnStreetOccupancyURL, {
             id: "WDOnStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
-                // infoTemplate: popupTemplate_OnStreetInventoryFL
+            visible: false,
+            infoTemplate: popupTemplate_WDOnStreetOccupancyFL
         });
 
         WEOffStreetOccupancyFL = new w.FeatureLayer(WEOffStreetOccupancyURL, {
             id: "WEOffStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
-                // infoTemplate: popupTemplate_OnStreetInventoryFL
+            visible: false,
+            infoTemplate: popupTemplate_WEOffStreetOccupancyFL
         });
 
         WEOnStreetOccupancyFL = new w.FeatureLayer(WEOnStreetOccupancyURL, {
             id: "WEOnStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
-                // infoTemplate: popupTemplate_OnStreetInventoryFL
+            visible: false,
+            infoTemplate: popupTemplate_WEOnStreetOccupancyFL
         });
 
         studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
@@ -270,6 +511,15 @@ angular.module('vppApp')
             visible: true
 
         });
+
+        saLabelsDL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer", {
+          "opacity" : 0.7
+          //"imageParameters" : imageParameters
+        });
+
+        saLabelsDL.setVisibleLayers(7);
+
+
 
         PDA_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/OBAG_PDA/OBAG_PDA/MapServer/0", {
             id: "PDA",
@@ -810,7 +1060,8 @@ angular.module('vppApp')
             LightRailFL,
             FerryTerminalsFL,
             ParknRideLotsFL,
-            TransitHubsFL
+            TransitHubsFL,
+            saLabelsDL
         ]);
 
         //Set Curent Map Theme
@@ -861,6 +1112,7 @@ angular.module('vppApp')
                 switch ($scope.pt) {
                 case "inventory":
                     OnStreetInventoryFL.show();
+                    OffStreetInventoryFL.show();
 
                     $("#mapLegendPNL").fadeIn(500);
                     $("#LegendTitle").text("Legend");
@@ -1044,18 +1296,7 @@ angular.module('vppApp')
                     studyAreasFL.show();
                 }
 
-                if (currentZoomLevel > 14) {
-                    OnStreetInventoryFL.show();
-                    studyAreasFL.show();
-                } else {
-                    $scope.sanValue = 1;
-                    ZoomStudyArea($scope.sanValue);
-                    OnStreetInventoryFL.show();
-                    studyAreasFL.show();
-                }
-
-
-
+              
                 $("#mlegend_TotalSpaces").fadeIn(500);
                 $("#LegendNamePNL_TotalSpaces").fadeIn(500);
                 $("#LegendNamePNL_Occ").fadeOut(0);
