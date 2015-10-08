@@ -1158,6 +1158,8 @@ angular.module('vppApp')
                 $("#title").text("");
                 $('.tools').fadeOut();
             });
+            $("#maptypeOptionsBTN").fadeOut(0);
+            $("#PeakTypeOptionsBTN").fadeOut(0);
         });
 
         $('#mapLegendCTL').on('click', function () {
@@ -1223,7 +1225,7 @@ angular.module('vppApp')
                     studyAreasFL.show();
                 }
 
-
+                $("#maptypeOptionsBTN").fadeOut(0);
                 $("#mlegend_TotalSpaces").fadeIn(500);
                 $("#LegendNamePNL_TotalSpaces").fadeIn(500);
                 $("#LegendNamePNL_Occ").fadeOut(0);
@@ -1235,7 +1237,7 @@ angular.module('vppApp')
                 break;
             case "restrictions":
 
-
+                $("#maptypeOptionsBTN").fadeOut(0);
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
@@ -1274,8 +1276,6 @@ angular.module('vppApp')
                     WDOnStreetOccupancyFL.show();
                     WDOffStreetOccupancyFL.show();
                 }
-
-
 
                 $("#LegendNamePNL_Occ").fadeIn(500);
                 $("#mlegend_Occ").fadeIn(500);
