@@ -56,6 +56,10 @@
 			font-size: 14px;
 		}
 	}
+	
+	#print-map{
+		display: none;
+	}
 }
 
 /* Extra Small Devices, Phones */ 
@@ -74,6 +78,14 @@
 		.research-content{
 			font-size: 14px;
 		}
+	}
+	
+	#print-map{
+		display: none;
+	}
+	
+	#print-legend{
+		display: none;
 	}
 }
 
@@ -116,6 +128,20 @@
 					}	
 				}	
 			} 
+		}
+	}
+	
+	#print-map{
+		display: block;
+	}
+	
+	#print-legend{
+		display: block;
+		#mapLegend{
+			height: 500px;
+			.panel-body{
+				background-color: #FFFFFF !important;
+			}
 		}
 	}
 }

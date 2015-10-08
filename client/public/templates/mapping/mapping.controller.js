@@ -1855,5 +1855,35 @@ angular.module('vppApp')
             ZoomStudyArea(sa);
         }
         //End of Study Area from Parking Data
+
+
+        $scope.showLayers = function () {
+            $("#mapLayers").removeClass('vHidden').removeClass('zero-h');
+        };
+
+        $scope.printMap = function () {
+            console.log("asdg");
+            $scope.createElement(document.getElementById("map"), "print-map");
+            $scope.createElement(document.getElementById("mapLegend"), "print-legend");
+            print();
+        };
+
+        $scope.createElement = function (element, print) {
+
+            $scope.node = element.cloneNode(true);
+            $scope.printerElement = document.getElementById(print);
+
+            if (!$scope.printerElement) {
+                $scope.printerElement = document.createElement("div");
+                $scope.printerElement.id = print;
+                document.body.appendChild($scope.printerElement);
+            }
+
+            $scope.printerElement.innerHTML = "";
+
+            $scope.printerElement.appendChild($scope.node);
+        };
+
+
     });
 //EOF
