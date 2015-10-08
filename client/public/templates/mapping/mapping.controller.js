@@ -212,53 +212,53 @@ angular.module('vppApp')
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                            {
+                {
                     "fieldName": "Total_5_00",
                     "label": "Occupancy 5 am",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                            {
+                {
                     "fieldName": "Total_9_00",
                     "label": "Occupancy 9 am",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_12_00",
                     "label": "Occupancy 12 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_16_00",
                     "label": "Occupancy 4 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_20_00",
                     "label": "Occupancy 8 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             }
 
 
             ],
             "description": "There are {Total_Spaces} total parking spaces on this block<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
-            //"description": "There are {Total_Spaces} total parking spaces in this facility"
+                //"description": "There are {Total_Spaces} total parking spaces in this facility"
         });
 
 
@@ -270,53 +270,53 @@ angular.module('vppApp')
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                            {
+                {
                     "fieldName": "Total_5_00",
                     "label": "Occupancy 5 am",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                            {
+                {
                     "fieldName": "Total_9_00",
                     "label": "Occupancy 9 am",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_12_00",
                     "label": "Occupancy 12 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_16_00",
                     "label": "Occupancy 4 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_20_00",
                     "label": "Occupancy 8 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             }
 
 
             ],
             "description": "There are {Total_Spaces} total parking spaces in this facility<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
-            //"description": "There are {Total_Spaces} total parking spaces in this facility"
+                //"description": "There are {Total_Spaces} total parking spaces in this facility"
         });
 
 
@@ -328,53 +328,53 @@ angular.module('vppApp')
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                            {
+                {
                     "fieldName": "Total_5_00",
                     "label": "Occupancy 5 am",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                            {
+                {
                     "fieldName": "Total_9_00",
                     "label": "Occupancy 9 am",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_12_00",
                     "label": "Occupancy 12 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_16_00",
                     "label": "Occupancy 4 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_20_00",
                     "label": "Occupancy 8 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             }
 
 
             ],
             "description": "There are {Total_Spaces} total parking spaces on this block<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
-            //"description": "There are {Total_Spaces} total parking spaces in this facility"
+                //"description": "There are {Total_Spaces} total parking spaces in this facility"
         });
 
 
@@ -386,53 +386,53 @@ angular.module('vppApp')
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                            {
+                {
                     "fieldName": "Total_5_00",
                     "label": "Occupancy 5 am",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                            {
+                {
                     "fieldName": "Total_9_00",
                     "label": "Occupancy 9 am",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_12_00",
                     "label": "Occupancy 12 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_16_00",
                     "label": "Occupancy 4 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             },
-                    {
+                {
                     "fieldName": "Total_20_00",
                     "label": "Occupancy 8 pm",
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                              }
+                    }
                             }
 
 
             ],
             "description": "There are {Total_Spaces} total parking spaces in this facility<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
-            //"description": "There are {Total_Spaces} total parking spaces in this facility"
+                //"description": "There are {Total_Spaces} total parking spaces in this facility"
         });
 
 
@@ -514,10 +514,10 @@ angular.module('vppApp')
         });
 
         saLabelsDL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer", {
-          "opacity" : 1
-          //"imageParameters" : imageParameters
+            "opacity": 1
+                //"imageParameters" : imageParameters
         });
-        
+
         saLabelsDL.setVisibleLayers([7]);
 
 
@@ -1325,7 +1325,7 @@ angular.module('vppApp')
                     studyAreasFL.show();
                 }
 
-              
+
                 $("#mlegend_TotalSpaces").fadeIn(500);
                 $("#LegendNamePNL_TotalSpaces").fadeIn(500);
                 $("#LegendNamePNL_Occ").fadeOut(0);
@@ -1657,9 +1657,6 @@ angular.module('vppApp')
                 }
             }
         });
-
-
-
 
         studyAreasFL.on("click", function (evt) {
             var SAQ_id = evt.graphic.attributes["Project_ID"];

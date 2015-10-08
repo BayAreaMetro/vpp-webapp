@@ -1,20 +1,20 @@
 'use strict';
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
-		'$scope',
-		'$http',
-		function ($scope, $http) {
+  '$scope',
+  '$http',
+  function ($scope, $http) {
 
             //Show and Hide vars
             $scope.isActive = false,
-            $scope.showAll = true,
-            $scope.pricing = false,
-            $scope.supply = false,
-            $scope.restrictions = false,
-            $scope.spaceTypes = false,
-            $scope.weekDay = false,
-            $scope.weekEnd = false,
-            $scope.resources = false;
+                $scope.showAll = true,
+                $scope.pricing = false,
+                $scope.supply = false,
+                $scope.restrictions = false,
+                $scope.spaceTypes = false,
+                $scope.weekDay = false,
+                $scope.weekEnd = false,
+                $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
@@ -388,7 +388,7 @@ angular.module('vppApp')
                 if (state) {
                     switch (cat) {
                     case "ShowAll":
-
+                        $('input[class="otherSwitch"]').bootstrapSwitch('state', false, false);
                         $("#ParkingSupply").fadeIn(0, function () {
 
                         });
@@ -402,13 +402,13 @@ angular.module('vppApp')
                         $scope.showAll = true;
                         break;
                     case "Pricing":
-
+                        $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#PricingInfo").fadeIn(0);
 
-                        $scope.isActive = true;
+                        $scope.pricing = true;
                         break;
                     case "Supply":
-
+                        $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#ParkingSupply").fadeIn(0, function () {
 
                         });
@@ -416,26 +416,31 @@ angular.module('vppApp')
                         $scope.supply = true;
                         break;
                     case "Restrictions":
+                        $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#RestrictionInfo").fadeIn(0);
 
                         $scope.restrictions = true;
                         break;
                     case "SpaceTypes":
+                        $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#SpaceType").fadeIn(0);
 
                         $scope.spaceTypes = true;
                         break;
                     case "WDOccupancy":
+                        $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#WDOccInfo").fadeIn(0);
 
                         $scope.weekDay = true;
                         break;
                     case "WEOccupancy":
+                        $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#WEOccInfo").fadeIn(0);
 
                         $scope.weekEnd = true;
                         break;
                     case "Resources":
+                        $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#AddtnlResources").fadeIn(0);
 
                         $scope.resources = true;
@@ -445,6 +450,8 @@ angular.module('vppApp')
                 } else {
                     switch (cat) {
                     case "ShowAll":
+
+                        $('input[class="otherSwitch"]').bootstrapSwitch('state', false, false);
                         $("#ParkingSupply").fadeOut(0);
                         $("#SpaceType").fadeOut(0);
                         $("#PricingInfo").fadeOut(0);
@@ -453,7 +460,7 @@ angular.module('vppApp')
                         $("#WEOccInfo").fadeOut(0);
                         $("#AddtnlResources").fadeOut(0);
 
-                        $scope.showAll = false;
+                        //$scope.showAll = false;
                         break;
                     case "Pricing":
                         $("#PricingInfo").fadeOut(0);
@@ -492,6 +499,7 @@ angular.module('vppApp')
                         break;
 
                     }
+
                 }
 
             });
@@ -535,6 +543,5 @@ angular.module('vppApp')
             };
 
             $scope.activeTrigger();
-    	}
-    ]
-);
+     }
+    ]);

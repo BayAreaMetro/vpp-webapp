@@ -73,11 +73,11 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline control-label" style="padding-right: 104px">
-                                                <input name="Pricing" type="checkbox" data-size="mini">Pricing
+                                                <input name="Pricing" type="checkbox" data-size="mini" class="otherSwitch">Pricing
                                             </label>
 
                                             <label class="checkbox-inline">
-                                                <input name="Supply" type="checkbox" data-size="mini">Parking Supply
+                                                <input name="Supply" type="checkbox" data-size="mini" class="otherSwitch">Parking Supply
                                             </label>
                                         </div>
                                     </div>
@@ -85,10 +85,10 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline control-label" style="padding-right: 35px">
-                                                <input name="Restrictions" type="checkbox" data-size="mini">Time Restrictions
+                                                <input name="Restrictions" type="checkbox" data-size="mini" class="otherSwitch">Time Restrictions
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input name="SpaceTypes" type="checkbox" data-size="mini">Type of Parking Spaces
+                                                <input name="SpaceTypes" type="checkbox" data-size="mini" class="otherSwitch">Type of Parking Spaces
                                             </label>
 
 
@@ -98,11 +98,11 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline" style="padding-right: 13px">
-                                                <input name="WDOccupancy" type="checkbox" data-size="mini">Weekday Occupancy
+                                                <input name="WDOccupancy" type="checkbox" data-size="mini" class="otherSwitch">Weekday Occupancy
                                             </label>
 
                                             <label class="checkbox-inline">
-                                                <input name="WEOccupancy" type="checkbox" data-size="mini">Weekend Occupancy
+                                                <input name="WEOccupancy" type="checkbox" data-size="mini" class="otherSwitch">Weekend Occupancy
                                             </label>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline control-label" style="padding-right: 45px">
-                                                <input name="Resources" type="checkbox" data-size="mini">Additional Resources
+                                                <input name="Resources" type="checkbox" data-size="mini" class="otherSwitch">Additional Resources
                                             </label>
                                         </div>
 
@@ -132,75 +132,75 @@
                                     </button>
                                 </div>
                             </div>
-							</div>
-                		</fieldset>
-                	</form>
-				</div>
-        	</div>
-		<div id="InventorySummary" class="container infoSummaryBG collapse divFade">
-	        <h1 class="col-md-4">&nbsp;</h1>
-	        <h2 class="col-md-8">Inventory Data Options</h2>
-	        <div class="row">
-	            <div class="col-md-12">
-	                <form class="form-horizontal pad-top-l">
-	                    <fieldset>
-	
-	                        <div class="form-group">
-	                            <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
-	                            <div class="col-md-6">
-	                                <!-- drop downs -->
-	                                <div class="dropdown">
-	                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
-	                                        {{selectedStudyArea}}
-	                                        <span class="caret pull-right ma-top-s"></span>
-	                                    </button>
-	                                    <ul class="dropdown-menu ddStudyAreaInventory" aria-labelledby="list-2" ng-click="getStudyArea($event)">
-	                                        <li ng-repeat="data in studyArea" class="study-li-inventory">
-	                                            <p class="hidden selected-id">{{data.Project_ID}}</p>
-	                                            <p class="selected-area">{{data.Name}}</p>
-	                                        </li>
-	                                    </ul>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="form-group">
-	                            <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
-	                            <div class="col-md-6">
-	                                <div class="dropdown">
-	                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeINV">
-	                                        {{selectedPtypeINV}}
-	                                        <span class="caret pull-right ma-top-s"></span>
-	                                    </button>
-	                                    <ul class="dropdown-menu ddPtypeInventory" aria-labelledby="ptypelist" ng-click="getPtypeINV($event)">
-	                                        <li ng-repeat="data in PtypeINV" class="ptype-li-inventory">
-	                                            <p class="hidden selected-ptype">{{data.Ptype}}</p>
-	                                            <p class="selected-area">{{data.Description}}</p>
-	                                        </li>
-	                                    </ul>
-	                                </div>
-	
-	                            </div>
-	                        </div>
-	
-	                        <!-- Collection Year -->
-	                        <div class="form-group">
-	                            <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
-	                            <div class="col-md-6">
-	                                <div class="dropdown">
-	                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaINV" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
-	                                        {{selectedCollectionYear}}
-	                                        <span class="caret pull-right ma-top-s"></span>
-	                                    </button>
-	                                    <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaINV" ng-click="getCollectionYear($event)">
-	                                        <li ng-repeat="data in cy" class="cy-li-studyArea">
-	                                            <p id="selectCollectionYearINV" class="selected-year">{{data.CollectionYear}}</p>
-	                                        </li>
-	                                    </ul>
-	                                </div>
-	                            </div>
-	
-	                            <!-- Multiple Checkboxes (inline) -->
-	                            <!--
+                </div>
+                </fieldset>
+                </form>
+            </div>
+        </div>
+        <div id="InventorySummary" class="container infoSummaryBG collapse divFade">
+            <h1 class="col-md-4">&nbsp;</h1>
+            <h2 class="col-md-8">Inventory Data Options</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal pad-top-l">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
+                                <div class="col-md-6">
+                                    <!-- drop downs -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
+                                            {{selectedStudyArea}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu ddStudyAreaInventory" aria-labelledby="list-2" ng-click="getStudyArea($event)">
+                                            <li ng-repeat="data in studyArea" class="study-li-inventory">
+                                                <p class="hidden selected-id">{{data.Project_ID}}</p>
+                                                <p class="selected-area">{{data.Name}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
+                                <div class="col-md-6">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeINV">
+                                            {{selectedPtypeINV}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu ddPtypeInventory" aria-labelledby="ptypelist" ng-click="getPtypeINV($event)">
+                                            <li ng-repeat="data in PtypeINV" class="ptype-li-inventory">
+                                                <p class="hidden selected-ptype">{{data.Ptype}}</p>
+                                                <p class="selected-area">{{data.Description}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Collection Year -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
+                                <div class="col-md-6">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaINV" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
+                                            {{selectedCollectionYear}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaINV" ng-click="getCollectionYear($event)">
+                                            <li ng-repeat="data in cy" class="cy-li-studyArea">
+                                                <p id="selectCollectionYearINV" class="selected-year">{{data.CollectionYear}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Multiple Checkboxes (inline) -->
+                                <!--
 	                                <div class="form-group">
 	                                    <div class="control-group">
 	                                        <div class="controls">
@@ -254,90 +254,90 @@
 	                                    </div>
 	                                </div>
 	-->
-	                            <div class="row pad-top-l">&nbsp;</div>
-	                            <div class="row pad-top-l">
-	                                <label class="col-md-4 control-label">&nbsp;</label>
-	                                <div class="col-md-8 pull-left">
-	
-	                                    <button id="vwMapInventoryBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
-	                                        <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
-	                                    </button>
-	
-	                                    <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
-	                                        <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
-	                                    </button>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </fieldset>
-	                </form>
-	            </div>
-	        </div>
-		</div>
-	    <div id="OccupancySummary" class="container infoSummaryBG collapse divFade">
-	        <h1 class="col-md-4">&nbsp;</h1>
-	        <h2 class="col-md-8">Occupancy Data Options</h2>
-	        <div class="row">
-	            <div class="col-md-12">
-	                <form class="form-horizontal pad-top-l">
-	                    <fieldset>
-	                        <!-- Study Area Search-->
-	                        <div class="form-group">
-	                            <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
-	                            <div class="col-md-6">
-	                                <div class="dropdown">
-	                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
-	                                        {{selectedStudyArea}}
-	                                        <span class="caret pull-right ma-top-s"></span>
-	                                    </button>
-	                                    <ul class="dropdown-menu ddStudyAreaOccupancy" aria-labelledby="list-3" ng-click="getStudyArea($event)">
-	                                        <li ng-repeat="data in studyArea" class="study-li-occupancy">
-	                                            <p class="hidden selected-id">{{data.Project_ID}}</p>
-	                                            <p class="selected-area">{{data.Name}}</p>
-	                                        </li>
-	                                    </ul>
-	                                </div>
-	
-	                            </div>
-	                        </div>
-	                        <div class="form-group">
-	                            <label class="col-md-4 control-label" for="ParkingTypeSearchOCC">Select Parking Type</label>
-	                            <div class="col-md-6">
-	                                <div class="dropdown">
-	                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist-occ" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeOCC">
-	                                        {{selectedPtypeOCC}}
-	                                        <span class="caret pull-right ma-top-s"></span>
-	                                    </button>
-	                                    <ul class="dropdown-menu ddPtypeOccupancy" aria-labelledby="ptypelist-occ" ng-click="getPtypeOCC($event)">
-	                                        <li ng-repeat="data in PtypeOCC" class="ptype-li-occ">
-	                                            <p class="hidden selected-ptype">{{data.Ptype}}</p>
-	                                            <p class="selected-area">{{data.Description}}</p>
-	                                        </li>
-	                                    </ul>
-	                                </div>
-	
-	                            </div>
-	                        </div>
-	
-	                        <!-- Collection Year -->
-	                        <div class="form-group">
-	                            <label class="col-md-4 control-label" for="selectCollectionYearOCC">Collection Year</label>
-	                            <div class="col-md-6">
-	                                <div class="dropdown">
-	                                    <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaOCC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
-	                                        {{selectedCollectionYear}}
-	                                        <span class="caret pull-right ma-top-s"></span>
-	                                    </button>
-	                                    <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaOCC" ng-click="getCollectionYear($event)">
-	                                        <li ng-repeat="data in cy" class="cy-li-studyArea">
-	                                            <p id="selectCollectionYearOCC" class="selected-year">{{data.CollectionYear}}</p>
-	                                        </li>
-	                                    </ul>
-	                                </div>
-	                            </div>
-	
-	                            <!-- Multiple Checkboxes (inline) -->
-	                            <!--
+                                <div class="row pad-top-l">&nbsp;</div>
+                                <div class="row pad-top-l">
+                                    <label class="col-md-4 control-label">&nbsp;</label>
+                                    <div class="col-md-8 pull-left">
+
+                                        <button id="vwMapInventoryBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
+                                            <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
+                                        </button>
+
+                                        <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
+                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="OccupancySummary" class="container infoSummaryBG collapse divFade">
+            <h1 class="col-md-4">&nbsp;</h1>
+            <h2 class="col-md-8">Occupancy Data Options</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal pad-top-l">
+                        <fieldset>
+                            <!-- Study Area Search-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
+                                <div class="col-md-6">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
+                                            {{selectedStudyArea}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu ddStudyAreaOccupancy" aria-labelledby="list-3" ng-click="getStudyArea($event)">
+                                            <li ng-repeat="data in studyArea" class="study-li-occupancy">
+                                                <p class="hidden selected-id">{{data.Project_ID}}</p>
+                                                <p class="selected-area">{{data.Name}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="ParkingTypeSearchOCC">Select Parking Type</label>
+                                <div class="col-md-6">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist-occ" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeOCC">
+                                            {{selectedPtypeOCC}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu ddPtypeOccupancy" aria-labelledby="ptypelist-occ" ng-click="getPtypeOCC($event)">
+                                            <li ng-repeat="data in PtypeOCC" class="ptype-li-occ">
+                                                <p class="hidden selected-ptype">{{data.Ptype}}</p>
+                                                <p class="selected-area">{{data.Description}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Collection Year -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="selectCollectionYearOCC">Collection Year</label>
+                                <div class="col-md-6">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaOCC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
+                                            {{selectedCollectionYear}}
+                                            <span class="caret pull-right ma-top-s"></span>
+                                        </button>
+                                        <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaOCC" ng-click="getCollectionYear($event)">
+                                            <li ng-repeat="data in cy" class="cy-li-studyArea">
+                                                <p id="selectCollectionYearOCC" class="selected-year">{{data.CollectionYear}}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Multiple Checkboxes (inline) -->
+                                <!--
 	                                <div class="form-group">
 	                                    <div class="control-group">
 	                                        <div class="controls">
@@ -403,582 +403,582 @@
 	                                    </div>
 	                                </div>
 	-->
-	                            <div class="row pad-top-l">&nbsp;</div>
-	                            <div class="row pad-top-l">
-	                                <label class="col-md-4 control-label">&nbsp;</label>
-	                                <div class="col-md-8 pull-left">
-	                                    <button id="vwMapOccupancyBTN" type="button" class="btn btn-default btn-sm disabled occupancyVD">
-	                                        <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
-	                                    </button>
-	                                    <button id="dlOccupancyDataBTN" type="button" class="btn btn-default btn-sm">
-	                                        <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
-	                                    </button>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </fieldset>
-	                </form>
-	            </div>
-	        </div>
-	    </div>
-	
-	    <div class="pad-top-l">&nbsp;</div>
-	    <div id="DataTable" class="container InfoSummaryBG divFade">
-	
-	        <div class="row">
-	            <div class="container">
-	                <div class="panel panel-primary">
-	                    <div class="panel-heading">
-	                        <div class="btn-group pull-right">
-	                            <button id="vwOptionsBTN" type="button" class="btn btn-default btn-sm">
-	                                <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
-	                            </button>
-	
-	
-	                            <button id="printDataBTN" type="button" class="btn btn-default btn-sm" ng-click="printer()">
-	                                <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
-	                            </button>
-	                        </div>
-	                        <h2 class="panel-title pad-bottom-m">Value Pricing Pilot Parking Data</h2>
-	                    </div>
-	                    <div class="panel-body">
-	                        <!-- Data table -->
-	                        <div id="GeneralInfo" ng-repeat="summary in geninfoData">
-	                            <h3>General Information</h3>
-	                            <table class="table table-hover">
-	                                <tr>
-	                                    <td>
-	                                        <h4>Study Area Name:</h4>
-	                                        <span><p>{{summary.Name}}</p></span>
-	                                    </td>
-	                                    <td>
-	                                        <h4>City Name:</h4>
-	                                        <span><p>{{summary.City}}</p></span>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <h4>Project Title:</h4>
-	                                        <span><p>{{summary.Title}}</p></span>
-	                                    </td>
-	                                    <td>
-	                                        <h4>Project Year:</h4>
-	                                        <span><p>{{summary.CollectionYear}}</p></span>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2">
-	                                        <h4>Consultant Name:</h4>
-	                                        <span><p>{{summary.Consultant}}</p></span>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2">
-	                                        <h4>Project Notes:</h4>
-	                                        <span><p>{{summary.Notes}}</p></span>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2">
-	                                        <h4>Web Links:</h4>
-	                                        <span><p><a href={{summary.Attachments}} target="_blank">{{summary.Attachments}}</a></p></span>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2">
-	                                        <h4>Cost Description:</h4>
-	                                        <span><p>{{summary.Pricing_Summary}}</p></span>
-	                                    </td>
-	                                </tr>
-	                            </table>
-	                        </div>
-	                        <div id="ParkingSupply" ng-repeat="summary in MasterSummaryData" ng-show="supply || showAll">
-	                            <h3>Parking Supply</h3>
-	                            <table class="table table-hover">
-	                                <thead>
-	                                    <tr>
-	                                        <th style="width: 450px">Category</th>
-	                                        <th>On-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Off-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Total</th>
-	
-	                                    </tr>
-	                                </thead>
-	                                <tbody>
-	                                    <tr>
-	                                        <td style="vertical-align:middle">Total number of spaces
-	                                            <br />where data was collected</td>
-	                                        <td>{{summary.Total_On | number}}
-	                                        </td>
-	                                        <td>{{summary.Total_On_PCT}}%
-	                                        </td>
-	                                        <td>{{summary.Total_Off}}
-	                                        </td>
-	                                        <td>{{summary.Total_Off_PCT}}%
-	                                        </td>
-	                                        <td>{{summary.Total_Both | number}}
-	                                        </td>
-	
-	
-	                                    </tr>
-	                                </tbody>
-	                            </table>
-	                        </div>
-	                        <div id="SpaceType" ng-repeat="type in MasterSummaryData" ng-show="spaceType || showAll">
-	                            <h3>Type of Parking Spaces</h3>
-	                            <table class="table table-hover">
-	                                <thead>
-	                                    <tr>
-	                                        <th style="width: 450px">Category</th>
-	                                        <th>On-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Off-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Total</th>
-	
-	                                    </tr>
-	                                </thead>
-	                                <tbody>
-	                                    <tr>
-	                                        <td>Unregulated spaces</td>
-	                                        <td><span id="Unregulated_Spaces_On">{{type.Unregulated_Spaces_On | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Unregulated_Spaces_On_PCT}}%</td>
-	                                        <td><span id="Unregulated_Spaces_Off">{{type.Unregulated_Spaces_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Unregulated_Spaces_Off_PCT}}%</td>
-	                                        <td><span id="Unregulated_Spaces_Tot">{{type.Unregulated_Spaces_Total | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Time and meter regulated spaces</td>
-	                                        <td><span id="Time_and_Meter_Regulated_Spaces_On">{{type.Time_and_Meter_Regulated_Spaces_On | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Time_and_Meter_Regulated_Spaces_On_PCT}}%</td>
-	                                        <td><span id="Time_and_Meter_Regulated_Spaces_Off">{{type.Time_and_Meter_Regulated_Spaces_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Time_and_Meter_Regulated_Spaces_Off_PCT}}%</td>
-	                                        <td><span id="Time_and_Meter_Regulated_Spaces_Tot">{{type.Time_and_Meter_Regulated_Spaces_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Time-only regulated spaces</td>
-	                                        <td><span id="Time_Only_Regulated_Spaces_On">{{type.Time_Only_Regulated_Spaces_On | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Time_Only_Regulated_Spaces_On_PCT}}%</td>
-	                                        <td><span id="Time_Only_Regulated_Spaces_Off">{{type.Time_Only_Regulated_Spaces_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Time_Only_Regulated_Spaces_Off_PCT}}%</td>
-	                                        <td><span id="Time_Only_Regulated_Spaces_Tot">{{type.Time_Only_Regulated_Spaces_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Meter-only regulated spaces</td>
-	                                        <td><span id="Meter_Only_Regulated_Spaces_On">{{type.Meter_Only_Regulated_Spaces_On | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Meter_Only_Regulated_Spaces_On_PCT}}%</td>
-	                                        <td><span id="Meter_Only_Regulated_Spaces_Off">{{type.Meter_Only_Regulated_Spaces_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Meter_Only_Regulated_Spaces_Off_PCT}}%</td>
-	                                        <td><span id="Meter_Only_Regulated_Spaces_Tot">{{type.Meter_Only_Regulated_Spaces_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Accessible (ADA) spaces</td>
-	                                        <td><span id="ADA_Spaces_On">{{type.ADA_Spaces_On | number}}</span>
-	                                        </td>
-	                                        <td>{{type.ADA_Spaces_On_PCT}}%</td>
-	                                        <td><span id="ADA_Spaces_Off">{{type.ADA_Spaces_Off |  number}}</span>
-	                                        </td>
-	                                        <td>{{type.ADA_Spaces_Off_PCT}}%</td>
-	                                        <td><span id="ADA_Spaces_Tot">{{type.ADA_Spaces_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Motorcycle spaces</td>
-	                                        <td><span id="Motorcycle_Spaces_On">{{type.Motorcycle_Spaces_On | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Motorcycle_Spaces_On_PCT}}%</td>
-	                                        <td><span id="Motorcycle_Spaces_Off">{{type.Motorcycle_Spaces_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Motorcycle_Spaces_Off_PCT}}%</td>
-	                                        <td><span id="Motorcycle_Spaces_Tot">{{type.Motorcycle_Spaces_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Loading, taxi, or other spaces</td>
-	                                        <td><span id="Loading_or_Other_Spaces_On">{{type.Loading_or_Other_Spaces_On | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Loading_or_Other_Spaces_On_PCT}}%</td>
-	                                        <td><span id="Loading_or_Other_Spaces_Off">{{type.Loading_or_Other_Spaces_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Loading_or_Other_Spaces_Off_PCT}}%</td>
-	                                        <td><span id="Loading_or_Other_Spaces_Tot">{{type.Loading_or_Other_Spaces_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Reserved for permits-only spaces</td>
-	                                        <td><span id="Permit_Reserved_Only_Spaces_On">{{type.Permit_Reserved_Only_Spaces_On | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Permit_Reserved_Only_Spaces_On_PCT}}%</td>
-	                                        <td><span id="Permit_Reserved_Only_Spaces_Off">{{type.Permit_Reserved_Only_Spaces_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
-	                                        <td><span id="Permit_Reserved_Only_Spaces_Tot">{{type.Permit_Reserved_Only_Spaces_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Shared with permit holder spaces</td>
-	                                        <td><span id="Shared_Permit_Spaces_On">{{type.Shared_Permit_Spaces_On | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Shared_Permit_Spaces_On_PCT}}%</td>
-	                                        <td><span id="Shared_Permit_Spaces_Off">{{type.Shared_Permit_Spaces_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{type.Shared_Permit_Spaces_Off_PCT}}%</td>
-	                                        <td><span id="Shared_Permit_Spaces_Tot">{{type.Shared_Permit_Spaces_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                </tbody>
-	                            </table>
-	                        </div>
-	                        <div id="PricingInfo" ng-repeat="pricing in MasterSummaryData" ng-show="isActive || showAll">
-	                            <h3>Pricing Information</h3>
-	                            <table class="table table-hover">
-	                                <thead>
-	                                    <tr>
-	                                        <th style="width: 450px">Category</th>
-	                                        <th>On-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Off-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Total</th>
-	
-	                                    </tr>
-	                                </thead>
-	                                <tbody>
-	                                    <tr>
-	                                        <td>Total spaces that are priced</td>
-	                                        <td>{{pricing.Total_Spaces_Priced_On | number}}
-	                                        </td>
-	                                        <td>{{pricing.Total_Spaces_Priced_On_PCT}}%</td>
-	                                        <td>{{pricing.Total_Spaces_Priced_Off | number}}
-	                                        </td>
-	                                        <td>{{pricing.Total_Spaces_Priced_Off_PCT}}%</td>
-	                                        <td>{{pricing.Total_Spaces_Priced_Tot | number}}
-	                                        </td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Reserved for permits-only spaces</td>
-	                                        <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_On | number}}
-	                                        </td>
-	                                        <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_On_PCT}}%</td>
-	                                        <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off | number}}
-	                                        </td>
-	                                        <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
-	                                        <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Tot | number}}
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Shared with permit holder spaces</td>
-	                                        <td>{{pricing.Pricing_Shared_Permit_Spaces_On | number}}
-	                                        </td>
-	                                        <td>{{pricing.Shared_Permit_Spaces_On_PCT}}%</td>
-	                                        <td>{{pricing.Pricing_Shared_Permit_Spaces_Off | number}}
-	                                        </td>
-	                                        <td>{{pricing.Shared_Permit_Spaces_Off_PCT}}%</td>
-	                                        <td>{{pricing.Pricing_Shared_Permit_Spaces_Tot | number}}
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Pricing Summary</td>
-	                                        <td colspan="6">
-	                                            {{pricing.Pricing_Summary_Both }}
-	
-	                                        </td>
-	
-	                                    </tr>
-	                                </tbody>
-	                            </table>
-	                        </div>
-	                        <div id="RestrictionInfo" ng-repeat="restrict in MasterSummaryData" ng-show="restrictions || showAll">
-	                            <h3>Time Restriction Information</h3>
-	                            <table class="table table-hover">
-	                                <thead>
-	                                    <tr>
-	                                        <th style="width: 450px">Category</th>
-	                                        <th>On-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Off-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Total</th>
-	
-	                                    </tr>
-	                                </thead>
-	                                <tbody>
-	                                    <tr>
-	                                        <td>Time restriction under one hour</td>
-	                                        <td><span id="Time_Under_One_Hour_On">{{restrict.Time_Under_One_Hour_On | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_Under_One_Hour_On_PCT}}%</td>
-	                                        <td><span id="Time_Under_One_Hour_Off">{{restrict.Time_Under_One_Hour_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_Under_One_Hour_Off_PCT}}%</td>
-	                                        <td><span id="Time_Under_One_Hour_Tot">{{restrict.Time_Under_One_Hour_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Time restriction one hour</td>
-	                                        <td><span id="Time_One_Hour_On">{{restrict.Time_One_Hour_On | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_One_Hour_On_PCT}}%</td>
-	                                        <td><span id="Time_One_Hour_Off">{{restrict.Time_One_Hour_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_One_Hour_Off_PCT}}%</td>
-	                                        <td><span id="Time_One_Hour_Tot">{{restrict.Time_One_Hour_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Time restriction 90 minutes</td>
-	                                        <td><span id="Time_Ninety_Mins_On">{{restrict.Time_Ninety_Mins_On | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_Ninety_Mins_On_PCT}}%</td>
-	                                        <td><span id="Time_Ninety_Mins_Off">{{restrict.Time_Ninety_Mins_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_Ninety_Mins_Off_PCT}}%</td>
-	                                        <td><span id="Time_Ninety_Mins_Tot">{{restrict.Time_Ninety_Mins_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Time restriction two hours</td>
-	                                        <td><span id="Time_Two_Hours_On">{{restrict.Time_Two_Hours_On_PCT | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_Two_Hours_On_PCT}}%</td>
-	                                        <td><span id="Time_Two_Hours_Off">{{restrict.Time_Two_Hours_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_Two_Hours_Off_PCT}}%</td>
-	                                        <td><span id="Time_Two_Hours_Tot">{{restrict.Time_Two_Hours_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Time restriction between three and four hours</td>
-	                                        <td><span id="Time_3_to_4_Hours_On">{{restrict.Time_3_to_4_Hours_On | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_3_to_4_Hours_On_PCT}}%</td>
-	                                        <td><span id="Time_3_to_4_Hours_Off">{{restrict.Time_3_to_4_Hours_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_3_to_4_Hours_Off_PCT}}%</td>
-	                                        <td><span id="Time_3_to_4_Hours_Tot">{{restrict.Time_3_to_4_Hours_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Time restrictiond greater than four hours</td>
-	                                        <td><span id="Time_More_Than_4_Hours_On">{{restrict.Time_More_Than_4_Hours_On | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_More_Than_4_Hours_On_PCT}}%</td>
-	                                        <td><span id="Time_More_Than_4_Hours_Off">{{restrict.Time_More_Than_4_Hours_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{restrict.Time_More_Than_4_Hours_Off_PCT}}%</td>
-	                                        <td><span id="Time_More_Than_4_Hours_Tot">{{restrict.Time_More_Than_4_Hours_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                </tbody>
-	                            </table>
-	
-	                        </div>
-	                        <div id="WDOccInfo" ng-repeat="wd in MasterSummaryData" ng-show="weekDay || showAll">
-	                            <h3>Weekday Occupancy Information</h3>
-	                            <table class="table table-hover">
-	                                <thead>
-	                                    <tr>
-	                                        <th style="width: 450px">Category</th>
-	                                        <th>On-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Off-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Total</th>
-	
-	                                    </tr>
-	                                </thead>
-	                                <tbody>
-	
-	                                    <tr>
-	                                        <td>Early morning occupancy (5AM)</td>
-	                                        <td><span id="Total_5_00_WD_On">{{wd.Total_5_00_WD_On | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_5_00_WD_On_PCT}}%</td>
-	                                        <td><span id="Total_5_00_WD_Off">{{wd.Total_5_00_WD_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_5_00_WD_Off_PCT}}%</td>
-	                                        <td><span id="Total_5_00_WD_Tot">{{wd.Total_5_00_WD_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Morning occupancy (9AM)</td>
-	                                        <td><span id="Total_9_00_WD_On">{{wd.Total_9_00_WD_On | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_9_00_WD_On_PCT}}%</td>
-	                                        <td><span id="Total_9_00_WD_Off">{{wd.Total_9_00_WD_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_9_00_WD_Off_PCT}}%</td>
-	                                        <td><span id="Total_9_00_WD_Tot">{{wd.Total_9_00_WD_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Afternoon occupancy (12PM)</td>
-	                                        <td><span id="Total_12_00_WD_On">{{wd.Total_12_00_WD_On | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_12_00_WD_On_PCT}}%</td>
-	                                        <td><span id="Total_12_00_WD_Off">{{wd.Total_12_00_WD_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_12_00_WD_Off_PCT}}%</td>
-	                                        <td><span id="Total_12_00_WD_Tot">{{wd.Total_12_00_WD_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Late afternoon occupancy (4PM)</td>
-	                                        <td><span id="Total_16_00_WD_On">{{wd.Total_16_00_WD_On | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_16_00_WD_On_PCT}}%</td>
-	                                        <td><span id="Total_16_00_WD_Off">{{wd.Total_16_00_WD_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_16_00_WD_Off_PCT}}%</td>
-	                                        <td><span id="Total_16_00_WD_Tot">{{wd.Total_16_00_WD_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Evening occupancy (8PM)</td>
-	                                        <td><span id="Total_20_00_WD_On">{{wd.Total_20_00_WD_On | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_20_00_WD_On_PCT}}%</td>
-	                                        <td><span id="Total_20_00_WD_Off">{{wd.Total_20_00_WD_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{wd.Total_20_00_WD_Off_PCT}}%</td>
-	                                        <td><span id="Total_20_00_WD_Tot">{{wd.Total_20_00_WD_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                </tbody>
-	                            </table>
-	
-	                        </div>
-	                        <div id="WEOccInfo" ng-repeat="we in MasterSummaryData" ng-show="weekEnd || showAll">
-	                            <h3>Weekend Occupancy Information</h3>
-	                            <table class="table table-hover">
-	                                <thead>
-	                                    <tr>
-	                                        <th style="width: 450px">Category</th>
-	                                        <th>On-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Off-Street</th>
-	                                        <th>Percent</th>
-	                                        <th>Total</th>
-	
-	                                    </tr>
-	                                </thead>
-	                                <tbody>
-	
-	                                    <tr>
-	                                        <td>Early morning occupancy (5AM)</td>
-	                                        <td><span id="Total_5_00_WE_On">{{we.Total_5_00_WE_On | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_5_00_WE_On_PCT}}%</td>
-	                                        <td><span id="Total_5_00_WE_Off">{{we.Total_5_00_WE_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_5_00_WE_Off_PCT}}%</td>
-	                                        <td><span id="Total_5_00_WE_Tot">{{we.Total_5_00_WE_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Morning occupancy (9AM)</td>
-	                                        <td><span id="Total_9_00_WE_On">{{we.Total_9_00_WE_On | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_9_00_WE_On_PCT}}%</td>
-	                                        <td><span id="Total_9_00_WE_Off">{{we.Total_9_00_WE_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_9_00_WE_Off_PCT}}%</td>
-	                                        <td><span id="Total_9_00_WE_Tot">{{we.Total_9_00_WE_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Afternoon occupancy (12PM)</td>
-	                                        <td><span id="Total_12_00_WE_On">{{we.Total_12_00_WE_On | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_12_00_WE_On_PCT}}%</td>
-	                                        <td><span id="Total_12_00_WE_Off">{{we.Total_12_00_WE_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_12_00_WE_Off_PCT}}%</td>
-	                                        <td><span id="Total_12_00_WE_Tot">{{we.Total_12_00_WE_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Late afternoon occupancy (4PM)</td>
-	                                        <td><span id="Total_16_00_WE_On">{{we.Total_16_00_WE_On | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_16_00_WE_On_PCT}}%</td>
-	                                        <td><span id="Total_16_00_WE_Off">{{we.Total_16_00_WE_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_16_00_WE_Off_PCT}}%</td>
-	                                        <td><span id="Total_16_00_WE_Tot">{{we.Total_16_00_WE_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                    <tr>
-	                                        <td>Evening occupancy (8PM)</td>
-	                                        <td><span id="Total_20_00_WE_On">{{we.Total_20_00_WE_On | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_20_00_WE_On_PCT}}%</td>
-	                                        <td><span id="Total_20_00_WE_Off">{{we.Total_20_00_WE_Off | number}}</span>
-	                                        </td>
-	                                        <td>{{we.Total_20_00_WE_Off_PCT}}%</td>
-	                                        <td><span id="Total_20_00_WE_Tot">{{we.Total_20_00_WE_Tot | number}}</span>
-	                                        </td>
-	
-	                                    </tr>
-	                                </tbody>
-	                            </table>
-	                        </div>
-	                        <div id="AddtnlResources" ng-show="resources || showAll">
-	                            <h3>Additional Resources</h3>
-	                            <span><p>Need Content for This Section...</p></span>
-	
-	                        </div>
-	                    </div>
-	                    <div class="panel-footer">
-	                        <span><p>Source: Metropolitan Transportation Commission. September 28, 2015</p></span>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    <div id="data-print">
-	        <div class="working"></div>
-	    </div>
+                                <div class="row pad-top-l">&nbsp;</div>
+                                <div class="row pad-top-l">
+                                    <label class="col-md-4 control-label">&nbsp;</label>
+                                    <div class="col-md-8 pull-left">
+                                        <button id="vwMapOccupancyBTN" type="button" class="btn btn-default btn-sm disabled occupancyVD">
+                                            <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
+                                        </button>
+                                        <button id="dlOccupancyDataBTN" type="button" class="btn btn-default btn-sm">
+                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="pad-top-l">&nbsp;</div>
+        <div id="DataTable" class="container InfoSummaryBG divFade">
+
+            <div class="row">
+                <div class="container">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="btn-group pull-right">
+                                <button id="vwOptionsBTN" type="button" class="btn btn-default btn-sm">
+                                    <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
+                                </button>
+
+
+                                <button id="printDataBTN" type="button" class="btn btn-default btn-sm" ng-click="printer()">
+                                    <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
+                                </button>
+                            </div>
+                            <h2 class="panel-title pad-bottom-m">Value Pricing Pilot Parking Data</h2>
+                        </div>
+                        <div class="panel-body">
+                            <!-- Data table -->
+                            <div id="GeneralInfo" ng-repeat="summary in geninfoData">
+                                <h3>General Information</h3>
+                                <table class="table table-hover">
+                                    <tr>
+                                        <td>
+                                            <h4>Study Area Name:</h4>
+                                            <span><p>{{summary.Name}}</p></span>
+                                        </td>
+                                        <td>
+                                            <h4>City Name:</h4>
+                                            <span><p>{{summary.City}}</p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>Project Title:</h4>
+                                            <span><p>{{summary.Title}}</p></span>
+                                        </td>
+                                        <td>
+                                            <h4>Project Year:</h4>
+                                            <span><p>{{summary.CollectionYear}}</p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h4>Consultant Name:</h4>
+                                            <span><p>{{summary.Consultant}}</p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h4>Project Notes:</h4>
+                                            <span><p>{{summary.Notes}}</p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h4>Web Links:</h4>
+                                            <span><p><a href={{summary.Attachments}} target="_blank">{{summary.Attachments}}</a></p></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h4>Cost Description:</h4>
+                                            <span><p>{{summary.Pricing_Summary}}</p></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="ParkingSupply" ng-repeat="summary in MasterSummaryData" ng-show="supply || showAll">
+                                <h3>Parking Supply</h3>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 450px">Category</th>
+                                            <th>On-Street</th>
+                                            <th>Percent</th>
+                                            <th>Off-Street</th>
+                                            <th>Percent</th>
+                                            <th>Total</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="vertical-align:middle">Total number of spaces
+                                                <br />where data was collected</td>
+                                            <td>{{summary.Total_On | number}}
+                                            </td>
+                                            <td>{{summary.Total_On_PCT}}%
+                                            </td>
+                                            <td>{{summary.Total_Off}}
+                                            </td>
+                                            <td>{{summary.Total_Off_PCT}}%
+                                            </td>
+                                            <td>{{summary.Total_Both | number}}
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="SpaceType" ng-repeat="type in MasterSummaryData" ng-show="spaceType || showAll">
+                                <h3>Type of Parking Spaces</h3>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 450px">Category</th>
+                                            <th>On-Street</th>
+                                            <th>Percent</th>
+                                            <th>Off-Street</th>
+                                            <th>Percent</th>
+                                            <th>Total</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Unregulated spaces</td>
+                                            <td><span id="Unregulated_Spaces_On">{{type.Unregulated_Spaces_On | number}}</span>
+                                            </td>
+                                            <td>{{type.Unregulated_Spaces_On_PCT}}%</td>
+                                            <td><span id="Unregulated_Spaces_Off">{{type.Unregulated_Spaces_Off | number}}</span>
+                                            </td>
+                                            <td>{{type.Unregulated_Spaces_Off_PCT}}%</td>
+                                            <td><span id="Unregulated_Spaces_Tot">{{type.Unregulated_Spaces_Total | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Time and meter regulated spaces</td>
+                                            <td><span id="Time_and_Meter_Regulated_Spaces_On">{{type.Time_and_Meter_Regulated_Spaces_On | number}}</span>
+                                            </td>
+                                            <td>{{type.Time_and_Meter_Regulated_Spaces_On_PCT}}%</td>
+                                            <td><span id="Time_and_Meter_Regulated_Spaces_Off">{{type.Time_and_Meter_Regulated_Spaces_Off | number}}</span>
+                                            </td>
+                                            <td>{{type.Time_and_Meter_Regulated_Spaces_Off_PCT}}%</td>
+                                            <td><span id="Time_and_Meter_Regulated_Spaces_Tot">{{type.Time_and_Meter_Regulated_Spaces_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Time-only regulated spaces</td>
+                                            <td><span id="Time_Only_Regulated_Spaces_On">{{type.Time_Only_Regulated_Spaces_On | number}}</span>
+                                            </td>
+                                            <td>{{type.Time_Only_Regulated_Spaces_On_PCT}}%</td>
+                                            <td><span id="Time_Only_Regulated_Spaces_Off">{{type.Time_Only_Regulated_Spaces_Off | number}}</span>
+                                            </td>
+                                            <td>{{type.Time_Only_Regulated_Spaces_Off_PCT}}%</td>
+                                            <td><span id="Time_Only_Regulated_Spaces_Tot">{{type.Time_Only_Regulated_Spaces_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Meter-only regulated spaces</td>
+                                            <td><span id="Meter_Only_Regulated_Spaces_On">{{type.Meter_Only_Regulated_Spaces_On | number}}</span>
+                                            </td>
+                                            <td>{{type.Meter_Only_Regulated_Spaces_On_PCT}}%</td>
+                                            <td><span id="Meter_Only_Regulated_Spaces_Off">{{type.Meter_Only_Regulated_Spaces_Off | number}}</span>
+                                            </td>
+                                            <td>{{type.Meter_Only_Regulated_Spaces_Off_PCT}}%</td>
+                                            <td><span id="Meter_Only_Regulated_Spaces_Tot">{{type.Meter_Only_Regulated_Spaces_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Accessible (ADA) spaces</td>
+                                            <td><span id="ADA_Spaces_On">{{type.ADA_Spaces_On | number}}</span>
+                                            </td>
+                                            <td>{{type.ADA_Spaces_On_PCT}}%</td>
+                                            <td><span id="ADA_Spaces_Off">{{type.ADA_Spaces_Off |  number}}</span>
+                                            </td>
+                                            <td>{{type.ADA_Spaces_Off_PCT}}%</td>
+                                            <td><span id="ADA_Spaces_Tot">{{type.ADA_Spaces_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Motorcycle spaces</td>
+                                            <td><span id="Motorcycle_Spaces_On">{{type.Motorcycle_Spaces_On | number}}</span>
+                                            </td>
+                                            <td>{{type.Motorcycle_Spaces_On_PCT}}%</td>
+                                            <td><span id="Motorcycle_Spaces_Off">{{type.Motorcycle_Spaces_Off | number}}</span>
+                                            </td>
+                                            <td>{{type.Motorcycle_Spaces_Off_PCT}}%</td>
+                                            <td><span id="Motorcycle_Spaces_Tot">{{type.Motorcycle_Spaces_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Loading, taxi, or other spaces</td>
+                                            <td><span id="Loading_or_Other_Spaces_On">{{type.Loading_or_Other_Spaces_On | number}}</span>
+                                            </td>
+                                            <td>{{type.Loading_or_Other_Spaces_On_PCT}}%</td>
+                                            <td><span id="Loading_or_Other_Spaces_Off">{{type.Loading_or_Other_Spaces_Off | number}}</span>
+                                            </td>
+                                            <td>{{type.Loading_or_Other_Spaces_Off_PCT}}%</td>
+                                            <td><span id="Loading_or_Other_Spaces_Tot">{{type.Loading_or_Other_Spaces_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Reserved for permits-only spaces</td>
+                                            <td><span id="Permit_Reserved_Only_Spaces_On">{{type.Permit_Reserved_Only_Spaces_On | number}}</span>
+                                            </td>
+                                            <td>{{type.Permit_Reserved_Only_Spaces_On_PCT}}%</td>
+                                            <td><span id="Permit_Reserved_Only_Spaces_Off">{{type.Permit_Reserved_Only_Spaces_Off | number}}</span>
+                                            </td>
+                                            <td>{{type.Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
+                                            <td><span id="Permit_Reserved_Only_Spaces_Tot">{{type.Permit_Reserved_Only_Spaces_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Shared with permit holder spaces</td>
+                                            <td><span id="Shared_Permit_Spaces_On">{{type.Shared_Permit_Spaces_On | number}}</span>
+                                            </td>
+                                            <td>{{type.Shared_Permit_Spaces_On_PCT}}%</td>
+                                            <td><span id="Shared_Permit_Spaces_Off">{{type.Shared_Permit_Spaces_Off | number}}</span>
+                                            </td>
+                                            <td>{{type.Shared_Permit_Spaces_Off_PCT}}%</td>
+                                            <td><span id="Shared_Permit_Spaces_Tot">{{type.Shared_Permit_Spaces_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="PricingInfo" ng-repeat="pricing in MasterSummaryData" ng-show="pricing || showAll">
+                                <h3>Pricing Information</h3>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 450px">Category</th>
+                                            <th>On-Street</th>
+                                            <th>Percent</th>
+                                            <th>Off-Street</th>
+                                            <th>Percent</th>
+                                            <th>Total</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Total spaces that are priced</td>
+                                            <td>{{pricing.Total_Spaces_Priced_On | number}}
+                                            </td>
+                                            <td>{{pricing.Total_Spaces_Priced_On_PCT}}%</td>
+                                            <td>{{pricing.Total_Spaces_Priced_Off | number}}
+                                            </td>
+                                            <td>{{pricing.Total_Spaces_Priced_Off_PCT}}%</td>
+                                            <td>{{pricing.Total_Spaces_Priced_Tot | number}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Reserved for permits-only spaces</td>
+                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_On | number}}
+                                            </td>
+                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_On_PCT}}%</td>
+                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off | number}}
+                                            </td>
+                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
+                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Tot | number}}
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Shared with permit holder spaces</td>
+                                            <td>{{pricing.Pricing_Shared_Permit_Spaces_On | number}}
+                                            </td>
+                                            <td>{{pricing.Shared_Permit_Spaces_On_PCT}}%</td>
+                                            <td>{{pricing.Pricing_Shared_Permit_Spaces_Off | number}}
+                                            </td>
+                                            <td>{{pricing.Shared_Permit_Spaces_Off_PCT}}%</td>
+                                            <td>{{pricing.Pricing_Shared_Permit_Spaces_Tot | number}}
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Pricing Summary</td>
+                                            <td colspan="6">
+                                                {{pricing.Pricing_Summary_Both }}
+
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="RestrictionInfo" ng-repeat="restrict in MasterSummaryData" ng-show="restrictions || showAll">
+                                <h3>Time Restriction Information</h3>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 450px">Category</th>
+                                            <th>On-Street</th>
+                                            <th>Percent</th>
+                                            <th>Off-Street</th>
+                                            <th>Percent</th>
+                                            <th>Total</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Time restriction under one hour</td>
+                                            <td><span id="Time_Under_One_Hour_On">{{restrict.Time_Under_One_Hour_On | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_Under_One_Hour_On_PCT}}%</td>
+                                            <td><span id="Time_Under_One_Hour_Off">{{restrict.Time_Under_One_Hour_Off | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_Under_One_Hour_Off_PCT}}%</td>
+                                            <td><span id="Time_Under_One_Hour_Tot">{{restrict.Time_Under_One_Hour_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Time restriction one hour</td>
+                                            <td><span id="Time_One_Hour_On">{{restrict.Time_One_Hour_On | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_One_Hour_On_PCT}}%</td>
+                                            <td><span id="Time_One_Hour_Off">{{restrict.Time_One_Hour_Off | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_One_Hour_Off_PCT}}%</td>
+                                            <td><span id="Time_One_Hour_Tot">{{restrict.Time_One_Hour_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Time restriction 90 minutes</td>
+                                            <td><span id="Time_Ninety_Mins_On">{{restrict.Time_Ninety_Mins_On | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_Ninety_Mins_On_PCT}}%</td>
+                                            <td><span id="Time_Ninety_Mins_Off">{{restrict.Time_Ninety_Mins_Off | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_Ninety_Mins_Off_PCT}}%</td>
+                                            <td><span id="Time_Ninety_Mins_Tot">{{restrict.Time_Ninety_Mins_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Time restriction two hours</td>
+                                            <td><span id="Time_Two_Hours_On">{{restrict.Time_Two_Hours_On_PCT | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_Two_Hours_On_PCT}}%</td>
+                                            <td><span id="Time_Two_Hours_Off">{{restrict.Time_Two_Hours_Off | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_Two_Hours_Off_PCT}}%</td>
+                                            <td><span id="Time_Two_Hours_Tot">{{restrict.Time_Two_Hours_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Time restriction between three and four hours</td>
+                                            <td><span id="Time_3_to_4_Hours_On">{{restrict.Time_3_to_4_Hours_On | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_3_to_4_Hours_On_PCT}}%</td>
+                                            <td><span id="Time_3_to_4_Hours_Off">{{restrict.Time_3_to_4_Hours_Off | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_3_to_4_Hours_Off_PCT}}%</td>
+                                            <td><span id="Time_3_to_4_Hours_Tot">{{restrict.Time_3_to_4_Hours_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Time restrictiond greater than four hours</td>
+                                            <td><span id="Time_More_Than_4_Hours_On">{{restrict.Time_More_Than_4_Hours_On | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_More_Than_4_Hours_On_PCT}}%</td>
+                                            <td><span id="Time_More_Than_4_Hours_Off">{{restrict.Time_More_Than_4_Hours_Off | number}}</span>
+                                            </td>
+                                            <td>{{restrict.Time_More_Than_4_Hours_Off_PCT}}%</td>
+                                            <td><span id="Time_More_Than_4_Hours_Tot">{{restrict.Time_More_Than_4_Hours_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div id="WDOccInfo" ng-repeat="wd in MasterSummaryData" ng-show="weekDay || showAll">
+                                <h3>Weekday Occupancy Information</h3>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 450px">Category</th>
+                                            <th>On-Street</th>
+                                            <th>Percent</th>
+                                            <th>Off-Street</th>
+                                            <th>Percent</th>
+                                            <th>Total</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td>Early morning occupancy (5AM)</td>
+                                            <td><span id="Total_5_00_WD_On">{{wd.Total_5_00_WD_On | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_5_00_WD_On_PCT}}%</td>
+                                            <td><span id="Total_5_00_WD_Off">{{wd.Total_5_00_WD_Off | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_5_00_WD_Off_PCT}}%</td>
+                                            <td><span id="Total_5_00_WD_Tot">{{wd.Total_5_00_WD_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Morning occupancy (9AM)</td>
+                                            <td><span id="Total_9_00_WD_On">{{wd.Total_9_00_WD_On | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_9_00_WD_On_PCT}}%</td>
+                                            <td><span id="Total_9_00_WD_Off">{{wd.Total_9_00_WD_Off | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_9_00_WD_Off_PCT}}%</td>
+                                            <td><span id="Total_9_00_WD_Tot">{{wd.Total_9_00_WD_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Afternoon occupancy (12PM)</td>
+                                            <td><span id="Total_12_00_WD_On">{{wd.Total_12_00_WD_On | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_12_00_WD_On_PCT}}%</td>
+                                            <td><span id="Total_12_00_WD_Off">{{wd.Total_12_00_WD_Off | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_12_00_WD_Off_PCT}}%</td>
+                                            <td><span id="Total_12_00_WD_Tot">{{wd.Total_12_00_WD_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Late afternoon occupancy (4PM)</td>
+                                            <td><span id="Total_16_00_WD_On">{{wd.Total_16_00_WD_On | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_16_00_WD_On_PCT}}%</td>
+                                            <td><span id="Total_16_00_WD_Off">{{wd.Total_16_00_WD_Off | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_16_00_WD_Off_PCT}}%</td>
+                                            <td><span id="Total_16_00_WD_Tot">{{wd.Total_16_00_WD_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Evening occupancy (8PM)</td>
+                                            <td><span id="Total_20_00_WD_On">{{wd.Total_20_00_WD_On | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_20_00_WD_On_PCT}}%</td>
+                                            <td><span id="Total_20_00_WD_Off">{{wd.Total_20_00_WD_Off | number}}</span>
+                                            </td>
+                                            <td>{{wd.Total_20_00_WD_Off_PCT}}%</td>
+                                            <td><span id="Total_20_00_WD_Tot">{{wd.Total_20_00_WD_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div id="WEOccInfo" ng-repeat="we in MasterSummaryData" ng-show="weekEnd || showAll">
+                                <h3>Weekend Occupancy Information</h3>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 450px">Category</th>
+                                            <th>On-Street</th>
+                                            <th>Percent</th>
+                                            <th>Off-Street</th>
+                                            <th>Percent</th>
+                                            <th>Total</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td>Early morning occupancy (5AM)</td>
+                                            <td><span id="Total_5_00_WE_On">{{we.Total_5_00_WE_On | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_5_00_WE_On_PCT}}%</td>
+                                            <td><span id="Total_5_00_WE_Off">{{we.Total_5_00_WE_Off | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_5_00_WE_Off_PCT}}%</td>
+                                            <td><span id="Total_5_00_WE_Tot">{{we.Total_5_00_WE_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Morning occupancy (9AM)</td>
+                                            <td><span id="Total_9_00_WE_On">{{we.Total_9_00_WE_On | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_9_00_WE_On_PCT}}%</td>
+                                            <td><span id="Total_9_00_WE_Off">{{we.Total_9_00_WE_Off | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_9_00_WE_Off_PCT}}%</td>
+                                            <td><span id="Total_9_00_WE_Tot">{{we.Total_9_00_WE_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Afternoon occupancy (12PM)</td>
+                                            <td><span id="Total_12_00_WE_On">{{we.Total_12_00_WE_On | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_12_00_WE_On_PCT}}%</td>
+                                            <td><span id="Total_12_00_WE_Off">{{we.Total_12_00_WE_Off | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_12_00_WE_Off_PCT}}%</td>
+                                            <td><span id="Total_12_00_WE_Tot">{{we.Total_12_00_WE_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Late afternoon occupancy (4PM)</td>
+                                            <td><span id="Total_16_00_WE_On">{{we.Total_16_00_WE_On | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_16_00_WE_On_PCT}}%</td>
+                                            <td><span id="Total_16_00_WE_Off">{{we.Total_16_00_WE_Off | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_16_00_WE_Off_PCT}}%</td>
+                                            <td><span id="Total_16_00_WE_Tot">{{we.Total_16_00_WE_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Evening occupancy (8PM)</td>
+                                            <td><span id="Total_20_00_WE_On">{{we.Total_20_00_WE_On | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_20_00_WE_On_PCT}}%</td>
+                                            <td><span id="Total_20_00_WE_Off">{{we.Total_20_00_WE_Off | number}}</span>
+                                            </td>
+                                            <td>{{we.Total_20_00_WE_Off_PCT}}%</td>
+                                            <td><span id="Total_20_00_WE_Tot">{{we.Total_20_00_WE_Tot | number}}</span>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="AddtnlResources" ng-show="resources || showAll">
+                                <h3>Additional Resources</h3>
+                                <span><p>Need Content for This Section...</p></span>
+
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <span><p>Source: Metropolitan Transportation Commission. September 28, 2015</p></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="data-print">
+            <div class="working"></div>
+        </div>
     </div>
     <!-- Content -->
 </section>
