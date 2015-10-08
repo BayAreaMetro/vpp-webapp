@@ -17,7 +17,7 @@ angular.module('vppApp')
             WEOnStreetOccupancyFL,
             WEOffStreetOccupancyFL,
             studyAreasFL,
-            saLabelsDL,
+            saLabelsFL,
             ImageParameters,
             // COC_FL,
             PDA_FL,
@@ -514,8 +514,8 @@ angular.module('vppApp')
 
         });
 
-        saLabelsDL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer");
-        saLabelsDL.setVisibleLayers([7]);
+        saLabelsFL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer");
+        saLabelsFL.setVisibleLayers([7]);
 
 
         PDA_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/OBAG_PDA/OBAG_PDA/MapServer/0", {
@@ -948,7 +948,7 @@ angular.module('vppApp')
         var TPAs_Renderer = new w.SimpleRenderer(TPAs_Symbol);
 
         TPAsFL.setRenderer(TPAs_Renderer);
-        TPAsFL.setOpacity($scope.TPAsFLop);
+        TPAsFL.setOpacity(TPAsFLop);
 
 
         //PDA Popup and Feature Layer Definition
@@ -958,7 +958,7 @@ angular.module('vppApp')
         var PDA_Renderer = new w.SimpleRenderer(PDA_Symbol);
 
         PDA_FL.setRenderer(PDA_Renderer);
-        PDA_FL.setOpacity(0.7);
+        PDA_FL.setOpacity(PDAFLop);
 
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
@@ -986,7 +986,7 @@ angular.module('vppApp')
             FerryTerminalsFL,
             ParknRideLotsFL,
             TransitHubsFL,
-            saLabelsDL
+            saLabelsFL
         ]);
 
         //Set Curent Map Theme
@@ -1654,21 +1654,12 @@ angular.module('vppApp')
                     $("#policyLayersCat").fadeIn(100);
                     $("#PDAsOpacitySlider").fadeIn(100);
 
-                    $scope.$on("slideEnded", function () {
-                        PDAFLsv = $scope.vm.opacitySlider1.value;
-                        PDAFLop = (PDAFLsv / 100);
-                        PDA_FL.setOpacity(PDAFLop);
-                    });
 
                     break;
                 case "studyAreasFL":
                     studyAreasFL.show();
 
-                    $scope.$on("slideEnded", function () {
-                        studyAreasFLsv = $scope.vm.opacitySlider.value;
-                        studyAreasFLop = (sliderValue / 100);
-                        studyAreasFL.setOpacity(studyAreasFLop);
-                    });
+
                     break;
                 case "FerryTerminalsFL":
 
@@ -1694,15 +1685,7 @@ angular.module('vppApp')
                     $("#policyLayersCat").fadeIn(100);
                     $("#TPAsOpacitySlider").fadeIn(100);
 
-                    $scope.$on("slideEnded", function () {
 
-                        TPAsFLsv = $scope.vm.opacitySlider2.value;
-                        TPAsFLop = (TPAsFLsv / 100);
-
-                        TPAsFL.setOpacity(TPAsFLop);
-
-
-                    });
 
 
                     break;
@@ -1834,7 +1817,24 @@ angular.module('vppApp')
             value: 70
         };
 
-
+        $scope.$on("slideEnded", function () {
+            //console.clear();
+            studyAreasFLsv = $scope.vm.opacitySlider.value;
+            studyAreasFLop = (studyAreasFLsv / 100);
+            studyAreasFL.setOpacity(studyAreasFLop);
+            studyAreasFL.refresh();
+            console.log(studyAreasFLop);
+            TPAsFLsv = $scope.vm.opacitySlider2.value;
+            TPAsFLop = (TPAsFLsv / 100);
+            TPAsFL.setOpacity(TPAsFLop);
+            TPAsFL.refresh();
+            console.log(TPAsFLop);
+            PDAFLsv = $scope.vm.opacitySlider1.value;
+            PDAFLop = (PDAFLsv / 100);
+            PDA_FL.setOpacity(PDAFLop);
+            PDA_FL.refresh();
+            console.log(PDAFLop);
+        });
         $scope.activeTheme = function (event) {
             $('.thumbnail').removeClass('active');
             $(event.target).parent(".thumbnail").addClass('active');
@@ -1862,7 +1862,6 @@ angular.module('vppApp')
         };
 
         $scope.printMap = function () {
-            console.log("asdg");
             $scope.createElement(document.getElementById("map"), "print-map");
             $scope.createElement(document.getElementById("mapLegend"), "print-legend");
             print();
