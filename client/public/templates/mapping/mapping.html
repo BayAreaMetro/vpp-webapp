@@ -26,7 +26,7 @@
             </div>
 
             <div id="parkingLayersCat" class="pad-bottom-m pad-top-m">
-                Parking Layers 
+                Parking Layers
             </div>
 
             <div id="mlegend_studyArea" pad-bottom-m pad-top-m>
@@ -201,7 +201,7 @@
             <div id="mlegend_TotalSpaces" class="collapse">
 
 
-            <div class="row">
+                <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(120, 120, 120);">
                     </div>
@@ -273,7 +273,7 @@
             </div>
 
 
-             
+
             <div id="mlegend_parknride" class="collapse" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
@@ -310,7 +310,7 @@
             <div id="transitLayersCat" class="pad-bottom-m pad-top-m">
                 Transit Layers
             </div>
-             <div id="mlegend_transitHubs" class="collapse" pad-bottom-m pad-top-m>
+            <div id="mlegend_transitHubs" class="collapse" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/bus.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
@@ -340,7 +340,7 @@
                     </div>
                 </div>
             </div> -->
-            <div id="mlegend_bart"  pad-bottom-m pad-top-m>
+            <div id="mlegend_bart" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/bart.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
@@ -350,7 +350,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mlegend_caltrain"  pad-bottom-m pad-top-m>
+            <div id="mlegend_caltrain" pad-bottom-m pad-top-m>
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/caltrain_logo_web.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; padding-right: 2px; height: 20px; width: 38px; display: block;">
@@ -380,8 +380,8 @@
                     </div>
                 </div>
             </div>
-           
-            
+
+
 
 
 
@@ -404,7 +404,7 @@
                     <i class="fa fa-ellipsis-h fa-lg"></i> Parking Theme <span class="arrow clickable"></span>
                 </a>
             </li>
-            <li>
+            <li ng-show="legendBTN">
                 <a id="mapLegendCTL">
                     <i class="fa fa-server fa-lg"></i> Show Legend <span class="arrow clickable"></span>
                 </a>
@@ -416,10 +416,10 @@
             <li class="divider"></li>
             <li><a id="mapRefreshCTL"><i class="fa fa-refresh fa-lg"></i> Reset Map <span class="arrow clickable"></span></a>
             </li>
-<!--
+            <!--
             <li><a id="layerOpacityCTL"><i class="fa fa-toggle-on"></i> Layer Opacity <span class="arrow clickable"></span></a>
             </li>
--->            
+-->
             </li>
             <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Navigation Tips <span class="arrow clickable"></span></a>
             </li>
@@ -492,8 +492,8 @@
             <div class="panel-title">
                 <span id="iconTitle" class='pull-left'></span>
                 <span id="title"></span>
-                <!-- <span class='pull-right clickable'><i class='fa fa-times'></i></span>
-                {{layerOpacity}} -->
+                <span class='pull-right clickable'><i class='fa fa-times'></i></span>
+                <!--{{layerOpacity}} -->
             </div>
         </div>
         <div class="panel-body">
@@ -516,35 +516,35 @@
             <div id="mapOpts" class="tools collapse">
                 <div class="row pad-top-m">
                     <div class="col-xs-4 col-md-6">
-                        <div id="inventory"  class="mt parkTheme">
-                            <a id="inv" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/inventory_thumbnail.png" style="height: 100%; width: 100%; display: block;" >
+                        <div id="inventory" class="mt parkTheme">
+                            <a id="inv" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/inventory_thumbnail.png" style="height: 100%; width: 100%; display: block;">
                             </a>
                             <p>Inventory</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <div id="restrictions"  class="mt parkTheme">
+                        <div id="restrictions" class="mt parkTheme">
                             <a id="res" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/restrictions_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Restrictions</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <div id="wkdayOCC"  class="occ parkTheme">
+                        <div id="wkdayOCC" class="occ parkTheme">
                             <a id="wkday" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Weekday Occupancy</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <div id="wkndOCC"  class="occ parkTheme">
+                        <div id="wkndOCC" class="occ parkTheme">
                             <a id="wknd" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Weekend Occupancy</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <div id="peakOCC"  class="pkt parkTheme">
+                        <div id="peakOCC" class="pkt parkTheme">
                             <a id="peak" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Peak Occupancy</p>
@@ -555,148 +555,150 @@
             <div id="mapBasemaps" class="tools collapse">
                 <div class="row pad-top-m">
                     <div class="col-xs-4 col-md-6">
-                        <a id="topo"  class="thumbnail bm">
+                        <a id="topo" class="thumbnail bm">
                             <img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
                         </a>
-                        <p style= "color: black;">Topographic</p>
+                        <p style="color: black;">Topographic</p>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <a id="gray"  class="thumbnail bm">
+                        <a id="gray" class="thumbnail bm">
                             <img src="app/images/light_gray_canvas.jpg" style="height: 100%; width: 100%; display: block;" alt="Light Gray">
                         </a>
-                        <p style= "color: black;">Monochromatic</p>
+                        <p style="color: black;">Monochromatic</p>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <a id="osm"  class="thumbnail bm">
+                        <a id="osm" class="thumbnail bm">
                             <img src="app/images/osm.jpg" style="height: 100%; width: 100%; display: block;" alt="OSM">
                         </a>
-                        <p style= "color: black;">Open Street Map</p>
+                        <p style="color: black;">Open Street Map</p>
                     </div>
                     <div class="col-xs-4 col-md-6">
-                        <a id="hybrid"  class="thumbnail bm">
+                        <a id="hybrid" class="thumbnail bm">
                             <img src="app/images/imagery_labels.jpg" style="height: 100%; width: 100%; display: block;" alt="Satelite">
                         </a>
-                        <p style= "color: black;">Imagery</p>
+                        <p style="color: black;">Imagery</p>
                     </div>
                 </div>
             </div>
             <div id="mapLayers" class="tools collapse">
-                <div class="container">
-                    <p>
-                    <div class="LayerCategoryLBLs">
-                        <span>Parking Layers</span>
-                    </div>
-                    </p>
-                    <div class="adl">
-                    <p>
-                        <input id="StudyLayerSwitch" type="checkbox" data-size="mini" name="studyAreasFL" checked="true">
-                        <span class="pad-left-m LayerLBLs">Study Areas</span>
-                    </p>
-                    </div>
-                    <div class="pad-bottom-l" id="StudyAreaOpacitySlider">  
-                        <div class="opacitySliderLBLs">
-                        <span>Layer Opacity</span>
-                       </div>
-                        <rzslider rz-slider-model="vm.opacitySlider.value" rz-slider-floor="vm.opacitySlider.floor" rz-slider-ceil="vm.opacitySlider.ceil"></rzslider>
-                        <div id="trans" class="opacitySliderLBLs">
-                        <span>Transparent</span>
-                        <span>Opaque</span>
-                       </div>
-                    </div>
-                    <div class="adl">
-                    <p>
-                        <input id="ParknRideLotsSwitch" type="checkbox" data-size="mini" name="ParknRideLotsFL">
-                        <span class="pad-left-m LayerLBLs">Park'n'Ride Lots</span>
-                    </p>
-                    </div>
-                    <div class="adl">
-                    <p>
-                    <div class="LayerCategoryLBLs">
-                        <span>Policy Layers</span>
-                    </div>
-                    </p>
-                    </div>
-                    <div class="adl">
-                    <p>
-                        <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL">
-                        <span class="pad-left-m LayerLBLs">Priority Development Areas</span>
-                    </p>
-                    </div>
-                    <div id="PDAsOpacitySlider" class="pad-bottom-l collapse">  
-                        <div class="opacitySliderLBLs">
-                        <span>Layer Opacity</span>
-                       </div>
-                        <rzslider rz-slider-model="vm.opacitySlider1.value" rz-slider-floor="vm.opacitySlider1.floor" rz-slider-ceil="vm.opacitySlider1.ceil"></rzslider>
-                         <div id="trans" class="opacitySliderLBLs">
-                        <span>Transparent</span>
-                        <span>Opaque</span>
-                       </div>
-                    </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            <div class="LayerCategoryLBLs">
+                                <span>Parking Layers</span>
+                            </div>
+                        </p>
+                        <div class="adl">
+                            <p>
+                                <input id="StudyLayerSwitch" type="checkbox" data-size="mini" name="studyAreasFL" checked="true">
+                                <span class="pad-left-m LayerLBLs">Study Areas</span>
+                            </p>
+                        </div>
+                        <div class="pad-bottom-l" id="StudyAreaOpacitySlider">
+                            <div class="opacitySliderLBLs">
+                                <span>Layer Opacity</span>
+                            </div>
+                            <rzslider rz-slider-model="vm.opacitySlider.value" rz-slider-floor="vm.opacitySlider.floor" rz-slider-ceil="vm.opacitySlider.ceil"></rzslider>
+                            <div id="trans" class="opacitySliderLBLs">
+                                <span>Transparent</span>
+                                <span>Opaque</span>
+                            </div>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="ParknRideLotsSwitch" type="checkbox" data-size="mini" name="ParknRideLotsFL">
+                                <span class="pad-left-m LayerLBLs">Park'n'Ride Lots</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <div class="LayerCategoryLBLs">
+                                    <span>Policy Layers</span>
+                                </div>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL">
+                                <span class="pad-left-m LayerLBLs">Priority Development Areas</span>
+                            </p>
+                        </div>
+                        <div id="PDAsOpacitySlider" class="pad-bottom-l collapse">
+                            <div class="opacitySliderLBLs">
+                                <span>Layer Opacity</span>
+                            </div>
+                            <rzslider rz-slider-model="vm.opacitySlider1.value" rz-slider-floor="vm.opacitySlider1.floor" rz-slider-ceil="vm.opacitySlider1.ceil"></rzslider>
+                            <div id="trans" class="opacitySliderLBLs">
+                                <span>Transparent</span>
+                                <span>Opaque</span>
+                            </div>
+                        </div>
 
-                    <div class="adl">
-                    <p>
-                        <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL">
-                        <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
-                    </p>
-                    </div>
-                    <div id="TPAsOpacitySlider" class="pad-bottom-l collapse">  
-                        <div class="opacitySliderLBLs">
-                        <span>Layer Opacity</span>
-                       </div>
-                        <rzslider rz-slider-model="vm.opacitySlider2.value" rz-slider-floor="vm.opacitySlider2.floor" rz-slider-ceil="vm.opacitySlider2.ceil"></rzslider>
-                         <div id="trans" class="opacitySliderLBLs">
-                        <span>Transparent</span>
-                        <span>Opaque</span>
-                       </div>
-                    </div>
-                    <div class="adl">
-                    <p>
-                    <div class="LayerCategoryLBLs">
-                        <span>Transit Layers</span>
-                    </div>
-                    </p>
-                    </div>
-                    <div class="adl">
-                    <p>
-                        <input id="TransitHubsSwitch" type="checkbox" data-size="mini" name="TransitHubsFL">
-                        <span class="pad-left-m LayerLBLs">Transit Hubs</span>
-                    </p>
-                    </div>
-                    <div class="adl">
-                    <p>
-                        <input id="FerryTerminalsSwitch" type="checkbox" data-size="mini" name="FerryTerminalsFL">
-                        <span class="pad-left-m LayerLBLs">Ferry Terminals</span>
-                    </p>
-                    </div>
-                    <!-- <div class="adl">
+                        <div class="adl">
+                            <p>
+                                <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL">
+                                <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
+                            </p>
+                        </div>
+                        <div id="TPAsOpacitySlider" class="pad-bottom-l collapse">
+                            <div class="opacitySliderLBLs">
+                                <span>Layer Opacity</span>
+                            </div>
+                            <rzslider rz-slider-model="vm.opacitySlider2.value" rz-slider-floor="vm.opacitySlider2.floor" rz-slider-ceil="vm.opacitySlider2.ceil"></rzslider>
+                            <div id="trans" class="opacitySliderLBLs">
+                                <span>Transparent</span>
+                                <span>Opaque</span>
+                            </div>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <div class="LayerCategoryLBLs">
+                                    <span>Transit Layers</span>
+                                </div>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="TransitHubsSwitch" type="checkbox" data-size="mini" name="TransitHubsFL">
+                                <span class="pad-left-m LayerLBLs">Transit Hubs</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="FerryTerminalsSwitch" type="checkbox" data-size="mini" name="FerryTerminalsFL">
+                                <span class="pad-left-m LayerLBLs">Ferry Terminals</span>
+                            </p>
+                        </div>
+                        <!-- <div class="adl">
                     <p>
                         <input id="RailStationsSwitch" type="checkbox" data-size="mini" name="RailStationsFL">
                         <span class="pad-left-m LayerLBLs">Rail Stations</span>
                     </p>
                     </div> -->
-                    <div class="adl">
-                    <p>
-                        <input id="bartSwitch" type="checkbox" data-size="mini" name="BartFL" checked="true">
-                        <span class="pad-left-m LayerLBLs">BART</span>
-                    </p>
-                    </div>
-                    <div class="adl">
-                    <p>
-                        <input id="caltrainSwitch" type="checkbox" data-size="mini" name="CaltrainFL" checked="true">
-                        <span class="pad-left-m LayerLBLs">Caltrain</span>
-                    </p>
-                    </div>
-                    <div class="adl">
-                    <p>
-                        <input id="amtrakSwitch" type="checkbox" data-size="mini" name="AmtrakFL">
-                        <span class="pad-left-m LayerLBLs">Amtrak</span>
-                    </p>
-                    </div>
-                    <div class="adl">
-                    <p>
-                        <input id="lightrailSwitch" type="checkbox" data-size="mini" name="LightRailFL">
-                        <span class="pad-left-m LayerLBLs">Light Rail</span>
-                    </p>
+                        <div class="adl">
+                            <p>
+                                <input id="bartSwitch" type="checkbox" data-size="mini" name="BartFL" checked="true">
+                                <span class="pad-left-m LayerLBLs">BART</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="caltrainSwitch" type="checkbox" data-size="mini" name="CaltrainFL" checked="true">
+                                <span class="pad-left-m LayerLBLs">Caltrain</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="amtrakSwitch" type="checkbox" data-size="mini" name="AmtrakFL">
+                                <span class="pad-left-m LayerLBLs">Amtrak</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="lightrailSwitch" type="checkbox" data-size="mini" name="LightRailFL">
+                                <span class="pad-left-m LayerLBLs">Light Rail</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -708,19 +710,19 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Layer opacity -->
             <div id="layerOpacity" class="tools collapse">
                 <div class="container">
                     <div class="row">
-                    <div class= "col-md-12">
-                        <label for="sel1">Select Layer:</label>
-                          <select class="form-control selectOpLayer" id="sel1">
-                            <option value="PDA_FL">Priority Development Areas</option>
-                            <option value="TPAsFL">Transportation Priority Areas</option>
-                          </select>
-                        <!-- <h4>Layer {{vm.opacitySlider.value}}</h4> -->
-                        <rzslider rz-slider-model="vm.opacitySlider.value" rz-slider-floor="vm.opacitySlider.floor" rz-slider-ceil="vm.opacitySlider.ceil"></rzslider>
+                        <div class="col-md-12">
+                            <label for="sel1">Select Layer:</label>
+                            <select class="form-control selectOpLayer" id="sel1">
+                                <option value="PDA_FL">Priority Development Areas</option>
+                                <option value="TPAsFL">Transportation Priority Areas</option>
+                            </select>
+                            <!-- <h4>Layer {{vm.opacitySlider.value}}</h4> -->
+                            <rzslider rz-slider-model="vm.opacitySlider.value" rz-slider-floor="vm.opacitySlider.floor" rz-slider-ceil="vm.opacitySlider.ceil"></rzslider>
                         </div>
                     </div>
                 </div>

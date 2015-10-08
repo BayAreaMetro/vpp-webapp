@@ -71,9 +71,23 @@ angular.module('vppApp')
             studyAreasRenderer,
             mapLevel,
             clusterLayer,
-            selectedOpLayer
+            selectedOpLayer,
+            //Layer Opacity Settings
+            PDAFLsv,
+            PDAFLop,
+            studyAreasFLsv,
+            studyAreasFLop,
+            TPAsFLsv,
+            TPAsFLop
 
+        PDAFLsv = 70;
+        PDAFLop = 0.7;
+        studyAreasFLsv = 70;
+        studyAreasFLop = 0.7;
+        TPAsFLsv = 70;
+        TPAsFLop = 0.7;
 
+        $scope.legendBTN = false;
 
         w.parser.parse();
         w.esriConfig.defaults.geometryService = new w.GeometryService("http://gis.mtc.ca.gov/mtc/rest/services/Utilities/Geometry/GeometryServer");
@@ -513,41 +527,8 @@ angular.module('vppApp')
 
         });
 
-        saLabelsDL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer", {
-            "opacity": 1
-                //"imageParameters" : imageParameters
-        });
-
+        saLabelsDL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer");
         saLabelsDL.setVisibleLayers([7]);
-
-
-
-        /*ImageParameters = new w.ImageParameters();
-
-          //layer.setLayerDefinitions takes an array.  The index of the array corresponds to the layer id.
-          //In the sample below I add an element in the array at 3,4, and 5.
-          //Those array elements correspond to the layer id within the remote ArcGISDynamicMapServiceLayer
-          var layerDefs = [];
-          layerDefs[5] = "STATE_NAME='Kansas'";
-          layerDefs[4] = "STATE_NAME='Kansas' and POP2007>25000";
-          layerDefs[3] = "STATE_NAME='Kansas' and POP2007>25000";
-          imageParameters.layerDefinitions = layerDefs;
-
-          //I want layers 5,4, and 3 to be visible
-          imageParameters.layerIds = [5, 4, 3];
-          imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
-          imageParameters.transparent = true;
-
-          //construct ArcGISDynamicMapServiceLayer with imageParameters from above
-          var dynamicMapServiceLayer = new ArcGISDynamicMapServiceLayer("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer",
-            {"imageParameters": imageParameters});
-
-          map.addLayer(dynamicMapServiceLayer);
-*/
-
-
-
-
 
 
         PDA_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/OBAG_PDA/OBAG_PDA/MapServer/0", {
@@ -645,21 +626,6 @@ angular.module('vppApp')
 
 
         //Set Map Renderers Section
-        //Add labels for Study Areas
-        var labelColor = new w.Color("#333333");
-
-        var studyAreaLabel = new w.TextSymbol().setColor(labelColor).setOffset(100, 100);
-        studyAreaLabel.font.setSize("18pt");
-        studyAreaLabel.font.setFamily("arial");
-        //studyAreaLabel.font.setWeight(Font.WEIGHT_BOLD);
-
-        var studyAreaLabelRenderer = new w.SimpleRenderer($scope.studyAreaLabel);
-        var labels = new w.LabelLayer({
-            id: "labels"
-        });
-        // tell the label layer to label the states feature layer 
-        // using the field named "Name"
-        //labels.addFeatureLayer(studyAreasFL, studyAreaLabelRenderer, "{" + labelField + "}");
 
 
         //Set Map Renderers for OnStreetInventoryFL
@@ -900,7 +866,7 @@ angular.module('vppApp')
         //https://developers.arcgis.com/javascript/jssamples/renderer_proportional_scale_dependent.html
 
         studyAreasFL.setRenderer(studyAreasRenderer);
-
+        studyAreasFL.setOpacity(studyAreasFLop);
 
 
         //Setting up Point Renderer for FerryTerminalsFL
@@ -916,9 +882,6 @@ angular.module('vppApp')
 
         FerryTerminalsFL.setRenderer(FerryTerminals_Renderer);
 
-
-
-
         //Setting up Point Renderer for ParknRideLotsFL
 
 
@@ -929,11 +892,6 @@ angular.module('vppApp')
         });
 
 
-        /*var ParknRideLots_markerSymbol = new w.SimpleMarkerSymbol();
-        ParknRideLots_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
-        ParknRideLots_markerSymbol.setSize(7);
-        ParknRideLots_markerSymbol.outline.setColor(new w.Color([180, 50, 26, 1]));
-        ParknRideLots_markerSymbol.outline.setWidth(2);*/
         var ParknRideLots_Renderer = new w.SimpleRenderer(ParknRideLots_markerSymbol);
         ParknRideLotsFL.setRenderer(ParknRideLots_Renderer);
 
@@ -992,11 +950,6 @@ angular.module('vppApp')
             "height": 15,
             "width": 15
         });
-        /*var TransitHubs_markerSymbol = new w.SimpleMarkerSymbol();
-        TransitHubs_markerSymbol.setColor(new w.Color([255, 255, 255, 1]));
-        TransitHubs_markerSymbol.setSize(7);
-        TransitHubs_markerSymbol.outline.setColor(new w.Color([36, 135, 74, 1]));
-        TransitHubs_markerSymbol.outline.setWidth(2);*/
 
         var TransitHubs_Renderer = new w.SimpleRenderer(TransitHubs_markerSymbol);
         TransitHubsFL.setRenderer(TransitHubs_Renderer);
@@ -1008,6 +961,8 @@ angular.module('vppApp')
         var TPAs_Renderer = new w.SimpleRenderer(TPAs_Symbol);
 
         TPAsFL.setRenderer(TPAs_Renderer);
+        TPAsFL.setOpacity($scope.TPAsFLop);
+
 
         //PDA Popup and Feature Layer Definition
         var PDA_Color = new w.Color("#b266ff");
@@ -1016,52 +971,7 @@ angular.module('vppApp')
         var PDA_Renderer = new w.SimpleRenderer(PDA_Symbol);
 
         PDA_FL.setRenderer(PDA_Renderer);
-
-
-
-
-
-        /* //COC Popup and Feature Layer Definition
-         var popupTemplate_COC_FL = new w.PopupTemplate({
-             "title": "Community of Concern",
-             "fieldInfos": [{
-                     "fieldName": "totpop",
-                     "label": "Total Population",
-                     "format": {
-                         "places": 0,
-                         "digitSeparator": true
-                     }
-          }
-         ],
-             "description": "Total population is {totpop}"
-         });*/
-
-
-
-
-        /*
-
-                //Feature Layer Renderer for COCs
-                var COC_Color = new w.Color("#ff9999");
-                var COC_Line = new w.SimpleLineSymbol("solid", COC_Color, 2);
-                var COC_Symbol = new w.SimpleFillSymbol("solid", COC_Line, null);
-                var COC_Renderer = new w.SimpleRenderer(COC_Symbol);
-                COC_FL.setDefinitionExpression("cocflag = 1");
-                COC_FL.setRenderer(COC_Renderer);
-        */
-
-        //Add Layers Section All Layers Should be added here
-        //$scope.map.addLayer(COC_FL);
-        //COC_FL.hide();
-        //$scope.map.addLayer(PDA_FL);
-        //PDA_FL.hide();
-        //$scope.map.addLayer(studyAreasFL);
-        //studyAreasFL.hide();
-        //$scope.map.addLayer(OnStreetRestrictionsFL);
-        //$scope.map.addLayer(OffStreetInventoryFL)
-        //$scope.map.addLayer(OnStreetInventoryFL);
-        //OnStreetInventoryFL.hide();
-        //$scope.map.addLayer(vppGraphicsLayer);
+        PDA_FL.setOpacity(0.7);
 
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
@@ -1082,7 +992,6 @@ angular.module('vppApp')
             WEOnStreetOccupancyFL,
             WDOffStreetOccupancyFL,
             WEOffStreetOccupancyFL,
-            //labels, 
             BartFL,
             CaltrainFL,
             AmtrakFL,
@@ -1098,7 +1007,9 @@ angular.module('vppApp')
 
 
         //Map and Featurelayer Utilities
+        //switch this method to the angular $scope.on();
         dojo.connect($scope.map, "onZoomEnd", checkScale);
+
 
 
         function showPointLayers() {
@@ -1125,8 +1036,6 @@ angular.module('vppApp')
             $('input[name="TransitHubsFL"]').bootstrapSwitch('state', false, false);
             $('input[name="ParknRideLotsFL"]').bootstrapSwitch('state', false, false);
         }
-
-
 
 
         function checkScale(extent, zoomFactor, anchor, level) {
@@ -1207,9 +1116,6 @@ angular.module('vppApp')
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
 
-
-
-
                     $("#LegendNamePNL_Occ").fadeIn(500);
                     $("#mlegend_Occ").fadeIn(500);
 
@@ -1266,7 +1172,9 @@ angular.module('vppApp')
         });
 
         $('#mapLegendCTL').on('click', function () {
-            $("#mapLegendPNL").fadeIn(500);
+            $("#mapLegendPNL").fadeIn(500, function () {
+                $scope.legendBTN = false;
+            });
             $("#LegendTitle").text("Legend");
 
 
@@ -1274,6 +1182,7 @@ angular.module('vppApp')
         $('.clickableLegend').on('click', function () {
             $("#mapLegendPNL").fadeOut(300, function () {
                 $("#LegendTitle").text("");
+                $scope.legendBTN = true;
             });
         });
 
@@ -1591,17 +1500,6 @@ angular.module('vppApp')
             //return false;
         });
 
-        $('#layerOpacityCTL').click(function () {
-            clearAllTools();
-            $('#iconTitle').html("<span><i class='fa fa-th-list fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-            $("#title").text("Layer Opacity");
-            $("#mapToolsPNL").fadeIn(500);
-            $("#layerOpacity").fadeIn(500);
-
-        });
-
-
-
         //Show Map Print Controls
         $('#mapPrintCTL').click(function () {
             clearAllTools();
@@ -1641,11 +1539,20 @@ angular.module('vppApp')
                 $("#StudyAreaNamePNL").html("");
             });
             studyAreasFL.show();
+            //Reset Values for Opacity Settings
+            PDAFLsv = 70;
+            PDAFLop = 0.7;
+            studyAreasFLsv = 70;
+            studyAreasFLop = 0.7;
+            TPAsFLsv = 70;
+            TPAsFLop = 0.7;
+
 
         })
 
         //Data Builder
         //Load data for Study Area Search Function
+        //This needs to be fixed so that it shows as a Drop Down Control lke the Data page
         $.ajax({
             dataType: 'json',
             url: publicDataURL + '/data/studyareas',
@@ -1724,19 +1631,18 @@ angular.module('vppApp')
 
 
         function showSAQResults(saqr) {
-            // CheckLegendVisibility();
+            console.clear();
+            console.log("Showing Study Area Results...");
             vppGraphicsLayer.clear();
             var resultFeatures = saqr.features;
-            //console.log(saqr);
-            //console.log(resultFeatures);
+
             for (var i = 0, il = resultFeatures.length; i < il; i++) {
                 var searchresult = resultFeatures[i];
                 searchresult.setSymbol(saq_Symbol);
             }
 
-            //$scope.map.graphics.add(searchresult);
             vppGraphicsLayer.add(searchresult);
-            //console.log(saqr);
+
             $('#StudyAreaNamePNL').html("<span><i class='fa fa-map-marker fa-lg fa-fw'></i></span>&nbsp;&nbsp;<b>Selected Study Area:</b><br/>" + searchresult.attributes.Name + "<br /><small><b class='pad-top-m'>Project Notes:</b><br />" + searchresult.attributes.Notes + "</small>");
             $("#StudyAreaNamePNL").fadeIn(100);
             $scope.map.setExtent(searchresult.geometry.getExtent(), true);
@@ -1762,19 +1668,23 @@ angular.module('vppApp')
                     $("#PDAsOpacitySlider").fadeIn(100);
 
                     $scope.$on("slideEnded", function () {
-                        var sliderValue = $scope.vm.opacitySlider1.value;
-                        var newOpacity = (sliderValue / 100);
-                        PDA_FL.setOpacity(newOpacity);
+                        PDAFLsv = $scope.vm.opacitySlider1.value;
+                        PDAFLop = (PDAFLsv / 100);
+                        PDA_FL.setOpacity(PDAFLop);
                     });
-
 
                     break;
                 case "studyAreasFL":
                     studyAreasFL.show();
+
+                    $scope.$on("slideEnded", function () {
+                        studyAreasFLsv = $scope.vm.opacitySlider.value;
+                        studyAreasFLop = (sliderValue / 100);
+                        studyAreasFL.setOpacity(studyAreasFLop);
+                    });
                     break;
                 case "FerryTerminalsFL":
 
-                    //if (mapLevel>14) {          
                     FerryTerminalsFL.show();
                     $("#mlegend_ferry").fadeIn(100);
                     $("#transitLayersCat").fadeIn(100);
@@ -1796,12 +1706,14 @@ angular.module('vppApp')
                     $("#mlegend_tpas").fadeIn(100);
                     $("#policyLayersCat").fadeIn(100);
                     $("#TPAsOpacitySlider").fadeIn(100);
+
                     $scope.$on("slideEnded", function () {
 
-                        var sliderValue = $scope.vm.opacitySlider2.value;
-                        var newOpacity = (sliderValue / 100);
+                        TPAsFLsv = $scope.vm.opacitySlider2.value;
+                        TPAsFLop = (TPAsFLsv / 100);
 
-                        TPAsFL.setOpacity(newOpacity);
+                        TPAsFL.setOpacity(TPAsFLop);
+
 
                     });
 
@@ -1871,7 +1783,9 @@ angular.module('vppApp')
                     TPAsFL.hide();
                     $("#mlegend_tpas").fadeOut(0);
                     $("#TPAsOpacitySlider").fadeOut(100);
-                    if (PDA_FL.visible) {} else {
+                    if (PDA_FL.visible) {
+
+                    } else {
 
                         $("#policyLayersCat").fadeOut(0);
                     }
@@ -1935,11 +1849,8 @@ angular.module('vppApp')
         //console.clear();
         //$scope.vm.opacitySlider;
         //console.log($scope.vm.opacitySlider);
-        $scope.$on("slideEnded", function () {
-            var sliderValue = $scope.vm.opacitySlider.value;
-            var newOpacity = (sliderValue / 100);
-            studyAreasFL.setOpacity(newOpacity);
-        });
+
+
 
         $scope.activeTheme = function (event) {
             $('.thumbnail').removeClass('active');
