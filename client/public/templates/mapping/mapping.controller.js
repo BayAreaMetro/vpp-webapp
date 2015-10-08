@@ -262,7 +262,7 @@ angular.module('vppApp')
 
 
             ],
-            "description": "There are {Total_Spaces} total parking spaces on this block<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
+            "description": "There are {Total_Spaces} total parking spaces on this block<br><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
                 //"description": "There are {Total_Spaces} total parking spaces in this facility"
         });
 
@@ -320,7 +320,7 @@ angular.module('vppApp')
 
 
             ],
-            "description": "There are {Total_Spaces} total parking spaces in this facility<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
+            "description": "There are {Total_Spaces} total parking spaces in this facility<br><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
                 //"description": "There are {Total_Spaces} total parking spaces in this facility"
         });
 
@@ -378,8 +378,8 @@ angular.module('vppApp')
 
 
             ],
-            "description": "There are {Total_Spaces} total parking spaces on this block<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
-                //"description": "There are {Total_Spaces} total parking spaces in this facility"
+            "description": "There are {Total_Spaces} total parking spaces on this block<br><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
+
         });
 
 
@@ -436,10 +436,14 @@ angular.module('vppApp')
 
 
             ],
-            "description": "There are {Total_Spaces} total parking spaces in this facility<br>Occupancy 5 AM: {Total_5_00}<br>Occupancy 9 AM: {Total_9_00}<br>Occupancy 12 PM: {Total_12_00}<br>Occupancy 4 PM: {Total_16_00}<br>Occupancy 8 PM: {Total_20_00}"
-                //"description": "There are {Total_Spaces} total parking spaces in this facility"
+            "description": "There are {Total_Spaces} total parking spaces in this facility<br><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
+
         });
 
+
+
+
+        $scope.map.infoWindow.resize(400, 250);
 
 
         //Define all Map Layers in this section
