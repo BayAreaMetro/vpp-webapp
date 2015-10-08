@@ -411,7 +411,7 @@
             </li>
             <li><a id="mapBaseCTL"><i class="fa fa-globe fa-lg"></i> Basemaps <span class="arrow clickable"></span></a>
             </li>
-            <li><a id="mapLayersCTL"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a>
+            <li><a id="mapLayersCTL" ng-click="showLayers()"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a>
             </li>
             <li class="divider"></li>
             <li><a id="mapRefreshCTL"><i class="fa fa-refresh fa-lg"></i> Reset Map <span class="arrow clickable"></span></a>
@@ -580,7 +580,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mapLayers" class="tools collapse">
+            <div id="mapLayers" class="tools vHidden zero-h">
                 <div class="container">
                     <p>
                     <div class="LayerCategoryLBLs">

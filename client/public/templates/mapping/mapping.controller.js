@@ -1945,5 +1945,10 @@ angular.module('vppApp')
             $('.thumbnail').removeClass('active');
             $(event.target).parent(".thumbnail").addClass('active');
         };
+        
+        $scope.showLayers = function(){
+	        $("#mapLayers").removeClass('vHidden').removeClass('zero-h');
+	        console.log("!");
+        }
     });
 //EOF
