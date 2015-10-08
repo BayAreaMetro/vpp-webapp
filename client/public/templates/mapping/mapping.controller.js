@@ -19,7 +19,7 @@ angular.module('vppApp')
             WEOnStreetOccupancyFL,
             WEOffStreetOccupancyFL,
             studyAreasFL,
-            saLabelsDL,
+            saLabelsFL,
             ImageParameters,
             // COC_FL,
             PDA_FL,
@@ -80,7 +80,8 @@ angular.module('vppApp')
             studyAreasFLsv,
             studyAreasFLop,
             TPAsFLsv,
-            TPAsFLop
+            TPAsFLop,
+            urlParmresults
 
         PDAFLsv = 70;
         PDAFLop = 0.7;
@@ -88,7 +89,6 @@ angular.module('vppApp')
         studyAreasFLop = 0.7;
         TPAsFLsv = 70;
         TPAsFLop = 0.7;
-
         $scope.legendBTN = false;
 
         w.parser.parse();
@@ -159,20 +159,7 @@ angular.module('vppApp')
         $scope.map.on("load", function () {
             mapCenter = getCenterPoint();
         });
-        //Load Study Area from Parking Data
-        $.urlParam = function (name) {
-            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-            if (results == null) {
-                return null;
-            } else {
-                return results[1] || 0;
-            }
-        }
-        if (decodeURIComponent($.urlParam('sa')).length > 0) {
-            var sa = decodeURIComponent($.urlParam('sa'));
-            ZoomStudyArea(sa);
-        }
-        //End of Study Area from Parking Data
+
 
         //Added this code to fix HomeButton Issue
         w.registry.remove("HomeButton");
@@ -529,8 +516,8 @@ angular.module('vppApp')
 
         });
 
-        saLabelsDL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer");
-        saLabelsDL.setVisibleLayers([7]);
+        saLabelsFL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer");
+        saLabelsFL.setVisibleLayers([7]);
 
 
         PDA_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/OBAG_PDA/OBAG_PDA/MapServer/0", {
@@ -963,7 +950,7 @@ angular.module('vppApp')
         var TPAs_Renderer = new w.SimpleRenderer(TPAs_Symbol);
 
         TPAsFL.setRenderer(TPAs_Renderer);
-        TPAsFL.setOpacity($scope.TPAsFLop);
+        TPAsFL.setOpacity(TPAsFLop);
 
 
         //PDA Popup and Feature Layer Definition
@@ -973,7 +960,7 @@ angular.module('vppApp')
         var PDA_Renderer = new w.SimpleRenderer(PDA_Symbol);
 
         PDA_FL.setRenderer(PDA_Renderer);
-        PDA_FL.setOpacity(0.7);
+        PDA_FL.setOpacity(PDAFLop);
 
         //Layer Order can be defined two ways: Using addLayer(layer, index?) where index sets the order for the map. The order is largest number is on top.  Or using addLayers([layer1, layer2, layer3]) Layers at the end have a larger index number.
 
@@ -1001,7 +988,7 @@ angular.module('vppApp')
             FerryTerminalsFL,
             ParknRideLotsFL,
             TransitHubsFL,
-            saLabelsDL
+            saLabelsFL
         ]);
 
         //Set Curent Map Theme
@@ -1633,7 +1620,7 @@ angular.module('vppApp')
 
 
         function showSAQResults(saqr) {
-            console.clear();
+            //console.clear();
             console.log("Showing Study Area Results...");
             vppGraphicsLayer.clear();
             var resultFeatures = saqr.features;
@@ -1669,21 +1656,12 @@ angular.module('vppApp')
                     $("#policyLayersCat").fadeIn(100);
                     $("#PDAsOpacitySlider").fadeIn(100);
 
-                    $scope.$on("slideEnded", function () {
-                        PDAFLsv = $scope.vm.opacitySlider1.value;
-                        PDAFLop = (PDAFLsv / 100);
-                        PDA_FL.setOpacity(PDAFLop);
-                    });
 
                     break;
                 case "studyAreasFL":
                     studyAreasFL.show();
 
-                    $scope.$on("slideEnded", function () {
-                        studyAreasFLsv = $scope.vm.opacitySlider.value;
-                        studyAreasFLop = (sliderValue / 100);
-                        studyAreasFL.setOpacity(studyAreasFLop);
-                    });
+
                     break;
                 case "FerryTerminalsFL":
 
@@ -1709,15 +1687,7 @@ angular.module('vppApp')
                     $("#policyLayersCat").fadeIn(100);
                     $("#TPAsOpacitySlider").fadeIn(100);
 
-                    $scope.$on("slideEnded", function () {
 
-                        TPAsFLsv = $scope.vm.opacitySlider2.value;
-                        TPAsFLop = (TPAsFLsv / 100);
-
-                        TPAsFL.setOpacity(TPAsFLop);
-
-
-                    });
 
 
                     break;
@@ -1848,26 +1818,57 @@ angular.module('vppApp')
             ceil: 100,
             value: 70
         };
-        //console.clear();
-        //$scope.vm.opacitySlider;
-        //console.log($scope.vm.opacitySlider);
 
+        $scope.$on("slideEnded", function () {
+            //console.clear();
+            studyAreasFLsv = $scope.vm.opacitySlider.value;
+            studyAreasFLop = (studyAreasFLsv / 100);
+            studyAreasFL.setOpacity(studyAreasFLop);
+            studyAreasFL.refresh();
+            console.log(studyAreasFLop);
+            TPAsFLsv = $scope.vm.opacitySlider2.value;
+            TPAsFLop = (TPAsFLsv / 100);
+            TPAsFL.setOpacity(TPAsFLop);
+            TPAsFL.refresh();
+            console.log(TPAsFLop);
+            PDAFLsv = $scope.vm.opacitySlider1.value;
+            PDAFLop = (PDAFLsv / 100);
+            PDA_FL.setOpacity(PDAFLop);
+            PDA_FL.refresh();
+            console.log(PDAFLop);
+        });
         $scope.activeTheme = function (event) {
             $('.thumbnail').removeClass('active');
             $(event.target).parent(".thumbnail").addClass('active');
         };
-        
-        $scope.showLayers = function(){
-	        $("#mapLayers").removeClass('vHidden').removeClass('zero-h');
+
+        //Load Study Area from Parking Data
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            } else {
+                return results[1] || 0;
+            }
+        }
+        var hasURLparam = decodeURIComponent($.urlParam('sa'));
+        if (hasURLparam > 0) {
+            var sa = decodeURIComponent($.urlParam('sa'));
+            ZoomStudyArea(sa);
+        }
+        //End of Study Area from Parking Data
+
+
+        $scope.showLayers = function () {
+            $("#mapLayers").removeClass('vHidden').removeClass('zero-h');
         };
-        
-        $scope.printMap = function(){
-	        console.log("asdg");
-	        $scope.createElement(document.getElementById("map"), "print-map");
-	        $scope.createElement(document.getElementById("mapLegend"), "print-legend");
-	        print();
+
+        $scope.printMap = function () {
+            $scope.createElement(document.getElementById("map"), "print-map");
+            $scope.createElement(document.getElementById("mapLegend"), "print-legend");
+            print();
         };
-        
+
         $scope.createElement = function (element, print) {
 
             $scope.node = element.cloneNode(true);
@@ -1883,15 +1884,14 @@ angular.module('vppApp')
 
             $scope.printerElement.appendChild($scope.node);
         };
-        
+
         //For opcacity switches
         $scope.toggleDevArea = function(){
-			$scope.isActiveDev = !$scope.isActive;	
+			$scope.isActiveDev = !$scope.isActive;
 		};
-		
 		$scope.toggleTransArea = function(){
-			$scope.isActiveTrans = !$scope.isActive;	
+			$scope.isActiveTrans = !$scope.isActive;
 		};
-        
+
     });
 //EOF
