@@ -550,6 +550,8 @@
                             <p>Peak Occupancy</p>
                         </div>
                     </div>
+                    <button class="btn btn-primary" ng-click="toggleDevArea()">Toggle on and off</button>
+                    <button class="btn btn-primary" ng-click="toggleTransArea()">Toggle on and off</button>
                 </div>
             </div>
             <div id="mapBasemaps" class="tools collapse">
@@ -624,7 +626,7 @@
                                 <span class="pad-left-m LayerLBLs">Priority Development Areas</span>
                             </p>
                         </div>
-                        <div id="PDAsOpacitySlider" class="pad-bottom-l collapse">
+                        <div id="PDAsOpacitySlider" class="pad-bottom-l" ng-show="isActiveDev">
                             <div class="opacitySliderLBLs">
                                 <span>Layer Opacity</span>
                             </div>
@@ -641,7 +643,7 @@
                                 <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
                             </p>
                         </div>
-                        <div id="TPAsOpacitySlider" class="pad-bottom-l collapse">
+                        <div id="TPAsOpacitySlider" class="pad-bottom-l" ng-show="isActiveTrans">
                             <div class="opacitySliderLBLs">
                                 <span>Layer Opacity</span>
                             </div>

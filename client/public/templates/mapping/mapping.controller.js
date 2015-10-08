@@ -6,7 +6,9 @@ angular.module('vppApp')
         //Vars always at the top
         $scope.layerOpacity;
         $scope.vm = this;
-
+		$scope.isActiveTrans;
+		$scope.isActiveDev;
+		
         var w = wish.get(),
             OnStreetInventoryFL,
             OffStreetInventoryFL,
@@ -1881,6 +1883,15 @@ angular.module('vppApp')
 
             $scope.printerElement.appendChild($scope.node);
         };
+        
+        //For opcacity switches
+        $scope.toggleDevArea = function(){
+			$scope.isActiveDev = !$scope.isActive;	
+		};
+		
+		$scope.toggleTransArea = function(){
+			$scope.isActiveTrans = !$scope.isActive;	
+		};
         
     });
 //EOF

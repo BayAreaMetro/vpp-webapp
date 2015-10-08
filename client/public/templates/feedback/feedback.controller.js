@@ -10,6 +10,11 @@ angular.module('vppApp')
 			$scope.feedbackType;
 			$scope.feedbackComment;
 			$scope.feedbackMessage;
+			$scope.isActive;
+			
+			$scope.toggle = function(){
+				$scope.isActive = !$scope.isActive;	
+			};
 			
 			var devDataUrl = "http://localhost:3003";
 			var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
