@@ -6,9 +6,9 @@ angular.module('vppApp')
         //Vars always at the top
         $scope.layerOpacity;
         $scope.vm = this;
-		$scope.isActiveTrans;
-		$scope.isActiveDev;
-		
+        $scope.isActiveTrans;
+        $scope.isActiveDev;
+
         var w = wish.get(),
             OnStreetInventoryFL,
             OffStreetInventoryFL,
@@ -1654,9 +1654,9 @@ angular.module('vppApp')
                     PDA_FL.show();
                     $("#mlegend_pdas").fadeIn(100);
                     $("#policyLayersCat").fadeIn(100);
-                    $("#PDAsOpacitySlider").fadeIn(100);
-
-
+                    //$("#PDAsOpacitySlider").fadeIn(100);
+                    $scope.toggleDevArea();
+                    //$scope.isActiveDev = !$scope.isActive;
                     break;
                 case "studyAreasFL":
                     studyAreasFL.show();
@@ -1685,9 +1685,9 @@ angular.module('vppApp')
                     TPAsFL.show();
                     $("#mlegend_tpas").fadeIn(100);
                     $("#policyLayersCat").fadeIn(100);
-                    $("#TPAsOpacitySlider").fadeIn(100);
-
-
+                    //$("#TPAsOpacitySlider").fadeIn(100);
+                    $scope.toggleTransArea();
+                    //$scope.isActiveTrans = !$scope.isActive;
 
 
                     break;
@@ -1886,12 +1886,12 @@ angular.module('vppApp')
         };
 
         //For opcacity switches
-        $scope.toggleDevArea = function(){
-			$scope.isActiveDev = !$scope.isActive;
-		};
-		$scope.toggleTransArea = function(){
-			$scope.isActiveTrans = !$scope.isActive;
-		};
+        $scope.toggleDevArea = function () {
+            $scope.isActiveDev = !$scope.isActive;
+        };
+        $scope.toggleTransArea = function () {
+            $scope.isActiveTrans = !$scope.isActive;
+        };
 
     });
 //EOF
