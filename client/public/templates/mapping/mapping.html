@@ -625,14 +625,16 @@
                         <div class="adl">
 	                        
                             <p class="custom-switch">
+								<!--
 	                            <button class="btn btn-default toggle-button" ng-click="toggleDevArea($event)" >
 	                            	{{switchButtonDev}}
 	                            </button>
-								<!-- <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL" class="hidden"> -->
+								-->
+								<input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL" checked="true">
                                 <span class="pad-left-m LayerLBLs">Priority Development Areas</span>
                             </p>
                         </div>
-                        <div id="PDAsOpacitySlider" class="pad-bottom-l" ng-show="isActiveDev">
+                        <div id="PDAsOpacitySlider" class="pad-bottom-l" ng-hide="isActiveDev">
                             <div class="opacitySliderLBLs">
                                 <span>Layer Opacity</span>
                             </div>
@@ -645,14 +647,16 @@
 
                         <div class="adl">
                             <p>
+	                            <!--
 	                            <button class="btn btn-default toggle-button" ng-click="toggleTransArea($event)">
 	                            	{{switchButtonTrans}}
 	                            </button>
-								<!-- <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL"> -->
+	                            -->
+								<input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL" checked="true">
                                 <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
                             </p>
                         </div>
-                        <div id="TPAsOpacitySlider" class="pad-bottom-l" ng-show="isActiveTrans">
+                        <div id="TPAsOpacitySlider" class="pad-bottom-l" ng-hide="isActiveTrans">
                             <div class="opacitySliderLBLs">
                                 <span>Layer Opacity</span>
                             </div>
