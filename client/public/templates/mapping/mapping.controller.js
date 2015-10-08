@@ -78,7 +78,8 @@ angular.module('vppApp')
             studyAreasFLsv,
             studyAreasFLop,
             TPAsFLsv,
-            TPAsFLop
+            TPAsFLop,
+            urlParmresults
 
         PDAFLsv = 70;
         PDAFLop = 0.7;
@@ -86,7 +87,6 @@ angular.module('vppApp')
         studyAreasFLop = 0.7;
         TPAsFLsv = 70;
         TPAsFLop = 0.7;
-
         $scope.legendBTN = false;
 
         w.parser.parse();
@@ -157,20 +157,7 @@ angular.module('vppApp')
         $scope.map.on("load", function () {
             mapCenter = getCenterPoint();
         });
-        //Load Study Area from Parking Data
-        $.urlParam = function (name) {
-            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-            if (results == null) {
-                return null;
-            } else {
-                return results[1] || 0;
-            }
-        }
-        if (decodeURIComponent($.urlParam('sa')).length > 0) {
-            var sa = decodeURIComponent($.urlParam('sa'));
-            ZoomStudyArea(sa);
-        }
-        //End of Study Area from Parking Data
+
 
         //Added this code to fix HomeButton Issue
         w.registry.remove("HomeButton");
@@ -1631,7 +1618,7 @@ angular.module('vppApp')
 
 
         function showSAQResults(saqr) {
-            console.clear();
+            //console.clear();
             console.log("Showing Study Area Results...");
             vppGraphicsLayer.clear();
             var resultFeatures = saqr.features;
@@ -1846,15 +1833,27 @@ angular.module('vppApp')
             ceil: 100,
             value: 70
         };
-        //console.clear();
-        //$scope.vm.opacitySlider;
-        //console.log($scope.vm.opacitySlider);
-
 
 
         $scope.activeTheme = function (event) {
             $('.thumbnail').removeClass('active');
             $(event.target).parent(".thumbnail").addClass('active');
         };
+
+        //Load Study Area from Parking Data
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            } else {
+                return results[1] || 0;
+            }
+        }
+        var hasURLparam = decodeURIComponent($.urlParam('sa'));
+        if (hasURLparam > 0) {
+            var sa = decodeURIComponent($.urlParam('sa'));
+            ZoomStudyArea(sa);
+        }
+        //End of Study Area from Parking Data
     });
 //EOF
