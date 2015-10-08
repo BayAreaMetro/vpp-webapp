@@ -8,6 +8,8 @@ angular.module('vppApp')
         $scope.vm = this;
         $scope.isActiveTrans;
         $scope.isActiveDev;
+        $scope.switchButtonDev = "Off";
+        $scope.switchButtonTrans = "Off";
 
         var w = wish.get(),
             OnStreetInventoryFL,
@@ -1886,12 +1888,29 @@ angular.module('vppApp')
         };
 
         //For opcacity switches
-        $scope.toggleDevArea = function () {
-            $scope.isActiveDev = !$scope.isActive;
+        $scope.toggleDevArea = function(event) {
+            $scope.isActiveDev = !$scope.isActiveDev;
+            if($scope.isActiveDev === true){
+	            $scope.switchButton = "On";
+	            $(event.target).closest('.toggle-button').addClass("btn-primary").removeClass('btn-default');
+            } else if ($scope.isActiveDev === false){
+	            $scope.switchButton = 'Off';
+	            $('.toggle-button').addClass("btn-default").removeClass('btn-primary');
+            }
+            
+            
+            console.log('Dev',$scope.isActiveDev);
         };
-        $scope.toggleTransArea = function () {
-            $scope.isActiveTrans = !$scope.isActive;
+        $scope.toggleTransArea = function (event) {
+            $scope.isActiveTrans = !$scope.isActiveTrans;
+            if($scope.isActiveTrans === true){
+	            $scope.switchButton = "On";
+	            $(event.target).closest('.toggle-button').addClass("btn-primary").removeClass('btn-default');
+            } else if ($scope.isActiveTrans === false){
+	            $scope.switchButton = 'Off';
+	            $(event.target).closest('.toggle-button').addClass("btn-default").removeClass('btn-primary');
+            }
         };
-
+		
     });
 //EOF

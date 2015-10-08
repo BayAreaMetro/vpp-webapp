@@ -551,7 +551,7 @@
                         </div>
                     </div>
 <!--
-                    <button class="btn btn-primary" ng-click="toggleDevArea()">Toggle on and off</button>
+                    <button class="btn btn-primary" ng-click="toggleDevArea()">On</button>
                     <button class="btn btn-primary" ng-click="toggleTransArea()">Toggle on and off</button>
 -->
                 </div>
@@ -623,8 +623,12 @@
                             </p>
                         </div>
                         <div class="adl">
-                            <p>
-                                <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL">
+	                        
+                            <p class="custom-switch">
+	                            <button class="btn btn-default toggle-button" ng-click="toggleDevArea($event)" >
+	                            	{{switchButtonDev}}
+	                            </button>
+								<!-- <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL" class="hidden"> -->
                                 <span class="pad-left-m LayerLBLs">Priority Development Areas</span>
                             </p>
                         </div>
@@ -641,7 +645,10 @@
 
                         <div class="adl">
                             <p>
-                                <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL">
+	                            <button class="btn btn-default toggle-button" ng-click="toggleTransArea($event)">
+	                            	{{switchButtonTrans}}
+	                            </button>
+								<!-- <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL"> -->
                                 <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
                             </p>
                         </div>
