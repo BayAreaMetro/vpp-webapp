@@ -440,9 +440,6 @@ angular.module('vppApp')
 
         });
 
-
-
-
         $scope.map.infoWindow.resize(400, 250);
 
 
@@ -1661,7 +1658,7 @@ angular.module('vppApp')
                     $("#mlegend_pdas").fadeIn(100);
                     $("#policyLayersCat").fadeIn(100);
                     //$("#PDAsOpacitySlider").fadeIn(100);
-                    $scope.toggleDevArea();
+                    //$scope.toggleDevArea();
                     //$scope.isActiveDev = !$scope.isActive;
                     break;
                 case "studyAreasFL":
@@ -1692,7 +1689,7 @@ angular.module('vppApp')
                     $("#mlegend_tpas").fadeIn(100);
                     $("#policyLayersCat").fadeIn(100);
                     //$("#TPAsOpacitySlider").fadeIn(100);
-                    $scope.toggleTransArea();
+                    //$scope.toggleTransArea();
                     //$scope.isActiveTrans = !$scope.isActive;
 
 
@@ -1892,29 +1889,29 @@ angular.module('vppApp')
         };
 
         //For opcacity switches
-        $scope.toggleDevArea = function(event) {
+        $scope.toggleDevArea = function (event) {
             $scope.isActiveDev = !$scope.isActiveDev;
-            if($scope.isActiveDev === true){
-	            $scope.switchButton = "On";
-	            $(event.target).closest('.toggle-button').addClass("btn-primary").removeClass('btn-default');
-            } else if ($scope.isActiveDev === false){
-	            $scope.switchButton = 'Off';
-	            $('.toggle-button').addClass("btn-default").removeClass('btn-primary');
+            if ($scope.isActiveDev === true) {
+                $scope.switchButton = "On";
+                $(event.target).closest('.toggle-button').addClass("btn-primary").removeClass('btn-default');
+            } else if ($scope.isActiveDev === false) {
+                $scope.switchButton = 'Off';
+                $('.toggle-button').addClass("btn-default").removeClass('btn-primary');
             }
-            
-            
-            console.log('Dev',$scope.isActiveDev);
+
+
+            console.log('Dev', $scope.isActiveDev);
         };
         $scope.toggleTransArea = function (event) {
             $scope.isActiveTrans = !$scope.isActiveTrans;
-            if($scope.isActiveTrans === true){
-	            $scope.switchButton = "On";
-	            $(event.target).closest('.toggle-button').addClass("btn-primary").removeClass('btn-default');
-            } else if ($scope.isActiveTrans === false){
-	            $scope.switchButton = 'Off';
-	            $(event.target).closest('.toggle-button').addClass("btn-default").removeClass('btn-primary');
+            if ($scope.isActiveTrans === true) {
+                $scope.switchButton = "On";
+                $(event.target).closest('.toggle-button').addClass("btn-primary").removeClass('btn-default');
+            } else if ($scope.isActiveTrans === false) {
+                $scope.switchButton = 'Off';
+                $(event.target).closest('.toggle-button').addClass("btn-default").removeClass('btn-primary');
             }
         };
-		
+
     });
 //EOF

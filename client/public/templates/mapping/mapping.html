@@ -456,8 +456,6 @@
         </div>
     </div>
 </div>
-
-
 <div id="PeakOccBTN">
     <div id="PeakTypeOptionsBTN" class="text-center collapse">
         <div class="dropdown">
@@ -478,13 +476,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 
 <div id="mt">
     <div id="mapToolsPNL" class="panel panel-info collapse">
@@ -550,7 +541,7 @@
                             <p>Peak Occupancy</p>
                         </div>
                     </div>
-<!--
+                    <!--
                     <button class="btn btn-primary" ng-click="toggleDevArea()">On</button>
                     <button class="btn btn-primary" ng-click="toggleTransArea()">Toggle on and off</button>
 -->
@@ -584,7 +575,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="mapLayers" class="tools vHidden zero-h">
                 <div class="row">
                     <div class="col-md-12">
@@ -623,16 +613,18 @@
                             </p>
                         </div>
                         <div class="adl">
-	                        
+
                             <p class="custom-switch">
+                                <!--
 	                            <button class="btn btn-default toggle-button" ng-click="toggleDevArea($event)" >
-	                            	{{switchButtonDev}}
+	                            	
 	                            </button>
-								<!-- <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL" class="hidden"> -->
+-->
+                                <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL">
                                 <span class="pad-left-m LayerLBLs">Priority Development Areas</span>
                             </p>
                         </div>
-                        <div id="PDAsOpacitySlider" class="pad-bottom-l" ng-show="isActiveDev">
+                        <div id="PDAsOpacitySlider" class="pad-bottom-l">
                             <div class="opacitySliderLBLs">
                                 <span>Layer Opacity</span>
                             </div>
@@ -645,14 +637,16 @@
 
                         <div class="adl">
                             <p>
+                                <!--
 	                            <button class="btn btn-default toggle-button" ng-click="toggleTransArea($event)">
-	                            	{{switchButtonTrans}}
+	                            	
 	                            </button>
-								<!-- <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL"> -->
+-->
+                                <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL">
                                 <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
                             </p>
                         </div>
-                        <div id="TPAsOpacitySlider" class="pad-bottom-l" ng-show="isActiveTrans">
+                        <div id="TPAsOpacitySlider" class="pad-bottom-l">
                             <div class="opacitySliderLBLs">
                                 <span>Layer Opacity</span>
                             </div>
