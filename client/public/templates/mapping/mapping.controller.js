@@ -1850,8 +1850,6 @@ angular.module('vppApp')
         //$scope.vm.opacitySlider;
         //console.log($scope.vm.opacitySlider);
 
-
-
         $scope.activeTheme = function (event) {
             $('.thumbnail').removeClass('active');
             $(event.target).parent(".thumbnail").addClass('active');
@@ -1859,7 +1857,30 @@ angular.module('vppApp')
         
         $scope.showLayers = function(){
 	        $("#mapLayers").removeClass('vHidden').removeClass('zero-h');
-	        console.log("!");
-        }
+        };
+        
+        $scope.printMap = function(){
+	        console.log("asdg");
+	        $scope.createElement(document.getElementById("map"), "print-map");
+	        $scope.createElement(document.getElementById("mapLegend"), "print-legend");
+	        print();
+        };
+        
+        $scope.createElement = function (element, print) {
+
+            $scope.node = element.cloneNode(true);
+            $scope.printerElement = document.getElementById(print);
+
+            if (!$scope.printerElement) {
+                $scope.printerElement = document.createElement("div");
+                $scope.printerElement.id = print;
+                document.body.appendChild($scope.printerElement);
+            }
+
+            $scope.printerElement.innerHTML = "";
+
+            $scope.printerElement.appendChild($scope.node);
+        };
+        
     });
 //EOF
