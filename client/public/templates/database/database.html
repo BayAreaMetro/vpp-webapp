@@ -28,7 +28,7 @@
                                             {{selectedStudyArea}}
                                             <span class="caret pull-right ma-top-s"></span>
                                         </button>
-                                        <ul class="dropdown-menu ddStudyAreaSummary" aria-labelledby="list-1" ng-click="getStudyArea($event)">
+                                        <ul class="dropdown-menu ddStudyAreaSummary" aria-labelledby="list-1">
                                             <li ng-repeat="data in studyArea" class="study-li-summary">
                                                 <p class="hidden selected-id">{{data.Project_ID}}</p>
                                                 <p class="selected-area">{{data.Name}}</p>
@@ -173,8 +173,8 @@
                                         </button>
                                         <ul class="dropdown-menu ddPtypeInventory" aria-labelledby="ptypelist" ng-click="getPtypeINV($event)">
                                             <li ng-repeat="data in PtypeINV" class="ptype-li-inventory">
-                                                <p class="hidden selected-ptype">{{data.Ptype}}</p>
-                                                <p class="selected-area">{{data.Description}}</p>
+                                                <p class="hidden selected-ptype-inv-val">{{data.Ptype}}</p>
+                                                <p class="selected-ptype-inv">{{data.Description}}</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -192,7 +192,7 @@
                                             <span class="caret pull-right ma-top-s"></span>
                                         </button>
                                         <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaINV" ng-click="getCollectionYear($event)">
-                                            <li ng-repeat="data in cy" class="cy-li-studyArea">
+                                            <li ng-repeat="data in cy" class="cy-li-collectionYearINV">
                                                 <p id="selectCollectionYearINV" class="selected-year">{{data.CollectionYear}}</p>
                                             </li>
                                         </ul>
@@ -309,9 +309,9 @@
                                             <span class="caret pull-right ma-top-s"></span>
                                         </button>
                                         <ul class="dropdown-menu ddPtypeOccupancy" aria-labelledby="ptypelist-occ" ng-click="getPtypeOCC($event)">
-                                            <li ng-repeat="data in PtypeOCC" class="ptype-li-occ">
-                                                <p class="hidden selected-ptype">{{data.Ptype}}</p>
-                                                <p class="selected-area">{{data.Description}}</p>
+                                            <li ng-repeat="data in PtypeOCC" class="ptype-li-occupancy">
+                                                <p class="hidden selected-ptype-occ-val">{{data.Ptype}}</p>
+                                                <p class="selected-ptype-occ">{{data.Description}}</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -328,8 +328,8 @@
                                             {{selectedCollectionYear}}
                                             <span class="caret pull-right ma-top-s"></span>
                                         </button>
-                                        <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaOCC" ng-click="getCollectionYear($event)">
-                                            <li ng-repeat="data in cy" class="cy-li-studyArea">
+                                        <ul class="dropdown-menu ddCollectionYearOCC" aria-labelledby="cysaOCC" ng-click="getCollectionYear($event)">
+                                            <li ng-repeat="data in cy" class="cy-li-collectionYearOCC">
                                                 <p id="selectCollectionYearOCC" class="selected-year">{{data.CollectionYear}}</p>
                                             </li>
                                         </ul>
@@ -494,31 +494,35 @@
                             </div>
                             <div id="ParkingSupply" ng-repeat="summary in MasterSummaryData" ng-show="supply || showAll">
                                 <h3>Parking Supply</h3>
+
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="width: 450px">Category</th>
-                                            <th>On-Street</th>
-                                            <th>Percent</th>
-                                            <th>Off-Street</th>
-                                            <th>Percent</th>
-                                            <th>Total</th>
-
+                                            <th rowspan="2" style="width: 450px">Category</th>
+                                            <th colspan="2" class="text-center">On Street Parking</th>
+                                            <th colspan="2" class="text-center">Off Street Parking</th>
+                                            <th rowspan="2" class="text-center" style="vertical-align:middle">Total</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td style="vertical-align:middle">Total number of spaces
                                                 <br />where data was collected</td>
-                                            <td>{{summary.Total_On | number}}
+                                            <td class="text-center">{{summary.Total_On | number}}
                                             </td>
-                                            <td>{{summary.Total_On_PCT}}%
+                                            <td class="text-center">{{summary.Total_On_PCT}}%
                                             </td>
-                                            <td>{{summary.Total_Off}}
-                                            </td>
-                                            <td>{{summary.Total_Off_PCT}}%
-                                            </td>
-                                            <td>{{summary.Total_Both | number}}
+                                            <td class="text-center">{{summary.Total_Off}}
+                                            </td class="text-center">
+                                            <td class="text-center">{{summary.Total_Off_PCT}}%
+                                            </td class="text-center">
+                                            <td class="text-center">{{summary.Total_Both | number}}
                                             </td>
 
 
@@ -531,121 +535,124 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="width: 450px">Category</th>
-                                            <th>On-Street</th>
-                                            <th>Percent</th>
-                                            <th>Off-Street</th>
-                                            <th>Percent</th>
-                                            <th>Total</th>
-
+                                            <th rowspan="2" style="width: 450px">Category</th>
+                                            <th colspan="2" class="text-center">On Street Parking</th>
+                                            <th colspan="2" class="text-center">Off Street Parking</th>
+                                            <th rowspan="2" class="text-center" style="vertical-align:middle">Total</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>Unregulated spaces</td>
-                                            <td><span id="Unregulated_Spaces_On">{{type.Unregulated_Spaces_On | number}}</span>
+                                            <td class="text-center"><span id="Unregulated_Spaces_On">{{type.Unregulated_Spaces_On | number}}</span>
                                             </td>
-                                            <td>{{type.Unregulated_Spaces_On_PCT}}%</td>
-                                            <td><span id="Unregulated_Spaces_Off">{{type.Unregulated_Spaces_Off | number}}</span>
+                                            <td class="text-center">{{type.Unregulated_Spaces_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Unregulated_Spaces_Off">{{type.Unregulated_Spaces_Off | number}}</span>
                                             </td>
-                                            <td>{{type.Unregulated_Spaces_Off_PCT}}%</td>
-                                            <td><span id="Unregulated_Spaces_Tot">{{type.Unregulated_Spaces_Total | number}}</span>
+                                            <td class="text-center">{{type.Unregulated_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Unregulated_Spaces_Tot">{{type.Unregulated_Spaces_Total | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Time and meter regulated spaces</td>
-                                            <td><span id="Time_and_Meter_Regulated_Spaces_On">{{type.Time_and_Meter_Regulated_Spaces_On | number}}</span>
+                                            <td class="text-center"><span id="Time_and_Meter_Regulated_Spaces_On">{{type.Time_and_Meter_Regulated_Spaces_On | number}}</span>
                                             </td>
-                                            <td>{{type.Time_and_Meter_Regulated_Spaces_On_PCT}}%</td>
-                                            <td><span id="Time_and_Meter_Regulated_Spaces_Off">{{type.Time_and_Meter_Regulated_Spaces_Off | number}}</span>
+                                            <td class="text-center">{{type.Time_and_Meter_Regulated_Spaces_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_and_Meter_Regulated_Spaces_Off">{{type.Time_and_Meter_Regulated_Spaces_Off | number}}</span>
                                             </td>
-                                            <td>{{type.Time_and_Meter_Regulated_Spaces_Off_PCT}}%</td>
-                                            <td><span id="Time_and_Meter_Regulated_Spaces_Tot">{{type.Time_and_Meter_Regulated_Spaces_Tot | number}}</span>
+                                            <td class="text-center">{{type.Time_and_Meter_Regulated_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_and_Meter_Regulated_Spaces_Tot">{{type.Time_and_Meter_Regulated_Spaces_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Time-only regulated spaces</td>
-                                            <td><span id="Time_Only_Regulated_Spaces_On">{{type.Time_Only_Regulated_Spaces_On | number}}</span>
+                                            <td class="text-center"><span id="Time_Only_Regulated_Spaces_On">{{type.Time_Only_Regulated_Spaces_On | number}}</span>
                                             </td>
-                                            <td>{{type.Time_Only_Regulated_Spaces_On_PCT}}%</td>
-                                            <td><span id="Time_Only_Regulated_Spaces_Off">{{type.Time_Only_Regulated_Spaces_Off | number}}</span>
+                                            <td class="text-center">{{type.Time_Only_Regulated_Spaces_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_Only_Regulated_Spaces_Off">{{type.Time_Only_Regulated_Spaces_Off | number}}</span>
                                             </td>
-                                            <td>{{type.Time_Only_Regulated_Spaces_Off_PCT}}%</td>
-                                            <td><span id="Time_Only_Regulated_Spaces_Tot">{{type.Time_Only_Regulated_Spaces_Tot | number}}</span>
+                                            <td class="text-center">{{type.Time_Only_Regulated_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_Only_Regulated_Spaces_Tot">{{type.Time_Only_Regulated_Spaces_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Meter-only regulated spaces</td>
-                                            <td><span id="Meter_Only_Regulated_Spaces_On">{{type.Meter_Only_Regulated_Spaces_On | number}}</span>
+                                            <td class="text-center"><span id="Meter_Only_Regulated_Spaces_On">{{type.Meter_Only_Regulated_Spaces_On | number}}</span>
                                             </td>
-                                            <td>{{type.Meter_Only_Regulated_Spaces_On_PCT}}%</td>
-                                            <td><span id="Meter_Only_Regulated_Spaces_Off">{{type.Meter_Only_Regulated_Spaces_Off | number}}</span>
+                                            <td class="text-center">{{type.Meter_Only_Regulated_Spaces_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Meter_Only_Regulated_Spaces_Off">{{type.Meter_Only_Regulated_Spaces_Off | number}}</span>
                                             </td>
-                                            <td>{{type.Meter_Only_Regulated_Spaces_Off_PCT}}%</td>
-                                            <td><span id="Meter_Only_Regulated_Spaces_Tot">{{type.Meter_Only_Regulated_Spaces_Tot | number}}</span>
+                                            <td class="text-center">{{type.Meter_Only_Regulated_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Meter_Only_Regulated_Spaces_Tot">{{type.Meter_Only_Regulated_Spaces_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Accessible (ADA) spaces</td>
-                                            <td><span id="ADA_Spaces_On">{{type.ADA_Spaces_On | number}}</span>
+                                            <td class="text-center"><span id="ADA_Spaces_On">{{type.ADA_Spaces_On | number}}</span>
                                             </td>
-                                            <td>{{type.ADA_Spaces_On_PCT}}%</td>
-                                            <td><span id="ADA_Spaces_Off">{{type.ADA_Spaces_Off |  number}}</span>
+                                            <td class="text-center">{{type.ADA_Spaces_On_PCT}}%</td>
+                                            <td class="text-center"><span id="ADA_Spaces_Off">{{type.ADA_Spaces_Off |  number}}</span>
                                             </td>
-                                            <td>{{type.ADA_Spaces_Off_PCT}}%</td>
-                                            <td><span id="ADA_Spaces_Tot">{{type.ADA_Spaces_Tot | number}}</span>
+                                            <td class="text-center">{{type.ADA_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="ADA_Spaces_Tot">{{type.ADA_Spaces_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Motorcycle spaces</td>
-                                            <td><span id="Motorcycle_Spaces_On">{{type.Motorcycle_Spaces_On | number}}</span>
+                                            <td class="text-center"><span id="Motorcycle_Spaces_On">{{type.Motorcycle_Spaces_On | number}}</span>
                                             </td>
-                                            <td>{{type.Motorcycle_Spaces_On_PCT}}%</td>
-                                            <td><span id="Motorcycle_Spaces_Off">{{type.Motorcycle_Spaces_Off | number}}</span>
+                                            <td class="text-center">{{type.Motorcycle_Spaces_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Motorcycle_Spaces_Off">{{type.Motorcycle_Spaces_Off | number}}</span>
                                             </td>
-                                            <td>{{type.Motorcycle_Spaces_Off_PCT}}%</td>
-                                            <td><span id="Motorcycle_Spaces_Tot">{{type.Motorcycle_Spaces_Tot | number}}</span>
+                                            <td class="text-center">{{type.Motorcycle_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Motorcycle_Spaces_Tot">{{type.Motorcycle_Spaces_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Loading, taxi, or other spaces</td>
-                                            <td><span id="Loading_or_Other_Spaces_On">{{type.Loading_or_Other_Spaces_On | number}}</span>
+                                            <td class="text-center"><span id="Loading_or_Other_Spaces_On">{{type.Loading_or_Other_Spaces_On | number}}</span>
                                             </td>
-                                            <td>{{type.Loading_or_Other_Spaces_On_PCT}}%</td>
-                                            <td><span id="Loading_or_Other_Spaces_Off">{{type.Loading_or_Other_Spaces_Off | number}}</span>
+                                            <td class="text-center">{{type.Loading_or_Other_Spaces_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Loading_or_Other_Spaces_Off">{{type.Loading_or_Other_Spaces_Off | number}}</span>
                                             </td>
-                                            <td>{{type.Loading_or_Other_Spaces_Off_PCT}}%</td>
-                                            <td><span id="Loading_or_Other_Spaces_Tot">{{type.Loading_or_Other_Spaces_Tot | number}}</span>
+                                            <td class="text-center">{{type.Loading_or_Other_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Loading_or_Other_Spaces_Tot">{{type.Loading_or_Other_Spaces_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Reserved for permits-only spaces</td>
-                                            <td><span id="Permit_Reserved_Only_Spaces_On">{{type.Permit_Reserved_Only_Spaces_On | number}}</span>
+                                            <td class="text-center"><span id="Permit_Reserved_Only_Spaces_On">{{type.Permit_Reserved_Only_Spaces_On | number}}</span>
                                             </td>
-                                            <td>{{type.Permit_Reserved_Only_Spaces_On_PCT}}%</td>
-                                            <td><span id="Permit_Reserved_Only_Spaces_Off">{{type.Permit_Reserved_Only_Spaces_Off | number}}</span>
+                                            <td class="text-center">{{type.Permit_Reserved_Only_Spaces_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Permit_Reserved_Only_Spaces_Off">{{type.Permit_Reserved_Only_Spaces_Off | number}}</span>
                                             </td>
-                                            <td>{{type.Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
-                                            <td><span id="Permit_Reserved_Only_Spaces_Tot">{{type.Permit_Reserved_Only_Spaces_Tot | number}}</span>
+                                            <td class="text-center">{{type.Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Permit_Reserved_Only_Spaces_Tot">{{type.Permit_Reserved_Only_Spaces_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Shared with permit holder spaces</td>
-                                            <td><span id="Shared_Permit_Spaces_On">{{type.Shared_Permit_Spaces_On | number}}</span>
+                                            <td class="text-center"><span id="Shared_Permit_Spaces_On">{{type.Shared_Permit_Spaces_On | number}}</span>
                                             </td>
-                                            <td>{{type.Shared_Permit_Spaces_On_PCT}}%</td>
-                                            <td><span id="Shared_Permit_Spaces_Off">{{type.Shared_Permit_Spaces_Off | number}}</span>
+                                            <td class="text-center">{{type.Shared_Permit_Spaces_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Shared_Permit_Spaces_Off">{{type.Shared_Permit_Spaces_Off | number}}</span>
                                             </td>
-                                            <td>{{type.Shared_Permit_Spaces_Off_PCT}}%</td>
-                                            <td><span id="Shared_Permit_Spaces_Tot">{{type.Shared_Permit_Spaces_Tot | number}}</span>
+                                            <td class="text-center">{{type.Shared_Permit_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Shared_Permit_Spaces_Tot">{{type.Shared_Permit_Spaces_Tot | number}}</span>
                                             </td>
 
                                         </tr>
@@ -657,48 +664,51 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="width: 450px">Category</th>
-                                            <th>On-Street</th>
-                                            <th>Percent</th>
-                                            <th>Off-Street</th>
-                                            <th>Percent</th>
-                                            <th>Total</th>
-
+                                            <th rowspan="2" style="width: 450px">Category</th>
+                                            <th colspan="2" class="text-center">On Street Parking</th>
+                                            <th colspan="2" class="text-center">Off Street Parking</th>
+                                            <th rowspan="2" class="text-center" style="vertical-align:middle">Total</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>Total spaces that are priced</td>
-                                            <td>{{pricing.Total_Spaces_Priced_On | number}}
+                                            <td class="text-center">{{pricing.Total_Spaces_Priced_On | number}}
                                             </td>
-                                            <td>{{pricing.Total_Spaces_Priced_On_PCT}}%</td>
-                                            <td>{{pricing.Total_Spaces_Priced_Off | number}}
+                                            <td class="text-center">{{pricing.Total_Spaces_Priced_On_PCT}}%</td>
+                                            <td class="text-center">{{pricing.Total_Spaces_Priced_Off | number}}
                                             </td>
-                                            <td>{{pricing.Total_Spaces_Priced_Off_PCT}}%</td>
-                                            <td>{{pricing.Total_Spaces_Priced_Tot | number}}
+                                            <td class="text-center">{{pricing.Total_Spaces_Priced_Off_PCT}}%</td>
+                                            <td class="text-center">{{pricing.Total_Spaces_Priced_Tot | number}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Reserved for permits-only spaces</td>
-                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_On | number}}
+                                            <td class="text-center">{{pricing.Pricing_Permit_Reserved_Only_Spaces_On | number}}
                                             </td>
-                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_On_PCT}}%</td>
-                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off | number}}
+                                            <td class="text-center">{{pricing.Pricing_Permit_Reserved_Only_Spaces_On_PCT}}%</td>
+                                            <td class="text-center">{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off | number}}
                                             </td>
-                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
-                                            <td>{{pricing.Pricing_Permit_Reserved_Only_Spaces_Tot | number}}
+                                            <td class="text-center">{{pricing.Pricing_Permit_Reserved_Only_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center">{{pricing.Pricing_Permit_Reserved_Only_Spaces_Tot | number}}
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Shared with permit holder spaces</td>
-                                            <td>{{pricing.Pricing_Shared_Permit_Spaces_On | number}}
+                                            <td class="text-center">{{pricing.Pricing_Shared_Permit_Spaces_On | number}}
                                             </td>
-                                            <td>{{pricing.Shared_Permit_Spaces_On_PCT}}%</td>
-                                            <td>{{pricing.Pricing_Shared_Permit_Spaces_Off | number}}
+                                            <td class="text-center">{{pricing.Shared_Permit_Spaces_On_PCT}}%</td>
+                                            <td class="text-center">{{pricing.Pricing_Shared_Permit_Spaces_Off | number}}
                                             </td>
-                                            <td>{{pricing.Shared_Permit_Spaces_Off_PCT}}%</td>
-                                            <td>{{pricing.Pricing_Shared_Permit_Spaces_Tot | number}}
+                                            <td class="text-center">{{pricing.Shared_Permit_Spaces_Off_PCT}}%</td>
+                                            <td class="text-center">{{pricing.Pricing_Shared_Permit_Spaces_Tot | number}}
                                             </td>
 
                                         </tr>
@@ -718,85 +728,88 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="width: 450px">Category</th>
-                                            <th>On-Street</th>
-                                            <th>Percent</th>
-                                            <th>Off-Street</th>
-                                            <th>Percent</th>
-                                            <th>Total</th>
-
+                                            <th rowspan="2" style="width: 450px">Category</th>
+                                            <th colspan="2" class="text-center">On Street Parking</th>
+                                            <th colspan="2" class="text-center">Off Street Parking</th>
+                                            <th rowspan="2" class="text-center" style="vertical-align:middle">Total</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>Time restriction under one hour</td>
-                                            <td><span id="Time_Under_One_Hour_On">{{restrict.Time_Under_One_Hour_On | number}}</span>
+                                            <td class="text-center"><span id="Time_Under_One_Hour_On">{{restrict.Time_Under_One_Hour_On | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_Under_One_Hour_On_PCT}}%</td>
-                                            <td><span id="Time_Under_One_Hour_Off">{{restrict.Time_Under_One_Hour_Off | number}}</span>
+                                            <td class="text-center">{{restrict.Time_Under_One_Hour_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_Under_One_Hour_Off">{{restrict.Time_Under_One_Hour_Off | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_Under_One_Hour_Off_PCT}}%</td>
-                                            <td><span id="Time_Under_One_Hour_Tot">{{restrict.Time_Under_One_Hour_Tot | number}}</span>
+                                            <td class="text-center">{{restrict.Time_Under_One_Hour_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_Under_One_Hour_Tot">{{restrict.Time_Under_One_Hour_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Time restriction one hour</td>
-                                            <td><span id="Time_One_Hour_On">{{restrict.Time_One_Hour_On | number}}</span>
+                                            <td class="text-center"><span id="Time_One_Hour_On">{{restrict.Time_One_Hour_On | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_One_Hour_On_PCT}}%</td>
-                                            <td><span id="Time_One_Hour_Off">{{restrict.Time_One_Hour_Off | number}}</span>
+                                            <td class="text-center">{{restrict.Time_One_Hour_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_One_Hour_Off">{{restrict.Time_One_Hour_Off | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_One_Hour_Off_PCT}}%</td>
-                                            <td><span id="Time_One_Hour_Tot">{{restrict.Time_One_Hour_Tot | number}}</span>
+                                            <td class="text-center">{{restrict.Time_One_Hour_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_One_Hour_Tot">{{restrict.Time_One_Hour_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Time restriction 90 minutes</td>
-                                            <td><span id="Time_Ninety_Mins_On">{{restrict.Time_Ninety_Mins_On | number}}</span>
+                                            <td class="text-center"><span id="Time_Ninety_Mins_On">{{restrict.Time_Ninety_Mins_On | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_Ninety_Mins_On_PCT}}%</td>
-                                            <td><span id="Time_Ninety_Mins_Off">{{restrict.Time_Ninety_Mins_Off | number}}</span>
+                                            <td class="text-center">{{restrict.Time_Ninety_Mins_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_Ninety_Mins_Off">{{restrict.Time_Ninety_Mins_Off | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_Ninety_Mins_Off_PCT}}%</td>
-                                            <td><span id="Time_Ninety_Mins_Tot">{{restrict.Time_Ninety_Mins_Tot | number}}</span>
+                                            <td class="text-center">{{restrict.Time_Ninety_Mins_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_Ninety_Mins_Tot">{{restrict.Time_Ninety_Mins_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Time restriction two hours</td>
-                                            <td><span id="Time_Two_Hours_On">{{restrict.Time_Two_Hours_On_PCT | number}}</span>
+                                            <td class="text-center"><span id="Time_Two_Hours_On">{{restrict.Time_Two_Hours_On_PCT | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_Two_Hours_On_PCT}}%</td>
-                                            <td><span id="Time_Two_Hours_Off">{{restrict.Time_Two_Hours_Off | number}}</span>
+                                            <td class="text-center">{{restrict.Time_Two_Hours_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_Two_Hours_Off">{{restrict.Time_Two_Hours_Off | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_Two_Hours_Off_PCT}}%</td>
-                                            <td><span id="Time_Two_Hours_Tot">{{restrict.Time_Two_Hours_Tot | number}}</span>
+                                            <td class="text-center">{{restrict.Time_Two_Hours_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_Two_Hours_Tot">{{restrict.Time_Two_Hours_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Time restriction between three and four hours</td>
-                                            <td><span id="Time_3_to_4_Hours_On">{{restrict.Time_3_to_4_Hours_On | number}}</span>
+                                            <td class="text-center"><span id="Time_3_to_4_Hours_On">{{restrict.Time_3_to_4_Hours_On | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_3_to_4_Hours_On_PCT}}%</td>
-                                            <td><span id="Time_3_to_4_Hours_Off">{{restrict.Time_3_to_4_Hours_Off | number}}</span>
+                                            <td class="text-center">{{restrict.Time_3_to_4_Hours_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_3_to_4_Hours_Off">{{restrict.Time_3_to_4_Hours_Off | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_3_to_4_Hours_Off_PCT}}%</td>
-                                            <td><span id="Time_3_to_4_Hours_Tot">{{restrict.Time_3_to_4_Hours_Tot | number}}</span>
+                                            <td class="text-center">{{restrict.Time_3_to_4_Hours_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_3_to_4_Hours_Tot">{{restrict.Time_3_to_4_Hours_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Time restrictiond greater than four hours</td>
-                                            <td><span id="Time_More_Than_4_Hours_On">{{restrict.Time_More_Than_4_Hours_On | number}}</span>
+                                            <td class="text-center"><span id="Time_More_Than_4_Hours_On">{{restrict.Time_More_Than_4_Hours_On | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_More_Than_4_Hours_On_PCT}}%</td>
-                                            <td><span id="Time_More_Than_4_Hours_Off">{{restrict.Time_More_Than_4_Hours_Off | number}}</span>
+                                            <td class="text-center">{{restrict.Time_More_Than_4_Hours_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_More_Than_4_Hours_Off">{{restrict.Time_More_Than_4_Hours_Off | number}}</span>
                                             </td>
-                                            <td>{{restrict.Time_More_Than_4_Hours_Off_PCT}}%</td>
-                                            <td><span id="Time_More_Than_4_Hours_Tot">{{restrict.Time_More_Than_4_Hours_Tot | number}}</span>
+                                            <td class="text-center">{{restrict.Time_More_Than_4_Hours_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Time_More_Than_4_Hours_Tot">{{restrict.Time_More_Than_4_Hours_Tot | number}}</span>
                                             </td>
 
                                         </tr>
@@ -809,74 +822,77 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="width: 450px">Category</th>
-                                            <th>On-Street</th>
-                                            <th>Percent</th>
-                                            <th>Off-Street</th>
-                                            <th>Percent</th>
-                                            <th>Total</th>
-
+                                            <th rowspan="2" style="width: 450px">Category</th>
+                                            <th colspan="2" class="text-center">On Street Parking</th>
+                                            <th colspan="2" class="text-center">Off Street Parking</th>
+                                            <th rowspan="2" class="text-center" style="vertical-align:middle">Total</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         <tr>
                                             <td>Early morning occupancy (5AM)</td>
-                                            <td><span id="Total_5_00_WD_On">{{wd.Total_5_00_WD_On | number}}</span>
+                                            <td class="text-center"><span id="Total_5_00_WD_On">{{wd.Total_5_00_WD_On | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_5_00_WD_On_PCT}}%</td>
-                                            <td><span id="Total_5_00_WD_Off">{{wd.Total_5_00_WD_Off | number}}</span>
+                                            <td class="text-center">{{wd.Total_5_00_WD_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_5_00_WD_Off">{{wd.Total_5_00_WD_Off | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_5_00_WD_Off_PCT}}%</td>
-                                            <td><span id="Total_5_00_WD_Tot">{{wd.Total_5_00_WD_Tot | number}}</span>
+                                            <td class="text-center">{{wd.Total_5_00_WD_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_5_00_WD_Tot">{{wd.Total_5_00_WD_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Morning occupancy (9AM)</td>
-                                            <td><span id="Total_9_00_WD_On">{{wd.Total_9_00_WD_On | number}}</span>
+                                            <td class="text-center"><span id="Total_9_00_WD_On">{{wd.Total_9_00_WD_On | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_9_00_WD_On_PCT}}%</td>
-                                            <td><span id="Total_9_00_WD_Off">{{wd.Total_9_00_WD_Off | number}}</span>
+                                            <td class="text-center">{{wd.Total_9_00_WD_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_9_00_WD_Off">{{wd.Total_9_00_WD_Off | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_9_00_WD_Off_PCT}}%</td>
-                                            <td><span id="Total_9_00_WD_Tot">{{wd.Total_9_00_WD_Tot | number}}</span>
+                                            <td class="text-center">{{wd.Total_9_00_WD_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_9_00_WD_Tot">{{wd.Total_9_00_WD_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Afternoon occupancy (12PM)</td>
-                                            <td><span id="Total_12_00_WD_On">{{wd.Total_12_00_WD_On | number}}</span>
+                                            <td class="text-center"><span id="Total_12_00_WD_On">{{wd.Total_12_00_WD_On | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_12_00_WD_On_PCT}}%</td>
-                                            <td><span id="Total_12_00_WD_Off">{{wd.Total_12_00_WD_Off | number}}</span>
+                                            <td class="text-center">{{wd.Total_12_00_WD_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_12_00_WD_Off">{{wd.Total_12_00_WD_Off | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_12_00_WD_Off_PCT}}%</td>
-                                            <td><span id="Total_12_00_WD_Tot">{{wd.Total_12_00_WD_Tot | number}}</span>
+                                            <td class="text-center">{{wd.Total_12_00_WD_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_12_00_WD_Tot">{{wd.Total_12_00_WD_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Late afternoon occupancy (4PM)</td>
-                                            <td><span id="Total_16_00_WD_On">{{wd.Total_16_00_WD_On | number}}</span>
+                                            <td class="text-center"><span id="Total_16_00_WD_On">{{wd.Total_16_00_WD_On | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_16_00_WD_On_PCT}}%</td>
-                                            <td><span id="Total_16_00_WD_Off">{{wd.Total_16_00_WD_Off | number}}</span>
+                                            <td class="text-center">{{wd.Total_16_00_WD_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_16_00_WD_Off">{{wd.Total_16_00_WD_Off | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_16_00_WD_Off_PCT}}%</td>
-                                            <td><span id="Total_16_00_WD_Tot">{{wd.Total_16_00_WD_Tot | number}}</span>
+                                            <td class="text-center">{{wd.Total_16_00_WD_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_16_00_WD_Tot">{{wd.Total_16_00_WD_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Evening occupancy (8PM)</td>
-                                            <td><span id="Total_20_00_WD_On">{{wd.Total_20_00_WD_On | number}}</span>
+                                            <td class="text-center"><span id="Total_20_00_WD_On">{{wd.Total_20_00_WD_On | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_20_00_WD_On_PCT}}%</td>
-                                            <td><span id="Total_20_00_WD_Off">{{wd.Total_20_00_WD_Off | number}}</span>
+                                            <td class="text-center">{{wd.Total_20_00_WD_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_20_00_WD_Off">{{wd.Total_20_00_WD_Off | number}}</span>
                                             </td>
-                                            <td>{{wd.Total_20_00_WD_Off_PCT}}%</td>
-                                            <td><span id="Total_20_00_WD_Tot">{{wd.Total_20_00_WD_Tot | number}}</span>
+                                            <td class="text-center">{{wd.Total_20_00_WD_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_20_00_WD_Tot">{{wd.Total_20_00_WD_Tot | number}}</span>
                                             </td>
 
                                         </tr>
@@ -889,74 +905,77 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="width: 450px">Category</th>
-                                            <th>On-Street</th>
-                                            <th>Percent</th>
-                                            <th>Off-Street</th>
-                                            <th>Percent</th>
-                                            <th>Total</th>
-
+                                            <th rowspan="2" style="width: 450px">Category</th>
+                                            <th colspan="2" class="text-center">On Street Parking</th>
+                                            <th colspan="2" class="text-center">Off Street Parking</th>
+                                            <th rowspan="2" class="text-center" style="vertical-align:middle">Total</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
+                                            <th class="text-center">Number</th>
+                                            <th class="text-center">Percent</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         <tr>
                                             <td>Early morning occupancy (5AM)</td>
-                                            <td><span id="Total_5_00_WE_On">{{we.Total_5_00_WE_On | number}}</span>
+                                            <td class="text-center"><span id="Total_5_00_WE_On">{{we.Total_5_00_WE_On | number}}</span>
                                             </td>
-                                            <td>{{we.Total_5_00_WE_On_PCT}}%</td>
-                                            <td><span id="Total_5_00_WE_Off">{{we.Total_5_00_WE_Off | number}}</span>
+                                            <td class="text-center">{{we.Total_5_00_WE_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_5_00_WE_Off">{{we.Total_5_00_WE_Off | number}}</span>
                                             </td>
-                                            <td>{{we.Total_5_00_WE_Off_PCT}}%</td>
-                                            <td><span id="Total_5_00_WE_Tot">{{we.Total_5_00_WE_Tot | number}}</span>
+                                            <td class="text-center">{{we.Total_5_00_WE_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_5_00_WE_Tot">{{we.Total_5_00_WE_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Morning occupancy (9AM)</td>
-                                            <td><span id="Total_9_00_WE_On">{{we.Total_9_00_WE_On | number}}</span>
+                                            <td class="text-center"><span id="Total_9_00_WE_On">{{we.Total_9_00_WE_On | number}}</span>
                                             </td>
-                                            <td>{{we.Total_9_00_WE_On_PCT}}%</td>
-                                            <td><span id="Total_9_00_WE_Off">{{we.Total_9_00_WE_Off | number}}</span>
+                                            <td class="text-center">{{we.Total_9_00_WE_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_9_00_WE_Off">{{we.Total_9_00_WE_Off | number}}</span>
                                             </td>
-                                            <td>{{we.Total_9_00_WE_Off_PCT}}%</td>
-                                            <td><span id="Total_9_00_WE_Tot">{{we.Total_9_00_WE_Tot | number}}</span>
+                                            <td class="text-center">{{we.Total_9_00_WE_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_9_00_WE_Tot">{{we.Total_9_00_WE_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Afternoon occupancy (12PM)</td>
-                                            <td><span id="Total_12_00_WE_On">{{we.Total_12_00_WE_On | number}}</span>
+                                            <td class="text-center"><span id="Total_12_00_WE_On">{{we.Total_12_00_WE_On | number}}</span>
                                             </td>
-                                            <td>{{we.Total_12_00_WE_On_PCT}}%</td>
-                                            <td><span id="Total_12_00_WE_Off">{{we.Total_12_00_WE_Off | number}}</span>
+                                            <td class="text-center">{{we.Total_12_00_WE_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_12_00_WE_Off">{{we.Total_12_00_WE_Off | number}}</span>
                                             </td>
-                                            <td>{{we.Total_12_00_WE_Off_PCT}}%</td>
-                                            <td><span id="Total_12_00_WE_Tot">{{we.Total_12_00_WE_Tot | number}}</span>
+                                            <td class="text-center">{{we.Total_12_00_WE_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_12_00_WE_Tot">{{we.Total_12_00_WE_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Late afternoon occupancy (4PM)</td>
-                                            <td><span id="Total_16_00_WE_On">{{we.Total_16_00_WE_On | number}}</span>
+                                            <td class="text-center"><span id="Total_16_00_WE_On">{{we.Total_16_00_WE_On | number}}</span>
                                             </td>
-                                            <td>{{we.Total_16_00_WE_On_PCT}}%</td>
-                                            <td><span id="Total_16_00_WE_Off">{{we.Total_16_00_WE_Off | number}}</span>
+                                            <td class="text-center">{{we.Total_16_00_WE_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_16_00_WE_Off">{{we.Total_16_00_WE_Off | number}}</span>
                                             </td>
-                                            <td>{{we.Total_16_00_WE_Off_PCT}}%</td>
-                                            <td><span id="Total_16_00_WE_Tot">{{we.Total_16_00_WE_Tot | number}}</span>
+                                            <td class="text-center">{{we.Total_16_00_WE_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_16_00_WE_Tot">{{we.Total_16_00_WE_Tot | number}}</span>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>Evening occupancy (8PM)</td>
-                                            <td><span id="Total_20_00_WE_On">{{we.Total_20_00_WE_On | number}}</span>
+                                            <td class="text-center"><span id="Total_20_00_WE_On">{{we.Total_20_00_WE_On | number}}</span>
                                             </td>
-                                            <td>{{we.Total_20_00_WE_On_PCT}}%</td>
-                                            <td><span id="Total_20_00_WE_Off">{{we.Total_20_00_WE_Off | number}}</span>
+                                            <td class="text-center">{{we.Total_20_00_WE_On_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_20_00_WE_Off">{{we.Total_20_00_WE_Off | number}}</span>
                                             </td>
-                                            <td>{{we.Total_20_00_WE_Off_PCT}}%</td>
-                                            <td><span id="Total_20_00_WE_Tot">{{we.Total_20_00_WE_Tot | number}}</span>
+                                            <td class="text-center">{{we.Total_20_00_WE_Off_PCT}}%</td>
+                                            <td class="text-center"><span id="Total_20_00_WE_Tot">{{we.Total_20_00_WE_Tot | number}}</span>
                                             </td>
 
                                         </tr>

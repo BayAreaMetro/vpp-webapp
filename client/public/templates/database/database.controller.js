@@ -1,20 +1,20 @@
 'use strict';
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
-		'$scope',
-		'$http',
-		function ($scope, $http) {
+  '$scope',
+  '$http',
+  function ($scope, $http) {
 
             //Show and Hide vars
             $scope.isActive = false,
-            $scope.showAll = true,
-            $scope.pricing = false,
-            $scope.supply = false,
-            $scope.restrictions = false,
-            $scope.spaceTypes = false,
-            $scope.weekDay = false,
-            $scope.weekEnd = false,
-            $scope.resources = false;
+                $scope.showAll = true,
+                $scope.pricing = false,
+                $scope.supply = false,
+                $scope.restrictions = false,
+                $scope.spaceTypes = false,
+                $scope.weekDay = false,
+                $scope.weekEnd = false,
+                $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
@@ -58,22 +58,22 @@ angular.module('vppApp')
             });
 
 
-            $scope.getStudyArea = function (event) {
-                $scope.go = event.target;
-                //console.log($scope.go);
-            };
-            $scope.getCollectionYear = function (event) {
-                $scope.go = event.target;
-                //console.log($scope.go1);
-            };
-            $scope.getPtypeINV = function (event) {
-                $scope.go = event.target;
-                //console.log($scope.go1);
-            };
-            $scope.getPtypeOCC = function (event) {
-                $scope.go = event.target;
-                //console.log($scope.go1);
-            };
+//            $scope.getStudyArea = function (event) {
+        //    $scope.go = event.target;
+        //
+        //};
+        //$scope.getCollectionYear = function (event) {
+        //    $scope.go = event.target;
+        //
+        //};
+        //$scope.getPtypeINV = function (event) {
+        //    $scope.go = event.target;
+        //
+        //};
+        //$scope.getPtypeOCC = function (event) {
+        //    $scope.go = event.target;
+        //
+        //};
             //Create Data Object for Inventory Parking Type
             $scope.PtypeINV = [
                 {
@@ -101,7 +101,7 @@ angular.module('vppApp')
                     "Description": "Both On/Off-Street"
                     }];
 
-            //Drop down fix
+
             $(".ddStudyAreaSummary").on('click', '.study-li-summary', function (e) {
                 //$scope.StudyAreaName = $(this).children('.selected-area').text();
                 $scope.selectedStudyArea = $(this).children('.selected-area').text();
@@ -115,12 +115,6 @@ angular.module('vppApp')
                     console.log("There was an error:", status);
                 });
             });
-
-            $(".ddCollectionYearSA").on('click', '.cy-li-studyArea', function (e) {
-                $scope.selectedCollectionYear = $(this).children('.selected-year').text();
-                $('.summaryVD').removeClass('disabled');
-            });
-
             $(".ddStudyAreaInventory").on('click', '.study-li-inventory', function (e) {
                 //$scope.StudyAreaName = $(this).children('.selected-area').text();
                 $scope.selectedStudyArea = $(this).children('.selected-area').text();
@@ -135,12 +129,6 @@ angular.module('vppApp')
                     console.log("There was an error:", status);
                 });
             });
-
-            $(".ddCollectionYearINV").on('click', '.cy-li-studyArea', function (e) {
-                $scope.selectedCollectionYear = $(this).children('.selected-year').text();
-                $('.inventoryVD').removeClass('disabled');
-            });
-
             $(".ddStudyAreaOccupancy").on('click', '.study-li-occupancy', function (e) {
                 $scope.selectedStudyArea = $(this).children('.selected-area').text();
                 $scope.selectedId = $(this).children('.selected-id').text();
@@ -156,12 +144,38 @@ angular.module('vppApp')
                 });
             });
 
-            $(".ddCollectionYearOCC").on('click', '.cy-li-studyArea', function (e) {
+            $(".ddPtypeInventory").on('click', '.ptype-li-inventory', function (e) {
+                $scope.selectedPtypeINV = $(this).children('.selected-ptype-inv').text();
+                console.log($scope.selectedPtypeINV);
+            });
+            $(".ddPtypeOccupancy").on('click', '.ptype-li-occupancy', function (e) {
+                $scope.selectedPtypeOCC = $(this).children('.selected-ptype-occ').text();
+                console.log($scope.selectedPtypeOCC);
+                //selected-ptype-description-occ
+
+            });
+
+            $(".ddCollectionYearSA").on('click', '.cy-li-studyArea', function (e) {
+                $scope.selectedCollectionYear = $(this).children('.selected-year').text();
+                $('.summaryVD').removeClass('disabled');
+            });
+            $(".ddCollectionYearINV").on('click', '.cy-li-collectionYearINV', function (e) {
+                $scope.selectedCollectionYear = $(this).children('.selected-year').text();
+                $('.inventoryVD').removeClass('disabled');
+            });
+            $(".ddCollectionYearOCC").on('click', '.cy-li-collectionYearOCC', function (e) {
                 $scope.selectedCollectionYear = $(this).children('.selected-year').text();
                 $('.occupancyVD').removeClass('disabled');
             });
 
+
             $('#vwMapSummaryBTN').click(function () {
+                window.location.replace('#/map?sa=' + $scope.selectedId);
+            });
+            $('#vwMapInventoryBTN').click(function () {
+                window.location.replace('#/map?sa=' + $scope.selectedId);
+            });
+            $('#vwMapOccupancyBTN').click(function () {
                 window.location.replace('#/map?sa=' + $scope.selectedId);
             });
 
@@ -182,13 +196,13 @@ angular.module('vppApp')
 
             });
             $('#dlInventoryDataBTN').click(function () {
-                $scope.ParkingType = $("#ParkingTypeSearchINV").val();
+                //$scope.ParkingType = $("#ParkingTypeSearchINV").val();
 
                 console.clear();
-                console.log($scope.ParkingType);
+                console.log($scope.selectedPtypeINV);
 
 
-                switch ($scope.ParkingType) {
+                switch ($scope.selectedPtypeINV) {
                 case "Off-Street":
                     $http({
                         url: publicDataURL + '/data/inventoryoff?sa=' + $scope.selectedId,
@@ -223,13 +237,13 @@ angular.module('vppApp')
 
             });
             $('#dlOccupancyDataBTN').click(function () {
-                $scope.ParkingType = $("#ParkingTypeSearchOCC").val();
+                //$scope.ParkingType = $("#ParkingTypeSearchOCC").val();
 
-                //console.clear();
-                //console.log($scope.ParkingType);
+                console.clear();
+                console.log($scope.selectedPtypeOCC);
 
 
-                switch ($scope.ParkingType) {
+                switch ($scope.selectedPtypeOCC) {
                 case "Off-Street":
                     $http({
                         url: publicDataURL + '/data/occupancyoff?sa=' + $scope.selectedId,
@@ -543,6 +557,5 @@ angular.module('vppApp')
             };
 
             $scope.activeTrigger();
-		}
-	]
-);
+  }
+ ]);
