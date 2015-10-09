@@ -157,6 +157,7 @@ angular.module('vppApp')
             infoWindow: popup,
             basemap: 'topo'
         });
+
         //Set Map Center Variable. Used to reset map when user clicks reset map btn.
         $scope.map.on("load", function () {
             mapCenter = getCenterPoint();
@@ -186,12 +187,17 @@ angular.module('vppApp')
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                    }
+                    },
+                    "fieldName": "Street_Name",
+                    "label": "Street Name",
+                    "fieldName": "From_Street",
+                    "label": "From Street",
+                    "fieldName": "To_Street",
+                    "label": "To Street"
             }
         ],
-            "description": "There are {Total_Spaces} total parking spaces on this block"
+            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block.</p>"
         });
-
 
         popupTemplate_OffStreetInventoryFL = new w.PopupTemplate({
             "title": "Parking Spaces by Facility",
@@ -201,13 +207,13 @@ angular.module('vppApp')
                     "format": {
                         "places": 0,
                         "digitSeparator": true
-                    }
+                    },
+                    "fieldName": "Facility_Name",
+                    "label": "Facility Name"
             }
         ],
-            "description": "There are {Total_Spaces} total parking spaces in this facility"
+            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility.</p>"
         });
-
-
 
         popupTemplate_WDOnStreetOccupancyFL = new w.PopupTemplate({
             "title": "Parking Spaces by Block Face",
@@ -258,14 +264,25 @@ angular.module('vppApp')
                         "places": 0,
                         "digitSeparator": true
                     }
-                            }
+                            },
+                {
+                    "fieldName": "Street_Name",
+                    "label": "Street Name"
+                },
+                {
+                    "fieldName": "From_Street",
+                    "label": "From Street"
+                },
+                {
+                    "fieldName": "To_Street",
+                    "label": "To Street"
+                }
 
 
             ],
-            "description": "There are {Total_Spaces} total parking spaces on this block<br><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
-                //"description": "There are {Total_Spaces} total parking spaces in this facility"
-        });
+            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
 
+        });
 
         popupTemplate_WDOffStreetOccupancyFL = new w.PopupTemplate({
             "title": "Parking Spaces by Facility",
@@ -316,14 +333,17 @@ angular.module('vppApp')
                         "places": 0,
                         "digitSeparator": true
                     }
-                            }
+                            },
+                {
+                    "fieldName": "Facility_Name",
+                    "label": "Facility Name"
+                }
 
 
             ],
-            "description": "There are {Total_Spaces} total parking spaces in this facility<br><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
-                //"description": "There are {Total_Spaces} total parking spaces in this facility"
-        });
+            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
 
+        });
 
         popupTemplate_WEOnStreetOccupancyFL = new w.PopupTemplate({
             "title": "Parking Spaces by Block Face",
@@ -374,14 +394,25 @@ angular.module('vppApp')
                         "places": 0,
                         "digitSeparator": true
                     }
-                            }
+                            },
+                {
+                    "fieldName": "Street_Name",
+                    "label": "Street Name"
+                },
+                {
+                    "fieldName": "From_Street",
+                    "label": "From Street"
+                },
+                {
+                    "fieldName": "To_Street",
+                    "label": "To Street"
+                }
 
 
             ],
-            "description": "There are {Total_Spaces} total parking spaces on this block<br><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
+            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
 
         });
-
 
         popupTemplate_WEOffStreetOccupancyFL = new w.PopupTemplate({
             "title": "Parking Spaces by Facility",
@@ -432,11 +463,15 @@ angular.module('vppApp')
                         "places": 0,
                         "digitSeparator": true
                     }
-                            }
+                            },
+                {
+                    "fieldName": "Facility_Name",
+                    "label": "Facility Name"
+                }
 
 
             ],
-            "description": "There are {Total_Spaces} total parking spaces in this facility<br><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
+            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
 
         });
 
@@ -461,7 +496,6 @@ angular.module('vppApp')
             visible: false,
             infoTemplate: popupTemplate_OffStreetInventoryFL
         });
-
 
         OnStreetRestrictionsFL = new w.FeatureLayer(OnStreetInventoryURL, {
             id: "OnStreetRestrictions",
