@@ -60,6 +60,10 @@
 	#print-map{
 		display: none;
 	}
+	
+	#print-legend{
+		display: none;
+	}
 }
 
 /* Extra Small Devices, Phones */ 
@@ -96,6 +100,7 @@
 
 /*========== Printer ==========*/
 @media print{
+	
 	.view-wrapper, footer, nav {
 		display: none;
 	}
@@ -133,6 +138,8 @@
 	
 	#print-map{
 		display: block;
+		height: 50%;
+		width: 50%;
 	}
 	
 	#print-legend{
@@ -141,6 +148,11 @@
 			height: 500px;
 			.panel-body{
 				background-color: #FFFFFF !important;
+				#mlegend_Occ{
+					img{
+						padding: 2px;
+					}
+				}
 			}
 		}
 	}
