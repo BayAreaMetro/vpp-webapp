@@ -474,7 +474,7 @@ angular.module('vppApp')
                         $("#WEOccInfo").fadeOut(0);
                         $("#AddtnlResources").fadeOut(0);
 
-                        //$scope.showAll = false;
+                        $scope.showAll = false;
                         break;
                     case "Pricing":
                         $("#PricingInfo").fadeOut(0);
