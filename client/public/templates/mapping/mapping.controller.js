@@ -47,6 +47,8 @@ angular.module('vppApp')
             popupTemplate_WDOffStreetOccupancyFL,
             popupTemplate_WEOnStreetOccupancyFL,
             popupTemplate_WEOffStreetOccupancyFL,
+            popupTemplate_OnStreetRestrictionsFL,
+            popupTemplate_OffStreetRestrictionsFL,
             symbol,
             symbol_OnStreetOccupancy,
             OffStreetInventoryURL,
@@ -214,6 +216,49 @@ angular.module('vppApp')
         ],
             "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility.</p>"
         });
+
+
+        popupTemplate_OnStreetRestrictionsFL = new w.PopupTemplate({
+            "title": "Restrictions by Block Face",
+            "fieldInfos": [{
+                    "fieldName": "Restrictions",
+                    "label": "Restrictions",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                    },
+                    "fieldName": "Street_Name",
+                    "label": "Street Name",
+                    "fieldName": "From_Street",
+                    "label": "From Street",
+                    "fieldName": "To_Street",
+                    "label": "To Street"
+            }
+        ],
+            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p><b>{Restrictions}</b> on this block.</p>"
+        });
+
+        popupTemplate_OffStreetRestrictionsFL = new w.PopupTemplate({
+            "title": "Restrictions by Facility",
+            "fieldInfos": [{
+                    "fieldName": "Restrictions",
+                    "label": "Restrictions",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                    },
+                    "fieldName": "Facility_Name",
+                    "label": "Facility Name"
+            }
+        ],
+            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p><b>{Restrictions}</b> in this facility.</p>"
+        });
+
+
+
+
+
+
 
         popupTemplate_WDOnStreetOccupancyFL = new w.PopupTemplate({
             "title": "Parking Spaces by Block Face",
@@ -501,16 +546,16 @@ angular.module('vppApp')
             id: "OnStreetRestrictions",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
-                // infoTemplate: popupTemplate_OnStreetInventoryFL
+            visible: false,
+            infoTemplate: popupTemplate_OnStreetRestrictionsFL
         });
 
         OffStreetRestrictionsFL = new w.FeatureLayer(OffStreetInventoryURL, {
             id: "OffStreetRestrictions",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
-                //infoTemplate: popupTemplate_OnStreetInventoryFL
+            visible: false,
+            infoTemplate: popupTemplate_OffStreetRestrictionsFL
         });
 
         WDOffStreetOccupancyFL = new w.FeatureLayer(WDOffStreetOccupancyURL, {
