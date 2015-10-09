@@ -1739,6 +1739,7 @@ angular.module('vppApp')
                     //$("#PDAsOpacitySlider").fadeIn(100);
                     //$scope.toggleDevArea();
                     //$scope.isActiveDev = !$scope.isActive;
+                    $('#PDAsOpacitySlider').removeClass('hide-fixer');
                     break;
                 case "studyAreasFL":
                     studyAreasFL.show();
@@ -1770,7 +1771,7 @@ angular.module('vppApp')
                     //$("#TPAsOpacitySlider").fadeIn(100);
                     //$scope.toggleTransArea();
                     //$scope.isActiveTrans = !$scope.isActive;
-
+                    $('#TPAsOpacitySlider').removeClass('hide-fixer');
 
                     break;
                 case "BartFL":
@@ -1800,7 +1801,8 @@ angular.module('vppApp')
                 case "PDA_FL":
                     PDA_FL.hide();
                     $("#mlegend_pdas").fadeOut(0);
-                    $("#PDAsOpacitySlider").fadeOut(100);
+                    //$("#PDAsOpacitySlider").fadeOut(100);
+                    $('#PDAsOpacitySlider').addClass('hide-fixer');
                     if (TPAsFL.visible) {} else {
 
                         $("#policyLayersCat").fadeOut(0);
@@ -1836,7 +1838,8 @@ angular.module('vppApp')
                 case "TPAsFL":
                     TPAsFL.hide();
                     $("#mlegend_tpas").fadeOut(0);
-                    $("#TPAsOpacitySlider").fadeOut(100);
+                    //$("#TPAsOpacitySlider").fadeOut(100);
+                    $('#TPAsOpacitySlider').addClass('hide-fixer');
                     if (PDA_FL.visible) {
 
                     } else {
