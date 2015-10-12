@@ -235,7 +235,7 @@ angular.module('vppApp')
                     "label": "To Street"
             }
         ],
-            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p><b>{Restrictions}</b> on this block.</p>"
+            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>This block has the following parking restrictions:</p><p><b>{Restrictions}</b></p>"
         });
 
         popupTemplate_OffStreetRestrictionsFL = new w.PopupTemplate({
@@ -251,7 +251,7 @@ angular.module('vppApp')
                     "label": "Facility Name"
             }
         ],
-            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p><b>{Restrictions}</b> in this facility.</p>"
+            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>This facility has the following parking restrictions:</p><p><b>{Restrictions}</b></p>"
         });
 
 
@@ -325,7 +325,7 @@ angular.module('vppApp')
 
 
             ],
-            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
+            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
 
         });
 
@@ -386,7 +386,7 @@ angular.module('vppApp')
 
 
             ],
-            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
+            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
 
         });
 
@@ -455,7 +455,7 @@ angular.module('vppApp')
 
 
             ],
-            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
+            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
 
         });
 
@@ -516,7 +516,7 @@ angular.module('vppApp')
 
 
             ],
-            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
+            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
 
         });
 
@@ -1659,7 +1659,7 @@ angular.module('vppApp')
         function ZoomStudyArea(a) {
             saQuery.where = "Project_ID = '" + a + "'";
             StudyAreaQueryTask.execute(saQuery, showSAQResults);
-
+            //What is this switch supposed to be doing?? Check with Nadia.  She might know.
             switch ($scope.pt) {
             case "peakOCC":
                 $scope.ptp = "BOTH";
@@ -1970,7 +1970,7 @@ angular.module('vppApp')
             $scope.printerElement.appendChild($scope.node);
         };
 
-        //For opcacity switches
+        //For opcacity switches.  Make sure that this section includes the same option for the Study Areas.
         $scope.toggleDevArea = function (event) {
             $scope.isActiveDev = !$scope.isActiveDev;
             if ($scope.isActiveDev === true) {

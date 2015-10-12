@@ -1,26 +1,26 @@
 'use strict';
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
-		'$scope',
-		'$http',
-		function ($scope, $http) {
+  '$scope',
+  '$http',
+  function ($scope, $http) {
 
             //Show and Hide vars
             $scope.isActive = false,
-            $scope.showAll = true,
-            $scope.pricing = false,
-            $scope.supply = false,
-            $scope.restrictions = false,
-            $scope.spaceTypes = false,
-            $scope.weekDay = false,
-            $scope.weekEnd = false,
-            $scope.resources = false;
+                $scope.showAll = true,
+                $scope.pricing = false,
+                $scope.supply = false,
+                $scope.restrictions = false,
+                $scope.spaceTypes = false,
+                $scope.weekDay = false,
+                $scope.weekEnd = false,
+                $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
             $scope.selectedCollectionYear = "Choose Collection Year...";
             $scope.selectedPtypeINV = "eg. On-Street, Off-Street";
-            $scope.selectedPtypeOCC = "eg. On-Street, Off-Street, Both On/Off-Street";
+            $scope.selectedPtypeOCC = "eg. On-Street, Off-Street";
 
 
             //Page Controls
@@ -58,22 +58,22 @@ angular.module('vppApp')
             });
 
 
-//            $scope.getStudyArea = function (event) {
-        //    $scope.go = event.target;
-        //
-        //};
-        //$scope.getCollectionYear = function (event) {
-        //    $scope.go = event.target;
-        //
-        //};
-        //$scope.getPtypeINV = function (event) {
-        //    $scope.go = event.target;
-        //
-        //};
-        //$scope.getPtypeOCC = function (event) {
-        //    $scope.go = event.target;
-        //
-        //};
+            //            $scope.getStudyArea = function (event) {
+            //    $scope.go = event.target;
+            //
+            //};
+            //$scope.getCollectionYear = function (event) {
+            //    $scope.go = event.target;
+            //
+            //};
+            //$scope.getPtypeINV = function (event) {
+            //    $scope.go = event.target;
+            //
+            //};
+            //$scope.getPtypeOCC = function (event) {
+            //    $scope.go = event.target;
+            //
+            //};
             //Create Data Object for Inventory Parking Type
             $scope.PtypeINV = [
                 {
@@ -95,10 +95,6 @@ angular.module('vppApp')
                 {
                     "Ptype": "OFF",
                     "Description": "Off-Street"
-                    },
-                {
-                    "Ptype": "BOTH",
-                    "Description": "Both On/Off-Street"
                     }];
 
 
@@ -272,6 +268,7 @@ angular.module('vppApp')
 
                     });
                     break;
+
                 }
 
 
@@ -557,6 +554,5 @@ angular.module('vppApp')
             };
 
             $scope.activeTrigger();
-		}
-	]
-);
+  }
+ ]);
