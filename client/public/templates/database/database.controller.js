@@ -4,7 +4,6 @@ angular.module('vppApp')
   '$scope',
   '$http',
   function ($scope, $http) {
-
             //Show and Hide vars
             $scope.isActive = false,
                 $scope.showAll = true,

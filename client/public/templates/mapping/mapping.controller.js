@@ -1052,9 +1052,9 @@ angular.module('vppApp')
 
         $scope.map.addLayers([
             vppGraphicsLayer,
-            studyAreasFL,
             PDA_FL,
             TPAsFL,
+            studyAreasFL,
             OnStreetInventoryFL,
             OffStreetInventoryFL,
             OnStreetRestrictionsFL,
@@ -1063,13 +1063,13 @@ angular.module('vppApp')
             WEOnStreetOccupancyFL,
             WDOffStreetOccupancyFL,
             WEOffStreetOccupancyFL,
-            BartFL,
-            CaltrainFL,
             AmtrakFL,
             LightRailFL,
             FerryTerminalsFL,
             ParknRideLotsFL,
             TransitHubsFL,
+            BartFL,
+            CaltrainFL,
             saLabelsFL
         ]);
 
