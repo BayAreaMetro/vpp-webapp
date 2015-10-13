@@ -2,13 +2,20 @@
     <div id="HomeButton"></div>
 </div>
 <div id="search">
-    <div class="input-group">
-        <input id="StudyAreaSearch" type="text" class="form-control" name="City" placeholder="Find Study Area..." list="studyareas-list">
-        <datalist id="studyareas-list"></datalist>
-        <span class="input-group-btn">
-        <button class="btn btn-default find-studyarea" type="button">Search</button>
-      </span>
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyAreaMap">
+            {{selectedStudyAreaMap}}
+            <span class="caret pull-right ma-top-s"></span>
+        </button>
+        <ul class="dropdown-menu ddStudyAreaSummary" aria-labelledby="list-1">
+            <li ng-repeat="data in studyArea" class="study-li-summary">
+                <p class="hidden selected-id">{{data.Project_ID}}</p>
+                <p class="selected-area">{{data.Name}}</p>
+            </li>
+        </ul>
     </div>
+
 </div>
 <div id="mapLegend" class="mapLegend">
     <div id="mapLegendPNL" class="panel zTop panel-info legendContent">

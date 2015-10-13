@@ -13,7 +13,7 @@
 
         <!-- Content -->
         <div class="pad-top-l ma-top-l home-text container">
-	        
+
             <div id="feedbackSuccess" class="collapse alert alert-success fade absol">
                 <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
@@ -34,34 +34,42 @@
                     <div class="col-md-12">
                         <form class="form-horizontal pad-top-l">
                             <fieldset>
-                                <!-- Study Area Search-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="StudyAreaSearch">Feedback Category</label>
-                                    <div class="col-md-6">
-
-                                        <input id="feedbackCategory" type="text" ng-model="feedbackCat" placeholder="eg. General Feedback" class="form-control input-md find-feedback" required="" name="City" list="feedbackCat-list">
-                                        <datalist id="feedbackCat-list">
-                                            <option value="General Feedback">
-                                            <option value="Site Page: Research & Policies">
-											<option value="Site Page: Parking Data">
-                                            <option value="Site Page: Parking Map">
-                                            <option value="Site Page: Help">
-                                        </datalist>
-                                        <p class="help-block">Select a Category that best describes your Feedback</p>
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="FeedbackType">Feedback Type</label>
-                                    <div class="col-md-6">
+                                    <div id="fbt" class="col-md-6">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle text-left" type="button" id="feedbackTypeLBL" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="feedbackType">
+                                                {{feedbackType}}
+                                                <span class="caret pull-right ma-top-s"></span>
+                                            </button>
+                                            <ul class="dropdown-menu ddFeedbackType" aria-labelledby="feedbackTypeLBL">
+                                                <li ng-repeat="data in fbType" class="ftyp-li">
+                                                    <p class="selected-fbType">{{data.Category}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                        <input id="feedbackType" type="text" ng-model="feedbackType" placeholder="eg. Bug, Enhancement Request" class="form-control input-md" required="" list="ft-list">
-                                        <datalist id="ft-list">
-                                            <option value="Application Bug">
-                                                <option value="Enhancement Request">
-                                        </datalist>
 
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="StudyAreaSearch">Feedback Category</label>
+                                    <div id="fbc" class="col-md-6">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle text-left" type="button" id="feedbackCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="feedbackCat">
+                                                {{feedbackCat}}
+                                                <span class="caret pull-right ma-top-s"></span>
+                                            </button>
+                                            <ul class="dropdown-menu ddFeedbackCategory" aria-labelledby="feedbackCategory" ng-click="getPtypeINV($event)">
+                                                <li ng-repeat="data in fbCat" class="fcat-li">
+                                                    <p class="selected-fbCat">{{data.Category}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <p class="help-block">Which application page does your feedback relate to?</p>
+                                    </div>
+                                </div>
+
 
                                 <!-- Collection Year -->
                                 <div class="form-group">
@@ -78,7 +86,7 @@
                                             <button id="submitFeedbackBTN" type="button" class="btn btn-default btn-sm" ng-click="">
                                                 <span class="fa fa-envelope fa-fw" aria-hidden="true"></span>Submit Feedback
                                             </button>
-                                            
+
                                             <span>
 	                                            <h2 class="color-blue feedback-message">{{ feedbackMessage }}</h2>
                                             </span>
@@ -93,7 +101,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Testing Slider -->
     <!--
     <button class="btn btn-primary" ng-click="toggle()">Toggle on and off</button>

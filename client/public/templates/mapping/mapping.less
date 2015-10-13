@@ -56,10 +56,46 @@
     top: 70px;
     left: 74px;
     width: 350px;
+    z-index: 20;
+//    white-space: normal;
     .btn {
         &.btn-default {
             padding-top: 5px;
             padding-bottom: 5px;
+            white-space: normal;
+        }
+    }
+    .dropdown-toggle {
+        width: 100%;
+        .caret {
+            margin-top: 7px;
+        }
+    }
+    .dropdown-menu {
+        height: 475px;
+        overflow: scroll;
+        width: 100%;
+        li {
+            cursor: pointer;
+            padding: 10px;
+            .transition(all .5s ease-in-out);
+            &:hover {
+                background-color: @anchorColor;
+                .selected-area {
+                    color: #FFFFFF;
+                }
+                .selected-year {
+                    color: #FFFFFF;
+                }
+            }
+        }
+        .selected-area {
+            margin: 0;
+            white-space: normal;
+            width: 100%;
+        }
+        .selected-year {
+            margin: 0;
         }
     }
 }
@@ -207,14 +243,17 @@
 
 //Sliders
 #PDAsOpacitySlider {
-	.slider-opacity();
+    .slider-opacity();
 }
+
 #TPAsOpacitySlider {
-	.slider-opacity();
+    .slider-opacity();
 }
-#StudyAreaOpacitySlider{
-	.slider-opacity();
+
+#StudyAreaOpacitySlider {
+    .slider-opacity();
 }
+
 .custom-switch {
     background: white;
 }
