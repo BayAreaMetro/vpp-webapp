@@ -187,7 +187,6 @@ angular.module('vppApp')
         });
 
        
-
         $scope.map.infoWindow.set("popupWindow", false);
 
 
@@ -827,22 +826,22 @@ angular.module('vppApp')
         var renderer = new w.ClassBreaksRenderer(symbol, "Total_Spaces");
 
 
-        var Break0Color = new w.Color([120, 120, 120, 1]);
+        var Break0Color = new w.Color([123,50,148, 1]);
         var Break0LineSymbol = new w.SimpleLineSymbol("solid", Break0Color, 2);
 
-        var Break1Color = new w.Color([56, 168, 0, 1]);
+        var Break1Color = new w.Color([194,165,207, 1]);
         var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 2);
 
-        var Break2Color = new w.Color([139, 209, 0, 1]);
+        var Break2Color = new w.Color([255,255,191, 1]);
         var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 2);
 
         var Break3Color = new w.Color([255, 255, 0, 1]);
         var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 2);
 
-        var Break4Color = new w.Color([255, 128, 0, 1]);
+        var Break4Color = new w.Color([171,217,233, 1]);
         var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 2);
 
-        var Break5Color = new w.Color([255, 0, 0, 1]);
+        var Break5Color = new w.Color([44,123,182, 1]);
         var Break5LineSymbol = new w.SimpleLineSymbol("solid", Break5Color, 2);
 
 
@@ -881,11 +880,11 @@ angular.module('vppApp')
         var OffStreetInventoryRenderer = new w.ClassBreaksRenderer(OffStreetInventorySymbol, "Total_Spaces");
 
 
-        var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 0.5]));
-        var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 0.5]));
+        var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([194,165,207, 0.5]));
+        var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255,255,191, 0.5]));
         var Break3Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 0.5]));
-        var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 0.5]));
-        var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 0.5]));
+        var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([171,217,233, 0.5]));
+        var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([44,123,182, 0.5]));
 
         var Break1_minValue_OffStreetInventory = 0;
         var Break1_maxValue_OffStreetInventory = 4;
