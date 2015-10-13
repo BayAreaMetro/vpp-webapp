@@ -13,8 +13,6 @@ angular.module('vppApp')
         $scope.studyArea;
         $scope.selectedStudyAreaMap = "Choose a Study Area...";
         $scope.selectedId;
-        $scope.peakButton = false;
-        $scope.timeButton = false;
 
         var w = wish.get(),
             OnStreetInventoryFL,
@@ -92,19 +90,22 @@ angular.module('vppApp')
             TPAsFLsv,
             TPAsFLop,
             urlParmresults
+           
 
-
-        PDAFLsv = 30;
-        PDAFLop = 0.3;
-        studyAreasFLsv = 50;
-        studyAreasFLop = 0.5;
-        TPAsFLsv = 30;
-        TPAsFLop = 0.3;
+        PDAFLsv = 70;
+        PDAFLop = 0.7;
+        studyAreasFLsv = 70;
+        studyAreasFLop = 0.7;
+        TPAsFLsv = 70;
+        TPAsFLop = 0.7;
         $scope.legendBTN = false;
         $scope.TimePeriod = "Time Period";
         $scope.TODbtn = false;
+
+       
         $scope.parkingType = "Peak Type";
         $scope.PTbtn = false;
+
         $scope.showAll = true;
 
 
@@ -182,7 +183,7 @@ angular.module('vppApp')
             basemap: 'topo'
         });
 
-
+       
         $scope.map.infoWindow.set("popupWindow", false);
 
 
@@ -249,20 +250,20 @@ angular.module('vppApp')
         function displayPopupContent(feature) {
             switch ($scope.pt) {
             case "inventory":
-                parkingInspectorOnStreet.setContent("<p><b>On-Street Parking Inventory </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces:NumberFormat}</b> total parking spaces on this block.</p>");
-                parkingInspectorOffStreet.setContent("<p><b>Off-Street Parking Inventory</b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces:NumberFormat}</b> total parking spaces in this facility.</p>");
+                parkingInspectorOnStreet.setContent("<p><b>On-Street Parking Inventory </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces}</b> total parking spaces on this block.</p>");
+                parkingInspectorOffStreet.setContent("<p><b>Off-Street Parking Inventory</b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces}</b> total parking spaces in this facility.</p>");
                 break;
             case "restrictions":
                 parkingInspectorRestrictionsOnStreet.setContent("<p><b>On-Street Parking Restrictions </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>This block has the following parking restrictions:</p><p><b>${Restrictions}</b></p>");
                 parkingInspectorRestrictionsOffStreet.setContent("<p><b>Off-Street Parking Restrictions</b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>This facility has the following parking restrictions:</p><p><b>${Restrictions}</b></p>");
                 break;
             case "wkdayOCC":
-                parkingInspectorWDOccupancyOffStreet.setContent("<p><b>Off-Street Weekday Occupancy </b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces:NumberFormat}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table></p>");
-                parkingInspectorWDOccupancyOnStreet.setContent("<p><b>On-Street Weekday Occupancy </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces:NumberFormat}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table>");
+                parkingInspectorWDOccupancyOffStreet.setContent("<p><b>Off-Street Weekday Occupancy </b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table></p>");
+                parkingInspectorWDOccupancyOnStreet.setContent("<p><b>On-Street Weekday Occupancy </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table>");
                 break;
             case "wkndOCC":
-                parkingInspectorWEOccupancyOffStreet.setContent("<p><b>Off-Street Weekend Occupancy </b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces:NumberFormat}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table></p>");
-                parkingInspectorWEOccupancyOnStreet.setContent("<p><b>On-Street Weekend Occupancy </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces:NumberFormat}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table>");
+                parkingInspectorWEOccupancyOffStreet.setContent("<p><b>Off-Street Weekend Occupancy </b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table></p>");
+                parkingInspectorWEOccupancyOnStreet.setContent("<p><b>On-Street Weekend Occupancy </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table>");
 
 
                 break;
@@ -490,22 +491,25 @@ angular.module('vppApp')
         var renderer = new w.ClassBreaksRenderer(symbol, "Total_Spaces");
 
 
-        var Break0Color = new w.Color([123, 50, 148, 1]);
+
+
+
+        var Break0Color = new w.Color([120,120,120, 1]);
         var Break0LineSymbol = new w.SimpleLineSymbol("solid", Break0Color, 2);
 
-        var Break1Color = new w.Color([194, 165, 207, 1]);
+        var Break1Color = new w.Color([166,97,26, 1]);
         var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 2);
 
-        var Break2Color = new w.Color([255, 255, 191, 1]);
+        var Break2Color = new w.Color([223,194,125, 1]);
         var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 2);
 
-        var Break3Color = new w.Color([255, 255, 0, 1]);
+        var Break3Color = new w.Color([230,97,1, 1]);
         var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 2);
 
-        var Break4Color = new w.Color([171, 217, 233, 1]);
+        var Break4Color = new w.Color([128,205,193, 1]);
         var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 2);
 
-        var Break5Color = new w.Color([44, 123, 182, 1]);
+        var Break5Color = new w.Color([1,133,113, 1]);
         var Break5LineSymbol = new w.SimpleLineSymbol("solid", Break5Color, 2);
 
 
@@ -544,11 +548,11 @@ angular.module('vppApp')
         var OffStreetInventoryRenderer = new w.ClassBreaksRenderer(OffStreetInventorySymbol, "Total_Spaces");
 
 
-        var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([194, 165, 207, 0.5]));
-        var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 191, 0.5]));
-        var Break3Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 0.5]));
-        var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([171, 217, 233, 0.5]));
-        var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([44, 123, 182, 0.5]));
+        var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([166,97,26, 0.5]));
+        var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([223,194,125, 0.5]));
+        var Break3Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([230,97,1, 0.5]));
+        var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([128,205,193, 0.5]));
+        var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([1,133,113, 0.5]));
 
         var Break1_minValue_OffStreetInventory = 0;
         var Break1_maxValue_OffStreetInventory = 4;
@@ -806,7 +810,7 @@ angular.module('vppApp')
         TransitHubsFL.setRenderer(TransitHubs_Renderer);
 
         //Setting up Simple Lines Renderer for TPAsFL
-        var TPAs_Color = new w.Color([242, 167, 52, 0.3]);
+        var TPAs_Color = new w.Color([242, 167, 52, 0.7]);
         var TPAs_Line = new w.SimpleLineSymbol("solid", TPAs_Color, 2);
         var TPAs_Symbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, TPAs_Line, new w.Color([242, 167, 52, 1]));
         var TPAs_Renderer = new w.SimpleRenderer(TPAs_Symbol);
@@ -887,6 +891,7 @@ angular.module('vppApp')
 
 
         function checkScale(extent, zoomFactor, anchor, level) {
+            console.clear();
             //console.log("Current Theme: " + $scope.pt);
             $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: ' + level + '</p>');
             mapLevel = level;
@@ -1004,17 +1009,13 @@ angular.module('vppApp')
         //End of Map Layer Configuration
 
         function clearAllTools() {
-
-                //$("#mt").fadeOut(0);
                 $("#mapNav").fadeOut(0);
                 $("#mapOpts").fadeOut(0);
                 $("#mapBasemaps").fadeOut(0);
                 $("#mapLayers").fadeOut(0);
                 $("#mapPrint").fadeOut(0);
-                $("#mapInspector").fadeOut(0);
                 $scope.TODbtn = false;
-                $scope.PTbtn = false;
-                vppGraphicsLayer.clear();
+                $("#mapInspector").fadeOut(0);
             }
             //UI Listeners
 
@@ -1154,7 +1155,7 @@ angular.module('vppApp')
                 break;
             case "wkndOCC":
                 SetOccupancyRenderer("Occupancy_5am");
-                $scope.TODbtn = true;
+                 $scope.TODbtn = true;
                 $scope.DayType = "Weekend Occupancy";
                 $scope.TimePeriod = "Early Morning (5AM)";
                 var currentZoomLevel = $scope.map.getZoom();
@@ -1178,7 +1179,6 @@ angular.module('vppApp')
                 //Write in the title for the legend item.
                 $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
                 //console.log($scope.pt + " | " + $scope.selectedId);
-                //console.log("? should be true", $scope.TODbtn);
                 break;
             case "peakOCC":
 
@@ -1221,6 +1221,7 @@ angular.module('vppApp')
 
         function showPeak(a) {
             $scope.ptp = a;
+            console.clear();
 
             $.ajax({
                 dataType: 'json',
@@ -1350,15 +1351,13 @@ angular.module('vppApp')
         });
 
         $('#HomeButton').click(function () {
+            $("#mapLegendPNL").fadeIn(300, function () {
+                $("#LegendTitle").text("");
+            });
 
             $("#StudyAreaNamePNL").fadeOut(100, function () {
                 $("#StudyAreaNamePNL").html("");
             });
-            clearAllTools();
-            $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-            $("#title").text("Parking Theme");
-            $("#mapToolsPNL").fadeIn(500);
-            $("#mapOpts").fadeIn(500);
         });
 
         //Map Layer Controls
@@ -1392,6 +1391,7 @@ angular.module('vppApp')
             WDOffStreetOccupancyFL.hide();
             WEOnStreetOccupancyFL.hide();
             WEOffStreetOccupancyFL.hide();
+
             //COC_FL.hide();
             PDA_FL.hide();
             FerryTerminalsFL.hide();
@@ -1399,24 +1399,24 @@ angular.module('vppApp')
             //RailStationsFL.hide();
             TransitHubsFL.hide();
             TPAsFL.hide();
+
             vppGraphicsLayer.clear();
             $scope.map.centerAndZoom(mapCenter, 11);
+            $("#mapLegendPNL").fadeIn(300, function () {
+                $("#LegendTitle").text("");
+            });
+
             $("#StudyAreaNamePNL").fadeOut(100, function () {
                 $("#StudyAreaNamePNL").html("");
             });
             studyAreasFL.show();
             //Reset Values for Opacity Settings
-            PDAFLsv = 30;
-            PDAFLop = 0.3;
-            studyAreasFLsv = 50;
-            studyAreasFLop = 0.5;
-            TPAsFLsv = 30;
-            TPAsFLop = 0.3;
-            clearAllTools();
-            $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
-            $("#title").text("Parking Theme");
-            $("#mapToolsPNL").fadeIn(500);
-            $("#mapOpts").fadeIn(500);
+            PDAFLsv = 70;
+            PDAFLop = 0.7;
+            studyAreasFLsv = 70;
+            studyAreasFLop = 0.7;
+            TPAsFLsv = 70;
+            TPAsFLop = 0.7;
 
 
         })
@@ -1446,12 +1446,12 @@ angular.module('vppApp')
 
 
 
-        //        $(".find-studyarea").click(function () {
-        //            $scope.selectedStudyAreaMap = $(this).children('.selected-area').text();
-        //            $scope.selectedId = $(this).children('.selected-id').text();
-        //
-        //            ZoomStudyArea($scope.selectedId);
-        //        });
+        $(".find-studyarea").click(function () {
+            $scope.selectedStudyAreaMap = $(this).children('.selected-area').text();
+            $scope.selectedId = $(this).children('.selected-id').text();
+
+            ZoomStudyArea($scope.selectedId);
+        });
         //Zoom To Study Area and Highlight Study Area Name in Legend as Current Study Area.
         function ZoomStudyArea(a) {
             saQuery.where = "Project_ID = '" + a + "'";
@@ -1470,12 +1470,19 @@ angular.module('vppApp')
                 //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkndOCC":
-                //console.log($scope.pt + " | " + $scope.selectedId);
+
+                console.log($scope.pt + " | " + $scope.sanValue);
                 $scope.TODbtn = true;
                 break;
             case "wkdayOCC":
-                //console.log($scope.pt + " | " + $scope.selectedId);
+                //console.log($scope.pt + " | " + $scope.sanValue);
                 $scope.TODbtn = true;
+
+                //console.log($scope.pt + " | " + $scope.selectedId);
+                break;
+            case "wkdayOCC":
+                //console.log($scope.pt + " | " + $scope.selectedId);
+
                 break;
             }
 
@@ -1690,19 +1697,19 @@ angular.module('vppApp')
         $scope.vm.opacitySlider = {
             floor: 0,
             ceil: 100,
-            value: 50
+            value: 70
         };
 
         $scope.vm.opacitySlider1 = {
             floor: 0,
             ceil: 100,
-            value: 30
+            value: 70
         };
 
         $scope.vm.opacitySlider2 = {
             floor: 0,
             ceil: 100,
-            value: 30
+            value: 70
         };
 
         $scope.$on("slideEnded", function () {
@@ -1724,39 +1731,8 @@ angular.module('vppApp')
             console.log(PDAFLop);
         });
         $scope.activeTheme = function (event) {
-	        
-	        //Grab attribute
-	        var view = $(event.target).parent(".thumbnail").attr('view');
-            
-            //Active theme Classes
             $('.thumbnail').removeClass('active');
             $(event.target).parent(".thumbnail").addClass('active');
-            
-            //show and hist peak&time buttons
-            if ( view === "time"){
-	            
-	            //turn on time button
-	            $scope.timeButton = true;
-	            
-	            //turn off the peak button
-	            $scope.peakButton = false;
-            } else if ( view === "peak" ){
-	            
-	            //turn off time button
-	            $scope.timeButton = false;
-	            
-	            //turn on the peak button
-	            $scope.peakButton = true;
-            } else{
-	            
-	            //turn off time button
-	            $scope.timeButton = false;
-	            
-	            //turn off the peak button
-	            $scope.peakButton = false;
-            }
-            
-            console.log(view);
         };
 
         //Load Study Area from Parking Data
@@ -1814,7 +1790,7 @@ angular.module('vppApp')
             }
 
 
-            //console.log('Dev', $scope.isActiveDev);
+            console.log('Dev', $scope.isActiveDev);
         };
         $scope.toggleTransArea = function (event) {
             $scope.isActiveTrans = !$scope.isActiveTrans;
@@ -1831,7 +1807,7 @@ angular.module('vppApp')
             ZoomStudyArea(SAQ_id);
         });
         $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: 11</p>');
-		
+
     });
 
 //EOF
