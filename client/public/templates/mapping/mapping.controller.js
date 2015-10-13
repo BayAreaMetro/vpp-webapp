@@ -101,9 +101,9 @@ angular.module('vppApp')
         TPAsFLsv = 30;
         TPAsFLop = 0.3;
         $scope.legendBTN = false;
-        $scope.TimePeriod = "Time Period";
+        $scope.TimePeriod;
         $scope.TODbtn = false;
-        $scope.parkingType = "Peak Type";
+        $scope.parkingType;
         $scope.PTbtn = false;
         $scope.showAll = true;
 
@@ -1125,11 +1125,11 @@ angular.module('vppApp')
                 //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkdayOCC":
-
+                $scope.TimePeriod = "Early Morning (5AM)";
                 SetOccupancyRenderer("Occupancy_5am");
                 $scope.TODbtn = true;
                 $scope.DayType = "Weekday Occupancy";
-                $scope.TimePeriod = "Early Morning (5AM)";
+
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
@@ -1154,9 +1154,10 @@ angular.module('vppApp')
                 break;
             case "wkndOCC":
                 SetOccupancyRenderer("Occupancy_5am");
+                $scope.TimePeriod = "Early Morning (5AM)";
                 $scope.TODbtn = true;
                 $scope.DayType = "Weekend Occupancy";
-                $scope.TimePeriod = "Early Morning (5AM)";
+
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
@@ -1724,38 +1725,38 @@ angular.module('vppApp')
             console.log(PDAFLop);
         });
         $scope.activeTheme = function (event) {
-	        
-	        //Grab attribute
-	        var view = $(event.target).parent(".thumbnail").attr('view');
-            
+
+            //Grab attribute
+            var view = $(event.target).parent(".thumbnail").attr('view');
+
             //Active theme Classes
             $('.thumbnail').removeClass('active');
             $(event.target).parent(".thumbnail").addClass('active');
-            
+
             //show and hist peak&time buttons
-            if ( view === "time"){
-	            
-	            //turn on time button
-	            $scope.timeButton = true;
-	            
-	            //turn off the peak button
-	            $scope.peakButton = false;
-            } else if ( view === "peak" ){
-	            
-	            //turn off time button
-	            $scope.timeButton = false;
-	            
-	            //turn on the peak button
-	            $scope.peakButton = true;
-            } else{
-	            
-	            //turn off time button
-	            $scope.timeButton = false;
-	            
-	            //turn off the peak button
-	            $scope.peakButton = false;
+            if (view === "time") {
+
+                //turn on time button
+                $scope.timeButton = true;
+
+                //turn off the peak button
+                $scope.peakButton = false;
+            } else if (view === "peak") {
+
+                //turn off time button
+                $scope.timeButton = false;
+
+                //turn on the peak button
+                $scope.peakButton = true;
+            } else {
+
+                //turn off time button
+                $scope.timeButton = false;
+
+                //turn off the peak button
+                $scope.peakButton = false;
             }
-            
+
             console.log(view);
         };
 
@@ -1831,7 +1832,7 @@ angular.module('vppApp')
             ZoomStudyArea(SAQ_id);
         });
         $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: 11</p>');
-		
+
     });
 
 //EOF
