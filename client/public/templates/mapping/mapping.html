@@ -353,7 +353,11 @@
                 </div>
             </div>
         </div>
+        <div id="CurrentMapZoomLevel" class="bottom collapse">
+            <p>Current Map Zoom Level:</p>
+        </div>
     </div>
+
 </div>
 <div id="maptoolsBTN">
     <div class="dropdown">
@@ -364,6 +368,11 @@
             <li>
                 <a id="mapOptionsCTL">
                     <i class="fa fa-ellipsis-h fa-lg"></i> Parking Theme <span class="arrow clickable"></span>
+                </a>
+            </li>
+            <li>
+                <a id="mapInspectorCTL">
+                    <i class="fa fa-question fa-lg"></i> Parking Inspector <span class="arrow clickable"></span>
                 </a>
             </li>
             <li ng-show="legendBTN">
@@ -378,10 +387,6 @@
             <li class="divider"></li>
             <li><a id="mapRefreshCTL"><i class="fa fa-refresh fa-lg"></i> Reset Map <span class="arrow clickable"></span></a>
             </li>
-            <!--
-            <li><a id="layerOpacityCTL"><i class="fa fa-toggle-on"></i> Layer Opacity <span class="arrow clickable"></span></a>
-            </li>
--->
             </li>
             <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Navigation Tips <span class="arrow clickable"></span></a>
             </li>
@@ -446,7 +451,6 @@
                 <span id="iconTitle" class='pull-left'></span>
                 <span id="title"></span>
                 <span class='pull-right clickable'><i class='fa fa-times'></i></span>
-                <!--{{layerOpacity}} -->
             </div>
         </div>
         <div class="panel-body">
@@ -503,11 +507,26 @@
                             <p>Peak Occupancy</p>
                         </div>
                     </div>
-                    <!--
-                    <button class="btn btn-primary" ng-click="toggleDevArea()">On</button>
-                    <button class="btn btn-primary" ng-click="toggleTransArea()">Toggle on and off</button>
--->
                 </div>
+            </div>
+            <!--            Add Bootstrap Buttons to this div instead off css styled buttons from sample-->
+            <div id="mapInspector" class="tools collapse">
+
+
+
+                <div id="pager" style="display:none;" class="pad-bottom-l" class="btn-group btn-group-xs" role="group">
+                    <button id="previous" type="button" class="btn btn-primary btn-sm pull-left">
+                        < Prev</button>
+                            <button id="next" type="button" class="btn btn-primary btn-sm pull-right">Next ></button>
+                </div>
+
+                <div id="inspectorFeatureCount" class="text-left pad-top-l pad-bottom-m">
+                    <p style="margin:0 0 0px;">Click Parking Feature to get More Information</p>
+                </div>
+                <div id="parkingInfo"></div>
+
+
+
             </div>
             <div id="mapBasemaps" class="tools collapse">
                 <div class="row pad-top-m">
@@ -669,23 +688,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Layer opacity -->
-            <div id="layerOpacity" class="tools collapse">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="sel1">Select Layer:</label>
-                            <select class="form-control selectOpLayer" id="sel1">
-                                <option value="PDA_FL">Priority Development Areas</option>
-                                <option value="TPAsFL">Transportation Priority Areas</option>
-                            </select>
-                            <!-- <h4>Layer {{vm.opacitySlider.value}}</h4> -->
-                            <rzslider rz-slider-model="vm.opacitySlider.value" rz-slider-floor="vm.opacitySlider.floor" rz-slider-ceil="vm.opacitySlider.ceil"></rzslider>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>

@@ -40,6 +40,7 @@ angular.module('vppApp')
                                 Popup: 'esri/dijit/Popup',
                                 PopupTemplate: 'esri/dijit/PopupTemplate',
                                 InfoTemplate: 'esri/InfoTemplate',
+                                connect: "dojo/_base/connect",
                                 //Symbol Tools
                                 SimpleFillSymbol: 'esri/symbols/SimpleFillSymbol',
                                 SimpleMarkerSymbol: 'esri/symbols/SimpleMarkerSymbol',
@@ -67,7 +68,7 @@ angular.module('vppApp')
                                 ClassBreaksRenderer: 'esri/renderers/ClassBreaksRenderer',
                                 SimpleRenderer: 'esri/renderers/SimpleRenderer',
                                 ScaleDependentRenderer: 'esri/renderers/ScaleDependentRenderer',
-                                UniqueValueRenderer:  'esri/renderers/UniqueValueRenderer',
+                                UniqueValueRenderer: 'esri/renderers/UniqueValueRenderer',
                                 jsonUtil: 'esri/renderers/jsonUtils',
                                 //MapQueryTools
                                 QueryTask: 'esri/tasks/QueryTask',
@@ -120,7 +121,7 @@ angular.module('vppApp')
             });
     })
     .service('wish', function () {
-	    
+
         var wish = {};
 
         function _loadDependencies(deps, next) {

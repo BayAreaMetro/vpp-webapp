@@ -49,6 +49,15 @@ angular.module('vppApp')
             popupTemplate_WEOffStreetOccupancyFL,
             popupTemplate_OnStreetRestrictionsFL,
             popupTemplate_OffStreetRestrictionsFL,
+            parkingInspector,
+            parkingInspectorOnStreet,
+            parkingInspectorOffStreet,
+            parkingInspectorRestrictionsOnStreet,
+            parkingInspectorRestrictionsOffStreet,
+            parkingInspectorWEOccupancyOnStreet,
+            parkingInspectorWEOccupancyOffStreet,
+            parkingInspectorWDOccupancyOnStreet,
+            parkingInspectorWDOccupancyOffStreet,
             symbol,
             symbol_OnStreetOccupancy,
             OffStreetInventoryURL,
@@ -147,6 +156,14 @@ angular.module('vppApp')
 
         //create a popup to replace the map's info window
         popup = new w.Popup(popupOptions, w.domConstruct.create("div"));
+        parkingInspectorOnStreet = new w.InfoTemplate();
+        parkingInspectorOffStreet = new w.InfoTemplate();
+        parkingInspectorRestrictionsOnStreet = new w.InfoTemplate();
+        parkingInspectorRestrictionsOffStreet = new w.InfoTemplate();
+        parkingInspectorWDOccupancyOnStreet = new w.InfoTemplate();
+        parkingInspectorWDOccupancyOffStreet = new w.InfoTemplate();
+        parkingInspectorWEOccupancyOnStreet = new w.InfoTemplate();
+        parkingInspectorWEOccupancyOffStreet = new w.InfoTemplate();
 
         //Start of Map Layer Configuration
 
@@ -159,6 +176,8 @@ angular.module('vppApp')
             infoWindow: popup,
             basemap: 'topo'
         });
+        $scope.map.infoWindow.set("popupWindow", false);
+
 
         //Set Map Center Variable. Used to reset map when user clicks reset map btn.
         $scope.map.on("load", function () {
@@ -217,7 +236,6 @@ angular.module('vppApp')
             "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility.</p>"
         });
 
-
         popupTemplate_OnStreetRestrictionsFL = new w.PopupTemplate({
             "title": "Restrictions by Block Face",
             "fieldInfos": [{
@@ -253,12 +271,6 @@ angular.module('vppApp')
         ],
             "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>This facility has the following parking restrictions:</p><p><b>{Restrictions}</b></p>"
         });
-
-
-
-
-
-
 
         popupTemplate_WDOnStreetOccupancyFL = new w.PopupTemplate({
             "title": "Parking Spaces by Block Face",
@@ -325,7 +337,7 @@ angular.module('vppApp')
 
 
             ],
-            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table>"
+            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>{Total_20_00}</td></tr></tbody></table>"
 
         });
 
@@ -523,14 +535,98 @@ angular.module('vppApp')
         $scope.map.infoWindow.resize(400, 250);
 
 
-        //Define all Map Layers in this section
+        function initSidebar() {
+            //Define all Map Layers in this section
+            parkingInspector = $scope.map.infoWindow;
+
+            //when the selection changes update the side panel to display the popup info for the 
+            //currently selected feature. 
+            w.connect.connect(parkingInspector, "onSelectionChange", function () {
+                displayPopupContent(parkingInspector.getSelectedFeature());
+                if ($("#mapInspector").is(':hidden')) {
+                    clearAllTools();
+                    $('#iconTitle').html("<span><i class='fa fa-question fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+                    $("#title").text("Parking Inspector");
+                    $("#mapToolsPNL").fadeIn(500);
+                    $("#mapInspector").fadeIn(500);
+                }
+
+            });
+
+            //when the selection is cleared remove the popup content from the side panel. 
+            w.connect.connect(parkingInspector, "onClearFeatures", function () {
+                $("#inspectorFeatureCount").html("Click Parking Feature to get More Information.");
+                $("#parkingInfo").html("");
+                $("#pager").hide();
+            });
+
+            //When features are associated with the  map's info window update the sidebar with the new content. 
+            w.connect.connect(parkingInspector, "onSetFeatures", function () {
+                displayPopupContent(parkingInspector.getSelectedFeature());
+                $("#inspectorFeatureCount").html(parkingInspector.features.length + " feature(s) selected.");
+
+                //enable navigation if more than one feature is selected 
+                parkingInspector.features.length > 1 ? $("#pager").show() : $("#pager").hide();
+            });
+        }
+
+        function displayPopupContent(feature) {
+            switch ($scope.pt) {
+            case "inventory":
+                parkingInspectorOnStreet.setContent("<p><b>On-Street Parking Inventory </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces}</b> total parking spaces on this block.</p>");
+                parkingInspectorOffStreet.setContent("<p><b>Off-Street Parking Inventory</b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces}</b> total parking spaces in this facility.</p>");
+                break;
+            case "restrictions":
+                parkingInspectorRestrictionsOnStreet.setContent("<p><b>On-Street Parking Restrictions </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>This block has the following parking restrictions:</p><p><b>${Restrictions}</b></p>");
+                parkingInspectorRestrictionsOffStreet.setContent("<p><b>Off-Street Parking Restrictions</b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>This facility has the following parking restrictions:</p><p><b>${Restrictions}</b></p>");
+                break;
+            case "wkdayOCC":
+                parkingInspectorWDOccupancyOffStreet.setContent("<p><b>Off-Street Weekday Occupancy </b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table></p>");
+                parkingInspectorWDOccupancyOnStreet.setContent("<p><b>On-Street Weekday Occupancy </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table>");
+                break;
+            case "wkndOCC":
+                parkingInspectorWEOccupancyOffStreet.setContent("<p><b>Off-Street Weekend Occupancy </b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table></p>");
+                parkingInspectorWEOccupancyOnStreet.setContent("<p><b>On-Street Weekend Occupancy </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table>");
+
+
+                break;
+            case "peakOCC":
+
+                break;
+
+            }
+
+            if (feature) {
+                var content = feature.getContent();
+                $("#parkingInfo").html(content);
+            }
+        }
+
+        $("#previous").on("click", selectPrevious);
+        $("#next").on("click", selectNext);
+
+        function selectPrevious() {
+            parkingInspector.selectPrevious();
+            displayPopupContent(parkingInspector.getSelectedFeature());
+        }
+
+        function selectNext() {
+            parkingInspector.selectNext();
+            displayPopupContent(parkingInspector.getSelectedFeature());
+        }
+
+        //initializes Inventory SideBar Content
+        initSidebar();
+
+
 
         OnStreetInventoryFL = new w.FeatureLayer(OnStreetInventoryURL, {
             id: "OnStreetInventory",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
-            infoTemplate: popupTemplate_OnStreetInventoryFL
+            //infoTemplate: popupTemplate_OnStreetInventoryFL
+            infoTemplate: parkingInspectorOnStreet
 
         });
 
@@ -539,7 +635,8 @@ angular.module('vppApp')
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
-            infoTemplate: popupTemplate_OffStreetInventoryFL
+            //infoTemplate: popupTemplate_OffStreetInventoryFL
+            infoTemplate: parkingInspectorOffStreet
         });
 
         OnStreetRestrictionsFL = new w.FeatureLayer(OnStreetInventoryURL, {
@@ -547,7 +644,8 @@ angular.module('vppApp')
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
-            infoTemplate: popupTemplate_OnStreetRestrictionsFL
+            //infoTemplate: popupTemplate_OnStreetRestrictionsFL
+            infoTemplate: parkingInspectorRestrictionsOnStreet
         });
 
         OffStreetRestrictionsFL = new w.FeatureLayer(OffStreetInventoryURL, {
@@ -555,7 +653,7 @@ angular.module('vppApp')
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
-            infoTemplate: popupTemplate_OffStreetRestrictionsFL
+            infoTemplate: parkingInspectorRestrictionsOffStreet
         });
 
         WDOffStreetOccupancyFL = new w.FeatureLayer(WDOffStreetOccupancyURL, {
@@ -563,7 +661,8 @@ angular.module('vppApp')
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
-            infoTemplate: popupTemplate_WDOffStreetOccupancyFL
+            //infoTemplate: popupTemplate_WDOffStreetOccupancyFL
+            infoTemplate: parkingInspectorWDOccupancyOffStreet
         });
 
         WDOnStreetOccupancyFL = new w.FeatureLayer(WDOnStreetOccupancyURL, {
@@ -571,7 +670,8 @@ angular.module('vppApp')
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
-            infoTemplate: popupTemplate_WDOnStreetOccupancyFL
+            //infoTemplate: popupTemplate_WDOnStreetOccupancyFL
+            infoTemplate: parkingInspectorWDOccupancyOnStreet
         });
 
         WEOffStreetOccupancyFL = new w.FeatureLayer(WEOffStreetOccupancyURL, {
@@ -579,7 +679,8 @@ angular.module('vppApp')
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
-            infoTemplate: popupTemplate_WEOffStreetOccupancyFL
+            //infoTemplate: popupTemplate_WEOffStreetOccupancyFL
+            infoTemplate: parkingInspectorWEOccupancyOffStreet
         });
 
         WEOnStreetOccupancyFL = new w.FeatureLayer(WEOnStreetOccupancyURL, {
@@ -587,7 +688,9 @@ angular.module('vppApp')
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
-            infoTemplate: popupTemplate_WEOnStreetOccupancyFL
+            //infoTemplate: popupTemplate_WEOnStreetOccupancyFL
+            infoTemplate: parkingInspectorWEOccupancyOnStreet
+
         });
 
         studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
@@ -751,8 +854,6 @@ angular.module('vppApp')
 
         OnStreetInventoryFL.setRenderer(renderer);
 
-
-
         //Set Map Renderers for OffStreetInventoryFL
         var OffStreetInventorySymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
         OffStreetInventorySymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
@@ -789,9 +890,6 @@ angular.module('vppApp')
         OffStreetInventoryRenderer.addBreak(Break5_minValue_OffStreetInventory, Break5_maxValue_OffStreetInventory, Break5Symbol_OffStreetInventory);
 
         OffStreetInventoryFL.setRenderer(OffStreetInventoryRenderer);
-
-
-
 
         //Unique Value Renderer for OffStreetRestrictionsFL
         var UniqueValueRendererSymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
@@ -1076,12 +1174,9 @@ angular.module('vppApp')
         //Set Curent Map Theme
         $scope.pt = "inventory";
 
-
         //Map and Featurelayer Utilities
         //switch this method to the angular $scope.on();
         dojo.connect($scope.map, "onZoomEnd", checkScale);
-
-
 
         function showPointLayers() {
             FerryTerminalsFL.show();
@@ -1110,13 +1205,14 @@ angular.module('vppApp')
 
 
         function checkScale(extent, zoomFactor, anchor, level) {
-            //document.getElementById("myText").value = level;
-            //console.clear();
-            //console.log('Zoom Scale: ' + level + ' Current Parking Theme: ' + $scope.pt);
             console.clear();
-            console.log("Current Theme: " + $scope.pt);
+            //console.log("Current Theme: " + $scope.pt);
+            $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: ' + level + '</p>');
             mapLevel = level;
             if (level > 14) {
+                studyAreasFL.on("click", function (evt) {
+
+                });
                 //showPointLayers();
                 switch ($scope.pt) {
                 case "inventory":
@@ -1200,8 +1296,13 @@ angular.module('vppApp')
 
             } else {
                 //hidePointLayers();
+                studyAreasFL.on("click", function (evt) {
+                    var SAQ_id = evt.graphic.attributes["Project_ID"];
+                    /*var highlightGraphic = new w.Graphic(evt.graphic.geometry,highlightSymbol);
+                    $scope.map.graphics.add(highlightGraphic);*/
+                    ZoomStudyArea(SAQ_id);
+                });
                 studyAreasFL.show();
-
                 OnStreetInventoryFL.hide();
                 OffStreetInventoryFL.hide();
                 OnStreetRestrictionsFL.hide();
@@ -1228,6 +1329,7 @@ angular.module('vppApp')
                 $("#mapLayers").fadeOut(0);
                 $("#mapPrint").fadeOut(0);
                 $("#maptypeOptionsBTN").fadeOut(0);
+                $("#mapInspector").fadeOut(0);
             }
             //UI Listeners
 
@@ -1272,11 +1374,7 @@ angular.module('vppApp')
             $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
         });
 
-
-
-
         $('.parkTheme').on('click', function () {
-
             OnStreetInventoryFL.hide();
             OffStreetInventoryFL.hide();
             OnStreetRestrictionsFL.hide();
@@ -1290,10 +1388,7 @@ angular.module('vppApp')
 
             switch ($scope.pt) {
             case "inventory":
-
-
                 var currentZoomLevel = $scope.map.getZoom();
-
 
                 if (currentZoomLevel > 14) {
                     OnStreetInventoryFL.show();
@@ -1314,7 +1409,7 @@ angular.module('vppApp')
                 $("#LegendNamePNL_Restr").fadeOut(0);
                 $("#mlegend_Occ").fadeOut(0);
                 $("#mlegend_Restr").fadeOut(0);
-                console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.sanValue);
 
                 break;
             case "restrictions":
@@ -1340,7 +1435,7 @@ angular.module('vppApp')
                 $("#mlegend_Occ").fadeOut(0);
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             case "wkdayOCC":
 
@@ -1367,7 +1462,7 @@ angular.module('vppApp')
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
                 $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/>Percent of total spaces with vehicles occupying spaces</p>");
-                console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             case "wkndOCC":
                 SetOccupancyRenderer("Occupancy_5am");
@@ -1393,7 +1488,7 @@ angular.module('vppApp')
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
                 $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
-                console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             case "peakOCC":
 
@@ -1403,7 +1498,7 @@ angular.module('vppApp')
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
                     showPeak("BOTH");
-                    console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+                    //console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
                 } else {
                     $scope.sanValue = 1;
                     //SetOccupancyRenderer("Occupancy_12pm");
@@ -1420,7 +1515,7 @@ angular.module('vppApp')
                 $("#mlegend_Restr").fadeOut(0);
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+                //console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
                 break;
 
             }
@@ -1443,7 +1538,7 @@ angular.module('vppApp')
                 success: function (data) {
                     //console.clear();
                     //console.log(data);
-                    console.log("Current Theme: " + $scope.pt + " | Study Area: " + $scope.sanValue + " | Parking Type: " + $scope.ptp + " | Day Type: " + data[0].Day_Type + " | Time Period: " + data[0].Peak);
+                    //console.log("Current Theme: " + $scope.pt + " | Study Area: " + $scope.sanValue + " | Parking Type: " + $scope.ptp + " | Day Type: " + data[0].Day_Type + " | Time Period: " + data[0].Peak);
                     SetOccupancyRenderer(data[0].Peak);
                     $scope.DayType = data[0].Day_Type;
 
@@ -1528,6 +1623,17 @@ angular.module('vppApp')
             $("#title").text("Parking Theme");
             $("#mapToolsPNL").fadeIn(500);
             $("#mapOpts").fadeIn(500);
+
+            //return false;
+
+        });
+        $('#mapInspectorCTL').click(function () {
+            clearAllTools();
+            $('#iconTitle').html("<span><i class='fa fa-question fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("Parking Inspector");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#mapInspector").fadeIn(500);
+            //Create function to enable Parking Inspector Feature.  This function should turn-on the inspector tool and show information from the Theme that is selected.
 
             //return false;
 
@@ -1636,13 +1742,7 @@ angular.module('vppApp')
             }
         });
 
-        studyAreasFL.on("click", function (evt) {
-            var SAQ_id = evt.graphic.attributes["Project_ID"];
-            /*var highlightGraphic = new w.Graphic(evt.graphic.geometry,highlightSymbol);
-            $scope.map.graphics.add(highlightGraphic);*/
-            //console.log(SAQ_id);
-            ZoomStudyArea(SAQ_id);
-        });
+
 
 
 
@@ -1664,19 +1764,19 @@ angular.module('vppApp')
             case "peakOCC":
                 $scope.ptp = "BOTH";
                 showPeak($scope.ptp);
-                console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+                //console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
                 break;
             case "inventory":
-                console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             case "restrictions":
-                console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             case "wkndOCC":
                 console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             case "wkdayOCC":
-                console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.sanValue);
                 break;
             }
 
@@ -1701,9 +1801,10 @@ angular.module('vppApp')
 
 
 
+
         function showSAQResults(saqr) {
             //console.clear();
-            console.log("Showing Study Area Results...");
+            //console.log("Showing Study Area Results...");
             vppGraphicsLayer.clear();
             var resultFeatures = saqr.features;
 
@@ -1994,6 +2095,12 @@ angular.module('vppApp')
                 $(event.target).closest('.toggle-button').addClass("btn-default").removeClass('btn-primary');
             }
         };
+        studyAreasFL.on("click", function (evt) {
+            var SAQ_id = evt.graphic.attributes["Project_ID"];
+            ZoomStudyArea(SAQ_id);
+        });
+        $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: 11</p>');
 
     });
+
 //EOF
