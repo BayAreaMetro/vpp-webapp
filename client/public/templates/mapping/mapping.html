@@ -1,0 +1,700 @@
+<div id="map">
+    <div id="HomeButton"></div>
+</div>
+<div id="search">
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyAreaMap">
+            {{selectedStudyAreaMap}}
+            <span class="caret pull-right ma-top-s"></span>
+        </button>
+        <ul class="dropdown-menu ddStudyAreaSummary" aria-labelledby="list-1">
+            <li ng-repeat="data in studyArea" class="study-li-summary">
+                <p class="hidden selected-id">{{data.Project_ID}}</p>
+                <p class="selected-area">{{data.Name}}</p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<div id="mapLegend" class="mapLegend">
+    <div id="mapLegendPNL" class="panel zTop panel-info legendContent">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <span id="iconTitleLegend" class='pull-left'></span>
+                <i class="fa fa-server fa-lg pad-right-m"></i>
+                <span id="LegendTitle">Legend</span>
+                <span class='pull-right clickableLegend'><i class='fa fa-times'></i></span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div id="StudyAreaNamePNL" class="pad-bottom-m pad-top-m collapse">
+                Study Area
+            </div>
+            <div id="parkingLayersCat" class="pad-bottom-m pad-top-m">
+                Parking Layers
+            </div>
+            <div id="mlegend_parknride" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/parkandride.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Park'n'Ride Lots
+                    </div>
+                </div>
+            </div>
+            <div id="mlegend_studyArea" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; border-style:solid ;  border-color: #007ac8;   border-width: 3px; display: block; background-color: rgb(255, 255, 255);">
+                    </div>
+
+                    <div class="col-xs-7 col-md-7">
+                        Study Areas
+                    </div>
+                </div>
+
+            </div>
+            <div id="LegendNamePNL_Occ" class="pad-bottom-sm pad-top-m collapse">
+
+            </div>
+            <div id="mlegend_Occ" class="collapse">
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(56, 168, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Line_1" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(56, 168, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Less than 50%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(139, 209, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(139, 209, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        50%-75%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 255, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 255, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        75%-85%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        85%-95%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 0, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 0, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        More than 95%
+                    </div>
+                </div>
+            </div>
+            <div id="LegendNamePNL_Restr" class="pad-bottom-sm pad-top-m collapse">
+                <p><b>Restrictions</b>
+                    <br>Types of pricing and/or restrictions on space at any time</p>
+            </div>
+            <div id="mlegend_Restr" class="collapse">
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(0, 92, 230);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Line_1" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(0, 92, 230);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Pricing Restrictions
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(115, 178, 255);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(115, 178, 255);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Time Restrictions
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(204, 204, 204);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(204, 204, 204);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        No Restrictions
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(138,43,226);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(138,43,226);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Time and Pricing Restrictions
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(0,128,0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(0,128,0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Accessible/Loading/Other
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(139,69,19);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(139,69,19);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Unknown/Error
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(78, 78, 78);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(78, 78, 78);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        No Parking
+                    </div>
+                </div>
+            </div>
+            <div id="LegendNamePNL_TotalSpaces" class="pad-bottom-sm pad-top-m collapse">
+                <p><b>Inventory</b>
+                    <br>Total Spaces</p>
+            </div>
+            <div id="mlegend_TotalSpaces" class="collapse">
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(120, 120, 120);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Line_1" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(120, 120, 120);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        No Parking
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(56, 168, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Line_1" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(56, 168, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        1-5
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(139, 209, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(139, 209, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        5-15
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 255, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 255, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        16-25
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 128, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        26-50
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(255, 0, 0);">
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(255, 0, 0);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        More than 50
+                    </div>
+                </div>
+            </div>
+            <div id="policyLayersCat" class="pad-bottom-m pad-top-m collapse">
+                Policy Layers
+            </div>
+            <div id="mlegend_pdas" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; border-style:solid ;  border-color: #b266ff;   border-width: 3px; display: block; background-color: rgb(178, 102, 255); opacity: 0.7;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Priority Development Areas
+                    </div>
+                </div>
+            </div>
+            <div id="mlegend_tpas" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; border-style:solid ;  border-color: rgb(242, 167, 52);   border-width: 3px; display: block; background-color: rgb(242, 167, 52);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Transit Priority Areas
+                    </div>
+                </div>
+            </div>
+            <div id="transitLayersCat" class="pad-bottom-m pad-top-m">
+                Transit Layers
+            </div>
+            <div id="mlegend_transitHubs" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/bus.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Transit Hubs
+                    </div>
+                </div>
+            </div>
+            <div id="mlegend_ferry" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/ferry.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Ferry Terminals
+                    </div>
+                </div>
+            </div>
+            <div id="mlegend_bart" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/bart.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        BART
+                    </div>
+                </div>
+            </div>
+            <div id="mlegend_caltrain" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/caltrain_logo_web.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; padding-right: 2px; height: 20px; width: 38px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7" style="padding-left: 20px;">
+                        Caltrain
+                    </div>
+                </div>
+            </div>
+            <div id="mlegend_amtrak" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/amtrak.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 30px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Amtrak
+                    </div>
+                </div>
+            </div>
+            <div id="mlegend_lightrail" class="collapse" pad-bottom-m pad-top-m>
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <img src="app/images/train_beige.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block;">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        Light Rail
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="CurrentMapZoomLevel" class="bottom collapse">
+            <p>Current Map Zoom Level:</p>
+        </div>
+    </div>
+
+</div>
+<div id="maptoolsBTN">
+    <div class="dropdown">
+        <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span class="fa fa-wrench fa-lg"></span> Map Tools
+        </button>
+        <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+            <li>
+                <a id="mapOptionsCTL">
+                    <i class="fa fa-ellipsis-h fa-lg"></i> Parking Theme <span class="arrow clickable"></span>
+                </a>
+            </li>
+            <li>
+                <a id="mapInspectorCTL">
+                    <i class="fa fa-question fa-lg"></i> Parking Inspector <span class="arrow clickable"></span>
+                </a>
+            </li>
+            <li ng-show="legendBTN">
+                <a id="mapLegendCTL">
+                    <i class="fa fa-server fa-lg"></i> Show Legend <span class="arrow clickable"></span>
+                </a>
+            </li>
+            <li><a id="mapBaseCTL"><i class="fa fa-globe fa-lg"></i> Basemaps <span class="arrow clickable"></span></a>
+            </li>
+            <li><a id="mapLayersCTL" ng-click="showLayers()"><i class="fa fa-th-list fa-lg"></i> View Layers <span class="arrow clickable"></span></a>
+            </li>
+            <li class="divider"></li>
+            <li><a id="mapRefreshCTL"><i class="fa fa-refresh fa-lg"></i> Reset Map <span class="arrow clickable"></span></a>
+            </li>
+            </li>
+            <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Navigation Tips <span class="arrow clickable"></span></a>
+            </li>
+            <li><a id="mapPrintCTL"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="TimeOfDayBTN">
+    <div id="maptypeOptionsBTN" class="text-center" ng-show="timeButton">
+        <div class="dropdown">
+            
+            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="TimePeriod">
+
+                <span class="fa  fa-clock-o fa-lg fa-fw"></span>
+                 {{TimePeriod}}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a id="Occupancy_5am" class="changeOCCPeriod">
+                        <i class="fa fa-clock-o fa-lg fa-fw"></i> Early Morning (5AM)
+                    </a>
+                </li>
+                <li><a id="Occupancy_9am" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Morning (9AM) </a>
+                </li>
+                <li><a id="Occupancy_12pm" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Afternoon (12PM) </a>
+                </li>
+                <li><a id="Occupancy_4pm" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Late Afternoon (4PM) </a>
+                </li>
+                <li><a id="Occupancy_8pm" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Evening (8PM) </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="PeakOccBTN">
+    <div id="PeakTypeOptionsBTN" class="text-center" ng-show="peakButton">
+        <div class="dropdown">
+
+            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="parkingType">
+
+                <span class="fa  fa-clock-o fa-lg fa-fw"></span>
+                 {{parkingType}}
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a id="ON" class="changePeakPeriod">
+                        <i class="fa fa-clock-o fa-lg fa-fw"></i> On Street Peak</a>
+                </li>
+                <li><a id="OFF" class="changePeakPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Off Street Peak </a>
+                </li>
+                <li><a id="BOTH" class="changePeakPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Both </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="mt">
+    <div id="mapToolsPNL" class="panel panel-info collapse">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <span id="iconTitle" class='pull-left'></span>
+                <span id="title"></span>
+                <span class='pull-right clickable'><i class='fa fa-times'></i></span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div id="mapNav" class="tools collapse">
+                <p>Users can choose the mouse, keyboard, and sliders for panning and zooming the map. The following keyboard and mouse controls affect the map navigation:</p>
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-hand-o-up fa-lg pad-right-m"></i>Drag the mouse to pan</li>
+                    <li><i class="fa fa-search-plus fa-lg pad-right-m"></i>Mouse Scroll Forward to zoom in</li>
+                    <li><i class="fa fa-search-minus fa-lg pad-right-m"></i>Mouse Scroll Backward to zoom out</li>
+                    <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + Drag the mouse to zoom in</li>
+                    <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + CTRL + Drag the mouse to zoom out</li>
+                    <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + Click to recenter</li>
+                    <li><i class="fa fa-level-down fa-lg pad-left-s pad-right-m"></i>&nbsp;Double Click to Center and Zoom in</li>
+                    <li><i class="fa fa-keyboard-o fa-lg pad-right-m"></i>SHIFT + Double Click to Center and Zoom in</li>
+                    <li>Use <i class="fa fa-arrows fa-lg pad-left-s pad-right-s"></i> arrow keys to pan</li>
+                    <li>Use <i class="fa fa-plus-square fa-lg pad-left-s pad-right-s"></i> key to zoom in a level</li>
+                    <li>Use <i class="fa fa-minus-square fa-lg pad-left-s pad-right-s"></i> key to zoom out a level</li>
+                </ul>
+            </div>
+            <div id="mapOpts" class="tools collapse">
+                <div class="row pad-top-m">
+                    <div class="col-xs-4 col-md-6">
+                        <div id="inventory" class="mt parkTheme">
+                            <a id="inv" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/inventory_thumbnail.png" style="height: 100%; width: 100%; display: block;">
+                            </a>
+                            <p>Inventory</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <div id="restrictions" class="mt parkTheme">
+                            <a id="res" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/restrictions_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            </a>
+                            <p>Restrictions</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <div id="wkdayOCC" class="occ parkTheme">
+                            <a id="wkday" class="thumbnail" ng-click="activeTheme($event)" view="time"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            </a>
+                            <p>Weekday Occupancy</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <div id="wkndOCC" class="occ parkTheme">
+                            <a id="wknd" class="thumbnail" ng-click="activeTheme($event)" view="time"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            </a>
+                            <p>Weekend Occupancy</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <div id="peakOCC" class="pkt parkTheme">
+                            <a id="peak" class="thumbnail" ng-click="activeTheme($event)" view="peak"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            </a>
+                            <p>Peak Occupancy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mapInspector" class="tools collapse">
+                <div id="parkingInfo"></div>
+                <div id="inspectorFeatureCount" class="text-left pad-bottom-m">
+                    <p style="margin:0 0 0px;">Click Parking Feature to get More Information</p>
+                </div>
+                <div id="pager" style="display:none;" class="pad-bottom-l" class="btn-group btn-group-xs" role="group">
+                    <button id="previous" type="button" class="btn btn-primary btn-sm pull-left">
+                        <span aria-hidden="true">&laquo; Prev</span>
+                    </button>
+                    <button id="next" type="button" class="btn btn-primary btn-sm pull-right"><span aria-hidden="true">Next &raquo;</span>
+                    </button>
+                </div>
+
+
+            </div>
+            <div id="mapBasemaps" class="tools collapse">
+                <div class="row pad-top-m">
+                    <div class="col-xs-4 col-md-6">
+                        <a id="topo" class="thumbnail bm">
+                            <img src="app/images/topo_map_2.jpg" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                        </a>
+                        <p style="color: black;">Topographic</p>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <a id="gray" class="thumbnail bm">
+                            <img src="app/images/light_gray_canvas.jpg" style="height: 100%; width: 100%; display: block;" alt="Light Gray">
+                        </a>
+                        <p style="color: black;">Monochromatic</p>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <a id="osm" class="thumbnail bm">
+                            <img src="app/images/osm.jpg" style="height: 100%; width: 100%; display: block;" alt="OSM">
+                        </a>
+                        <p style="color: black;">Open Street Map</p>
+                    </div>
+                    <div class="col-xs-4 col-md-6">
+                        <a id="hybrid" class="thumbnail bm">
+                            <img src="app/images/imagery_labels.jpg" style="height: 100%; width: 100%; display: block;" alt="Satelite">
+                        </a>
+                        <p style="color: black;">Imagery</p>
+                    </div>
+                </div>
+            </div>
+            <div id="mapLayers" class="tools vHidden zero-h">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            <div class="LayerCategoryLBLs">
+                                <span>Parking Layers</span>
+                            </div>
+                        </p>
+                        <div class="adl">
+                            <p>
+                                <input id="StudyLayerSwitch" type="checkbox" data-size="mini" name="studyAreasFL" checked="true">
+                                <span class="pad-left-m LayerLBLs">Study Areas</span>
+                            </p>
+                        </div>
+                        <div class="pad-bottom-l" id="StudyAreaOpacitySlider">
+                            <div class="opacitySliderLBLs">
+                                <span>Layer Opacity</span>
+                            </div>
+                            <rzslider rz-slider-model="vm.opacitySlider.value" rz-slider-floor="vm.opacitySlider.floor" rz-slider-ceil="vm.opacitySlider.ceil"></rzslider>
+                            <div id="trans" class="opacitySliderLBLs">
+                                <span>Transparent</span>
+                                <span>Opaque</span>
+                            </div>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="ParknRideLotsSwitch" type="checkbox" data-size="mini" name="ParknRideLotsFL">
+                                <span class="pad-left-m LayerLBLs">Park'n'Ride Lots</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <div class="LayerCategoryLBLs">
+                                    <span>Policy Layers</span>
+                                </div>
+                            </p>
+                        </div>
+                        <div class="adl">
+
+                            <p>
+
+                                <input id="PDALayerSwitch" type="checkbox" data-size="mini" name="PDA_FL">
+                                <span class="pad-left-m LayerLBLs">Priority Development Areas</span>
+                            </p>
+                        </div>
+                        <div id="PDAsOpacitySlider" class="pad-bottom-l hide-fixer">
+
+                            <div class="opacitySliderLBLs">
+                                <span>Layer Opacity</span>
+                            </div>
+                            <rzslider rz-slider-model="vm.opacitySlider1.value" rz-slider-floor="vm.opacitySlider1.floor" rz-slider-ceil="vm.opacitySlider1.ceil"></rzslider>
+                            <div id="trans" class="opacitySliderLBLs">
+                                <span>Transparent</span>
+                                <span>Opaque</span>
+                            </div>
+                        </div>
+
+                        <div class="adl">
+                            <p>
+
+                                <input id="TPAsSwitch" type="checkbox" data-size="mini" name="TPAsFL">
+                                <span class="pad-left-m LayerLBLs">Transit Priority Areas</span>
+                            </p>
+                        </div>
+                        <div id="TPAsOpacitySlider" class="pad-bottom-l hide-fixer">
+
+                            <div class="opacitySliderLBLs">
+                                <span>Layer Opacity</span>
+                            </div>
+                            <rzslider rz-slider-model="vm.opacitySlider2.value" rz-slider-floor="vm.opacitySlider2.floor" rz-slider-ceil="vm.opacitySlider2.ceil"></rzslider>
+                            <div id="trans" class="opacitySliderLBLs">
+                                <span>Transparent</span>
+                                <span>Opaque</span>
+                            </div>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <div class="LayerCategoryLBLs">
+                                    <span>Transit Layers</span>
+                                </div>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="TransitHubsSwitch" type="checkbox" data-size="mini" name="TransitHubsFL">
+                                <span class="pad-left-m LayerLBLs">Transit Hubs</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="FerryTerminalsSwitch" type="checkbox" data-size="mini" name="FerryTerminalsFL">
+                                <span class="pad-left-m LayerLBLs">Ferry Terminals</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="bartSwitch" type="checkbox" data-size="mini" name="BartFL" checked="true">
+                                <span class="pad-left-m LayerLBLs">BART</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="caltrainSwitch" type="checkbox" data-size="mini" name="CaltrainFL" checked="true">
+                                <span class="pad-left-m LayerLBLs">Caltrain</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="amtrakSwitch" type="checkbox" data-size="mini" name="AmtrakFL">
+                                <span class="pad-left-m LayerLBLs">Amtrak</span>
+                            </p>
+                        </div>
+                        <div class="adl">
+                            <p>
+                                <input id="lightrailSwitch" type="checkbox" data-size="mini" name="LightRailFL">
+                                <span class="pad-left-m LayerLBLs">Light Rail</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mapPrint" class="tools collapse">
+                <div class="container">
+                    <div class="row">
+                        <p>Print the Current Map View</p>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="printMap()">
+                            <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
