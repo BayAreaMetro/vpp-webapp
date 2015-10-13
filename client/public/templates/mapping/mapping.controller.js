@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vppApp')
-    .controller('MapCtrl', function ($rootScope, $scope, wish) {
+    .controller('MapCtrl', function ($rootScope, $scope, $http, wish) {
 
         //Vars always at the top
         $scope.layerOpacity;
@@ -10,6 +10,9 @@ angular.module('vppApp')
         $scope.isActiveDev;
         $scope.switchButtonDev = "Off";
         $scope.switchButtonTrans = "Off";
+        $scope.studyArea;
+        $scope.selectedStudyAreaMap = "Choose a Study Area...";
+        $scope.selectedId;
 
         var w = wish.get(),
             OnStreetInventoryFL,
@@ -41,14 +44,6 @@ angular.module('vppApp')
             sfs,
             popup,
             popupOptions,
-            popupTemplate_OnStreetInventoryFL,
-            popupTemplate_OffStreetInventoryFL,
-            popupTemplate_WDOnStreetOccupancyFL,
-            popupTemplate_WDOffStreetOccupancyFL,
-            popupTemplate_WEOnStreetOccupancyFL,
-            popupTemplate_WEOffStreetOccupancyFL,
-            popupTemplate_OnStreetRestrictionsFL,
-            popupTemplate_OffStreetRestrictionsFL,
             parkingInspector,
             parkingInspectorOnStreet,
             parkingInspectorOffStreet,
@@ -112,6 +107,8 @@ angular.module('vppApp')
         $scope.PTbtn = false;
 
         $scope.showAll = true;
+
+
 
         w.parser.parse();
         w.esriConfig.defaults.geometryService = new w.GeometryService("http://gis.mtc.ca.gov/mtc/rest/services/Utilities/Geometry/GeometryServer");
@@ -210,339 +207,7 @@ angular.module('vppApp')
             visible: true
         });
 
-        //Define Feature Layers for Map
-        popupTemplate_OnStreetInventoryFL = new w.PopupTemplate({
-            "title": "Parking Spaces by Block Face",
-            "fieldInfos": [{
-                    "fieldName": "Total_Spaces",
-                    "label": "Total Spaces",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    },
-                    "fieldName": "Street_Name",
-                    "label": "Street Name",
-                    "fieldName": "From_Street",
-                    "label": "From Street",
-                    "fieldName": "To_Street",
-                    "label": "To Street"
-            }
-        ],
-            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block.</p>"
-        });
-
-        popupTemplate_OffStreetInventoryFL = new w.PopupTemplate({
-            "title": "Parking Spaces by Facility",
-            "fieldInfos": [{
-                    "fieldName": "Total_Spaces",
-                    "label": "Total Spaces",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    },
-                    "fieldName": "Facility_Name",
-                    "label": "Facility Name"
-            }
-        ],
-            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility.</p>"
-        });
-
-        popupTemplate_OnStreetRestrictionsFL = new w.PopupTemplate({
-            "title": "Restrictions by Block Face",
-            "fieldInfos": [{
-                    "fieldName": "Restrictions",
-                    "label": "Restrictions",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    },
-                    "fieldName": "Street_Name",
-                    "label": "Street Name",
-                    "fieldName": "From_Street",
-                    "label": "From Street",
-                    "fieldName": "To_Street",
-                    "label": "To Street"
-            }
-        ],
-            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>This block has the following parking restrictions:</p><p><b>{Restrictions}</b></p>"
-        });
-
-        popupTemplate_OffStreetRestrictionsFL = new w.PopupTemplate({
-            "title": "Restrictions by Facility",
-            "fieldInfos": [{
-                    "fieldName": "Restrictions",
-                    "label": "Restrictions",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    },
-                    "fieldName": "Facility_Name",
-                    "label": "Facility Name"
-            }
-        ],
-            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>This facility has the following parking restrictions:</p><p><b>{Restrictions}</b></p>"
-        });
-
-        popupTemplate_WDOnStreetOccupancyFL = new w.PopupTemplate({
-            "title": "Parking Spaces by Block Face",
-            "fieldInfos": [{
-                    "fieldName": "Total_Spaces",
-                    "label": "Total Spaces",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_5_00",
-                    "label": "Occupancy 5 am",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_9_00",
-                    "label": "Occupancy 9 am",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_12_00",
-                    "label": "Occupancy 12 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_16_00",
-                    "label": "Occupancy 4 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_20_00",
-                    "label": "Occupancy 8 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Street_Name",
-                    "label": "Street Name"
-                },
-                {
-                    "fieldName": "From_Street",
-                    "label": "From Street"
-                },
-                {
-                    "fieldName": "To_Street",
-                    "label": "To Street"
-                }
-
-
-            ],
-            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>{Total_20_00}</td></tr></tbody></table>"
-
-        });
-
-        popupTemplate_WDOffStreetOccupancyFL = new w.PopupTemplate({
-            "title": "Parking Spaces by Facility",
-            "fieldInfos": [{
-                    "fieldName": "Total_Spaces",
-                    "label": "Total Spaces",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_5_00",
-                    "label": "Occupancy 5 am",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_9_00",
-                    "label": "Occupancy 9 am",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_12_00",
-                    "label": "Occupancy 12 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_16_00",
-                    "label": "Occupancy 4 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_20_00",
-                    "label": "Occupancy 8 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Facility_Name",
-                    "label": "Facility Name"
-                }
-
-
-            ],
-            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
-
-        });
-
-        popupTemplate_WEOnStreetOccupancyFL = new w.PopupTemplate({
-            "title": "Parking Spaces by Block Face",
-            "fieldInfos": [{
-                    "fieldName": "Total_Spaces",
-                    "label": "Total Spaces",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_5_00",
-                    "label": "Occupancy 5 am",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_9_00",
-                    "label": "Occupancy 9 am",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_12_00",
-                    "label": "Occupancy 12 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_16_00",
-                    "label": "Occupancy 4 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_20_00",
-                    "label": "Occupancy 8 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Street_Name",
-                    "label": "Street Name"
-                },
-                {
-                    "fieldName": "From_Street",
-                    "label": "From Street"
-                },
-                {
-                    "fieldName": "To_Street",
-                    "label": "To Street"
-                }
-
-
-            ],
-            "description": "<p><b>Street Name</b>:{Street_Name}</p><p><b>From Street</b>:{From_Street}</p><p><b>To Street</b>:{To_Street}</p><p>There are <b>{Total_Spaces}</b> total parking spaces on this block</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
-
-        });
-
-        popupTemplate_WEOffStreetOccupancyFL = new w.PopupTemplate({
-            "title": "Parking Spaces by Facility",
-            "fieldInfos": [{
-                    "fieldName": "Total_Spaces",
-                    "label": "Total Spaces",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_5_00",
-                    "label": "Occupancy 5 am",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_9_00",
-                    "label": "Occupancy 9 am",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_12_00",
-                    "label": "Occupancy 12 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_16_00",
-                    "label": "Occupancy 4 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Total_20_00",
-                    "label": "Occupancy 8 pm",
-                    "format": {
-                        "places": 0,
-                        "digitSeparator": true
-                    }
-                            },
-                {
-                    "fieldName": "Facility_Name",
-                    "label": "Facility Name"
-                }
-
-
-            ],
-            "description": "<p><b>Facility Name</b>:{Facility_Name}</p><p>There are <b>{Total_Spaces}</b> total parking spaces in this facility</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td>{Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td>{Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td>{Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td>{Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td>{Total_20_00}</td></tr></tbody></table></p>"
-
-        });
-
+        //Define Feature Layers for Map    
         $scope.map.infoWindow.resize(400, 250);
 
 
@@ -1415,8 +1080,8 @@ angular.module('vppApp')
                     OffStreetInventoryFL.show();
                     studyAreasFL.show();
                 } else {
-                    $scope.sanValue = 1;
-                    ZoomStudyArea($scope.sanValue);
+                    $scope.selectedId = 1;
+                    ZoomStudyArea($scope.selectedId);
                     OnStreetInventoryFL.show();
                     OffStreetInventoryFL.show();
                     studyAreasFL.show();
@@ -1429,7 +1094,7 @@ angular.module('vppApp')
                 $("#LegendNamePNL_Restr").fadeOut(0);
                 $("#mlegend_Occ").fadeOut(0);
                 $("#mlegend_Restr").fadeOut(0);
-                //console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.selectedId);
 
                 break;
             case "restrictions":
@@ -1441,8 +1106,8 @@ angular.module('vppApp')
                     OnStreetRestrictionsFL.show();
                     OffStreetRestrictionsFL.show();
                 } else {
-                    $scope.sanValue = 1;
-                    ZoomStudyArea($scope.sanValue);
+                    $scope.selectedId = 1;
+                    ZoomStudyArea($scope.selectedId);
                     OnStreetRestrictionsFL.show();
                     OffStreetRestrictionsFL.show();
                 }
@@ -1455,7 +1120,7 @@ angular.module('vppApp')
                 $("#mlegend_Occ").fadeOut(0);
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                //console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkdayOCC":
 
@@ -1469,8 +1134,8 @@ angular.module('vppApp')
                     WDOnStreetOccupancyFL.show();
                     WDOffStreetOccupancyFL.show();
                 } else {
-                    $scope.sanValue = 1;
-                    ZoomStudyArea($scope.sanValue);
+                    $scope.selectedId = 1;
+                    ZoomStudyArea($scope.selectedId);
                     WDOnStreetOccupancyFL.show();
                     WDOffStreetOccupancyFL.show();
                 }
@@ -1483,7 +1148,7 @@ angular.module('vppApp')
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
                 $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/>Percent of total spaces with vehicles occupying spaces</p>");
-                //console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkndOCC":
                 SetOccupancyRenderer("Occupancy_5am");
@@ -1496,8 +1161,8 @@ angular.module('vppApp')
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
                 } else {
-                    $scope.sanValue = 1;
-                    ZoomStudyArea($scope.sanValue);
+                    $scope.selectedId = 1;
+                    ZoomStudyArea($scope.selectedId);
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
                 }
@@ -1510,7 +1175,7 @@ angular.module('vppApp')
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
                 $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
-                //console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "peakOCC":
 
@@ -1520,14 +1185,14 @@ angular.module('vppApp')
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
                     showPeak("BOTH");
-                    //console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+                    //console.log($scope.pt + " | " + $scope.selectedId + " | " + $scope.ptp);
                 } else {
-                    $scope.sanValue = 1;
+                    $scope.selectedId = 1;
                     //SetOccupancyRenderer("Occupancy_12pm");
                     //$scope.DayType = "Weekday Peak Period";
                     //showPeak("BOTH");
                     //$scope.TimePeriod = "Afternoon (12PM)";
-                    ZoomStudyArea($scope.sanValue);
+                    ZoomStudyArea($scope.selectedId);
                     WEOnStreetOccupancyFL.show();
                     WEOffStreetOccupancyFL.show();
                 }
@@ -1537,7 +1202,7 @@ angular.module('vppApp')
                 $("#mlegend_Restr").fadeOut(0);
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
-                //console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+                //console.log($scope.pt + " | " + $scope.selectedId + " | " + $scope.ptp);
                 break;
 
             }
@@ -1557,11 +1222,11 @@ angular.module('vppApp')
 
             $.ajax({
                 dataType: 'json',
-                url: publicDataURL + '/data/getPeak?sa=' + $scope.sanValue + '&pt=' + $scope.ptp,
+                url: publicDataURL + '/data/getPeak?sa=' + $scope.selectedId + '&pt=' + $scope.ptp,
                 success: function (data) {
                     //console.clear();
                     //console.log(data);
-                    //console.log("Current Theme: " + $scope.pt + " | Study Area: " + $scope.sanValue + " | Parking Type: " + $scope.ptp + " | Day Type: " + data[0].Day_Type + " | Time Period: " + data[0].Peak);
+                    //console.log("Current Theme: " + $scope.pt + " | Study Area: " + $scope.selectedId + " | Parking Type: " + $scope.ptp + " | Day Type: " + data[0].Day_Type + " | Time Period: " + data[0].Peak);
                     SetOccupancyRenderer(data[0].Peak);
                     $scope.DayType = data[0].Day_Type;
 
@@ -1607,7 +1272,7 @@ angular.module('vppApp')
         }
 
         $('.changePeakPeriod').on('click', function () {
-            console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+            console.log($scope.pt + " | " + $scope.selectedId + " | " + $scope.ptp);
             $scope.ptp = $(this).attr('id').toString();
             showPeak($scope.ptp);
 
@@ -1755,31 +1420,34 @@ angular.module('vppApp')
 
         //Data Builder
         //Load data for Study Area Search Function
-        //This needs to be fixed so that it shows as a Drop Down Control lke the Data page
-        $.ajax({
-            dataType: 'json',
+        $http({
             url: publicDataURL + '/data/studyareas',
-            success: function (data) {
-                //console.clear();
-                //console.log(data);
-                for (var i = 0; i < data.length; i++) {
-                    $("#studyareas-list").append('<option data-number=' + data[i].Project_ID + '>' + data[i].City + ": " + data[i].Name + '</option>');
-                }
-            }
+            method: 'GET'
+        }).success(function (results) {
+            $scope.studyArea = results;
+
+        }).error(function (data, status) {
+            console.log("There was an error:", status);
+
+        });
+
+
+        $(".ddStudyAreaSummary").on('click', '.study-li-summary', function (e) {
+            //$scope.StudyAreaName = $(this).children('.selected-area').text();
+            $scope.selectedStudyAreaMap = $(this).children('.selected-area').text();
+            $scope.selectedId = $(this).children('.selected-id').text();
+            ZoomStudyArea($scope.selectedId);
+
         });
 
 
 
 
-
         $(".find-studyarea").click(function () {
-            var san = $("#StudyAreaSearch").val();
-            $scope.sanValue = $('#studyareas-list option').filter(function () {
-                return this.value == san;
-                //console.log(this);
-            }).data('number');
+            $scope.selectedStudyAreaMap = $(this).children('.selected-area').text();
+            $scope.selectedId = $(this).children('.selected-id').text();
 
-            ZoomStudyArea($scope.sanValue);
+            ZoomStudyArea($scope.selectedId);
         });
         //Zoom To Study Area and Highlight Study Area Name in Legend as Current Study Area.
         function ZoomStudyArea(a) {
@@ -1790,21 +1458,28 @@ angular.module('vppApp')
             case "peakOCC":
                 $scope.ptp = "BOTH";
                 showPeak($scope.ptp);
-                //console.log($scope.pt + " | " + $scope.sanValue + " | " + $scope.ptp);
+                //console.log($scope.pt + " | " + $scope.selectedId + " | " + $scope.ptp);
                 break;
             case "inventory":
-                //console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "restrictions":
-                //console.log($scope.pt + " | " + $scope.sanValue);
+                //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkndOCC":
+<<<<<<< HEAD
                 console.log($scope.pt + " | " + $scope.sanValue);
                 $scope.TODbtn = true;
                 break;
             case "wkdayOCC":
                 //console.log($scope.pt + " | " + $scope.sanValue);
                 $scope.TODbtn = true;
+=======
+                //console.log($scope.pt + " | " + $scope.selectedId);
+                break;
+            case "wkdayOCC":
+                //console.log($scope.pt + " | " + $scope.selectedId);
+>>>>>>> origin/development
                 break;
             }
 
