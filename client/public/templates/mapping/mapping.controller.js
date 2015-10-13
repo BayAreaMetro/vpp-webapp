@@ -94,8 +94,8 @@ angular.module('vppApp')
 
         PDAFLsv = 70;
         PDAFLop = 0.7;
-        studyAreasFLsv = 70;
-        studyAreasFLop = 0.7;
+        studyAreasFLsv = 15;
+        studyAreasFLop = 0.15;
         TPAsFLsv = 70;
         TPAsFLop = 0.7;
         $scope.legendBTN = false;
@@ -1011,6 +1011,7 @@ angular.module('vppApp')
                 $scope.TODbtn = false;
                 $scope.PTbtn = false;
                 $("#mapInspector").fadeOut(0);
+                vppGraphicsLayer.clear();
             }
             //UI Listeners
 
@@ -1353,6 +1354,7 @@ angular.module('vppApp')
             $("#StudyAreaNamePNL").fadeOut(100, function () {
                 $("#StudyAreaNamePNL").html("");
             });
+            clearAllTools();
         });
 
         //Map Layer Controls
@@ -1408,8 +1410,8 @@ angular.module('vppApp')
             //Reset Values for Opacity Settings
             PDAFLsv = 70;
             PDAFLop = 0.7;
-            studyAreasFLsv = 70;
-            studyAreasFLop = 0.7;
+            studyAreasFLsv = 15;
+            studyAreasFLop = 0.15;
             TPAsFLsv = 70;
             TPAsFLop = 0.7;
 
