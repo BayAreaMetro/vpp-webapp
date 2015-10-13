@@ -2,10 +2,10 @@
 
 angular.module('vppApp')
     .controller('FeedbackCtrl', [
-  '$scope',
-  '$http',
-  function ($scope, $http) {
-
+		'$scope',
+		'$http',
+	  	function ($scope, $http) {
+	
             $scope.feedbackCat = "Select one of the following...";
             $scope.feedbackType = "Select one of the following...";
             $scope.feedbackComment;
@@ -111,5 +111,6 @@ angular.module('vppApp')
                 ceil: 100,
                 value: 70
             };
-    }
-   ]);
+	    }
+   ]
+);
