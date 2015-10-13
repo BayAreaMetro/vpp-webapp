@@ -396,16 +396,15 @@
     </div>
 </div>
 <div id="TimeOfDayBTN">
-    <div id="maptypeOptionsBTN" class="text-center collapse">
+    <div id="maptypeOptionsBTN" class="text-center ng-hide" ng-show="TODbtn">
         <div class="dropdown">
-            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <span class="fa  fa-clock-o fa-lg fa-fw"></span> Time of Day
+            
+            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="TimePeriod">
+
+                <span class="fa  fa-clock-o fa-lg fa-fw"></span>
+                 {{TimePeriod}}
             </button>
             <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
-                <!--
-                <li><a id=""><i class="fa  fa-clock-o fa-lg fa-fw"></i> Peak </a>
-</li>
--->
                 <li>
                     <a id="Occupancy_5am" class="changeOCCPeriod">
                         <i class="fa fa-clock-o fa-lg fa-fw"></i> Early Morning (5AM)
@@ -424,11 +423,15 @@
     </div>
 </div>
 <div id="PeakOccBTN">
-    <div id="PeakTypeOptionsBTN" class="text-center collapse">
+    <div id="PeakTypeOptionsBTN" class="text-center ng-hide" ng-show="PTbtn">
         <div class="dropdown">
-            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <span class="fa  fa-clock-o fa-lg fa-fw"></span> Peak Occupancy
+
+            <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="parkingType">
+
+                <span class="fa  fa-clock-o fa-lg fa-fw"></span>
+                 {{parkingType}}
             </button>
+
             <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
                 <li>
                     <a id="ON" class="changePeakPeriod">

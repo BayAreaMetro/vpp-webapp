@@ -95,6 +95,7 @@ angular.module('vppApp')
             TPAsFLsv,
             TPAsFLop,
             urlParmresults
+           
 
         PDAFLsv = 70;
         PDAFLop = 0.7;
@@ -103,6 +104,14 @@ angular.module('vppApp')
         TPAsFLsv = 70;
         TPAsFLop = 0.7;
         $scope.legendBTN = false;
+        $scope.TimePeriod = "Time Period";
+        $scope.TODbtn = false;
+
+       
+        $scope.parkingType = "Peak Type";
+        $scope.PTbtn = false;
+
+        $scope.showAll = true;
 
         w.parser.parse();
         w.esriConfig.defaults.geometryService = new w.GeometryService("http://gis.mtc.ca.gov/mtc/rest/services/Utilities/Geometry/GeometryServer");
@@ -176,6 +185,9 @@ angular.module('vppApp')
             infoWindow: popup,
             basemap: 'topo'
         });
+
+       
+
         $scope.map.infoWindow.set("popupWindow", false);
 
 
@@ -703,7 +715,13 @@ angular.module('vppApp')
         });
 
         saLabelsFL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer");
+
         saLabelsFL.setVisibleLayers([7]);
+        saLabelsFL.setImageFormat("PNG32");
+
+
+
+
 
 
         PDA_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/OBAG_PDA/OBAG_PDA/MapServer/0", {
@@ -1329,7 +1347,7 @@ angular.module('vppApp')
                 $("#mapBasemaps").fadeOut(0);
                 $("#mapLayers").fadeOut(0);
                 $("#mapPrint").fadeOut(0);
-                $("#maptypeOptionsBTN").fadeOut(0);
+                $scope.TODbtn = false;
                 $("#mapInspector").fadeOut(0);
             }
             //UI Listeners
@@ -1343,8 +1361,10 @@ angular.module('vppApp')
                 $("#title").text("");
                 $('.tools').fadeOut();
             });
-            $("#maptypeOptionsBTN").fadeOut(0);
-            $("#PeakTypeOptionsBTN").fadeOut(0);
+            $scope.TODbtn = false;
+            $scope.PTbtn = false;
+
+            //$("#PeakTypeOptionsBTN").fadeOut(0);
         });
 
         $('#mapLegendCTL').on('click', function () {
@@ -1403,7 +1423,7 @@ angular.module('vppApp')
                     studyAreasFL.show();
                 }
 
-                $("#maptypeOptionsBTN").fadeOut(0);
+                $scope.TODbtn = false;
                 $("#mlegend_TotalSpaces").fadeIn(500);
                 $("#LegendNamePNL_TotalSpaces").fadeIn(500);
                 $("#LegendNamePNL_Occ").fadeOut(0);
@@ -1415,7 +1435,7 @@ angular.module('vppApp')
                 break;
             case "restrictions":
 
-                $("#maptypeOptionsBTN").fadeOut(0);
+                $scope.TODbtn = false;
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
@@ -1441,6 +1461,7 @@ angular.module('vppApp')
             case "wkdayOCC":
 
                 SetOccupancyRenderer("Occupancy_5am");
+                $scope.TODbtn = true;
                 $scope.DayType = "Weekday Occupancy";
                 $scope.TimePeriod = "Early Morning (5AM)";
                 var currentZoomLevel = $scope.map.getZoom();
@@ -1467,6 +1488,7 @@ angular.module('vppApp')
                 break;
             case "wkndOCC":
                 SetOccupancyRenderer("Occupancy_5am");
+                 $scope.TODbtn = true;
                 $scope.DayType = "Weekend Occupancy";
                 $scope.TimePeriod = "Early Morning (5AM)";
                 var currentZoomLevel = $scope.map.getZoom();
@@ -1524,8 +1546,9 @@ angular.module('vppApp')
         });
 
         $('.pkt').on('click', function () {
-            $("#maptypeOptionsBTN").fadeOut(0);
-            $("#PeakTypeOptionsBTN").fadeIn(500);
+            $scope.TODbtn = false;
+            $scope.PTbtn = true;
+            //$("#PeakTypeOptionsBTN").fadeIn(500);
 
         });
 
@@ -1594,12 +1617,15 @@ angular.module('vppApp')
 
         $('.occ').on('click', function () {
 
-            $("#maptypeOptionsBTN").fadeIn(500);
-            $("#PeakTypeOptionsBTN").fadeOut(0);
+            $scope.TODbtn = true;
+            //$("#PeakTypeOptionsBTN").fadeOut(0);
+            $scope.PTbtn = false;
         });
         $('.mt').on('click', function () {
-            $("#maptypeOptionsBTN").fadeOut(0);
-            $("#PeakTypeOptionsBTN").fadeOut(0);
+            //$("#maptypeOptionsBTN").fadeOut(0);
+            $scope.TODbtn = false;
+            //$("#PeakTypeOptionsBTN").fadeOut(0);
+            $scope.PTbtn = false;
 
 
         });
@@ -1775,9 +1801,11 @@ angular.module('vppApp')
                 break;
             case "wkndOCC":
                 console.log($scope.pt + " | " + $scope.sanValue);
+                $scope.TODbtn = true;
                 break;
             case "wkdayOCC":
                 //console.log($scope.pt + " | " + $scope.sanValue);
+                $scope.TODbtn = true;
                 break;
             }
 
