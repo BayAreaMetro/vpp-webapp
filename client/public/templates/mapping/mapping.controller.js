@@ -1391,7 +1391,6 @@ angular.module('vppApp')
             WDOffStreetOccupancyFL.hide();
             WEOnStreetOccupancyFL.hide();
             WEOffStreetOccupancyFL.hide();
-
             //COC_FL.hide();
             PDA_FL.hide();
             FerryTerminalsFL.hide();
@@ -1399,13 +1398,8 @@ angular.module('vppApp')
             //RailStationsFL.hide();
             TransitHubsFL.hide();
             TPAsFL.hide();
-
             vppGraphicsLayer.clear();
             $scope.map.centerAndZoom(mapCenter, 11);
-            $("#mapLegendPNL").fadeIn(300, function () {
-                $("#LegendTitle").text("");
-            });
-
             $("#StudyAreaNamePNL").fadeOut(100, function () {
                 $("#StudyAreaNamePNL").html("");
             });
@@ -1417,6 +1411,11 @@ angular.module('vppApp')
             studyAreasFLop = 0.5;
             TPAsFLsv = 30;
             TPAsFLop = 0.3;
+            clearAllTools();
+            $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("Parking Theme");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#mapOpts").fadeIn(500);
 
 
         })
