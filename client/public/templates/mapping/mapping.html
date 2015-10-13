@@ -403,7 +403,7 @@
     </div>
 </div>
 <div id="TimeOfDayBTN">
-    <div id="maptypeOptionsBTN" class="text-center ng-hide" ng-show="TODbtn">
+    <div id="maptypeOptionsBTN" class="text-center" ng-show="timeButton">
         <div class="dropdown">
             
             <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="TimePeriod">
@@ -430,7 +430,7 @@
     </div>
 </div>
 <div id="PeakOccBTN">
-    <div id="PeakTypeOptionsBTN" class="text-center ng-hide" ng-show="PTbtn">
+    <div id="PeakTypeOptionsBTN" class="text-center" ng-show="peakButton">
         <div class="dropdown">
 
             <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="parkingType">
@@ -498,21 +498,21 @@
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <div id="wkdayOCC" class="occ parkTheme">
-                            <a id="wkday" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            <a id="wkday" class="thumbnail" ng-click="activeTheme($event)" view="time"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Weekday Occupancy</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <div id="wkndOCC" class="occ parkTheme">
-                            <a id="wknd" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            <a id="wknd" class="thumbnail" ng-click="activeTheme($event)" view="time"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Weekend Occupancy</p>
                         </div>
                     </div>
                     <div class="col-xs-4 col-md-6">
                         <div id="peakOCC" class="pkt parkTheme">
-                            <a id="peak" class="thumbnail" ng-click="activeTheme($event)"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
+                            <a id="peak" class="thumbnail" ng-click="activeTheme($event)" view="peak"><img src="app/images/wd_occ_thumbnail.png" style="height: 100%; width: 100%; display: block;" alt="Topo">
                             </a>
                             <p>Peak Occupancy</p>
                         </div>

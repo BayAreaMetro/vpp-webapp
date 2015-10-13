@@ -13,6 +13,8 @@ angular.module('vppApp')
         $scope.studyArea;
         $scope.selectedStudyAreaMap = "Choose a Study Area...";
         $scope.selectedId;
+        $scope.peakButton = false;
+        $scope.timeButton = false;
 
         var w = wish.get(),
             OnStreetInventoryFL,
@@ -885,7 +887,6 @@ angular.module('vppApp')
 
 
         function checkScale(extent, zoomFactor, anchor, level) {
-            console.clear();
             //console.log("Current Theme: " + $scope.pt);
             $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: ' + level + '</p>');
             mapLevel = level;
@@ -1174,6 +1175,7 @@ angular.module('vppApp')
                 //Write in the title for the legend item.
                 $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
                 //console.log($scope.pt + " | " + $scope.selectedId);
+                //console.log("? should be true", $scope.TODbtn);
                 break;
             case "peakOCC":
 
@@ -1216,7 +1218,6 @@ angular.module('vppApp')
 
         function showPeak(a) {
             $scope.ptp = a;
-            console.clear();
 
             $.ajax({
                 dataType: 'json',
@@ -1719,8 +1720,39 @@ angular.module('vppApp')
             console.log(PDAFLop);
         });
         $scope.activeTheme = function (event) {
+	        
+	        //Grab attribute
+	        var view = $(event.target).parent(".thumbnail").attr('view');
+            
+            //Active theme Classes
             $('.thumbnail').removeClass('active');
             $(event.target).parent(".thumbnail").addClass('active');
+            
+            //show and hist peak&time buttons
+            if ( view === "time"){
+	            
+	            //turn on time button
+	            $scope.timeButton = true;
+	            
+	            //turn off the peak button
+	            $scope.peakButton = false;
+            } else if ( view === "peak" ){
+	            
+	            //turn off time button
+	            $scope.timeButton = false;
+	            
+	            //turn on the peak button
+	            $scope.peakButton = true;
+            } else{
+	            
+	            //turn off time button
+	            $scope.timeButton = false;
+	            
+	            //turn off the peak button
+	            $scope.peakButton = false;
+            }
+            
+            console.log(view);
         };
 
         //Load Study Area from Parking Data
@@ -1795,7 +1827,7 @@ angular.module('vppApp')
             ZoomStudyArea(SAQ_id);
         });
         $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: 11</p>');
-
+		
     });
 
 //EOF
