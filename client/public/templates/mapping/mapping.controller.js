@@ -558,14 +558,14 @@ angular.module('vppApp')
                 $("#inspectorFeatureCount").html("Click Parking Feature to get More Information.");
                 $("#parkingInfo").html("");
                 $("#pager").hide();
-                $("#inspectorFeatureCount").removeClass('pad-top-l');
+                $("#inspectorFeatureCount").removeClass('pad-top-m');
             });
 
             //When features are associated with the  map's info window update the sidebar with the new content. 
             w.connect.connect(parkingInspector, "onSetFeatures", function () {
                 displayPopupContent(parkingInspector.getSelectedFeature());
                 $("#inspectorFeatureCount").html(parkingInspector.features.length + " feature(s) selected.");
-                $("#inspectorFeatureCount").addClass('pad-top-l');
+                $("#inspectorFeatureCount").addClass('pad-top-m');
                 //enable navigation if more than one feature is selected 
                 parkingInspector.features.length > 1 ? $("#pager").show() : $("#pager").hide();
             });
@@ -1845,7 +1845,7 @@ angular.module('vppApp')
                     break;
                 case "studyAreasFL":
                     studyAreasFL.show();
-					$('#StudyAreaOpacitySlider').removeClass('hide-fixer');
+                    $('#StudyAreaOpacitySlider').removeClass('hide-fixer');
 
                     break;
                 case "FerryTerminalsFL":
