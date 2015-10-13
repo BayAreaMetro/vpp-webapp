@@ -1844,7 +1844,7 @@ angular.module('vppApp')
                     break;
                 case "studyAreasFL":
                     studyAreasFL.show();
-
+					$('#StudyAreaOpacitySlider').removeClass('hide-fixer');
 
                     break;
                 case "FerryTerminalsFL":
@@ -1911,6 +1911,7 @@ angular.module('vppApp')
                     break;
                 case "studyAreasFL":
                     studyAreasFL.hide();
+                    $('#StudyAreaOpacitySlider').addClass('hide-fixer');
                     break;
                 case "FerryTerminalsFL":
                     FerryTerminalsFL.hide();

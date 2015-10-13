@@ -207,25 +207,14 @@
 
 //Sliders
 #PDAsOpacitySlider {
-    opacity: 1;
-    height: 119px;
-    .transition(all 0.5s ease-in-out);
-    &.hide-fixer {
-        opacity: 0;
-        height: 0px;
-    }
+	.slider-opacity();
 }
-
 #TPAsOpacitySlider {
-    opacity: 1;
-    height: 119px;
-    .transition(all 0.5s ease-in-out);
-    &.hide-fixer {
-        opacity: 0;
-        height: 0px;
-    }
+	.slider-opacity();
 }
-
+#StudyAreaOpacitySlider{
+	.slider-opacity();
+}
 .custom-switch {
     background: white;
 }
