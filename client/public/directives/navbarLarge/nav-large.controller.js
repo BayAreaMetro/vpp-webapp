@@ -154,22 +154,23 @@ angular.module('vppApp')
 			
 			//About
 			$scope.navShow = function(){
-				$(".inner-nested").hover(function(){
+				$(".inner-nested-about").hover(function(){
 					$('.about-nav').addClass('active');
-					$('.inner-nested').addClass('active');
+					$('.inner-nested-about').addClass('active');
 				},function(){
 					$('.about-nav').removeClass('active');
-					$('.inner-nested').removeClass('active');
+					$('.inner-nested-about').removeClass('active');
 				});
 			};
+			
 			//Help
 			$scope.navShowHelp = function(){
-				$(".inner-nested").hover(function(){
+				$(".inner-nested-help").hover(function(){
 					$('.about-nav').addClass('active');
-					$('.inner-nested').addClass('active');
+					$('.inner-nested-help').addClass('active');
 				},function(){
 					$('.about-nav').removeClass('active');
-					$('.inner-nested').removeClass('active');
+					$('.inner-nested-help').removeClass('active');
 				});
 			};
 			

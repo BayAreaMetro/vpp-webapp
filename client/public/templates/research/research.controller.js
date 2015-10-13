@@ -13,12 +13,12 @@ angular.module('vppApp')
 				//Remove hiiden class
 				//$('.inner-ul').removeClass('hidden');
 				
-				$(".inner-nested").hover(function(){
+				$(".inner-nested-research").hover(function(){
 					$('.research-nav').addClass('active');
-					$('.inner-nested').addClass('active');
+					$('.inner-nested-research').addClass('active');
 				},function(){
 					$('.research-nav').removeClass('active');
-					$('.inner-nested').removeClass('active');
+					$('.inner-nested-research').removeClass('active');
 				});
 				//console.log('reseach');
 			};

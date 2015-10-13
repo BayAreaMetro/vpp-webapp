@@ -38,36 +38,39 @@
 		&.active{
 			overflow: visible;
 		}
-		.inner-ul{
-			background-color: @mainBgColor;
-			height: 0px;
-			opacity: 0;
-			.transition(all .5s ease-in-out);
-			padding: 0;
-			text-align: center;
-			border-bottom: 1px solid @mainColor;
-			border-top: 1px solid @mainColor;
-			width:100%;
+		.inner-ul-reseach{
+			.nest-nav();
 			&.active{
 				height: 300px;
 				opacity: 1;
 				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
-				&.data-nav {
-					height: 140px;
-					opacity: 1;
-					.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
-				}
-				&.about-nav{
-					height: 80px;
-					opacity: 1;
-					.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
-				}
+			}
+		}
+		.inner-ul-data{
+			.nest-nav();
+			&.data-nav {
+				height: 140px;
+				opacity: 1;
+				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
+			}
+		}
+		.inner-ul-about{
+			.nest-nav();
+			&.about-nav{
+				height: 80px;
+				opacity: 1;
+				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
+			}
+		}
+		.inner-ul-help{
+			.nest-nav();
 				&.help-nav{
 					height: 60px;
 					opacity: 1;
 					.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
 				}
 			}
+		.inner-ul{
 			li{
 				width: 100%;
 				padding: 5px 10px 5px 10px;

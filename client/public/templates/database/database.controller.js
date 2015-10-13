@@ -515,12 +515,12 @@ angular.module('vppApp')
             });
 
             $scope.activeTrigger = function () {
-                $(".inner-nested").hover(function () {
+                $(".inner-nested-data").hover(function () {
                     $('.data-nav').addClass('active');
-                    $('.inner-nested').addClass('active');
+                    $('.inner-nested-data').addClass('active');
                 }, function () {
                     $('.data-nav').removeClass('active');
-                    $('.inner-nested').removeClass('active');
+                    $('.inner-nested-data').removeClass('active');
                 });
             };
 
