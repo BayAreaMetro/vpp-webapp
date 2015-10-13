@@ -558,13 +558,14 @@ angular.module('vppApp')
                 $("#inspectorFeatureCount").html("Click Parking Feature to get More Information.");
                 $("#parkingInfo").html("");
                 $("#pager").hide();
+                $("#inspectorFeatureCount").removeClass('pad-top-l');
             });
 
             //When features are associated with the  map's info window update the sidebar with the new content. 
             w.connect.connect(parkingInspector, "onSetFeatures", function () {
                 displayPopupContent(parkingInspector.getSelectedFeature());
                 $("#inspectorFeatureCount").html(parkingInspector.features.length + " feature(s) selected.");
-
+                $("#inspectorFeatureCount").addClass('pad-top-l');
                 //enable navigation if more than one feature is selected 
                 parkingInspector.features.length > 1 ? $("#pager").show() : $("#pager").hide();
             });
