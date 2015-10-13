@@ -92,12 +92,12 @@ angular.module('vppApp')
             urlParmresults
 
 
-        PDAFLsv = 70;
-        PDAFLop = 0.7;
-        studyAreasFLsv = 15;
-        studyAreasFLop = 0.15;
-        TPAsFLsv = 70;
-        TPAsFLop = 0.7;
+        PDAFLsv = 30;
+        PDAFLop = 0.3;
+        studyAreasFLsv = 50;
+        studyAreasFLop = 0.5;
+        TPAsFLsv = 30;
+        TPAsFLop = 0.3;
         $scope.legendBTN = false;
         $scope.TimePeriod = "Time Period";
         $scope.TODbtn = false;
@@ -804,7 +804,7 @@ angular.module('vppApp')
         TransitHubsFL.setRenderer(TransitHubs_Renderer);
 
         //Setting up Simple Lines Renderer for TPAsFL
-        var TPAs_Color = new w.Color([242, 167, 52, 0.7]);
+        var TPAs_Color = new w.Color([242, 167, 52, 0.3]);
         var TPAs_Line = new w.SimpleLineSymbol("solid", TPAs_Color, 2);
         var TPAs_Symbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, TPAs_Line, new w.Color([242, 167, 52, 1]));
         var TPAs_Renderer = new w.SimpleRenderer(TPAs_Symbol);
@@ -1003,14 +1003,16 @@ angular.module('vppApp')
         //End of Map Layer Configuration
 
         function clearAllTools() {
+
+                //$("#mt").fadeOut(0);
                 $("#mapNav").fadeOut(0);
                 $("#mapOpts").fadeOut(0);
                 $("#mapBasemaps").fadeOut(0);
                 $("#mapLayers").fadeOut(0);
                 $("#mapPrint").fadeOut(0);
+                $("#mapInspector").fadeOut(0);
                 $scope.TODbtn = false;
                 $scope.PTbtn = false;
-                $("#mapInspector").fadeOut(0);
                 vppGraphicsLayer.clear();
             }
             //UI Listeners
@@ -1347,14 +1349,15 @@ angular.module('vppApp')
         });
 
         $('#HomeButton').click(function () {
-            $("#mapLegendPNL").fadeIn(300, function () {
-                $("#LegendTitle").text("");
-            });
 
             $("#StudyAreaNamePNL").fadeOut(100, function () {
                 $("#StudyAreaNamePNL").html("");
             });
             clearAllTools();
+            $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+            $("#title").text("Parking Theme");
+            $("#mapToolsPNL").fadeIn(500);
+            $("#mapOpts").fadeIn(500);
         });
 
         //Map Layer Controls
@@ -1408,12 +1411,12 @@ angular.module('vppApp')
             });
             studyAreasFL.show();
             //Reset Values for Opacity Settings
-            PDAFLsv = 70;
-            PDAFLop = 0.7;
-            studyAreasFLsv = 15;
-            studyAreasFLop = 0.15;
-            TPAsFLsv = 70;
-            TPAsFLop = 0.7;
+            PDAFLsv = 30;
+            PDAFLop = 0.3;
+            studyAreasFLsv = 50;
+            studyAreasFLop = 0.5;
+            TPAsFLsv = 30;
+            TPAsFLop = 0.3;
 
 
         })
@@ -1443,12 +1446,12 @@ angular.module('vppApp')
 
 
 
-        $(".find-studyarea").click(function () {
-            $scope.selectedStudyAreaMap = $(this).children('.selected-area').text();
-            $scope.selectedId = $(this).children('.selected-id').text();
-
-            ZoomStudyArea($scope.selectedId);
-        });
+        //        $(".find-studyarea").click(function () {
+        //            $scope.selectedStudyAreaMap = $(this).children('.selected-area').text();
+        //            $scope.selectedId = $(this).children('.selected-id').text();
+        //
+        //            ZoomStudyArea($scope.selectedId);
+        //        });
         //Zoom To Study Area and Highlight Study Area Name in Legend as Current Study Area.
         function ZoomStudyArea(a) {
             saQuery.where = "Project_ID = '" + a + "'";
@@ -1687,19 +1690,19 @@ angular.module('vppApp')
         $scope.vm.opacitySlider = {
             floor: 0,
             ceil: 100,
-            value: 70
+            value: 50
         };
 
         $scope.vm.opacitySlider1 = {
             floor: 0,
             ceil: 100,
-            value: 70
+            value: 30
         };
 
         $scope.vm.opacitySlider2 = {
             floor: 0,
             ceil: 100,
-            value: 70
+            value: 30
         };
 
         $scope.$on("slideEnded", function () {
@@ -1780,7 +1783,7 @@ angular.module('vppApp')
             }
 
 
-            console.log('Dev', $scope.isActiveDev);
+            //console.log('Dev', $scope.isActiveDev);
         };
         $scope.toggleTransArea = function (event) {
             $scope.isActiveTrans = !$scope.isActiveTrans;
