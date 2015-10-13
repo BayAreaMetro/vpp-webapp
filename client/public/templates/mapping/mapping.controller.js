@@ -101,11 +101,8 @@ angular.module('vppApp')
         $scope.legendBTN = false;
         $scope.TimePeriod = "Time Period";
         $scope.TODbtn = false;
-
-
         $scope.parkingType = "Peak Type";
         $scope.PTbtn = false;
-
         $scope.showAll = true;
 
 
@@ -1012,6 +1009,7 @@ angular.module('vppApp')
                 $("#mapLayers").fadeOut(0);
                 $("#mapPrint").fadeOut(0);
                 $scope.TODbtn = false;
+                $scope.PTbtn = false;
                 $("#mapInspector").fadeOut(0);
             }
             //UI Listeners
