@@ -1287,7 +1287,7 @@ angular.module('vppApp')
 
 
         $('.occ').on('click', function () {
-
+            $scope.TimePeriod = "Early Morning (5AM)";
             $scope.TODbtn = true;
             //$("#PeakTypeOptionsBTN").fadeOut(0);
             $scope.PTbtn = false;
