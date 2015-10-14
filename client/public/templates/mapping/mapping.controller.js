@@ -101,9 +101,9 @@ angular.module('vppApp')
         TPAsFLsv = 30;
         TPAsFLop = 0.3;
         $scope.legendBTN = false;
-        $scope.TimePeriod = "Time Period";
+        $scope.TimePeriod = "Early Morning (5AM)";
         $scope.TODbtn = false;
-        $scope.parkingType = "Peak Type";
+        $scope.parkingType = "Both On/Off-Street Parking";
         $scope.PTbtn = false;
         $scope.showAll = true;
 
@@ -490,7 +490,7 @@ angular.module('vppApp')
         var renderer = new w.ClassBreaksRenderer(symbol, "Total_Spaces");
 
 
-        var Break0Color = new w.Color([123, 50, 148, 1]);
+        var Break0Color = new w.Color([120, 120, 120, 1]);
         var Break0LineSymbol = new w.SimpleLineSymbol("solid", Break0Color, 2);
 
         var Break1Color = new w.Color([166, 97, 26, 1]);
@@ -1072,7 +1072,8 @@ angular.module('vppApp')
             WEOffStreetOccupancyFL.hide();
 
             $scope.pt = $(this).attr('id');
-
+            $scope.TimePeriod = "Early Morning (5AM)";
+            $scope.parkingType = "Both On/Off-Street Parking";
             switch ($scope.pt) {
             case "inventory":
                 var currentZoomLevel = $scope.map.getZoom();
@@ -1125,11 +1126,11 @@ angular.module('vppApp')
                 //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkdayOCC":
-
+                $scope.TimePeriod = "Early Morning (5AM)";
                 SetOccupancyRenderer("Occupancy_5am");
                 $scope.TODbtn = true;
                 $scope.DayType = "Weekday Occupancy";
-                $scope.TimePeriod = "Early Morning (5AM)";
+
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
@@ -1153,10 +1154,11 @@ angular.module('vppApp')
                 //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkndOCC":
+                $scope.TimePeriod = "Early Morning (5AM)";
                 SetOccupancyRenderer("Occupancy_5am");
                 $scope.TODbtn = true;
                 $scope.DayType = "Weekend Occupancy";
-                $scope.TimePeriod = "Early Morning (5AM)";
+
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
@@ -1181,7 +1183,7 @@ angular.module('vppApp')
                 //console.log("? should be true", $scope.TODbtn);
                 break;
             case "peakOCC":
-
+                $scope.parkingType = "Both On/Off-Street Parking";
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
@@ -1220,69 +1222,72 @@ angular.module('vppApp')
         });
 
         function showPeak(a) {
+            $scope.TimePeriod = "Early Morning (5AM)";
             $scope.ptp = a;
-
-            $.ajax({
-                dataType: 'json',
+            $http({
                 url: publicDataURL + '/data/getPeak?sa=' + $scope.selectedId + '&pt=' + $scope.ptp,
-                success: function (data) {
-                    //console.clear();
-                    //console.log(data);
-                    //console.log("Current Theme: " + $scope.pt + " | Study Area: " + $scope.selectedId + " | Parking Type: " + $scope.ptp + " | Day Type: " + data[0].Day_Type + " | Time Period: " + data[0].Peak);
-                    SetOccupancyRenderer(data[0].Peak);
-                    $scope.DayType = data[0].Day_Type;
+                method: 'GET'
+            }).success(function (data) {
+                SetOccupancyRenderer(data[0].Peak);
+                $scope.DayType = data[0].Day_Type;
 
-                    switch (data[0].Peak) {
-                    case "Occupancy_5am":
-                        $scope.TimePeriod = "Early Morning (5AM)";
+                switch (data[0].Peak) {
+                case "Occupancy_5am":
+                    $scope.TimePeriod = "Early Morning (5AM)";
 
-                        break;
-                    case "Occupancy_9am":
-                        $scope.TimePeriod = "Morning (9AM)";
+                    break;
+                case "Occupancy_9am":
+                    $scope.TimePeriod = "Morning (9AM)";
 
-                        break;
-                    case "Occupancy_12pm":
-                        $scope.TimePeriod = "Afternoon (12PM)";
+                    break;
+                case "Occupancy_12pm":
+                    $scope.TimePeriod = "Afternoon (12PM)";
 
-                        break;
-                    case "Occupancy_4pm":
-                        $scope.TimePeriod = "Late Afternoon (4PM)";
+                    break;
+                case "Occupancy_4pm":
+                    $scope.TimePeriod = "Late Afternoon (4PM)";
 
-                        break;
-                    case "Occupancy_8pm":
-                        $scope.TimePeriod = "Evening (8PM)";
+                    break;
+                case "Occupancy_8pm":
+                    $scope.TimePeriod = "Evening (8PM)";
 
-                        break;
-                    }
-
-                    switch (a) {
-                    case "ON":
-                        $scope.parkingType = "On-Street Parking";
-
-                        break;
-                    case "OFF":
-                        $scope.parkingType = "Off-Street Parking";
-
-                        break;
-                    case "BOTH":
-                        $scope.parkingType = "Both On/Off-Street Parking";
-
-                    }
-                    $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.parkingType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+                    break;
                 }
+
+                switch (a) {
+                case "ON":
+                    $scope.parkingType = "On-Street Parking";
+
+                    break;
+                case "OFF":
+                    $scope.parkingType = "Off-Street Parking";
+
+                    break;
+                case "BOTH":
+                    $scope.parkingType = "Both On/Off-Street Parking";
+
+                }
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.parkingType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+
+            }).error(function (data, status) {
+                console.log("There was an error:", status);
+
             });
+
         }
 
         $('.changePeakPeriod').on('click', function () {
-            console.log($scope.pt + " | " + $scope.selectedId + " | " + $scope.ptp);
+            //console.log($scope.pt + " | " + $scope.selectedId + " | " + $scope.ptp);
             $scope.ptp = $(this).attr('id').toString();
             showPeak($scope.ptp);
+            $scope.parkingType = $(this).text();
+
 
         });
 
 
         $('.occ').on('click', function () {
-
+            $scope.TimePeriod = "Early Morning (5AM)";
             $scope.TODbtn = true;
             //$("#PeakTypeOptionsBTN").fadeOut(0);
             $scope.PTbtn = false;
