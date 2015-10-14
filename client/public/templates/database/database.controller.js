@@ -1,19 +1,19 @@
 'use strict';
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
-		'$scope',
-		'$http',
-		function ($scope, $http) {
+  '$scope',
+  '$http',
+  function ($scope, $http) {
             //Show and Hide vars
             $scope.isActive = false,
-            $scope.showAll = true,
-            $scope.pricing = false,
-            $scope.supply = false,
-            $scope.restrictions = false,
-            $scope.spaceTypes = false,
-            $scope.weekDay = false,
-            $scope.weekEnd = false,
-            $scope.resources = false;
+                $scope.showAll = true,
+                $scope.pricing = false,
+                $scope.supply = false,
+                $scope.restrictions = false,
+                $scope.spaceTypes = false,
+                $scope.weekDay = false,
+                $scope.weekEnd = false,
+                $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
@@ -165,13 +165,13 @@ angular.module('vppApp')
 
 
             $('#vwMapSummaryBTN').click(function () {
-                window.location.replace('#/map?sa=' + $scope.selectedId);
+                window.open('#/map?sa=' + $scope.selectedId, '_self');
             });
             $('#vwMapInventoryBTN').click(function () {
-                window.location.replace('#/map?sa=' + $scope.selectedId);
+                window.open('/#/map?sa=' + $scope.selectedId, '_self');
             });
             $('#vwMapOccupancyBTN').click(function () {
-                window.location.replace('#/map?sa=' + $scope.selectedId);
+                window.open('/#/map?sa=' + $scope.selectedId, '_self');
             });
 
             $('#dlSummaryDataBTN').click(function () {
@@ -553,6 +553,5 @@ angular.module('vppApp')
             };
 
             $scope.activeTrigger();
-		}
-	]
-);
+  }
+ ]);
