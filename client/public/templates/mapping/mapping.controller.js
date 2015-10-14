@@ -1737,7 +1737,7 @@ angular.module('vppApp')
 
                 //turn on time button
                 $scope.timeButton = true;
-
+				$scope.TimePeriod = "Early Morning (5AM)";
                 //turn off the peak button
                 $scope.peakButton = false;
             } else if (view === "peak") {
