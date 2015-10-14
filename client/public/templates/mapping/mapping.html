@@ -205,6 +205,10 @@
                 <p><b>Inventory</b>
                     <br>Total Spaces</p>
             </div>
+            <div id="LegendNamePNL_TotalSpaces" class="pad-bottom-sm pad-top-m collapse">
+                <p><b>Inventory</b>
+                    <br>Total Spaces</p>
+            </div>
             <div id="mlegend_TotalSpaces" class="collapse">
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
@@ -405,11 +409,10 @@
 <div id="TimeOfDayBTN">
     <div id="maptypeOptionsBTN" class="text-center ng-hide" ng-show="TODbtn">
         <div class="dropdown">
-            
+
             <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="TimePeriod">
 
-                <span class="fa  fa-clock-o fa-lg fa-fw"></span>
-                 {{TimePeriod}}
+                <span class="fa  fa-clock-o fa-lg fa-fw"></span> {{TimePeriod}}
             </button>
             <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
                 <li>
@@ -435,8 +438,7 @@
 
             <button class="btn btn-info btn-info-map dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="parkingType">
 
-                <span class="fa  fa-clock-o fa-lg fa-fw"></span>
-                 {{parkingType}}
+                <span class="fa  fa-clock-o fa-lg fa-fw"></span> {{parkingType}}
             </button>
 
             <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
@@ -453,7 +455,6 @@
         </div>
     </div>
 </div>
-
 <div id="mt">
     <div id="mapToolsPNL" class="panel panel-info collapse">
         <div class="panel-heading">

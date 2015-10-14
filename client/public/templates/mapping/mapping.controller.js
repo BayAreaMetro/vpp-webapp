@@ -497,19 +497,19 @@ angular.module('vppApp')
         var Break0Color = new w.Color([120,120,120, 1]);
         var Break0LineSymbol = new w.SimpleLineSymbol("solid", Break0Color, 2);
 
-        var Break1Color = new w.Color([166,97,26, 1]);
+        var Break1Color = new w.Color([166, 97, 26, 1]);
         var Break1LineSymbol = new w.SimpleLineSymbol("solid", Break1Color, 2);
 
-        var Break2Color = new w.Color([223,194,125, 1]);
+        var Break2Color = new w.Color([223, 194, 125, 1]);
         var Break2LineSymbol = new w.SimpleLineSymbol("solid", Break2Color, 2);
 
-        var Break3Color = new w.Color([230,97,1, 1]);
+        var Break3Color = new w.Color([230, 97, 1, 1]);
         var Break3LineSymbol = new w.SimpleLineSymbol("solid", Break3Color, 2);
 
-        var Break4Color = new w.Color([128,205,193, 1]);
+        var Break4Color = new w.Color([128, 205, 193, 1]);
         var Break4LineSymbol = new w.SimpleLineSymbol("solid", Break4Color, 2);
 
-        var Break5Color = new w.Color([1,133,113, 1]);
+        var Break5Color = new w.Color([1, 133, 113, 1]);
         var Break5LineSymbol = new w.SimpleLineSymbol("solid", Break5Color, 2);
 
 
@@ -547,12 +547,12 @@ angular.module('vppApp')
         //create renderer
         var OffStreetInventoryRenderer = new w.ClassBreaksRenderer(OffStreetInventorySymbol, "Total_Spaces");
 
-
         var Break1Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([166,97,26, 0.5]));
         var Break2Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([223,194,125, 0.5]));
         var Break3Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([230,97,1, 0.5]));
         var Break4Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([128,205,193, 0.5]));
         var Break5Symbol_OffStreetInventory = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([1,133,113, 0.5]));
+
 
         var Break1_minValue_OffStreetInventory = 0;
         var Break1_maxValue_OffStreetInventory = 4;
@@ -1731,8 +1731,44 @@ angular.module('vppApp')
             console.log(PDAFLop);
         });
         $scope.activeTheme = function (event) {
+<<<<<<< HEAD
             $('.thumbnail').removeClass('active');
             $(event.target).parent(".thumbnail").addClass('active');
+=======
+
+            //Grab attribute
+            var view = $(event.target).parent(".thumbnail").attr('view');
+
+            //Active theme Classes
+            $('.thumbnail').removeClass('active');
+            $(event.target).parent(".thumbnail").addClass('active');
+
+            //show and hist peak&time buttons
+            if (view === "time") {
+
+                //turn on time button
+                $scope.timeButton = true;
+
+                //turn off the peak button
+                $scope.peakButton = false;
+            } else if (view === "peak") {
+
+                //turn off time button
+                $scope.timeButton = false;
+
+                //turn on the peak button
+                $scope.peakButton = true;
+            } else {
+
+                //turn off time button
+                $scope.timeButton = false;
+
+                //turn off the peak button
+                $scope.peakButton = false;
+            }
+
+            console.log(view);
+>>>>>>> origin/development
         };
 
         //Load Study Area from Parking Data
