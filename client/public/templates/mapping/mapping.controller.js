@@ -1728,6 +1728,7 @@ angular.module('vppApp')
             PDA_FL.refresh();
             console.log(PDAFLop);
         });
+        
         $scope.activeTheme = function (event) {
 
             //Grab attribute

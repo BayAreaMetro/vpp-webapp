@@ -3,7 +3,9 @@ angular.module('vppApp')
     .controller('DatabaseCtrl', [
 		'$scope',
 		'$http',
-		function ($scope, $http) {
+        '$location',
+        '$rootScope',
+		function ($scope, $http, $location, $rootScope) {
             //Show and Hide vars
             $scope.isActive = false,
             $scope.showAll = true,
@@ -165,7 +167,9 @@ angular.module('vppApp')
 
 
             $('#vwMapSummaryBTN').click(function () {
-                window.location.replace('#/map?sa=' + $scope.selectedId);
+                $rootScope.$evalAsync(function() {
+                $location.url('?sa=' + $scope.selectedId);
+                $location.path('/map');
             });
             $('#vwMapInventoryBTN').click(function () {
                 window.location.replace('#/map?sa=' + $scope.selectedId);
