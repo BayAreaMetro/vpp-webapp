@@ -168,8 +168,9 @@ angular.module('vppApp')
 
             $('#vwMapSummaryBTN').click(function () {
                 $rootScope.$evalAsync(function() {
-                $location.url('?sa=' + $scope.selectedId);
-                $location.path('/map');
+                    $location.url('?sa=' + $scope.selectedId);
+                    $location.path('/map');
+                });
             });
             $('#vwMapInventoryBTN').click(function () {
                 window.location.replace('#/map?sa=' + $scope.selectedId);
