@@ -73,7 +73,7 @@ router.post('/submitcontact', function(req, res, next) {
     var newdate = moment(new Date()).format('MMMM Do YYYY, h:mm:ss a');
 
     var email = new sendgrid.Email();
-    email.addTo('mziyam@mtc.ca.gov');
+    email.addTo('ksmith@mtc.ca.gov');
     email.subject = "Contact Form Submission";
     email.setFrom(req.body.email);
     email.setFromName(req.body.name);
