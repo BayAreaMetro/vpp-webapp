@@ -279,6 +279,35 @@ stroke-width: 4 !important;
         padding-right: 25px;
     }
 }
+//Legend height fixx
+#mapLegend{
+	#mapLegendPNL{
+		margin-bottom: 0;
+	}	
+}
+//Map-layer panels
+#mt{
+	height: 660px;
+	#mapToolsPNL{
+		padding-bottom: 10px;
+		.panel-body{
+			max-height: 500px;
+			overflow: scroll;
+		}
+	}
+	//overflow: scroll;
+}
+
+//Print window
+#print-window{
+	top: 120px;
+    left: 25px;
+    .print-border{
+		height: 510px;
+		width: 600px;
+		border: 5px solid @mainColor;
+    }
+}
 
 //print sections
 #print-map {

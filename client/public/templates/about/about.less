@@ -24,7 +24,7 @@
         }
     }
     .contact-wrapper {
-	    display: none;
+        display: none;
         .help-links {
             color: @mainColor;
             text-decoration: none;
@@ -34,7 +34,7 @@
         }
     }
     .faqs-wrapper {
-	    display: none;
+        display: none;
         .help-links {
             color: @mainColor;
             text-decoration: none;
@@ -42,5 +42,14 @@
                 color: lighten(@mainColor, 15%);
             }
         }
+    }
+    .css-form input.ng-invalid.ng-touched {
+        background-color: #FA787E;
+    }
+    .css-form input.ng-valid.ng-touched {
+        background-color: #78FA89;
+    }
+    .contact-message {
+    color:red;
     }
 }
