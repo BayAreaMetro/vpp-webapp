@@ -273,7 +273,13 @@
         padding-right: 25px;
     }
 }
-//
+//Legend height fixx
+#mapLegend{
+	#mapLegendPNL{
+		margin-bottom: 0;
+	}	
+}
+//Map-layer panels
 #mt{
 	height: 660px;
 	#mapToolsPNL{
@@ -285,16 +291,8 @@
 	}
 	//overflow: scroll;
 }
-//print sections
-#print-map {
-    display: none;
-}
 
-#print-legend {
-    display: none;
-}
-
-//
+//Print window
 #print-window{
 	top: 120px;
     left: 25px;
@@ -303,4 +301,13 @@
 		width: 600px;
 		border: 5px solid @mainColor;
     }
+}
+
+//print sections
+#print-map {
+    display: none;
+}
+
+#print-legend {
+    display: none;
 }
