@@ -110,7 +110,7 @@ angular.module('vppApp')
         $scope.parkingType = "Both On/Off-Street Parking";
         $scope.PTbtn = false;
         $scope.showAll = true;
-
+		$scope.printActive = false;
 
 
         w.parser.parse();
@@ -1881,6 +1881,9 @@ angular.module('vppApp')
         });
         $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: 11</p>');
 
+		$scope.printWindow = function(){
+			$scope.printActive = !$scope.printActive;
+		}
     });
 
 //EOF
