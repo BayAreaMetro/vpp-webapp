@@ -1,21 +1,21 @@
 'use strict';
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
-		'$scope',
-		'$http',
+  '$scope',
+  '$http',
         '$location',
         '$rootScope',
-		function ($scope, $http, $location, $rootScope) {
+  function ($scope, $http, $location, $rootScope) {
             //Show and Hide vars
             $scope.isActive = false,
-            $scope.showAll = true,
-            $scope.pricing = false,
-            $scope.supply = false,
-            $scope.restrictions = false,
-            $scope.spaceTypes = false,
-            $scope.weekDay = false,
-            $scope.weekEnd = false,
-            $scope.resources = false;
+                $scope.showAll = true,
+                $scope.pricing = false,
+                $scope.supply = false,
+                $scope.restrictions = false,
+                $scope.spaceTypes = false,
+                $scope.weekDay = false,
+                $scope.weekEnd = false,
+                $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
@@ -167,16 +167,22 @@ angular.module('vppApp')
 
 
             $('#vwMapSummaryBTN').click(function () {
-                $rootScope.$evalAsync(function() {
+                $rootScope.$evalAsync(function () {
                     $location.url('?sa=' + $scope.selectedId);
                     $location.path('/map');
                 });
             });
             $('#vwMapInventoryBTN').click(function () {
-                window.location.replace('#/map?sa=' + $scope.selectedId);
+                $rootScope.$evalAsync(function () {
+                    $location.url('?sa=' + $scope.selectedId);
+                    $location.path('/map');
+                });
             });
             $('#vwMapOccupancyBTN').click(function () {
-                window.location.replace('#/map?sa=' + $scope.selectedId);
+                $rootScope.$evalAsync(function () {
+                    $location.url('?sa=' + $scope.selectedId);
+                    $location.path('/map');
+                });
             });
 
             $('#dlSummaryDataBTN').click(function () {
@@ -558,6 +564,5 @@ angular.module('vppApp')
             };
 
             $scope.activeTrigger();
-		}
-	]
-);
+  }
+ ]);
