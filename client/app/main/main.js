@@ -33,14 +33,17 @@ angular.module('vppApp')
                                 arcgisUtils: 'esri/arcgis/utils',
                                 LayerList: 'esri/dijit/LayerList',
                                 Graphic: 'esri/graphic',
+                                esriLang: 'esri/lang',
                                 ArcGISDynamicMapServiceLayer: 'esri/layers/ArcGISDynamicMapServiceLayer',
                                 //ImageParameters: 'esri/layers/ImageParameters',
                                 //ClusterLayer: 'extras/ClusterLayer',
                                 //Map Popup Tools
                                 Popup: 'esri/dijit/Popup',
+                                dijitPopup: 'dijit/popup',
                                 PopupTemplate: 'esri/dijit/PopupTemplate',
                                 InfoTemplate: 'esri/InfoTemplate',
                                 connect: "dojo/_base/connect",
+                                TooltipDialog:'dijit/TooltipDialog',
                                 //Symbol Tools
                                 SimpleFillSymbol: 'esri/symbols/SimpleFillSymbol',
                                 SimpleMarkerSymbol: 'esri/symbols/SimpleMarkerSymbol',
@@ -63,6 +66,7 @@ angular.module('vppApp')
                                 //Services
                                 GeometryService: 'esri/tasks/GeometryService',
                                 Extent: 'esri/geometry/Extent',
+                                SpatialReference: 'esri/SpatialReference',
                                 //Renderers
                                 HeatmapRenderer: 'esri/renderers/HeatmapRenderer',
                                 ClassBreaksRenderer: 'esri/renderers/ClassBreaksRenderer',

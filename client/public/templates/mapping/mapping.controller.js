@@ -59,6 +59,7 @@ angular.module('vppApp')
             parkingInspectorWDOccupancyOffStreet,
             parkingInspectorPeakOccupancyOnStreet,
             parkingInspectorPeakOccupancyOffStreet,
+            ferryLayerInfo,
             symbol,
             symbol_OnStreetOccupancy,
             OffStreetInventoryURL,
@@ -175,6 +176,7 @@ angular.module('vppApp')
         parkingInspectorWEOccupancyOffStreet = new w.InfoTemplate();
         parkingInspectorPeakOccupancyOnStreet = new w.InfoTemplate();
         parkingInspectorPeakOccupancyOffStreet = new w.InfoTemplate();
+        ferryLayerInfo = new w.InfoTemplate();
 
         //Start of Map Layer Configuration
 
@@ -195,6 +197,10 @@ angular.module('vppApp')
         //Set Map Center Variable. Used to reset map when user clicks reset map btn.
         $scope.map.on("load", function () {
             mapCenter = getCenterPoint();
+            //added for mouseover transit poput
+            //setUpQuery();
+            $scope.map.graphics.enableMouseEvents();
+            $scope.map.graphics.on("mouse-out", closeDialog);
         });
 
 
@@ -251,6 +257,43 @@ angular.module('vppApp')
                 parkingInspector.features.length > 1 ? $("#pager").show() : $("#pager").hide();
             });
         }
+        function initLayerInfo() {
+            //Define all Map Layers in this section
+            layerInspector = $scope.map.infoWindow;
+
+            //when the selection changes update the side panel to display the popup info for the 
+            //currently selected feature. 
+            w.connect.connect(layerInspector, "onSelectionChange", function () {
+                displayLayerInfo(layerInspector.getSelectedFeature());
+
+                //used to control the display of the layer info tip
+                if ($("#mapInspector").is(':hidden')) {
+                    $('#iconTitle').html("<span><i class='fa fa-question fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
+                    $("#title").text("Parking Inspector");
+                    $("#mapToolsPNL").fadeIn(500);
+                    $("#mapInspector").fadeIn(500);
+                }
+
+            });
+
+            //when the selection is cleared remove the popup content from the side panel. 
+            w.connect.connect(layerInspector, "onClearFeatures", function () {
+               
+                $("#layerInfoDiv").html("");
+                
+                
+            });
+
+            //When features are associated with the  map's info window update the sidebar with the new content. 
+            w.connect.connect(layerInspector, "onSetFeatures", function () {
+                //displayLayerInfo(parkingInspector.getSelectedFeature());
+                
+            });
+        }
+
+        function displayLayerInfo(feature){
+
+        }
 
         function displayPopupContent(feature) {
             switch ($scope.pt) {
@@ -280,6 +323,7 @@ angular.module('vppApp')
 
             }
 
+
             if (feature) {
                 var content = feature.getContent();
                 $("#parkingInfo").html(content);
@@ -303,6 +347,31 @@ angular.module('vppApp')
         initSidebar();
 
 
+
+
+
+
+
+
+        //popups for transit layers
+        /*popupTemplateFerry = new w.PopupTemplate({
+            "title": "Ferry Terminals",
+            "fieldInfos": [{
+                    "fieldName": "facility",
+                    "label": "Ferry Terminal",
+                    "format": {
+                        "places": 0,
+                        "digitSeparator": true
+                    }
+            }
+        ],
+            "description": "{facility}"
+           
+        });
+*/
+
+
+          //end section popups for transit layers
 
         OnStreetInventoryFL = new w.FeatureLayer(OnStreetInventoryURL, {
             id: "OnStreetInventory",
@@ -421,20 +490,14 @@ angular.module('vppApp')
 
         });
 
-        /*COC_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/14", {
-            id: "COC",
-            mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"],
-            infoTemplate: popupTemplate_COC_FL,
-            visible: false
-
-        });*/
+      
 
         FerryTerminalsFL = new w.FeatureLayer(FerryTerminalsURL, {
             id: "FerryTerminals",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
+            visible: false,
+            infoTemplate: ferryLayerInfo
 
         });
 
@@ -505,6 +568,133 @@ angular.module('vppApp')
 
 
         //end of map layer definitions
+
+
+
+        //dialog popup for mouse over event for FerryTerminalsFL
+        var dialog = new w.TooltipDialog({
+          id: "tooltipDialog",
+          style: "position: relative; width: 250px; font: normal normal normal 10pt Helvetica;z-index:100"
+        });
+        dialog.startup();
+
+        //close the dialog when the mouse leaves the highlight graphic
+       /* $scope.map.on("load", function(){
+          $scope.map.graphics.enableMouseEvents();
+          $scope.map.graphics.on("mouse-out", closeDialog);
+          
+        });*/
+
+         //listen for when the onMouseOver event fires on the countiesGraphicsLayer
+        //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
+        FerryTerminalsFL.on("mouse-over", function(evt){
+       // $scope.map.infoWindow.set("popupWindow", true);
+         
+        ferryLayerInfo.setContent("<b>${facility}</b>");
+        console.log(ferryLayerInfo);
+          ///var content = w.esriLang.substitute(evt.graphic.attributes,t);
+          //var highlightGraphic = new w.Graphic(evt.graphic.geometry);
+           //$scope.map.graphics.add(highlightGraphic);
+          
+          //dialog.setContent(content);
+          
+
+          // w.domStyle.set(dialog.domNode, "opacity", 0.85);
+          // w.dijitPopup.open({
+          //   popup: dialog, 
+          //   x: evt.pageX,
+          //   y: evt.pageY
+          // });
+
+        });
+
+
+        function closeDialog() {
+          //map.graphics.clear();
+          //dijitPopup.close(dialog);
+          //$scope.map.infoWindow.set("popupWindow", false);
+        }
+
+
+        //end of dialog popup for mouse over event for FerryTerminalsFL
+
+
+//another version of the mouseover event
+//map.on("load", setUpQuery);
+
+          /*function setUpQuery () {
+            var queryTask = new w.QueryTask("http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/4");
+
+            //build query filter
+            var query = new w.Query();
+            query.returnGeometry = true;
+            query.outFields = ["facility"];
+            query.outSpatialReference = { "wkid": 102100 };
+            //query.where = "STATE_NAME = 'South Carolina'";
+
+            var infoTemplate = new w.InfoTemplate();
+            var content = "${facility}";
+            infoTemplate.setTitle("${facility}");
+            infoTemplate.setContent(content);
+
+            $scope.map.infoWindow.resize(245, 125);
+
+            //Can listen for complete event to process results
+            //or can use the callback option in the queryTask.execute method.
+            queryTask.on("complete", function (event) {
+              $scope.map.graphics.clear();
+              var highlightSymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID,
+                new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
+                  new w.Color([255, 0, 0]), 3), new w.Color([125, 125, 125, 0.35]));
+
+              var symbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID,
+                new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
+                  new w.Color([255, 255, 255, 0.35]), 1), new w.Color([125, 125, 125, 0.35]));
+
+              var features = event.featureSet.features;
+              var countiesGraphicsLayer = new w.GraphicsLayer();
+              //QueryTask returns a featureSet.
+              //Loop through features in the featureSet and add them to the map.
+              var featureCount = features.length;
+              for (var i = 0; i < featureCount; i++) {
+                //Get the current feature from the featureSet.
+                var graphic = features[i]; //Feature is a graphic
+                //graphic.setSymbol(symbol);
+                graphic.setInfoTemplate(infoTemplate);
+
+                countiesGraphicsLayer.add(graphic);
+              }
+              $scope.map.addLayer(countiesGraphicsLayer);
+              $scope.map.graphics.enableMouseEvents();
+              //listen for when the mouse-over event fires on the countiesGraphicsLayer
+              //when fired, create a new graphic with the geometry from event.graphic
+              //and add it to the maps graphics layer
+              countiesGraphicsLayer.on("mouse-over",function (event) {
+                $scope.map.graphics.clear();  //use the maps graphics layer as the highlight layer
+                var graphic = event.graphic;
+                $scope.map.infoWindow.setContent(graphic.getContent());
+                $scope.map.infoWindow.setTitle(graphic.getTitle());
+                var highlightGraphic = new w.Graphic(graphic.geometry, highlightSymbol);
+                var highlightGraphic = new w.Graphic(graphic.geometry);
+                $scope.map.graphics.add(highlightGraphic);
+                $scope.map.infoWindow.show(event.screenPoint,
+                $scope.map.getInfoWindowAnchor(event.screenPoint));
+              });
+
+              //listen for when map.graphics mouse-out event is fired
+              //and then clear the highlight graphic
+              //and hide the info window
+              $scope.map.graphics.on("mouse-out", function () {
+                $scope.map.graphics.clear();
+                $scope.map.infoWindow.hide();
+              });
+            });
+
+            queryTask.execute(query);
+          }*/
+
+//end of another version of te mouseover event
+
 
 
         //Set Map Renderers Section
@@ -672,9 +862,10 @@ angular.module('vppApp')
 
 
         //Set Map Renderers for WDOffStreetOccupancyFL and WEOffStreetOccupancyFL
-        var OffStreetOccupancySymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
-        OffStreetOccupancySymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
+        /*var OffStreetOccupancySymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
+        OffStreetOccupancySymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);*/
 
+        var OffStreetOccupancySymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([110, 110, 110, 0.5]));
         //create renderer
         var OffStreetOccupancyRenderer = new w.ClassBreaksRenderer(OffStreetOccupancySymbol, "Occupancy_5am");
 
@@ -682,12 +873,16 @@ angular.module('vppApp')
         /* OffStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([204, 204, 204, 1])));
         OffStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([0, 77, 168, 1])));
         OffStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([115, 178, 255, 1])));
-*/
+*/      
+        //var Break0Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([0, 0, 205, 1]), 5), new w.Color([0, 0, 205, 0.5]));
         var Break1Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 0.5]));
         var Break2Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 0.5]));
         var Break3Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 0.5]));
         var Break4Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 0.5]));
         var Break5Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 0.5]));
+
+        var Break0_minValue_OffStreetOccupancy = undefined;
+        var Break0_maxValue_OffStreetOccupancy = undefined;
 
         var Break1_minValue_OffStreetOccupancy = 0;
         var Break1_maxValue_OffStreetOccupancy = 0.5;
@@ -704,6 +899,7 @@ angular.module('vppApp')
         var Break5_minValue_OffStreetOccupancy = 0.96;
         var Break5_maxValue_OffStreetOccupancy = 100;
 
+        OffStreetOccupancyRenderer.addBreak(Break0_minValue_OffStreetOccupancy, Break0_maxValue_OffStreetOccupancy);
         OffStreetOccupancyRenderer.addBreak(Break1_minValue_OffStreetOccupancy, Break1_maxValue_OffStreetOccupancy, Break1Symbol_OffStreetOccupancy);
         OffStreetOccupancyRenderer.addBreak(Break2_minValue_OffStreetOccupancy, Break2_maxValue_OffStreetOccupancy, Break2Symbol_OffStreetOccupancy);
         OffStreetOccupancyRenderer.addBreak(Break3_minValue_OffStreetOccupancy, Break3_maxValue_OffStreetOccupancy, Break3Symbol_OffStreetOccupancy);
@@ -864,9 +1060,8 @@ angular.module('vppApp')
         //add the legend
         // add the label layer to the map
         //$scope.map.addLayer($scope.labels);
-
+        $scope.map.addLayer(vppGraphicsLayer);
         $scope.map.addLayers([
-            vppGraphicsLayer,
             PDA_FL,
             TPAsFL,
             studyAreasFL,
@@ -880,6 +1075,7 @@ angular.module('vppApp')
             WEOffStreetOccupancyFL,
             PeakOnStreetOccupancyFL,
             PeakOffStreetOccupancyFL,
+            //vppGraphicsLayer,
             AmtrakFL,
             LightRailFL,
             FerryTerminalsFL,
@@ -890,6 +1086,7 @@ angular.module('vppApp')
             saLabelsFL
         ]);
 
+       
         //Set Curent Map Theme
         $scope.pt = "inventory";
 
