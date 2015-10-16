@@ -59,6 +59,7 @@ angular.module('vppApp')
             parkingInspectorWDOccupancyOffStreet,
             parkingInspectorPeakOccupancyOnStreet,
             parkingInspectorPeakOccupancyOffStreet,
+            transitLayerInfo,
             symbol,
             symbol_OnStreetOccupancy,
             OffStreetInventoryURL,
@@ -110,7 +111,7 @@ angular.module('vppApp')
         $scope.parkingType = "Both On/Off-Street Parking";
         $scope.PTbtn = false;
         $scope.showAll = true;
-		$scope.printActive = false;
+        $scope.printActive = false;
 
 
         w.parser.parse();
@@ -154,7 +155,7 @@ angular.module('vppApp')
         //Study Area Query Result Renderer
         saq_Color = new w.Color("#007AC8");
         saq_Line = new w.SimpleLineSymbol("solid", saq_Color, 5);
-        saq_Symbol = new w.SimpleFillSymbol("solid", saq_Line, "#ffffff");
+        saq_Symbol = new w.SimpleFillSymbol("solid", saq_Line, null);
 
         saQuery = new w.Query();
         saQuery.returnGeometry = true;
@@ -175,6 +176,7 @@ angular.module('vppApp')
         parkingInspectorWEOccupancyOffStreet = new w.InfoTemplate();
         parkingInspectorPeakOccupancyOnStreet = new w.InfoTemplate();
         parkingInspectorPeakOccupancyOffStreet = new w.InfoTemplate();
+        transitLayerInfo = new w.InfoTemplate();
 
         //Start of Map Layer Configuration
 
@@ -421,20 +423,13 @@ angular.module('vppApp')
 
         });
 
-        /*COC_FL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/14", {
-            id: "COC",
-            mode: w.FeatureLayer.MODE_SNAPSHOT,
-            outFields: ["*"],
-            infoTemplate: popupTemplate_COC_FL,
-            visible: false
-
-        });*/
 
         FerryTerminalsFL = new w.FeatureLayer(FerryTerminalsURL, {
             id: "FerryTerminals",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
+            visible: false,
+            infoTemplate: transitLayerInfo
 
         });
 
@@ -442,7 +437,8 @@ angular.module('vppApp')
             id: "ParknRideLots",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
+            visible: false,
+            infoTemplate: transitLayerInfo
 
         });
 
@@ -457,7 +453,8 @@ angular.module('vppApp')
             id: "Bart",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: true
+            visible: true,
+            infoTemplate: transitLayerInfo
         });
         BartFL.setDefinitionExpression("agencyname='BART'");
 
@@ -465,7 +462,8 @@ angular.module('vppApp')
             id: "Caltrain",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: true
+            visible: true,
+            infoTemplate: transitLayerInfo
         });
         CaltrainFL.setDefinitionExpression("agencyname='CALTRAIN'");
 
@@ -473,7 +471,8 @@ angular.module('vppApp')
             id: "Amtrak",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
+            visible: false,
+            infoTemplate: transitLayerInfo
         });
         AmtrakFL.setDefinitionExpression("agencyname='Amtrak Capitol Cor. & Reg. Svc'");
 
@@ -481,7 +480,8 @@ angular.module('vppApp')
             id: "LightRail",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
+            visible: false,
+            infoTemplate: transitLayerInfo
 
         });
 
@@ -491,7 +491,8 @@ angular.module('vppApp')
             id: "TransitHubs",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: false
+            visible: false,
+            infoTemplate: transitLayerInfo
 
         });
 
@@ -672,22 +673,22 @@ angular.module('vppApp')
 
 
         //Set Map Renderers for WDOffStreetOccupancyFL and WEOffStreetOccupancyFL
-        var OffStreetOccupancySymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
-        OffStreetOccupancySymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);
+        /*var OffStreetOccupancySymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
+        OffStreetOccupancySymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);*/
+
+        var OffStreetOccupancySymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 5), new w.Color([110, 110, 110, 0.5]));
 
         //create renderer
         var OffStreetOccupancyRenderer = new w.ClassBreaksRenderer(OffStreetOccupancySymbol, "Occupancy_5am");
 
-        //add symbol for each possible value
-        /* OffStreetRestrictionsRenderer.addValue("No Restrictions", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([204, 204, 204, 1])));
-        OffStreetRestrictionsRenderer.addValue("Pricing Regulations", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([0, 77, 168, 1])));
-        OffStreetRestrictionsRenderer.addValue("Time Restricted", new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([115, 178, 255, 1])));
-*/
         var Break1Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([56, 168, 0, 0.5]));
         var Break2Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([139, 209, 0, 0.5]));
         var Break3Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 255, 0, 0.5]));
         var Break4Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 128, 0, 0.5]));
         var Break5Symbol_OffStreetOccupancy = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([255, 0, 0, 0.5]));
+
+        var Break0_minValue_OffStreetOccupancy = undefined;
+        var Break0_maxValue_OffStreetOccupancy = undefined;
 
         var Break1_minValue_OffStreetOccupancy = 0;
         var Break1_maxValue_OffStreetOccupancy = 0.5;
@@ -704,6 +705,7 @@ angular.module('vppApp')
         var Break5_minValue_OffStreetOccupancy = 0.96;
         var Break5_maxValue_OffStreetOccupancy = 100;
 
+        OffStreetOccupancyRenderer.addBreak(Break0_minValue_OffStreetOccupancy, Break0_maxValue_OffStreetOccupancy);
         OffStreetOccupancyRenderer.addBreak(Break1_minValue_OffStreetOccupancy, Break1_maxValue_OffStreetOccupancy, Break1Symbol_OffStreetOccupancy);
         OffStreetOccupancyRenderer.addBreak(Break2_minValue_OffStreetOccupancy, Break2_maxValue_OffStreetOccupancy, Break2Symbol_OffStreetOccupancy);
         OffStreetOccupancyRenderer.addBreak(Break3_minValue_OffStreetOccupancy, Break3_maxValue_OffStreetOccupancy, Break3Symbol_OffStreetOccupancy);
@@ -866,7 +868,6 @@ angular.module('vppApp')
         //$scope.map.addLayer($scope.labels);
 
         $scope.map.addLayers([
-            vppGraphicsLayer,
             PDA_FL,
             TPAsFL,
             studyAreasFL,
@@ -880,6 +881,7 @@ angular.module('vppApp')
             WEOffStreetOccupancyFL,
             PeakOnStreetOccupancyFL,
             PeakOffStreetOccupancyFL,
+            vppGraphicsLayer,
             AmtrakFL,
             LightRailFL,
             FerryTerminalsFL,
@@ -1771,7 +1773,7 @@ angular.module('vppApp')
             PDA_FL.refresh();
             console.log(PDAFLop);
         });
-        
+
         $scope.activeTheme = function (event) {
 
             //Grab attribute
@@ -1881,9 +1883,9 @@ angular.module('vppApp')
         });
         $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: 11</p>');
 
-		$scope.printWindow = function(){
-			$scope.printActive = !$scope.printActive;
-		}
+        $scope.printWindow = function () {
+            $scope.printActive = !$scope.printActive;
+        }
     });
 
 //EOF

@@ -22,10 +22,9 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-g#map_graphics_layer path{ 
-stroke:cyan !important;
-stroke-width: 4 !important;
-
+g#map_graphics_layer path {
+    stroke: cyan !important;
+    stroke-width: 4 !important;
 }
 
 .bottom {
@@ -63,7 +62,7 @@ stroke-width: 4 !important;
     left: 74px;
     width: 350px;
     z-index: 20;
-//    white-space: normal;
+    //    white-space: normal;
     .btn {
         &.btn-default {
             padding-top: 5px;
@@ -279,33 +278,35 @@ stroke-width: 4 !important;
         padding-right: 25px;
     }
 }
+
 //Legend height fixx
-#mapLegend{
-	#mapLegendPNL{
-		margin-bottom: 0;
-	}	
+#mapLegend {
+    #mapLegendPNL {
+        margin-bottom: 0;
+    }
 }
+
 //Map-layer panels
-#mt{
-	height: 660px;
-	#mapToolsPNL{
-		padding-bottom: 10px;
-		.panel-body{
-			max-height: 500px;
-			overflow: scroll;
-		}
-	}
-	//overflow: scroll;
+#mt {
+    height: 660px;
+    #mapToolsPNL {
+        padding-bottom: 10px;
+        .panel-body {
+            max-height: 500px;
+            overflow: scroll;
+        }
+    }
+    //overflow: scroll;
 }
 
 //Print window
-#print-window{
-	top: 120px;
+#print-window {
+    top: 120px;
     left: 25px;
-    .print-border{
-		height: 510px;
-		width: 600px;
-		border: 5px solid @mainColor;
+    .print-border {
+        height: 510px;
+        width: 600px;
+        border: 5px solid @mainColor;
     }
 }
 
