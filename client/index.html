@@ -6,7 +6,9 @@
 <!--[if IE 8]>
 <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
+<html class="no-js">
+<!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,30 +16,39 @@
     <title>VPP</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
     <link rel="stylesheet" href="app/app.css">
 </head>
+
 <body ng-app="vppApp" class="loading" ng-cloak>
 
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
+    <!--[if lt IE 7]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+	    	your browser</a> to improve your experience.
+	    </p>
+	<![endif]-->
+	<nav-template-large></nav-template-large>
+    <div class="view-wrapper ui-view">
+	    
+    </div>
+    <footer-template class="absol col-lg-12 pad-right-0 pad-left-0"></footer-template>
+    <!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.1.6/es5-sham.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
-<nav-template></nav-template>
-<div class="view-wrapper ui-view"></div>
-<footer-template></footer-template>
-
-<!--[if lt IE 9]>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.1.6/es5-sham.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
-
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-<script src="app/lib.js"></script>
-<script src="app/scripts.js"></script>
-<script src="app/templates.js"></script>
+    <script src="app/lib.js"></script>
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script> -->
+    <!--    <script src="//js.arcgis.com/3.8/init.js"></script>-->
+    <!--    <script src="//js.arcgis.com/4.0beta1/init.js"></script>-->
+    <script src="//js.arcgis.com/3.14/init.js"></script>
+   <!--   <script src="//js.arcgis.com/3.14/extras/ClusterLayer.js"></script>-->
+    <script src="app/scripts.js"></script>
+    <script src="app/templates.js"></script>
 
 </body>
+
 </html>

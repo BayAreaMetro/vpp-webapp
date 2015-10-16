@@ -16,6 +16,7 @@ var paths = {
 	, target: './target'
 	, distribution: './dist'
 	, dist: './dist/dist/vpp-frontend'
+	, distApp: './dist/dist/vpp-frontend/app'
 	, client: './client'
 	, server: './server'
 };
@@ -49,6 +50,7 @@ gulp.task('compile:js',function () {
 			paths.client + '/app/**/*.js'
 			, paths.client + '/public/utils/**/*.js'
 			, paths.client +  '/public/directives/**/*.js'
+			, paths.client +  '/public/templates/**/*.js'
 			, '!' + paths.client + '/app/**/*.spec.js'
 			, '!' + paths.client + '/components/**/*.spec.js'
 			, '!' + paths.client + '/app/**/*.mock.js'
@@ -79,11 +81,12 @@ gulp.task('compile:templates', function () {
 	return gulp.src([
 			paths.client + '/app/**/*.html'
 		,   paths.client + '/public/directives/**/*.html'
+		,   paths.client + '/public/templates/**/*.html'
 	])
 		.pipe($.htmlmin({collapseWhitespace: true}))
 		.pipe($.ngTemplates({
 			filename: 'templates.js'
-			, module: 'vpp-app'
+			, module: 'vppApp'
 			, standalone: false
 			, path: function (path, base) {
 				return path.slice(base.indexOf('client')).replace('client/', '');
@@ -121,7 +124,7 @@ gulp.task('copy:fonts', function () {
 	var appFonts = gulp.src(paths.client + '/fonts/**/*')
 		.pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
 		.pipe($.flatten())
-		.pipe(gulp.dest(paths.tmp + '/fonts/'));
+		.pipe(gulp.dest(paths.distApp + '/fonts/'));
 
 	return appFonts;
 });

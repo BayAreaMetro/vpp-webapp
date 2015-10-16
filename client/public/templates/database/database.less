@@ -1,0 +1,124 @@
+#database-section {
+    //background-image: url('images/parking-lot.png');
+    background-color: #ffffff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    .content-wrapper {
+        height: 1000px;
+    }
+    .btn {
+        white-space: normal;
+    }
+    .site-header {
+        background-image: url('images/emptyLot.jpg');
+        background-position: 50% 41%;
+        margin-top: 50px;
+        height: 250px;
+        .overlay {
+            padding-top: 20px;
+            h3:last-child {
+                color: white;
+            }
+        }
+    }
+    .doptionsLBL {
+        display: inline;
+        width: 50%;
+    }
+    .bootstrap-switch {
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+}
+
+.InfoSummaryBG {
+    background-color: #fff;
+    opacity: .85;
+}
+
+#DataTable {
+    display: none;
+    height: 100%;
+    .panel {
+        margin-bottom: 150px;
+    }
+}
+#mapLayers{
+	overflow: hidden;
+}
+#InventorySummary {
+    display: none;
+    height: 100%;
+}
+
+#ParkingSupply {
+    //    display: none;
+}
+
+#SpaceType {
+    //display: none;
+}
+
+#PricingInfo {
+    //display: none;
+}
+
+#RestrictionInfo {
+    //display: none;
+}
+
+#WDOccInfo {
+    //display: none;
+}
+
+#WEOccInfo {
+    //display: none;
+}
+
+#AddtnlResources {
+    //display: none;
+}
+
+#DataNav,
+#DataSummary,
+#OccupancySummary,
+#InventorySummary {
+    .dropdown-toggle {
+        width: 100%;
+        .caret {
+            margin-top: 7px;
+        }
+    }
+    .dropdown-menu {
+        height: 200px;
+        overflow: scroll;
+        width: 100%;
+        li {
+            cursor: pointer;
+            padding: 10px;
+            .transition(all .5s ease-in-out);
+            &:hover {
+                background-color: @anchorColor;
+                .selected-area {
+                    color: #FFFFFF;
+                }
+                .selected-year {
+                    color: #FFFFFF;
+                }
+            }
+        }
+        .selected-area {
+            margin: 0;
+        }
+        .selected-year {
+            margin: 0;
+        }
+    }
+}
+
+//Print box
+#print-section {
+    display: none;
+}

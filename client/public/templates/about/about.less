@@ -1,0 +1,55 @@
+#about-section {
+    //background-image: url('images/parking-lot.png');
+    background-color: #ffffff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    .site-header {
+        background-image: url('images/cropped-parking-e1421692177386.jpg');
+        background-size: cover;
+        margin-top: 50px;
+        height: 250px;
+        .overlay {
+            padding-top: 20px;
+            h3:last-child {
+                color: white;
+            }
+        }
+    }
+    .about-text {
+        p {
+            font-size: 1.5em;
+            color: @anchorColor;
+        }
+    }
+    .contact-wrapper {
+        display: none;
+        .help-links {
+            color: @mainColor;
+            text-decoration: none;
+            &:hover {
+                color: lighten(@mainColor, 15%);
+            }
+        }
+    }
+    .faqs-wrapper {
+        display: none;
+        .help-links {
+            color: @mainColor;
+            text-decoration: none;
+            &:hover {
+                color: lighten(@mainColor, 15%);
+            }
+        }
+    }
+    .css-form input.ng-invalid.ng-touched {
+        background-color: #FA787E;
+    }
+    .css-form input.ng-valid.ng-touched {
+        background-color: #78FA89;
+    }
+    .contact-message {
+    color:red;
+    }
+}

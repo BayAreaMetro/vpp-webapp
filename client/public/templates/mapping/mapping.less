@@ -1,0 +1,319 @@
+/*map styles*/
+
+#map {
+    display: block;
+    top: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    position: absolute;
+    opacity: 1;
+}
+
+.navPager {
+    padding: 5px 10px;
+    background: #4479BA;
+    color: #FFF;
+    border-radius: 5px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+g#map_graphics_layer path{ 
+stroke:cyan !important;
+stroke-width: 4 !important;
+
+}
+
+.bottom {
+    bottom: 30px;
+    padding: 5px;
+    position: absolute;
+    right: 5px;
+    width: 265px;
+}
+
+#HomeButton {
+    position: absolute;
+    top: 95px;
+    left: 20px;
+    z-index: 50;
+}
+
+#trans span + span {
+    border-left: solid white 120px;
+}
+
+.thumbnail {
+    margin-bottom: 5px !important;
+}
+
+.selectOpLayer {
+    width: 290px;
+}
+
+#search {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 70px;
+    left: 74px;
+    width: 350px;
+    z-index: 20;
+//    white-space: normal;
+    .btn {
+        &.btn-default {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            white-space: normal;
+        }
+    }
+    .dropdown-toggle {
+        width: 100%;
+        .caret {
+            margin-top: 7px;
+        }
+    }
+    .dropdown-menu {
+        height: 475px;
+        overflow: scroll;
+        width: 100%;
+        li {
+            cursor: pointer;
+            padding: 10px;
+            .transition(all .5s ease-in-out);
+            &:hover {
+                background-color: @anchorColor;
+                .selected-area {
+                    color: #FFFFFF;
+                }
+                .selected-year {
+                    color: #FFFFFF;
+                }
+            }
+        }
+        .selected-area {
+            margin: 0;
+            white-space: normal;
+            width: 100%;
+        }
+        .selected-year {
+            margin: 0;
+        }
+    }
+}
+
+.mapLegend {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 49px;
+    right: 0px;
+    width: 275px;
+    bottom: 0px;
+    opacity: 1;
+}
+
+.legendContent {
+    height: 100%;
+    // opacity: 0.96;
+    background-color: white;
+}
+
+#maptoolsBTN {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 70px;
+    left: 430px;
+    width: 100px;
+}
+
+#TimeOfDayBTN {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 70px;
+    left: 550px;
+    width: 100px;
+}
+
+#PeakOccBTN {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 70px;
+    left: 550px;
+    width: 100px;
+}
+
+#mt {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 110px;
+    left: 74px;
+    width: 350px;
+    transition: all .4s ease 0s;
+    //    background-color: #fff;
+    //    opacity: 0.8;
+}
+
+.btn-info-map {
+    color: #FFF;
+    background-color: #003869;
+    border-color: #003869;
+}
+
+.panel-info > .panel-heading {
+    color: #fff;
+    background-color: #003869;
+    border-color: #003869;
+}
+
+.LayerLBLs {
+    font-size: 16px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.LayerCategoryLBLs {
+    font-size: 18px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.opacitySliderLBLs {
+    font-size: 14px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.dropdown-menu {
+    margin-top: 0px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickableLegend {
+    cursor: pointer;
+}
+
+.tools {}
+
+//Side Bar Styles
+#wrapper {
+    padding-right: 80px;
+    transition: all .4s ease .2s;
+    height: 100%
+}
+
+#sidebar-wrapper {
+    margin-right: -190px;
+    right: 50px;
+    width: 190px;
+    background: #222;
+    position: absolute;
+    height: 100%;
+    z-index: 500;
+    transition: all .4s ease 0s;
+    opacity: 0.8;
+}
+
+#main_icon {
+    float: left;
+    padding-right: 30px;
+    padding-left: 15px;
+    padding-top: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#mapOpts {
+    .thumbnail {
+        .transition(all 1s ease-in-out);
+        border: 1px solid #dddddd;
+        &:hover {
+            cursor: pointer;
+        }
+        &.active {
+            border: 1px solid @mainColor;
+        }
+    }
+}
+
+//Sliders
+#PDAsOpacitySlider {
+    .slider-opacity();
+}
+
+#TPAsOpacitySlider {
+    .slider-opacity();
+}
+
+#StudyAreaOpacitySlider {
+    .slider-opacity();
+}
+
+.custom-switch {
+    background: white;
+}
+
+.toggle-button {
+    border-radius: 5px;
+    .transition(all 1s ease-in-out);
+    padding: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    &.btn-default {
+        padding-left: 25px;
+    }
+    &.btn-primary {
+        padding-right: 25px;
+    }
+}
+//Legend height fixx
+#mapLegend{
+	#mapLegendPNL{
+		margin-bottom: 0;
+	}	
+}
+//Map-layer panels
+#mt{
+	height: 660px;
+	#mapToolsPNL{
+		padding-bottom: 10px;
+		.panel-body{
+			max-height: 500px;
+			overflow: scroll;
+		}
+	}
+	//overflow: scroll;
+}
+
+//Print window
+#print-window{
+	top: 120px;
+    left: 25px;
+    .print-border{
+		height: 510px;
+		width: 600px;
+		border: 5px solid @mainColor;
+    }
+}
+
+//print sections
+#print-map {
+    display: none;
+}
+
+#print-legend {
+    display: none;
+}

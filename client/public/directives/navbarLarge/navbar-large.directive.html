@@ -1,0 +1,138 @@
+<nav id="map-nav" class="nav navbar-vpp navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#inner-nav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!--<a class="navbar-brand" href="#/home"><span class="nav-logo">V</span>alue Pricing Pilot</a> -->
+            <a class="navbar-brand navbar-brand-centered " href="#/home"><span class="nav-logo">V</span> PP</a>
+        </div>
+        <div id="inner-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#/home" ng-click="active($event)" id="home" class="active">Home</a>
+                </li>
+                <li class=" inner-nested inner-nested-research">
+                    <a href="#/research" ng-click="active($event)" name="research" class="reseach-link">Research & Policies</a>
+                    <ul class="absol zTop inner-ul inner-ul-reseach research-nav hidden">
+                        <li>
+                            <a id="resEmployeeProgramMI" class="vpp-links-inner employees-nav" location="EmployeePrograms" ng-click="inner($event)">Employees Programs</a>
+                        </li>
+                        <li>
+                            <a id="resRegPricingPolMI" class="vpp-links-inner employees-nav" location="RegionalPricingPolicies" ng-click="inner($event)">Regional Parking Policies</a>
+                        </li>
+                        <li>
+                            <a id="resEnactingPricingPolicies" class="vpp-links-inner employees-nav" location="EnactingPricingPolicies" ng-click="inner($event)">Enacting Pricing Policies</a>
+                        </li>
+                        <li>
+                            <a id="resResources" class="vpp-links-inner" location="Resources" ng-click="inner($event)">Resources</a>
+                        </li>
+                        <li class="aside-li-1">
+                            <a id="resPolicyQuestions" class="vpp-links-inner" location="PolicyQuestions" ng-click="inner($event)">Policy Questions</a>
+                            <ul class="nav-inner-nested zTop absol pull-right">
+                                <li>
+                                    <a class="vpp-links-inner-2 inner-fade" location="policy-overview" ng-click="inner($event)">Overview</a>
+                                </li>
+                                <li>
+                                    <a class="vpp-links-inner-2 inner-fade" location="policy-urban" ng-click="inner($event)">Bay Area UrbanSim</a>
+                                </li>
+                                <li>
+                                    <a class="vpp-links-inner-2 inner-fade" location="policy-travel" ng-click="inner($event)">Travel Model One</a>
+                                </li>
+                                <li>
+                                    <a class="vpp-links-inner-2 inner-fade" location="policy-key" ng-click="inner($event)">Key Definitions</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="aside-li-2">
+                            <a id="resSupplyDemand" class="vpp-links-inner" location="SupplyDemand" ng-click="inner($event)">Supply & Demand</a>
+                            <ul class="nav-inner-nested  zTop absol">
+                                <li>
+                                    <a class="vpp-links-inner-2 inner-fade" location="supply-overview" ng-click="inner($event)">Overview</a>
+                                </li>
+                                <li>
+                                    <a class="vpp-links-inner-2 inner-fade" location="supply-parking" ng-click="inner($event)">Regional Parking</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a id="resParkingReqmntsUnbundling" class="vpp-links-inner" location="ParkingReqmntsUnbundling" ng-click="inner($event)">PR & Unbundling</a>
+                        </li>
+                        <li class="aside-li-3">
+                            <a id="resTravelModelOneAnalysis" class="vpp-links-inner" location="TravelModelOneAnalysis" ng-click="inner($event)">Parking Structure</a>
+                            <ul class="nav-inner-nested  zTop absol">
+                                <li>
+                                    <a class="vpp-links-inner-2 inner-fade" location="TravelModelOneAnalysis" ng-click="inner($event)">Travel Model One Analysis</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" inner-nested inner-nested-data">
+                    <a href="#/database" ng-click="active($event)" class="vpp-links-inner" name="data">Parking Data</a>
+                    <ul class="absol zTop inner-ul inner-ul-data data-nav hidden">
+                        <li>
+                            <a id="dbSummaryMI" class=" vpp-links-inner-2" location="DataSummary" ng-click="inner($event)">Summary</a>
+                        </li>
+                        <li>
+                            <a id="dbInventoryMI" class=" vpp-links-inner-2" location="InventorySummary" ng-click="inner($event)">Inventory</a>
+                        </li>
+                        <li>
+                            <a id="dbOccupancyMI" class=" vpp-links-inner-2" location="OccupancySummary" ng-click="inner($event)">Occupancy</a>
+                        </li>
+                        <li class="aside-li-4">
+                            <a class="vpp-links-inner divControl" location="">Data Development</a>
+                            <ul class="nav-inner-nested zTop absol pull-left">
+                                <li>
+                                    <a href="#/database" id="dbOverviewMI" class="divControl vpp-links-inner-2">Overview</a>
+                                </li>
+                                <li>
+                                    <a href="/app/images/DB-Dictionary-9-4-15.xlsx" class=" vpp-links-inner-2">Data Dictionary</a>
+                                </li>
+                                <li>
+                                    <a href="/app/images/DB-Diagram-9-23-15.pdf" class=" vpp-links-inner-2">Database Diagram</a>
+                                </li>
+                                <li>
+                                    <a href="/app/images/VPP_DB_Download.zip" class=" vpp-links-inner-2">Download Database</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#/map" ng-click="active($event)">Parking Map</a>
+                </li>
+                <li class="">
+                    <a href="#/feedback" ng-click="active($event)" class="vpp-links-inner">Feedback</a>
+                </li>
+                <li class="inner-nested inner-nested-help">
+                    <a href="#/help" ng-click="active($event)" class="vpp-links-inner" name="help">Help</a>
+                    <ul class="absol zTop inner-ul inner-ul-help help-nav hidden">
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="inner-nested inner-nested-about">
+                    <a href="#/about" ng-click="active($event)" class="vpp-links-inner" name="about">About</a>
+                    <ul class="absol zTop inner-ul inner-ul-about about-nav hidden">
+                        <li>
+                            <a href="#" location="contact" ng-click="inner($event)">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="#" location="faqs" ng-click="inner($event)">FAQS</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

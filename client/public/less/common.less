@@ -1,1 +1,124 @@
-// Monkey
+body,
+html {
+   height: 100%;
+   width: 100%;
+   font-family: 'Open Sans', sans-serif;
+}
+ul, li, ol{
+    list-style: none;
+}
+.overlay{
+    //background-image: url('images/overlay.png');
+    height: inherit;
+    width: inherit;
+}
+.vpp-logo{
+    font-size: 5.5em;
+    font-weight: 600;
+    color: @anchorColor;
+    .logo-block{
+        background-color: @anchorColor;
+        height: 50px;
+        width: 50px;
+        color: #ffffff
+;
+        padding-left: 25px;
+        padding-right: 25px;
+        margin-right: 5px;
+    }
+}
+.logo-header{
+    padding-bottom: 20px;
+    border-bottom: 2px solid @mainColor;
+    height: 200px;
+    h3{
+        font-size: 4.5em;
+        color: @mainColor;
+    }
+    h3:nth-child(even){
+        color: @anchorColor;
+        margin-top: 0;
+    }
+}
+.site-header{
+    padding-bottom: 20px;
+    border-bottom: 2px solid @mainColor;
+    height: 200px;
+    h3{
+        font-size: 4.5em;
+        color: @mainColor;
+    }
+    h3:nth-child(even){
+        color: @anchorColor;
+        margin-top: 0;
+    }
+    .overlay{
+        background-image: url('images/overlay.png');
+        background-color: rgba(0, 0, 0, 0.38);
+    }
+}//Overrides
+.vpp-links{
+    color: @anchorColor;
+    font-size: 1.5em;
+    font-weight: 100;
+    .transition(all 1s ease);
+    &:hover{
+        text-decoration: none;
+        color: lighten(@anchorColor, 20%);
+        cursor: pointer;
+    
+    }
+}
+/*
+.btn{
+    &.btn-default{
+        color: white;
+        background-color: @buttonColor;
+        border-radius: 0;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 25px;
+        padding-right: 25px;
+        transition: all 1s ease;
+        border-bottom: 3px solid @buttonColor;
+        &:hover{
+            background-color: lighten(@buttonColor, 15%);
+            .box-shadow (5px 5px 5px 0px rgba(0,0,0,0.75));
+            border-bottom: 3px solid @mainColor;
+        }
+    }
+}
+*/
+.btn{
+    &.btn-default{
+        border-radius: 0;        
+    }
+    &.btn-primary{
+        border-radius: 0;
+        background-color: @mainColor;
+    }
+}
+.panel{
+    border-radius: 0;
+    &.panel-primary{
+        border-color: @mainColor;
+        .panel-heading{
+            background-color: @mainColor;
+            border-color: @mainColor;
+            border-radius: 0;
+        }
+    }
+}
+.@{bootstrap-switch-base}-handle-on,
+ .@{bootstrap-switch-base}-handle-off {
+   text-align: center;
+   z-index: 1;    &.@{bootstrap-switch-base}-primary {
+     color: #fff;
+     background: @mainColor !important;
+   }
+} 
+
+//
+.color-blue{
+	color: @mainColor;
+}

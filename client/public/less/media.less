@@ -1,0 +1,159 @@
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	//Global
+	.site-header {
+		.overlay{
+			padding-top: 30px !important;
+		}
+		h3 {
+			font-size: 3.5em;
+		}
+	}
+	//Research
+	#research-section {
+		.research-content{
+			font-size: 14px;
+		}
+	}
+	
+	#print-map{
+		display: none;
+	}
+	
+	#print-legend{
+		display: none;
+	}
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+	//Global
+	.site-header {
+		.overlay{
+			padding-top: 50px !important;
+		}
+		h3 {
+			font-size: 2.5em;
+		}
+	}
+	//Research
+	#research-section {
+		.research-content{
+			font-size: 14px;
+		}
+	}
+	
+	#print-map{
+		display: none;
+	}
+	
+	#print-legend{
+		display: none;
+	}
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+
+}
+
+/*========== Printer ==========*/
+@media print{
+	
+	.view-wrapper, footer, nav {
+		display: none;
+	}
+	.panel-heading{
+		display: none;
+	}
+	//Printer Section
+	#print-section{
+		visibility: visible;
+		display: block;
+		#data-print{
+		
+		}
+	}
+	
+	#print-section {
+		position:absolute;
+		left:0;
+		top:0;
+		.panel{
+			border: none;
+		}
+		.table {
+			> tbody{
+				> tr{
+					> td{
+						padding: 0;
+						//line-height: 1.3px;
+						border: none;
+					}	
+				}	
+			} 
+		}
+	}
+	
+	#print-map{
+		display: block;
+		height: 50%;
+		width: 50%;
+	}
+	
+	#print-legend{
+		display: block;
+		#mapLegend{
+			height: 500px;
+			.panel-body{
+				background-color: #FFFFFF !important;
+				#mlegend_Occ{
+					img{
+						padding: 2px;
+					}
+				}
+			}
+		}
+	}
+}

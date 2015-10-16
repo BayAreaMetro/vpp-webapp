@@ -1,0 +1,74 @@
+#feedback-section {
+    //background-image: url('images/parking-lot.png');
+    background-color: #ffffff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    .site-header {
+        margin-top: 50px;
+        height: 250px;
+        background-image: url('images/cropped-californias_great_america_parking_lot_entrance_gates_closed_1.jpg');
+        background-size: cover;
+        .overlay {
+            padding-top: 20px;
+            h3:last-child {
+                color: white;
+            }
+        }
+    }
+    .alert-success {
+        width: 500px;
+        top: 50px;
+        right: 800px;
+    }
+    .alert-danger {
+        width: 500px;
+        top: 50px;
+        right: 800px;
+    }
+}
+
+#fbt,
+#fbc {
+    .btn {
+        &.btn-default {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            white-space: normal;
+        }
+    }
+    .dropdown-toggle {
+        width: 100%;
+        .caret {
+            margin-top: 7px;
+        }
+    }
+    .dropdown-menu {
+        height: 275px;
+        overflow: scroll;
+        width: 100%;
+        li {
+            cursor: pointer;
+            padding: 10px;
+            .transition(all .5s ease-in-out);
+            &:hover {
+                background-color: @anchorColor;
+                .selected-area {
+                    color: #FFFFFF;
+                }
+                .selected-year {
+                    color: #FFFFFF;
+                }
+            }
+        }
+        .selected-area {
+            margin: 0;
+            white-space: normal;
+            width: 100%;
+        }
+        .selected-year {
+            margin: 0;
+        }
+    }
+}

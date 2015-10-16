@@ -9,3 +9,11 @@ projectFilesBackup
 
 .idea
 target
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+target/*
+zip/*
+dist/*
+UnusedCode.html
