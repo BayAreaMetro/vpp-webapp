@@ -676,7 +676,7 @@ angular.module('vppApp')
         /*var OffStreetOccupancySymbol = new w.SimpleFillSymbol().setStyle(w.SimpleFillSymbol.STYLE_NULL);
         OffStreetOccupancySymbol.outline.setStyle(w.SimpleLineSymbol.STYLE_NULL);*/
 
-        var OffStreetOccupancySymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 5), new w.Color([110, 110, 110, 0.5]));
+        var OffStreetOccupancySymbol = new w.SimpleFillSymbol(w.SimpleFillSymbol.STYLE_SOLID, new w.SimpleLineSymbol("solid", new w.Color([110, 110, 110, 1]), 2), new w.Color([110, 110, 110, 0.5]));
 
         //create renderer
         var OffStreetOccupancyRenderer = new w.ClassBreaksRenderer(OffStreetOccupancySymbol, "Occupancy_5am");
