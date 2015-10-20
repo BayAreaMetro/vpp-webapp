@@ -19,6 +19,50 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
     <link rel="stylesheet" href="app/app.css">
+    <style>
+		/* 	    //Safari only Hacks*/
+		/*
+				@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { 
+					@media{
+					    _:-webkit-full-screen, .safari-only { 
+					
+					        color:#0000FF; 
+					        background-color:#CCCCCC; 
+					
+					    }
+					}
+				}
+		*/
+		/*
+		
+		.safari-only:not(:root:root){ 
+		    border: 1px solid red;
+		}
+		
+		@media only screen and (-webkit-min-device-pixel-ratio: 1) {
+		     ::i-block-chrome, .safari-only {
+			 	border: 1px solid red;
+		    }
+		}
+		@media screen and (-webkit-min-device-pixel-ratio:0) and (min-color-index:0)
+		{  
+		   .safari-only {(;
+		
+		      color:#0000FF; 
+		      background-color:#CCCCCC; 
+		
+		    );}
+		}
+		@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
+		{
+		    .safari-only { 
+			    
+		    }
+		}}
+		_::-webkit-full-page-media, _:future, :root .safari-only { border: 1px solid red; }
+		*/
+		_::-webkit-full-page-media, _:future, :root .safari_only { display: block }
+    </style>
 </head>
 
 <body ng-app="vppApp" class="loading" ng-cloak>
