@@ -171,6 +171,11 @@ angular.module('vppApp')
                 $rootScope.$evalAsync(function () {
                     $location.url('?sa=' + $scope.selectedId);
                     $location.path('/map');
+                    
+                    //for active nav
+                    $(".map-link").addClass("active");
+					$(".data-link").removeClass("active");
+
                 });
             });
             $('#vwMapInventoryBTN').click(function () {
@@ -194,7 +199,9 @@ angular.module('vppApp')
                 }).success(function (results) {
                     $scope.MasterSummaryData = results;
                     exportToCSV(results, $scope.selectedStudyArea, 'Parking Data Summary', true);
-
+					$('.safari-only').addClass("safari_only").removeClass('safari-only');
+					console.log($scope.safariFixer);
+					$(".data-anchor").attr("href", $scope.safariFixer);
                 }).error(function (data, status) {
                     console.log("There was an error:", status);
 
@@ -354,9 +361,9 @@ angular.module('vppApp')
 
                 //this part will append the anchor tag and remove it after automatic click
                 document.body.appendChild(link);
-                link.click();
+                //link.click();
                 document.body.removeChild(link);
-
+				$scope.safariFixer = uri;
             };
 
             $('#vwDataBTN').click(function () {
@@ -563,7 +570,7 @@ angular.module('vppApp')
 
                 $scope.printerElement.appendChild($scope.node);
             };
-
+            
             $scope.activeTrigger();
 		}
 	]
