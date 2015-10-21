@@ -410,6 +410,7 @@ angular.module('vppApp')
             $("input[type=\"checkbox\"], input[type=\"radio\"]").not("[data-switch-no-init]").bootstrapSwitch();
 
             $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
+	            console.log("switch", event);
                 var cat = $(this).attr('name');
                 console.log(cat); // DOM element                
                 //console.log(state); // true | false
@@ -431,12 +432,16 @@ angular.module('vppApp')
                         $scope.showAll = true;
                         break;
                     case "Pricing":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".price-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#PricingInfo").fadeIn(0);
 
                         $scope.pricing = true;
                         break;
                     case "Supply":
+                    	$(".bootswitch-all").attr("checked", "false");
+                    	$(".parking-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#ParkingSupply").fadeIn(0, function () {
 
@@ -445,30 +450,40 @@ angular.module('vppApp')
                         $scope.supply = true;
                         break;
                     case "Restrictions":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".time-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#RestrictionInfo").fadeIn(0);
 
                         $scope.restrictions = true;
                         break;
                     case "SpaceTypes":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".spaces-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#SpaceType").fadeIn(0);
 
                         $scope.spaceTypes = true;
                         break;
                     case "WDOccupancy":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".weekday-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#WDOccInfo").fadeIn(0);
 
                         $scope.weekDay = true;
                         break;
                     case "WEOccupancy":
+                   		$(".bootswitch-all").attr("checked", "");
+                    	$(".weekend-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#WEOccInfo").fadeIn(0);
 
                         $scope.weekEnd = true;
                         break;
                     case "Resources":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".additional-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#AddtnlResources").fadeIn(0);
 
@@ -479,7 +494,6 @@ angular.module('vppApp')
                 } else {
                     switch (cat) {
                     case "ShowAll":
-
                         $('input[class="otherSwitch"]').bootstrapSwitch('state', false, false);
                         $("#ParkingSupply").fadeOut(0);
                         $("#SpaceType").fadeOut(0);
