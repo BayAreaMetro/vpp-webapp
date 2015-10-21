@@ -148,6 +148,12 @@ angular.module('vppApp')
 				} else if( $scope.getLocation === "contact"){
 					$('.divFade').hide();
 					$(".contact-wrapper").fadeIn();
+				} else if($scope.getLocation === "contact"){
+					$('.divFade').hide();
+					$(".quickstart-wrapper").fadeIn();
+				} else if($scope.getLocation === "contact"){
+					$('.divFade').hide();
+					$(".video-wrapper").fadeIn();
 				}
 				console.log($scope.getLocation);
 			}
