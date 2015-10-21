@@ -112,6 +112,7 @@ angular.module('vppApp')
         $scope.PTbtn = false;
         $scope.showAll = true;
         $scope.printActive = false;
+        $scope.printingMode = true;
 
 
         w.parser.parse();
@@ -1852,13 +1853,29 @@ angular.module('vppApp')
         $scope.showLayers = function () {
             $("#mapLayers").removeClass('vHidden').removeClass('zero-h');
         };
-
+		
+		//Print Methods
+		$scope.printPreview = function(){
+			$scope.printingMode = false;
+			$scope.printWindow();
+			console.log("PrintPreview", $scope.printingMode);	
+		};
+		
         $scope.printMap = function () {
             $scope.createElement(document.getElementById("map"), "print-map");
             $scope.createElement(document.getElementById("mapLegend"), "print-legend");
             print();
         };
-
+		
+		$scope.printWindow = function () {
+            $scope.printActive = !$scope.printActive;
+        }
+        
+        $scope.exit = function(){
+	        $scope.printActive = !$scope.printActive;
+			$scope.printingMode = true;
+        };
+        		
         $scope.createElement = function (element, print) {
 
             $scope.node = element.cloneNode(true);
@@ -1903,11 +1920,7 @@ angular.module('vppApp')
             var SAQ_id = evt.graphic.attributes["Project_ID"];
             ZoomStudyArea(SAQ_id);
         });
-        $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: 11</p>');
-
-        $scope.printWindow = function () {
-            $scope.printActive = !$scope.printActive;
-        }
+        $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: 11</p>'); 
     });
 
 //EOF

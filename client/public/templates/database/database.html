@@ -64,7 +64,7 @@
                                         <div class="col-md-6">
 
                                             <label class="checkbox-inline">
-                                                <input name="ShowAll" type="checkbox" data-size="mini" checked="true">Show All
+                                                <input name="ShowAll" type="checkbox" data-size="mini" checked="true" class="bootswitch-all">Show All
                                             </label>
                                         </div>
 
@@ -73,11 +73,11 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline control-label" style="padding-right: 104px">
-                                                <input name="Pricing" type="checkbox" data-size="mini" class="otherSwitch">Pricing
+                                                <input name="Pricing" type="checkbox" data-size="mini" class="otherSwitch price-switch">Pricing
                                             </label>
 
                                             <label class="checkbox-inline">
-                                                <input name="Supply" type="checkbox" data-size="mini" class="otherSwitch">Parking Supply
+                                                <input name="Supply" type="checkbox" data-size="mini" class="otherSwitch parking-switch">Parking Supply
                                             </label>
                                         </div>
                                     </div>
@@ -85,10 +85,10 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline control-label" style="padding-right: 35px">
-                                                <input name="Restrictions" type="checkbox" data-size="mini" class="otherSwitch">Time Restrictions
+                                                <input name="Restrictions" type="checkbox" data-size="mini" class="otherSwitch time-switch">Time Restrictions
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input name="SpaceTypes" type="checkbox" data-size="mini" class="otherSwitch">Type of Parking Spaces
+                                                <input name="SpaceTypes" type="checkbox" data-size="mini" class="otherSwitch spaces-switch">Type of Parking Spaces
                                             </label>
 
 
@@ -98,11 +98,11 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline" style="padding-right: 13px">
-                                                <input name="WDOccupancy" type="checkbox" data-size="mini" class="otherSwitch">Weekday Occupancy
+                                                <input name="WDOccupancy" type="checkbox" data-size="mini" class="otherSwitch weekday-switch">Weekday Occupancy
                                             </label>
 
                                             <label class="checkbox-inline">
-                                                <input name="WEOccupancy" type="checkbox" data-size="mini" class="otherSwitch">Weekend Occupancy
+                                                <input name="WEOccupancy" type="checkbox" data-size="mini" class="otherSwitch weekend-switch">Weekend Occupancy
                                             </label>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline control-label" style="padding-right: 45px">
-                                                <input name="Resources" type="checkbox" data-size="mini" class="otherSwitch">Additional Resources
+                                                <input name="Resources" type="checkbox" data-size="mini" class="otherSwitch additional-switch">Additional Resources
                                             </label>
                                         </div>
 
@@ -408,6 +408,7 @@
 	                                    </div>
 	                                </div>
 	-->
+								</div>
                                 <div class="row pad-top-l">&nbsp;</div>
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
@@ -428,7 +429,7 @@
         </div>
 
         <div class="pad-top-l">&nbsp;</div>
-        <div id="DataTable" class="container InfoSummaryBG divFade">
+        <div id="DataTable" class="container InfoSummaryBG ">
 
             <div class="row">
                 <div class="container">

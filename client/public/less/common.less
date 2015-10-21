@@ -91,11 +91,21 @@ ul, li, ol{
 */
 .btn{
     &.btn-default{
-        border-radius: 0;        
+        border-radius: 0;
+        .transition(all .5s ease-in-out);
+        &:hover{
+	        //.box-shadow(10px 10px 5px -5px rgba(189,189,189,1));
+        }      
     }
     &.btn-primary{
         border-radius: 0;
+        border: none;
         background-color: @mainColor;
+        .transition(all .5s ease-in-out);
+        &:hover{
+	        background-color: lighten(@mainColor, 20%);
+	        //.box-shadow(10px 10px 5px -5px rgba(189,189,189,1));
+        }
     }
 }
 .panel{

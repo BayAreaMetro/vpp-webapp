@@ -444,7 +444,14 @@
             </li>
             <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Navigation Tips <span class="arrow clickable"></span></a>
             </li>
-            <li><a id="mapPrintCTL"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
+            <li><a id="mapPrintCTL" class="hidden"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
+            </li>
+            <li>
+            	<a ng-click="printPreview()">
+	            	<i class="fa fa-print fa-lg"></i> 
+	            	Print Map 
+	            	<span class="arrow clickable"></span>
+	            </a>
             </li>
         </ul>
     </div>
@@ -497,8 +504,8 @@
         </div>
     </div>
 </div>
-<div id="mt">
-    <div id="mapToolsPNL" class="panel panel-info collapse">
+<div id="mt" ng-show="printingMode">
+    <div id="mapToolsPNL" class="panel panel-info collapse ">
         <div class="panel-heading">
             <div class="panel-title">
                 <span id="iconTitle" class='pull-left'></span>
@@ -727,7 +734,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mapPrint" class="tools collapse">
+            <div id="mapPrint" class="tools collapse hidden">
                 <div class="container">
                     <div class="row">
                         <p>Print the Current Map View</p>
@@ -751,7 +758,12 @@
 	<div class="col-lg-12 ">
 		<h2 class="hidden">Print window</h2>
 		<div class="print-border">
-			<button class="pull-right btn-primary btn" ng-click="printWindow()">Close</button>
+			<button type="button" class="btn btn-primary pull-left" ng-click="printMap()">
+                <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
+            </button>
+			<button class="pull-right btn-primary btn" ng-click="exit()">
+				<i class="fa fa-close"></i>	Close
+			</button>
 		</div>
 	</div>
 </div>

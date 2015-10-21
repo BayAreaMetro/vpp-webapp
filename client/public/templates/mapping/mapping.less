@@ -318,14 +318,27 @@ g#map_graphics_layer path {
 //Print window
 #print-window {
     top: 120px;
-    left: 25px;
+    left: 50px;
     .print-border {
         height: 510px;
         width: 600px;
         border: 5px solid @mainColor;
+        button{
+	        .fa-close{
+		        vertical-align: baseline;
+	        }
+        }
     }
 }
 
+//Map Bug
+.dropdown-menu{
+	a{
+		&:hover{
+			cursor: pointer;
+		}
+	}
+}
 //print sections
 #print-map {
     display: none;
