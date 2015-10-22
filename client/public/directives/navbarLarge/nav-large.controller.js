@@ -42,6 +42,7 @@ angular.module('vppApp')
 					$('.about-nav').addClass("hidden");
 					$('.help-nav').addClass("hidden");
 				}else if($scope.name === "help"){
+					$('.divFade').hide();
 					$('.data-nav').addClass("hidden");
 					$('.research-nav').addClass("hidden");
 					$('.about-nav').addClass("hidden");
