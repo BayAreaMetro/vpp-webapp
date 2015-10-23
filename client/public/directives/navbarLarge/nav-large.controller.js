@@ -42,6 +42,7 @@ angular.module('vppApp')
 					$('.about-nav').addClass("hidden");
 					$('.help-nav').addClass("hidden");
 				}else if($scope.name === "help"){
+					$('.divFade').hide();
 					$('.data-nav').addClass("hidden");
 					$('.research-nav').addClass("hidden");
 					$('.about-nav').addClass("hidden");
@@ -148,10 +149,10 @@ angular.module('vppApp')
 				} else if( $scope.getLocation === "contact"){
 					$('.divFade').hide();
 					$(".contact-wrapper").fadeIn();
-				} else if($scope.getLocation === "contact"){
+				} else if($scope.getLocation === "quick"){
 					$('.divFade').hide();
 					$(".quickstart-wrapper").fadeIn();
-				} else if($scope.getLocation === "contact"){
+				} else if($scope.getLocation === "videos"){
 					$('.divFade').hide();
 					$(".video-wrapper").fadeIn();
 				}
