@@ -428,6 +428,15 @@ angular.module('vppApp')
                         $("#WDOccInfo").fadeIn(0);
                         $("#WEOccInfo").fadeIn(0);
                         $("#AddtnlResources").fadeIn(0);
+                        
+                        //Turn Off switches
+						$('input[name="Pricing"]').bootstrapSwitch('state', false, false);
+						$('input[name="Restrictions"]').bootstrapSwitch('state', false, false);
+						$('input[name="WDOccupancy"]').bootstrapSwitch('state', false, false);
+						$('input[name="Resources"]').bootstrapSwitch('state', false, false);
+						$('input[name="Supply"]').bootstrapSwitch('state', false, false);
+						$('input[name="SpaceTypes"]').bootstrapSwitch('state', false, false);
+						$('input[name="WEOccupancy"]').bootstrapSwitch('state', false, false);
 
                         $scope.showAll = true;
                         break;
