@@ -199,7 +199,11 @@ angular.module('vppApp')
         $scope.map.on("load", function () {
             mapCenter = getCenterPoint();
         });
-
+		
+		$scope.map.on("resize", function () {
+            mapCenter = getCenterPoint();
+            //console.log("%c resizeß!!", "font-size: 50px; color: blue;");
+        });
 
         //Added this code to fix HomeButton Issue
         w.registry.remove("HomeButton");
