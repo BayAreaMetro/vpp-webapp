@@ -111,14 +111,64 @@ angular.module('vppApp')
                 controller: 'ResearchCtrl'
             })
             .state('employees', {
-                url: "/employees",
-                templateUrl: 'public/templates/employees/employees.html'
-            }).state('help', {
+                url: "/research.employees",
+                templateUrl: 'public/templates/research/employees.html'
+            })
+            .state('regional', {
+                url: "/research.regional",
+                templateUrl: 'public/templates/research/regional.html'
+            })
+            .state('enacting', {
+                url: "/research.enacting",
+                templateUrl: 'public/templates/research/enacting.html'
+            })
+            .state('resources', {
+                url: "/research.resources",
+                templateUrl: 'public/templates/research/resources.html'
+            })
+            .state('policy', {
+                url: "/research.policy",
+                templateUrl: 'public/templates/research/policy.html'
+            })
+            .state('overview', {
+                url: "/research.policy.overview",
+                templateUrl: 'public/templates/research/policy-overview.html'
+            })
+            .state('ubanSim', {
+                url: "/research.policy.ubanSim",
+                templateUrl: 'public/templates/research/policy-ubanSim.html'
+            })
+            .state('modalOne', {
+                url: "/research.policy.modalOne",
+                templateUrl: 'public/templates/research/policy-modalOne.html'
+            })
+            .state('key', {
+                url: "/research.policy.key",
+                templateUrl: 'public/templates/research/policy-key.html'
+            })
+            .state('pr', {
+                url: "/research.pr",
+                templateUrl: 'public/templates/research/pr.html'
+            })
+            .state('parking', {
+                url: "/research.parking",
+                templateUrl: 'public/templates/research/parking.html'
+            })
+            .state('travel', {
+                url: "/research.parking.travel",
+                templateUrl: 'public/templates/research/travel.html'
+            })
+            .state('supply', {
+                url: "/research.supply",
+                templateUrl: 'public/templates/research/supply.html'
+            })
+            .state('help', {
                 url: "/help",
                 templateUrl: 'public/templates/help/help.html',
                 controller: 'HelpCtrl',
                 controllerAs: 'vm'
-            }).state('feedback', {
+            })
+            .state('feedback', {
                 url: "/feedback",
                 templateUrl: 'public/templates/feedback/feedback.html',
                 controller: 'FeedbackCtrl'

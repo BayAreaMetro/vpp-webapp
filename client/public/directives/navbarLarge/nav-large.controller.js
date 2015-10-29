@@ -38,22 +38,22 @@ angular.module('vppApp')
 					$('.help-nav').addClass("hidden");
 				} else if($scope.name === "data"){
 					$('.data-nav').removeClass("hidden");
-					$('.research-nav').addClass("hidden");
+					//$('.research-nav').addClass("hidden");
 					$('.about-nav').addClass("hidden");
 					$('.help-nav').addClass("hidden");
 				}else if($scope.name === "help"){
 					$('.divFade').hide();
 					$('.data-nav').addClass("hidden");
-					$('.research-nav').addClass("hidden");
+					//$('.research-nav').addClass("hidden");
 					$('.about-nav').addClass("hidden");
 					$('.help-nav').removeClass("hidden");
 				} else if($scope.name === "about"){
 					$('.data-nav').addClass("hidden");
-					$('.research-nav').addClass("hidden");
+					//$('.research-nav').addClass("hidden");
 					$('.about-nav').removeClass("hidden");
 					$('.help-nav').addClass("hidden");
 				} else{
-					$('.research-nav').addClass("hidden");
+					//$('.research-nav').addClass("hidden");
 					$('.data-nav').addClass("hidden");
 					$('.about-nav').addClass("hidden");
 					$('.help-nav').addClass("hidden");
