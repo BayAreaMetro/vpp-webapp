@@ -17,7 +17,7 @@
                 <li>
                     <a href="#/home" ng-click="active($event)" id="home" class="active">Home</a>
                 </li>
-                <li class=" inner-nested inner-nested-research">
+                <li class=" inner-nested inner-nested-research active">
                     <a href="#/research" ng-click="active($event)" name="research" class="reseach-link">Research & Policies</a>
                     <ul class="absol zTop inner-ul inner-ul-reseach research-nav ">
                         <li>
@@ -79,10 +79,16 @@
                             <a href="#/research.supply">Supply & Demand</a>
                             <ul class="nav-inner-nested  zTop absol">
                                 <li>
+                                    <!--
                                     <a class="vpp-links-inner-2 inner-fade" location="supply-overview" ng-click="inner($event)">Overview</a>
+                                    -->
+                                    <a href="#/research.supply.overview" class="vpp-links-inner-2 inner-fade">Overview</a>
                                 </li>
                                 <li>
+                                	<!--
                                     <a class="vpp-links-inner-2 inner-fade" location="supply-parking" ng-click="inner($event)">Regional Parking</a>
+                                    -->
+                                    <a href="#/research.supply.parking" class="vpp-links-inner-2 inner-fade">Regional Parking</a>
                                 </li>
                             </ul>
                         </li>
@@ -108,17 +114,26 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" inner-nested inner-nested-data">
+                <li class=" inner-nested inner-nested-data active">
                     <a href="#/database" ng-click="active($event)" class="vpp-links-inner data-link" name="data">Parking Data</a>
-                    <ul class="absol zTop inner-ul inner-ul-data data-nav hidden">
+                    <ul class="absol zTop inner-ul inner-ul-data data-nav active">
                         <li>
+                        	<!--
                             <a id="dbSummaryMI" class=" vpp-links-inner-2" location="DataSummary" ng-click="inner($event)">Summary</a>
+                            -->
+                            <a href="#/database.summary" class="vpp-links-inner-2 inner-fade">Summary</a>
                         </li>
                         <li>
+                        	<!--
                             <a id="dbInventoryMI" class=" vpp-links-inner-2" location="InventorySummary" ng-click="inner($event)">Inventory</a>
+                            -->
+                            <a href="#/database.inventory" class="vpp-links-inner-2 inner-fade">Inventory</a>
                         </li>
                         <li>
+                        	<!--
                             <a id="dbOccupancyMI" class=" vpp-links-inner-2" location="OccupancySummary" ng-click="inner($event)">Occupancy</a>
+                            -->
+                            <a href="#/database.occupancy" class="vpp-links-inner-2 inner-fade">Occupancy</a>
                         </li>
                         <li class="aside-li-4">
                             <a class="vpp-links-inner divControl" location="">Data Development</a>
@@ -145,25 +160,37 @@
                 <li class="">
                     <a href="#/feedback" ng-click="active($event)" class="vpp-links-inner">Feedback</a>
                 </li>
-                <li class="inner-nested inner-nested-help">
-                    <a href="#/help" ng-click="active($event)" class="vpp-links-inner help-link" name="help">Help</a>
-                    <ul class="absol zTop inner-ul inner-ul-help help-nav hidden">
+                <li class="inner-nested inner-nested-help active">
+                    <a href="#/help.quick" ng-click="active($event)" class="vpp-links-inner help-link" name="help">Help</a>
+                    <ul class="absol zTop inner-ul inner-ul-help help-nav active">
                         <li>
+                        	<!--
                             <a href="#" location="quick" ng-click="inner($event)">Quick Start</a>
+                            -->
+                            <a href="#/help.quick">Quick Start</a>
                         </li>
                         <li>
+                        	<!--
                             <a href="#" location="videos" ng-click="inner($event)">Help Videos</a>
+                            -->
+                            <a href="#/help.videos">Help Videos</a>
                         </li>
                     </ul>
                 </li>
-                <li class="inner-nested inner-nested-about">
+                <li class="inner-nested inner-nested-about active">
                     <a href="#/about" ng-click="active($event)" class="vpp-links-inner" name="about">About</a>
-                    <ul class="absol zTop inner-ul inner-ul-about about-nav hidden">
+                    <ul class="absol zTop inner-ul inner-ul-about about-nav active">
                         <li>
+                        	<!--
                             <a href="#" location="contact" ng-click="inner($event)">Contact Us</a>
+                            -->
+                            <a href="#/about.contact">Contact Us</a>
                         </li>
                         <li>
+                        	<!--
                             <a href="#" location="faqs" ng-click="inner($event)">FAQS</a>
+                            -->
+                            <a href="#/about.faqs">FAQS</a>
                         </li>
                     </ul>
                 </li>

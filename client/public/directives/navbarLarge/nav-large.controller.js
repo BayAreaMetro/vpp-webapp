@@ -32,37 +32,37 @@ angular.module('vppApp')
 				$scope.name = $(e.target).attr("name");
 				
 				if($scope.name === "research"){
-					$('.research-nav').removeClass("hidden");
-					$('.data-nav').addClass("hidden");
-					$('.about-nav').addClass("hidden");
-					$('.help-nav').addClass("hidden");
+					//$('.research-nav').removeClass("hidden");
+					//$('.data-nav').addClass("hidden");
+					//$('.about-nav').addClass("hidden");
+					//$('.help-nav').addClass("hidden");
 				} else if($scope.name === "data"){
-					$('.data-nav').removeClass("hidden");
+					//$('.data-nav').removeClass("hidden");
 					//$('.research-nav').addClass("hidden");
-					$('.about-nav').addClass("hidden");
-					$('.help-nav').addClass("hidden");
+					//$('.about-nav').addClass("hidden");
+					//$('.help-nav').addClass("hidden");
 				}else if($scope.name === "help"){
-					$('.divFade').hide();
-					$('.data-nav').addClass("hidden");
+					//$('.divFade').hide();
+					//$('.data-nav').addClass("hidden");
 					//$('.research-nav').addClass("hidden");
-					$('.about-nav').addClass("hidden");
-					$('.help-nav').removeClass("hidden");
+					//$('.about-nav').addClass("hidden");
+					//$('.help-nav').removeClass("hidden");
 				} else if($scope.name === "about"){
-					$('.data-nav').addClass("hidden");
+					//$('.data-nav').addClass("hidden");
 					//$('.research-nav').addClass("hidden");
-					$('.about-nav').removeClass("hidden");
-					$('.help-nav').addClass("hidden");
+					//$('.about-nav').removeClass("hidden");
+					//$('.help-nav').addClass("hidden");
 				} else{
 					//$('.research-nav').addClass("hidden");
-					$('.data-nav').addClass("hidden");
-					$('.about-nav').addClass("hidden");
-					$('.help-nav').addClass("hidden");
+					//$('.data-nav').addClass("hidden");
+					//$('.about-nav').addClass("hidden");
+					//$('.help-nav').addClass("hidden");
 					console.log("false");
 				}
 				console.log($scope.name);
 				//Add and remove active states
-				$('.navbar-nav > li > a').removeClass('active');
-				$(e.target).addClass("active");
+				//$('.navbar-nav > li > a').removeClass('active');
+				//$(e.target).addClass("active");
 			};
 			
 			$scope.inner = function(event){
@@ -161,6 +161,7 @@ angular.module('vppApp')
 			
 			//About
 			$scope.navShow = function(){
+				/*
 				$(".inner-nested-about").hover(function(){
 					$('.about-nav').addClass('active');
 					$('.inner-nested-about').addClass('active');
@@ -168,10 +169,13 @@ angular.module('vppApp')
 					$('.about-nav').removeClass('active');
 					$('.inner-nested-about').removeClass('active');
 				});
+				*/
 			};
+			
 			
 			//Help
 			$scope.navShowHelp = function(){
+				/*
 				$(".inner-nested-help").hover(function(){
 					$('.about-nav').addClass('active');
 					$('.inner-nested-help').addClass('active');
@@ -179,7 +183,9 @@ angular.module('vppApp')
 					$('.about-nav').removeClass('active');
 					$('.inner-nested-help').removeClass('active');
 				});
+				*/
 			};
+			
 			
 			$scope.init();
     	}

@@ -594,7 +594,7 @@ angular.module('vppApp')
                 $scope.printerElement.appendChild($scope.node);
             };
             
-            $scope.activeTrigger();
+            //$scope.activeTrigger();
 		}
 	]
 );

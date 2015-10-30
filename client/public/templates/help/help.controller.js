@@ -19,23 +19,18 @@ angular.module('vppApp')
 				console.log('help');
 			};
 			
-			$scope.navTrigger();
+			//$scope.navTrigger();
 
 			$scope.gotoBottom = function(id) {
 				//console.log(id);
-
-      // set the location.hash to the id of
-      // the element you wish to scroll to.
-      $location.hash(id);
-
-      // call $anchorScroll()
-      $anchorScroll();
-    };
+				// set the location.hash to the id of
+				// the element you wish to scroll to.
+				$location.hash(id);
+				
+				// call $anchorScroll()
+				$anchorScroll();
+    		};
 		}
-
-		
-		
-
 	]
 );
 
