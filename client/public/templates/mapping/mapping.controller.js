@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vppApp')
-    .controller('MapCtrl', function ($rootScope, $scope, $http, wish) {
+    .controller('MapCtrl', function ($rootScope, $scope, $http, wish, $timeout) {
 
         //Vars always at the top
         $scope.layerOpacity;
@@ -1861,6 +1861,7 @@ angular.module('vppApp')
 		//Print Methods
 		$scope.printPreview = function(){
 			$scope.printingMode = false;
+			$(".print-info").removeClass("fade-away");
 			$scope.printWindow();
 			console.log("PrintPreview", $scope.printingMode);	
 		};
@@ -1873,6 +1874,7 @@ angular.module('vppApp')
 		
 		$scope.printWindow = function () {
             $scope.printActive = !$scope.printActive;
+            $timeout($scope.printInfo, 3000);
         }
         
         $scope.exit = function(){
@@ -1925,6 +1927,11 @@ angular.module('vppApp')
             ZoomStudyArea(SAQ_id);
         });
         $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: 11</p>'); 
+        
+        $scope.printInfo = function(){
+	        console.log("printmode");
+	        $(".print-info").addClass("fade-away");
+        };
     });
 
 //EOF

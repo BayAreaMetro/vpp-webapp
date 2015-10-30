@@ -129,14 +129,15 @@ g#map_graphics_layer path {
     width: 275px;
     bottom: 0px;
     opacity: 1;
+    .legendContent {
+	    height: 96%;
+	    // opacity: 0.96;
+	    background-color: white;
+	}
+	.print-legend{
+		display: none;
+	}
 }
-
-.legendContent {
-    height: 100%;
-    // opacity: 0.96;
-    background-color: white;
-}
-
 #maptoolsBTN {
     display: block;
     position: absolute;
@@ -329,6 +330,21 @@ g#map_graphics_layer path {
 	        .fa-close{
 		        vertical-align: baseline;
 	        }
+        }
+        .print-info{
+	        font-size: 20px;
+		    margin-left: 49px;
+		    font-weight: bold;
+		    opacity: 1;
+		    .transition(all 1s ease-in-out);
+		    p{
+			    margin-bottom: 0;
+		    }
+		    &.fade-away{
+			    margin: 0;
+			    height: 0;
+				opacity: 0;
+		    }
         }
     }
 }
