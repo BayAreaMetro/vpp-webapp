@@ -20,59 +20,129 @@
                     <div class="row">
 	                    <div class="col-lg-6 val-wrapper">
 		                    <img class="img-responsive" src="app/images/vknepper.jpg">
+		                    <!-- Manager contact -->
+		                    <div class="panel panel-default text-center ma-top-l">
+			                    <div class="panel-heading hidden">
+									<h4>MTC Project Manager</h4>
+			                    </div>
+			                    <div class="panel-body">
+				                    <h4>Valerie Knepper</h4>
+				                    <h5>
+					                    ValerieKnepper@mtc.ca.gov
+				                    </h5>
+				                    <h5>
+					                    510-817-5824
+				                    </h5>
+			                    </div>
+		                    </div>
 	                    </div>
-	                    <div class="col-lg-6 val-wrapper pad-top-l">
+	                    
+	                    <!-- panel -->
+	                    <div class="col-lg-6">
+		                    <!-- contact form -->
+		                    <div class="panel panel-default text-center">
+			                    <div class="panel-heading">
+									<h4>Contact Us</h4>
+			                    </div>
+			                    <div class="panel-body">
+				                    <form class="form-horizontal css-form" name="contactForm" novalidate>
+				                        <fieldset>
+				                            <div class="form-group">
+				                            <label class="col-md-4 control-label"></label>
+				                                <div class="col-md-6">
+				                                    <h4 class="contact-message">{{ contactMessage }}</h4>
+				                                </div>
+				                            </div>
+				                            <div class="form-group">
+				                                <label class="col-md-4 control-label" for="contactname">Name:</label>
+				                                <div class="col-md-6">
+				                                    <input type="text" class="form-control" id="contactname" name="contactname" ng-model="contact.name" required>
+				                                </div>
+				                            </div>
+				                            <div class="form-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
+				                                <label class="col-md-4 control-label" for="email">Email Address:</label>
+				                                <div class="col-md-6">
+				                                    <input type="email" class="form-control" id="email" name="email" ng-model="contact.email" required>
+				                                    <span ng-show="form.email.$error.required">Required</span>
+				                                    <span ng-show="form.email.$error.email">Invalid</span>
+				                                </div>
+				                            </div>
+				                            <!-- Collection Year -->
+				                            <div class="form-group">
+				                                <label class="col-md-4 control-label" for="contactcomment">Comment:</label>
+				                                <div class="col-md-6">
+				                                    <textarea id="contactcomment" class="form-control" rows="5" ng-model="contact.comment" required></textarea>
+				                                    <p class="help-block">&nbsp;</p>
+				                                </div>
+				                                <div class="row pad-top-l">
+				                                    <label class="col-md-4 control-label">&nbsp;</label>
+				                                    <div class="col-md-8 pull-left">
+				                                        <button id="submitContact" type="button" class="btn btn-default btn-sm" ng-click="submitContact(contactForm)">
+				                                            <span class="fa fa-envelope fa-fw" aria-hidden="true"></span>Submit
+				                                        </button>
+				                                    </div>
+				                                </div>
+				                            </div>
+				                        </fieldset>
+				                    </form>
+			                    </div>
+		                    </div>
+		                    
+	                    </div>
+	                    
+	                    <div class="col-lg-6 val-wrapper pad-top-l hidden">
 		                    <p class="lead">Valerie Knepper</p>
 		                    <p class="lead pad-top-m">
-			                    Email 
+			                    Email:
 			                    <span class="contact-email"> ValerieKnepper@mtc.ca.gov</span>
 			                </p>
 			                <p class="lead pad-top-m">
-			                    Phone 
-			                    <span class="contact-email"> 800-555-5555</span>
+			                    Phone:
+			                    <span class="contact-email">  510-817-5824</span>
 			                </p>
+			                <form class="form-horizontal css-form" name="contactForm" novalidate>
+		                        <fieldset>
+		                            <div class="form-group">
+		                            <label class="col-md-4 control-label"></label>
+		                                <div class="col-md-6">
+		                                    <h4 class="contact-message">{{ contactMessage }}</h4>
+		                                </div>
+		                            </div>
+		                            <div class="form-group">
+		                                <label class="col-md-4 control-label" for="contactname">Name:</label>
+		                                <div class="col-md-6">
+		                                    <input type="text" class="form-control" id="contactname" name="contactname" ng-model="contact.name" required>
+		                                </div>
+		                            </div>
+		                            <div class="form-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
+		                                <label class="col-md-4 control-label" for="email">Email Address:</label>
+		                                <div class="col-md-6">
+		                                    <input type="email" class="form-control" id="email" name="email" ng-model="contact.email" required>
+		                                    <span ng-show="form.email.$error.required">Required</span>
+		                                    <span ng-show="form.email.$error.email">Invalid</span>
+		                                </div>
+		                            </div>
+		                            <!-- Collection Year -->
+		                            <div class="form-group">
+		                                <label class="col-md-4 control-label" for="contactcomment">Comment:</label>
+		                                <div class="col-md-6">
+		                                    <textarea id="contactcomment" class="form-control" rows="5" ng-model="contact.comment" required></textarea>
+		                                    <p class="help-block">&nbsp;</p>
+		                                </div>
+		                                <div class="row pad-top-l">
+		                                    <label class="col-md-4 control-label">&nbsp;</label>
+		                                    <div class="col-md-8 pull-left">
+		                                        <button id="submitContact" type="button" class="btn btn-default btn-sm" ng-click="submitContact(contactForm)">
+		                                            <span class="fa fa-envelope fa-fw" aria-hidden="true"></span>Submit
+		                                        </button>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </fieldset>
+		                    </form>
+
 	                    </div>
                     </div>
-                    <form class="form-horizontal css-form" name="contactForm" novalidate>
-                        <fieldset>
-                            <div class="form-group">
-                            <label class="col-md-4 control-label"></label>
-                                <div class="col-md-6">
-                                    <h4 class="contact-message">{{ contactMessage }}</h4>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="contactname">Name:</label>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" id="contactname" name="contactname" ng-model="contact.name" required>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
-                                <label class="col-md-4 control-label" for="email">Email Address:</label>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" id="email" name="email" ng-model="contact.email" required>
-                                    <span ng-show="form.email.$error.required">Required</span>
-                                    <span ng-show="form.email.$error.email">Invalid</span>
-                                </div>
-                            </div>
-                            <!-- Collection Year -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="contactcomment">Comment:</label>
-                                <div class="col-md-6">
-                                    <textarea id="contactcomment" class="form-control" rows="5" ng-model="contact.comment" required></textarea>
-                                    <p class="help-block">&nbsp;</p>
-                                </div>
-                                <div class="row pad-top-l">
-                                    <label class="col-md-4 control-label">&nbsp;</label>
-                                    <div class="col-md-8 pull-left">
-                                        <button id="submitContact" type="button" class="btn btn-default btn-sm" ng-click="submitContact(contactForm)">
-                                            <span class="fa fa-envelope fa-fw" aria-hidden="true"></span>Submit
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
                 </div>
             </div>
         </div>
