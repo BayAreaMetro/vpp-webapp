@@ -2,7 +2,7 @@
     background-color: #ffffff;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 12000px;
+    height: auto;
     width: 100%;
     .site-header {
         margin-top: 50px;
@@ -21,7 +21,26 @@
         //display: none;
     }
     .quickstart-wrapper{
-        //display: none;
+		.section-wrapper{
+			border-bottom: 1px solid #dddddd;
+			padding-bottom: 20px;
+			.start-image{
+		        width: 250px;
+				padding-top: 15px;
+				padding-bottom: 15px;
+				padding-left: 15px;
+				padding-right: 15px;
+				border: 1px solid #dddddd;
+				display: block;
+				.transition(all .5s ease-in-out);
+				&:hover{
+					border: 1px solid @mainColor;	
+				}
+				img{
+					width: 220px;
+				}
+	        }
+		}
         .thumbnail{
             img{
                 border: 2px solid @anchorColor;
