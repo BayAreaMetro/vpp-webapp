@@ -383,17 +383,38 @@ angular.module('vppApp')
             infoTemplate: parkingInspectorWEOccupancyOnStreet
 
         });
-        PeakOffStreetOccupancyFL = new w.FeatureLayer(WEOffStreetOccupancyURL, {
-            id: "PeakOffStreetOccupancy",
+        //See GitHub Issue #108 Need to change out the URL for the feature based upon the DayType
+        //$scope.DayType
+        
+        PeakWDOffStreetOccupancyFL = new w.FeatureLayer(WDOffStreetOccupancyURL, {
+            id: "PeakWDOffStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
             //infoTemplate: popupTemplate_WEOffStreetOccupancyFL
             infoTemplate: parkingInspectorPeakOccupancyOffStreet
         });
+		//See GitHub Issue #108 Need to change out the URL for the feature based upon the DayType
+        PeakWDOnStreetOccupancyFL = new w.FeatureLayer(WDOnStreetOccupancyURL, {
+            id: "PeakWDOnStreetOccupancy",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false,
+            //infoTemplate: popupTemplate_WEOnStreetOccupancyFL
+            infoTemplate: parkingInspectorPeakOccupancyOnStreet
 
-        PeakOnStreetOccupancyFL = new w.FeatureLayer(WEOnStreetOccupancyURL, {
-            id: "PeakOnStreetOccupancy",
+        });
+        PeakWEOffStreetOccupancyFL = new w.FeatureLayer(WEOffStreetOccupancyURL, {
+            id: "PeakWEOffStreetOccupancy",
+            mode: w.FeatureLayer.MODE_SNAPSHOT,
+            outFields: ["*"],
+            visible: false,
+            //infoTemplate: popupTemplate_WEOffStreetOccupancyFL
+            infoTemplate: parkingInspectorPeakOccupancyOffStreet
+        });
+		//See GitHub Issue #108 Need to change out the URL for the feature based upon the DayType
+        PeakWEOnStreetOccupancyFL = new w.FeatureLayer(WEOnStreetOccupancyURL, {
+            id: "PeakWEOnStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
             visible: false,
@@ -744,6 +765,8 @@ angular.module('vppApp')
                 PeakOnStreetOccupancyFL.setRenderer($scope.renderer_OnStreetOccupancy);
 
                 WDOnStreetOccupancyFL.refresh();
+                PeakWDOnStreetOccupancyFL.refresh();
+                PeakWEOnStreetOccupancyFL.refresh();
                 PeakOnStreetOccupancyFL.refresh();
                 WEOnStreetOccupancyFL.refresh();
 
@@ -1138,6 +1161,15 @@ angular.module('vppApp')
             WEOnStreetOccupancyFL.hide();
             WDOffStreetOccupancyFL.hide();
             WEOffStreetOccupancyFL.hide();
+            
+/*
+            PeakWDOnStreetOccupancyFL.hide();
+            PeakWDOffStreetOccupancyFL.hide();
+
+			PeakWEOnStreetOccupancyFL.hide();
+            PeakWEOffStreetOccupancyFL.hide();
+*/
+
             PeakOnStreetOccupancyFL.hide();
             PeakOffStreetOccupancyFL.hide();
 
@@ -1335,7 +1367,8 @@ angular.module('vppApp')
                     break;
                 case "BOTH":
                     $scope.parkingType = "Both On/Off-Street Parking";
-
+                    
+                    break;
                 }
                 $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.parkingType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
 
