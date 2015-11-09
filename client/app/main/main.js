@@ -133,6 +133,11 @@ angular.module('vppApp')
                 templateUrl: 'public/templates/research/research.html',
                 controller: 'ResearchCtrl'
             })
+            .state('report', {
+                url: "/research.report",
+                templateUrl: 'public/templates/research/research.report.html',
+                controller: 'ResearchCtrl'
+            })
             .state('employees', {
                 url: "/research.employees",
                 templateUrl: 'public/templates/research/employees.html'
