@@ -361,7 +361,12 @@ angular.module('vppApp')
 
                 //this part will append the anchor tag and remove it after automatic click
                 document.body.appendChild(link);
-                //link.click();
+                
+                //If not Safari
+                if(document.getElementById("safari-fixer").style.display === ""){
+	               link.click(); 
+                } 
+                
                 document.body.removeChild(link);
 				$scope.safariFixer = uri;
             };
