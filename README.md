@@ -2,11 +2,11 @@
 Development Instructions/ Notes
 
 ## Requirements
-###Node JS https://nodejs.org/
-###Bower http://bower.io/
-###Gulp http://gulpjs.com/
+####Node JS https://nodejs.org/
+####Bower http://bower.io/
+####Gulp http://gulpjs.com/
 
-##To build Environment
+##Build Instructions (Local Environment)
 1. sudo npm install
 
 2. bower install
