@@ -24,7 +24,7 @@
         }
     }
     .contact-wrapper {
-        display: none;
+        //display: none;
         .help-links {
             color: @mainColor;
             text-decoration: none;
@@ -32,9 +32,22 @@
                 color: lighten(@mainColor, 15%);
             }
         }
+        .val-wrapper{
+	        img{
+		        width: 500px;
+		        border: 5px solid @anchorColor;
+		        .box-shadow(10px 10px 5px -5px rgba(189,189,189,1));
+	        }
+	       .contact-email{
+		       color: @mainColor;
+	       }
+        }
+        .css-form{
+	        margin-bottom: 60px;
+        }
     }
     .faqs-wrapper {
-        display: none;
+        //display: none;
         .help-links {
             color: @mainColor;
             text-decoration: none;
@@ -50,6 +63,7 @@
         background-color: #78FA89;
     }
     .contact-message {
-    color:red;
+    	color:red;
     }
+    
 }

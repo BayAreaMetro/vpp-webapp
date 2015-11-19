@@ -31,12 +31,50 @@
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
-
+	//Global
+	.site-header {
+		.overlay{
+			padding-top: 30px !important;
+		}
+		h3 {
+			font-size: 3.5em;
+		}
+	}
+	.lead{
+		font-size: 1.5em;
+	}
+	//Home
+	#home-section {
+		.home-text {
+			p{
+				font-size: 1.5em;
+			}
+		} 	
+	}
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-
+	//Global
+	.site-header {
+		.overlay{
+			padding-top: 30px !important;
+		}
+		h3 {
+			font-size: 3.5em;
+		}
+	}
+	.lead{
+		font-size: 1.3em;
+	}
+	//Home
+	#home-section {
+		.home-text {
+			p{
+				font-size: 1.3em;
+			}
+		} 	
+	}
 }
 
 /* Small Devices, Tablets */
@@ -49,6 +87,17 @@
 		h3 {
 			font-size: 3.5em;
 		}
+	}
+	.lead{
+		font-size: 14px;
+	}
+	//Home
+	#home-section {
+		.home-text {
+			p{
+				font-size: 14px;
+			}
+		} 	
 	}
 	//Research
 	#research-section {
@@ -137,15 +186,41 @@
 	}
 	
 	#print-map{
-		display: block;
+		display: block !important;
 		height: 50%;
 		width: 50%;
+		#map{
+			top: 0px;
+		}
+		.HomeButton{
+			display: none;
+			opacity: 0;
+			.homeContainer{
+				display: none;
+				opacity: 0;
+			}
+		}
+		#map_zoom_slider{
+			display: none;
+		}
 	}
 	
 	#print-legend{
-		display: block;
+		display: block !important;
 		#mapLegend{
-			height: 500px;
+			height: 100%;
+			top: 0px;
+			#mapLegendPNL{
+				height: 100%;	
+			}
+			.legendContent{
+				height: 100%;	
+			}
+			.print-legend{
+				display: block;
+				margin-top: 0;
+				margin-bottom: 0;
+			}
 			.panel-body{
 				background-color: #FFFFFF !important;
 				#mlegend_Occ{

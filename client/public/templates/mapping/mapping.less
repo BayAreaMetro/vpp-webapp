@@ -10,6 +10,21 @@
     opacity: 1;
 }
 
+.fixed-size-square {
+    //display: table;
+    width: 20px;
+    height: 20px;
+    background: #4679BD;
+    margin-bottom: 5px !important;
+}
+.fixed-size-line {
+    //display: table;
+    width: 20px;
+    height: 2px;
+    background: #4679BD;
+    margin-bottom: 5px !important;
+    margin-top: 9px !important;
+}
 .navPager {
     padding: 5px 10px;
     background: #4479BA;
@@ -22,10 +37,9 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-g#map_graphics_layer path{ 
-stroke:cyan !important;
-stroke-width: 4 !important;
-
+g#map_graphics_layer path {
+    stroke: cyan !important;
+    stroke-width: 4 !important;
 }
 
 .bottom {
@@ -63,7 +77,7 @@ stroke-width: 4 !important;
     left: 74px;
     width: 350px;
     z-index: 20;
-//    white-space: normal;
+    //    white-space: normal;
     .btn {
         &.btn-default {
             padding-top: 5px;
@@ -115,14 +129,15 @@ stroke-width: 4 !important;
     width: 275px;
     bottom: 0px;
     opacity: 1;
+    .legendContent {
+	    height: 96%;
+	    // opacity: 0.96;
+	    background-color: white;
+	}
+	.print-legend{
+		display: none;
+	}
 }
-
-.legendContent {
-    height: 100%;
-    // opacity: 0.96;
-    background-color: white;
-}
-
 #maptoolsBTN {
     display: block;
     position: absolute;
@@ -279,36 +294,69 @@ stroke-width: 4 !important;
         padding-right: 25px;
     }
 }
-//Legend height fixx
-#mapLegend{
-	#mapLegendPNL{
-		margin-bottom: 0;
-	}	
-}
-//Map-layer panels
-#mt{
-	height: 660px;
-	#mapToolsPNL{
-		padding-bottom: 10px;
-		.panel-body{
-			max-height: 500px;
-			overflow: scroll;
-		}
-	}
-	//overflow: scroll;
-}
 
-//Print window
-#print-window{
-	top: 120px;
-    left: 25px;
-    .print-border{
-		height: 510px;
-		width: 600px;
-		border: 5px solid @mainColor;
+//Legend height fixx
+#mapLegend {
+    #mapLegendPNL {
+        margin-bottom: 0;
     }
 }
 
+//Map-layer panels
+#mt {
+    height: 80%;
+    max-height: 790px;
+    #mapToolsPNL {
+	    height: inherit;
+	    max-height: 790px;
+        padding-bottom: 10px;
+        .panel-body {
+            max-height: 90%;
+            overflow: scroll;
+        }
+    }
+    //overflow: scroll;
+}
+
+//Print window
+#print-window {
+    top: 120px;
+    left: 50px;
+    .print-border {
+        height: 510px;
+        width: 600px;
+        border: 5px solid @mainColor;
+        button{
+	        .fa-close{
+		        vertical-align: baseline;
+	        }
+        }
+        .print-info{
+	        font-size: 20px;
+		    margin-left: 49px;
+		    font-weight: bold;
+		    opacity: 1;
+		    .transition(all 1s ease-in-out);
+		    p{
+			    margin-bottom: 0;
+		    }
+		    &.fade-away{
+			    margin: 0;
+			    height: 0;
+				opacity: 0;
+		    }
+        }
+    }
+}
+
+//Map Bug
+.dropdown-menu{
+	a{
+		&:hover{
+			cursor: pointer;
+		}
+	}
+}
 //print sections
 #print-map {
     display: none;

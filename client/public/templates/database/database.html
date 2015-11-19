@@ -64,7 +64,7 @@
                                         <div class="col-md-6">
 
                                             <label class="checkbox-inline">
-                                                <input name="ShowAll" type="checkbox" data-size="mini" checked="true">Show All
+                                                <input name="ShowAll" type="checkbox" data-size="mini" checked="true" class="bootswitch-all">Show All
                                             </label>
                                         </div>
 
@@ -73,11 +73,11 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline control-label" style="padding-right: 104px">
-                                                <input name="Pricing" type="checkbox" data-size="mini" class="otherSwitch">Pricing
+                                                <input name="Pricing" type="checkbox" data-size="mini" class="otherSwitch price-switch">Pricing
                                             </label>
 
                                             <label class="checkbox-inline">
-                                                <input name="Supply" type="checkbox" data-size="mini" class="otherSwitch">Parking Supply
+                                                <input name="Supply" type="checkbox" data-size="mini" class="otherSwitch parking-switch">Parking Supply
                                             </label>
                                         </div>
                                     </div>
@@ -85,10 +85,10 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline control-label" style="padding-right: 35px">
-                                                <input name="Restrictions" type="checkbox" data-size="mini" class="otherSwitch">Time Restrictions
+                                                <input name="Restrictions" type="checkbox" data-size="mini" class="otherSwitch time-switch">Time Restrictions
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input name="SpaceTypes" type="checkbox" data-size="mini" class="otherSwitch">Type of Parking Spaces
+                                                <input name="SpaceTypes" type="checkbox" data-size="mini" class="otherSwitch spaces-switch">Type of Parking Spaces
                                             </label>
 
 
@@ -98,11 +98,11 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline" style="padding-right: 13px">
-                                                <input name="WDOccupancy" type="checkbox" data-size="mini" class="otherSwitch">Weekday Occupancy
+                                                <input name="WDOccupancy" type="checkbox" data-size="mini" class="otherSwitch weekday-switch">Weekday Occupancy
                                             </label>
 
                                             <label class="checkbox-inline">
-                                                <input name="WEOccupancy" type="checkbox" data-size="mini" class="otherSwitch">Weekend Occupancy
+                                                <input name="WEOccupancy" type="checkbox" data-size="mini" class="otherSwitch weekend-switch">Weekend Occupancy
                                             </label>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                         <label class="col-md-4 control-label">&nbsp;</label>
                                         <div class="col-md-6">
                                             <label class="checkbox-inline control-label" style="padding-right: 45px">
-                                                <input name="Resources" type="checkbox" data-size="mini" class="otherSwitch">Additional Resources
+                                                <input name="Resources" type="checkbox" data-size="mini" class="otherSwitch additional-switch">Additional Resources
                                             </label>
                                         </div>
 
@@ -130,10 +130,15 @@
                                     <button id="dlSummaryDataBTN" type="button" class="btn btn-default btn-sm disabled summaryVD">
                                         <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                     </button>
+                                    
+                                    <!-- Safri fix -->
+                                    <div id="safari-fixer" class="safari-only pad-top-l">
+		                                <p class="lead">Please right click and save file</p>
+		                                <a href="#" class="data-anchor">Download Data</a>
+		                            </div>
                                 </div>
                             </div>
-                </div>
-                </fieldset>
+                	</fieldset>
                 </form>
             </div>
         </div>
@@ -403,6 +408,7 @@
 	                                    </div>
 	                                </div>
 	-->
+								</div>
                                 <div class="row pad-top-l">&nbsp;</div>
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
@@ -423,7 +429,7 @@
         </div>
 
         <div class="pad-top-l">&nbsp;</div>
-        <div id="DataTable" class="container InfoSummaryBG divFade">
+        <div id="DataTable" class="container InfoSummaryBG ">
 
             <div class="row">
                 <div class="container">
@@ -779,7 +785,7 @@
                                         </tr>
                                         <tr>
                                             <td>Time restriction two hours</td>
-                                            <td class="text-center"><span id="Time_Two_Hours_On">{{restrict.Time_Two_Hours_On_PCT | number}}</span>
+                                            <td class="text-center"><span id="Time_Two_Hours_On">{{restrict.Time_Two_Hours_On | number}}</span>
                                             </td>
                                             <td class="text-center">{{restrict.Time_Two_Hours_On_PCT}}%</td>
                                             <td class="text-center"><span id="Time_Two_Hours_Off">{{restrict.Time_Two_Hours_Off | number}}</span>
@@ -802,7 +808,7 @@
 
                                         </tr>
                                         <tr>
-                                            <td>Time restrictiond greater than four hours</td>
+                                            <td>Time restriction greater than four hours</td>
                                             <td class="text-center"><span id="Time_More_Than_4_Hours_On">{{restrict.Time_More_Than_4_Hours_On | number}}</span>
                                             </td>
                                             <td class="text-center">{{restrict.Time_More_Than_4_Hours_On_PCT}}%</td>

@@ -28,6 +28,7 @@
             </div>
         </div>
         <div class="panel-body">
+            <h3 class="print-legend">Legend</h3>
             <div id="StudyAreaNamePNL" class="pad-bottom-m pad-top-m collapse">
                 Study Area
             </div>
@@ -60,6 +61,23 @@
 
             </div>
             <div id="mlegend_Occ" class="collapse">
+
+                <div class="row">
+                    <div class="col-xs-1 col-md-1">
+                        <div class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(110, 110, 110);">
+
+                        </div>
+                        <!--                        <img src="app/images/transparent.png" alt=""  >-->
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <img src="app/images/transparent.png" alt="" class="Legend_Line_1" style="margin-bottom: 5px; margin-top: 9px; height: 2px; width: 20px; display: block; background-color: rgb(110, 110, 110);">
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        No data
+                    </div>
+                </div>
+
+
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(56, 168, 0);">
@@ -208,6 +226,34 @@
                     <br>Total Spaces</p>
             </div>
             <div id="mlegend_TotalSpaces" class="collapse">
+
+
+
+
+
+
+
+                <!-- 
+
+                <div class="row">
+                    <div class="col-xs-1 col-md-1 ">
+                        <div class="fixed-size-square"> </div>
+                    </div>
+                    <div class="col-xs-1 col-md-1 pad-right-l">
+                        <div class="fixed-size-line"> </div>
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        No Parking
+                    </div>
+                </div>
+
+
+ -->
+
+
+
+
+
                 <div class="row">
                     <div class="col-xs-1 col-md-1">
                         <img src="app/images/transparent.png" alt="" class="Legend_Poly_1" style="margin-bottom: 5px; height: 20px; width: 20px; display: block; background-color: rgb(120, 120, 120);">
@@ -399,7 +445,13 @@
             </li>
             <li><a id="mapNavCTL"><i class="fa fa-location-arrow fa-lg"></i> Navigation Tips <span class="arrow clickable"></span></a>
             </li>
-            <li><a id="mapPrintCTL"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
+            <li><a id="mapPrintCTL" class="hidden"><i class="fa fa-print fa-lg"></i> Print Map <span class="arrow clickable"></span></a>
+            </li>
+            <li>
+                <a ng-click="printPreview()">
+                    <i class="fa fa-print fa-lg"></i> Print Map
+                    <span class="arrow clickable"></span>
+                </a>
             </li>
         </ul>
     </div>
@@ -420,7 +472,7 @@
                 </li>
                 <li><a id="Occupancy_9am" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Morning (9AM) </a>
                 </li>
-                <li><a id="Occupancy_12pm" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Afternoon (12PM) </a>
+                <li><a id="Occupancy_12pm" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Noon (12PM) </a>
                 </li>
                 <li><a id="Occupancy_4pm" class="changeOCCPeriod"><i class="fa  fa-clock-o fa-lg fa-fw"></i> Late Afternoon (4PM) </a>
                 </li>
@@ -452,8 +504,8 @@
         </div>
     </div>
 </div>
-<div id="mt">
-    <div id="mapToolsPNL" class="panel panel-info collapse">
+<div id="mt" ng-show="printingMode">
+    <div id="mapToolsPNL" class="panel panel-info collapse ">
         <div class="panel-heading">
             <div class="panel-title">
                 <span id="iconTitle" class='pull-left'></span>
@@ -682,18 +734,18 @@
                     </div>
                 </div>
             </div>
-            <div id="mapPrint" class="tools collapse">
+            <div id="mapPrint" class="tools collapse hidden">
                 <div class="container">
                     <div class="row">
                         <p>Print the Current Map View</p>
                         <button type="button" class="btn btn-default btn-sm" ng-click="printMap()">
                             <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
                         </button>
-						
-						<!-- show print window -->
-						<button type="button" class="btn btn-default btn-sm" ng-click="printWindow()">
-							<span class="fa fa fa-square-o fa-fw" aria-hidden="true"></span>Print Window
-						</button>
+
+                        <!-- show print window -->
+                        <button type="button" class="btn btn-default btn-sm" ng-click="printWindow()">
+                            <span class="fa fa fa-square-o fa-fw" aria-hidden="true"></span>Print Window
+                        </button>
                     </div>
                 </div>
             </div>
@@ -703,11 +755,21 @@
 
 <!-- Print window-->
 <div id="print-window" class="absol" ng-show="printActive">
-	<div class="col-lg-12 ">
-		<h2 class="hidden">Print window</h2>
-		<div class="print-border">
-			<button class="pull-right btn-primary btn" ng-click="printWindow()">Close</button>
-		</div>
-	</div>
-</div>
+    <div class="col-lg-12 ">
+        <h2 class="hidden">Print window</h2>
+        <div class="print-border">
+            <button type="button" class="btn btn-primary pull-left" ng-click="printMap()">
+                <span class="fa fa-print fa-fw print-data" aria-hidden="true"></span>Print
+            </button>
 
+            <span class="print-info absol">
+	            <p>Please place Map into the print area.</p>
+	            <p>Print in Landscape mode</p>
+            </span>
+
+            <button class="pull-right btn-primary btn" ng-click="exit()">
+                <i class="fa fa-close"></i> Close
+            </button>
+        </div>
+    </div>
+</div>

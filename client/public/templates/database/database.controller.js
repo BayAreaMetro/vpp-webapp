@@ -1,21 +1,22 @@
 'use strict';
+
 angular.module('vppApp')
     .controller('DatabaseCtrl', [
-  '$scope',
-  '$http',
+		'$scope',
+  		'$http',
         '$location',
         '$rootScope',
-  function ($scope, $http, $location, $rootScope) {
+		function ($scope, $http, $location, $rootScope) {
             //Show and Hide vars
             $scope.isActive = false,
-                $scope.showAll = true,
-                $scope.pricing = false,
-                $scope.supply = false,
-                $scope.restrictions = false,
-                $scope.spaceTypes = false,
-                $scope.weekDay = false,
-                $scope.weekEnd = false,
-                $scope.resources = false;
+            $scope.showAll = true,
+            $scope.pricing = false,
+            $scope.supply = false,
+            $scope.restrictions = false,
+            $scope.spaceTypes = false,
+            $scope.weekDay = false,
+            $scope.weekEnd = false,
+            $scope.resources = false;
             $scope.studyArea;
             $scope.selectedStudyArea = "Choose a Study Area...";
             $scope.selectedId;
@@ -170,6 +171,11 @@ angular.module('vppApp')
                 $rootScope.$evalAsync(function () {
                     $location.url('?sa=' + $scope.selectedId);
                     $location.path('/map');
+                    
+                    //for active nav
+                    $(".map-link").addClass("active");
+					$(".data-link").removeClass("active");
+
                 });
             });
             $('#vwMapInventoryBTN').click(function () {
@@ -193,7 +199,9 @@ angular.module('vppApp')
                 }).success(function (results) {
                     $scope.MasterSummaryData = results;
                     exportToCSV(results, $scope.selectedStudyArea, 'Parking Data Summary', true);
-
+					$('.safari-only').addClass("safari_only").removeClass('safari-only');
+					console.log($scope.safariFixer);
+					$(".data-anchor").attr("href", $scope.safariFixer);
                 }).error(function (data, status) {
                     console.log("There was an error:", status);
 
@@ -353,9 +361,14 @@ angular.module('vppApp')
 
                 //this part will append the anchor tag and remove it after automatic click
                 document.body.appendChild(link);
-                link.click();
+                
+                //If not Safari
+                if(document.getElementById("safari-fixer").style.display === ""){
+	               link.click(); 
+                } 
+                
                 document.body.removeChild(link);
-
+				$scope.safariFixer = uri;
             };
 
             $('#vwDataBTN').click(function () {
@@ -402,6 +415,7 @@ angular.module('vppApp')
             $("input[type=\"checkbox\"], input[type=\"radio\"]").not("[data-switch-no-init]").bootstrapSwitch();
 
             $("input[type=\"checkbox\"], input[type=\"radio\"]").on('switchChange.bootstrapSwitch', function (event, state) {
+	            console.log("switch", event);
                 var cat = $(this).attr('name');
                 console.log(cat); // DOM element                
                 //console.log(state); // true | false
@@ -419,16 +433,29 @@ angular.module('vppApp')
                         $("#WDOccInfo").fadeIn(0);
                         $("#WEOccInfo").fadeIn(0);
                         $("#AddtnlResources").fadeIn(0);
+                        
+                        //Turn Off switches
+						$('input[name="Pricing"]').bootstrapSwitch('state', false, false);
+						$('input[name="Restrictions"]').bootstrapSwitch('state', false, false);
+						$('input[name="WDOccupancy"]').bootstrapSwitch('state', false, false);
+						$('input[name="Resources"]').bootstrapSwitch('state', false, false);
+						$('input[name="Supply"]').bootstrapSwitch('state', false, false);
+						$('input[name="SpaceTypes"]').bootstrapSwitch('state', false, false);
+						$('input[name="WEOccupancy"]').bootstrapSwitch('state', false, false);
 
                         $scope.showAll = true;
                         break;
                     case "Pricing":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".price-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#PricingInfo").fadeIn(0);
 
                         $scope.pricing = true;
                         break;
                     case "Supply":
+                    	$(".bootswitch-all").attr("checked", "false");
+                    	$(".parking-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#ParkingSupply").fadeIn(0, function () {
 
@@ -437,30 +464,40 @@ angular.module('vppApp')
                         $scope.supply = true;
                         break;
                     case "Restrictions":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".time-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#RestrictionInfo").fadeIn(0);
 
                         $scope.restrictions = true;
                         break;
                     case "SpaceTypes":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".spaces-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#SpaceType").fadeIn(0);
 
                         $scope.spaceTypes = true;
                         break;
                     case "WDOccupancy":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".weekday-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#WDOccInfo").fadeIn(0);
 
                         $scope.weekDay = true;
                         break;
                     case "WEOccupancy":
+                   		$(".bootswitch-all").attr("checked", "");
+                    	$(".weekend-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#WEOccInfo").fadeIn(0);
 
                         $scope.weekEnd = true;
                         break;
                     case "Resources":
+                    	$(".bootswitch-all").attr("checked", "");
+                    	$(".additional-switch").attr("checked", "true");
                         $('input[name="ShowAll"]').bootstrapSwitch('state', false, false);
                         $("#AddtnlResources").fadeIn(0);
 
@@ -471,7 +508,6 @@ angular.module('vppApp')
                 } else {
                     switch (cat) {
                     case "ShowAll":
-
                         $('input[class="otherSwitch"]').bootstrapSwitch('state', false, false);
                         $("#ParkingSupply").fadeOut(0);
                         $("#SpaceType").fadeOut(0);
@@ -562,7 +598,8 @@ angular.module('vppApp')
 
                 $scope.printerElement.appendChild($scope.node);
             };
-
-            $scope.activeTrigger();
-  }
- ]);
+            
+            //$scope.activeTrigger();
+		}
+	]
+);

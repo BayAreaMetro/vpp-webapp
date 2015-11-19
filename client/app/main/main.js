@@ -100,25 +100,120 @@ angular.module('vppApp')
                 templateUrl: 'public/templates/database/database.html',
                 controller: 'DatabaseCtrl'
             })
+            .state('summary', {
+                url: "/database.summary",
+                templateUrl: 'public/templates/database/database.summary.html',
+                controller: 'DatabaseCtrl'
+            })
+            .state('inventory', {
+                url: "/database.inventory",
+                templateUrl: 'public/templates/database/database.inventory.html',
+                controller: 'DatabaseCtrl'
+            })
+            .state('occupancy', {
+                url: "/database.occupancy",
+                templateUrl: 'public/templates/database/database.occupancy.html',
+                controller: 'DatabaseCtrl'
+            })
             .state('about', {
                 url: "/about",
                 templateUrl: 'public/templates/about/about.html',
                 controller: 'AboutCtrl'
+            })
+            .state('contact', {
+                url: "/about.contact",
+                templateUrl: 'public/templates/about/about.contact.html',
+            })
+			.state('faqs', {
+                url: "/about.faqs",
+                templateUrl: 'public/templates/about/about.faqs.html',
             })
             .state('research', {
                 url: "/research",
                 templateUrl: 'public/templates/research/research.html',
                 controller: 'ResearchCtrl'
             })
+            .state('report', {
+                url: "/research.report",
+                templateUrl: 'public/templates/research/research.report.html',
+                controller: 'ResearchCtrl'
+            })
             .state('employees', {
-                url: "/employees",
-                templateUrl: 'public/templates/employees/employees.html'
-            }).state('help', {
+                url: "/research.employees",
+                templateUrl: 'public/templates/research/employees.html'
+            })
+            .state('regional', {
+                url: "/research.regional",
+                templateUrl: 'public/templates/research/regional.html'
+            })
+            .state('enacting', {
+                url: "/research.enacting",
+                templateUrl: 'public/templates/research/enacting.html'
+            })
+            .state('resources', {
+                url: "/research.resources",
+                templateUrl: 'public/templates/research/resources.html'
+            })
+            .state('policy', {
+                url: "/research.policy",
+                templateUrl: 'public/templates/research/policy.html'
+            })
+            .state('overview', {
+                url: "/research.policy.overview",
+                templateUrl: 'public/templates/research/policy-overview.html'
+            })
+            .state('ubanSim', {
+                url: "/research.policy.ubanSim",
+                templateUrl: 'public/templates/research/policy-ubanSim.html'
+            })
+            .state('modalOne', {
+                url: "/research.policy.modalOne",
+                templateUrl: 'public/templates/research/policy-modalOne.html'
+            })
+            .state('key', {
+                url: "/research.policy.key",
+                templateUrl: 'public/templates/research/policy-key.html'
+            })
+            .state('pr', {
+                url: "/research.pr",
+                templateUrl: 'public/templates/research/pr.html'
+            })
+            .state('parking', {
+                url: "/research.parking",
+                templateUrl: 'public/templates/research/parking.html'
+            })
+            .state('travel', {
+                url: "/research.parking.travel",
+                templateUrl: 'public/templates/research/travel.html'
+            })
+            .state('supply', {
+                url: "/research.supply",
+                templateUrl: 'public/templates/research/supply.html'
+            })
+            .state('supplyOverview', {
+                url: "/research.supply.overview",
+                templateUrl: 'public/templates/research/supply.overview.html'
+            })
+            .state('supplyParking', {
+                url: "/research.supply.parking",
+                templateUrl: 'public/templates/research/supply.parking.html'
+            })
+            .state('help', {
                 url: "/help",
                 templateUrl: 'public/templates/help/help.html',
                 controller: 'HelpCtrl',
                 controllerAs: 'vm'
-            }).state('feedback', {
+            })
+            .state('quick', {
+                url: "/help.quick",
+                templateUrl: 'public/templates/help/help.quick.html',
+                controller: 'HelpCtrl'
+            })
+            .state('videos', {
+                url: "/help.videos",
+                templateUrl: 'public/templates/help/help.videos.html',
+            })
+            .state('feedback', {
                 url: "/feedback",
                 templateUrl: 'public/templates/feedback/feedback.html',
                 controller: 'FeedbackCtrl'

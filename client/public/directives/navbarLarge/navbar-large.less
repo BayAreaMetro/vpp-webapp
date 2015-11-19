@@ -36,39 +36,40 @@
 	.inner-nested{
 		overflow: hidden;
 		&.active{
-			overflow: visible;
+			//overflow: visible;
 		}
 		.inner-ul-reseach{
 			.nest-nav();
-			&.active{
-				height: 300px;
-				opacity: 1;
-				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
-			}
 		}
 		.inner-ul-data{
 			.nest-nav();
+			/*
 			&.data-nav {
 				height: 140px;
 				opacity: 1;
 				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
 			}
+			*/
 		}
 		.inner-ul-about{
 			.nest-nav();
+			/*
 			&.about-nav{
 				height: 80px;
 				opacity: 1;
 				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
 			}
+			*/
 		}
 		.inner-ul-help{
 			.nest-nav();
-				&.help-nav{
-					height: 60px;
-					opacity: 1;
-					.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
-				}
+			/*
+			&.help-nav{
+				height: 100px;
+				opacity: 1;
+				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
+			}
+			*/
 			}
 		.inner-ul{
 			li{
@@ -84,7 +85,8 @@
 					.vpp-links-inner-2{
 						color: @mainColorDark;
 						&:hover{
-							color: #ffffff;						}
+							color: #ffffff;		
+						}
 					}
 				}
 			}
@@ -137,7 +139,7 @@
 				}
 				&:hover{
 					.nav-inner-nested{
-						height: 175px;
+						height: 150px;
 						opacity: 1;
 						li{
 							display: block;
@@ -163,5 +165,50 @@
 				}
 			}
 		}
+		.help-link{
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+	}
+	.inner-nested-research{
+		&:hover{
+			overflow: visible;
+			.inner-ul-reseach{
+				height: 300px;
+				opacity: 1;
+				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
+				visibility: visible;
+			}	
+		}
+	}
+	.inner-nested-data{
+		&:hover{
+			overflow: visible;
+			.inner-ul-data{
+				height: 140px;
+				opacity: 1;
+				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
+			}	
+		}
+	}
+	.inner-nested-help{
+		&:hover{
+			overflow: visible;
+			.inner-ul-help{
+				height: 100px;
+				opacity: 1;
+				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
+			}
+		}	
+	}
+	.inner-nested-about{
+		&:hover{
+			overflow: visible;
+			.inner-ul-about{
+				height: 80px;
+				opacity: 1;
+				.box-shadow(6px 9px 5px -4px rgba(46,46,46,0.57));
+			}
+		}	
 	}
 }

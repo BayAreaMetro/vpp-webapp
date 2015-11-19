@@ -1,9 +1,8 @@
-#help-section {
-    //background-image: url('images/parking-lot.png');
+#help-section {    
     background-color: #ffffff;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100%;
+    height: auto;
     width: 100%;
     .site-header {
         margin-top: 50px;
@@ -18,4 +17,60 @@
             }
         }
     }
+    .video-wrapper{
+        //display: none;
+    }
+    .quickstart-wrapper{
+		.section-wrapper{
+			//border-bottom: 1px solid #dddddd;
+			padding-bottom: 20px;
+			div{
+				padding-top: 20px;	
+			}
+			.text-center{
+				p{
+					padding-top: 50px;
+				}
+			}
+			.section-headers{
+				h3{
+					padding-bottom: 10px;
+					color: @anchorColor;
+					border-bottom: 1px dashed #dddddd; 
+				}
+			}
+			.start-image{
+		        width: 250px;
+				padding-top: 15px;
+				padding-bottom: 15px;
+				padding-left: 15px;
+				padding-right: 15px;
+				border: 1px solid #dddddd;
+				display: block;
+				.transition(all .5s ease-in-out);
+				&:hover{
+					border: 1px solid @mainColor;	
+				}
+				img{
+					width: 220px;
+				}
+	        }
+		}
+        .thumbnail{
+            img{
+                border: 2px solid @anchorColor;
+            }
+            .help-text{
+                //border-top: 1px solid @anchorColor;
+                //width: 80%;
+                text-align: center;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
+    }
+    .section-wrapper:last-child{
+	    margin-bottom: 80px;
+    }
 }
+
