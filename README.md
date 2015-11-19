@@ -1,6 +1,4 @@
-# vpp-webapp
-VPP Parking Web Application [GIS]
-
+#VPP Parking Web Application [GIS]
 Development Instructions/ Notes
 
 ## Requirements
@@ -24,14 +22,13 @@ Development Instructions/ Notes
     - public
         - var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
         - public may not be the most up to date api 
-
 5. Then cd back to top level folder for app and run gulp serve
     - Browser should open at or navigate to localhost:3000
   a.Make sure to pick at least Angular 1.4 to prevent errors
-3. gulp serve
-4. Browser should open at or navigate to localhost:3000
+6. gulp serve
+7. Browser should open at or navigate to localhost:3000
 
-## Samples Research
+### Samples Research
 http://bootsnipp.com/snippets/featured/toggle-navbar-with-slide-down-animation
 
 http://bootsnipp.com/snippets/featured/simple-admin
