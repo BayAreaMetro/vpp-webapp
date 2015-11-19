@@ -142,7 +142,7 @@ angular.module('vppApp')
         OnStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/1';
 
         //Occupancy Data URLs
-        WDOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/2';
+        WDOffStreetOccupancyURL = 'http: //gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/2';
         WDOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/3';
         WEOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/4';
         WEOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/5';
@@ -285,7 +285,7 @@ angular.module('vppApp')
 
                 break;
             case "peakOCC":
-                if ($scope.DayType = "Weekday Peak Period") {
+                if ($scope.DayType == "Weekday Peak Period") {
                     parkingInspectorPeakOccupancyOffStreet.setContent("<p><b>Off-Street Weekday Occupancy </b></p><p><b>Facility Name</b>: ${Facility_Name}</p><p>There are <b>${Total_Spaces:NumberFormat}</b> total parking spaces in this facility.</p><p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table></p>");
                     parkingInspectorPeakOccupancyOnStreet.setContent("<p><b>On-Street Weekday Occupancy </b></p><p><b>Street Name</b>: ${Street_Name}</p><p><b>From Street</b>: ${From_Street}</p><p><b>To Street</b>: ${To_Street}</p><p>There are <b>${Total_Spaces:NumberFormat}</b> total parking spaces on this block</p><table class='table table-striped'><thead><th>Time Period</th><th>Occupied Spaces</th></thead><tbody><tr><td>Occupancy 5 AM:</td><td class='text-center'>${Total_5_00}</td></tr><tr><td>Occupancy 9 AM:</td><td class='text-center'>${Total_9_00}</td></tr><tr><td>Occupancy 12 PM:</td><td class='text-center'>${Total_12_00}</td></tr><tr><td>Occupancy 4 PM:</td><td class='text-center'>${Total_16_00}</td></tr><tr><td>Occupancy 8 PM:</td><td class='text-center'>${Total_20_00}</td></tr></tbody></table>");
                 } else {
@@ -394,8 +394,7 @@ angular.module('vppApp')
             infoTemplate: parkingInspectorWEOccupancyOnStreet
 
         });
-        //See GitHub Issue #108 Need to change out the URL for the feature based upon the DayType
-        //$scope.DayType
+
 
         PeakWDOffStreetOccupancyFL = new w.FeatureLayer(WDOffStreetOccupancyURL, {
             id: "PeakWDOffStreetOccupancy",
@@ -423,7 +422,6 @@ angular.module('vppApp')
             //infoTemplate: popupTemplate_WEOffStreetOccupancyFL
             infoTemplate: parkingInspectorPeakOccupancyOffStreet
         });
-        //See GitHub Issue #108 Need to change out the URL for the feature based upon the DayType
         PeakWEOnStreetOccupancyFL = new w.FeatureLayer(WEOnStreetOccupancyURL, {
             id: "PeakWEOnStreetOccupancy",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
@@ -760,10 +758,10 @@ angular.module('vppApp')
 
         //Begin Function Here...
         function SetOccupancyRenderer(occ) {
-                console.clear();
+                //console.clear();
                 $scope.OCCtimeperiod = occ;
                 //console.log($scope.OCCtimeperiod);
-                console.log($scope.DayType);
+                //console.log($scope.DayType);
 
 
                 $scope.renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol_OnStreetOccupancy, $scope.OCCtimeperiod);
@@ -785,12 +783,6 @@ angular.module('vppApp')
 
                 PeakWDOnStreetOccupancyFL.refresh();
                 PeakWEOnStreetOccupancyFL.refresh();
-
-
-
-
-
-
 
                 $scope.OffStreetOccupancyRenderer = new w.ClassBreaksRenderer(OffStreetOccupancySymbol, $scope.OCCtimeperiod);
                 $scope.OffStreetOccupancyRenderer.clearBreaks();
@@ -1073,7 +1065,7 @@ angular.module('vppApp')
                     break;
                 case "peakOCC":
 
-                    if ($scope.DayType = "Weekday Peak Period") {
+                    if ($scope.DayType == "Weekday Peak Period") {
                         PeakWDOnStreetOccupancyFL.show();
                         PeakWDOffStreetOccupancyFL.show();
                     } else {
@@ -1324,30 +1316,14 @@ angular.module('vppApp')
                 var currentZoomLevel = $scope.map.getZoom();
 
                 if (currentZoomLevel > 14) {
-                    //If statement for DayType??
-                    if ($scope.DayType = "Weekday Peak Period") {
-                        PeakWDOnStreetOccupancyFL.show();
-                        PeakWDOffStreetOccupancyFL.show();
-                    } else {
-                        PeakWEOnStreetOccupancyFL.show();
-                        PeakWEOffStreetOccupancyFL.show();
-                    }
+
+
                     showPeak("BOTH");
                     //console.log($scope.pt + " | " + $scope.selectedId + " | " + $scope.ptp);
                 } else {
                     $scope.selectedId = 1;
-                    //SetOccupancyRenderer("Occupancy_12pm");
-                    //$scope.DayType = "Weekday Peak Period";
-                    //showPeak("BOTH");
-                    //$scope.TimePeriod = "Afternoon (12PM)";
                     ZoomStudyArea($scope.selectedId);
-                    if ($scope.DayType = "Weekday Peak Period") {
-                        PeakWDOnStreetOccupancyFL.show();
-                        PeakWDOffStreetOccupancyFL.show();
-                    } else {
-                        PeakWEOnStreetOccupancyFL.show();
-                        PeakWEOffStreetOccupancyFL.show();
-                    }
+
                 }
                 $("#LegendNamePNL_Occ").fadeIn(500);
                 $("#mlegend_Occ").fadeIn(500);
@@ -1378,7 +1354,13 @@ angular.module('vppApp')
             }).success(function (data) {
                 SetOccupancyRenderer(data[0].Peak);
                 $scope.DayType = data[0].Day_Type;
-
+                if ($scope.DayType == "Weekday Peak Period") {
+                    PeakWDOnStreetOccupancyFL.show();
+                    PeakWDOffStreetOccupancyFL.show();
+                } else {
+                    PeakWEOnStreetOccupancyFL.show();
+                    PeakWEOffStreetOccupancyFL.show();
+                }
                 switch (data[0].Peak) {
                 case "Occupancy_5am":
                     $scope.TimePeriod = "Early Morning (5AM)";
@@ -1389,7 +1371,7 @@ angular.module('vppApp')
 
                     break;
                 case "Occupancy_12pm":
-                    $scope.TimePeriod = "Afternoon (12PM)";
+                    $scope.TimePeriod = "Noon (12PM)";
 
                     break;
                 case "Occupancy_4pm":
