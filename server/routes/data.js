@@ -47,7 +47,7 @@ router.post('/submitfeedback', function(req, res, next) {
     var feedbackComment = req.param('fcomment');
 
     ghrepo.issue({
-        "title": "Public Comment",
+        "title": "Public Comment: " + feedbackComment,
         "body": feedbackComment,
         //"assignee": "Keareys",
         //"milestone": 1,

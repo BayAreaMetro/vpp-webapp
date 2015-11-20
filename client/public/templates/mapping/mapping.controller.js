@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vppApp')
-    .controller('MapCtrl', function ($rootScope, $scope, $http, wish, $timeout) {
+    .controller('MapCtrl', function ($rootScope, $scope, $http, wish, $timeout, $location) {
 
         //Vars always at the top
         $scope.layerOpacity;
@@ -142,7 +142,7 @@ angular.module('vppApp')
         OnStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/1';
 
         //Occupancy Data URLs
-        WDOffStreetOccupancyURL = 'http: //gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/2';
+        WDOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/2';
         WDOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/3';
         WEOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/4';
         WEOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/5';
@@ -1584,15 +1584,6 @@ angular.module('vppApp')
 
         });
 
-
-
-
-        //        $(".find-studyarea").click(function () {
-        //            $scope.selectedStudyAreaMap = $(this).children('.selected-area').text();
-        //            $scope.selectedId = $(this).children('.selected-id').text();
-        //
-        //            ZoomStudyArea($scope.selectedId);
-        //        });
         //Zoom To Study Area and Highlight Study Area Name in Legend as Current Study Area.
         function ZoomStudyArea(a) {
             saQuery.where = "Project_ID = '" + a + "'";
@@ -1639,9 +1630,6 @@ angular.module('vppApp')
             return $scope.map.extent.getCenter();
         }
 
-
-
-
         function showSAQResults(saqr) {
             //console.clear();
             //console.log("Showing Study Area Results...");
@@ -1659,9 +1647,21 @@ angular.module('vppApp')
             $("#StudyAreaNamePNL").fadeIn(100);
             $scope.map.setExtent(searchresult.geometry.getExtent(), true);
             $("#StudyAreaSearch").val("");
+            $('#vwMapSummaryBTN').removeClass('hidden');
 
         }
 
+        $('#vwMapSummaryBTN').click(function () {
+            $rootScope.$evalAsync(function () {
+                $location.url('?sa=' + $scope.selectedId);
+                $location.path('/database');
+
+                //for active nav
+                $(".data-link").addClass("active");
+                $(".map-link").removeClass("active");
+
+            });
+        });
 
         //Global Switch for all check boxes as toggle switches
         $("input[type=\"checkbox\"], input[type=\"radio\"]").not("[data-switch-no-init]").bootstrapSwitch();
@@ -1913,6 +1913,19 @@ angular.module('vppApp')
         var hasURLparam = decodeURIComponent($.urlParam('sa'));
         if (hasURLparam > 0) {
             var sa = decodeURIComponent($.urlParam('sa'));
+            $scope.selectedId = sa;
+            $http({
+                url: publicDataURL + '/data/summary?sa=' + $scope.selectedId,
+                method: 'GET'
+            }).success(function (results) {
+                $scope.selectedStudyAreaMap = results[0].Study_Area;
+                $scope.selectedStudyArea = results[0].Study_Area;
+                $scope.selectedCollectionYear = results[0].Project_Year;
+                console.log($scope.selectedStudyAreaMap);
+            }).error(function (data, status) {
+                console.log("There was an error:", status);
+
+            });
             ZoomStudyArea(sa);
         }
         //End of Study Area from Parking Data

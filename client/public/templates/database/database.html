@@ -130,82 +130,82 @@
                                     <button id="dlSummaryDataBTN" type="button" class="btn btn-default btn-sm disabled summaryVD">
                                         <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
                                     </button>
-                                    
+
                                     <!-- Safri fix -->
                                     <div id="safari-fixer" class="safari-only pad-top-l">
-		                                <p class="lead">Please right click and save file</p>
-		                                <a href="#" class="data-anchor">Download Data</a>
-		                            </div>
+                                        <p class="lead">Please right click and save file</p>
+                                        <a href="#" class="data-anchor">Download Data</a>
+                                    </div>
                                 </div>
                             </div>
-                	</fieldset>
-                </form>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div id="InventorySummary" class="container infoSummaryBG collapse divFade">
-            <h1 class="col-md-4">&nbsp;</h1>
-            <h2 class="col-md-8">Inventory Data Options</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <form class="form-horizontal pad-top-l">
-                        <fieldset>
+            <div id="InventorySummary" class="container infoSummaryBG collapse divFade">
+                <h1 class="col-md-4">&nbsp;</h1>
+                <h2 class="col-md-8">Inventory Data Options</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-horizontal pad-top-l">
+                            <fieldset>
 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
-                                <div class="col-md-6">
-                                    <!-- drop downs -->
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
-                                            {{selectedStudyArea}}
-                                            <span class="caret pull-right ma-top-s"></span>
-                                        </button>
-                                        <ul class="dropdown-menu ddStudyAreaInventory" aria-labelledby="list-2" ng-click="getStudyArea($event)">
-                                            <li ng-repeat="data in studyArea" class="study-li-inventory">
-                                                <p class="hidden selected-id">{{data.Project_ID}}</p>
-                                                <p class="selected-area">{{data.Name}}</p>
-                                            </li>
-                                        </ul>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
+                                    <div class="col-md-6">
+                                        <!-- drop downs -->
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
+                                                {{selectedStudyArea}}
+                                                <span class="caret pull-right ma-top-s"></span>
+                                            </button>
+                                            <ul class="dropdown-menu ddStudyAreaInventory" aria-labelledby="list-2" ng-click="getStudyArea($event)">
+                                                <li ng-repeat="data in studyArea" class="study-li-inventory">
+                                                    <p class="hidden selected-id">{{data.Project_ID}}</p>
+                                                    <p class="selected-area">{{data.Name}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
-                                <div class="col-md-6">
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeINV">
-                                            {{selectedPtypeINV}}
-                                            <span class="caret pull-right ma-top-s"></span>
-                                        </button>
-                                        <ul class="dropdown-menu ddPtypeInventory" aria-labelledby="ptypelist" ng-click="getPtypeINV($event)">
-                                            <li ng-repeat="data in PtypeINV" class="ptype-li-inventory">
-                                                <p class="hidden selected-ptype-inv-val">{{data.Ptype}}</p>
-                                                <p class="selected-ptype-inv">{{data.Description}}</p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ParkingTypeSearch">Select Parking Type</label>
+                                    <div class="col-md-6">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeINV">
+                                                {{selectedPtypeINV}}
+                                                <span class="caret pull-right ma-top-s"></span>
+                                            </button>
+                                            <ul class="dropdown-menu ddPtypeInventory" aria-labelledby="ptypelist" ng-click="getPtypeINV($event)">
+                                                <li ng-repeat="data in PtypeINV" class="ptype-li-inventory">
+                                                    <p class="hidden selected-ptype-inv-val">{{data.Ptype}}</p>
+                                                    <p class="selected-ptype-inv">{{data.Description}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                </div>
-                            </div>
-
-                            <!-- Collection Year -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
-                                <div class="col-md-6">
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaINV" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
-                                            {{selectedCollectionYear}}
-                                            <span class="caret pull-right ma-top-s"></span>
-                                        </button>
-                                        <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaINV" ng-click="getCollectionYear($event)">
-                                            <li ng-repeat="data in cy" class="cy-li-collectionYearINV">
-                                                <p id="selectCollectionYearINV" class="selected-year">{{data.CollectionYear}}</p>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
 
-                                <!-- Multiple Checkboxes (inline) -->
-                                <!--
+                                <!-- Collection Year -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="selectCollectionYear">Collection Year</label>
+                                    <div class="col-md-6">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaINV" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
+                                                {{selectedCollectionYear}}
+                                                <span class="caret pull-right ma-top-s"></span>
+                                            </button>
+                                            <ul class="dropdown-menu ddCollectionYearINV" aria-labelledby="cysaINV" ng-click="getCollectionYear($event)">
+                                                <li ng-repeat="data in cy" class="cy-li-collectionYearINV">
+                                                    <p id="selectCollectionYearINV" class="selected-year">{{data.CollectionYear}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- Multiple Checkboxes (inline) -->
+                                    <!--
 	                                <div class="form-group">
 	                                    <div class="control-group">
 	                                        <div class="controls">
@@ -259,90 +259,90 @@
 	                                    </div>
 	                                </div>
 	-->
-                                <div class="row pad-top-l">&nbsp;</div>
-                                <div class="row pad-top-l">
-                                    <label class="col-md-4 control-label">&nbsp;</label>
-                                    <div class="col-md-8 pull-left">
+                                    <div class="row pad-top-l">&nbsp;</div>
+                                    <div class="row pad-top-l">
+                                        <label class="col-md-4 control-label">&nbsp;</label>
+                                        <div class="col-md-8 pull-left">
 
-                                        <button id="vwMapInventoryBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
-                                            <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
-                                        </button>
+                                            <button id="vwMapInventoryBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
+                                                <span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map
+                                            </button>
 
-                                        <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
-                                            <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
-                                        </button>
+                                            <button id="dlInventoryDataBTN" type="button" class="btn btn-default btn-sm disabled inventoryVD">
+                                                <span class="fa fa-download fa-fw" aria-hidden="true"></span>Download Data
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                    </form>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="OccupancySummary" class="container infoSummaryBG collapse divFade">
-            <h1 class="col-md-4">&nbsp;</h1>
-            <h2 class="col-md-8">Occupancy Data Options</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <form class="form-horizontal pad-top-l">
-                        <fieldset>
-                            <!-- Study Area Search-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
-                                <div class="col-md-6">
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
-                                            {{selectedStudyArea}}
-                                            <span class="caret pull-right ma-top-s"></span>
-                                        </button>
-                                        <ul class="dropdown-menu ddStudyAreaOccupancy" aria-labelledby="list-3" ng-click="getStudyArea($event)">
-                                            <li ng-repeat="data in studyArea" class="study-li-occupancy">
-                                                <p class="hidden selected-id">{{data.Project_ID}}</p>
-                                                <p class="selected-area">{{data.Name}}</p>
-                                            </li>
-                                        </ul>
+            <div id="OccupancySummary" class="container infoSummaryBG collapse divFade">
+                <h1 class="col-md-4">&nbsp;</h1>
+                <h2 class="col-md-8">Occupancy Data Options</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-horizontal pad-top-l">
+                            <fieldset>
+                                <!-- Study Area Search-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="StudyAreaSearch">Study Area</label>
+                                    <div class="col-md-6">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle text-left" type="button" id="list-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedStudyArea">
+                                                {{selectedStudyArea}}
+                                                <span class="caret pull-right ma-top-s"></span>
+                                            </button>
+                                            <ul class="dropdown-menu ddStudyAreaOccupancy" aria-labelledby="list-3" ng-click="getStudyArea($event)">
+                                                <li ng-repeat="data in studyArea" class="study-li-occupancy">
+                                                    <p class="hidden selected-id">{{data.Project_ID}}</p>
+                                                    <p class="selected-area">{{data.Name}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="ParkingTypeSearchOCC">Select Parking Type</label>
-                                <div class="col-md-6">
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist-occ" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeOCC">
-                                            {{selectedPtypeOCC}}
-                                            <span class="caret pull-right ma-top-s"></span>
-                                        </button>
-                                        <ul class="dropdown-menu ddPtypeOccupancy" aria-labelledby="ptypelist-occ" ng-click="getPtypeOCC($event)">
-                                            <li ng-repeat="data in PtypeOCC" class="ptype-li-occupancy">
-                                                <p class="hidden selected-ptype-occ-val">{{data.Ptype}}</p>
-                                                <p class="selected-ptype-occ">{{data.Description}}</p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ParkingTypeSearchOCC">Select Parking Type</label>
+                                    <div class="col-md-6">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle text-left" type="button" id="ptypelist-occ" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedPtypeOCC">
+                                                {{selectedPtypeOCC}}
+                                                <span class="caret pull-right ma-top-s"></span>
+                                            </button>
+                                            <ul class="dropdown-menu ddPtypeOccupancy" aria-labelledby="ptypelist-occ" ng-click="getPtypeOCC($event)">
+                                                <li ng-repeat="data in PtypeOCC" class="ptype-li-occupancy">
+                                                    <p class="hidden selected-ptype-occ-val">{{data.Ptype}}</p>
+                                                    <p class="selected-ptype-occ">{{data.Description}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                </div>
-                            </div>
-
-                            <!-- Collection Year -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectCollectionYearOCC">Collection Year</label>
-                                <div class="col-md-6">
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaOCC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
-                                            {{selectedCollectionYear}}
-                                            <span class="caret pull-right ma-top-s"></span>
-                                        </button>
-                                        <ul class="dropdown-menu ddCollectionYearOCC" aria-labelledby="cysaOCC" ng-click="getCollectionYear($event)">
-                                            <li ng-repeat="data in cy" class="cy-li-collectionYearOCC">
-                                                <p id="selectCollectionYearOCC" class="selected-year">{{data.CollectionYear}}</p>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
 
-                                <!-- Multiple Checkboxes (inline) -->
-                                <!--
+                                <!-- Collection Year -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="selectCollectionYearOCC">Collection Year</label>
+                                    <div class="col-md-6">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle text-left" type="button" id="cysaOCC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="selectedCollectionYear">
+                                                {{selectedCollectionYear}}
+                                                <span class="caret pull-right ma-top-s"></span>
+                                            </button>
+                                            <ul class="dropdown-menu ddCollectionYearOCC" aria-labelledby="cysaOCC" ng-click="getCollectionYear($event)">
+                                                <li ng-repeat="data in cy" class="cy-li-collectionYearOCC">
+                                                    <p id="selectCollectionYearOCC" class="selected-year">{{data.CollectionYear}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- Multiple Checkboxes (inline) -->
+                                    <!--
 	                                <div class="form-group">
 	                                    <div class="control-group">
 	                                        <div class="controls">
@@ -408,7 +408,7 @@
 	                                    </div>
 	                                </div>
 	-->
-								</div>
+                                </div>
                                 <div class="row pad-top-l">&nbsp;</div>
                                 <div class="row pad-top-l">
                                     <label class="col-md-4 control-label">&nbsp;</label>
@@ -421,8 +421,8 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                        </fieldset>
+                    </div>
+                    </fieldset>
                     </form>
                 </div>
             </div>
@@ -438,6 +438,9 @@
                             <div class="btn-group pull-right">
                                 <button id="vwOptionsBTN" type="button" class="btn btn-default btn-sm">
                                     <span class="fa fa-cog fa-fw" aria-hidden="true"></span>Back to Options
+                                </button>
+                                <button id="vwMapOptionsBTN" type="button" class="btn btn-default btn-sm summaryVD">
+                                    <a href="#/map/{{selectedStudyArea}}"><span class="fa fa-image fa-fw" aria-hidden="true"></span>Show Map</a>
                                 </button>
 
 
@@ -562,7 +565,7 @@
                                             <td class="text-center"><span id="Unregulated_Spaces_Off">{{type.Unregulated_Spaces_Off | number}}</span>
                                             </td>
                                             <td class="text-center">{{type.Unregulated_Spaces_Off_PCT}}%</td>
-                                            <td class="text-center"><span id="Unregulated_Spaces_Tot">{{type.Unregulated_Spaces_Total | number}}</span>
+                                            <td class="text-center"><span id="Unregulated_Spaces_Tot">{{type.Unregulated_Spaces_Tot | number}}</span>
                                             </td>
 
                                         </tr>
