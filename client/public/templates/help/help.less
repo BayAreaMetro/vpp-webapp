@@ -1,4 +1,4 @@
-#help-section {    
+#help-section {
     background-color: #ffffff;
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,50 +17,59 @@
             }
         }
     }
-    .video-wrapper{
-        //display: none;
+    .home-text {
+        margin-bottom: 50px;
     }
-    .quickstart-wrapper{
-		.section-wrapper{
-			//border-bottom: 1px solid #dddddd;
-			padding-bottom: 20px;
-			div{
-				padding-top: 20px;	
-			}
-			.text-center{
-				p{
-					padding-top: 50px;
-				}
-			}
-			.section-headers{
-				h3{
-					padding-bottom: 10px;
-					color: @anchorColor;
-					border-bottom: 1px dashed #dddddd; 
-				}
-			}
-			.start-image{
-		        width: 250px;
-				padding-top: 15px;
-				padding-bottom: 15px;
-				padding-left: 15px;
-				padding-right: 15px;
-				border: 1px solid #dddddd;
-				display: block;
-				.transition(all .5s ease-in-out);
-				&:hover{
-					border: 1px solid @mainColor;	
-				}
-				img{
-					width: 220px;
-				}
-	        }
-		}
-        .thumbnail{
-            img{
+    .video-wrapper,
+    .quickstart-wrapper {
+        //display: none;
+        padding-top: 300px;
+        .thumbnail {
+            border: none;
+        }
+    }
+    .quickstart-wrapper {
+        .section-wrapper {
+            //border-bottom: 1px solid #dddddd;
+            padding-bottom: 20px;
+            div {
+                padding-top: 20px;
+            }
+            .text-center {
+                p {
+                    padding-top: 50px;
+                }
+            }
+            .section-headers {
+                h3 {
+                    padding-bottom: 10px;
+                    color: @anchorColor;
+                    border-bottom: 1px dashed #dddddd;
+                }
+            }
+            .start-image {
+                width: 250px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left: 15px;
+                padding-right: 15px;
+                border: 1px solid #dddddd;
+                display: block;
+                .transition(all .5s ease-in-out);
+                &:hover {
+                    border: 1px solid @mainColor;
+                }
+                img {
+                    width: 220px;
+                }
+            }
+        }
+        .thumbnail {
+            border: none;
+            img {
                 border: 2px solid @anchorColor;
             }
-            .help-text{
+            .help-text {
                 //border-top: 1px solid @anchorColor;
                 //width: 80%;
                 text-align: center;
@@ -69,8 +78,7 @@
             }
         }
     }
-    .section-wrapper:last-child{
-	    margin-bottom: 80px;
+    .section-wrapper:last-child {
+        margin-bottom: 80px;
     }
 }
-
