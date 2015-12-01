@@ -61,8 +61,8 @@ angular.module('vppApp')
 				}
 				console.log($scope.name);
 				//Add and remove active states
-				//$('.navbar-nav > li > a').removeClass('active');
-				//$(e.target).addClass("active");
+				$('.navbar-nav > li > a').removeClass('active');
+				$(e.target).addClass("active");
 			};
 			
 			$scope.inner = function(event){
