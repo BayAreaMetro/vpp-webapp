@@ -3,7 +3,7 @@
     background-color:#ffffff;
     background-size: cover;
     background-repeat: no-repeat;
-    height: auto;
+    height: 100%;
     width: 100%;
     .site-header{
 		margin-top: 50px;
@@ -69,8 +69,10 @@
 		}
 	}
 	.report-content{
-		margin-bottom: 100px;
-		margin-top: 300px;
+		//margin-bottom: 100px;
+		padding-top: 300px;
+		//overflow: scroll;
+		height: inherit;
 		h3{
 			border-bottom: 1px solid #dddddd;
 			padding-bottom: 15px;
@@ -80,6 +82,16 @@
 			li{
 				list-style: decimal;
 			}
+		}
+		.findings-list:last-child{
+			margin-bottom: 100px;
+		}
+		.container{
+			overflow: scroll;
+			height: inherit;
+		}
+		.report-text{
+			
 		}
 	}
 }

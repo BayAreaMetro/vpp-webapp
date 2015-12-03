@@ -2,7 +2,7 @@
     background-color: #ffffff;
     background-size: cover;
     background-repeat: no-repeat;
-    height: auto;
+    height: 100%;
     width: 100%;
     .site-header {
         margin-top: 50px;
@@ -17,8 +17,12 @@
             }
         }
     }
+    .help-wrapper{
+	    height: 100%;
+    }
     .home-text {
-        margin-bottom: 50px;
+        //margin-bottom: 50px;
+        height: inherit;
     }
     .video-wrapper,
     .quickstart-wrapper {
@@ -27,8 +31,21 @@
         .thumbnail {
             border: none;
         }
+        .container{
+	        height: 100%;
+			overflow: scroll;
+        }
+    }
+    .video-wrapper{
+	    height: 100%;
+		overflow: scroll;
+		.home-text{
+			padding-bottom: 25px;
+		}
     }
     .quickstart-wrapper {
+	    height: 100%;
+	    overflow: hidden;
         .section-wrapper {
             //border-bottom: 1px solid #dddddd;
             padding-bottom: 20px;
