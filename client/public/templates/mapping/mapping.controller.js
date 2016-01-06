@@ -675,6 +675,8 @@ angular.module('vppApp')
         symbol_OnStreetOccupancy = new w.SimpleLineSymbol(w.SimpleLineSymbol.STYLE_SOLID,
             new w.Color([255, 0, 0]));
 
+        var Break0Color_OnStreetOccupancy = new w.Color([78, 78, 78, 1]);
+        var Break0LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break0Color_OnStreetOccupancy, 2);
 
         var Break1Color_OnStreetOccupancy = new w.Color([56, 168, 0, 1]);
         var Break1LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break1Color_OnStreetOccupancy, 2);
@@ -690,6 +692,9 @@ angular.module('vppApp')
 
         var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
         var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);
+
+        var Break0_minValue_OnStreetOccupancy = undefined;
+        var Break0_maxValue_OnStreetOccupancy = undefined;
 
         var Break1_minValue_OnStreetOccupancy = 0;
         var Break1_maxValue_OnStreetOccupancy = 0.50;
@@ -764,8 +769,9 @@ angular.module('vppApp')
                 //console.log($scope.DayType);
 
 
-                $scope.renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(symbol_OnStreetOccupancy, $scope.OCCtimeperiod);
+                $scope.renderer_OnStreetOccupancy = new w.ClassBreaksRenderer(Break0LineSymbol_OnStreetOccupancy, $scope.OCCtimeperiod);
                 $scope.renderer_OnStreetOccupancy.clearBreaks();
+                $scope.renderer_OnStreetOccupancy.addBreak(Break0_minValue_OnStreetOccupancy, Break0_maxValue_OnStreetOccupancy, Break0LineSymbol_OnStreetOccupancy);
                 $scope.renderer_OnStreetOccupancy.addBreak(Break1_minValue_OnStreetOccupancy, Break1_maxValue_OnStreetOccupancy, Break1LineSymbol_OnStreetOccupancy);
                 $scope.renderer_OnStreetOccupancy.addBreak(Break2_minValue_OnStreetOccupancy, Break2_maxValue_OnStreetOccupancy, Break2LineSymbol_OnStreetOccupancy);
                 $scope.renderer_OnStreetOccupancy.addBreak(Break3_minValue_OnStreetOccupancy, Break3_maxValue_OnStreetOccupancy, Break3LineSymbol_OnStreetOccupancy);
@@ -787,7 +793,7 @@ angular.module('vppApp')
                 $scope.OffStreetOccupancyRenderer = new w.ClassBreaksRenderer(OffStreetOccupancySymbol, $scope.OCCtimeperiod);
                 $scope.OffStreetOccupancyRenderer.clearBreaks();
                 $scope.OffStreetOccupancyRenderer.addBreak(Break0_minValue_OffStreetOccupancy, Break0_maxValue_OffStreetOccupancy);
-                $scope.OffStreetOccupancyRenderer.addBreak(Break1_minValue_OffStreetOccupancy, Break1_maxValue_OffStreetOccupancy, Break1Symbol_OffStreetOccupancy);
+                $scope.OffStreetOccupancyRenderer.addBreak(Break1_minValue_OffStreetOccupancy, Break1_maxValue_OffStreetOccupancy);
                 $scope.OffStreetOccupancyRenderer.addBreak(Break2_minValue_OffStreetOccupancy, Break2_maxValue_OffStreetOccupancy, Break2Symbol_OffStreetOccupancy);
                 $scope.OffStreetOccupancyRenderer.addBreak(Break3_minValue_OffStreetOccupancy, Break3_maxValue_OffStreetOccupancy, Break3Symbol_OffStreetOccupancy);
                 $scope.OffStreetOccupancyRenderer.addBreak(Break4_minValue_OffStreetOccupancy, Break4_maxValue_OffStreetOccupancy, Break4Symbol_OffStreetOccupancy);
@@ -993,6 +999,23 @@ angular.module('vppApp')
             //console.log("Current Theme: " + $scope.pt);
             $('#CurrentMapZoomLevel').html('<p>Current Map Zoom Level: ' + level + '</p>');
             mapLevel = level;
+            console.clear();
+            console.log(level);
+            Bart_markerSymbol.setHeight(level + 3);
+            Bart_markerSymbol.setWidth(level + 3);
+
+            caltrain_markerSymbol.setHeight(level + 8); //22
+            caltrain_markerSymbol.setWidth(level + 30); //40
+
+            switch (level) {
+            case 10:
+                Bart_markerSymbol.setHeight(0);
+                Bart_markerSymbol.setWidth(0);
+                caltrain_markerSymbol.setHeight(0);
+                caltrain_markerSymbol.setWidth(0);
+                break;
+
+            }
             if (level > 14) {
                 studyAreasFL.on("click", function (evt) {
 
@@ -1093,6 +1116,9 @@ angular.module('vppApp')
                     /*var highlightGraphic = new w.Graphic(evt.graphic.geometry,highlightSymbol);
                     $scope.map.graphics.add(highlightGraphic);*/
                     ZoomStudyArea(SAQ_id);
+
+                    $scope.selectedStudyAreaMap = SAQ_id;
+                    $scope.selectedId = SAQ_id;
                 });
                 studyAreasFL.show();
                 OnStreetInventoryFL.hide();
@@ -1486,9 +1512,28 @@ angular.module('vppApp')
         });
 
         $('#HomeButton').click(function () {
+            vppGraphicsLayer.clear();
+            OnStreetInventoryFL.clearSelection();
+            OffStreetInventoryFL.clearSelection();
+            OnStreetRestrictionsFL.clearSelection();
+            OffStreetRestrictionsFL.clearSelection();
+            WDOnStreetOccupancyFL.clearSelection();
+            WEOnStreetOccupancyFL.clearSelection();
+            WDOffStreetOccupancyFL.clearSelection();
+            WEOffStreetOccupancyFL.clearSelection();
+            PeakWDOnStreetOccupancyFL.clearSelection();
+            PeakWDOffStreetOccupancyFL.clearSelection();
+            PeakWEOnStreetOccupancyFL.clearSelection();
+            PeakWEOffStreetOccupancyFL.clearSelection();
+            studyAreasFL.clearSelection();
+            $('#StudyAreaDD').text("Choose a Study Area...");
+            $scope.selectedStudyAreaMap = "Choose a Study Area...";
+            $scope.selectedId = 1;
 
+            $('#vwMapSummaryBTN').addClass('hidden');
             $("#StudyAreaNamePNL").fadeOut(100, function () {
                 $("#StudyAreaNamePNL").html("");
+
             });
             clearAllTools();
             $('#iconTitle').html("<span><i class='fa fa-ellipsis-h fa-lg fa-fw'></i></span>&nbsp;&nbsp;");
@@ -1642,6 +1687,7 @@ angular.module('vppApp')
             }
 
             vppGraphicsLayer.add(searchresult);
+            $('#StudyAreaDD').text(searchresult.attributes.Name);
 
             $('#StudyAreaNamePNL').html("<span><i class='fa fa-map-marker fa-lg fa-fw'></i></span>&nbsp;&nbsp;<b>Selected Study Area:</b><br/>" + searchresult.attributes.Name + "<br /><small><b class='pad-top-m'>Project Notes:</b><br />" + searchresult.attributes.Notes + "</small>");
             $("#StudyAreaNamePNL").fadeIn(100);
