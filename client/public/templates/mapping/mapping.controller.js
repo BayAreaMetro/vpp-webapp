@@ -1174,7 +1174,7 @@ angular.module('vppApp')
             //$scope.OCCtimeperiod = $(this).attr('id');
             SetOccupancyRenderer($(this).attr('id').toString());
             $scope.TimePeriod = $(this).text();
-            $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+            $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/><br/>Percent of total spaces with vehicles occupying spaces </p>");
         });
 
         $('.parkTheme').on('click', function () {
@@ -1279,7 +1279,7 @@ angular.module('vppApp')
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
-                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/>Percent of total spaces with vehicles occupying spaces</p>");
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/><br/>Percent of total spaces with vehicles occupying spaces</p>");
                 //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkndOCC":
@@ -1307,7 +1307,7 @@ angular.module('vppApp')
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
-                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/><br/>Percent of total spaces with vehicles occupying spaces </p>");
                 //console.log($scope.pt + " | " + $scope.selectedId);
                 //console.log("? should be true", $scope.TODbtn);
                 break;
@@ -1398,7 +1398,7 @@ angular.module('vppApp')
 
                     break;
                 }
-                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.parkingType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.parkingType + "</b><br/>" + $scope.TimePeriod + " <br/><br/>Percent of total spaces with vehicles occupying spaces </p>");
 
             }).error(function (data, status) {
                 console.log("There was an error:", status);
