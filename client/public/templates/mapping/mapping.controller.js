@@ -488,7 +488,7 @@ angular.module('vppApp')
             id: "Bart",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: true,
+            visible: false,
             infoTemplate: transitLayerInfo
         });
         BartFL.setDefinitionExpression("agencyname='BART'");
@@ -497,7 +497,7 @@ angular.module('vppApp')
             id: "Caltrain",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: true,
+            visible: false,
             infoTemplate: transitLayerInfo
         });
         CaltrainFL.setDefinitionExpression("agencyname='CALTRAIN'");
