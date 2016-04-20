@@ -111,7 +111,7 @@ angular.module('vppApp')
         TPAsFLsv = 30;
         TPAsFLop = 0.3;
         $scope.legendBTN = false;
-        $scope.TimePeriod = "Early Morning (5AM)";
+        $scope.TimePeriod = "Noon (12PM)";
         $scope.TODbtn = false;
         $scope.parkingType = "Both On/Off-Street Parking";
         $scope.PTbtn = false;
@@ -488,7 +488,7 @@ angular.module('vppApp')
             id: "Bart",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: true,
+            visible: false,
             infoTemplate: transitLayerInfo
         });
         BartFL.setDefinitionExpression("agencyname='BART'");
@@ -497,7 +497,7 @@ angular.module('vppApp')
             id: "Caltrain",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
-            visible: true,
+            visible: false,
             infoTemplate: transitLayerInfo
         });
         CaltrainFL.setDefinitionExpression("agencyname='CALTRAIN'");
@@ -1174,7 +1174,7 @@ angular.module('vppApp')
             //$scope.OCCtimeperiod = $(this).attr('id');
             SetOccupancyRenderer($(this).attr('id').toString());
             $scope.TimePeriod = $(this).text();
-            $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+            $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/><br/>Percent of total spaces with vehicles occupying spaces </p>");
         });
 
         $('.parkTheme').on('click', function () {
@@ -1201,7 +1201,7 @@ angular.module('vppApp')
             PeakWEOffStreetOccupancyFL.hide();
 
             $scope.pt = $(this).attr('id');
-            $scope.TimePeriod = "Early Morning (5AM)";
+            $scope.TimePeriod = "Noon (12PM)";
             $scope.parkingType = "Both On/Off-Street Parking";
             switch ($scope.pt) {
             case "inventory":
@@ -1255,8 +1255,8 @@ angular.module('vppApp')
                 //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkdayOCC":
-                $scope.TimePeriod = "Early Morning (5AM)";
-                SetOccupancyRenderer("Occupancy_5am");
+                $scope.TimePeriod = "Noon (12PM)";
+                SetOccupancyRenderer("Occupancy_12pm");
                 $scope.TODbtn = true;
                 $scope.DayType = "Weekday Occupancy";
 
@@ -1279,12 +1279,12 @@ angular.module('vppApp')
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
-                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/>Percent of total spaces with vehicles occupying spaces</p>");
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + "<br/><br/>Percent of total spaces with vehicles occupying spaces</p>");
                 //console.log($scope.pt + " | " + $scope.selectedId);
                 break;
             case "wkndOCC":
-                $scope.TimePeriod = "Early Morning (5AM)";
-                SetOccupancyRenderer("Occupancy_5am");
+                $scope.TimePeriod = "Noon (12PM)";
+                SetOccupancyRenderer("Occupancy_12pm");
                 $scope.TODbtn = true;
                 $scope.DayType = "Weekend Occupancy";
 
@@ -1307,7 +1307,7 @@ angular.module('vppApp')
                 $("#mlegend_TotalSpaces").fadeOut(0);
                 $("#LegendNamePNL_TotalSpaces").fadeOut(0);
                 //Write in the title for the legend item.
-                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/> Percent of total spaces with vehicles occupying spaces </p>");
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.TimePeriod + " <br/><br/>Percent of total spaces with vehicles occupying spaces </p>");
                 //console.log($scope.pt + " | " + $scope.selectedId);
                 //console.log("? should be true", $scope.TODbtn);
                 break;
@@ -1346,7 +1346,7 @@ angular.module('vppApp')
         });
 
         function showPeak(a) {
-            $scope.TimePeriod = "Early Morning (5AM)";
+            $scope.TimePeriod = "Noon (12PM)";
             $scope.ptp = a;
             $http({
                 url: publicDataURL + '/data/getPeak?sa=' + $scope.selectedId + '&pt=' + $scope.ptp,
@@ -1398,7 +1398,7 @@ angular.module('vppApp')
 
                     break;
                 }
-                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.parkingType + "</b><br/>" + $scope.TimePeriod + " <br/>Percent of total spaces with vehicles occupying spaces </p>");
+                $('#LegendNamePNL_Occ').html("<p><b>" + $scope.DayType + "</b><br/>" + $scope.parkingType + "</b><br/>" + $scope.TimePeriod + " <br/><br/>Percent of total spaces with vehicles occupying spaces </p>");
 
             }).error(function (data, status) {
                 console.log("There was an error:", status);
@@ -1418,7 +1418,7 @@ angular.module('vppApp')
 
 
         $('.occ').on('click', function () {
-            $scope.TimePeriod = "Early Morning (5AM)";
+            $scope.TimePeriod = "Noon (12PM)";
             $scope.TODbtn = true;
             //$("#PeakTypeOptionsBTN").fadeOut(0);
             $scope.PTbtn = false;
@@ -1879,7 +1879,7 @@ angular.module('vppApp')
 
                 //turn on time button
                 $scope.timeButton = true;
-                $scope.TimePeriod = "Early Morning (5AM)";
+                $scope.TimePeriod = "Noon (12PM)";
                 //turn off the peak button
                 $scope.peakButton = false;
             } else if (view === "peak") {
