@@ -138,14 +138,14 @@ angular.module('vppApp')
         var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
 
         //Inventory Data URLs
-        OffStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/0';
-        OnStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/1';
+        OffStreetInventoryURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/0';
+        OnStreetInventoryURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/1';
 
         //Occupancy Data URLs
-        WDOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/2';
-        WDOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/3';
-        WEOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/4';
-        WEOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/5';
+        WDOffStreetOccupancyURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/2';
+        WDOnStreetOccupancyURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/3';
+        WEOffStreetOccupancyURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/4';
+        WEOnStreetOccupancyURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/5';
         FerryTerminalsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/4';
         ParknRideLotsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/5';
         RailStationsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/7';
@@ -154,7 +154,7 @@ angular.module('vppApp')
 
 
         //Study Area URLs
-        StudyAreaURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6'
+        StudyAreaURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/6'
 
         //QueryTasks
         StudyAreaQueryTask = new w.QueryTask(StudyAreaURL);
@@ -432,7 +432,7 @@ angular.module('vppApp')
 
         });
 
-        studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
+        studyAreasFL = new w.FeatureLayer("http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/6", {
             id: "studyAreas",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
@@ -440,7 +440,7 @@ angular.module('vppApp')
 
         });
 
-        saLabelsFL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer");
+        saLabelsFL = new w.ArcGISDynamicMapServiceLayer("http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer");
 
         saLabelsFL.setVisibleLayers([7]);
         saLabelsFL.setImageFormat("PNG32");
