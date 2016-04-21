@@ -138,14 +138,14 @@ angular.module('vppApp')
         var publicDataURL = "http://vpp-data-api.elasticbeanstalk.com";
 
         //Inventory Data URLs
-        OffStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/0';
-        OnStreetInventoryURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/1';
+        OffStreetInventoryURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/0';
+        OnStreetInventoryURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/1';
 
         //Occupancy Data URLs
-        WDOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/2';
-        WDOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/3';
-        WEOffStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/4';
-        WEOnStreetOccupancyURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/5';
+        WDOffStreetOccupancyURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/2';
+        WDOnStreetOccupancyURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/3';
+        WEOffStreetOccupancyURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/4';
+        WEOnStreetOccupancyURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/5';
         FerryTerminalsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/4';
         ParknRideLotsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/5';
         RailStationsURL = 'http://gis.mtc.ca.gov/mtc/rest/services/Open_Data/Open_Data_Layers/MapServer/7';
@@ -154,7 +154,7 @@ angular.module('vppApp')
 
 
         //Study Area URLs
-        StudyAreaURL = 'http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6'
+        StudyAreaURL = 'http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/6'
 
         //QueryTasks
         StudyAreaQueryTask = new w.QueryTask(StudyAreaURL);
@@ -432,7 +432,7 @@ angular.module('vppApp')
 
         });
 
-        studyAreasFL = new w.FeatureLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer/6", {
+        studyAreasFL = new w.FeatureLayer("http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer/6", {
             id: "studyAreas",
             mode: w.FeatureLayer.MODE_SNAPSHOT,
             outFields: ["*"],
@@ -440,7 +440,7 @@ angular.module('vppApp')
 
         });
 
-        saLabelsFL = new w.ArcGISDynamicMapServiceLayer("http://gis.mtc.ca.gov/mtc/rest/services/VPP/Alpha_Map/MapServer");
+        saLabelsFL = new w.ArcGISDynamicMapServiceLayer("http://maps.mtc.ca.gov:6080/arcgis/rest/services/VPP/Alpha_Map/MapServer");
 
         saLabelsFL.setVisibleLayers([7]);
         saLabelsFL.setImageFormat("PNG32");
@@ -691,19 +691,19 @@ angular.module('vppApp')
         var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
         var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);
 
-        var Break1_minValue_OnStreetOccupancy = 0;
+        var Break1_minValue_OnStreetOccupancy = 0.0;
         var Break1_maxValue_OnStreetOccupancy = 0.50;
 
-        var Break2_minValue_OnStreetOccupancy = 0.51;
+        var Break2_minValue_OnStreetOccupancy = 0.50;
         var Break2_maxValue_OnStreetOccupancy = 0.75;
 
-        var Break3_minValue_OnStreetOccupancy = 0.76;
+        var Break3_minValue_OnStreetOccupancy = 0.75;
         var Break3_maxValue_OnStreetOccupancy = 0.85;
 
-        var Break4_minValue_OnStreetOccupancy = 0.86;
+        var Break4_minValue_OnStreetOccupancy = 0.85;
         var Break4_maxValue_OnStreetOccupancy = 0.95;
 
-        var Break5_minValue_OnStreetOccupancy = 0.96;
+        var Break5_minValue_OnStreetOccupancy = 0.95;
         var Break5_maxValue_OnStreetOccupancy = 100;
 
 
@@ -725,19 +725,19 @@ angular.module('vppApp')
         var Break0_minValue_OffStreetOccupancy = undefined;
         var Break0_maxValue_OffStreetOccupancy = undefined;
 
-        var Break1_minValue_OffStreetOccupancy = 0;
-        var Break1_maxValue_OffStreetOccupancy = 0.5;
+        var Break1_minValue_OffStreetOccupancy = 0.0;
+        var Break1_maxValue_OffStreetOccupancy = 0.50;
 
-        var Break2_minValue_OffStreetOccupancy = 0.51;
+        var Break2_minValue_OffStreetOccupancy = 0.50;
         var Break2_maxValue_OffStreetOccupancy = 0.75;
 
-        var Break3_minValue_OffStreetOccupancy = 0.76;
+        var Break3_minValue_OffStreetOccupancy = 0.75;
         var Break3_maxValue_OffStreetOccupancy = 0.85;
 
-        var Break4_minValue_OffStreetOccupancy = 0.86;
+        var Break4_minValue_OffStreetOccupancy = 0.85;
         var Break4_maxValue_OffStreetOccupancy = 0.95;
 
-        var Break5_minValue_OffStreetOccupancy = 0.96;
+        var Break5_minValue_OffStreetOccupancy = 0.95;
         var Break5_maxValue_OffStreetOccupancy = 100;
 
         /*OffStreetOccupancyRenderer.addBreak(Break0_minValue_OffStreetOccupancy, Break0_maxValue_OffStreetOccupancy);
@@ -786,7 +786,7 @@ angular.module('vppApp')
 
                 $scope.OffStreetOccupancyRenderer = new w.ClassBreaksRenderer(OffStreetOccupancySymbol, $scope.OCCtimeperiod);
                 $scope.OffStreetOccupancyRenderer.clearBreaks();
-                $scope.OffStreetOccupancyRenderer.addBreak(Break0_minValue_OffStreetOccupancy, Break0_maxValue_OffStreetOccupancy);
+                //$scope.OffStreetOccupancyRenderer.addBreak(Break0_minValue_OffStreetOccupancy, Break0_maxValue_OffStreetOccupancy);
                 $scope.OffStreetOccupancyRenderer.addBreak(Break1_minValue_OffStreetOccupancy, Break1_maxValue_OffStreetOccupancy, Break1Symbol_OffStreetOccupancy);
                 $scope.OffStreetOccupancyRenderer.addBreak(Break2_minValue_OffStreetOccupancy, Break2_maxValue_OffStreetOccupancy, Break2Symbol_OffStreetOccupancy);
                 $scope.OffStreetOccupancyRenderer.addBreak(Break3_minValue_OffStreetOccupancy, Break3_maxValue_OffStreetOccupancy, Break3Symbol_OffStreetOccupancy);
