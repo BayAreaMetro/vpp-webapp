@@ -691,19 +691,19 @@ angular.module('vppApp')
         var Break5Color_OnStreetOccupancy = new w.Color([255, 0, 0, 1]);
         var Break5LineSymbol_OnStreetOccupancy = new w.SimpleLineSymbol("solid", Break5Color_OnStreetOccupancy, 2);
 
-        var Break1_minValue_OnStreetOccupancy = 0;
+        var Break1_minValue_OnStreetOccupancy = 0.0;
         var Break1_maxValue_OnStreetOccupancy = 0.50;
 
-        var Break2_minValue_OnStreetOccupancy = 0.51;
+        var Break2_minValue_OnStreetOccupancy = 0.50;
         var Break2_maxValue_OnStreetOccupancy = 0.75;
 
-        var Break3_minValue_OnStreetOccupancy = 0.76;
+        var Break3_minValue_OnStreetOccupancy = 0.75;
         var Break3_maxValue_OnStreetOccupancy = 0.85;
 
-        var Break4_minValue_OnStreetOccupancy = 0.86;
+        var Break4_minValue_OnStreetOccupancy = 0.85;
         var Break4_maxValue_OnStreetOccupancy = 0.95;
 
-        var Break5_minValue_OnStreetOccupancy = 0.96;
+        var Break5_minValue_OnStreetOccupancy = 0.95;
         var Break5_maxValue_OnStreetOccupancy = 100;
 
 
@@ -725,19 +725,19 @@ angular.module('vppApp')
         var Break0_minValue_OffStreetOccupancy = undefined;
         var Break0_maxValue_OffStreetOccupancy = undefined;
 
-        var Break1_minValue_OffStreetOccupancy = 0;
-        var Break1_maxValue_OffStreetOccupancy = 0.5;
+        var Break1_minValue_OffStreetOccupancy = 0.0;
+        var Break1_maxValue_OffStreetOccupancy = 0.50;
 
-        var Break2_minValue_OffStreetOccupancy = 0.51;
+        var Break2_minValue_OffStreetOccupancy = 0.50;
         var Break2_maxValue_OffStreetOccupancy = 0.75;
 
-        var Break3_minValue_OffStreetOccupancy = 0.76;
+        var Break3_minValue_OffStreetOccupancy = 0.75;
         var Break3_maxValue_OffStreetOccupancy = 0.85;
 
-        var Break4_minValue_OffStreetOccupancy = 0.86;
+        var Break4_minValue_OffStreetOccupancy = 0.85;
         var Break4_maxValue_OffStreetOccupancy = 0.95;
 
-        var Break5_minValue_OffStreetOccupancy = 0.96;
+        var Break5_minValue_OffStreetOccupancy = 0.95;
         var Break5_maxValue_OffStreetOccupancy = 100;
 
         /*OffStreetOccupancyRenderer.addBreak(Break0_minValue_OffStreetOccupancy, Break0_maxValue_OffStreetOccupancy);
@@ -786,7 +786,7 @@ angular.module('vppApp')
 
                 $scope.OffStreetOccupancyRenderer = new w.ClassBreaksRenderer(OffStreetOccupancySymbol, $scope.OCCtimeperiod);
                 $scope.OffStreetOccupancyRenderer.clearBreaks();
-                $scope.OffStreetOccupancyRenderer.addBreak(Break0_minValue_OffStreetOccupancy, Break0_maxValue_OffStreetOccupancy);
+                //$scope.OffStreetOccupancyRenderer.addBreak(Break0_minValue_OffStreetOccupancy, Break0_maxValue_OffStreetOccupancy);
                 $scope.OffStreetOccupancyRenderer.addBreak(Break1_minValue_OffStreetOccupancy, Break1_maxValue_OffStreetOccupancy, Break1Symbol_OffStreetOccupancy);
                 $scope.OffStreetOccupancyRenderer.addBreak(Break2_minValue_OffStreetOccupancy, Break2_maxValue_OffStreetOccupancy, Break2Symbol_OffStreetOccupancy);
                 $scope.OffStreetOccupancyRenderer.addBreak(Break3_minValue_OffStreetOccupancy, Break3_maxValue_OffStreetOccupancy, Break3Symbol_OffStreetOccupancy);
