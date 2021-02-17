@@ -8,14 +8,16 @@ var mssql = require('mssql');
 router.configSQL = {
     user: 'VPP_Data',
     password: 'GIS@vppdata101',
-    server: 'gisdb2.c4ttzt2cz0de.us-west-2.rds.amazonaws.com',
+    server: 'gisdb2-old.c4ttzt2cz0de.us-west-2.rds.amazonaws.com',
     database: 'VPP_Web_GeoDB'
 
 };
 
-router.connection = new mssql.Connection(router.configSQL, function (err) {
-    if (err)
+router.connection = new mssql.Connection(router.configSQL, function(err) {
+    if (err) {
         console.log(err);
+    }
+    console.log('running');
 });
 
 module.exports = router;

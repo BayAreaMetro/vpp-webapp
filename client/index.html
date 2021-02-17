@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
     <link rel="stylesheet" href="app/app.css">
     <style>
-		/* 	    //Safari only Hacks*/
-		/*
+        /* 	    //Safari only Hacks*/
+        /*
 				@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { 
 					@media{
 					    _:-webkit-full-screen, .safari-only { 
@@ -33,7 +33,7 @@
 					}
 				}
 		*/
-		/*
+        /*
 		
 		.safari-only:not(:root:root){ 
 		    border: 1px solid red;
@@ -61,7 +61,12 @@
 		}}
 		_::-webkit-full-page-media, _:future, :root .safari-only { border: 1px solid red; }
 		*/
-		_::-webkit-full-page-media, _:future, :root .safari_only { display: block }
+        
+        _::-webkit-full-page-media,
+        _:future,
+         :root .safari_only {
+            display: block
+        }
     </style>
 </head>
 
@@ -72,9 +77,9 @@
 	    	your browser</a> to improve your experience.
 	    </p>
 	<![endif]-->
-	<nav-template-large></nav-template-large>
+    <nav-template-large></nav-template-large>
     <div class="view-wrapper ui-view">
-	    
+
     </div>
     <footer-template class="absol"></footer-template>
     <!--[if lt IE 9]>
@@ -85,13 +90,16 @@
 	<![endif]-->
 
     <script src="app/lib.js"></script>
-<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script> -->
+    <!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script> -->
     <!--    <script src="//js.arcgis.com/3.8/init.js"></script>-->
     <!--    <script src="//js.arcgis.com/4.0beta1/init.js"></script>-->
     <script src="//js.arcgis.com/3.14/init.js"></script>
-   <!--   <script src="//js.arcgis.com/3.14/extras/ClusterLayer.js"></script>-->
+    <!--   <script src="//js.arcgis.com/3.14/extras/ClusterLayer.js"></script>-->
     <script src="app/scripts.js"></script>
     <script src="app/templates.js"></script>
+    <script>
+        angular.lowercase = text => text.toLowerCase();
+    </script>
 
 </body>
 
